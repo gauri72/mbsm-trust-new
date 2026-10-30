@@ -20,11 +20,13 @@ export default function Cta() {
 
             <TrimmedLoopVideo
                 src="assets/images/resources/elephant.mov"
+                fallbackSrc="assets/images/resources/elephant-1.png"
                 className="cta-one__elephant cta-one__elephant--left"
                 trimSeconds={7}
             />
             <TrimmedLoopVideo
                 src="assets/images/resources/elephant.mov"
+                fallbackSrc="assets/images/resources/elephant-1.png"
                 className="cta-one__elephant cta-one__elephant--right"
                 trimSeconds={7}
             />

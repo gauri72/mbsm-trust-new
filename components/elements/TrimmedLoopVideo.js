@@ -1,16 +1,35 @@
 'use client'
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 // Two copies of the same clip, offset by half the trim window and
 // crossfaded near the seam, so the restart-to-0 seek (which otherwise
 // causes a visible stutter/pause) is masked under the fade instead.
 const FADE_MS = 450
 
-export default function TrimmedLoopVideo({ src, className, trimSeconds = 7 }) {
+// The clips are HEVC-with-alpha .mov files, which only Apple's WebKit
+// renders with transparency. Chrome/Android either can't play them or
+// play them on an opaque box, so those browsers get `fallbackSrc` (a
+// transparent still) instead.
+function supportsHevcAlpha() {
+    const ua = navigator.userAgent
+    const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+    const isMacSafari = /Macintosh/.test(ua) && /Safari/.test(ua) && !/Chrome|Chromium|Edg|OPR|Firefox/.test(ua)
+    return isIOS || isMacSafari
+}
+
+export default function TrimmedLoopVideo({ src, fallbackSrc, className, trimSeconds = 7 }) {
     const aRef = useRef(null)
     const bRef = useRef(null)
+    // null until we know the browser on the client, so no opaque video
+    // box ever flashes on browsers that can't do alpha
+    const [mode, setMode] = useState(null)
 
     useEffect(() => {
+        setMode(fallbackSrc && !supportsHevcAlpha() ? "image" : "video")
+    }, [fallbackSrc])
+
+    useEffect(() => {
+        if (mode !== "video") return
         const a = aRef.current
         const b = bRef.current
         if (!a || !b) return
@@ -20,9 +39,25 @@ export default function TrimmedLoopVideo({ src, className, trimSeconds = 7 }) {
         let halfStartedB = false
         let raf
 
-        const onLoadedA = () => {
+        // iOS only autoplays muted video, and React sets `muted` as a
+        // property late, so set it explicitly before any play() call
+        a.muted = true
+        b.muted = true
+
+        // iOS can block autoplay (e.g. Low Power Mode); if so, start on
+        // the visitor's first touch/scroll instead of staying frozen
+        const kick = () => { if (a.paused && b.paused) a.play().catch(() => {}) }
+        const gestures = ["touchstart", "pointerdown", "scroll"]
+        const onGesture = () => {
+            kick()
+            gestures.forEach((g) => window.removeEventListener(g, onGesture))
+        }
+
+        const start = () => {
             b.currentTime = half
-            a.play().catch(() => {})
+            a.play().catch(() => {
+                gestures.forEach((g) => window.addEventListener(g, onGesture, { passive: true }))
+            })
         }
 
         const tick = () => {
@@ -44,7 +79,7 @@ export default function TrimmedLoopVideo({ src, className, trimSeconds = 7 }) {
             if (aActive) {
                 a.style.opacity = "1"
                 b.style.opacity = "0"
-            } else {
+            } else if (!b.paused) {
                 a.style.opacity = "0"
                 b.style.opacity = "1"
             }
@@ -52,19 +87,29 @@ export default function TrimmedLoopVideo({ src, className, trimSeconds = 7 }) {
             raf = requestAnimationFrame(tick)
         }
 
-        a.addEventListener("loadedmetadata", onLoadedA)
+        // metadata may already be loaded by the time this effect runs
+        if (a.readyState >= 1) start()
+        else a.addEventListener("loadedmetadata", start, { once: true })
         raf = requestAnimationFrame(tick)
 
         return () => {
-            a.removeEventListener("loadedmetadata", onLoadedA)
+            a.removeEventListener("loadedmetadata", start)
+            gestures.forEach((g) => window.removeEventListener(g, onGesture))
             cancelAnimationFrame(raf)
         }
-    }, [trimSeconds])
+    }, [trimSeconds, mode])
 
     return (
         <span className={`trimmed-loop-video ${className || ""}`}>
-            <video ref={aRef} src={src} className="trimmed-loop-video__video" muted playsInline autoPlay style={{ opacity: 1 }} />
-            <video ref={bRef} src={src} className="trimmed-loop-video__video" muted playsInline style={{ opacity: 0 }} />
+            {mode === "image" && (
+                <img src={fallbackSrc} alt="" className="trimmed-loop-video__video trimmed-loop-video__still" />
+            )}
+            {mode === "video" && (
+                <>
+                    <video ref={aRef} src={src} className="trimmed-loop-video__video" muted playsInline autoPlay preload="auto" style={{ opacity: 1 }} />
+                    <video ref={bRef} src={src} className="trimmed-loop-video__video" muted playsInline preload="auto" style={{ opacity: 0 }} />
+                </>
+            )}
         </span>
     )
 }

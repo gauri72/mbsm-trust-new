@@ -9557,6 +9557,14 @@ ul {
   position: absolute;
 }
 
+/* Still fallback (non-Apple browsers): the PNG's elephant is drawn ~18%
+   larger than the video's, so shrink it about the feet to match the
+   video's size, trunk reach and footing. */
+.cta-one__elephant .trimmed-loop-video__still {
+  transform: scale(0.85);
+  transform-origin: 40% 93%;
+}
+
 .cta-one__tagline {
   display: inline-block;
   margin-bottom: 16px;
