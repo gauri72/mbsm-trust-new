@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout"
-import Banner from "@/components/sections/home1/Banner"
+import HeroSlider from "@/components/shared/HeroSlider/HeroSlider"
 import About from "@/components/sections/home1/About"
 import Testimonial from "@/components/sections/home1/Testimonial"
 import Cta from "@/components/sections/home1/Cta"
@@ -17,7 +17,7 @@ export default function Home() {
         <>
             <div className="dark-version">
                 <Layout headerStyle={5} footerStyle={1}>
-                    <Banner />
+                    <HeroSlider />
                     <About />
                     <Found />
                     <Donation />

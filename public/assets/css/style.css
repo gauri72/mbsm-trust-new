@@ -541,11 +541,25 @@ ul {
   right: 0;
   bottom: 0;
   border-radius: 50%;
-  background-image: url(../images/loader.png);
+  /* trust logo in the same maroon + gold medallion as the header */
+  background-image:
+    url(../images/resources/logo.png),
+    radial-gradient(circle at 50% 38%, #7A0A10 0%, #620208 55%, #4D0601 100%);
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover;
+  background-size: 90% auto, cover;
+  border: 2px solid #E9B45A;
+  box-shadow: 0 0 22px rgba(233, 180, 90, 0.35);
   animation: preloaderPulse 1.5s ease-in-out infinite;
+}
+
+.preloader__title {
+  margin: 4px 0 0;
+  color: #FBF1DC;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.3px;
 }
 
 .preloader__text {
@@ -1971,13 +1985,13 @@ ul {
   background-repeat: repeat;
   /* tile at the artwork's native width so the flower motifs match the
      size used in the Legacy section (section-bg-2 @ 1672px) */
-  background-size: 1672px auto;
+  background-size: 1170px auto;
   opacity: 0.25;
 }
 
 @media (max-width: 991px) {
   .welcome-one::before {
-    background-size: 1100px auto;
+    background-size: 770px auto;
   }
 }
 
@@ -6445,7 +6459,7 @@ ul {
 .site-footer--shubharay .footer-widget__about-text {
   padding-top: 14px;
   padding-bottom: 0;
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.9;
 }
 
@@ -6456,14 +6470,22 @@ ul {
   text-decoration: none;
 }
 
+/* Footer logo uses the header's maroon/gold medallion (see .shubharay-logo__medal) */
+.site-footer--shubharay .footer-widget__about-logo .shubharay-logo__medal {
+  --medal: clamp(72px, 8vw, 92px);
+}
+
 .site-footer--shubharay .footer-widget__about-logo .shubharay-logo__img {
-  width: clamp(64px, 8vw, 84px);
-  height: clamp(64px, 8vw, 84px);
-  min-width: clamp(64px, 8vw, 84px);
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: top center;
-  border: 3px solid var(--footer-accent);
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  object-fit: contain;
+  object-position: center;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  filter: saturate(0.9) sepia(0.12);
 }
 
 .site-footer--shubharay .footer-widget__about-logo .shubharay-logo__text {
@@ -6573,6 +6595,7 @@ ul {
 
 .site-footer--shubharay .footer-widget__title {
   margin-bottom: 8px;
+  font-size: 22px;
 }
 
 .site-footer--shubharay .footer-widget__title-ornament {
@@ -6603,7 +6626,7 @@ ul {
 
 .site-footer--shubharay .footer-widget__services-list li,
 .site-footer--shubharay .footer-widget__services-list li a {
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.7;
 }
 
@@ -6672,7 +6695,7 @@ ul {
 }
 
 .site-footer--shubharay .footer-widget__contact-list li p {
-  font-size: 15.5px;
+  font-size: 17px;
   line-height: 1.7;
 }
 
@@ -6731,6 +6754,8 @@ ul {
   position: relative;
 }
 
+/* Desktop: space-between leaves equal gaps on either side of the legal
+   links, so they sit midway between the copyright and credit texts. */
 .site-footer--shubharay .site-footer__bottom-inner {
   display: flex;
   align-items: center;
@@ -6743,12 +6768,23 @@ ul {
 .site-footer--shubharay .site-footer__copyright-text,
 .site-footer--shubharay .site-footer__credit-text {
   margin: 0;
-  font-size: 13.5px;
   line-height: 1.6;
+}
+
+/* Copyright line and utility links share one size (same as the header top strip) */
+.site-footer--shubharay .site-footer__copyright-text,
+.site-footer--shubharay .site-footer__bottom-menu li a,
+.site-footer--shubharay .site-footer__credit-text {
+  font-size: 15px;
 }
 
 .site-footer--shubharay .site-footer__copyright-break {
   display: none;
+}
+
+/* Keep the trust name on one line when the copyright wraps on mobile */
+.site-footer--shubharay .site-footer__copyright-text a {
+  white-space: nowrap;
 }
 
 .site-footer--shubharay .site-footer__copyright-text,
@@ -6831,21 +6867,8 @@ ul {
   .site-footer--shubharay .site-footer__copyright-break {
     display: block;
   }
-
   .site-footer--shubharay .site-footer__bottom-menu {
     justify-content: center;
-  }
-}
-
-/* Tablet only — left-align the Contact widget's address block
-   (heading, ornament and the rest of the footer stay centred). */
-@media (min-width: 768px) and (max-width: 991px) {
-  .site-footer--shubharay .footer-widget__contact-list li {
-    justify-content: flex-start;
-  }
-
-  .site-footer--shubharay .footer-widget__contact-list li p {
-    text-align: left;
   }
 }
 
@@ -6876,7 +6899,6 @@ ul {
   overflow: hidden;
 }
 
-.main-slider .main-slider__carousel,
 .main-slider .swiper-slide {
   /* height follows the hero artwork's aspect ratio so the whole image shows
      edge-to-edge with nothing cropped */
@@ -6884,28 +6906,13 @@ ul {
   aspect-ratio: 1672 / 941;
 }
 
-.main-slider .main-slider__carousel {
-  position: relative;
-}
 
-.main-slider .swiper-slide,
-.main-slider .main-slider__carousel--single {
+.main-slider .swiper-slide {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.main-slider-media {
-  position: absolute;
-  inset: 0;
-  background-repeat: no-repeat;
-  /* the hero artwork is shown whole, uncropped, with the maroon backdrop
-     filling any residual sliver */
-  background-size: contain;
-  background-position: center;
-  background-color: #3D0A0C;
-  z-index: 1;
-}
 
 .main-slider .image-layer__left-gradient {
   position: absolute;
@@ -7208,7 +7215,6 @@ ul {
 .main-slider .banner-slider-button-next:hover { transform: translateX(4px); }
 
 @media (max-width: 1199px) {
-  .main-slider .main-slider__carousel,
   .main-slider .swiper-slide {
     min-height: 0;
     aspect-ratio: 1672 / 941;
@@ -7225,15 +7231,11 @@ ul {
 
 /* Tablet (768–991px) inherits the desktop full-bleed look — only tune sizing */
 @media (max-width: 991px) {
-  .main-slider .main-slider__carousel,
   .main-slider .swiper-slide {
     min-height: 0;
     aspect-ratio: 1672 / 941;
   }
 
-  .main-slider-media {
-    background-size: contain;
-  }
 
   .main-slider-charoli {
     left: 4%;
@@ -7284,7 +7286,6 @@ ul {
     flex-direction: column;
   }
 
-  .main-slider .main-slider__carousel,
   .main-slider .swiper-slide {
     min-height: 0;
     height: auto;
@@ -7293,10 +7294,6 @@ ul {
     flex-shrink: 0;
   }
 
-  .main-slider-media {
-    background-size: contain;
-    background-position: center;
-  }
 
   /* Verse moves onto a solid maroon band below the image; ink is gold on both slides there */
   .main-slider-charoli,
@@ -7986,13 +7983,13 @@ ul {
   background-repeat: repeat;
   /* tile at the artwork's native width so the flower motifs match the
      size used in the Legacy section (section-bg-2 @ 1672px) */
-  background-size: 1672px auto;
+  background-size: 1170px auto;
   opacity: 0.25;
 }
 
 @media (max-width: 991px) {
   .found-one__bg::before {
-    background-size: 1100px auto;
+    background-size: 770px auto;
   }
 }
 
@@ -8257,7 +8254,7 @@ ul {
   inset: 0;
   background-image: url("../images/backgrounds/section-bg-2.png");
   background-repeat: repeat;
-  background-size: 1120px auto;
+  background-size: 546px auto;
   opacity: 0.5;
   pointer-events: none;
   z-index: 0;
@@ -8291,7 +8288,7 @@ ul {
   inset: 0;
   background-image: url("../images/backgrounds/section-bg.png");
   background-repeat: repeat;
-  background-size: 780px auto;
+  background-size: 546px auto;
   opacity: 0.25;
   pointer-events: none;
   z-index: 0;
@@ -9109,7 +9106,7 @@ ul {
   background-repeat: repeat;
   /* tile at the artwork's native width so the flower motifs match the
      size used in the Legacy section (section-bg-2 @ 1672px) */
-  background-size: 1672px auto;
+  background-size: 1170px auto;
   opacity: 0.5;
   pointer-events: none;
   z-index: 0;
@@ -9117,7 +9114,7 @@ ul {
 
 @media (max-width: 991px) {
   .event-one::before {
-    background-size: 1100px auto;
+    background-size: 770px auto;
   }
 }
 
@@ -9301,7 +9298,9 @@ ul {
   opacity: 0.08;
 }
 
-.event-one__img img {
+.event-one__img img,
+.event-one__img video {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -9310,7 +9309,8 @@ ul {
   transition: transform 500ms ease;
 }
 
-.event-one__single:hover .event-one__img img {
+.event-one__single:hover .event-one__img img,
+.event-one__single:hover .event-one__img video {
   transform: scale(1.08);
 }
 
@@ -9450,7 +9450,9 @@ ul {
 .cta-one__bg {
   opacity: 0.22;
   z-index: 0;
-  background-position: center 50%;
+  /* Square photo in a wide band: focus on the seated diners' faces
+     (the middle rows), not the empty mat at the bottom of the frame */
+  background-position: center 60%;
 }
 
 .cta-one .container {
@@ -9460,9 +9462,13 @@ ul {
 
 .cta-one__elephant {
   position: absolute;
-  bottom: 0;
+  --ele-w: clamp(460px, 46vw, 640px);
+  /* The clip has empty space under the feet (~4.7% of its width); lift
+     by that much less than the 30px border so the feet always rest
+     exactly on top of the bottom border, at any size. */
+  bottom: calc(30px - var(--ele-w) * 0.047);
   display: block;
-  width: clamp(460px, 46vw, 640px);
+  width: var(--ele-w);
   aspect-ratio: 4 / 3;
   z-index: 0;
   pointer-events: none;
@@ -9481,10 +9487,51 @@ ul {
   transform: scaleX(-1);
 }
 
-/* Hidden on tablet and mobile — the elephants are a desktop-only flourish. */
+/* Tablet: same corner pose, scaled down so they flank the buttons
+   without crowding them. */
 @media (max-width: 991px) {
-  .cta-one__elephant.trimmed-loop-video {
-    display: none;
+  .cta-one__elephant {
+    --ele-w: 360px;
+  }
+
+  .cta-one__elephant--left {
+    left: -125px;
+  }
+
+  .cta-one__elephant--right {
+    right: -125px;
+  }
+}
+
+/* Mobile: like desktop, only the front half shows (the back half is
+   pushed past the edge), standing beside the buttons rather than below. */
+@media (max-width: 767px) {
+  .cta-one .cta-one__inner {
+    padding-bottom: 20px;
+  }
+
+  .cta-one__elephant {
+    --ele-w: 340px;
+  }
+
+  .cta-one__elephant--left {
+    left: -165px;
+  }
+
+  .cta-one__elephant--right {
+    right: -165px;
+  }
+}
+
+/* Narrow phones (< 375px): push them a little further out so the
+   trunks clear the buttons */
+@media (max-width: 374px) {
+  .cta-one__elephant--left {
+    left: -182px;
+  }
+
+  .cta-one__elephant--right {
+    right: -182px;
   }
 }
 
@@ -9514,7 +9561,7 @@ ul {
   display: inline-block;
   margin-bottom: 16px;
   color: #F2A90A;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   letter-spacing: 0.6px;
   text-transform: uppercase;
@@ -9530,7 +9577,7 @@ ul {
   max-width: 760px;
   margin: 20px auto 0;
   color: rgba(255, 255, 255, 0.82);
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.9em;
 }
 
@@ -9626,106 +9673,26 @@ ul {
     line-height: 1.3em;
   }
 
+  .cta-one__tagline {
+    font-size: 18px;
+  }
+
   .cta-one__text {
     padding: 0 10px;
+    font-size: 17px;
   }
 
   .cta-one__btn-box {
     flex-direction: column;
+    align-items: center;
     gap: 16px;
   }
 
+  /* compact buttons sized to their label + arrow, not full-bleed bars */
   .cta-one__btn-1,
   .cta-one__btn-2 {
-    width: 100%;
+    width: auto;
     justify-content: center;
-  }
-}
-
-/* Shubharay Math temple-gallery section — infinite left-scrolling photo marquee */
-.temple-gallery {
-  position: relative;
-  padding: 0;
-  overflow: hidden;
-}
-
-.temple-gallery__marquee {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-}
-
-.temple-gallery__track {
-  display: flex;
-  align-items: center;
-  width: max-content;
-  gap: 0;
-  animation: templeMarquee 55s linear infinite;
-}
-
-.temple-gallery__marquee:hover .temple-gallery__track {
-  animation-play-state: paused;
-}
-
-.temple-gallery__item {
-  position: relative;
-  flex: 0 0 auto;
-  height: 340px;
-  line-height: 0;
-}
-
-.temple-gallery__item::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: #3D0A0C;
-  opacity: 0.18;
-  mix-blend-mode: multiply;
-  pointer-events: none;
-  transition: opacity 350ms ease;
-}
-
-.temple-gallery__item:hover::after {
-  opacity: 0.08;
-}
-
-.temple-gallery__item img {
-  height: 100%;
-  width: auto;
-  max-width: none;
-}
-
-@keyframes templeMarquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .temple-gallery__item {
-    height: 260px;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .temple-gallery__track {
-    gap: 0;
-    animation-duration: 34s;
-  }
-
-  .temple-gallery__item {
-    height: 190px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .temple-gallery__track {
-    animation: none;
   }
 }
 
@@ -9781,175 +9748,6 @@ ul {
   }
 }
 
-/* Shubharay Math — Mantra Strip (between header and hero) */
-.mantra-strip {
-  position: relative;
-  /* hero-image palette: bg maroon #620208, edge maroon #4D0601 */
-  background:
-    radial-gradient(120% 140% at 50% 0%, #660309 0%, #620208 55%, #550106 100%);
-  overflow: hidden;
-  padding: 9px 0;
-}
-
-.mantra-strip__border {
-  position: relative;
-  left: 0;
-  right: 0;
-  height: 3px;
-  /* hero border gold, softened into a centre-weighted rule */
-  background: linear-gradient(90deg,
-    rgba(217, 152, 42, 0) 0%,
-    #D9982A 18%,
-    #E9B45A 50%,
-    #D9982A 82%,
-    rgba(217, 152, 42, 0) 100%);
-}
-
-.mantra-strip__marquee {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
-}
-
-.mantra-strip__track {
-  display: flex;
-  align-items: center;
-  width: max-content;
-  animation: mantraStripScroll 45s linear infinite;
-}
-
-.mantra-strip__marquee:hover .mantra-strip__track {
-  animation-play-state: paused;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .mantra-strip__track {
-    animation: none;
-    transform: translateX(0);
-  }
-
-  .mantra-strip__item:not(:first-child) {
-    display: none;
-  }
-
-  .mantra-strip__marquee {
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
-
-  .mantra-strip__text {
-    white-space: normal;
-    text-align: center;
-  }
-
-  .mantra-strip__track {
-    width: 100%;
-    justify-content: center;
-    padding: 0 20px;
-  }
-}
-
-.mantra-strip__item {
-  display: inline-flex;
-  align-items: center;
-  flex: 0 0 auto;
-  padding: 12px 0;
-}
-
-.mantra-strip__text {
-  font-family: 'Tiro Devanagari Marathi', var(--anity-font-spiritual);
-  font-weight: 400;
-  font-size: 21px;
-  letter-spacing: 0.4px;
-  color: #FBF1DC; /* warm ivory on hero maroon */
-  white-space: nowrap;
-  padding: 0 20px;
-  transition: color 300ms ease;
-}
-
-.mantra-strip__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: #D9982A; /* hero border gold */
-  transition: color 300ms ease;
-}
-
-/* hover — marquee pauses (below) and the hovered verse warms to gold */
-.mantra-strip__item:hover .mantra-strip__text {
-  color: #E9B45A;
-}
-
-.mantra-strip__item:hover .mantra-strip__icon {
-  color: #E9B45A;
-}
-
-/* Gold variant — opposite palette from the default maroon strip above
-   the hero: gold field, maroon icon/border (same --wl-gold/--wl-maroon
-   tokens used site-wide), black text for strong contrast against the
-   gold field. Used for the closing strip above the footer. */
-.mantra-strip--gold {
-  background:
-    radial-gradient(120% 140% at 50% 0%, var(--wl-gold-lite, #E9B45A) 0%, var(--wl-gold, #D9982A) 55%, #C1841F 100%);
-}
-
-.mantra-strip--gold .mantra-strip__border {
-  background: linear-gradient(90deg,
-    rgba(98, 2, 8, 0) 0%,
-    var(--wl-maroon, #620208) 18%,
-    #7A1418 50%,
-    var(--wl-maroon, #620208) 82%,
-    rgba(98, 2, 8, 0) 100%);
-}
-
-.mantra-strip--gold .mantra-strip__text {
-  color: #0A0202;
-}
-
-.mantra-strip--gold .mantra-strip__icon {
-  color: var(--wl-maroon, #620208);
-}
-
-.mantra-strip--gold .mantra-strip__item:hover .mantra-strip__text {
-  color: var(--wl-maroon, #620208);
-}
-
-.mantra-strip--gold .mantra-strip__item:hover .mantra-strip__icon {
-  color: #0A0202;
-}
-
-@keyframes mantraStripScroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@media (max-width: 767px) {
-  .mantra-strip {
-    padding: 6px 0;
-  }
-
-  .mantra-strip__border {
-    height: 2px;
-  }
-
-  .mantra-strip__text {
-    font-size: 16px;
-    padding: 0 12px;
-  }
-
-  .mantra-strip__icon svg {
-    width: 14px;
-    height: 14px;
-  }
-}
-
 /* ---------- Legacy — full-size realistic 3D flip-book (Shubharay Maharaj / Buwa Gharane / Shubhangi Tai) ---------- */
 .legacy-One {
   position: relative;
@@ -9990,6 +9788,14 @@ ul {
   }
 }
 
+/* Tablet/phone: keep the intended two-line split (the template hides
+   heading <br>s on small screens, which left "प्रवास" alone on line two) */
+@media (max-width: 991px) {
+  .legacy-One .section-title__title br.legacy-One__title-break {
+    display: inline;
+  }
+}
+
 .legacy-One::before {
   content: "";
   position: absolute;
@@ -9998,7 +9804,7 @@ ul {
   background-repeat: repeat;
   /* tile at the artwork's native width so the flower motifs match the
      size used in the Mandir section (section-bg @ 1672px) */
-  background-size: 1672px auto;
+  background-size: 1170px auto;
   opacity: 0.5;
   pointer-events: none;
   z-index: 0;
@@ -10006,7 +9812,7 @@ ul {
 
 @media (max-width: 991px) {
   .legacy-One::before {
-    background-size: 1100px auto;
+    background-size: 770px auto;
   }
 }
 
@@ -11133,13 +10939,13 @@ ul {
   background-repeat: repeat;
   /* tile at the artwork's native width so the flower motifs match the
      size used in the Legacy section (section-bg-2 @ 1672px) */
-  background-size: 1672px auto;
+  background-size: 1170px auto;
   opacity: 0.25;
 }
 
 @media (max-width: 991px) {
   .home-gallery__bg::before {
-    background-size: 1100px auto;
+    background-size: 770px auto;
   }
 }
 
@@ -12356,6 +12162,7 @@ ul {
   background-color: var(--hdr-maroon);
   border-color: var(--hdr-maroon-dk);
   color: var(--hdr-cream);
+  box-shadow: 0 8px 20px rgba(44, 4, 5, 0.35);
 }
 
 .main-header .main-menu__btn-box .thm-btn span,
@@ -12364,22 +12171,23 @@ ul {
   color: var(--hdr-ink);
 }
 
+/* hover: white sweep, maroon label, gold chip */
 .main-header .main-menu__btn-box .thm-btn:hover:after,
 .stricky-header .main-menu__btn-box .thm-btn:hover:after {
-  background-color: var(--hdr-ink);
+  background-color: #FFFFFF;
 }
 
 .main-header .main-menu__btn-box .thm-btn:hover,
 .stricky-header .main-menu__btn-box .thm-btn:hover,
 .main-header .main-menu__btn-box .thm-btn:focus-visible,
 .stricky-header .main-menu__btn-box .thm-btn:focus-visible {
-  border-color: var(--hdr-ink);
-  color: var(--hdr-gold-lite);
+  border-color: #FFFFFF;
+  color: var(--hdr-maroon);
 }
 
 .main-header .main-menu__btn-box .thm-btn:hover span,
 .stricky-header .main-menu__btn-box .thm-btn:hover span {
-  background-color: var(--hdr-cream);
+  background-color: var(--hdr-gold);
   color: var(--hdr-ink);
 }
 
@@ -12693,17 +12501,39 @@ ul {
   color: var(--ev-gold);
 }
 
-.event-one--welcome-bg .event-one__title a {
+/* Event names are plain text (not links); sized up since each card
+   now carries only the name and date */
+.event-one--welcome-bg .event-one__title {
   color: var(--ev-cream);
+  font-size: 24px;
 }
 
-.event-one--welcome-bg .event-one__title a:hover,
-.event-one--welcome-bg .event-one__title a:focus-visible {
-  color: var(--ev-gold);
+.event-one.event-one--welcome-bg .event-one__date {
+  font-size: 16px;
 }
 
-.event-one--welcome-bg .event-one__text {
-  color: var(--ev-gold-pale);
+.event-one.event-one--welcome-bg .event-one__date .icon-calender {
+  font-size: 17px;
+}
+
+@media only screen and (max-width: 767px) {
+  .event-one--welcome-bg .event-one__title {
+    font-size: 22px;
+  }
+}
+
+/* Cards show only name + date, so the date is the last line — drop the
+   gap it used to leave above the description, and pin it to the card's
+   foot so dates line up even when one name wraps to two lines */
+.event-one--welcome-bg .event-one__date {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+/* height:100% of the column would include the card's own 30px bottom
+   margin, leaving an empty band under the date — subtract it */
+.event-one--welcome-bg .event-one__single {
+  height: calc(100% - 30px);
 }
 
 /* ---- "View all events" button — the CTA sits directly on the gold
@@ -12711,13 +12541,15 @@ ul {
    matching the section's maroon border/cards instead of blending into
    the gold behind it ---- */
 .event-one--welcome-bg .event-one__btn {
-  background-color: var(--ev-maroon-dk);
-  border-color: var(--ev-maroon-dk);
+  background-color: #620208;
+  border-color: #4D0601;
   color: var(--ev-cream);
+  box-shadow: 0 8px 20px rgba(44, 4, 5, 0.35);
 }
 
+/* hover: white sweep, maroon label, gold chip (same as the header button) */
 .event-one--welcome-bg .event-one__btn::after {
-  background-color: var(--ev-ink);
+  background-color: #FFFFFF;
 }
 
 .event-one--welcome-bg .event-one__btn span {
@@ -12727,12 +12559,12 @@ ul {
 
 .event-one--welcome-bg .event-one__btn:hover,
 .event-one--welcome-bg .event-one__btn:focus-visible {
-  border-color: var(--ev-ink);
-  color: var(--ev-cream);
+  border-color: #FFFFFF;
+  color: #620208;
 }
 
 .event-one--welcome-bg .event-one__btn:hover span {
-  background-color: var(--ev-cream);
+  background-color: var(--ev-gold);
   color: var(--ev-ink);
 }
 
@@ -12761,13 +12593,13 @@ ul {
   pointer-events: none;
   background-image: url("../images/backgrounds/section-bg.png");
   background-repeat: repeat;
-  background-size: 1672px auto;
+  background-size: 1170px auto;
   opacity: 0.25;
 }
 
 @media (max-width: 991px) {
   .featured-events--welcome-bg::before {
-    background-size: 1100px auto;
+    background-size: 770px auto;
   }
 }
 
@@ -13014,13 +12846,13 @@ ul {
   pointer-events: none;
   background-image: url("../images/backgrounds/section-bg-2.png");
   background-repeat: repeat;
-  background-size: 1672px auto;
+  background-size: 1170px auto;
   opacity: 0.42;
 }
 
 @media (max-width: 991px) {
   .all-events--welcome-bg::before {
-    background-size: 1100px auto;
+    background-size: 770px auto;
   }
 }
 
@@ -13416,7 +13248,20 @@ ul {
   color: rgba(251, 241, 220, 0.82);
 }
 
-/* ---- Primary button (दर्शनाची तयारी करा) — gold fill, maroon chip ---- */
+/* ---- Buttons: solid pills matching the site's other buttons
+   (same shape, shadow and maroon chip as the About section button).
+   Primary = gold fill, secondary = cream fill. ---- */
+.cta-one .cta-one__btn-1,
+.cta-one .cta-one__btn-2 {
+  box-shadow: 0 8px 20px rgba(44, 4, 5, 0.35);
+}
+
+.cta-one .cta-one__btn-1 span,
+.cta-one .cta-one__btn-2 span {
+  background-color: var(--cta-maroon);
+}
+
+/* Primary (आमच्याविषयी) — gold fill, maroon chip, cream arrow */
 .cta-one .cta-one__btn-1 {
   background-color: var(--cta-gold);
   border-color: var(--cta-gold-lite);
@@ -13424,30 +13269,28 @@ ul {
 }
 
 .cta-one .cta-one__btn-1::after {
-  background-color: var(--cta-cream);
+  background-color: #FFFFFF;
 }
 
 .cta-one .cta-one__btn-1 span {
-  background-color: var(--cta-maroon);
-  color: var(--cta-gold);
+  color: var(--cta-cream);
 }
 
 .cta-one .cta-one__btn-1:hover,
 .cta-one .cta-one__btn-1:focus-visible {
-  border-color: var(--cta-cream);
+  border-color: #FFFFFF;
   color: var(--cta-ink);
 }
 
 .cta-one .cta-one__btn-1:hover span {
-  background-color: var(--cta-ink);
-  color: var(--cta-cream);
+  color: #FFFFFF;
 }
 
-/* ---- Secondary button (आमची कहाणी) — outline, fills gold on hover ---- */
+/* Secondary (संपर्क साधा) — cream fill, maroon chip, cream arrow */
 .cta-one .cta-one__btn-2 {
-  background-color: transparent;
-  border-color: rgba(251, 241, 220, 0.6);
-  color: var(--cta-cream);
+  background-color: var(--cta-cream);
+  border-color: var(--cta-cream);
+  color: var(--cta-ink);
 }
 
 .cta-one .cta-one__btn-2::after {
@@ -13455,19 +13298,149 @@ ul {
 }
 
 .cta-one .cta-one__btn-2 span {
-  background-color: var(--cta-cream);
-  color: var(--cta-ink);
+  color: var(--cta-cream);
 }
 
 .cta-one .cta-one__btn-2:hover,
 .cta-one .cta-one__btn-2:focus-visible {
-  border-color: var(--cta-gold);
+  border-color: var(--cta-gold-lite);
   color: var(--cta-ink);
 }
 
 .cta-one .cta-one__btn-2:hover span {
-  background-color: var(--cta-ink);
-  color: var(--cta-cream);
+  color: #FFFFFF;
+}
+
+/*==================================================================
+    HEADER TOP STRIP (.header-topbar) — contact details above the
+    gold header: phone + email left, address right.
+    Styled like the footer bottom bar (.site-footer__bottom):
+    maroon #620208 field, cream 15px DM Sans text, gold #D9982A
+    accents (icons), gold-lite #E9B45A on hover.
+    Desktop & tablet: one line. Phone (<768px): centred, two lines.
+==================================================================*/
+.header-topbar {
+  position: relative;
+  z-index: 2;
+  background-color: #620208;
+  color: #FBF1DC;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.header-topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 28px;
+  padding: 11px 0;
+}
+
+.header-topbar__list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 28px;
+  margin: 0;
+}
+
+.header-topbar__list li,
+.header-topbar__address {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-topbar__list li {
+  white-space: nowrap;
+}
+
+/* thin divider between phone and email */
+.header-topbar__list li + li {
+  border-left: 1px solid rgba(251, 241, 220, 0.35);
+  padding-left: 28px;
+}
+
+.header-topbar [class^="icon-"],
+.header-topbar .fas {
+  color: #D9982A;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.header-topbar a {
+  color: #FBF1DC;
+  transition: color 200ms ease;
+}
+
+.header-topbar a:hover,
+.header-topbar a:focus-visible {
+  color: #E9B45A;
+}
+
+.header-topbar a[href^="mailto:"] {
+  font-family: var(--anity-font), sans-serif;
+}
+
+@media (max-width: 991px) {
+  .header-topbar__inner,
+  .header-topbar__list {
+    gap: 6px 20px;
+  }
+
+  .header-topbar__list li + li {
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .header-topbar {
+    font-size: 14px;
+  }
+
+  .header-topbar__inner,
+  .header-topbar__list {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .header-topbar__inner {
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 0;
+  }
+
+  .header-topbar__list {
+    gap: 4px 16px;
+  }
+
+  .header-topbar__list li + li {
+    padding-left: 16px;
+  }
+
+  .header-topbar__address {
+    justify-content: center;
+  }
+}
+
+/* very narrow phones: keep phone | email on one line */
+@media (max-width: 399px) {
+  .header-topbar {
+    font-size: 13px;
+  }
+
+  .header-topbar__list {
+    gap: 4px 12px;
+  }
+
+  .header-topbar__list li + li {
+    padding-left: 12px;
+  }
+
+  .header-topbar__list li {
+    gap: 6px;
+  }
 }
 
 /*==================================================================
@@ -13479,13 +13452,13 @@ ul {
     Palette: hero-image maroon & gold (see the header block above).
 ==================================================================*/
 .snav {
-  --snav-maroon: #5C0107;
-  --snav-maroon-deep: #430105;
+  --snav-maroon: #620208;
+  --snav-maroon-deep: #4D0601;
   --snav-gold: #D9982A;
   --snav-gold-lite: #E9B45A;
   --snav-cream: #FBF1DC;
   --snav-cream-dim: rgba(251, 241, 220, 0.62);
-  --snav-hair: rgba(251, 241, 220, 0.12);
+  --snav-hair: rgba(217, 152, 42, 0.20);
 
   display: flex;
   flex-direction: column;
@@ -13493,7 +13466,7 @@ ul {
   overflow: hidden;
   color: var(--snav-cream);
   background:
-    linear-gradient(180deg, #660309 0%, var(--snav-maroon) 42%, var(--snav-maroon-deep) 100%);
+    linear-gradient(180deg, var(--snav-maroon) 0%, var(--snav-maroon) 45%, var(--snav-maroon-deep) 100%);
   box-shadow: 24px 0 60px -12px rgba(20, 3, 4, 0.6);
   -webkit-tap-highlight-color: transparent;
 }
@@ -13519,7 +13492,7 @@ ul {
   align-items: center;
   gap: 10px;
   padding: 20px 18px 18px;
-  border-bottom: 1px solid rgba(217, 152, 42, 0.28);
+  border-bottom: 1px solid rgba(217, 152, 42, 0.35);
 }
 
 .snav__brand {
@@ -13565,7 +13538,8 @@ ul {
   height: 40px;
   border: 0;
   border-radius: 50%;
-  background-color: rgba(251, 241, 220, 0.10);
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px rgba(217, 152, 42, 0.55);
   cursor: pointer;
   transition: background-color 180ms ease, transform 180ms ease;
 }
@@ -13646,8 +13620,8 @@ ul {
   margin-left: auto;
   width: 7px;
   height: 7px;
-  border-right: 2px solid rgba(251, 241, 220, 0.4);
-  border-top: 2px solid rgba(251, 241, 220, 0.4);
+  border-right: 2px solid rgba(217, 152, 42, 0.55);
+  border-top: 2px solid rgba(217, 152, 42, 0.55);
   transform: rotate(45deg);
   transition: border-color 180ms ease, transform 180ms ease;
 }
@@ -13679,8 +13653,8 @@ ul {
 .snav__foot {
   flex: 0 0 auto;
   padding: 22px 22px 26px;
-  border-top: 1px solid rgba(217, 152, 42, 0.28);
-  background-color: rgba(0, 0, 0, 0.16);
+  border-top: 1px solid rgba(217, 152, 42, 0.35);
+  background-color: var(--snav-maroon-deep);
 }
 
 .snav__contact {
@@ -13808,7 +13782,7 @@ ul {
   pointer-events: none;
   background-image: url("../images/backgrounds/section-bg-2.png");
   background-repeat: repeat;
-  background-size: 1672px auto;
+  background-size: 1170px auto;
   opacity: 0.42;
 }
 
@@ -14565,4 +14539,475 @@ ul {
   }
 }
 
+/* ---- Nav bar right: "आमच्यासोबत जोडा" + social buttons (where the call block was) ---- */
+.main-header .main-menu__connect,
+.stricky-header .main-menu__connect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding-right: 22px;
+  border-right: 1px solid rgba(58, 4, 5, 0.22);
+}
+
+.main-header .main-menu__connect-title,
+.stricky-header .main-menu__connect-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--hdr-ink);
+  white-space: nowrap;
+}
+
+.main-header .main-menu__connect-icons,
+.stricky-header .main-menu__connect-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.main-header .main-menu__connect-btn,
+.stricky-header .main-menu__connect-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: var(--hdr-maroon);
+  color: var(--hdr-cream);
+  font-size: 20px;
+  box-shadow: 0 3px 8px rgba(58, 4, 5, 0.25);
+  transition: transform 300ms ease, background-color 300ms ease, color 300ms ease, box-shadow 300ms ease;
+}
+
+.main-header .main-menu__connect-btn:hover,
+.main-header .main-menu__connect-btn:focus-visible,
+.stricky-header .main-menu__connect-btn:hover,
+.stricky-header .main-menu__connect-btn:focus-visible {
+  transform: translateY(-2px);
+  background-color: var(--hdr-cream);
+  color: var(--hdr-maroon);
+  box-shadow: 0 6px 14px rgba(58, 4, 5, 0.3);
+}
+
+/* ---- Trust logo: logo.png is bright yellow/red, so it sits in a maroon
+   medallion with a gold rim to tie it into the header's maroon + gold
+   palette, with its colours warmed slightly toward the site's gold ---- */
+.main-header .shubharay-logo__medal,
+.stricky-header .shubharay-logo__medal,
+.site-footer--shubharay .shubharay-logo__medal {
+  --medal: 104px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: var(--medal);
+  height: var(--medal);
+  padding: 5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 38%, #7A0A10 0%, var(--hdr-maroon) 55%, var(--hdr-maroon-dk) 100%);
+  border: 2px solid var(--hdr-gold-lite);
+  box-shadow:
+    0 0 0 3px rgba(98, 2, 8, 0.28),
+    0 6px 16px rgba(58, 4, 5, 0.38),
+    inset 0 0 10px rgba(0, 0, 0, 0.45);
+  transition: transform 450ms cubic-bezier(.2, .8, .2, 1), box-shadow 450ms ease;
+  animation: hdr-medal-glow 4s ease-in-out infinite;
+}
+
+.main-header .shubharay-logo__img,
+.stricky-header .shubharay-logo__img {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  object-fit: contain;
+  object-position: center;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  filter: saturate(0.9) sepia(0.12);
+}
+
+.main-header .shubharay-logo:hover .shubharay-logo__medal,
+.main-header .shubharay-logo:focus-visible .shubharay-logo__medal,
+.stricky-header .shubharay-logo:hover .shubharay-logo__medal,
+.stricky-header .shubharay-logo:focus-visible .shubharay-logo__medal,
+.site-footer--shubharay .shubharay-logo:hover .shubharay-logo__medal,
+.site-footer--shubharay .shubharay-logo:focus-visible .shubharay-logo__medal {
+  transform: scale(1.05) rotate(-3deg);
+  animation: none;
+  box-shadow:
+    0 0 0 3px rgba(98, 2, 8, 0.35),
+    0 10px 22px rgba(58, 4, 5, 0.45),
+    0 0 22px rgba(233, 180, 90, 0.75),
+    inset 0 0 10px rgba(0, 0, 0, 0.45);
+}
+
+@keyframes hdr-medal-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 0 3px rgba(98, 2, 8, 0.28),
+      0 6px 16px rgba(58, 4, 5, 0.38),
+      0 0 6px rgba(233, 180, 90, 0.35),
+      inset 0 0 10px rgba(0, 0, 0, 0.45);
+  }
+  50% {
+    box-shadow:
+      0 0 0 3px rgba(98, 2, 8, 0.28),
+      0 6px 16px rgba(58, 4, 5, 0.38),
+      0 0 18px rgba(233, 180, 90, 0.7),
+      inset 0 0 10px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* sticky bar stays compact so it doesn't eat the screen while scrolling */
+.stricky-header .shubharay-logo__medal {
+  --medal: 78px;
+}
+
+/* drawer logo: same medallion treatment, applied to the image itself */
+.snav__brand-img {
+  width: 120px;
+  height: 120px;
+  min-width: 0;
+  padding: 6px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 50%;
+  border: 2px solid var(--snav-gold, #D9982A);
+  background: radial-gradient(circle at 50% 38%, #7A0A10 0%, #620208 55%, #4D0601 100%);
+  box-shadow: 0 6px 18px rgba(20, 3, 4, 0.5), 0 0 16px rgba(233, 180, 90, 0.3);
+  filter: saturate(0.9) sepia(0.12);
+}
+
+@media (min-width: 1200px) and (max-width: 1299px) {
+  .main-header .shubharay-logo__medal {
+    --medal: 92px;
+  }
+
+  .main-header .main-menu__connect-title,
+  .stricky-header .main-menu__connect-title {
+    display: none;
+  }
+}
+
+/* tablet + phone (drawer mode) */
+@media (max-width: 1199px) {
+  .main-header .shubharay-logo__medal {
+    --medal: 84px;
+  }
+
+  .stricky-header .shubharay-logo__medal {
+    --medal: 68px;
+  }
+
+}
+
+/* Tablet + phone (<1200): gold bar is just logo + hamburger;
+   "आमच्यासोबत जोडा:", the socials and the CTA live in the drawer footer */
+@media (max-width: 1199px) {
+  .main-header .main-menu__right,
+  .stricky-header .main-menu__right {
+    display: none;
+  }
+}
+
+/* Tablet: larger brand name, closer to the desktop scale */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .main-header .shubharay-logo__title,
+  .stricky-header .shubharay-logo__title {
+    font-size: 26px;
+  }
+
+  /* gold bar: logo | "आमच्यासोबत जोडा:" + socials | divider | hamburger.
+     The CTA stays in the drawer; the drawer's social block is hidden. */
+  .main-header .main-menu__wrapper-inner,
+  .stricky-header .main-menu__wrapper-inner {
+    flex-wrap: nowrap;
+    gap: 18px;
+  }
+
+  .main-header .main-menu__left,
+  .stricky-header .main-menu__left {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .main-header .main-menu__right,
+  .stricky-header .main-menu__right {
+    display: flex;
+    order: 2;
+  }
+
+  .main-header .main-menu__main-menu-box,
+  .stricky-header .main-menu__main-menu-box {
+    order: 3;
+    padding: 0;
+    margin: 0;
+  }
+
+  .main-header .main-menu__btn-box,
+  .stricky-header .main-menu__btn-box {
+    display: none;
+  }
+
+  .main-header .main-menu__connect,
+  .stricky-header .main-menu__connect {
+    gap: 6px;
+    padding-right: 18px;
+    border-right: 1px solid rgba(58, 4, 5, 0.22);
+  }
+
+  .main-header .main-menu__connect-title,
+  .stricky-header .main-menu__connect-title {
+    display: block;
+    font-size: 14px;
+  }
+
+  .main-header .main-menu__connect-icons,
+  .stricky-header .main-menu__connect-icons {
+    gap: 8px;
+  }
+
+  .main-header .main-menu__connect-btn,
+  .stricky-header .main-menu__connect-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  /* extra .snav so it outranks the base .snav__foot .snav__connect rule below */
+  .snav .snav__foot .snav__connect {
+    display: none;
+  }
+}
+
+/* ---- Drawer CTA: gold pill, maroon chip (same as the gold buttons
+   on maroon sections, e.g. About / CTA) ---- */
+/* "आमच्यासोबत जोडा:" + social buttons, above the CTA */
+.snav__foot .snav__connect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.snav__connect-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--snav-cream);
+}
+
+.snav__foot .snav__social {
+  justify-content: center;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.snav__foot .snav__cta {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  background-color: var(--snav-gold);
+  border: 1px solid var(--snav-gold-lite);
+  color: #2C0405;
+  box-shadow: 0 8px 20px rgba(20, 3, 4, 0.4);
+}
+
+.snav__foot .snav__cta::after {
+  background-color: #FFFFFF;
+}
+
+.snav__foot .snav__cta span {
+  background-color: #620208;
+  color: var(--snav-cream);
+}
+
+.snav__foot .snav__cta:hover,
+.snav__foot .snav__cta:focus-visible {
+  border-color: #FFFFFF;
+  color: #2C0405;
+}
+
+.snav__foot .snav__cta:hover span {
+  color: #FFFFFF;
+}
+
+@media (max-width: 767px) {
+  .main-header .shubharay-logo__medal {
+    --medal: 70px;
+    padding: 4px;
+  }
+
+  .stricky-header .shubharay-logo__medal {
+    --medal: 60px;
+    padding: 4px;
+  }
+
+  .snav__brand-img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 400px) {
+  .main-header .shubharay-logo__medal {
+    --medal: 62px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .main-header .shubharay-logo__medal,
+  .stricky-header .shubharay-logo__medal {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ---- Desktop header sizing scale ----
+   Hierarchy: logo + name > nav links > social label (a quiet caption).
+   Social buttons are sized to sit inside the CTA's height, and every
+   element steps down together on narrower laptops so nothing collides. */
+@media (min-width: 1200px) {
+  .main-header .shubharay-logo__medal {
+    --medal: 100px;
+  }
+
+  .main-header .shubharay-logo__title {
+    font-size: 30px;
+  }
+
+  .main-header .main-menu .main-menu__list>li>a,
+  .stricky-header .main-menu__list>li>a {
+    font-size: 17px;
+  }
+
+  .main-header .main-menu__main-menu-box .main-menu__list>li+li,
+  .stricky-header .main-menu__main-menu-box .main-menu__list>li+li {
+    margin-left: 26px;
+  }
+
+  .main-header .main-menu__connect-title,
+  .stricky-header .main-menu__connect-title {
+    display: block;
+    font-size: 15px;
+  }
+
+  .main-header .main-menu__connect-btn,
+  .stricky-header .main-menu__connect-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+}
+
+/* small laptops (1300-1399) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .main-header .shubharay-logo__medal {
+    --medal: 90px;
+  }
+
+  .main-header .shubharay-logo__title {
+    font-size: 27px;
+  }
+
+  .main-header .main-menu .main-menu__list>li>a,
+  .stricky-header .main-menu__list>li>a {
+    font-size: 16px;
+  }
+
+  .main-header .main-menu__main-menu-box .main-menu__list>li+li,
+  .stricky-header .main-menu__main-menu-box .main-menu__list>li+li {
+    margin-left: 22px;
+  }
+
+  .main-header .main-menu__connect-title,
+  .stricky-header .main-menu__connect-title {
+    font-size: 14px;
+  }
+
+  .main-header .main-menu__connect-btn,
+  .stricky-header .main-menu__connect-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}
+
+/* narrowest desktop (1200-1299): caption drops, everything tightens */
+@media (min-width: 1200px) and (max-width: 1299px) {
+  .main-header .shubharay-logo__medal {
+    --medal: 82px;
+  }
+
+  .main-header .shubharay-logo__title {
+    font-size: 24px;
+  }
+
+  .main-header .main-menu .main-menu__list>li>a,
+  .stricky-header .main-menu__list>li>a {
+    font-size: 15.5px;
+  }
+
+  .main-header .main-menu__main-menu-box .main-menu__list>li+li,
+  .stricky-header .main-menu__main-menu-box .main-menu__list>li+li {
+    margin-left: 22px;
+  }
+
+  .main-header .main-menu__connect-title,
+  .stricky-header .main-menu__connect-title {
+    display: none;
+  }
+
+  .main-header .main-menu__connect-icons,
+  .stricky-header .main-menu__connect-icons {
+    gap: 8px;
+  }
+
+  .main-header .main-menu__connect-btn,
+  .stricky-header .main-menu__connect-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
+  }
+}
+
 /* The End */
+
+/*==================================================================
+    HOME PAGE TYPE SCALE — every section label shares one size, and
+    every section description shares one size (About, Events, CTA).
+    Placed last so it wins over the per-section overrides above.
+==================================================================*/
+.about-One.about-One--ornate .section-title__tagline,
+.event-one.event-one--welcome-bg .section-title__tagline,
+.cta-one .cta-one__tagline {
+  font-size: 20px;
+}
+
+.about-One.about-One--ornate .about-One__tab-box .tabs-content__inner p,
+.cta-one .cta-one__text {
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 767px) {
+  .about-One.about-One--ornate .section-title__tagline,
+  .event-one.event-one--welcome-bg .section-title__tagline,
+  .cta-one .cta-one__tagline {
+    font-size: 18px;
+  }
+
+  .about-One.about-One--ornate .about-One__tab-box .tabs-content__inner p,
+  .cta-one .cta-one__text {
+    font-size: 17px;
+  }
+}

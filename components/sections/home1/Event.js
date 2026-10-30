@@ -1,25 +1,22 @@
 'use client'
 import Link from "next/link"
-import LoopingFlagVideo from "@/components/elements/LoopingFlagVideo"
 
 const events = [
     {
         img: "assets/images/event/event-1-1.jpg",
-        date: "20 Oct 2026",
-        title: "दसरा",
-        text: "विजयादशमीनिमित्त मठात विशेष पूजा व आरती.",
+        date: "17 Nov 2026",
+        title: "श्री शंकर महाराज प्रकट दिन",
     },
     {
         img: "assets/images/event/event-1-2.jpg",
-        date: "08 Nov 2026",
-        title: "दिवाळी",
-        text: "दीपोत्सवात मठात आरती व नैवेद्य अर्पण.",
+        date: "23 Dec 2026",
+        title: "श्री दत्त प्रभू जयंती",
     },
     {
         img: "assets/images/event/event-1-3.jpg",
-        date: "20 Nov 2026",
-        title: "कार्तिकी एकादशी",
-        text: "मठाचा सर्वात मोठा उत्सव — रथयात्रा व गावप्रदक्षिणा.",
+        date: "06 Feb 2027",
+        // "\u200D" keeps the second श्व as half-श + व (श्‍व), matching the hero name plaque
+        title: "श्री विश्वेश\u094D\u200Dवर स्वामी महाराज जन्मदिन",
     },
 ]
 
@@ -39,18 +36,12 @@ export default function Event() {
             <div className="divine-border--welcome divine-border--welcome-bottom" role="presentation"></div>
             <div className="container">
                 <div className="event-one__head">
-                    <span className="event-one__flag event-one__flag--left" aria-hidden="true">
-                        <LoopingFlagVideo src="assets/images/resources/orange-flag.mov" />
-                    </span>
                     <div className="section-title text-center sec-title-animation animation-style1">
                         <div className="section-title__tagline-box">
                             <span className="section-title__tagline">उत्सव-परंपरा</span>
                         </div>
                         <h2 className="section-title__title title-animation">मठातील आगामी उत्सव</h2>
                     </div>
-                    <span className="event-one__flag event-one__flag--right" aria-hidden="true">
-                        <LoopingFlagVideo src="assets/images/resources/orange-flag.mov" />
-                    </span>
                 </div>
                 <div className="row">
                     {events.map((event, index) => (
@@ -62,16 +53,20 @@ export default function Event() {
                             <div className="event-one__single">
                                 <div className="event-one__img-box">
                                     <div className="event-one__img">
-                                        <img src={event.img} alt={event.title}/>
+                                        {event.video ? (
+                                            // Looping clip; the still image is the poster until it starts
+                                            <video src={event.video} poster={event.img} aria-label={event.title} autoPlay muted loop playsInline />
+                                        ) : (
+                                            <img src={event.img} alt={event.title}/>
+                                        )}
                                     </div>
                                 </div>
                                 <div className="event-one__content">
-                                    <h4 className="event-one__title"><Link href="/sadhana">{event.title}</Link></h4>
+                                    <h4 className="event-one__title">{event.title}</h4>
                                     <p className="event-one__date">
                                         <span className="icon-calender" aria-hidden="true"></span>
                                         <span>{event.date}</span>
                                     </p>
-                                    <p className="event-one__text">{event.text}</p>
                                 </div>
                             </div>
                         </div>

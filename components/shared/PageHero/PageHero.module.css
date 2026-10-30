@@ -1,0 +1,27 @@
+.root {
+  position: relative;
+  overflow: hidden;
+}
+
+/* the image eases out of shadow as the curtain clears it */
+.img {
+  display: block;
+  width: 100%;
+  height: auto;
+  animation: bloom 5600ms ease-out 300ms both;
+}
+
+@keyframes bloom {
+  from {
+    filter: brightness(0.72);
+  }
+  to {
+    filter: brightness(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .img {
+    animation: none;
+  }
+}

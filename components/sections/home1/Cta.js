@@ -32,16 +32,16 @@ export default function Cta() {
             <div className="container">
                 <div className="cta-one__inner">
                     <div className="cta-one__title-box sec-title-animation animation-style1 wow fadeInUp" data-wow-delay="100ms">
-                        <span className="cta-one__tagline">श्री शुभराय महाराज मठ</span>
-                        <h2 className="cta-one__title title-animation">सतराशे त्र्याऐंशीपासूनची परंपरा, <br/>
-                            सोलापूरच्या मनी भक्तीचा झरा</h2>
-                        <p className="cta-one__text">इथे नित्य आरतीचा नाद, अन् शांत भक्तीचा भास; <br/>
-                            जिवंत परंपरेच्या सावलीत, प्रत्येक भाविकाला मिळे विसावा खास.</p>
+                        <span className="cta-one__tagline">मंगल भक्त सेवा मंडळ</span>
+                        <h2 className="cta-one__title title-animation">जिथे कमी, <br/>
+                            तिथे कुवतीनुसार आम्ही</h2>
+                        <p className="cta-one__text">आपण ज्या समाजात राहतो, त्या समाजाचे आपण काही देणे लागतो; <br/>
+                            याच कर्तव्यभावनेतून आम्ही समाजासाठी कार्य करतो.</p>
                     </div>
                     <div className="cta-one__btn-box wow fadeInUp" data-wow-delay="200ms">
-                        <Link href="/sadhana" className="cta-one__btn-1 thm-btn">दर्शनाची तयारी करा<span><i
+                        <Link href="/about" className="cta-one__btn-1 thm-btn">आमच्याविषयी<span><i
                                     className="icon-arrow-right"></i></span></Link>
-                        <Link href="/about" className="cta-one__btn-2 thm-btn">आमची कहाणी<span><i
+                        <Link href="/contact" className="cta-one__btn-2 thm-btn">संपर्क साधा<span><i
                                     className="icon-arrow-right"></i></span></Link>
                     </div>
                 </div>

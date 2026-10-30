@@ -1,7 +1,7 @@
 
 'use client'
 import { useEffect, useState } from "react"
-import BackToTop from '../elements/BackToTop'
+// import BackToTop from '../elements/BackToTop'
 import CustomCursor from '../elements/CustomCursor'
 import Preloader from '../elements/Preloader'
 import DataBg from "../elements/DataBg"
@@ -89,7 +89,8 @@ export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumb
                 {footerStyle == 2 ? < Footer2 /> : null}
                 {footerStyle == 3 ? < Footer3 /> : null}
             </div>
-            <BackToTop scroll={scroll} scrollProgress={scrollProgress} />
+            {/* Scroll-to-top button hidden for now — uncomment (and its import) to restore.
+            <BackToTop scroll={scroll} scrollProgress={scrollProgress} /> */}
         </>
     )
 }

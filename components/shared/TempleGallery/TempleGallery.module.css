@@ -1,0 +1,60 @@
+.root {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+/* the list is doubled, so shifting by -50% lands exactly on the start again */
+.track {
+  display: flex;
+  width: max-content;
+  animation: scroll 33s linear infinite;
+}
+
+.root:hover .track {
+  animation-play-state: paused;
+}
+
+.item {
+  position: relative;
+  height: 340px;
+}
+
+.item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #3D0A0C;
+  opacity: 0.18;
+  mix-blend-mode: multiply;
+  transition: opacity 350ms ease;
+}
+
+.item:hover::after {
+  opacity: 0.08;
+}
+
+.item img {
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: none;
+}
+
+@keyframes scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 991px) {
+  .item { height: 260px; }
+}
+
+@media (max-width: 767px) {
+  .item { height: 190px; }
+  .track { animation-duration: 20s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track { animation: none; }
+}

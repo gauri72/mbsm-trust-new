@@ -1,22 +1,16 @@
 import Layout from "@/components/layout/Layout"
-import MantraStrip from "@/components/sections/home1/MantraStrip"
-import Banner from "@/components/sections/home1/Banner"
+import MantraStrip from "@/components/shared/MantraStrip/MantraStrip"
+import { CLOSING_MANTRAS } from "@/lib/data/mantras"
+import HeroSlider from "@/components/shared/HeroSlider/HeroSlider"
 // Welcome section hidden on the home page for now (its visit-card now
 // lives in the Contact page's FAQ section instead).
 // import Welcome from "@/components/sections/home1/Welcome"
-import Gallery from "@/components/sections/home1/Gallery"
+import TempleGallery from "@/components/shared/TempleGallery/TempleGallery"
 // Bottom gallery mosaic hidden on the home page for now.
 // import HomeGallery from "@/components/sections/home1/HomeGallery"
-import Legacy from "@/components/sections/home1/Legacy"
+import MissionVision from "@/components/sections/about/MissionVision"
 import Cta from "@/components/sections/home1/Cta"
 import Event from "@/components/sections/home1/Event"
-
-const CLOSING_MANTRAS = [
-    "सदा सर्वदा योग तुझा घडावा",
-    "तुझे कारणी देह माझा पडावा",
-    "उपेक्षू नको गुणवंता अनंता",
-    "रघूनायका मागणे हेचि आता",
-]
 
 export default function Home() {
 
@@ -24,10 +18,10 @@ export default function Home() {
         <>
             <Layout headerStyle={1} footerStyle={1}>
                 <MantraStrip />
-                <Banner />
-                <Gallery />
+                <HeroSlider />
+                <TempleGallery />
                 {/* <Welcome /> */}
-                <Legacy />
+                <MissionVision />
                 <Event />
                 <Cta />
                 <MantraStrip mantras={CLOSING_MANTRAS} />

@@ -1,7 +1,7 @@
 import Layout from "@/components/layout/Layout"
 
 export const metadata = {
-    title: 'Cookies Settings — Shubharay Maharaja Math',
+    title: 'Cookies Settings — मंगल भक्त सेवा मंडळ',
     description: 'Learn how cookies are used on the Shri Shubharay Maharaj Math website and how to manage them.',
 }
 

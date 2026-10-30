@@ -1,5 +1,5 @@
 export const metadata = {
-    title: 'Donate — Shubharay Maharaja Math',
+    title: 'Donate — मंगल भक्त सेवा मंडळ',
     description: 'Support the seva and community work of Shri Shubharay Maharaj Math with a donation.',
 }
 

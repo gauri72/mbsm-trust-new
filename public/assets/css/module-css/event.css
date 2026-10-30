@@ -12,10 +12,7 @@
     padding-bottom: 110px;
 }
 
-/* Flags flank the heading, same pattern as .featured-events__head — anchor
-   edge always points outward, away from the text: the left flag is
-   mirrored (anchor edge innermost, facing the heading), the right
-   flag is used as-is (anchor edge already faces inward). */
+/* Section head: centred heading */
 .event-one__head {
     display: flex;
     align-items: center;

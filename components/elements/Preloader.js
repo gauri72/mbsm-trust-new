@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from "react"
+import { HEADER_TITLE } from "@/lib/siteInfo"
 
 const MIN_DISPLAY_MS = 500
 
@@ -47,6 +48,7 @@ export default function Preloader() {
         <div className={`preloader ${isLeaving ? "preloader--leaving" : ""}`}>
             <div className="preloader__inner">
                 <div className="preloader__image"></div>
+                <p className="preloader__title">{HEADER_TITLE}</p>
                 <p className="preloader__text">Loading&hellip;</p>
             </div>
         </div>

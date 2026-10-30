@@ -3,8 +3,11 @@
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
 import { useState } from "react"
-import MantraStrip from "@/components/sections/home1/MantraStrip"
-import Gallery from "@/components/sections/home1/Gallery"
+import MantraStrip from "@/components/shared/MantraStrip/MantraStrip"
+import PageHero from "@/components/shared/PageHero/PageHero"
+import { PAGE_HERO_IMAGES } from "@/lib/data/heroImages"
+import { CLOSING_MANTRAS } from "@/lib/data/mantras"
+import TempleGallery from "@/components/shared/TempleGallery/TempleGallery"
 import Cta from "@/components/sections/home1/Cta"
 import TrimmedLoopVideo from "@/components/elements/TrimmedLoopVideo"
 import {
@@ -22,13 +25,6 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const INITIAL_FORM = { name: "", email: "", phone: "", message: "" }
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xnpnqgoq"
-
-const CONTACT_MANTRAS = [
-    "सदा सर्वदा योग तुझा घडावा",
-    "तुझे कारणी देह माझा पडावा",
-    "उपेक्षू नको गुणवंता अनंता",
-    "रघूनायका मागणे हेचि आता",
-]
 
 const CONTACT_FAQS = [
     {
@@ -104,16 +100,9 @@ export default function Home() {
         <>
         <Layout headerStyle={1} footerStyle={1} mantraStrip={<MantraStrip />}>
 
-        {/*Breadcrumb Bg Section Start */}
-        <section className="breadcrumb-bg-section breadcrumb-bg-section--padada">
-            <img src="assets/images/backgrounds/breadcrumb-bg-contact.png" alt="" className="breadcrumb-bg-section__img"/>
-            <span className="breadcrumb-bg-section__padada-shadow" aria-hidden="true"></span>
-            <span className="breadcrumb-bg-section__padada" aria-hidden="true"></span>
-            <span className="breadcrumb-bg-section__padada-scallop" aria-hidden="true"></span>
-        </section>
-        {/*Breadcrumb Bg Section End */}
+        <PageHero image={PAGE_HERO_IMAGES.contact} />
 
-        <Gallery />
+        <TempleGallery />
 
         {/*Contact One Start*/}
         <section id="contact-one" className="contact-one contact-one--ornate">
@@ -397,7 +386,7 @@ export default function Home() {
         {/*Contact Faq End*/}
 
         <Cta />
-        <MantraStrip mantras={CONTACT_MANTRAS} />
+        <MantraStrip mantras={CLOSING_MANTRAS} />
         </Layout>
         </>
     )

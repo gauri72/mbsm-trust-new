@@ -2,7 +2,7 @@
 import { useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { SITE_PHONE_DISPLAY_MR, SITE_PHONE_TEL, SITE_MAP_URL, SOCIAL_LINKS } from "@/lib/siteInfo"
+import { HEADER_TITLE, HEADER_LOGO_SRC, HEADER_CTA_LABEL, HEADER_SOCIAL_TITLE, HEADER_SOCIALS } from "@/lib/siteInfo"
 
 const NAV_ITEMS = [
     { href: "/", label: "Home" },
@@ -10,14 +10,6 @@ const NAV_ITEMS = [
     { href: "/sadhana", label: "Events" },
     { href: "/gallery", label: "Gallery" },
     { href: "/contact", label: "Contact" },
-]
-
-const SOCIALS = [
-    { href: SOCIAL_LINKS.whatsapp, label: "WhatsApp", icon: "fab fa-whatsapp" },
-    { href: SOCIAL_LINKS.facebook, label: "Facebook", icon: "fab fa-facebook-f" },
-    { href: SOCIAL_LINKS.youtube, label: "YouTube", icon: "fab fa-youtube" },
-    { href: SOCIAL_LINKS.instagram, label: "Instagram", icon: "fab fa-instagram" },
-    { href: SOCIAL_LINKS.twitter, label: "Twitter", icon: "fab fa-twitter" },
 ]
 
 const MobileMenu = ({ handleMobileMenu }) => {
@@ -75,11 +67,11 @@ const MobileMenu = ({ handleMobileMenu }) => {
                         onClick={handleMobileMenu}
                     >
                         <img
-                            src="assets/images/resources/shubharay-maharaj.jpg"
+                            src={HEADER_LOGO_SRC}
                             alt=""
                             className="snav__brand-img"
                         />
-                        <span className="snav__brand-name">श्री शुभराय महाराज मठ</span>
+                        <span className="snav__brand-name">{HEADER_TITLE}</span>
                     </Link>
                     <button
                         type="button"
@@ -109,41 +101,28 @@ const MobileMenu = ({ handleMobileMenu }) => {
                     </ul>
                 </nav>
 
+                {/* Drawer footer (tablet + phone): social links, then the header CTA */}
                 <footer className="snav__foot">
-                    <a className="snav__contact" href={SITE_PHONE_TEL}>
-                        <span className="snav__contact-ico" aria-hidden="true">
-                            <i className="fa fa-phone-alt"></i>
-                        </span>
-                        <span className="snav__contact-text">{SITE_PHONE_DISPLAY_MR}</span>
-                    </a>
-                    <a
-                        className="snav__contact"
-                        href={SITE_MAP_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <span className="snav__contact-ico" aria-hidden="true">
-                            <i className="icon-pin-two"></i>
-                        </span>
-                        <span className="snav__contact-text">
-                            श्री शुभराय महाराज मठ, दत्त चौक, सोलापूर.
-                        </span>
-                    </a>
-
-                    <div className="snav__social">
-                        {SOCIALS.map((s) => (
-                            <a
-                                key={s.label}
-                                href={s.href}
-                                className="snav__social-btn"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label={s.label}
-                            >
-                                <i className={s.icon}></i>
-                            </a>
-                        ))}
+                    <div className="snav__connect">
+                        <p className="snav__connect-title">{HEADER_SOCIAL_TITLE}</p>
+                        <div className="snav__social">
+                            {HEADER_SOCIALS.map((s) => (
+                                <a
+                                    key={s.label}
+                                    href={s.href}
+                                    className="snav__social-btn"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={s.label}
+                                >
+                                    <i className={s.icon}></i>
+                                </a>
+                            ))}
+                        </div>
                     </div>
+                    <Link href="/about" className="snav__cta thm-btn" onClick={handleMobileMenu}>
+                        {HEADER_CTA_LABEL}<span><i className="icon-arrow-right"></i></span>
+                    </Link>
                 </footer>
             </aside>
         </div>
