@@ -141,7 +141,7 @@ export default function Menu() {
                     </ul>
                 </li>
                 <li>
-                    <Link href="about">About</Link>
+                    <Link href="/parichaya">About</Link>
                 </li>
                 <li className="dropdown">
                     <Link href="#">Pages</Link>
@@ -200,7 +200,7 @@ export default function Menu() {
                     </ul>
                 </li>
                 <li>
-                    <Link href="contact">Contact</Link>
+                    <Link href="/sampark">Contact</Link>
                 </li>
             </ul>
         </>

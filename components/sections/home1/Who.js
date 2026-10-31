@@ -45,7 +45,7 @@ export default function Who() {
                                     for daily aarti, seasonal festivals and quiet reflection — carrying forward a
                                     legacy that has stood for well over two centuries.</p>
                                 <div className="who-we-are__btn-box">
-                                    <Link href="/about" className="who-we-are__btn thm-btn">Know Our Full Story<span><i
+                                    <Link href="/parichaya" className="who-we-are__btn thm-btn">Know Our Full Story<span><i
                                                 className="icon-arrow-right"></i></span></Link>
                                 </div>
                             </div>

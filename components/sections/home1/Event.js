@@ -74,7 +74,7 @@ export default function Event() {
                 </div>
 
                 <div className="event-one__cta wow fadeInUp" data-wow-delay="300ms">
-                    <Link href="/sadhana" className="event-one__btn thm-btn">सर्व उत्सव पाहा<span><i
+                    <Link href="/karyakram" className="event-one__btn thm-btn">सर्व उत्सव पाहा<span><i
                                 className="icon-arrow-right"></i></span></Link>
                 </div>
             </div>

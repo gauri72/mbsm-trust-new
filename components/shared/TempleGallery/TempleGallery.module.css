@@ -55,6 +55,34 @@
   .track { animation-duration: 20s; }
 }
 
+/* compact strip: a fixed number of square tiles across the strip —
+   5 on desktop, 4 on tablet, 3 on mobile (cqw = % of the strip's width) */
+.compact {
+  container-type: inline-size;
+  --per-view: 5;
+}
+
+.compact .item {
+  width: calc(100vw / var(--per-view));
+  width: calc(100cqw / var(--per-view));
+  height: auto;
+  aspect-ratio: 1 / 1;
+}
+
+.compact .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 991px) {
+  .compact { --per-view: 4; }
+}
+
+@media (max-width: 767px) {
+  .compact { --per-view: 3; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .track { animation: none; }
 }

@@ -39,7 +39,7 @@ export default function Found() {
                                 </div>
                             </div>
                             <div className="found-one__content">
-                                <h4 className="found-one__title"><Link href="/sadhana">दैनिक आरती व दर्शन</Link></h4>
+                                <h4 className="found-one__title"><Link href="/karyakram">दैनिक आरती व दर्शन</Link></h4>
                                 <p className="found-one__text">सकाळी व संध्याकाळी रोज आरती होते. दर्शनासाठी
                                     मठ सर्व भाविकांना नेहमी खुला असतो.</p>
                                 <div className="found-one__highlight">
@@ -47,7 +47,7 @@ export default function Found() {
                                     <span>सकाळ व संध्याकाळ, दररोज</span>
                                 </div>
                                 <div className="found-one__btn-box">
-                                    <Link href="/sadhana" className="found-one__btn thm-btn">अधिक वाचा<span><i
+                                    <Link href="/karyakram" className="found-one__btn thm-btn">अधिक वाचा<span><i
                                                 className="icon-arrow-right"></i></span></Link>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@ export default function Found() {
                                 </div>
                             </div>
                             <div className="found-one__content">
-                                <h4 className="found-one__title"><Link href="/sadhana">जप, मंत्र साधना व पारायण</Link></h4>
+                                <h4 className="found-one__title"><Link href="/karyakram">जप, मंत्र साधना व पारायण</Link></h4>
                                 <p className="found-one__text">जप, मंत्रसाधना व ग्रंथपारायण ही रोजची साधना.
                                     यामुळे मन एकाग्र होते व शांती लाभते.</p>
                                 <div className="found-one__highlight">
@@ -72,7 +72,7 @@ export default function Found() {
                                     <span>एक साधी नियमित साधना</span>
                                 </div>
                                 <div className="found-one__btn-box">
-                                    <Link href="/sadhana" className="found-one__btn thm-btn">अधिक वाचा<span><i
+                                    <Link href="/karyakram" className="found-one__btn thm-btn">अधिक वाचा<span><i
                                                 className="icon-arrow-right"></i></span></Link>
                                 </div>
                             </div>
@@ -89,7 +89,7 @@ export default function Found() {
                                 </div>
                             </div>
                             <div className="found-one__content">
-                                <h4 className="found-one__title"><Link href="/sadhana">उत्सव व रथयात्रा</Link></h4>
+                                <h4 className="found-one__title"><Link href="/karyakram">उत्सव व रथयात्रा</Link></h4>
                                 <p className="found-one__text">आषाढी व कार्तिकी एकादशीला रथयात्रा निघते.
                                     वर्षातील हे सर्वात मोठे उत्सव, संपूर्ण समाज एकत्र येतो.</p>
                                 <div className="found-one__highlight">
@@ -97,7 +97,7 @@ export default function Found() {
                                     <span>आषाढी व कार्तिकी एकादशी</span>
                                 </div>
                                 <div className="found-one__btn-box">
-                                    <Link href="/sadhana" className="found-one__btn thm-btn">अधिक वाचा<span><i
+                                    <Link href="/karyakram" className="found-one__btn thm-btn">अधिक वाचा<span><i
                                                 className="icon-arrow-right"></i></span></Link>
                                 </div>
                             </div>

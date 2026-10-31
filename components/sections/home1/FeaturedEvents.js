@@ -59,7 +59,7 @@ export default function FeaturedEvents() {
                                     <img src={event.img} alt={event.title}/>
                                 </div>
                                 <div className="featured-events__content">
-                                    <h3 className="featured-events__title"><Link href="/sadhana">{event.title}</Link></h3>
+                                    <h3 className="featured-events__title"><Link href="/karyakram">{event.title}</Link></h3>
                                     <p className="featured-events__text">{event.text}</p>
                                 </div>
                             </div>

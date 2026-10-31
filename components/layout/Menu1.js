@@ -3,11 +3,11 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 const NAV_ITEMS = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/sadhana", label: "Events" },
-    { href: "/gallery", label: "Gallery" },
-    { href: "/contact", label: "Contact" },
+    { href: "/", label: "मुखपृष्ठ" },
+    { href: "/parichaya", label: "परिचय" },
+    { href: "/karyakram", label: "कार्यक्रम" },
+    { href: "/aathavani", label: "आठवणी" },
+    { href: "/sampark", label: "संपर्क" },
 ]
 
 export default function Menu1() {

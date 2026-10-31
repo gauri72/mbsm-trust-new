@@ -2,7 +2,7 @@ import styles from "./Curtain.module.css"
 
 // Maroon stage curtain that lifts once on page load, leaving its gold
 // valance parked at the top. Place it inside a `position: relative` hero.
-// variant="home" uses the home hero's deeper maroon and shorter valance.
+// variant="home" uses a shorter valance.
 export default function Curtain({ variant }) {
     const rootClass = variant === "home" ? `${styles.root} ${styles.home}` : styles.root
 

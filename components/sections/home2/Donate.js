@@ -21,7 +21,7 @@ export default function Donate() {
                             </span> Difference </h2>
                     </div>
                     <div className="donate-two__btn-box">
-                        <Link href="about" className="donate-two__btn thm-btn">Discover more<span><i
+                        <Link href="/parichaya" className="donate-two__btn thm-btn">Discover more<span><i
                                     className="icon-arrow-right"></i></span></Link>
                     </div>
                 </div>

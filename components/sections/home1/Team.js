@@ -90,7 +90,7 @@ export default function Team() {
                                     <p>Logistic service provider company plays a pivotal role in the global supply chain
                                     </p>
                                     <div className="btn-box">
-                                        <Link href="contact">Contact Me <i className="icon-right-arrow21"></i></Link>
+                                        <Link href="/sampark">Contact Me <i className="icon-right-arrow21"></i></Link>
                                     </div>
                                 </div>
                             </div>
@@ -115,7 +115,7 @@ export default function Team() {
                                     <p>Logistic service provider company plays a pivotal role in the global supply chain
                                     </p>
                                     <div className="btn-box">
-                                        <Link href="contact">Contact Me <i className="icon-right-arrow21"></i></Link>
+                                        <Link href="/sampark">Contact Me <i className="icon-right-arrow21"></i></Link>
                                     </div>
                                 </div>
                             </div>                       
@@ -140,7 +140,7 @@ export default function Team() {
                                     <p>Logistic service provider company plays a pivotal role in the global supply chain
                                     </p>
                                     <div className="btn-box">
-                                        <Link href="contact">Contact Me <i className="icon-right-arrow21"></i></Link>
+                                        <Link href="/sampark">Contact Me <i className="icon-right-arrow21"></i></Link>
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +165,7 @@ export default function Team() {
                                     <p>Logistic service provider company plays a pivotal role in the global supply chain
                                     </p>
                                     <div className="btn-box">
-                                        <Link href="contact">Contact Me <i className="icon-right-arrow21"></i></Link>
+                                        <Link href="/sampark">Contact Me <i className="icon-right-arrow21"></i></Link>
                                     </div>
                                 </div>
                             </div>
@@ -190,7 +190,7 @@ export default function Team() {
                                     <p>Logistic service provider company plays a pivotal role in the global supply chain
                                     </p>
                                     <div className="btn-box">
-                                        <Link href="contact">Contact Me <i className="icon-right-arrow21"></i></Link>
+                                        <Link href="/sampark">Contact Me <i className="icon-right-arrow21"></i></Link>
                                     </div>
                                 </div>
                             </div>                       
@@ -215,7 +215,7 @@ export default function Team() {
                                     <p>Logistic service provider company plays a pivotal role in the global supply chain
                                     </p>
                                     <div className="btn-box">
-                                        <Link href="contact">Contact Me <i className="icon-right-arrow21"></i></Link>
+                                        <Link href="/sampark">Contact Me <i className="icon-right-arrow21"></i></Link>
                                     </div>
                                 </div>
                             </div>
@@ -240,7 +240,7 @@ export default function Team() {
                                     <p>Logistic service provider company plays a pivotal role in the global supply chain
                                     </p>
                                     <div className="btn-box">
-                                        <Link href="contact">Contact Me <i className="icon-right-arrow21"></i></Link>
+                                        <Link href="/sampark">Contact Me <i className="icon-right-arrow21"></i></Link>
                                     </div>
                                 </div>
                             </div>
@@ -265,7 +265,7 @@ export default function Team() {
                                     <p>Logistic service provider company plays a pivotal role in the global supply chain
                                     </p>
                                     <div className="btn-box">
-                                        <Link href="contact">Contact Me <i className="icon-right-arrow21"></i></Link>
+                                        <Link href="/sampark">Contact Me <i className="icon-right-arrow21"></i></Link>
                                     </div>
                                 </div>
                             </div>                       
@@ -290,7 +290,7 @@ export default function Team() {
                                     <p>Logistic service provider company plays a pivotal role in the global supply chain
                                     </p>
                                     <div className="btn-box">
-                                        <Link href="contact">Contact Me <i className="icon-right-arrow21"></i></Link>
+                                        <Link href="/sampark">Contact Me <i className="icon-right-arrow21"></i></Link>
                                     </div>
                                 </div>
                             </div>

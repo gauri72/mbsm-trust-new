@@ -63,7 +63,7 @@ export default function About() {
                             </ul>
                             <div className="about-three__btn-and-need-help">
                                 <div className="about-three__btn-box">
-                                    <Link href="about" className="about-three__btn thm-btn">rEAD mORe<span><i
+                                    <Link href="/parichaya" className="about-three__btn thm-btn">rEAD mORe<span><i
                                                 className="icon-arrow-right"></i></span></Link>
                                 </div>
                                 <div className="about-three__need-help">

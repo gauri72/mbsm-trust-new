@@ -91,7 +91,7 @@ export default function Country() {
                                             </div>
                                         </div>
                                         <div className="form-group form-group--1 text-center">
-                                            <button href="contact" className="thm-btn">
+                                            <button href="/sampark" className="thm-btn">
                                                 Send Message
                                                 <span><i className="icon-arrow-right"></i></span>
                                             </button>

@@ -5,11 +5,11 @@ import { usePathname } from "next/navigation"
 import { HEADER_TITLE, HEADER_LOGO_SRC, HEADER_CTA_LABEL, HEADER_SOCIAL_TITLE, HEADER_SOCIALS } from "@/lib/siteInfo"
 
 const NAV_ITEMS = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/sadhana", label: "Events" },
-    { href: "/gallery", label: "Gallery" },
-    { href: "/contact", label: "Contact" },
+    { href: "/", label: "मुखपृष्ठ" },
+    { href: "/parichaya", label: "परिचय" },
+    { href: "/karyakram", label: "कार्यक्रम" },
+    { href: "/aathavani", label: "आठवणी" },
+    { href: "/sampark", label: "संपर्क" },
 ]
 
 const MobileMenu = ({ handleMobileMenu }) => {
@@ -120,7 +120,7 @@ const MobileMenu = ({ handleMobileMenu }) => {
                             ))}
                         </div>
                     </div>
-                    <Link href="/about" className="snav__cta thm-btn" onClick={handleMobileMenu}>
+                    <Link href="/parichaya" className="snav__cta thm-btn" onClick={handleMobileMenu}>
                         {HEADER_CTA_LABEL}<span><i className="icon-arrow-right"></i></span>
                     </Link>
                 </footer>

@@ -1,0 +1,8 @@
+export const metadata = {
+    title: 'संपर्क — मंगल भक्त सेवा मंडळ',
+    description: 'मंगल भक्त सेवा मंडळाशी संपर्क साधा — पत्ता, दूरध्वनी क्रमांक व संपर्क फॉर्म.',
+}
+
+export default function ContactLayout({ children }) {
+    return children
+}

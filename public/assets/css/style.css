@@ -1028,7 +1028,8 @@ ul {
 
 .main-menu .main-menu__list>li>a,
 .stricky-header .main-menu__list>li>a {
-  font-size: 16px;
+  font-family: var(--anity-font), 'Hind', sans-serif;
+  font-size: 18px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -13618,8 +13619,9 @@ ul {
 }
 
 .snav__link-label {
-  font-size: 16.5px;
-  font-weight: 600;
+  font-family: var(--anity-font), 'Hind', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
   letter-spacing: 0.2px;
 }
 
@@ -14896,7 +14898,7 @@ ul {
 
   .main-header .main-menu .main-menu__list>li>a,
   .stricky-header .main-menu__list>li>a {
-    font-size: 17px;
+    font-size: 19px;
   }
 
   .main-header .main-menu__main-menu-box .main-menu__list>li+li,
@@ -14930,7 +14932,7 @@ ul {
 
   .main-header .main-menu .main-menu__list>li>a,
   .stricky-header .main-menu__list>li>a {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .main-header .main-menu__main-menu-box .main-menu__list>li+li,
@@ -14963,7 +14965,7 @@ ul {
 
   .main-header .main-menu .main-menu__list>li>a,
   .stricky-header .main-menu__list>li>a {
-    font-size: 15.5px;
+    font-size: 17px;
   }
 
   .main-header .main-menu__main-menu-box .main-menu__list>li+li,

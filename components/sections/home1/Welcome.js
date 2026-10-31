@@ -78,7 +78,7 @@ export default function Welcome() {
                                 </ul>
 
                                 <div className="btn-box">
-                                    <Link href="/about" className="thm-btn">
+                                    <Link href="/parichaya" className="thm-btn">
                                         आमचा इतिहास जाणून घ्या
                                         <span>
                                             <i className="icon-arrow-right"></i>

@@ -58,7 +58,7 @@ export default function Banner() {
                                 responsibility, grantmaking, <br/> and employee engagement strategies. Dicta sunt
                                 explicabo. Nemo</p>
                             <div className="main-slider-two__btn-box">
-                                <Link href="about" className="thm-btn main-slider-two__btn">Discover more<span><i
+                                <Link href="/parichaya" className="thm-btn main-slider-two__btn">Discover more<span><i
                                             className="icon-arrow-right"></i></span></Link>
                             </div>
                         </div>
@@ -91,7 +91,7 @@ export default function Banner() {
                                 responsibility, grantmaking, <br/> and employee engagement strategies. Dicta sunt
                                 explicabo. Nemo</p>
                             <div className="main-slider-two__btn-box">
-                                <Link href="about" className="thm-btn main-slider-two__btn">Discover more<span><i
+                                <Link href="/parichaya" className="thm-btn main-slider-two__btn">Discover more<span><i
                                             className="icon-arrow-right"></i></span></Link>
                             </div>
                         </div>
@@ -124,7 +124,7 @@ export default function Banner() {
                                 responsibility, grantmaking, <br/> and employee engagement strategies. Dicta sunt
                                 explicabo. Nemo</p>
                             <div className="main-slider-two__btn-box">
-                                <Link href="about" className="thm-btn main-slider-two__btn">Discover more<span><i
+                                <Link href="/parichaya" className="thm-btn main-slider-two__btn">Discover more<span><i
                                             className="icon-arrow-right"></i></span></Link>
                             </div>
                         </div>

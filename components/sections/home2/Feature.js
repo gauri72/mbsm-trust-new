@@ -43,7 +43,7 @@ export default function Feature() {
                                 <span className="icon-support"></span>
                             </div>
                             <div className="feature-one__content">
-                                <h4><Link href="contact">Support</Link></h4>
+                                <h4><Link href="/sampark">Support</Link></h4>
                                 <p>Dicta sunt explicabo. Nemo enim ipsam voluptatem quia </p>
                             </div>
                         </div>

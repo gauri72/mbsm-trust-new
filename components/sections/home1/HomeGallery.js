@@ -79,7 +79,7 @@ export default function HomeGallery() {
                         alt=""
                         aria-hidden="true"
                     />
-                    <Link href="/gallery" className="home-gallery__btn thm-btn">
+                    <Link href="/aathavani" className="home-gallery__btn thm-btn">
                         संपूर्ण दालन पाहा<span><i className="icon-arrow-right"></i></span>
                     </Link>
                     <img

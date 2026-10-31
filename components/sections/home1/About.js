@@ -91,7 +91,7 @@ export default function About() {
                             </div>
                             <div className="about-One__btn-and-need-help">
                                 <div className="about-One__btn-box">
-                                    <Link href="/about" className="about-One__btn thm-btn">Know More<span><i
+                                    <Link href="/parichaya" className="about-One__btn thm-btn">Know More<span><i
                                                 className="icon-arrow-right"></i></span></Link>
                                 </div>
                                 <div className="about-One__need-help">

@@ -74,47 +74,11 @@
     .contact-one__bg {
         background-size: 770px auto;
     }
-
-    .contact-one__inner .section-title.text-left {
-        text-align: center;
-    }
-
-    .contact-one__inner .section-title__tagline-box {
-        display: flex;
-        justify-content: center;
-    }
 }
 
 .contact-one.contact-one--ornate .container {
     position: relative;
     z-index: 1;
-}
-
-/* Namaste video — sits in the tagline/heading lane, right-aligned, spilling
-   up into the card's top/right padding, without altering the JSX structure */
-.contact-one__namaste.trimmed-loop-video {
-    position: absolute;
-    top: -110px;
-    right: 40px;
-    width: clamp(260px, 26vw, 380px);
-    aspect-ratio: 1 / 1;
-    z-index: 5;
-    pointer-events: none;
-    opacity: 0.95;
-}
-
-@media (max-width: 1199px) {
-    .contact-one__namaste.trimmed-loop-video {
-        top: -70px;
-        right: 20px;
-        width: clamp(180px, 22vw, 260px);
-    }
-}
-
-@media (max-width: 991px) {
-    .contact-one__namaste.trimmed-loop-video {
-        display: none;
-    }
 }
 
 /* Horizontal gold strips carrying maroon Om + swastik motif */
@@ -192,10 +156,6 @@
         padding: 50px 40px 40px;
     }
 
-    .contact-one__inner .section-title__title br {
-        display: none;
-    }
-
     .contact-one.contact-one--ornate .container {
         padding-left: 40px;
         padding-right: 40px;
@@ -234,21 +194,14 @@
     margin-bottom: 42px;
 }
 
-.contact-one--ornate .contact-one__inner .section-title.text-left {
-    position: relative;
-    padding-right: 340px;
+/* heading centred on every screen; the two-line break is kept on mobile too */
+.contact-one__inner .section-title__tagline-box {
+    display: flex;
+    justify-content: center;
 }
 
-@media (max-width: 1199px) {
-    .contact-one--ornate .contact-one__inner .section-title.text-left {
-        padding-right: 240px;
-    }
-}
-
-@media (max-width: 991px) {
-    .contact-one--ornate .contact-one__inner .section-title.text-left {
-        padding-right: 0;
-    }
+.contact-one__inner .section-title__title br {
+    display: inline;
 }
 
 .contact-one__form {
@@ -483,52 +436,6 @@
     margin-bottom: 50px;
 }
 
-/* Jap-mala / Parayan flourish icons flanking the heading, floating animation */
-.contact-two__section-title {
-    position: relative;
-}
-
-.contact-two__shape {
-    position: absolute;
-    top: -30px;
-    width: 190px;
-    pointer-events: none;
-}
-
-.contact-two__shape img {
-    width: 100%;
-    height: auto;
-    opacity: 0.85;
-}
-
-.contact-two__shape--left {
-    right: calc(50% + 320px);
-}
-
-.contact-two__shape--right {
-    left: calc(50% + 320px);
-}
-
-@media (max-width: 1199px) {
-    .contact-two__shape {
-        width: 140px;
-    }
-
-    .contact-two__shape--left {
-        right: calc(50% + 230px);
-    }
-
-    .contact-two__shape--right {
-        left: calc(50% + 230px);
-    }
-}
-
-@media (max-width: 991px) {
-    .contact-two__shape {
-        display: none;
-    }
-}
-
 .contact-two--ornate .section-title__tagline {
     color: var(--au-maroon, #620208);
     font-weight: 700;
@@ -689,12 +596,12 @@
     position: relative;
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
     margin-bottom: 30px;
     background-color: var(--anity-white);
     box-shadow: 0px 18px 40px rgba(44, 4, 5, 0.30);
     border-radius: 20px;
-    padding: 30px 30px 30px;
+    padding: 30px 24px;
     transition: transform 300ms ease, box-shadow 300ms ease;
 }
 
@@ -734,9 +641,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 80px;
+    flex: 0 0 64px;
+    max-width: 64px;
     width: 100%;
-    height: 80px;
+    height: 64px;
     border: 2px solid #EEEEEE;
     border-radius: 50%;
     z-index: 1;
@@ -780,6 +688,7 @@
 .contact-two__contact-list li .content {
     position: relative;
     display: block;
+    min-width: 0;
 }
 
 .contact-two__contact-list li .content h4 {
@@ -799,6 +708,11 @@
 
 .contact-two__contact-list li .content p a:hover {
     color: var(--au-maroon, #620208);
+}
+
+/* address stays on a single line */
+.contact-two__contact-list li .content p.contact-two__address {
+    white-space: nowrap;
 }
 
 /*--------------------------------------------------------------
@@ -1536,6 +1450,107 @@
 
 
 
+
+/*--------------------------------------------------------------
+# Contact page — phone layout (≤767px): tighter spacing, smaller
+# headings and fields, compact info cards, shorter map
+--------------------------------------------------------------*/
+@media (max-width: 767px) {
+    .contact-one.contact-one--ornate,
+    .contact-two.contact-two--ornate {
+        padding: 44px 0 48px;
+    }
+
+    .contact-one--ornate .contact-one__inner {
+        padding: 30px 18px 28px;
+    }
+
+    .contact-one--ornate .contact-one__inner .section-title,
+    .contact-two--ornate .section-title {
+        margin-bottom: 26px;
+    }
+
+    .contact-one--ornate .section-title__title,
+    .contact-two--ornate .section-title__title {
+        font-size: 28px;
+        line-height: 38px;
+    }
+
+    .contact-one--ornate .contact-one__input-title {
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 4px;
+    }
+
+    .contact-one--ornate .contact-one__input-box {
+        margin-bottom: 14px;
+    }
+
+    .contact-one--ornate .contact-one__input-box input[type="text"],
+    .contact-one--ornate .contact-one__input-box input[type="email"] {
+        height: 50px;
+        line-height: 50px;
+        font-size: 15px;
+        padding-left: 16px;
+    }
+
+    .contact-one--ornate .contact-one__input-box textarea,
+    .contact-one--ornate .contact-one__input-box.text-message-box {
+        height: 110px;
+    }
+
+    .contact-one--ornate .contact-one__input-box textarea {
+        font-size: 15px;
+        padding-left: 16px;
+    }
+
+    .contact-one--ornate .contact-one__input-box.text-message-box {
+        margin-bottom: 24px;
+    }
+
+    .contact-two--ornate .contact-two__left {
+        margin-bottom: 18px;
+    }
+
+    .contact-two--ornate .contact-two__google-map {
+        height: 280px;
+    }
+
+    /* info cards: icon beside the text instead of stacked above it */
+    .contact-two--ornate .contact-two__contact-list li {
+        flex-direction: row;
+        text-align: left;
+        gap: 14px;
+        padding: 16px 18px;
+        margin-bottom: 14px;
+        border-radius: 16px;
+    }
+
+    .contact-two--ornate .contact-two__contact-list li:last-child {
+        margin-bottom: 0;
+    }
+
+    .contact-two--ornate .contact-two__contact-list li .icon {
+        flex: 0 0 48px;
+        max-width: 48px;
+        height: 48px;
+    }
+
+    .contact-two--ornate .contact-two__contact-list li .icon span {
+        font-size: 18px;
+    }
+
+    .contact-two--ornate .contact-two__contact-list li .content h4 {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .contact-two--ornate .contact-two__contact-list li .content p {
+        margin-top: 2px;
+        font-size: 14px;
+        line-height: 22px;
+    }
+}
 
 /*--------------------------------------------------------------
 # End

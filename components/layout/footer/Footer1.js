@@ -11,10 +11,10 @@ const SEVA = [
 ]
 
 const QUICK_LINKS = [
-    { href: "/about", label: "आमची वाटचाल" },
+    { href: "/parichaya", label: "आमची वाटचाल" },
     { href: "/events", label: "सोहळे व कार्यक्रम" },
-    { href: "/gallery", label: "आठवणींचा ठेवा" },
-    { href: "/contact", label: "संवाद साधा" },
+    { href: "/aathavani", label: "आठवणींचा ठेवा" },
+    { href: "/sampark", label: "संवाद साधा" },
 ]
 
 export default function Footer1() {

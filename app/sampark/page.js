@@ -5,19 +5,19 @@ import Link from "next/link"
 import { useState } from "react"
 import MantraStrip from "@/components/shared/MantraStrip/MantraStrip"
 import PageHero from "@/components/shared/PageHero/PageHero"
+import TempleGallery from "@/components/shared/TempleGallery/TempleGallery"
 import { PAGE_HERO_IMAGES } from "@/lib/data/heroImages"
 import { CLOSING_MANTRAS } from "@/lib/data/mantras"
-import TempleGallery from "@/components/shared/TempleGallery/TempleGallery"
 import Cta from "@/components/sections/home1/Cta"
-import TrimmedLoopVideo from "@/components/elements/TrimmedLoopVideo"
 import {
-    SITE_ADDRESS_MR_LINE1,
-    SITE_ADDRESS_MR_LINE2,
-    SITE_EMAIL,
-    SITE_EMAIL_MAILTO,
-    SITE_MAP_URL,
-    SITE_PHONE_DISPLAY_MR,
-    SITE_PHONE_TEL,
+    HEADER_ADDRESS,
+    HEADER_ADDRESS_LINE1,
+    HEADER_ADDRESS_LINE2,
+    HEADER_EMAIL,
+    HEADER_EMAIL_MAILTO,
+    HEADER_MAP_URL,
+    HEADER_PHONE_DISPLAY,
+    HEADER_PHONE_TEL,
 } from "@/lib/siteInfo"
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -25,6 +25,15 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const INITIAL_FORM = { name: "", email: "", phone: "", message: "" }
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xnpnqgoq"
+
+// Formspree uses `_subject` as the notification email's subject line
+const EMAIL_SUBJECT = "मंगल भक्त सेवा मंडळ — संकेतस्थळावरून नवीन संदेश"
+
+// Google Maps "Embed a map" URL for the "Mangal Bhakta Seva Mandal (MBSM) Trust" listing
+// (F 70, Manmad Rd, MIDC, Nagapur, Ahilyanagar); the place id makes it show the pin + name card
+const MAP_EMBED_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.0!2d74.6929024!3d19.1503465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdcba2a1b363501%3A0xb70bfcce19e73dee!2sMangal%20Bhakta%20Seva%20Mandal%20(MBSM)%20Trust!5e0!3m2!1sen!2sin!4v1761900000000!5m2!1sen!2sin"
+// opens that same listing in Google Maps
+const MAP_LINK = "https://share.google/dv2NZPiwDDyqzAbgK"
 
 const CONTACT_FAQS = [
     {
@@ -84,7 +93,7 @@ export default function Home() {
             const res = await fetch(FORMSPREE_ENDPOINT, {
                 method: "POST",
                 headers: { "Content-Type": "application/json", Accept: "application/json" },
-                body: JSON.stringify(form),
+                body: JSON.stringify({ ...form, _subject: `${EMAIL_SUBJECT} (${form.name.trim()})` }),
             })
             if (!res.ok) throw new Error("submit failed")
 
@@ -102,7 +111,7 @@ export default function Home() {
 
         <PageHero image={PAGE_HERO_IMAGES.contact} />
 
-        <TempleGallery />
+        <TempleGallery compact />
 
         {/*Contact One Start*/}
         <section id="contact-one" className="contact-one contact-one--ornate">
@@ -117,16 +126,11 @@ export default function Home() {
             <div className="contact-one__bg" role="presentation"></div>
             <div className="container">
                 <div className="contact-one__inner">
-                    <TrimmedLoopVideo
-                        src="assets/images/resources/namaste.mov"
-                        className="contact-one__namaste"
-                        trimSeconds={7}
-                    />
-                    <div className="section-title text-left sec-title-animation animation-style2">
+                    <div className="section-title text-center sec-title-animation animation-style2">
                         <div className="section-title__tagline-box">
                             <span className="section-title__tagline" lang="mr">आमच्याशी संपर्क साधा</span>
                         </div>
-                        <h2 className="section-title__title title-animation" lang="mr">आपला संदेश<br/> श्री शुभराय महाराज मठापर्यंत पोहोचवा
+                        <h2 className="section-title__title title-animation" lang="mr">आपला संदेश<br/> मंगल भक्त सेवा मंडळापर्यंत पोहोचवा
                         </h2>
                     </div>
                     <form className="contact-form-validated contact-one__form" onSubmit={handleSubmit} noValidate>
@@ -230,30 +234,25 @@ export default function Home() {
             <div className="divine-border--contact-two divine-border--contact-two-bottom" role="presentation"></div>
             <div className="contact-two__bg" role="presentation"></div>
             <div className="container">
-                <div className="section-title text-center sec-title-animation animation-style2 contact-two__section-title">
-                    <div className="contact-two__shape contact-two__shape--left float-bob-y" aria-hidden="true">
-                        <img src="assets/images/shapes/found-one-shape-1-mala.png" alt=""/>
-                    </div>
+                <div className="section-title text-center sec-title-animation animation-style2">
                     <div className="section-title__tagline-box">
-                        <span className="section-title__tagline" lang="mr">मठाचे स्थान</span>
+                        <span className="section-title__tagline" lang="mr">आमचे स्थान</span>
                     </div>
-                    <h2 className="section-title__title title-animation" lang="mr">मठापर्यंत पोहोचण्याचा मार्ग
+                    <h2 className="section-title__title title-animation" lang="mr">आमच्यापर्यंत पोहोचण्याचा मार्ग
                     </h2>
-                    <div className="contact-two__shape contact-two__shape--right float-bob-y" aria-hidden="true">
-                        <img src="assets/images/shapes/found-one-shape-2-parayan.png" alt=""/>
-                    </div>
                 </div>
                 <div className="row">
-                    <div className="col-xl-8 col-lg-7">
+                    <div className="col-xxl-8 col-xl-7 col-lg-6">
                         <div className="contact-two__left">
                             <iframe
-                                src="https://maps.google.com/maps?q=Shri+Shubharay+Maharaj+Math%2C+Datta+Chowk%2C+Solapur&output=embed"
+                                src={MAP_EMBED_URL}
                                 className="contact-two__google-map"
+                                title={HEADER_ADDRESS}
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
-                    <div className="col-xl-4 col-lg-5">
+                    <div className="col-xxl-4 col-xl-5 col-lg-6">
                         <div className="contact-two__right">
                             <ul className="contact-two__contact-list list-unstyled">
                                 <li>
@@ -262,7 +261,7 @@ export default function Home() {
                                     </div>
                                     <div className="content">
                                         <h4 lang="mr">दूरध्वनी क्रमांक</h4>
-                                        <p lang="mr"><Link href={SITE_PHONE_TEL}>{SITE_PHONE_DISPLAY_MR}</Link></p>
+                                        <p lang="mr"><Link href={HEADER_PHONE_TEL}>{HEADER_PHONE_DISPLAY}</Link></p>
                                     </div>
                                 </li>
                                 <li>
@@ -271,7 +270,7 @@ export default function Home() {
                                     </div>
                                     <div className="content">
                                         <h4 lang="mr">ईमेल</h4>
-                                        <p><Link href={SITE_EMAIL_MAILTO}>{SITE_EMAIL}</Link></p>
+                                        <p><Link href={HEADER_EMAIL_MAILTO}>{HEADER_EMAIL}</Link></p>
                                     </div>
                                 </li>
                                 <li>
@@ -280,7 +279,7 @@ export default function Home() {
                                     </div>
                                     <div className="content">
                                         <h4 lang="mr">पत्ता</h4>
-                                        <p lang="mr"><Link href={SITE_MAP_URL} target="_blank" rel="noopener noreferrer">{SITE_ADDRESS_MR_LINE1} {SITE_ADDRESS_MR_LINE2}</Link></p>
+                                        <p lang="mr" className="contact-two__address"><Link href={MAP_LINK} target="_blank" rel="noopener noreferrer">{HEADER_ADDRESS}</Link></p>
                                     </div>
                                 </li>
                             </ul>
@@ -344,21 +343,21 @@ export default function Home() {
                             <div className="visit-card__address">
                                 <i className="icon-pin"></i>
                                 <p>
-                                    <span className="visit-card__address-line1" lang="mr">{SITE_ADDRESS_MR_LINE1}</span>
-                                    <span className="visit-card__address-line2" lang="mr">{SITE_ADDRESS_MR_LINE2}</span>
+                                    <span className="visit-card__address-line1" lang="mr">{HEADER_ADDRESS_LINE1}</span>
+                                    <span className="visit-card__address-line2" lang="mr">{HEADER_ADDRESS_LINE2}</span>
                                 </p>
                             </div>
 
                             <div className="visit-card__actions">
-                                <Link href={SITE_MAP_URL} target="_blank" rel="noopener noreferrer" className="thm-btn" lang="mr">
+                                <Link href={HEADER_MAP_URL} target="_blank" rel="noopener noreferrer" className="thm-btn" lang="mr">
                                     दिशादर्शन मिळवा
                                     <span>
                                         <i className="icon-arrow-right"></i>
                                     </span>
                                 </Link>
-                                <Link href={SITE_PHONE_TEL} className="visit-card__phone" lang="mr">
+                                <Link href={HEADER_PHONE_TEL} className="visit-card__phone" lang="mr">
                                     <i className="icon-call"></i>
-                                    {SITE_PHONE_DISPLAY_MR}
+                                    {HEADER_PHONE_DISPLAY}
                                 </Link>
                             </div>
                         </div>

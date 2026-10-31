@@ -41,9 +41,9 @@ export default function Cta() {
                             याच कर्तव्यभावनेतून आम्ही समाजासाठी कार्य करतो.</p>
                     </div>
                     <div className="cta-one__btn-box wow fadeInUp" data-wow-delay="200ms">
-                        <Link href="/about" className="cta-one__btn-1 thm-btn">आमच्याविषयी<span><i
+                        <Link href="/parichaya" className="cta-one__btn-1 thm-btn">आमच्याविषयी<span><i
                                     className="icon-arrow-right"></i></span></Link>
-                        <Link href="/contact" className="cta-one__btn-2 thm-btn">संपर्क साधा<span><i
+                        <Link href="/sampark" className="cta-one__btn-2 thm-btn">संपर्क साधा<span><i
                                     className="icon-arrow-right"></i></span></Link>
                     </div>
                 </div>

@@ -40,7 +40,7 @@ export default function HeaderNavRow({ isMobileMenu, handleMobileMenu }) {
                     </div>
                 </div>
                 <div className="main-menu__btn-box">
-                    <Link href="/about" className="main-menu__btn thm-btn">{HEADER_CTA_LABEL}<span><i
+                    <Link href="/parichaya" className="main-menu__btn thm-btn">{HEADER_CTA_LABEL}<span><i
                                 className="icon-arrow-right"></i></span></Link>
                 </div>
             </div>

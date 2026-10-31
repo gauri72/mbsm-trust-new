@@ -48,7 +48,7 @@ export default function Banner() {
                             <p className="main-slider-three__text">We help companies develop powerful corporate social
                                 responsibility, <br/> grantmaking, and employee engagement strategies. Dicta sunt </p>
                             <div className="main-slider-three__btn-box">
-                                <Link href="about" className="thm-btn main-slider-three__btn">Discover more<span><i
+                                <Link href="/parichaya" className="thm-btn main-slider-three__btn">Discover more<span><i
                                             className="icon-arrow-right"></i></span></Link>
                             </div>
                         </div>
@@ -70,7 +70,7 @@ export default function Banner() {
                             <p className="main-slider-three__text">We help companies develop powerful corporate social
                                 responsibility, <br/> grantmaking, and employee engagement strategies. Dicta sunt </p>
                             <div className="main-slider-three__btn-box">
-                                <Link href="about" className="thm-btn main-slider-three__btn">Discover more<span><i
+                                <Link href="/parichaya" className="thm-btn main-slider-three__btn">Discover more<span><i
                                             className="icon-arrow-right"></i></span></Link>
                             </div>
                         </div>
@@ -92,7 +92,7 @@ export default function Banner() {
                             <p className="main-slider-three__text">We help companies develop powerful corporate social
                                 responsibility, <br/> grantmaking, and employee engagement strategies. Dicta sunt </p>
                             <div className="main-slider-three__btn-box">
-                                <Link href="about" className="thm-btn main-slider-three__btn">Discover more<span><i
+                                <Link href="/parichaya" className="thm-btn main-slider-three__btn">Discover more<span><i
                                             className="icon-arrow-right"></i></span></Link>
                             </div>
                         </div>
