@@ -174,7 +174,7 @@ export default function Menu() {
                 <li className="dropdown">
                     <Link href="#">Donation</Link>
                     <ul className="shadow-box">
-                        <li><Link href="donation">Donation</Link></li>
+                        <li><Link href="/denagi">Donation</Link></li>
                         <li><Link href="donation-carousel">Donation Carousel</Link></li>
                         <li><Link href="donation-details">Donation Details</Link></li>
                     </ul>

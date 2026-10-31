@@ -30,7 +30,7 @@ export default function Feature() {
                                 <span className="icon-love"></span>
                             </div>
                             <div className="feature-one__content">
-                                <h4><Link href="donation">Donate</Link></h4>
+                                <h4><Link href="/denagi">Donate</Link></h4>
                                 <p>Dicta sunt explicabo. Nemo enim ipsam voluptatem quia </p>
                             </div>
                         </div>

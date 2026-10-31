@@ -1040,7 +1040,7 @@ ul {
   position: relative;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: capitalize;
   line-height: 20px;
 }
@@ -12097,6 +12097,8 @@ ul {
   color: var(--hdr-maroon);
 }
 
+
+
 /* dropdown panels — maroon with gold hover */
 .main-menu .main-menu__list>li>ul,
 .main-menu .main-menu__list>li>ul>li>ul,
@@ -13621,7 +13623,7 @@ ul {
 .snav__link-label {
   font-family: var(--anity-font), 'Hind', sans-serif;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.2px;
 }
 
@@ -13657,6 +13659,54 @@ ul {
 
 .snav__link.is-current .snav__link-chev {
   border-color: var(--snav-gold);
+}
+
+/* expandable group (e.g. कार्य): a button row whose chevron points down, up when open */
+.snav__toggle {
+  width: 100%;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.snav__toggle .snav__link-chev,
+.snav__toggle:hover .snav__link-chev,
+.snav__toggle:focus-visible .snav__link-chev {
+  transform: rotate(135deg);
+}
+
+.snav__item--group.is-open .snav__toggle .snav__link-chev {
+  transform: rotate(-45deg);
+}
+
+.snav__sub {
+  margin: 0;
+  padding: 2px 0 10px;
+  list-style: none;
+  background-color: rgba(0, 0, 0, 0.14);
+}
+
+.snav__sub-link {
+  display: block;
+  padding: 11px 20px 11px 40px;
+  font-family: var(--anity-font), 'Hind', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(251, 241, 220, 0.82);
+  text-decoration: none;
+  transition: color 180ms ease, padding-left 180ms ease;
+}
+
+.snav__sub-link:hover,
+.snav__sub-link:focus-visible {
+  color: var(--snav-cream);
+  padding-left: 46px;
+  outline: none;
+}
+
+.snav__sub-link.is-current {
+  color: var(--snav-gold-lite);
 }
 
 /* ---------- Footer ---------- */
@@ -15020,4 +15070,325 @@ ul {
   .cta-one .cta-one__text {
     font-size: 17px;
   }
+}
+
+/*==================================================================
+  Header nav — segmented strip + dropdown card (desktop, ≥1200px)
+  - one rounded strip sits behind the whole group of links
+  - the current / hovered link becomes a raised cream pill inside it
+  - dropdowns (e.g. आमचे कार्य) get a thin chevron and open as a light
+    rounded card with a pointer, centred under their link
+==================================================================*/
+@media (min-width: 1200px) {
+  /* the strip: drawn behind the links, vertically centred on them */
+  .main-header .main-menu .main-menu__list,
+  .stricky-header .main-menu__list {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .main-header .main-menu .main-menu__list::before,
+  .stricky-header .main-menu__list::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -22px;
+    right: -22px;
+    height: 50px;
+    transform: translateY(-50%);
+    border-radius: 999px;
+    background-color: rgba(58, 4, 5, 0.08);
+    border: 1px solid rgba(58, 4, 5, 0.16);
+    box-shadow: inset 0 1px 2px rgba(58, 4, 5, 0.10), 0 1px 0 rgba(255, 248, 231, 0.45);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* active / hover pill: maroon with white text, raised */
+  .main-header .main-menu .main-menu__list>li>a::before,
+  .stricky-header .main-menu__list>li>a::before {
+    background-color: #620208;
+    box-shadow: 0 3px 8px rgba(58, 4, 5, 0.30);
+  }
+
+  .main-header .main-menu .main-menu__list>li>a,
+  .stricky-header .main-menu__list>li>a {
+    padding: 8px 12px;
+    margin: -8px -12px;
+  }
+
+  /* enough room between links that two neighbouring pills never touch */
+  .main-header .main-menu__main-menu-box .main-menu__list>li+li,
+  .stricky-header .main-menu__main-menu-box .main-menu__list>li+li {
+    margin-left: 30px;
+  }
+
+  .main-header .main-menu .main-menu__list>li.current>a,
+  .main-header .main-menu .main-menu__list>li:hover>a,
+  .stricky-header .main-menu__list>li.current>a,
+  .stricky-header .main-menu__list>li:hover>a {
+    color: #FFFFFF;
+    transform: none;
+  }
+
+  /* the dropdown chevron follows the white text on the maroon pill */
+  .main-header .main-menu .main-menu__list>li.current>a::after,
+  .main-header .main-menu .main-menu__list>li:hover>a::after,
+  .stricky-header .main-menu__list>li.current>a::after,
+  .stricky-header .main-menu__list>li:hover>a::after {
+    color: #FFFFFF;
+  }
+
+  /* dropdown trigger: thin drawn chevron instead of the icon-font arrow */
+  .main-header .main-menu .main-menu__list>li.dropdown>a,
+  .stricky-header .main-menu__list>li.dropdown>a {
+    padding-right: 30px;
+  }
+
+  .main-header .main-menu .main-menu__list>li.dropdown>a::after,
+  .stricky-header .main-menu__list>li.dropdown>a::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    width: 7px;
+    height: 7px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    font-size: 0;
+    transform: translateY(-70%) rotate(45deg);
+    transition: transform 250ms ease;
+  }
+
+  .main-header .main-menu .main-menu__list>li.dropdown:hover>a::after,
+  .main-header .main-menu .main-menu__list>li.dropdown:focus-within>a::after,
+  .stricky-header .main-menu__list>li.dropdown:hover>a::after,
+  .stricky-header .main-menu__list>li.dropdown:focus-within>a::after {
+    transform: translateY(-25%) rotate(-135deg);
+  }
+
+  /* dropdown — one horizontal row, a short band just under the header (over
+     the mantra strip) so it never covers the hero's faces.
+     Colours: white bar (no border, soft shadow), maroon text and icons;
+     hover and current page = marigold-yellow pill with black text and icon */
+  .main-header .main-menu .main-menu__list>li>ul.nav-dropdown,
+  .stricky-header .main-menu__list>li>ul.nav-dropdown {
+    top: calc(100% - 24px);
+    left: 50%;
+    min-width: 0;
+    width: max-content;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    padding: 6px;
+    border: 0;
+    border-radius: 999px;
+    background: #FFFFFF;
+    box-shadow:
+      0 14px 30px -8px rgba(20, 1, 2, 0.45),
+      0 4px 10px rgba(20, 1, 2, 0.18);
+    transform: translate(-50%, 8px);
+    transition: opacity 220ms ease, transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1), visibility 220ms;
+    overflow: visible;
+  }
+
+  .main-header .main-menu .main-menu__list>li:hover>ul.nav-dropdown,
+  .main-header .main-menu .main-menu__list>li:focus-within>ul.nav-dropdown,
+  .stricky-header .main-menu__list>li:hover>ul.nav-dropdown,
+  .stricky-header .main-menu__list>li:focus-within>ul.nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+  }
+
+  /* pointer toward the trigger */
+  .main-header .main-menu .main-menu__list>li>ul.nav-dropdown::before,
+  .stricky-header .main-menu__list>li>ul.nav-dropdown::before {
+    content: "";
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    background-color: #FFFFFF;
+    border: 0;
+    border-radius: 3px 0 0 0;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  .main-header .main-menu .main-menu__list>li>ul.nav-dropdown>li,
+  .stricky-header .main-menu__list>li>ul.nav-dropdown>li {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  .main-header .main-menu .main-menu__list>li>ul.nav-dropdown>li+li,
+  .stricky-header .main-menu__list>li>ul.nav-dropdown>li+li {
+    border-top: 0;
+    margin-top: 0;
+  }
+
+  /* item: icon + label, a pill of its own */
+  .main-header .main-menu .main-menu__list>li>ul.nav-dropdown>li>a,
+  .stricky-header .main-menu__list>li>ul.nav-dropdown>li>a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 16px 5px 5px;
+    border-radius: 999px;
+    font-family: var(--anity-font), 'Hind', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 22px;
+    white-space: nowrap;
+    color: #620208;
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+
+  .nav-dropdown__icon {
+    flex: 0 0 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: #620208;
+    font-size: 14px;
+    transition: color 200ms ease;
+  }
+
+  .nav-dropdown__arrow {
+    display: none;
+  }
+
+  /* hover: marigold-yellow pill, black text */
+  .main-header .main-menu .main-menu__list>li>ul.nav-dropdown>li>a:hover,
+  .main-header .main-menu .main-menu__list>li>ul.nav-dropdown>li>a:focus-visible,
+  .stricky-header .main-menu__list>li>ul.nav-dropdown>li>a:hover,
+  .stricky-header .main-menu__list>li>ul.nav-dropdown>li>a:focus-visible {
+    background: #F2B632;
+    color: #1A0505;
+    padding-left: 5px;
+    outline: none;
+  }
+
+  .nav-dropdown>li>a:hover .nav-dropdown__icon,
+  .nav-dropdown>li>a:focus-visible .nav-dropdown__icon {
+    color: #1A0505;
+  }
+
+  /* current page: same marigold-yellow pill, black text */
+  .main-header .main-menu .main-menu__list>li>ul.nav-dropdown>li.current>a,
+  .stricky-header .main-menu__list>li>ul.nav-dropdown>li.current>a {
+    background: #F2B632;
+    color: #1A0505;
+    padding-left: 5px;
+    box-shadow: none;
+  }
+
+  .nav-dropdown>li.current>a .nav-dropdown__icon {
+    color: #1A0505;
+  }
+}
+/*==================================================================
+  Mobile / tablet drawer — standard navigation-drawer pattern:
+  full-width rows with hairline dividers; current page = soft gold tint,
+  gold text and a gold bar on the left edge; the आमचे कार्य group is an
+  accordion whose pages open in place, indented on a darker band
+==================================================================*/
+.snav__toggle .snav__link-label,
+.snav__link .snav__link-label {
+  flex: 1 1 auto;
+}
+
+/* the group's pages: indented on a slightly darker band */
+.snav__sub {
+  margin: 0;
+  padding: 4px 0 8px;
+  border-top: 1px solid var(--snav-hair);
+  background-color: rgba(0, 0, 0, 0.18);
+}
+
+.snav__sub-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 20px 12px 34px;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(251, 241, 220, 0.85);
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.snav__sub-icon {
+  flex: 0 0 18px;
+  display: inline-flex;
+  justify-content: center;
+  width: 18px;
+  font-size: 14px;
+  color: rgba(233, 180, 90, 0.75);
+  transition: color 180ms ease;
+}
+
+.snav__sub-link:hover,
+.snav__sub-link:focus-visible {
+  padding-left: 34px;
+  background-color: rgba(217, 152, 42, 0.10);
+  color: var(--snav-cream);
+  outline: none;
+}
+
+/* current page inside the group: same marker as a top-level current row */
+.snav__sub-link.is-current {
+  color: var(--snav-gold-lite);
+  background-color: rgba(217, 152, 42, 0.13);
+  box-shadow: inset 3px 0 0 var(--snav-gold);
+}
+
+.snav__sub-link.is-current .snav__sub-icon {
+  color: var(--snav-gold-lite);
+}
+
+/* group row: chevron points down, up while open; when one of its pages is
+   current, the row shows gold text only (the page itself carries the marker) */
+.snav__toggle.is-current {
+  background-color: transparent;
+  box-shadow: none;
+  color: var(--snav-gold-lite);
+}
+
+.snav__item--group.is-open .snav__toggle {
+  background-color: rgba(217, 152, 42, 0.06);
+}
+
+/* drawer arrows and sub-page icons: white normally, yellow on hover / current */
+.snav__link .snav__link-chev,
+.snav__toggle .snav__link-chev {
+  border-color: #FFFFFF;
+}
+
+.snav__link:hover .snav__link-chev,
+.snav__link:focus-visible .snav__link-chev,
+.snav__link.is-current .snav__link-chev,
+.snav__toggle.is-current .snav__link-chev,
+.snav__item--group.is-open .snav__toggle .snav__link-chev {
+  border-color: #F2B632;
+}
+
+.snav__sub-icon {
+  color: #FFFFFF;
+}
+
+.snav__sub-link:hover .snav__sub-icon,
+.snav__sub-link:focus-visible .snav__sub-icon,
+.snav__sub-link.is-current .snav__sub-icon {
+  color: #F2B632;
+}
+
+/* the group row keeps yellow text only; the bar marks the page itself */
+.snav__toggle.is-current {
+  box-shadow: none;
 }

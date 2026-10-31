@@ -65,7 +65,7 @@ export default function Cta() {
                     </div>
                     <h2 className="cta-two__title">Join Us in the Fight Against<br/> Poverty Support</h2>
                     <div className="cta-two__btn-box">
-                        <Link href="donation" className="cta-two__btn thm-btn">Donate Now<span><i
+                        <Link href="/denagi" className="cta-two__btn thm-btn">Donate Now<span><i
                                     className="icon-arrow-right"></i></span></Link>
                     </div>
                 </div>

@@ -11,9 +11,9 @@ const SEVA = [
 ]
 
 const QUICK_LINKS = [
+    { href: "/", label: "आमचे मुखपृष्ठ" },
     { href: "/parichaya", label: "आमची वाटचाल" },
-    { href: "/events", label: "सोहळे व कार्यक्रम" },
-    { href: "/aathavani", label: "आठवणींचा ठेवा" },
+    { href: "/denagi", label: "देणगी व सहकार्य" },
     { href: "/sampark", label: "संवाद साधा" },
 ]
 
@@ -63,7 +63,7 @@ export default function Footer1() {
                             <ul className="footer-widget__services-list footer-widget__services-list--icon list-unstyled">
                                 {QUICK_LINKS.map((l) => (
                                     <li key={l.href}>
-                                        <Link href={l.href}><i className="icon-arrow-right"></i><span>{l.label}</span></Link>
+                                        <Link href={l.href} onClick={l.href === "/" ? handleHomeClick : undefined}><i className="icon-arrow-right"></i><span>{l.label}</span></Link>
                                     </li>
                                 ))}
                             </ul>

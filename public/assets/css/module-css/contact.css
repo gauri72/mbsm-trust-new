@@ -1553,5 +1553,36 @@
 }
 
 /*--------------------------------------------------------------
+# Contact form — tighter spacing on desktop / tablet (≥768px)
+--------------------------------------------------------------*/
+@media (min-width: 768px) {
+    .contact-one.contact-one--ornate {
+        padding: 72px 0;
+    }
+
+    .contact-one--ornate .contact-one__inner {
+        padding: 48px 90px 44px;
+    }
+
+    .contact-one--ornate .contact-one__inner .section-title {
+        margin-bottom: 30px;
+    }
+
+    .contact-one--ornate .contact-one__input-box {
+        margin-bottom: 16px;
+    }
+
+    .contact-one--ornate .contact-one__input-box.text-message-box {
+        margin-bottom: 28px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .contact-one--ornate .contact-one__inner {
+        padding: 40px 36px 36px;
+    }
+}
+
+/*--------------------------------------------------------------
 # End
 --------------------------------------------------------------*/

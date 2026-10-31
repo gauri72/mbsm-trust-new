@@ -1,0 +1,45 @@
+.root {
+  padding: 100px 0 110px;
+  background-color: var(--wl-cream);
+}
+
+.root :global(.section-title) {
+  margin-bottom: 20px;
+}
+
+.root :global(.section-title__tagline-box) {
+  display: flex;
+  justify-content: center;
+}
+
+.root :global(.section-title__tagline) {
+  color: var(--wl-maroon);
+  font-weight: 700;
+}
+
+.root :global(.section-title__title) {
+  color: var(--wl-ink);
+}
+
+.text {
+  max-width: 560px;
+  margin: 0 auto 34px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.btnBox {
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .root {
+    padding: 60px 0 70px;
+  }
+
+  .text {
+    font-size: 16px;
+    line-height: 27px;
+  }
+}

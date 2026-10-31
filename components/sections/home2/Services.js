@@ -63,7 +63,7 @@ export default function Services() {
                                                         <div className="services-one__icon">
                                                             <span className="icon-help"></span>
                                                         </div>
-                                                        <h3 className="services-one__title"><Link href="donation">Get Help
+                                                        <h3 className="services-one__title"><Link href="/denagi">Get Help
                                                                 And Support</Link>
                                                         </h3>
                                                         <p className="services-one__text">category that involves giving
@@ -122,7 +122,7 @@ export default function Services() {
                                                         <div className="services-one__icon">
                                                             <span className="icon-help"></span>
                                                         </div>
-                                                        <h3 className="services-one__title"><Link href="donation">Get Help
+                                                        <h3 className="services-one__title"><Link href="/denagi">Get Help
                                                                 And Support</Link>
                                                         </h3>
                                                         <p className="services-one__text">category that involves giving
@@ -181,7 +181,7 @@ export default function Services() {
                                                         <div className="services-one__icon">
                                                             <span className="icon-help"></span>
                                                         </div>
-                                                        <h3 className="services-one__title"><Link href="donation">Get Help
+                                                        <h3 className="services-one__title"><Link href="/denagi">Get Help
                                                                 And Support</Link>
                                                         </h3>
                                                         <p className="services-one__text">category that involves giving

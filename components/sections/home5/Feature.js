@@ -16,7 +16,7 @@ export default function Services() {
                                 <span className="icon-love"></span>
                             </div>
                             <div className="feature-two__content">
-                                <h3 className="feature-two__title"><Link href="donation">Education Fund</Link></h3>
+                                <h3 className="feature-two__title"><Link href="/denagi">Education Fund</Link></h3>
                                 <p className="feature-two__text">Charity and Donation is a category that involves </p>
                                 <Link href="donation-details" className="feature-two__read-more">rEAD mORe<span
                                         className="icon-arrow-right-two"></span></Link>
@@ -31,7 +31,7 @@ export default function Services() {
                                 <span className="icon-dolor"></span>
                             </div>
                             <div className="feature-two__content">
-                                <h3 className="feature-two__title"><Link href="donation">Crisis Helping Fund</Link></h3>
+                                <h3 className="feature-two__title"><Link href="/denagi">Crisis Helping Fund</Link></h3>
                                 <p className="feature-two__text">Charity and Donation is a category that involves </p>
                                 <Link href="donation-details" className="feature-two__read-more">rEAD mORe<span
                                         className="icon-arrow-right-two"></span></Link>
@@ -46,7 +46,7 @@ export default function Services() {
                                 <span className="icon-hand"></span>
                             </div>
                             <div className="feature-two__content">
-                                <h3 className="feature-two__title"><Link href="donation">Children Fund</Link></h3>
+                                <h3 className="feature-two__title"><Link href="/denagi">Children Fund</Link></h3>
                                 <p className="feature-two__text">Charity and Donation is a category that involves </p>
                                 <Link href="donation-details" className="feature-two__read-more">rEAD mORe<span
                                         className="icon-arrow-right-two"></span></Link>

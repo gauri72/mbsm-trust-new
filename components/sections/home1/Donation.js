@@ -61,7 +61,7 @@ export default function Donation() {
                                 </ul>
                                 <div className="donate-now wow fadeInUp" data-wow-delay=".7s">
                                     <div className="donation-one__btn-box">
-                                        <Link href="/donation" className="donation-one__btn thm-btn">सहभागी होण्याचे मार्ग<span><i
+                                        <Link href="/denagi" className="donation-one__btn thm-btn">सहभागी होण्याचे मार्ग<span><i
                                                     className="icon-arrow-right"></i></span></Link>
                                     </div>
                                 </div>
