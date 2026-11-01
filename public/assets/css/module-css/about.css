@@ -1216,6 +1216,60 @@
     }
 }
 
+/* Tablet (768-1199): keep CTA + address on one row — the longer address
+   ("श्री शंकरदत्त महाराज मठ, …") wraps onto two lines beside the button
+   instead of dropping the whole block onto its own left-aligned row */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .about-One--ornate .about-One__btn-and-need-help {
+        flex-wrap: nowrap;
+        justify-content: center;
+        gap: 28px;
+    }
+    .about-One--ornate .about-One__btn-box {
+        flex-shrink: 0;
+    }
+    .about-One--ornate .about-One__need-help {
+        min-width: 0;
+    }
+    /* address on two fixed lines (math name / street + city) so the block
+       is only as wide as its text and the pair stays centred */
+    .about-One--ornate .about-One__address-place,
+    .about-One--ornate .about-One__address-nowrap {
+        display: block;
+    }
+}
+
+/* Small laptop / landscape tablet (992-1199): columns are stacked here too,
+   so centre the text block like the 768-991 layout */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .about-One--ornate .about-One__right {
+        text-align: center;
+    }
+    .about-One--ornate .section-title.text-left,
+    .about-One--ornate .section-title {
+        text-align: center;
+    }
+    .about-One--ornate .section-title__tagline-box {
+        display: flex;
+        justify-content: center;
+    }
+    .about-One--ornate .about-One__tab-box .tab-buttons {
+        justify-content: center;
+    }
+    .about-One--ornate .tabs-content__inner {
+        text-align: center;
+    }
+    .about-One--ornate .about-One__btn-and-need-help {
+        align-items: center;
+    }
+    .about-One--ornate .about-One__need-help {
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        gap: 12px;
+    }
+}
+
 /* Mobile: top & bottom ornamental border only (no side strips / corners), stack & centre everything */
 @media (max-width: 767px) {
     .about-One.about-One--ornate {

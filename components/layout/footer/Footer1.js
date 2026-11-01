@@ -1,7 +1,7 @@
 'use client'
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { HEADER_TITLE, HEADER_LOGO_SRC, HEADER_PHONE_DISPLAY, HEADER_PHONE_TEL, HEADER_EMAIL, HEADER_EMAIL_MAILTO, HEADER_ADDRESS_LINE1, HEADER_ADDRESS_LINE2, HEADER_MAP_URL } from "@/lib/siteInfo"
+import { HEADER_TITLE, HEADER_LOGO_SRC, HEADER_PHONE_DISPLAY, HEADER_PHONE_TEL, HEADER_EMAIL, HEADER_EMAIL_MAILTO, HEADER_ADDRESS_PLACE, HEADER_ADDRESS_LINE1, HEADER_ADDRESS_CITY, HEADER_MAP_URL } from "@/lib/siteInfo"
 
 const SEVA = [
     "मानवसेवा व मदतकार्य",
@@ -85,7 +85,7 @@ export default function Footer1() {
                                     <span className="icon"><span className="icon-pin-two"></span></span>
                                     <p>
                                         <Link href={HEADER_MAP_URL} target="_blank" rel="noopener noreferrer">
-                                            {HEADER_ADDRESS_LINE1}<br /> {HEADER_ADDRESS_LINE2}
+                                            {HEADER_ADDRESS_PLACE}<br /> {HEADER_ADDRESS_LINE1} {HEADER_ADDRESS_CITY}
                                         </Link>
                                     </p>
                                 </li>

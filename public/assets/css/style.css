@@ -9547,14 +9547,13 @@ ul {
   }
 }
 
-/* TrimmedLoopVideo: two stacked <video>s crossfaded to mask the
-   restart-to-0 seek, so the trimmed loop plays without a visible pause. */
-.trimmed-loop-video {
+/* AlphaLoopVideo: one transparent clip on a native loop */
+.alpha-loop-video {
   position: relative;
   display: block;
 }
 
-.trimmed-loop-video__video {
+.alpha-loop-video__video {
   position: absolute;
   top: 0;
   left: 0;
@@ -9562,10 +9561,9 @@ ul {
   height: 100%;
   object-fit: contain;
   object-position: bottom;
-  transition: opacity 450ms linear;
 }
 
-.cta-one__elephant.trimmed-loop-video {
+.cta-one__elephant.alpha-loop-video {
   position: absolute;
 }
 
@@ -15518,4 +15516,233 @@ ul {
    Applied per word: switching "blws" off everywhere breaks रु / रू / गु. */
 .mr-ri-below {
   font-feature-settings: "blws" 0;
+}
+
+/* Home "मठातील आगामी उत्सव": tighter, compact spacing */
+.event-one.event-one--welcome-bg {
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+
+.event-one--welcome-bg .event-one__head {
+  margin-bottom: 36px;
+}
+
+
+
+/*==================================================================
+    Footer readability — larger, bolder text.
+    Body text uses Hind for Devanagari (real 500/600/700 weights; Tiro
+    has only a regular cut, which Chrome won't visibly embolden). The
+    contact links previously had no Devanagari font in their stack and
+    fell back to the OS font, so they are pinned to Hind as well.
+==================================================================*/
+/* Hind draws Devanagari digits (०-९) with Latin shapes, so take only the
+   digits from Tiro — "+९१ ७५८८७ ९७७८८" / "एफ ७०" keep Marathi numerals */
+@font-face {
+  font-family: 'Tiro Devanagari Digits';
+  src: url('/assets/fonts/tiro-devanagari-marathi/TiroDevanagariMarathi-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0966-096F;
+}
+
+.site-footer--shubharay .footer-widget__about-text,
+.site-footer--shubharay .footer-widget__services-list li,
+.site-footer--shubharay .footer-widget__services-list li a,
+.site-footer--shubharay .footer-widget__contact-list li,
+.site-footer--shubharay .footer-widget__contact-list li p,
+.site-footer--shubharay .footer-widget__contact-list li a,
+.site-footer--shubharay .site-footer__bottom p,
+.site-footer--shubharay .site-footer__bottom a {
+  font-family: var(--anity-font), 'Tiro Devanagari Digits', 'Hind', sans-serif;
+}
+
+.site-footer--shubharay .footer-widget__title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.site-footer--shubharay .footer-widget__about-text {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.75;
+  color: rgba(58, 4, 5, 0.9);
+}
+
+.site-footer--shubharay .footer-widget__services-list li,
+.site-footer--shubharay .footer-widget__services-list li a,
+.site-footer--shubharay .footer-widget__contact-list li,
+.site-footer--shubharay .footer-widget__contact-list li p,
+.site-footer--shubharay .footer-widget__contact-list li a {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.site-footer--shubharay .site-footer__copyright-text,
+.site-footer--shubharay .site-footer__credit-text {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.site-footer--shubharay .site-footer__credit-name,
+.site-footer--shubharay .site-footer__copyright-text a,
+.site-footer--shubharay .site-footer__copyright-text span {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .site-footer--shubharay .footer-widget__title {
+    font-size: 22px;
+  }
+
+  .site-footer--shubharay .footer-widget__about-text,
+  .site-footer--shubharay .footer-widget__services-list li,
+  .site-footer--shubharay .footer-widget__services-list li a,
+  .site-footer--shubharay .footer-widget__contact-list li,
+  .site-footer--shubharay .footer-widget__contact-list li p,
+  .site-footer--shubharay .footer-widget__contact-list li a {
+    font-size: 17px;
+  }
+
+  .site-footer--shubharay .site-footer__copyright-text,
+  .site-footer--shubharay .site-footer__credit-text,
+  .site-footer--shubharay .site-footer__credit-name {
+    font-size: 15px;
+  }
+}
+
+/* Tiro has no bold cut: thicken the all-digit phone number slightly so it
+   matches the SemiBold contact text beside it */
+.site-footer--shubharay .footer-widget__contact-list li a[href^="tel:"] {
+  -webkit-text-stroke: 0.3px currentColor;
+}
+
+/*==================================================================
+    Header readability — larger, bolder text (same approach as the
+    footer: Hind's real weights for Devanagari, Tiro only for digits)
+==================================================================*/
+/* top contact strip (tablet/phone keep their own smaller sizes) */
+@media (min-width: 992px) {
+  .header-topbar {
+    font-size: 16px;
+  }
+}
+
+.header-topbar a {
+  font-family: var(--anity-font), 'Tiro Devanagari Digits', 'Hind', sans-serif;
+  font-weight: 500;
+}
+
+/* phone number is all Tiro digits (no bold cut): thicken to match */
+.header-topbar a[href^="tel:"] {
+  -webkit-text-stroke: 0.3px currentColor;
+}
+
+/* logo title: Tiro has no bold, so thicken its strokes */
+.main-header .shubharay-logo__title,
+.stricky-header .shubharay-logo__title {
+  -webkit-text-stroke: 0.4px currentColor;
+}
+
+.main-header .main-menu__connect-title,
+.stricky-header .main-menu__connect-title {
+  font-family: var(--anity-font), 'Hind', sans-serif;
+  font-weight: 600;
+}
+
+/* desktop nav row */
+@media (min-width: 1200px) {
+  .main-header .main-menu__connect-title,
+  .stricky-header .main-menu__connect-title {
+    font-size: 16px;
+  }
+
+  .main-header .main-menu .main-menu__list > li > a,
+  .stricky-header .main-menu__list > li > a {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .main-menu .nav-dropdown__label {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .main-menu__btn.thm-btn {
+    font-family: var(--anity-font), 'Hind', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+
+/* Home events label "उत्सव-परंपरा": dark text on the gold field reads
+   thinner than the light labels on the maroon sections (same 20px / 700
+   synthetic bold in Tiro), so thicken it to match them visually */
+.event-one--welcome-bg .section-title__tagline {
+  font-size: 20px;
+  -webkit-text-stroke: 0.6px currentColor;
+}
+
+/* Footer "उपयुक्त दुवे": sit centred between the आमचे कार्य text and the
+   संपर्क माहिती column, so it has equal space on its left and right */
+@media (min-width: 1200px) {
+  /* आमचे कार्य column sized to its text (no hidden slack after it) */
+  .site-footer--shubharay .site-footer__grid {
+    grid-template-columns: minmax(0, 1.6fr) max-content minmax(0, 1fr) minmax(0, 1.3fr);
+  }
+
+  .site-footer--shubharay .footer-widget__links {
+    justify-self: center;
+    width: max-content;
+  }
+}
+
+/* Home events on tablet & phone (cards stacked): the card's own 30px
+   bottom margin stacked on the row's 30px row-gap (60px between cards).
+   Drop it so cards are the standard 30px apart, like the desktop gutter. */
+@media (max-width: 991px) {
+  .event-one--welcome-bg .event-one__single {
+    margin-bottom: 0;
+    height: auto;
+  }
+}
+
+/* Home events — consistent tablet & phone rhythm:
+   heading → cards = card gap = cards → button = 30px, and equal space
+   between the ornamental border and the content at top and bottom
+   (40px tablet / 30px phone). Paddings are offset for the 30px border
+   and the title/button line boxes. */
+@media (max-width: 991px) {
+  .event-one.event-one--welcome-bg {
+    padding-top: 77px;
+    padding-bottom: 70px;
+  }
+
+  .event-one--welcome-bg .event-one__head {
+    margin-bottom: 30px;
+  }
+
+  .event-one--welcome-bg .event-one__cta {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .event-one.event-one--welcome-bg {
+    padding-top: 64px;
+    padding-bottom: 60px;
+  }
+}
+
+/* Footer contact address, tablet only: the column is centred, but the
+   two address lines read better left-aligned beside the pin icon */
+@media (min-width: 768px) and (max-width: 991px) {
+  .site-footer--shubharay .footer-widget__contact-list li.footer-widget__contact-list--multiline p,
+  .site-footer--shubharay .footer-widget__contact-list li.footer-widget__contact-list--multiline p a {
+    text-align: left;
+  }
 }

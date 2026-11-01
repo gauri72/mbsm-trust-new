@@ -113,7 +113,7 @@ export default function MissionVision() {
                                     </div>
                                     <div className="content">
                                         <p lang="mr">आम्हाला भेट द्या</p>
-                                        <h4><Link href={HEADER_MAP_URL} target="_blank" rel="noopener noreferrer" lang="mr">{HEADER_ADDRESS_PLACE} <span className="about-One__address-nowrap">{HEADER_ADDRESS_LINE1} {HEADER_ADDRESS_CITY}</span></Link></h4>
+                                        <h4><Link href={HEADER_MAP_URL} target="_blank" rel="noopener noreferrer" lang="mr"><span className="about-One__address-place">{HEADER_ADDRESS_PLACE}</span> <span className="about-One__address-nowrap">{HEADER_ADDRESS_LINE1} {HEADER_ADDRESS_CITY}</span></Link></h4>
                                     </div>
                                 </div>
                             </div>
