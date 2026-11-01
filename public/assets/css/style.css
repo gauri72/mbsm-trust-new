@@ -9558,14 +9558,6 @@ ul {
   position: absolute;
 }
 
-/* Still fallback (non-Apple browsers): the PNG's elephant is drawn ~18%
-   larger than the video's, so shrink it about the feet to match the
-   video's size, trunk reach and footing. */
-.cta-one__elephant .trimmed-loop-video__still {
-  transform: scale(0.85);
-  transform-origin: 40% 93%;
-}
-
 .cta-one__tagline {
   display: inline-block;
   margin-bottom: 16px;
@@ -13328,7 +13320,7 @@ ul {
     Styled like the footer bottom bar (.site-footer__bottom):
     maroon #620208 field, cream 15px DM Sans text, gold #D9982A
     accents (icons), gold-lite #E9B45A on hover.
-    Desktop & tablet: one line. Phone (<768px): centred, two lines.
+    Desktop & tablet: one line (contacts left, address right). Phone (<768px): centred, two lines.
 ==================================================================*/
 .header-topbar {
   position: relative;
@@ -13405,11 +13397,34 @@ ul {
   }
 }
 
-@media (max-width: 767px) {
+/* tablet: same left / right layout as desktop, slightly smaller so the
+   full address still fits on one line */
+@media (min-width: 768px) and (max-width: 991px) {
   .header-topbar {
-    font-size: 14px;
+    font-size: 13px;
   }
 
+  .header-topbar__inner {
+    flex-wrap: nowrap;
+    gap: 16px;
+  }
+
+  .header-topbar__list {
+    gap: 6px 14px;
+    flex-wrap: nowrap;
+  }
+
+  .header-topbar__list li + li {
+    padding-left: 14px;
+  }
+
+  .header-topbar__address {
+    white-space: nowrap;
+  }
+}
+
+/* phone: phone | email on the first line, address centred below */
+@media (max-width: 767px) {
   .header-topbar__inner,
   .header-topbar__list {
     justify-content: center;
@@ -13422,16 +13437,22 @@ ul {
     padding: 10px 0;
   }
 
+  .header-topbar__address {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .header-topbar {
+    font-size: 14px;
+  }
+
   .header-topbar__list {
     gap: 4px 16px;
   }
 
   .header-topbar__list li + li {
     padding-left: 16px;
-  }
-
-  .header-topbar__address {
-    justify-content: center;
   }
 }
 
@@ -15391,4 +15412,99 @@ ul {
 /* the group row keeps yellow text only; the bar marks the page itself */
 .snav__toggle.is-current {
   box-shadow: none;
+}
+
+/* Home/About "सद्गुरूंचा संदेश" heading: each .about-One__title-line stays on one line */
+.about-One .section-title__title .about-One__title-line {
+  display: block;
+  white-space: nowrap;
+  color: inherit;
+}
+
+.about-One .section-title__title {
+  font-size: 50px;
+  line-height: 62px;
+}
+
+@media (max-width: 1399px) {
+  .about-One .section-title__title {
+    font-size: 46px;
+    line-height: 58px;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-One .section-title__title {
+    font-size: clamp(24px, 9vw, 36px);
+    line-height: 1.4;
+  }
+}
+
+/* About section alignment: tabs share the column width instead of a fixed
+   180px each (they overflowed at ~1200px), CTA/pincode never split, and the
+   image + text columns are vertically centred on desktop. */
+@media (min-width: 768px) {
+  .about-One__tab-box .tab-buttons {
+    max-width: 570px;
+  }
+
+  .about-One__tab-box .tab-buttons .tab-btn {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .about-One__tab-box .tab-buttons .tab-btn span {
+    width: 100%;
+  }
+}
+
+.about-One__btn-box .thm-btn {
+  white-space: nowrap;
+}
+
+.about-One__address-nowrap {
+  white-space: nowrap;
+}
+
+@media (min-width: 1200px) {
+  .about-One--ornate > .container > .row {
+    align-items: center;
+  }
+
+  .about-One--ornate .about-One__right {
+    margin-top: 0;
+  }
+}
+
+.about-One__tab-box .tabs-content__inner p {
+  text-wrap: pretty;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .about-One__tab-box .tab-buttons {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Keep each About tab paragraph to two lines where the column narrows */
+@media (min-width: 768px) and (max-width: 1399px) {
+  .about-One.about-One--ornate .about-One__tab-box .tabs-content__inner p {
+    font-size: 16px;
+    line-height: 34px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .about-One.about-One--ornate .about-One__tab-box .tabs-content__inner p {
+    font-size: 15px;
+    line-height: 32px;
+  }
+}
+
+/* Tiro Devanagari Marathi tucks "ृ" inside "द" (reads like "द्द"); for words
+   such as दृष्टी, turn off its below-base forms so "ृ" sits under "द".
+   Applied per word: switching "blws" off everywhere breaks रु / रू / गु. */
+.mr-ri-below {
+  font-feature-settings: "blws" 0;
 }

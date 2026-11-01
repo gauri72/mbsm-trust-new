@@ -6,10 +6,11 @@ import { useEffect, useRef, useState } from "react"
 // causes a visible stutter/pause) is masked under the fade instead.
 const FADE_MS = 450
 
-// The clips are HEVC-with-alpha .mov files, which only Apple's WebKit
-// renders with transparency. Chrome/Android either can't play them or
-// play them on an opaque box, so those browsers get `fallbackSrc` (a
-// transparent still) instead.
+// Transparent video needs a different file per engine: Apple's WebKit
+// renders HEVC-with-alpha .mov (`src`), while Chrome/Edge/Firefox/Android
+// render VP9-with-alpha .webm (`webmSrc`). Chrome can decode HEVC too but
+// draws it on an opaque box, so the choice is made by engine, not by
+// canPlayType.
 function supportsHevcAlpha() {
     const ua = navigator.userAgent
     const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
@@ -17,19 +18,19 @@ function supportsHevcAlpha() {
     return isIOS || isMacSafari
 }
 
-export default function TrimmedLoopVideo({ src, fallbackSrc, className, trimSeconds = 7 }) {
+export default function TrimmedLoopVideo({ src, webmSrc, className, trimSeconds = 7 }) {
     const aRef = useRef(null)
     const bRef = useRef(null)
     // null until we know the browser on the client, so no opaque video
-    // box ever flashes on browsers that can't do alpha
-    const [mode, setMode] = useState(null)
+    // box ever flashes on browsers that can't do HEVC alpha
+    const [videoSrc, setVideoSrc] = useState(null)
 
     useEffect(() => {
-        setMode(fallbackSrc && !supportsHevcAlpha() ? "image" : "video")
-    }, [fallbackSrc])
+        setVideoSrc(webmSrc && !supportsHevcAlpha() ? webmSrc : src)
+    }, [src, webmSrc])
 
     useEffect(() => {
-        if (mode !== "video") return
+        if (!videoSrc) return
         const a = aRef.current
         const b = bRef.current
         if (!a || !b) return
@@ -97,17 +98,14 @@ export default function TrimmedLoopVideo({ src, fallbackSrc, className, trimSeco
             gestures.forEach((g) => window.removeEventListener(g, onGesture))
             cancelAnimationFrame(raf)
         }
-    }, [trimSeconds, mode])
+    }, [trimSeconds, videoSrc])
 
     return (
         <span className={`trimmed-loop-video ${className || ""}`}>
-            {mode === "image" && (
-                <img src={fallbackSrc} alt="" className="trimmed-loop-video__video trimmed-loop-video__still" />
-            )}
-            {mode === "video" && (
+            {videoSrc && (
                 <>
-                    <video ref={aRef} src={src} className="trimmed-loop-video__video" muted playsInline autoPlay preload="auto" style={{ opacity: 1 }} />
-                    <video ref={bRef} src={src} className="trimmed-loop-video__video" muted playsInline preload="auto" style={{ opacity: 0 }} />
+                    <video ref={aRef} src={videoSrc} className="trimmed-loop-video__video" muted playsInline autoPlay preload="auto" style={{ opacity: 1 }} />
+                    <video ref={bRef} src={videoSrc} className="trimmed-loop-video__video" muted playsInline preload="auto" style={{ opacity: 0 }} />
                 </>
             )}
         </span>
