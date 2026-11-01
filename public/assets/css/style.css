@@ -9492,15 +9492,26 @@ ul {
    without crowding them. */
 @media (max-width: 991px) {
   .cta-one__elephant {
-    --ele-w: 360px;
+    --ele-w: 440px;
   }
 
   .cta-one__elephant--left {
-    left: -125px;
+    left: -150px;
   }
 
   .cta-one__elephant--right {
-    right: -125px;
+    right: -150px;
+  }
+}
+
+/* narrow tablets: nudge out so the trunks clear the buttons */
+@media (min-width: 768px) and (max-width: 819px) {
+  .cta-one__elephant--left {
+    left: -168px;
+  }
+
+  .cta-one__elephant--right {
+    right: -168px;
   }
 }
 

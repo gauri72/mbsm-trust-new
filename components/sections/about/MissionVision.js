@@ -1,7 +1,7 @@
 'use client'
 import Link from "next/link"
 import { useState } from "react"
-import { HEADER_ADDRESS_LINE1, HEADER_ADDRESS_LINE2, HEADER_MAP_URL } from "@/lib/siteInfo"
+import { HEADER_ADDRESS_PLACE, HEADER_ADDRESS_LINE1, HEADER_ADDRESS_CITY, HEADER_MAP_URL } from "@/lib/siteInfo"
 
 // Mission / vision / objective tabs — shared by the Home and About pages.
 export default function MissionVision() {
@@ -113,7 +113,7 @@ export default function MissionVision() {
                                     </div>
                                     <div className="content">
                                         <p lang="mr">आम्हाला भेट द्या</p>
-                                        <h4><Link href={HEADER_MAP_URL} target="_blank" rel="noopener noreferrer" lang="mr">{HEADER_ADDRESS_LINE1} <span className="about-One__address-nowrap">{HEADER_ADDRESS_LINE2}</span></Link></h4>
+                                        <h4><Link href={HEADER_MAP_URL} target="_blank" rel="noopener noreferrer" lang="mr">{HEADER_ADDRESS_PLACE} <span className="about-One__address-nowrap">{HEADER_ADDRESS_LINE1} {HEADER_ADDRESS_CITY}</span></Link></h4>
                                     </div>
                                 </div>
                             </div>
