@@ -109,7 +109,7 @@ export default function Home() {
         <>
         <Layout headerStyle={1} footerStyle={1} mantraStrip={<MantraStrip />}>
 
-        <PageHero image={PAGE_HERO_IMAGES.contact} />
+        <PageHero image={PAGE_HERO_IMAGES.sampark} />
 
         <TempleGallery compact />
 

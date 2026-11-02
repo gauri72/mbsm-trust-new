@@ -14,9 +14,9 @@ export default function DonationPage() {
         <>
         <Layout headerStyle={1} footerStyle={1} mantraStrip={<MantraStrip />}>
 
-        <PageHero image={PAGE_HERO_IMAGES.donation} />
+        <PageHero image={PAGE_HERO_IMAGES.denagi} />
 
-        <TempleGallery />
+        <TempleGallery compact />
 
         <Donation />
 

@@ -23,9 +23,9 @@ export default function Sadhana() {
                 {/*Mantra Strip (between header and breadcrumb) */}
                 <MantraStrip />
 
-                <PageHero image={PAGE_HERO_IMAGES.sadhana} />
+                <PageHero image={PAGE_HERO_IMAGES.karyakram} />
 
-                <TempleGallery />
+                <TempleGallery compact />
 
                 <AllEvents />
 

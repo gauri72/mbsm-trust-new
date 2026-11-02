@@ -19,9 +19,9 @@ export default function Home() {
        {/*Mantra Strip (between header and breadcrumb) */}
        <MantraStrip />
 
-       <PageHero image={PAGE_HERO_IMAGES.about} />
+       <PageHero image={PAGE_HERO_IMAGES.parichaya} />
 
-       <TempleGallery />
+       <TempleGallery compact />
 
        <Legacy />
 

@@ -14,9 +14,9 @@ export default function GalleryPage() {
         <>
         <Layout headerStyle={1} footerStyle={1} mantraStrip={<MantraStrip />}>
 
-        <PageHero image={PAGE_HERO_IMAGES.gallery} />
+        <PageHero image={PAGE_HERO_IMAGES.chitrasangraha} />
 
-        <TempleGallery />
+        <TempleGallery compact />
 
         <PhotoGallery />
 

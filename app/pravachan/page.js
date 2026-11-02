@@ -13,9 +13,9 @@ export default function PravachanPage() {
         <>
         <Layout headerStyle={1} footerStyle={1} mantraStrip={<MantraStrip />}>
 
-        <PageHero image={PAGE_HERO_IMAGES.placeholder} />
+        <PageHero image={PAGE_HERO_IMAGES.pravachan} />
 
-        <TempleGallery />
+        <TempleGallery compact />
 
         <ComingSoon title="प्रवचन" />
 
