@@ -9463,7 +9463,7 @@ ul {
 
 .cta-one__elephant {
   position: absolute;
-  --ele-w: clamp(460px, 46vw, 640px);
+  --ele-w: clamp(460px, 46vw, 600px);
   /* The clip has empty space under the feet (~4.7% of its width); lift
      by that much less than the 30px border so the feet always rest
      exactly on top of the bottom border, at any size. */
@@ -15745,4 +15745,766 @@ ul {
   .site-footer--shubharay .footer-widget__contact-list li.footer-widget__contact-list--multiline p a {
     text-align: left;
   }
+}
+
+/*--------------------------------------------------------------
+# Consistent section spacing — home + contact page sections
+# One vertical rhythm for every content section: same top/bottom
+# padding and the same gap under each section heading.
+--------------------------------------------------------------*/
+:root {
+  --section-space: 80px;
+  --section-title-gap: 40px;
+}
+
+@media (max-width: 1199px) {
+  :root {
+    --section-space: 72px;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --section-space: 56px;
+    --section-title-gap: 28px;
+  }
+}
+
+section.about-One.about-One--ornate,
+section.event-one.event-one--welcome-bg,
+section.cta-one,
+section.contact-one.contact-one--ornate,
+section.contact-two.contact-two--ornate {
+  padding-top: var(--section-space);
+  padding-bottom: var(--section-space);
+}
+
+section.about-One--ornate .about-One__right .section-title,
+section.event-one--welcome-bg .event-one__head,
+section.contact-one--ornate .contact-one__inner .section-title,
+section.contact-two--ornate .section-title {
+  margin-bottom: var(--section-title-gap);
+}
+
+/*==================================================================
+  Mobile / tablet drawer — same look as the desktop header menu
+  gold header background, the links grouped on a soft rounded strip,
+  dark-maroon text; current / hovered link = raised maroon pill with
+  white text; the आमचे कार्य pages open on a white card with maroon
+  icons, current / hovered page = marigold pill (like the desktop dropdown)
+==================================================================*/
+aside.snav {
+  color: #3A0405;
+  /* same gold as the header bar */
+  background: linear-gradient(180deg, #E0A238 0%, #D9982A 55%, #CE8E24 100%);
+  box-shadow: 24px 0 60px -12px rgba(20, 3, 4, 0.55);
+}
+
+aside.snav::after {
+  background: linear-gradient(180deg, transparent, #620208 18%, #620208 82%, transparent);
+  opacity: 0.35;
+}
+
+aside.snav .snav__head {
+  border-bottom: 1px solid rgba(58, 4, 5, 0.16);
+}
+
+/* logo: the desktop header's medallion — maroon disc, gold ring, soft glow */
+aside.snav .snav__brand-medal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  border: 2px solid #E9B45A;
+  border-radius: 50%;
+  background-image: radial-gradient(circle at 50% 38%, #7A0A10 0%, #620208 55%, #4D0601 100%);
+  box-shadow:
+    0 0 0 3px rgba(98, 2, 8, 0.28),
+    0 6px 16px rgba(58, 4, 5, 0.38),
+    0 0 17px rgba(233, 180, 90, 0.68),
+    inset 0 0 10px rgba(0, 0, 0, 0.45);
+}
+
+aside.snav .snav__brand-medal .snav__brand-img {
+  width: 86px;
+  height: 86px;
+  border: 0;
+  box-shadow: none;
+}
+
+aside.snav .snav__brand-name {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+aside.snav .snav__brand-name {
+  color: #3A0405;
+}
+
+/* desktop header: icon beside each page link (white on the maroon pill) */
+@media (min-width: 1200px) {
+  .main-menu__link-icon {
+    margin-right: 7px;
+    font-size: 15px;
+    color: #620208;
+    transition: color 200ms ease;
+  }
+
+  .main-header .main-menu .main-menu__list>li.current>a .main-menu__link-icon,
+  .main-header .main-menu .main-menu__list>li:hover>a .main-menu__link-icon,
+  .stricky-header .main-menu__list>li.current>a .main-menu__link-icon,
+  .stricky-header .main-menu__list>li:hover>a .main-menu__link-icon {
+    color: #FFFFFF;
+  }
+
+  /* with the icons: every link on one line, slightly smaller text */
+  .main-header .main-menu .main-menu__list>li>a,
+  .stricky-header .main-menu__list>li>a {
+    white-space: nowrap;
+    font-size: 18px;
+  }
+
+  /* header + top bar use more of the screen so the logo, the link strip and
+     the social/CTA block get even, comfortable gaps (top bar matches so
+     their edges line up) */
+  .header-topbar .container,
+  .main-header .main-menu__wrapper .container,
+  .stricky-header .main-menu__wrapper .container {
+    max-width: 1520px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  /* link spacing: 12px between neighbouring pills, and the same 12px between
+     the end pills and the ends of the strip */
+  .main-header .main-menu__main-menu-box .main-menu__list>li+li,
+  .stricky-header .main-menu__main-menu-box .main-menu__list>li+li {
+    margin-left: 36px;
+  }
+
+  .main-header .main-menu .main-menu__list::before,
+  .stricky-header .main-menu__list::before {
+    left: -24px;
+    right: -24px;
+  }
+}
+
+/* smaller desktops: slimmer pills, 8px gaps */
+@media (min-width: 1200px) and (max-width: 1365px) {
+  .main-header .main-menu .main-menu__list>li>a,
+  .stricky-header .main-menu__list>li>a {
+    font-size: 17px;
+    padding: 8px 9px;
+    margin: -8px -9px;
+  }
+
+  .main-header .main-menu .main-menu__list>li.dropdown>a,
+  .stricky-header .main-menu__list>li.dropdown>a {
+    padding-right: 26px;
+  }
+
+  .main-header .main-menu .main-menu__list>li.dropdown>a::after,
+  .stricky-header .main-menu__list>li.dropdown>a::after {
+    right: 10px;
+  }
+
+  .main-header .main-menu__main-menu-box .main-menu__list>li+li,
+  .stricky-header .main-menu__main-menu-box .main-menu__list>li+li {
+    margin-left: 26px;
+  }
+
+  .main-header .main-menu .main-menu__list::before,
+  .stricky-header .main-menu__list::before {
+    left: -17px;
+    right: -17px;
+  }
+
+  .main-menu__link-icon {
+    margin-right: 5px;
+    font-size: 13px;
+  }
+}
+
+/* close: maroon disc like the header's round buttons */
+aside.snav .snav__close {
+  background-color: #620208;
+  box-shadow: 0 3px 8px rgba(58, 4, 5, 0.30);
+}
+
+aside.snav .snav__close-x,
+aside.snav .snav__close-x::before {
+  background-color: #FFFFFF;
+}
+
+aside.snav .snav__close:hover,
+aside.snav .snav__close:focus-visible {
+  background-color: #2C0405;
+}
+
+aside.snav .snav__close:hover .snav__close-x,
+aside.snav .snav__close:hover .snav__close-x::before,
+aside.snav .snav__close:focus-visible .snav__close-x,
+aside.snav .snav__close:focus-visible .snav__close-x::before {
+  background-color: #F2B632;
+}
+
+/* the strip behind the links */
+aside.snav .snav__nav {
+  padding: 18px 16px;
+}
+
+aside.snav .snav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  border-radius: 26px;
+  background-color: rgba(58, 4, 5, 0.08);
+  border: 1px solid rgba(58, 4, 5, 0.16);
+  box-shadow: inset 0 1px 2px rgba(58, 4, 5, 0.10), 0 1px 0 rgba(255, 248, 231, 0.45);
+}
+
+aside.snav .snav__item + .snav__item {
+  border-top: 0;
+}
+
+/* links: dark maroon text; current / hover = raised maroon pill */
+aside.snav .snav__link,
+aside.snav .snav__toggle {
+  padding: 11px 18px;
+  border-radius: 999px;
+  color: #3A0405;
+  background: transparent;
+  box-shadow: none;
+  transition: background-color 200ms ease, color 200ms ease, box-shadow 200ms ease;
+}
+
+aside.snav .snav__link .snav__link-label {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+aside.snav .snav__link:hover,
+aside.snav .snav__link:focus-visible,
+aside.snav .snav__link.is-current,
+aside.snav .snav__toggle.is-current {
+  padding-left: 18px;
+  color: #FFFFFF;
+  background-color: #620208;
+  box-shadow: 0 3px 8px rgba(58, 4, 5, 0.30);
+  outline: none;
+}
+
+aside.snav .snav__item--group.is-open .snav__toggle:not(.is-current):not(:hover) {
+  background-color: rgba(58, 4, 5, 0.10);
+  color: #3A0405;
+}
+
+/* chevrons follow the text colour */
+aside.snav .snav__link .snav__link-chev,
+aside.snav .snav__toggle .snav__link-chev,
+aside.snav .snav__link:hover .snav__link-chev,
+aside.snav .snav__link.is-current .snav__link-chev,
+aside.snav .snav__toggle.is-current .snav__link-chev,
+aside.snav .snav__item--group.is-open .snav__toggle .snav__link-chev {
+  border-color: currentColor;
+}
+
+/* आमचे कार्य pages: white card, maroon text + icons; current / hover = marigold pill */
+aside.snav .snav__sub {
+  margin: 8px 0 4px;
+  padding: 6px;
+  border-top: 0;
+  border-radius: 22px;
+  background: #FFFFFF;
+  box-shadow:
+    0 14px 30px -8px rgba(20, 1, 2, 0.35),
+    0 4px 10px rgba(20, 1, 2, 0.14);
+}
+
+aside.snav .snav__sub li + li {
+  margin-top: 2px;
+}
+
+aside.snav .snav__sub-link {
+  gap: 10px;
+  padding: 5px 16px 5px 5px;
+  border-radius: 999px;
+  font-size: 17px;
+  line-height: 22px;
+  color: #620208;
+  background: transparent;
+  box-shadow: none;
+}
+
+aside.snav .snav__sub-icon {
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 14px;
+  color: #620208;
+}
+
+aside.snav .snav__sub-link:hover,
+aside.snav .snav__sub-link:focus-visible,
+aside.snav .snav__sub-link.is-current {
+  padding-left: 5px;
+  color: #1A0505;
+  background: #F2B632;
+  box-shadow: none;
+  outline: none;
+}
+
+aside.snav .snav__sub-link:hover .snav__sub-icon,
+aside.snav .snav__sub-link:focus-visible .snav__sub-icon,
+aside.snav .snav__sub-link.is-current .snav__sub-icon {
+  color: #1A0505;
+}
+
+/* footer: social circles + CTA styled like the desktop header's */
+aside.snav .snav__foot {
+  border-top: 1px solid rgba(58, 4, 5, 0.16);
+  background-color: rgba(58, 4, 5, 0.06);
+}
+
+aside.snav .snav__connect-title {
+  color: #3A0405;
+}
+
+aside.snav .snav__social-btn {
+  color: #FFFFFF;
+  background-color: #620208;
+  border-color: #620208;
+  box-shadow: 0 3px 8px rgba(58, 4, 5, 0.30);
+}
+
+aside.snav .snav__social-btn:hover,
+aside.snav .snav__social-btn:focus-visible {
+  color: #F2B632;
+  background-color: #2C0405;
+  border-color: #2C0405;
+}
+
+aside.snav .snav__foot .snav__cta {
+  color: #FFFFFF;
+  background-color: #620208;
+  border-color: #620208;
+  box-shadow: 0 10px 22px -8px rgba(58, 4, 5, 0.55);
+}
+
+aside.snav .snav__foot .snav__cta span {
+  color: #3A0405;
+  background-color: #F2B632;
+}
+
+aside.snav .snav__foot .snav__cta:hover,
+aside.snav .snav__foot .snav__cta:focus-visible {
+  color: #FFFFFF;
+  background-color: #2C0405;
+  border-color: #2C0405;
+}
+
+
+/* drawer: maroon panel (like the site's maroon sections); the link box is
+   the desktop header's gold bar — dark maroon text, maroon pill for the
+   current / hovered link; the logo is the header's medallion, unchanged */
+aside.snav {
+  color: #FBF1DC;
+  background: linear-gradient(180deg, #620208 0%, #560106 55%, #4D0601 100%);
+}
+
+aside.snav::after {
+  background: linear-gradient(180deg, transparent, #E9B45A 18%, #E9B45A 82%, transparent);
+  opacity: 0.5;
+}
+
+aside.snav .snav__head {
+  border-bottom: 1px solid rgba(233, 180, 90, 0.45);
+}
+
+aside.snav .snav__brand-name {
+  color: #FBF1DC;
+}
+
+/* close button on maroon: gold outline, cream x; gold fill on hover */
+aside.snav .snav__close {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1.5px #E9B45A;
+}
+
+aside.snav .snav__close-x,
+aside.snav .snav__close-x::before {
+  background-color: #FBF1DC;
+}
+
+aside.snav .snav__close:hover,
+aside.snav .snav__close:focus-visible {
+  background-color: #F2B632;
+}
+
+aside.snav .snav__close:hover .snav__close-x,
+aside.snav .snav__close:hover .snav__close-x::before,
+aside.snav .snav__close:focus-visible .snav__close-x,
+aside.snav .snav__close:focus-visible .snav__close-x::before {
+  background-color: #2C0405;
+}
+
+/* the link box: header gold */
+aside.snav .snav__list {
+  background: linear-gradient(180deg, #E0A238 0%, #D9982A 55%, #CE8E24 100%);
+  border: 1px solid #E9B45A;
+  box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.55);
+}
+
+aside.snav .snav__item--group.is-open .snav__toggle:not(.is-current):not(:hover) {
+  color: #3A0405;
+  background-color: rgba(58, 4, 5, 0.10);
+}
+
+/* footer on maroon */
+aside.snav .snav__foot {
+  border-top: 1px solid rgba(233, 180, 90, 0.45);
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+aside.snav .snav__connect-title {
+  color: #FBF1DC;
+}
+
+aside.snav .snav__social-btn {
+  color: #620208;
+  background-color: #E9B45A;
+  border-color: #E9B45A;
+}
+
+aside.snav .snav__social-btn:hover,
+aside.snav .snav__social-btn:focus-visible {
+  color: #2C0405;
+  background-color: #F2B632;
+  border-color: #F2B632;
+}
+
+aside.snav .snav__foot .snav__cta {
+  color: #2C0405;
+  background-color: #E9B45A;
+  border-color: #E9B45A;
+}
+
+aside.snav .snav__foot .snav__cta span {
+  color: #FBF1DC;
+  background-color: #620208;
+}
+
+aside.snav .snav__foot .snav__cta:hover,
+aside.snav .snav__foot .snav__cta:focus-visible {
+  color: #2C0405;
+  background-color: #F2B632;
+  border-color: #F2B632;
+}
+
+/* drawer logo image: exactly the header's — no extra padding/disc of its own */
+aside.snav .snav__brand-medal .snav__brand-img {
+  padding: 0;
+  border-radius: 0;
+  background: none;
+}
+
+/* drawer: page-link icons (as on the desktop header) and the desktop
+   link-bar gold (#CF8F2B → #CA8925) for the link box and the gold buttons */
+aside.snav .snav__link-icon {
+  flex: 0 0 22px;
+  display: inline-flex;
+  justify-content: center;
+  width: 22px;
+  font-size: 16px;
+  color: #620208;
+  transition: color 200ms ease;
+}
+
+aside.snav .snav__link:hover .snav__link-icon,
+aside.snav .snav__link:focus-visible .snav__link-icon,
+aside.snav .snav__link.is-current .snav__link-icon,
+aside.snav .snav__toggle.is-current .snav__link-icon {
+  color: #FFFFFF;
+}
+
+aside.snav .snav__list {
+  background: linear-gradient(180deg, #CF8F2B 0%, #CA8925 100%);
+  border-color: rgba(233, 180, 90, 0.65);
+}
+
+aside.snav .snav__social-btn,
+aside.snav .snav__foot .snav__cta {
+  background-color: #CF8F2B;
+  border-color: #CF8F2B;
+}
+
+aside.snav .snav__close:hover,
+aside.snav .snav__close:focus-visible {
+  background-color: #CF8F2B;
+}
+
+/* drawer footer buttons in the site's on-maroon button style (as in the CTA
+   section): theme gold, light-gold edge, dark text / maroon icon, maroon
+   arrow chip; cream on hover */
+aside.snav .snav__social-btn {
+  color: #620208;
+  background-color: #D9982A;
+  border: 1px solid #E9B45A;
+  box-shadow: 0 6px 14px rgba(44, 4, 5, 0.35);
+}
+
+aside.snav .snav__social-btn:hover,
+aside.snav .snav__social-btn:focus-visible {
+  color: #620208;
+  background-color: #FBF1DC;
+  border-color: #FBF1DC;
+}
+
+aside.snav .snav__foot .snav__cta {
+  color: #2C0405;
+  font-weight: 700;
+  background-color: #D9982A;
+  border: 1px solid #E9B45A;
+  box-shadow: 0 8px 20px rgba(44, 4, 5, 0.35);
+}
+
+aside.snav .snav__foot .snav__cta span {
+  color: #FBF1DC;
+  background-color: #620208;
+}
+
+aside.snav .snav__foot .snav__cta:hover,
+aside.snav .snav__foot .snav__cta:focus-visible {
+  color: #2C0405;
+  background-color: #FBF1DC;
+  border-color: #FBF1DC;
+}
+
+/* drawer link box: a little more compact */
+aside.snav .snav__nav {
+  padding: 14px 16px;
+}
+
+aside.snav .snav__list {
+  gap: 2px;
+  padding: 6px;
+  border-radius: 22px;
+}
+
+aside.snav .snav__link,
+aside.snav .snav__toggle {
+  gap: 10px;
+  padding: 8px 14px;
+}
+
+aside.snav .snav__link:hover,
+aside.snav .snav__link:focus-visible,
+aside.snav .snav__link.is-current,
+aside.snav .snav__toggle.is-current {
+  padding-left: 14px;
+}
+
+aside.snav .snav__link .snav__link-label {
+  font-size: 17px;
+}
+
+aside.snav .snav__link-icon {
+  flex: 0 0 20px;
+  width: 20px;
+  font-size: 14px;
+}
+
+aside.snav .snav__sub {
+  margin: 4px 0 2px;
+  border-radius: 18px;
+}
+
+aside.snav .snav__sub-link {
+  font-size: 16px;
+}
+
+aside.snav .snav__sub-icon {
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  font-size: 13px;
+}
+
+/* drawer: link box centred vertically in the space between header and footer
+   (auto margins keep it scrollable if it ever gets taller than that space) */
+aside.snav .snav__nav {
+  display: flex;
+  flex-direction: column;
+}
+
+aside.snav .snav__nav > .snav__list {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/* drawer footer: the link-box gold (desktop link-bar gold), gold rule on top */
+aside.snav .snav__foot {
+  background: linear-gradient(180deg, #CF8F2B 0%, #CA8925 100%);
+  border-top: 2px solid #E9B45A;
+}
+
+aside.snav .snav__connect-title {
+  color: #3A0405;
+}
+
+/* on gold: the desktop header's combination — maroon circles, cream icons */
+aside.snav .snav__social-btn {
+  color: #FBF1DC;
+  background-color: #620208;
+  border: 1px solid #620208;
+  box-shadow: 0 3px 8px rgba(58, 4, 5, 0.30);
+}
+
+aside.snav .snav__social-btn:hover,
+aside.snav .snav__social-btn:focus-visible {
+  color: #F2B632;
+  background-color: #2C0405;
+  border-color: #2C0405;
+}
+
+/* CTA: maroon pill, cream text, gold chip with dark arrow (as in the header) */
+aside.snav .snav__foot .snav__cta {
+  color: #FBF1DC;
+  background-color: #620208;
+  border: 1px solid #4D0601;
+  box-shadow: 0 8px 20px rgba(44, 4, 5, 0.35);
+}
+
+aside.snav .snav__foot .snav__cta span {
+  color: #3A0405;
+  background-color: #D9982A;
+}
+
+aside.snav .snav__foot .snav__cta:hover,
+aside.snav .snav__foot .snav__cta:focus-visible {
+  color: #FBF1DC;
+  background-color: #2C0405;
+  border-color: #2C0405;
+}
+
+aside.snav .snav__foot .snav__cta:hover span,
+aside.snav .snav__foot .snav__cta:focus-visible span {
+  color: #3A0405;
+  background-color: #F2B632;
+}
+
+/* drawer top (logo + name): same gold as the footer box; black name; the
+   logo uses the header medallion exactly (ring + glow, as on the gold header);
+   close button = maroon disc with a cream x, like the header's round buttons */
+aside.snav .snav__head {
+  background: linear-gradient(180deg, #CF8F2B 0%, #CA8925 100%);
+  border-bottom: 2px solid #E9B45A;
+}
+
+aside.snav .snav__brand-name {
+  color: #000000;
+}
+
+aside.snav .snav__brand-medal {
+  box-shadow:
+    0 0 0 3px rgba(98, 2, 8, 0.28),
+    0 6px 16px rgba(58, 4, 5, 0.38),
+    0 0 17px rgba(233, 180, 90, 0.68),
+    inset 0 0 10px rgba(0, 0, 0, 0.45);
+}
+
+aside.snav .snav__close {
+  background-color: #620208;
+  box-shadow: 0 3px 8px rgba(58, 4, 5, 0.30);
+}
+
+aside.snav .snav__close-x,
+aside.snav .snav__close-x::before {
+  background-color: #FBF1DC;
+}
+
+aside.snav .snav__close:hover,
+aside.snav .snav__close:focus-visible {
+  background-color: #2C0405;
+}
+
+aside.snav .snav__close:hover .snav__close-x,
+aside.snav .snav__close:hover .snav__close-x::before,
+aside.snav .snav__close:focus-visible .snav__close-x,
+aside.snav .snav__close:focus-visible .snav__close-x::before {
+  background-color: #F2B632;
+}
+
+/* desktop header + top bar: roomier side margins that grow with the screen
+   (≈36px at 1200, 50px at 1440, 80px at 1920); the wider max-width keeps
+   the content row the same size on large screens */
+@media (min-width: 1200px) {
+  .header-topbar .container,
+  .main-header .main-menu__wrapper .container,
+  .stricky-header .main-menu__wrapper .container {
+    max-width: 1600px;
+    padding-left: clamp(36px, calc(6vw - 36px), 90px);
+    padding-right: clamp(36px, calc(6vw - 36px), 90px);
+  }
+}
+
+/* 1366–1535px: 10px link gaps (overridden below by the 4px rule) */
+@media (min-width: 1366px) and (max-width: 1535px) {
+  .main-header .main-menu__main-menu-box .main-menu__list>li+li,
+  .stricky-header .main-menu__main-menu-box .main-menu__list>li+li {
+    margin-left: 34px;
+  }
+
+  .main-header .main-menu .main-menu__list::before,
+  .stricky-header .main-menu__list::before {
+    left: -22px;
+    right: -22px;
+  }
+}
+
+/* desktop header links: closer together — 4px between neighbouring pills
+   (and between the end pills and the strip ends), never overlapping */
+@media (min-width: 1200px) {
+  .main-header .main-menu__main-menu-box .main-menu__list>li+li,
+  .stricky-header .main-menu__main-menu-box .main-menu__list>li+li {
+    margin-left: 28px;
+  }
+
+  .main-header .main-menu .main-menu__list::before,
+  .stricky-header .main-menu__list::before {
+    left: -16px;
+    right: -16px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1365px) {
+  .main-header .main-menu__main-menu-box .main-menu__list>li+li,
+  .stricky-header .main-menu__main-menu-box .main-menu__list>li+li {
+    margin-left: 22px;
+  }
+
+  .main-header .main-menu .main-menu__list::before,
+  .stricky-header .main-menu__list::before {
+    left: -13px;
+    right: -13px;
+  }
+}
+
+/* drawer dropdown (आमचे कार्य pages): current / hovered page in theme gold */
+aside.snav .snav__sub-link:hover,
+aside.snav .snav__sub-link:focus-visible,
+aside.snav .snav__sub-link.is-current {
+  background: #D9982A;
+}
+
+/* drawer: always keep a clear maroon band above and below the link box,
+   even when the आमचे कार्य dropdown makes it tall */
+aside.snav .snav__nav {
+  padding: 28px 24px;
 }

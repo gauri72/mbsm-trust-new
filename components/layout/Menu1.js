@@ -35,7 +35,10 @@ export default function Menu1() {
                     const isActive = isNavActive(pathname, item.href)
                     return (
                         <li key={item.href} className={isActive ? "current" : ""}>
-                            <Link href={item.href} aria-current={isActive ? "page" : undefined}>{item.label}</Link>
+                            <Link href={item.href} aria-current={isActive ? "page" : undefined}>
+                                {item.icon && <i className={`main-menu__link-icon ${item.icon}`} aria-hidden="true"></i>}
+                                {item.label}
+                            </Link>
                         </li>
                     )
                 })}

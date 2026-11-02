@@ -624,6 +624,9 @@
     .contact-two__contact-list li {
         flex: 1 1 0;
         margin-bottom: 30px;
+        /* slimmer top/bottom so the two-line address card fits the same height */
+        padding-top: 18px;
+        padding-bottom: 18px;
     }
 
     .contact-two__contact-list li:last-child {
@@ -710,9 +713,9 @@
     color: var(--au-maroon, #620208);
 }
 
-/* address stays on a single line */
+/* address: math name on the first line, street + city on the second */
 .contact-two__contact-list li .content p.contact-two__address {
-    white-space: nowrap;
+    overflow-wrap: anywhere;
 }
 
 /*--------------------------------------------------------------
@@ -1553,10 +1556,11 @@
 }
 
 /*--------------------------------------------------------------
-# Contact form — tighter spacing on desktop / tablet (≥768px)
+# Contact form + map — same tighter spacing on desktop / tablet (≥768px)
 --------------------------------------------------------------*/
 @media (min-width: 768px) {
-    .contact-one.contact-one--ornate {
+    .contact-one.contact-one--ornate,
+    .contact-two.contact-two--ornate {
         padding: 72px 0;
     }
 
@@ -1564,7 +1568,8 @@
         padding: 48px 90px 44px;
     }
 
-    .contact-one--ornate .contact-one__inner .section-title {
+    .contact-one--ornate .contact-one__inner .section-title,
+    .contact-two--ornate .section-title {
         margin-bottom: 30px;
     }
 
@@ -1580,6 +1585,20 @@
 @media (min-width: 768px) and (max-width: 991px) {
     .contact-one--ornate .contact-one__inner {
         padding: 40px 36px 36px;
+    }
+}
+
+/* Tablet + phone: info cards stack the icon on top, everything centred */
+@media (max-width: 991px) {
+    .contact-two--ornate .contact-two__contact-list li {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .contact-two--ornate .contact-two__contact-list li .content {
+        width: 100%;
     }
 }
 

@@ -10,7 +10,9 @@ import { PAGE_HERO_IMAGES } from "@/lib/data/heroImages"
 import { CLOSING_MANTRAS } from "@/lib/data/mantras"
 import Cta from "@/components/sections/home1/Cta"
 import {
-    HEADER_ADDRESS,
+    HEADER_ADDRESS_CITY,
+    HEADER_ADDRESS_PLACE,
+    HEADER_TOPBAR_ADDRESS,
     HEADER_ADDRESS_LINE1,
     HEADER_ADDRESS_LINE2,
     HEADER_EMAIL,
@@ -247,7 +249,7 @@ export default function Home() {
                             <iframe
                                 src={MAP_EMBED_URL}
                                 className="contact-two__google-map"
-                                title={HEADER_ADDRESS}
+                                title={HEADER_TOPBAR_ADDRESS}
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"></iframe>
                         </div>
@@ -279,7 +281,7 @@ export default function Home() {
                                     </div>
                                     <div className="content">
                                         <h4 lang="mr">पत्ता</h4>
-                                        <p lang="mr" className="contact-two__address"><Link href={MAP_LINK} target="_blank" rel="noopener noreferrer">{HEADER_ADDRESS}</Link></p>
+                                        <p lang="mr" className="contact-two__address"><Link href={MAP_LINK} target="_blank" rel="noopener noreferrer">{HEADER_ADDRESS_PLACE}<br /> {HEADER_ADDRESS_LINE1} {HEADER_ADDRESS_CITY}</Link></p>
                                     </div>
                                 </li>
                             </ul>

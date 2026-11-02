@@ -61,11 +61,13 @@ const MobileMenu = ({ handleMobileMenu }) => {
                         aria-label="Home"
                         onClick={handleMobileMenu}
                     >
-                        <img
-                            src={HEADER_LOGO_SRC}
-                            alt=""
-                            className="snav__brand-img"
-                        />
+                        <span className="snav__brand-medal">
+                            <img
+                                src={HEADER_LOGO_SRC}
+                                alt=""
+                                className="snav__brand-img"
+                            />
+                        </span>
                         <span className="snav__brand-name">{HEADER_TITLE}</span>
                     </Link>
                     <button
@@ -93,6 +95,7 @@ const MobileMenu = ({ handleMobileMenu }) => {
                                             aria-controls={submenuId}
                                             onClick={() => setOpenGroup(isOpen ? null : item.label)}
                                         >
+                                            {item.icon && <span className="snav__link-icon" aria-hidden="true"><i className={item.icon}></i></span>}
                                             <span className="snav__link-label">{item.label}</span>
                                             <span className="snav__link-chev" aria-hidden="true"></span>
                                         </button>
@@ -122,6 +125,7 @@ const MobileMenu = ({ handleMobileMenu }) => {
                                         aria-current={isActive(item.href) ? "page" : undefined}
                                         onClick={handleMobileMenu}
                                     >
+                                        {item.icon && <span className="snav__link-icon" aria-hidden="true"><i className={item.icon}></i></span>}
                                         <span className="snav__link-label">{item.label}</span>
                                         <span className="snav__link-chev" aria-hidden="true"></span>
                                     </Link>
