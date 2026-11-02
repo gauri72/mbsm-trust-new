@@ -35,7 +35,7 @@ export default function Cta() {
                         <span className="cta-one__tagline">मंगल भक्त सेवा मंडळ</span>
                         <h2 className="cta-one__title title-animation">जिथे कमी, <br/>
                             तिथे कुवतीनुसार आम्ही</h2>
-                        <p className="cta-one__text">आपण ज्या समाजात राहतो, त्या समाजाचे आपण काही देणे लागतो; <br/>
+                        <p className="cta-one__text">आपण ज्या समाजात राहतो, <br className="cta-one__br-compact"/>त्या समाजाचे आपण काही देणे लागतो; <br/>
                             याच कर्तव्यभावनेतून आम्ही समाजासाठी कार्य करतो.</p>
                     </div>
                     <div className="cta-one__btn-box wow fadeInUp" data-wow-delay="200ms">

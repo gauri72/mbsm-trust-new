@@ -13,7 +13,8 @@ const SEVA = [
 const QUICK_LINKS = [
     { href: "/", label: "आमचे मुखपृष्ठ" },
     { href: "/parichaya", label: "आमची वाटचाल" },
-    { href: "/denagi", label: "देणगी व सहकार्य" },
+    // देणगी hidden for now: { href: "/denagi", label: "देणगी व सहकार्य" },
+    { href: "/chitrasangraha", label: "चित्रसंग्रह" },
     { href: "/sampark", label: "संवाद साधा" },
 ]
 

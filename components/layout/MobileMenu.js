@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { HEADER_TITLE, HEADER_LOGO_SRC, HEADER_CTA_LABEL, HEADER_SOCIAL_TITLE, HEADER_SOCIALS } from "@/lib/siteInfo"
@@ -8,10 +8,8 @@ import { NAV_ITEMS, isNavActive } from "@/lib/data/navItems"
 const MobileMenu = ({ handleMobileMenu }) => {
     const pathname = usePathname()
     const isActive = (href) => isNavActive(pathname, href)
-    const groupActive = (item) => item.children.some((child) => isActive(child.href))
-
-    // a dropdown group starts expanded when the current page is inside it
-    const [openGroup, setOpenGroup] = useState(() => NAV_ITEMS.find((item) => item.children && groupActive(item))?.label ?? null)
+    // drawer has no dropdowns: a group's pages (आमचे कार्य) are listed in its place as plain links
+    const drawerItems = NAV_ITEMS.flatMap((item) => item.children ?? [item])
 
     // lock body scroll while the drawer is open
     useEffect(() => {
@@ -82,56 +80,20 @@ const MobileMenu = ({ handleMobileMenu }) => {
 
                 <nav className="snav__nav" aria-label="Primary">
                     <ul className="snav__list">
-                        {NAV_ITEMS.map((item, index) => {
-                            if (item.children) {
-                                const isOpen = openGroup === item.label
-                                const submenuId = `snav-sub-${index}`
-                                return (
-                                    <li key={item.label} className={`snav__item snav__item--group${isOpen ? " is-open" : ""}`}>
-                                        <button
-                                            type="button"
-                                            className={`snav__link snav__toggle${groupActive(item) ? " is-current" : ""}`}
-                                            aria-expanded={isOpen}
-                                            aria-controls={submenuId}
-                                            onClick={() => setOpenGroup(isOpen ? null : item.label)}
-                                        >
-                                            {item.icon && <span className="snav__link-icon" aria-hidden="true"><i className={item.icon}></i></span>}
-                                            <span className="snav__link-label">{item.label}</span>
-                                            <span className="snav__link-chev" aria-hidden="true"></span>
-                                        </button>
-                                        <ul className="snav__sub" id={submenuId} hidden={!isOpen}>
-                                            {item.children.map((child) => (
-                                                <li key={child.href}>
-                                                    <Link
-                                                        href={child.href}
-                                                        className={`snav__sub-link${isActive(child.href) ? " is-current" : ""}`}
-                                                        aria-current={isActive(child.href) ? "page" : undefined}
-                                                        onClick={handleMobileMenu}
-                                                    >
-                                                        <span className="snav__sub-icon" aria-hidden="true"><i className={child.icon}></i></span>
-                                                        <span className="snav__sub-label">{child.label}</span>
-                                                    </Link>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </li>
-                                )
-                            }
-                            return (
-                                <li key={item.href} className="snav__item">
-                                    <Link
-                                        href={item.href}
-                                        className={`snav__link${isActive(item.href) ? " is-current" : ""}`}
-                                        aria-current={isActive(item.href) ? "page" : undefined}
-                                        onClick={handleMobileMenu}
-                                    >
-                                        {item.icon && <span className="snav__link-icon" aria-hidden="true"><i className={item.icon}></i></span>}
-                                        <span className="snav__link-label">{item.label}</span>
-                                        <span className="snav__link-chev" aria-hidden="true"></span>
-                                    </Link>
-                                </li>
-                            )
-                        })}
+                        {drawerItems.map((item) => (
+                            <li key={item.href} className="snav__item">
+                                <Link
+                                    href={item.href}
+                                    className={`snav__link${isActive(item.href) ? " is-current" : ""}`}
+                                    aria-current={isActive(item.href) ? "page" : undefined}
+                                    onClick={handleMobileMenu}
+                                >
+                                    {item.icon && <span className="snav__link-icon" aria-hidden="true"><i className={item.icon}></i></span>}
+                                    <span className="snav__link-label">{item.label}</span>
+                                    <span className="snav__link-chev" aria-hidden="true"></span>
+                                </Link>
+                            </li>
+                        ))}
                     </ul>
                 </nav>
 

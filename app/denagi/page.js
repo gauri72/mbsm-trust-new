@@ -5,8 +5,11 @@ import PageHero from "@/components/shared/PageHero/PageHero"
 import { PAGE_HERO_IMAGES } from "@/lib/data/heroImages"
 import { CLOSING_MANTRAS } from "@/lib/data/mantras"
 import TempleGallery from "@/components/shared/TempleGallery/TempleGallery"
-import Donation from "@/components/sections/home1/Donation"
-import Donate from "@/components/sections/home1/Donate"
+// hidden for now (between gallery and CTA) — uncomment here and below to restore
+// import Donation from "@/components/sections/home1/Donation"
+// import Donate from "@/components/sections/home1/Donate"
+import DonateQr from "@/components/sections/denagi/DonateQr"
+import DonateFaq from "@/components/sections/denagi/DonateFaq"
 import Cta from "@/components/sections/home1/Cta"
 
 export default function DonationPage() {
@@ -18,9 +21,11 @@ export default function DonationPage() {
 
         <TempleGallery compact />
 
-        <Donation />
+        {/* hidden for now: <Donation /> and <Donate /> */}
 
-        <Donate />
+        <DonateQr />
+
+        <DonateFaq />
 
         <Cta />
         <MantraStrip mantras={CLOSING_MANTRAS} />

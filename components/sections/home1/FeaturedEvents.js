@@ -1,6 +1,6 @@
 'use client'
 import Link from "next/link"
-import LoopingFlagVideo from "@/components/elements/LoopingFlagVideo"
+// import LoopingFlagVideo from "@/components/elements/LoopingFlagVideo"  (flags hidden for now)
 
 const featuredEvents = [
     {
@@ -33,18 +33,19 @@ export default function FeaturedEvents() {
 
             <div className="container">
                 <div className="featured-events__head">
-                    <span className="featured-events__flag featured-events__flag--left" aria-hidden="true">
+                    {/* varkari flag animations beside the heading hidden for now */}
+                    {/* <span className="featured-events__flag featured-events__flag--left" aria-hidden="true">
                         <LoopingFlagVideo src="assets/images/resources/varkari.mov" />
-                    </span>
+                    </span> */}
                     <div className="section-title text-center sec-title-animation animation-style1">
                         <div className="section-title__tagline-box">
-                            <span className="section-title__tagline">विशेष उत्सव</span>
+                            <span className="section-title__tagline">साप्ताहिक व मासिक सेवा</span>
                         </div>
-                        <h2 className="section-title__title title-animation">श्रद्धेचे मुख्य पर्व</h2>
+                        <h2 className="section-title__title title-animation">मठातील नियमित उत्सव</h2>
                     </div>
-                    <span className="featured-events__flag featured-events__flag--right" aria-hidden="true">
+                    {/* <span className="featured-events__flag featured-events__flag--right" aria-hidden="true">
                         <LoopingFlagVideo src="assets/images/resources/varkari.mov" />
-                    </span>
+                    </span> */}
                 </div>
 
                 <div className="row">

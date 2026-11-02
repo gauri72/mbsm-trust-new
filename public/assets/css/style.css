@@ -15774,7 +15774,8 @@ section.about-One.about-One--ornate,
 section.event-one.event-one--welcome-bg,
 section.cta-one,
 section.contact-one.contact-one--ornate,
-section.contact-two.contact-two--ornate {
+section.contact-two.contact-two--ornate,
+section.all-events.all-events--gold {
   padding-top: var(--section-space);
   padding-bottom: var(--section-space);
 }
@@ -15782,7 +15783,8 @@ section.contact-two.contact-two--ornate {
 section.about-One--ornate .about-One__right .section-title,
 section.event-one--welcome-bg .event-one__head,
 section.contact-one--ornate .contact-one__inner .section-title,
-section.contact-two--ornate .section-title {
+section.contact-two--ornate .section-title,
+section.all-events--gold .section-title {
   margin-bottom: var(--section-title-gap);
 }
 
@@ -16565,4 +16567,859 @@ aside.snav .snav__nav {
   .legacy-book-page__quote-text {
     font-size: 20px;
   }
+}
+
+/* Events page "मठातील सर्व उत्सव": gold field framed by the maroon
+   Om/swastik border — same gold gradient as the contact page's map section */
+.all-events--gold {
+  background-color: #D9982A;
+  background-image: linear-gradient(180deg, #E0A238 0%, #D9982A 45%, #CE8E24 100%);
+}
+
+.all-events--gold::before {
+  background-image: url("../images/backgrounds/section-bg.png");
+  opacity: 0.25;
+}
+
+.all-events--gold .section-title__tagline {
+  color: var(--ev-maroon);
+}
+
+.all-events--gold .section-title__title {
+  color: var(--ev-ink);
+}
+
+.all-events--gold .divine-border--all-events,
+.all-events--gold .divine-border--all-events-vertical,
+.all-events--gold .all-events__corner {
+  background-color: var(--ev-maroon);
+}
+
+.all-events--gold .divine-border--all-events {
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(217, 152, 42, 0.14) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%23D9982A'%3E%3Ctext x='25' y='22' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%23D9982A' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23D9982A' opacity='0.85'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.all-events--gold .divine-border--all-events-vertical {
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(217, 152, 42, 0.14) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%23D9982A'%3E%3Ctext x='15' y='32' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%23D9982A' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23D9982A' opacity='0.85'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* on the gold field the gold arrows vanish: maroon discs, cream arrows */
+.all-events--gold .all-events__nav {
+  color: #FBF1DC;
+  background: #620208;
+  border-color: #620208;
+  box-shadow: 0 6px 16px rgba(58, 4, 5, 0.35);
+}
+
+.all-events--gold .all-events__nav:hover,
+.all-events--gold .all-events__nav:focus-visible {
+  color: #F2B632;
+  background: #2C0405;
+  border-color: #2C0405;
+}
+
+/* events "मठातील सर्व उत्सव" border: same deep maroon as the home Events and
+   contact map borders (#4D0601) */
+.all-events--gold .divine-border--all-events,
+.all-events--gold .divine-border--all-events-vertical,
+.all-events--gold .all-events__corner {
+  background-color: #4D0601;
+}
+
+/*==================================================================
+  Donate page (देणगी): UPI QR section + FAQ accordion
+  QR on the hero gold field (maroon ink), FAQ on warm cream; both use
+  the site-wide --section-space rhythm and the maroon/gold palette
+==================================================================*/
+section.donate-qr,
+section.donate-faq {
+  position: relative;
+  padding-top: var(--section-space);
+  padding-bottom: var(--section-space);
+}
+
+/* ---------- QR section ----------
+   Same house pattern as the contact page's .contact-one--ornate: maroon
+   field with the section-bg-2 texture, framed by the gold Om/swastik
+   border, content on a gold panel */
+section.donate-qr {
+  overflow: hidden;
+  padding-top: calc(var(--section-space) + 20px);
+  padding-bottom: calc(var(--section-space) + 20px);
+  background-color: var(--wl-maroon);
+  background-image: linear-gradient(180deg, #660309 0%, var(--wl-maroon) 45%, #560106 100%);
+}
+
+.donate-qr__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("../images/backgrounds/section-bg-2.png");
+  background-repeat: repeat;
+  background-size: 1170px auto;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.donate-qr > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* gold strips carrying the maroon Om + swastik motif */
+.divine-border--donate-qr {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  height: 30px;
+  background-color: var(--wl-gold);
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(61, 10, 12, 0.12) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%23620208'%3E%3Ctext x='25' y='22' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%23620208' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23620208' opacity='0.85'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-x, repeat-x;
+  background-position: center, center;
+  background-size: 100% 100%, 100px 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.divine-border--donate-qr-top { top: 0; }
+.divine-border--donate-qr-bottom { bottom: 0; }
+
+.divine-border--donate-qr-vertical {
+  position: absolute;
+  top: 30px;
+  bottom: 30px;
+  z-index: 2;
+  width: 30px;
+  background-color: var(--wl-gold);
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(61, 10, 12, 0.12) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%23620208'%3E%3Ctext x='15' y='32' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%23620208' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23620208' opacity='0.85'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-y, repeat-y;
+  background-position: top center, top center;
+  background-size: 100% 100%, 30px 100px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.divine-border--donate-qr-left { left: 0; }
+.divine-border--donate-qr-right { right: 0; }
+
+.donate-qr__corner {
+  position: absolute;
+  z-index: 4;
+  width: 30px;
+  height: 30px;
+  background-color: var(--wl-gold);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+
+.donate-qr__corner--tl { top: 0; left: 0; }
+.donate-qr__corner--tr { top: 0; right: 0; }
+.donate-qr__corner--bl { bottom: 0; left: 0; }
+.donate-qr__corner--br { bottom: 0; right: 0; }
+
+@media (max-width: 1199px) {
+  .donate-qr > .container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media (max-width: 991px) {
+  .donate-qr__bg {
+    background-size: 770px auto;
+  }
+
+  .donate-qr > .container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+/* phones: top + bottom border only, as on the other ornate sections */
+@media (max-width: 767px) {
+  .divine-border--donate-qr {
+    height: 26px;
+  }
+
+  .divine-border--donate-qr-vertical,
+  .donate-qr__corner {
+    display: none;
+  }
+
+  .donate-qr > .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* the donation card: one gold panel — QR tile on the left, a short
+   heading, the UPI apps and the download button on the right */
+.donate-qr__panel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 56px;
+  border: 1px solid var(--wl-gold-lite);
+  border-radius: 24px;
+  background-color: var(--wl-gold);
+  background-image: linear-gradient(180deg, #E0A238 0%, var(--wl-gold) 45%, #CE8E24 100%);
+  box-shadow: 0 24px 50px -16px rgba(20, 3, 4, 0.65);
+}
+
+/* fine inner hairline, like a framed certificate */
+.donate-qr__panel::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(98, 2, 8, 0.28);
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+.donate-qr__scan {
+  position: relative;
+  flex: 0 0 auto;
+  padding: 16px;
+  border-radius: 20px;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 6px var(--wl-maroon), 0 14px 30px -10px rgba(20, 3, 4, 0.6);
+}
+
+.donate-qr__img {
+  display: block;
+  width: 260px;
+  height: 260px;
+  object-fit: contain;
+}
+
+.donate-qr__info {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.donate-qr__eyebrow {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--wl-maroon);
+}
+
+.donate-qr__title {
+  margin: 0 0 12px;
+  font-size: 38px;
+  line-height: 1.25;
+  color: var(--wl-ink);
+}
+
+.donate-qr__lead {
+  margin: 0 0 20px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #3A0405;
+}
+
+.donate-qr__apps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.donate-qr__apps li {
+  padding: 6px 14px;
+  border: 1px solid rgba(98, 2, 8, 0.25);
+  border-radius: 999px;
+  background-color: rgba(251, 241, 220, 0.45);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--wl-ink);
+}
+
+.donate-qr__rule {
+  height: 1px;
+  margin: 26px 0;
+  background: linear-gradient(90deg, rgba(98, 2, 8, 0.35), rgba(98, 2, 8, 0));
+}
+
+.donate-qr__info .donate-qr__download {
+  background-color: var(--wl-maroon);
+  border: 1px solid var(--wl-maroon);
+  color: var(--wl-cream);
+}
+
+.donate-qr__info .donate-qr__download::after {
+  background-color: var(--wl-ink);
+}
+
+.donate-qr__info .donate-qr__download span {
+  background-color: var(--wl-gold);
+  color: var(--wl-ink);
+}
+
+.donate-qr__info .donate-qr__download:hover,
+.donate-qr__info .donate-qr__download:focus-visible {
+  border-color: var(--wl-ink);
+  color: #FFFFFF;
+}
+
+.donate-qr__hint {
+  margin: 14px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(58, 4, 5, 0.8);
+}
+
+/* tablet and phone: stacked and centred */
+@media (max-width: 991px) {
+  .donate-qr__panel {
+    flex-direction: column;
+    gap: 32px;
+    max-width: 560px;
+    padding: 44px 36px;
+    text-align: center;
+  }
+
+  .donate-qr__apps {
+    justify-content: center;
+  }
+
+  .donate-qr__rule {
+    background: linear-gradient(90deg, rgba(98, 2, 8, 0), rgba(98, 2, 8, 0.35), rgba(98, 2, 8, 0));
+  }
+}
+
+@media (max-width: 767px) {
+  .donate-qr__panel {
+    gap: 26px;
+    padding: 32px 22px;
+  }
+
+  .donate-qr__scan {
+    padding: 12px;
+  }
+
+  .donate-qr__img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .donate-qr__title {
+    font-size: 28px;
+  }
+
+  .donate-qr__lead {
+    font-size: 16px;
+  }
+}
+
+/* ---------- FAQ section ----------
+   Same house pattern as the contact page's .contact-two--ornate: gold
+   field with the section-bg texture, framed by the maroon Om/swastik border */
+section.donate-faq {
+  overflow: hidden;
+  padding-top: calc(var(--section-space) + 20px);
+  padding-bottom: calc(var(--section-space) + 20px);
+  background-color: var(--wl-gold);
+  background-image: linear-gradient(180deg, #E0A238 0%, var(--wl-gold) 45%, #CE8E24 100%);
+}
+
+.donate-faq__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("../images/backgrounds/section-bg.png");
+  background-repeat: repeat;
+  background-size: 1170px auto;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.donate-faq > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* maroon strips carrying the gold Om + swastik motif */
+.divine-border--donate-faq {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  height: 30px;
+  background-color: var(--wl-maroon-dk);
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(217, 152, 42, 0.14) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%23D9982A'%3E%3Ctext x='25' y='22' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%23D9982A' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23D9982A' opacity='0.85'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-x, repeat-x;
+  background-position: center, center;
+  background-size: 100% 100%, 100px 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
+}
+
+.divine-border--donate-faq-top { top: 0; }
+.divine-border--donate-faq-bottom { bottom: 0; }
+
+.divine-border--donate-faq-vertical {
+  position: absolute;
+  top: 30px;
+  bottom: 30px;
+  z-index: 2;
+  width: 30px;
+  background-color: var(--wl-maroon-dk);
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(217, 152, 42, 0.14) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%23D9982A'%3E%3Ctext x='15' y='32' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%23D9982A' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23D9982A' opacity='0.85'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-y, repeat-y;
+  background-position: top center, top center;
+  background-size: 100% 100%, 30px 100px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.32);
+}
+
+.divine-border--donate-faq-left { left: 0; }
+.divine-border--donate-faq-right { right: 0; }
+
+.donate-faq__corner {
+  position: absolute;
+  z-index: 4;
+  width: 30px;
+  height: 30px;
+  background-color: var(--wl-maroon-dk);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
+  pointer-events: none;
+}
+
+.donate-faq__corner--tl { top: 0; left: 0; }
+.donate-faq__corner--tr { top: 0; right: 0; }
+.donate-faq__corner--bl { bottom: 0; left: 0; }
+.donate-faq__corner--br { bottom: 0; right: 0; }
+
+@media (max-width: 1199px) {
+  .donate-faq > .container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media (max-width: 991px) {
+  .donate-faq__bg {
+    background-size: 770px auto;
+  }
+
+  .donate-faq > .container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+/* phones: top + bottom border only, as on the other ornate sections */
+@media (max-width: 767px) {
+  .divine-border--donate-faq {
+    height: 26px;
+  }
+
+  .divine-border--donate-faq-vertical,
+  .donate-faq__corner {
+    display: none;
+  }
+
+  .donate-faq > .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.donate-faq .section-title {
+  margin-bottom: var(--section-title-gap);
+}
+
+.donate-faq .section-title__tagline {
+  color: var(--wl-maroon);
+}
+
+.donate-faq .section-title__title {
+  color: var(--wl-ink);
+}
+
+.donate-faq__list {
+  display: grid;
+  gap: 14px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.donate-faq__item {
+  border: 1px solid rgba(98, 2, 8, 0.16);
+  border-radius: 20px;
+  background-color: #FFFFFF;
+  box-shadow: 0 6px 18px -10px rgba(58, 4, 5, 0.25);
+  overflow: hidden;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.donate-faq__item.is-open {
+  border-color: var(--wl-maroon);
+  box-shadow: 0 14px 30px -14px rgba(58, 4, 5, 0.35);
+}
+
+.donate-faq__question {
+  margin: 0;
+  font-size: inherit;
+}
+
+.donate-faq__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  width: 100%;
+  padding: 20px 24px;
+  border: 0;
+  background: transparent;
+  color: var(--wl-ink);
+  font-family: var(--anity-font), 'Hind', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+.donate-faq__toggle:hover {
+  color: var(--wl-maroon);
+}
+
+.donate-faq__toggle:focus-visible {
+  outline: 2px solid var(--wl-maroon);
+  outline-offset: -4px;
+  border-radius: 20px;
+}
+
+.donate-faq__item.is-open .donate-faq__toggle {
+  background-color: var(--wl-maroon);
+  color: var(--wl-cream);
+}
+
+.donate-faq__toggle-icon {
+  flex: 0 0 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: var(--wl-maroon);
+  color: var(--wl-cream);
+  font-size: 14px;
+  transition: transform 250ms ease, background-color 200ms ease, color 200ms ease;
+}
+
+.donate-faq__item.is-open .donate-faq__toggle-icon {
+  transform: rotate(180deg);
+  background-color: #F2B632;
+  color: var(--wl-ink);
+}
+
+/* smooth open/close: the answer row grows from 0fr to 1fr; collapsed
+   answers are also hidden from keyboard/screen readers via visibility */
+.donate-faq__answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 300ms ease, visibility 0s linear 300ms;
+}
+
+.donate-faq__item.is-open .donate-faq__answer {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition: grid-template-rows 300ms ease, visibility 0s linear 0s;
+}
+
+.donate-faq__answer-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.donate-faq__answer-inner p {
+  margin: 0;
+  padding: 20px 24px 24px;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #3A2A2A;
+}
+
+.donate-faq__answer-inner a {
+  font-weight: 700;
+  color: var(--wl-maroon);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* "still have questions?" strip */
+.donate-faq__more {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 900px;
+  margin: 36px auto 0;
+  padding: 24px 28px;
+  border: 1px solid var(--wl-gold-lite);
+  border-radius: 22px;
+  background: radial-gradient(120% 140% at 50% 0%, #7A0A10 0%, var(--wl-maroon) 55%, var(--wl-maroon-dk) 100%);
+  box-shadow: 0 14px 30px -14px rgba(44, 4, 5, 0.6);
+}
+
+.donate-faq__more-title {
+  margin: 0 0 4px;
+  font-family: var(--anity-font), 'Hind', sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  color: var(--wl-cream);
+}
+
+.donate-faq__more-text p {
+  margin: 0;
+  font-size: 16px;
+  color: rgba(251, 241, 220, 0.85);
+}
+
+.donate-faq__more-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.donate-faq__more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 20px;
+  border-radius: 999px;
+  background-color: var(--wl-gold);
+  color: var(--wl-ink);
+  font-size: 16px;
+  font-weight: 700;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+.donate-faq__more-btn i {
+  color: var(--wl-maroon);
+}
+
+.donate-faq__more-btn:hover,
+.donate-faq__more-btn:focus-visible {
+  background-color: var(--wl-cream);
+  color: var(--wl-ink);
+}
+
+@media (max-width: 767px) {
+  .donate-faq__toggle {
+    gap: 14px;
+    padding: 16px 18px;
+    font-size: 17px;
+  }
+
+  .donate-faq__toggle-icon {
+    flex-basis: 32px;
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .donate-faq__answer-inner p {
+    padding: 16px 18px 20px;
+    font-size: 16px;
+  }
+
+  .donate-faq__more {
+    padding: 20px;
+  }
+
+  .donate-faq__more-actions,
+  .donate-faq__more-btn {
+    width: 100%;
+  }
+
+  .donate-faq__more-btn {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .donate-faq__answer,
+  .donate-faq__item.is-open .donate-faq__answer,
+  .donate-faq__toggle-icon {
+    transition: none;
+  }
+}
+
+/*==================================================================
+  CTA (all pages): label and description read clearly over the photo —
+  larger, bolder, fully opaque copy (background left as it is)
+==================================================================*/
+.cta-one .cta-one__tagline {
+  color: #F2B632;
+  font-size: 22px;
+  font-weight: 800;
+  /* spacing breaks up Devanagari and makes it look thin */
+  letter-spacing: 0;
+}
+
+.cta-one .cta-one__text {
+  color: #FFFFFF;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .cta-one .cta-one__tagline {
+    font-size: 19px;
+  }
+
+  .cta-one .cta-one__text {
+    font-size: 18px;
+  }
+}
+
+/* CTA description line breaks: two lines on desktop; three on tablet and
+   phone (राहतो, | …देणे लागतो; | याच कर्तव्यभावनेतून…) */
+.cta-one .cta-one__text br {
+  display: inline;
+}
+
+@media (min-width: 1200px) {
+  .cta-one .cta-one__text .cta-one__br-compact {
+    display: none;
+  }
+}
+
+/* phone: tighter gap between the description and the buttons */
+@media (max-width: 767px) {
+  .cta-one .cta-one__btn-box {
+    margin-top: 24px;
+  }
+}
+
+/* narrow phones (< 390px): keep the third line on one line */
+@media (max-width: 389px) {
+  .cta-one .cta-one__text {
+    padding: 0;
+    font-size: 17px;
+  }
+}
+
+/*==================================================================
+  Readable section labels and descriptions — home, कार्यक्रम and संपर्क
+  (same treatment as the CTA: larger, bolder, solid colours, no letter
+  spacing — spacing breaks up Devanagari and makes it look thin)
+==================================================================*/
+section.about-One.about-One--ornate .section-title__tagline,
+section.event-one.event-one--welcome-bg .section-title__tagline,
+section.all-events .section-title__tagline,
+section.featured-events .section-title__tagline,
+section.contact-one--ornate .section-title__tagline,
+section.contact-two--ornate .section-title__tagline {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+/* labels on maroon: marigold, as in the CTA */
+section.about-One.about-One--ornate .section-title__tagline,
+section.all-events .section-title__tagline {
+  color: #F2B632;
+}
+
+/* labels on gold: deep maroon */
+section.event-one.event-one--welcome-bg .section-title__tagline,
+section.featured-events .section-title__tagline,
+section.contact-one--ornate .section-title__tagline,
+section.contact-two--ornate .section-title__tagline {
+  color: #4D0601;
+}
+
+/* home About: tab text in solid cream */
+section.about-One.about-One--ornate .about-One__tab-box .tabs-content__inner p {
+  color: #FBF1DC;
+  font-size: 19px;
+}
+
+/* कार्यक्रम — आषाढी / कार्तिकी descriptions */
+section.featured-events .featured-events__text {
+  color: #2C0405;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* संपर्क — phone, email and address cards */
+section.contact-two--ornate .contact-two__contact-list .content h4 {
+  color: #2C0405;
+}
+
+section.contact-two--ornate .contact-two__contact-list .content p,
+section.contact-two--ornate .contact-two__contact-list .content p a {
+  color: #3A0405;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+section.contact-two--ornate .contact-two__contact-list .content p a:hover,
+section.contact-two--ornate .contact-two__contact-list .content p a:focus-visible {
+  color: #620208;
+}
+
+@media (max-width: 767px) {
+  section.about-One.about-One--ornate .section-title__tagline,
+  section.event-one.event-one--welcome-bg .section-title__tagline,
+  section.all-events .section-title__tagline,
+  section.featured-events .section-title__tagline,
+  section.contact-one--ornate .section-title__tagline,
+  section.contact-two--ornate .section-title__tagline {
+    font-size: 19px;
+  }
+
+  section.about-One.about-One--ornate .about-One__tab-box .tabs-content__inner p,
+  section.featured-events .featured-events__text,
+  section.contact-two--ornate .contact-two__contact-list .content p,
+  section.contact-two--ornate .contact-two__contact-list .content p a {
+    font-size: 17px;
+  }
+}
+
+/* Events page (कार्यक्रम): same vertical rhythm as home and contact —
+   --section-space above/below each section, --section-title-gap under
+   each heading */
+section.all-events.all-events--welcome-bg,
+section.featured-events.featured-events--welcome-bg {
+  padding-top: var(--section-space);
+  padding-bottom: var(--section-space);
+}
+
+section.all-events--welcome-bg .section-title,
+section.featured-events--welcome-bg .featured-events__head {
+  margin-bottom: var(--section-title-gap);
+}
+
+/* the head's -30px top offset only balanced the flag videos, which are
+   hidden now — let the heading start at the section padding */
+section.featured-events--welcome-bg .featured-events__head {
+  margin-top: 0;
 }
