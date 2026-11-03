@@ -5,7 +5,7 @@ import 'swiper/css'
 import "swiper/css/pagination"
 import 'swiper/css/free-mode';
 import 'swiper/css/effect-fade';
-import { dmSans, libreBaskerville, yatraOne } from '@/lib/font'
+import { dmSans, libreBaskerville, yatraOne, mukta } from '@/lib/font'
 export const metadata = {
     title: {
         default: 'मंगल भक्त सेवा मंडळ',
@@ -16,7 +16,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en" className={`${dmSans.variable} ${libreBaskerville.variable} ${yatraOne.variable}`}>
+        <html lang="en" className={`${dmSans.variable} ${libreBaskerville.variable} ${yatraOne.variable} ${mukta.variable}`}>
             <head>
                 {/* Speeds up the Video Gallery's YouTube thumbnails/embeds */}
                 <link rel="preconnect" href="https://img.youtube.com" />

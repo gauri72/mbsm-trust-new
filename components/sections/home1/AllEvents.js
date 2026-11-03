@@ -1,42 +1,137 @@
 'use client'
-import { Autoplay, Navigation } from "swiper/modules"
+import { useEffect, useRef, useState } from "react"
+import { Navigation } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
 
 const allEvents = [
-    { img: "assets/images/event/event-1.png", title: "श्री शुभराय महाराज पुण्यतिथी" },
-    { img: "assets/images/event/event-2.png", title: "श्री शंकर महाराज प्रकट दिन आणि पुण्यतिथी", zoom: true },
-    { img: "assets/images/event/event-3.png", title: "श्री दत्त महाराज जयंती" },
-    { img: "assets/images/event/event-4.png", title: "श्री गुरुपौर्णिमा उत्सव", zoom: true },
+    { img: "assets/images/event/event-1.png", title: "श्री विश्वेश्‍वर स्वामी महाराज", subtitle: "जन्मदिन" },
+    { img: "assets/images/event/event-2.png", title: "श्री शंकर महाराज", subtitle: "प्रकट दिन आणि पुण्यतिथी" },
+    { img: "assets/images/event/event-3.png", title: "श्री दत्त प्रभू", subtitle: "जयंती आणि गुरुपौर्णिमा" },
     // hidden for now:
+    // { img: "assets/images/event/event-4.png", title: "श्री गुरुपौर्णिमा उत्सव" },
     // { img: "assets/images/event/event-5.png", title: "श्री जनू काका जयंती आणि पुण्यतिथी" },
     // { img: "assets/images/event/event-6.png", title: "श्री मधू बुवा जयंती आणि पुण्यतिथी", zoom: true },
     // { img: "assets/images/event/event-7.png", title: "श्री शुभांगी माई वाढदिवस" },
 ]
 
 const swiperOptions = {
-    modules: [Autoplay, Navigation],
-    slidesPerView: 3,
-    spaceBetween: 32,
-    // Swiper can only loop with at least twice as many slides as it shows;
-    // with fewer events, slide to the end and jump back to the start instead
-    loop: allEvents.length >= 6,
-    rewind: allEvents.length < 6,
-    autoplay: {
-        delay: 3500,
-        disableOnInteraction: false,
-    },
+    modules: [Navigation],
+    // native scroll-snap: swipes glide and settle the way the phone/tablet
+    // scrolls everywhere else; no autoplay pulling the cards away
+    cssMode: true,
+    // below desktop each card has a fixed, compact width set in CSS
+    slidesPerView: 'auto',
+    spaceBetween: 16,
+    centerInsufficientSlides: true,
     navigation: {
         nextEl: '.all-events__nav--next',
         prevEl: '.all-events__nav--prev',
     },
     breakpoints: {
-        0: { slidesPerView: 1 },
-        768: { slidesPerView: 2 },
-        1200: { slidesPerView: 3 },
+        768: { slidesPerView: 'auto', spaceBetween: 20 },
+        1200: { slidesPerView: 3, spaceBetween: 32 },
     },
 }
 
+// phone only: as the row scrolls, the card nearest the centre is full
+// size and the ones beside it shrink and fade, following the finger.
+// The row also loops: the cards are rendered three times over and, once
+// a swipe settles in an outer copy, the row jumps silently to the same
+// card in the middle copy, so every card has a neighbour on both sides.
+const PHONE = "(max-width: 767px)"
+const PHONE_COPIES = 3
+
+function usePhoneCopies() {
+    const [copies, setCopies] = useState(1)
+    useEffect(() => {
+        const mq = window.matchMedia(PHONE)
+        const sync = () => setCopies(mq.matches ? PHONE_COPIES : 1)
+        sync()
+        mq.addEventListener("change", sync)
+        return () => mq.removeEventListener("change", sync)
+    }, [])
+    return copies
+}
+
+function useScrollFocus(wrapperRef, copies) {
+    useEffect(() => {
+        const wrapper = wrapperRef.current
+        if (!wrapper) return
+        const n = allEvents.length
+        let frame = 0
+        let settleTimer = 0
+
+        const slides = () => wrapper.querySelectorAll(".swiper-slide")
+        const cards = () => wrapper.querySelectorAll(".all-events__card")
+        const reset = () => cards().forEach((card) => {
+            card.style.transform = ""
+            card.style.opacity = ""
+        })
+        const centredIndex = () => {
+            const mid = wrapper.scrollLeft + wrapper.clientWidth / 2
+            let best = 0, bestDist = Infinity
+            slides().forEach((slide, i) => {
+                const dist = Math.abs(slide.offsetLeft + slide.offsetWidth / 2 - mid)
+                if (dist < bestDist) { best = i; bestDist = dist }
+            })
+            return best
+        }
+        const centreOn = (i) => {
+            const slide = slides()[i]
+            if (slide) wrapper.scrollLeft = slide.offsetLeft + slide.offsetWidth / 2 - wrapper.clientWidth / 2
+        }
+        const update = () => {
+            frame = 0
+            if (copies === 1) return reset()
+            const box = wrapper.getBoundingClientRect()
+            const centre = box.left + box.width / 2
+            cards().forEach((card) => {
+                const r = card.getBoundingClientRect()
+                const d = Math.min(Math.abs(r.left + r.width / 2 - centre) / r.width, 1)
+                card.style.transform = `scale(${1 - 0.14 * d})`
+                card.style.opacity = `${1 - 0.45 * d}`
+            })
+        }
+        // after a swipe comes to rest, move from an outer copy back to the
+        // matching card in the middle copy; it looks identical, so the jump
+        // can't be seen
+        const settle = () => {
+            if (copies === 1) return
+            const i = centredIndex()
+            if (i < n) centreOn(i + n)
+            else if (i >= 2 * n) centreOn(i - n)
+            update()
+        }
+        const onScroll = () => {
+            if (!frame) frame = requestAnimationFrame(update)
+            clearTimeout(settleTimer)
+            settleTimer = setTimeout(settle, 140)
+        }
+
+        // start on the first card of the middle copy
+        if (copies > 1) centreOn(n)
+        update()
+        wrapper.addEventListener("scroll", onScroll, { passive: true })
+        window.addEventListener("resize", onScroll)
+        return () => {
+            cancelAnimationFrame(frame)
+            clearTimeout(settleTimer)
+            wrapper.removeEventListener("scroll", onScroll)
+            window.removeEventListener("resize", onScroll)
+            reset()
+        }
+    }, [wrapperRef, copies])
+}
+
 export default function AllEvents() {
+    const wrapperRef = useRef(null)
+    const copies = usePhoneCopies()
+    useScrollFocus(wrapperRef, copies)
+    const middle = Math.floor(copies / 2)
+    const slides = Array.from({ length: copies }, (_, copy) =>
+        allEvents.map((event, index) => ({ ...event, key: `${copy}-${index}`, clone: copy !== middle }))
+    ).flat()
+
     return (
         <>
         {/**All Events Start */}
@@ -64,15 +159,18 @@ export default function AllEvents() {
                 </div>
 
                 <div className="all-events__carousel-wrap">
-                    <Swiper {...swiperOptions} className="all-events__carousel">
-                        {allEvents.map((event, index) => (
-                            <SwiperSlide key={index}>
+                    <Swiper {...swiperOptions} className="all-events__carousel" onSwiper={(swiper) => { wrapperRef.current = swiper.wrapperEl }}>
+                        {slides.map((event) => (
+                            <SwiperSlide key={event.key} aria-hidden={event.clone || undefined}>
                                 <div className="all-events__card">
                                     <div className="all-events__photo">
-                                        <img src={event.img} alt={event.title} className={event.zoom ? "all-events__photo-img--zoom" : ""}/>
+                                        <img src={event.img} alt={event.subtitle ? `${event.title} ${event.subtitle}` : event.title}/>
                                     </div>
                                     <div className="all-events__plate">
-                                        <h3 className="all-events__title">{event.title}</h3>
+                                        <h3 className="all-events__title">
+                                            <span className="all-events__name">{event.title}</span>
+                                            {event.subtitle && <span className="all-events__occasion">{event.subtitle}</span>}
+                                        </h3>
                                     </div>
                                 </div>
                             </SwiperSlide>

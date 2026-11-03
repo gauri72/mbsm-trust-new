@@ -17423,3 +17423,477 @@ section.featured-events--welcome-bg .featured-events__head {
 section.featured-events--welcome-bg .featured-events__head {
   margin-top: 0;
 }
+
+/* Events page — वार्षिक उत्सव cards: frame matches the 9:16 portraits
+   so the whole photo shows (the old 3:4.6 frame cut off the top) */
+section.all-events--welcome-bg .all-events__photo {
+  aspect-ratio: 941 / 1672;
+}
+
+section.all-events--welcome-bg .all-events__photo img {
+  object-position: center;
+}
+
+/* all 3 cards fit on desktop, so Swiper locks the carousel — hide the
+   arrows there */
+section.all-events--welcome-bg .all-events__nav.swiper-button-lock {
+  display: none;
+}
+
+/* nameplate sits under the photo instead of over its bottom edge, so
+   the whole picture stays visible; equal-height plates across cards */
+section.all-events--welcome-bg .all-events__card {
+  display: flex;
+  flex-direction: column;
+}
+
+section.all-events--welcome-bg .all-events__plate {
+  flex: 1 0 auto;
+  width: 92%;
+  min-height: 58px;
+  margin: 14px auto 0;
+}
+
+section.all-events--welcome-bg .all-events__card:hover .all-events__plate {
+  transform: none;
+}
+
+section.all-events--welcome-bg .all-events__photo::after {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  section.all-events--welcome-bg .all-events__carousel-wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0;
+  }
+}
+
+/* tablet: two cards with room for the arrows */
+@media (min-width: 768px) and (max-width: 1199px) {
+  section.all-events--welcome-bg .all-events__carousel-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+  section.all-events--welcome-bg .all-events__title {
+    font-size: 17px;
+  }
+}
+
+/* phone: one card, capped so it isn't taller than the screen */
+@media (max-width: 767px) {
+  section.all-events--welcome-bg .all-events__carousel-wrap {
+    max-width: 330px;
+    margin: 0 auto;
+    padding: 0;
+  }
+  section.all-events--welcome-bg .all-events__plate {
+    width: 100%;
+    min-height: 52px;
+  }
+}
+
+/* long names (e.g. "श्री शंकर महाराज प्रकट दिन आणि पुण्यतिथी") wrap
+   inside the plate at every width instead of spilling past it */
+section.all-events--welcome-bg .all-events__title {
+  white-space: normal;
+  line-height: 1.35;
+}
+
+/* वार्षिक उत्सव — tablet & phone sizing. Cards scale with the width
+   (Swiper slidesPerView 1.2 / 2.3 / 3), so drop the earlier fixed caps
+   and the arrow gutter; the peeking card shows there's more to swipe. */
+@media (max-width: 1199px) {
+  section.all-events--welcome-bg .all-events__carousel-wrap {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+  section.all-events--welcome-bg .all-events__nav {
+    display: none;
+  }
+  section.all-events--welcome-bg .all-events__plate {
+    width: 100%;
+    min-height: 56px;
+    padding: 10px 12px;
+  }
+  section.all-events--welcome-bg .all-events__title {
+    font-size: 16px;
+  }
+}
+
+/* cssMode scrolls natively — hide the scrollbar, keep momentum */
+section.all-events--welcome-bg .all-events__carousel .swiper-wrapper {
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+section.all-events--welcome-bg .all-events__carousel .swiper-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* compact cards on tablet & phone, in scale with the other images on
+   the events page (featured-event photos are ~200–390px tall there) */
+@media (max-width: 1199px) {
+  section.all-events--welcome-bg .all-events__carousel .swiper-slide {
+    width: 230px;
+  }
+  section.all-events--welcome-bg .all-events__plate {
+    min-height: 52px;
+    margin-top: 10px;
+    padding: 8px 10px;
+  }
+  section.all-events--welcome-bg .all-events__title {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 767px) {
+  section.all-events--welcome-bg .all-events__carousel .swiper-slide {
+    width: 200px;
+  }
+  section.all-events--welcome-bg .all-events__title {
+    font-size: 14px;
+  }
+}
+
+/* tablet: all three compact cards fit side by side; centre the row
+   (auto margins only take up spare space, so phones still scroll) */
+@media (min-width: 768px) and (max-width: 991px) {
+  section.all-events--welcome-bg .all-events__carousel .swiper-slide {
+    width: 210px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  section.all-events--welcome-bg .all-events__carousel .swiper-slide {
+    width: 250px;
+  }
+}
+
+@media (max-width: 1199px) {
+  section.all-events--welcome-bg .all-events__carousel .swiper-slide:first-child {
+    margin-left: auto;
+  }
+  section.all-events--welcome-bg .all-events__carousel .swiper-slide:last-child {
+    margin-right: auto !important;
+  }
+}
+
+/* phone: cards snap to the centre of the row (first and last can centre
+   too), and the scale/fade set by AllEvents.js shrinks from the middle */
+@media (max-width: 767px) {
+  section.all-events--welcome-bg .all-events__carousel .swiper-slide {
+    scroll-snap-align: center;
+  }
+  section.all-events--welcome-bg .all-events__carousel .swiper-slide:first-child {
+    margin-left: calc(50% - 100px);
+  }
+  section.all-events--welcome-bg .all-events__carousel .swiper-slide:last-child {
+    margin-right: calc(50% - 100px) !important;
+  }
+  section.all-events--welcome-bg .all-events__card {
+    transform-origin: center center;
+    will-change: transform, opacity;
+  }
+}
+
+/* वार्षिक उत्सव nameplate — a maroon plaque with a fine double gold
+   rule and a small gold diamond on the top edge, echoing the section's
+   Om/swastik border: gold name, cream occasion beneath */
+section.all-events--welcome-bg .all-events__plate {
+  position: relative;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 18px;
+  padding: 14px 14px 12px;
+  border-radius: 6px;
+  border: 1px solid #D9982A;
+  background: linear-gradient(180deg, #7A0A10 0%, #620208 55%, #4D0601 100%);
+  box-shadow:
+    inset 0 0 0 3px #4D0601,
+    inset 0 0 0 4px rgba(233, 180, 90, 0.55),
+    0 10px 22px rgba(0, 0, 0, 0.35);
+}
+
+section.all-events--welcome-bg .all-events__plate::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  transform: translateX(-50%) rotate(45deg);
+  background: #620208;
+  border: 1px solid #E9B45A;
+  box-shadow: 0 0 0 2px #4D0601;
+}
+
+section.all-events--welcome-bg .all-events__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: #FBF1DC;
+}
+
+section.all-events--welcome-bg .all-events__name {
+  color: #F2B632;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+section.all-events--welcome-bg .all-events__occasion {
+  color: #FBF1DC;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+@media (max-width: 1199px) {
+  section.all-events--welcome-bg .all-events__plate {
+    margin-top: 14px;
+    padding: 12px 10px 10px;
+  }
+  section.all-events--welcome-bg .all-events__name {
+    font-size: 15px;
+  }
+  section.all-events--welcome-bg .all-events__occasion {
+    font-size: 13px;
+  }
+}
+
+/* वार्षिक उत्सव nameplate — gold ribbon banner: a gold band with darker
+   notched tails folding back behind each end, maroon lettering */
+section.all-events--welcome-bg .all-events__plate {
+  width: calc(100% - 44px);
+  margin: 18px auto 10px;
+  padding: 12px 10px 11px;
+  border: 0;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #F5CB5C 0%, #E9B45A 30%, #D9982A 75%, #C98A22 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 rgba(77, 6, 1, 0.25),
+    0 8px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* the tails: sit a little lower than the band, notched at the outer end,
+   darkest where they fold behind it */
+section.all-events--welcome-bg .all-events__plate::before,
+section.all-events--welcome-bg .all-events__plate::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  bottom: -9px;
+  width: 26px;
+  border: 0;
+  box-shadow: none;
+  transform: none;
+  height: auto;
+  z-index: -1;
+}
+
+section.all-events--welcome-bg .all-events__plate::before {
+  left: -22px;
+  background: linear-gradient(90deg, #C98A22 0%, #B37719 60%, #8E5A10 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 38% 50%);
+}
+
+section.all-events--welcome-bg .all-events__plate::after {
+  right: -22px;
+  left: auto;
+  background: linear-gradient(270deg, #C98A22 0%, #B37719 60%, #8E5A10 100%);
+  clip-path: polygon(0 0, 100% 0, 62% 50%, 100% 100%, 0 100%);
+}
+
+/* the band sits above its tails */
+section.all-events--welcome-bg .all-events__plate {
+  isolation: isolate;
+}
+
+section.all-events--welcome-bg .all-events__name {
+  color: #4D0601;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+section.all-events--welcome-bg .all-events__occasion {
+  color: #620208;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+@media (max-width: 1199px) {
+  section.all-events--welcome-bg .all-events__plate {
+    width: calc(100% - 32px);
+    margin: 14px auto 10px;
+    padding: 10px 6px 9px;
+  }
+  section.all-events--welcome-bg .all-events__plate::before,
+  section.all-events--welcome-bg .all-events__plate::after {
+    width: 20px;
+    top: 7px;
+    bottom: -7px;
+  }
+  section.all-events--welcome-bg .all-events__plate::before { left: -16px; }
+  section.all-events--welcome-bg .all-events__plate::after { right: -16px; }
+  section.all-events--welcome-bg .all-events__name { font-size: 15px; }
+  section.all-events--welcome-bg .all-events__occasion { font-size: 13px; }
+}
+
+/* ribbon tails: wider with a deeper notch so they read clearly */
+section.all-events--welcome-bg .all-events__plate {
+  width: calc(100% - 56px);
+}
+section.all-events--welcome-bg .all-events__plate::before,
+section.all-events--welcome-bg .all-events__plate::after {
+  width: 36px;
+}
+section.all-events--welcome-bg .all-events__plate::before {
+  left: -28px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 45% 50%);
+}
+section.all-events--welcome-bg .all-events__plate::after {
+  right: -28px;
+  clip-path: polygon(0 0, 100% 0, 55% 50%, 100% 100%, 0 100%);
+}
+
+@media (max-width: 1199px) {
+  section.all-events--welcome-bg .all-events__plate {
+    width: calc(100% - 40px);
+  }
+  section.all-events--welcome-bg .all-events__plate::before,
+  section.all-events--welcome-bg .all-events__plate::after {
+    width: 26px;
+  }
+  section.all-events--welcome-bg .all-events__plate::before { left: -20px; }
+  section.all-events--welcome-bg .all-events__plate::after { right: -20px; }
+}
+
+/* ribbon — fresh marigold/saffron finish */
+section.all-events--welcome-bg .all-events__plate {
+  padding: 13px 12px 12px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 38%),
+    linear-gradient(180deg, #FFE08A 0%, #FFC93C 40%, #F5A623 78%, #E58E12 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 244, 214, 0.7),
+    inset 0 -2px 0 rgba(160, 70, 0, 0.35),
+    0 10px 20px rgba(0, 0, 0, 0.38);
+}
+
+/* tails: deeper saffron, shaded toward the fold */
+section.all-events--welcome-bg .all-events__plate::before {
+  background: linear-gradient(90deg, #F2A033 0%, #DB7F14 55%, #B5600A 100%);
+}
+
+section.all-events--welcome-bg .all-events__plate::after {
+  background: linear-gradient(270deg, #F2A033 0%, #DB7F14 55%, #B5600A 100%);
+}
+
+section.all-events--welcome-bg .all-events__name {
+  color: #5A0207;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+section.all-events--welcome-bg .all-events__occasion {
+  color: #8A3A05;
+  font-weight: 700;
+}
+
+@media (max-width: 1199px) {
+  section.all-events--welcome-bg .all-events__plate {
+    padding: 11px 8px 10px;
+  }
+}
+
+/* phone: the band is narrow (~170px), so tighten the lettering */
+@media (max-width: 767px) {
+  section.all-events--welcome-bg .all-events__plate {
+    width: calc(100% - 32px);
+    padding: 10px 5px 9px;
+  }
+  section.all-events--welcome-bg .all-events__plate::before,
+  section.all-events--welcome-bg .all-events__plate::after {
+    width: 22px;
+  }
+  section.all-events--welcome-bg .all-events__plate::before { left: -16px; }
+  section.all-events--welcome-bg .all-events__plate::after { right: -16px; }
+  section.all-events--welcome-bg .all-events__name { font-size: 13.5px; }
+  section.all-events--welcome-bg .all-events__occasion { font-size: 12.5px; }
+}
+
+/* वार्षिक उत्सव nameplate — plain marigold plate, no ribbon tails;
+   bold maroon lettering */
+section.all-events--welcome-bg .all-events__plate::before,
+section.all-events--welcome-bg .all-events__plate::after {
+  content: none;
+}
+
+section.all-events--welcome-bg .all-events__plate {
+  width: 100%;
+  margin: 14px 0 0;
+  padding: 12px 12px 11px;
+  border-radius: 8px;
+}
+
+section.all-events--welcome-bg .all-events__name {
+  color: #4D0601;
+  font-weight: 800;
+}
+
+section.all-events--welcome-bg .all-events__occasion {
+  color: #620208;
+  font-weight: 700;
+}
+
+@media (max-width: 1199px) {
+  section.all-events--welcome-bg .all-events__plate {
+    width: 100%;
+    margin: 12px 0 0;
+    padding: 10px 8px 9px;
+  }
+}
+
+@media (max-width: 767px) {
+  section.all-events--welcome-bg .all-events__plate {
+    width: 100%;
+    padding: 9px 6px 8px;
+  }
+  section.all-events--welcome-bg .all-events__name { font-size: 14px; }
+  section.all-events--welcome-bg .all-events__occasion { font-size: 13px; }
+}
+
+/* nameplate lettering in Mukta, which has real heavy Devanagari weights */
+section.all-events--welcome-bg .all-events__title,
+section.all-events--welcome-bg .all-events__name,
+section.all-events--welcome-bg .all-events__occasion {
+  font-family: var(--anity-font-marathi), var(--anity-font), sans-serif;
+}
+
+section.all-events--welcome-bg .all-events__name {
+  font-weight: 800;
+  font-size: 19px;
+  line-height: 1.25;
+}
+
+section.all-events--welcome-bg .all-events__occasion {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+@media (max-width: 1199px) {
+  section.all-events--welcome-bg .all-events__name { font-size: 16px; }
+  section.all-events--welcome-bg .all-events__occasion { font-size: 14px; }
+}
+
+@media (max-width: 767px) {
+  section.all-events--welcome-bg .all-events__name { font-size: 15px; }
+  section.all-events--welcome-bg .all-events__occasion { font-size: 13.5px; }
+}
