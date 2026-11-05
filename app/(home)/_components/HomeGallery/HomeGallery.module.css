@@ -1,0 +1,743 @@
+/*==============================================
+    Found One
+===============================================*/
+
+.foundOneBtnBox {
+    position: relative;
+    display: block;
+    margin-top: 30px;
+}
+
+/* Ornamental border — maroon strip with gold Om/swastik motif, matching the Welcome section */
+.divineBorderFound {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  height: 30px;
+  background-color: #3D0A0C;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(232, 199, 102, 0.12) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%23E8C766'%3E%3Ctext x='25' y='22' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%23E8C766' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23E8C766' opacity='0.85'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-x, repeat-x;
+  background-position: center, center;
+  background-size: 100% 100%, 100px 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
+}
+
+.divineBorderFound:before,
+.divineBorderFound:after {
+  content: none;
+}
+
+.divineBorderFoundTop {
+  top: 0;
+}
+
+.divineBorderFoundBottom {
+  bottom: 0;
+}
+
+.divineBorderFoundVertical {
+  position: absolute;
+  top: 30px;
+  bottom: 30px;
+  z-index: 2;
+  width: 30px;
+  background-color: #3D0A0C;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(232, 199, 102, 0.12) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%23E8C766'%3E%3Ctext x='15' y='32' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%23E8C766' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23E8C766' opacity='0.85'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-y, repeat-y;
+  background-position: top center, top center;
+  background-size: 100% 100%, 30px 100px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.32);
+}
+
+.divineBorderFoundVertical:before,
+.divineBorderFoundVertical:after {
+  content: none;
+}
+
+.divineBorderFoundLeft {
+  left: 0;
+}
+
+.divineBorderFoundRight {
+  right: 0;
+}
+
+.foundOneCorner {
+  position: absolute;
+  z-index: 4;
+  width: 30px;
+  height: 30px;
+  background-color: #3D0A0C;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
+  pointer-events: none;
+}
+
+.foundOneCornerTl {
+  top: 0;
+  left: 0;
+}
+
+.foundOneCornerTr {
+  top: 0;
+  right: 0;
+}
+
+.foundOneCornerBl {
+  bottom: 0;
+  left: 0;
+}
+
+.foundOneCornerBr {
+  bottom: 0;
+  right: 0;
+}
+
+@media (max-width: 767px) {
+  .divineBorderFoundVertical,
+.foundOneCorner {
+    display: none;
+  }
+}
+
+/* keep all three cards level: description is exactly two lines */
+
+.foundOneBtnBox :global(.thm-btn) {
+  background-color: #3D0A0C;
+  border-color: #3D0A0C;
+  color: #FFF8E7;
+  box-shadow: 0 8px 20px rgba(61, 10, 12, 0.35);
+}
+
+.foundOneBtnBox :global(.thm-btn)::after {
+  background-color: #3D0A0C;
+}
+
+.foundOneBtnBox :global(.thm-btn) span {
+  background-color: #F2A90A;
+  color: #3D0A0C;
+}
+
+.foundOneBtnBox :global(.thm-btn):hover {
+  border-color: #3D0A0C;
+  color: #FFF8E7;
+}
+
+.foundOneBtnBox :global(.thm-btn):hover span {
+  background-color: #FFFFFF;
+  color: #3D0A0C;
+}
+
+/*==============================================
+    Home Gallery — royal maroon/gold themed photo grid
+===============================================*/
+.homeGallery {
+  position: relative;
+  display: block;
+  padding: 80px 0 84px;
+  background-color: #F2A90A;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Gold theme background: solid gold + enlarged low-opacity floral pattern,
+   matching the Found (sadhana) section */
+.bg {
+  position: absolute;
+  inset: 0;
+  background-color: #F2A90A;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/assets/images/backgrounds/section-bg.png");
+  background-repeat: repeat;
+  /* tile at the artwork's native width so the flower motifs match the
+     size used in the Legacy section (section-bg-2 @ 1672px) */
+  background-size: 1170px auto;
+  opacity: 0.25;
+}
+
+@media (max-width: 991px) {
+  .bg::before {
+    background-size: 770px auto;
+  }
+}
+
+.bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 10% 12%, rgba(61, 10, 12, 0.10), transparent 40%),
+    radial-gradient(circle at 90% 88%, rgba(61, 10, 12, 0.12), transparent 42%);
+}
+
+/* Title block with peacock-feather borders flanking it, left & right */
+.titleWrap {
+  position: relative;
+}
+
+.feather {
+  position: absolute;
+  top: 50%;
+  width: clamp(220px, 26vw, 460px);
+  height: auto;
+  max-width: none;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transform-origin: center center;
+  filter: drop-shadow(0 8px 20px rgba(61, 10, 12, 0.25));
+}
+
+/* sit in the gutter but overlap the title edge so overflow:hidden won't clip */
+.featherLeft {
+  right: 84%;
+  transform: translate(50%, -50%);
+  animation: homeGalleryFeatherInLeft 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards,
+             homeGalleryFeatherDrift 9s ease-in-out 1.3s infinite;
+}
+
+.featherRight {
+  left: 84%;
+  transform: translate(-50%, -50%) scaleX(-1);
+  animation: homeGalleryFeatherInRight 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards,
+             homeGalleryFeatherDriftMirror 9s ease-in-out 1.9s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featherLeft  { animation: none; opacity: 1; transform: translate(50%, -50%); }
+  .featherRight { animation: none; opacity: 1; transform: translate(-50%, -50%) scaleX(-1); }
+}
+
+@media only screen and (max-width: 767px) {
+
+/* hide only where the heading itself gets tight */
+  .feather {
+    display: none;
+  }
+}
+
+/* Section title — matches Found section ink treatment on gold */
+.homeGallery :global(.section-title) {
+  margin-bottom: 48px;
+}
+
+.homeGallery :global(.section-title__tagline-box) {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* small ornamental rule on each side of the eyebrow tagline */
+.homeGallery :global(.section-title__tagline-box)::before,
+.homeGallery :global(.section-title__tagline-box)::after {
+  content: "";
+  width: 34px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(61, 10, 12, 0.55), transparent);
+}
+
+.homeGallery :global(.section-title__tagline) {
+  color: #000000;
+  font-weight: 700;
+}
+
+.homeGallery :global(.section-title__title) {
+  color: #000000;
+  text-shadow: none;
+}
+
+.homeGallery :global(.section-title__title) span {
+  color: #3D0A0C;
+}
+
+/* Grid — editorial 4x3 mosaic: 4 big tiles + 2 small accents, large images, no gaps
+   1 big (2x2)  ·  2 small (1x1)  ·  3 big (2x1 wide)
+   Row height scales fluidly with the viewport so tiles stay large but never overflow. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, clamp(220px, 24vw, 300px));
+  gap: clamp(14px, 1.6vw, 24px);
+}
+
+.item:nth-child(1) { grid-column: 1 / span 2; grid-row: 1 / span 2; } /* gallery-1 — big */
+.item:nth-child(2) { grid-column: 3 / span 1; grid-row: 1; }          /* gallery-2 — small */
+.item:nth-child(4) { grid-column: 4 / span 1; grid-row: 1; }          /* gallery-4 — small */
+.item:nth-child(3) { grid-column: 3 / span 2; grid-row: 2; }          /* gallery-3 — big */
+.item:nth-child(5) { grid-column: 1 / span 2; grid-row: 3; }          /* gallery-5 — big */
+.item:nth-child(6) { grid-column: 3 / span 2; grid-row: 3; }          /* gallery-6 — big */
+
+.item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 18px 44px rgba(61, 10, 12, 0.26);
+  line-height: 0;
+  opacity: 0;
+  transform: translateY(46px) scale(0.96);
+  animation: homeGalleryReveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 500ms ease;
+}
+
+.item:nth-child(1) { animation-delay: 0.05s; }
+.item:nth-child(2) { animation-delay: 0.15s; }
+.item:nth-child(3) { animation-delay: 0.25s; }
+.item:nth-child(4) { animation-delay: 0.35s; }
+.item:nth-child(5) { animation-delay: 0.45s; }
+.item:nth-child(6) { animation-delay: 0.55s; }
+
+.media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1), filter 700ms ease;
+  filter: saturate(0.92);
+}
+
+.item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(61, 10, 12, 0) 38%, rgba(61, 10, 12, 0.72) 100%);
+  opacity: 0.9;
+  transition: opacity 450ms ease;
+  z-index: 1;
+}
+
+/* Gold inner frame that draws in on hover */
+.frame {
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(242, 169, 10, 0.75);
+  border-radius: 2px;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 500ms ease, transform 500ms ease;
+  z-index: 3;
+}
+
+/* Ornamental gold corner ticks */
+.corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #F2A90A;
+  opacity: 0;
+  transition: opacity 500ms ease 0.08s, transform 500ms ease 0.08s;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.cornerTl {
+  top: 14px;
+  left: 14px;
+  border-right: 0;
+  border-bottom: 0;
+  transform: translate(6px, 6px);
+}
+
+.cornerBr {
+  bottom: 14px;
+  right: 14px;
+  border-left: 0;
+  border-top: 0;
+  transform: translate(-6px, -6px);
+}
+
+.caption {
+  position: absolute;
+  left: 26px;
+  bottom: 22px;
+  color: var(--anity-white);
+  font-family: var(--font-text), serif;
+  font-size: 21px;
+  line-height: 1.3;
+  letter-spacing: 0.5px;
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 450ms ease, transform 450ms ease;
+}
+
+.caption::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  bottom: -8px;
+  width: 34px;
+  height: 2px;
+  background-color: #F2A90A;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 450ms ease 0.1s;
+}
+
+/* Hover state */
+.item:hover {
+  transform: translateY(-6px) scale(1);
+  box-shadow: 0 34px 74px rgba(61, 10, 12, 0.44);
+  z-index: 3;
+}
+
+.item:hover .media img {
+  transform: scale(1.09);
+  filter: saturate(1.05);
+}
+
+.item:hover::after {
+  opacity: 1;
+}
+
+.item:hover .frame {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.item:hover .corner {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.item:hover .caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.item:hover .caption::before {
+  transform: scaleX(1);
+}
+
+/* CTA row — button centred, a decorative peacock resting on each side.
+   The peacocks are anchored to the baseline of the button so no dead
+   space collects beneath them. */
+.btnBox {
+  margin-top: 44px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(16px, 5vw, 90px);
+  min-height: clamp(120px, 15vw, 200px);
+}
+
+.btnBox .btn:global(.thm-btn) {
+  position: relative;
+  z-index: 2;
+  margin-bottom: clamp(20px, 3vw, 44px);
+}
+
+/* Peacocks flanking the CTA — sized to the row, feet on the baseline */
+.peacock {
+  flex: 0 1 auto;
+  width: clamp(180px, 24vw, 360px);
+  height: auto;
+  align-self: flex-end;
+  pointer-events: none;
+  transform-origin: bottom center;
+  filter: drop-shadow(0 14px 26px rgba(61, 10, 12, 0.3));
+  opacity: 0;
+}
+
+/* left peacock mirrored so the pair face away from each other */
+.peacockLeft {
+  transform: scaleX(-1);
+  animation: homeGalleryPeacockRiseL 1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards,
+             homeGalleryPeacockSwayL 4.5s ease-in-out 1.2s infinite;
+}
+
+.peacockRight {
+  transform: none;
+  animation: homeGalleryPeacockRiseR 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards,
+             homeGalleryPeacockSwayR 4.5s ease-in-out 1.6s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+/* entrance — unfurl: rise from the baseline while gently scaling up */
+
+/* idle — a slow, elegant courtship sway: lean + breathe, pivoting on the feet.
+   No vertical bounce, so the baseline stays flush and the section reads calm. */
+  .peacock {
+    animation: none;
+    opacity: 1;
+  }
+  .peacockLeft  { transform: scaleX(-1); }
+  .peacockRight { transform: none; }
+}
+
+@media only screen and (max-width: 767px) {
+  .btnBox {
+    min-height: 0;
+    gap: 10px;
+  }
+  .peacock {
+    width: 110px;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  .peacock {
+    display: none;
+  }
+}
+
+.btn:global(.thm-btn) {
+  background-color: #3D0A0C;
+  border-color: #3D0A0C;
+  color: #FFF8E7;
+  box-shadow: 0 8px 20px rgba(61, 10, 12, 0.35);
+}
+
+.btn:global(.thm-btn)::after {
+  background-color: #3D0A0C;
+}
+
+.btn:global(.thm-btn) span {
+  background-color: #F2A90A;
+  color: #3D0A0C;
+}
+
+.btn:global(.thm-btn):hover {
+  border-color: #3D0A0C;
+  color: #FFF8E7;
+}
+
+.btn:global(.thm-btn):hover span {
+  background-color: #FFFFFF;
+  color: #3D0A0C;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+/* Tablet — keep the 4-column mosaic, slightly shorter rows */
+  .homeGallery {
+    padding: 64px 0 68px;
+  }
+  .grid {
+    grid-template-rows: repeat(3, clamp(190px, 26vw, 240px));
+  }
+  .caption {
+    font-size: 19px;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+
+/* Small tablet / large phone — 2-column layout, hero + wide big tiles stay prominent */
+  .homeGallery {
+    padding: 56px 0 60px;
+  }
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: none;
+    grid-auto-rows: clamp(180px, 34vw, 230px);
+    gap: 16px;
+  }
+  .item:nth-child(n) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .item:nth-child(1),
+.item:nth-child(3),
+.item:nth-child(5),
+.item:nth-child(6) {
+    grid-column: 1 / span 2;
+  }
+  .caption {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media only screen and (max-width: 575px) {
+
+/* Phone — single column, every image full width and generously tall */
+  .homeGallery {
+    padding: 48px 0 52px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-auto-rows: clamp(200px, 58vw, 300px);
+    gap: 14px;
+  }
+  .item:nth-child(n) {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+  .frame {
+    inset: 10px;
+  }
+  .corner {
+    top: 10px;
+    left: 10px;
+  }
+  .cornerBr {
+    top: auto;
+    left: auto;
+    bottom: 10px;
+    right: 10px;
+  }
+  .caption {
+    left: 18px;
+    bottom: 16px;
+    font-size: 18px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Gallery carries decorative peacocks at the base, so it needs less
+   breathing room below than the text sections. */
+.homeGallery {
+  padding-top: 100px;
+  padding-bottom: 56px;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .homeGallery { padding: 100px 0 48px; }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .homeGallery { padding: 80px 0 44px; }
+}
+@media only screen and (max-width: 767px) {
+  .homeGallery { padding: 60px 0 48px; }
+}
+.foundOneBtnBox :global(.thm-btn),
+.btn:global(.thm-btn) {
+  background-color: #3D0A0C;
+  border: 1px solid #3D0A0C;
+  color: #FFFFFF;
+  box-shadow: 0 8px 20px rgba(61, 10, 12, 0.35);
+}
+
+.foundOneBtnBox :global(.thm-btn)::after,
+.btn:global(.thm-btn)::after {
+  background-color: #2C0708;
+}
+
+.foundOneBtnBox :global(.thm-btn) span,
+.btn:global(.thm-btn) span {
+  background-color: #F2A90A;
+  color: #3D0A0C;
+}
+
+.foundOneBtnBox :global(.thm-btn):hover,
+.btn:global(.thm-btn):hover {
+  border-color: #2C0708;
+  color: #FFFFFF;
+}
+
+.foundOneBtnBox :global(.thm-btn):hover span,
+.btn:global(.thm-btn):hover span {
+  background-color: #FFFFFF;
+  color: #3D0A0C;
+}
+
+/* ---- Ornamental maroon borders + corners ---- */
+.divineBorderFound,
+.divineBorderFoundVertical {
+  background-color: var(--sd-maroon-dk);
+}
+
+.foundOneCorner {
+  background-color: var(--sd-maroon-dk);
+}
+
+/* ---- Button on the gold field: maroon fill, gold chip ---- */
+.foundOneBtnBox :global(.thm-btn) {
+  background-color: var(--sd-maroon);
+  border-color: var(--sd-maroon-dk);
+  color: var(--sd-cream);
+  box-shadow: 0 8px 20px rgba(44, 4, 5, 0.35);
+}
+
+.foundOneBtnBox :global(.thm-btn)::after {
+  background-color: var(--sd-ink);
+}
+
+.foundOneBtnBox :global(.thm-btn) span {
+  background-color: var(--sd-gold);
+  color: var(--sd-ink);
+}
+
+.foundOneBtnBox :global(.thm-btn):hover,
+.foundOneBtnBox :global(.thm-btn):focus-visible {
+  border-color: var(--sd-ink);
+  color: var(--sd-gold-lite);
+}
+
+.foundOneBtnBox :global(.thm-btn):hover span {
+  background-color: var(--sd-cream);
+  color: var(--sd-ink);
+}
+
+@keyframes homeGalleryFeatherInLeft {
+  from { opacity: 0; transform: translate(72%, -50%) scale(0.8); }
+  to   { opacity: 1; transform: translate(50%, -50%) scale(1); }
+}
+
+@keyframes homeGalleryFeatherDrift {
+  0%, 100% { transform: translate(50%, -50%) rotate(-1.5deg); }
+  50%      { transform: translate(50%, -54%) rotate(1.5deg); }
+}
+
+@keyframes homeGalleryFeatherInRight {
+  from { opacity: 0; transform: translate(-72%, -50%) scale(0.8) scaleX(-1); }
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1) scaleX(-1); }
+}
+
+@keyframes homeGalleryFeatherDriftMirror {
+  0%, 100% { transform: translate(-50%, -50%) scaleX(-1) rotate(-1.5deg); }
+  50%      { transform: translate(-50%, -54%) scaleX(-1) rotate(1.5deg); }
+}
+
+@keyframes homeGalleryReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes homeGalleryPeacockRiseL {
+  from { opacity: 0; transform: scaleX(-1) translateY(34px) scale(0.82); }
+  to   { opacity: 1; transform: scaleX(-1) translateY(0)    scale(1); }
+}
+@keyframes homeGalleryPeacockSwayL {
+  0%, 100% { transform: scaleX(-1) rotate(-3deg) scale(1); }
+  50%      { transform: scaleX(-1) rotate(3deg)  scale(1.03); }
+}
+@keyframes homeGalleryPeacockRiseR {
+  from { opacity: 0; transform: translateY(34px) scale(0.82); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+@keyframes homeGalleryPeacockSwayR {
+  0%, 100% { transform: rotate(3deg)  scale(1); }
+  50%      { transform: rotate(-3deg) scale(1.03); }
+}

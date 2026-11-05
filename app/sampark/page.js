@@ -1,26 +1,24 @@
 'use client'
 
-import Layout from "@/components/layout/Layout"
 import Link from "next/link"
 import { useState } from "react"
-import MantraStrip from "@/components/shared/MantraStrip/MantraStrip"
-import PageHero from "@/components/shared/PageHero/PageHero"
-import TempleGallery from "@/components/shared/TempleGallery/TempleGallery"
-import { PAGE_HERO_IMAGES } from "@/lib/data/heroImages"
-import { CLOSING_MANTRAS } from "@/lib/data/mantras"
-import Cta from "@/components/sections/home1/Cta"
-import {
-    HEADER_ADDRESS_CITY,
-    HEADER_ADDRESS_PLACE,
-    HEADER_TOPBAR_ADDRESS,
-    HEADER_ADDRESS_LINE1,
-    HEADER_ADDRESS_LINE2,
-    HEADER_EMAIL,
-    HEADER_EMAIL_MAILTO,
-    HEADER_MAP_URL,
-    HEADER_PHONE_DISPLAY,
-    HEADER_PHONE_TEL,
-} from "@/lib/siteInfo"
+import MantraStrip from "../_shared/_components/MantraStrip/MantraStrip"
+import Breadcrumb from "../_shared/_components/Breadcrumb/Breadcrumb"
+import TempleGallery from "../_shared/_components/TempleGallery/TempleGallery"
+import Cta from "../_shared/_components/Cta/Cta"
+import styles from "./page.module.css"
+
+// Trust contact details
+const SITE_PHONE_DISPLAY = "+९१ ७५८८७ ९७७८८"
+const SITE_PHONE_TEL = "tel:+917588797788"
+const SITE_EMAIL = "mbsmtrust@gmail.com"
+const SITE_EMAIL_MAILTO = "mailto:mbsmtrust@gmail.com"
+const SITE_ADDRESS_PLACE = "श्री शंकरदत्त महाराज मठ,"
+const SITE_ADDRESS_LINE1 = "एफ ७०, एमआयडीसी,"
+const SITE_ADDRESS_LINE2 = "अहिल्यानगर - ४१४१११"
+const SITE_ADDRESS_CITY = "अहिल्यानगर"
+const SITE_ADDRESS_SHORT = `${SITE_ADDRESS_PLACE} ${SITE_ADDRESS_LINE1} ${SITE_ADDRESS_CITY}`
+const SITE_MAP_URL = "https://share.google/eUPrIPLwsBu6afTGg"
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -44,7 +42,7 @@ const CONTACT_FAQS = [
     },
     {
         question: "मठापर्यंत कसे पोहोचावे?",
-        answer: "मठ सोलापूर शहरातील दत्त चौकात स्थित आहे. रेल्वे स्थानक व बस स्थानकापासून रिक्षा किंवा खाजगी वाहनाने सहज पोहोचता येते.",
+        answer: "मठ अहिल्यानगर येथील एमआयडीसी परिसरात (एफ ७०) स्थित आहे. रेल्वे स्थानक व बस स्थानकापासून रिक्षा किंवा खाजगी वाहनाने सहज पोहोचता येते.",
     },
     {
         question: "दर्शनासाठी आधी नोंदणी करावी लागते का?",
@@ -109,25 +107,26 @@ export default function Home() {
 
     return (
         <>
-        <Layout headerStyle={1} footerStyle={1} mantraStrip={<MantraStrip />}>
+        <>
+        <MantraStrip />
 
-        <PageHero image={PAGE_HERO_IMAGES.sampark} />
+        <Breadcrumb title="संपर्क" icon="fas fa-phone-alt" />
 
-        <TempleGallery compact />
+        <TempleGallery />
 
         {/*Contact One Start*/}
-        <section id="contact-one" className="contact-one contact-one--ornate">
-            <div className="divine-border--contact divine-border--contact-top" role="presentation"></div>
-            <div className="divine-border--contact-vertical divine-border--contact-left" role="presentation"></div>
-            <div className="divine-border--contact-vertical divine-border--contact-right" role="presentation"></div>
-            <span className="contact-one__corner contact-one__corner--tl" aria-hidden="true"></span>
-            <span className="contact-one__corner contact-one__corner--tr" aria-hidden="true"></span>
-            <span className="contact-one__corner contact-one__corner--bl" aria-hidden="true"></span>
-            <span className="contact-one__corner contact-one__corner--br" aria-hidden="true"></span>
-            <div className="divine-border--contact divine-border--contact-bottom" role="presentation"></div>
-            <div className="contact-one__bg" role="presentation"></div>
+        <section id="contact-one" className={`${styles.contactOne} ${styles.contactOneOrnate}`}>
+            <div className={`${styles.divineBorderContact} ${styles.divineBorderContactTop}`} role="presentation"></div>
+            <div className={`${styles.divineBorderContactVertical} ${styles.divineBorderContactLeft}`} role="presentation"></div>
+            <div className={`${styles.divineBorderContactVertical} ${styles.divineBorderContactRight}`} role="presentation"></div>
+            <span className={`${styles.corner} ${styles.cornerTl}`} aria-hidden="true"></span>
+            <span className={`${styles.corner} ${styles.cornerTr}`} aria-hidden="true"></span>
+            <span className={`${styles.corner} ${styles.cornerBl}`} aria-hidden="true"></span>
+            <span className={`${styles.corner} ${styles.cornerBr}`} aria-hidden="true"></span>
+            <div className={`${styles.divineBorderContact} ${styles.divineBorderContactBottom}`} role="presentation"></div>
+            <div className={styles.bg} role="presentation"></div>
             <div className="container">
-                <div className="contact-one__inner">
+                <div className={styles.inner}>
                     <div className="section-title text-center sec-title-animation animation-style2">
                         <div className="section-title__tagline-box">
                             <span className="section-title__tagline" lang="mr">आमच्याशी संपर्क साधा</span>
@@ -135,13 +134,13 @@ export default function Home() {
                         <h2 className="section-title__title title-animation" lang="mr">आपला संदेश<br/> मंगल भक्त सेवा मंडळापर्यंत पोहोचवा
                         </h2>
                     </div>
-                    <form className="contact-form-validated contact-one__form" onSubmit={handleSubmit} noValidate>
+                    <form className={`${styles.contactFormValidated} ${styles.form}`} onSubmit={handleSubmit} noValidate>
                         <div className="row">
                             <div className="col-xl-6 col-lg-6">
-                                <h4 className="contact-one__input-title" lang="mr">आपले नाव</h4>
-                                <div className={`contact-one__input-box${errors.name ? " has-error" : ""}`}>
-                                    <div className="contact-one__input-icon">
-                                        <span className="icon-user"></span>
+                                <h4 className={styles.inputTitle} lang="mr">आपले नाव</h4>
+                                <div className={`${styles.inputBox}${errors.name ? " has-error" : ""}`}>
+                                    <div className={styles.inputIcon}>
+                                        <span className="fas fa-user"></span>
                                     </div>
                                     <input
                                         type="text"
@@ -152,13 +151,13 @@ export default function Home() {
                                         onChange={handleChange}
                                     />
                                 </div>
-                                {errors.name && <span className="contact-one__error" lang="mr">{errors.name}</span>}
+                                {errors.name && <span className={styles.error} lang="mr">{errors.name}</span>}
                             </div>
                             <div className="col-xl-6 col-lg-6">
-                                <h4 className="contact-one__input-title" lang="mr">ईमेल</h4>
-                                <div className={`contact-one__input-box${errors.email ? " has-error" : ""}`}>
-                                    <div className="contact-one__input-icon">
-                                        <span className="icon-pin"></span>
+                                <h4 className={styles.inputTitle} lang="mr">ईमेल</h4>
+                                <div className={`${styles.inputBox}${errors.email ? " has-error" : ""}`}>
+                                    <div className={styles.inputIcon}>
+                                        <span className="fas fa-envelope"></span>
                                     </div>
                                     <input
                                         type="email"
@@ -169,13 +168,13 @@ export default function Home() {
                                         onChange={handleChange}
                                     />
                                 </div>
-                                {errors.email && <span className="contact-one__error" lang="mr">{errors.email}</span>}
+                                {errors.email && <span className={styles.error} lang="mr">{errors.email}</span>}
                             </div>
                             <div className="col-xl-12">
-                                <h4 className="contact-one__input-title" lang="mr">दूरध्वनी क्रमांक</h4>
-                                <div className={`contact-one__input-box${errors.phone ? " has-error" : ""}`}>
-                                    <div className="contact-one__input-icon">
-                                        <span className="icon-call"></span>
+                                <h4 className={styles.inputTitle} lang="mr">दूरध्वनी क्रमांक</h4>
+                                <div className={`${styles.inputBox}${errors.phone ? " has-error" : ""}`}>
+                                    <div className={styles.inputIcon}>
+                                        <span className="fas fa-phone-alt"></span>
                                     </div>
                                     <input
                                         type="text"
@@ -186,13 +185,13 @@ export default function Home() {
                                         onChange={handleChange}
                                     />
                                 </div>
-                                {errors.phone && <span className="contact-one__error" lang="mr">{errors.phone}</span>}
+                                {errors.phone && <span className={styles.error} lang="mr">{errors.phone}</span>}
                             </div>
                             <div className="col-xl-12">
-                                <h4 className="contact-one__input-title" lang="mr">संदेश</h4>
-                                <div className={`contact-one__input-box text-message-box${errors.message ? " has-error" : ""}`}>
-                                    <div className="contact-one__input-icon">
-                                        <span className="icon-envelope"></span>
+                                <h4 className={styles.inputTitle} lang="mr">संदेश</h4>
+                                <div className={`${styles.inputBox} ${styles.textMessageBox}${errors.message ? " has-error" : ""}`}>
+                                    <div className={styles.inputIcon}>
+                                        <span className="fas fa-envelope"></span>
                                     </div>
                                     <textarea
                                         name="message"
@@ -202,21 +201,21 @@ export default function Home() {
                                         onChange={handleChange}
                                     ></textarea>
                                 </div>
-                                {errors.message && <span className="contact-one__error" lang="mr">{errors.message}</span>}
-                                <div className="contact-one__btn-box">
-                                    <button type="submit" className="thm-btn contact-one__btn" lang="mr" disabled={status === "submitting"}>
+                                {errors.message && <span className={styles.error} lang="mr">{errors.message}</span>}
+                                <div className={styles.btnBox}>
+                                    <button type="submit" className={`thm-btn ${styles.btn}`} lang="mr" disabled={status === "submitting"}>
                                         {status === "submitting" ? "पाठवत आहे..." : "संदेश पाठवा"}
-                                        <span><i className="icon-arrow-right"></i></span>
+                                        <span><i className="fas fa-arrow-right"></i></span>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </form>
                     {status === "success" && (
-                        <div className="contact-one__result contact-one__result--success" role="status" lang="mr">आपला संदेश यशस्वीरित्या पाठवला गेला. धन्यवाद!</div>
+                        <div className={`${styles.result} ${styles.resultSuccess}`} role="status" lang="mr">आपला संदेश यशस्वीरित्या पाठवला गेला. धन्यवाद!</div>
                     )}
                     {status === "error" && (
-                        <div className="contact-one__result contact-one__result--error" role="alert" lang="mr">संदेश पाठवताना त्रुटी आली. कृपया पुन्हा प्रयत्न करा.</div>
+                        <div className={`${styles.result} ${styles.resultError}`} role="alert" lang="mr">संदेश पाठवताना त्रुटी आली. कृपया पुन्हा प्रयत्न करा.</div>
                     )}
                 </div>
             </div>
@@ -224,17 +223,17 @@ export default function Home() {
         {/*Contact One End*/}
 
         {/*Contact Two Start*/}
-        <section className="contact-two contact-two--ornate">
+        <section className={`${styles.contactTwo} ${styles.contactTwoOrnate}`}>
             {/* Gold Om/swastik ornamental border framing the maroon section */}
-            <div className="divine-border--contact-two divine-border--contact-two-top" role="presentation"></div>
-            <div className="divine-border--contact-two-vertical divine-border--contact-two-left" role="presentation"></div>
-            <div className="divine-border--contact-two-vertical divine-border--contact-two-right" role="presentation"></div>
-            <span className="contact-two__corner contact-two__corner--tl" aria-hidden="true"></span>
-            <span className="contact-two__corner contact-two__corner--tr" aria-hidden="true"></span>
-            <span className="contact-two__corner contact-two__corner--bl" aria-hidden="true"></span>
-            <span className="contact-two__corner contact-two__corner--br" aria-hidden="true"></span>
-            <div className="divine-border--contact-two divine-border--contact-two-bottom" role="presentation"></div>
-            <div className="contact-two__bg" role="presentation"></div>
+            <div className={`${styles.divineBorderContactTwo} ${styles.divineBorderContactTwoTop}`} role="presentation"></div>
+            <div className={`${styles.divineBorderContactTwoVertical} ${styles.divineBorderContactTwoLeft}`} role="presentation"></div>
+            <div className={`${styles.divineBorderContactTwoVertical} ${styles.divineBorderContactTwoRight}`} role="presentation"></div>
+            <span className={`${styles.contactTwoCorner} ${styles.contactTwoCornerTl}`} aria-hidden="true"></span>
+            <span className={`${styles.contactTwoCorner} ${styles.contactTwoCornerTr}`} aria-hidden="true"></span>
+            <span className={`${styles.contactTwoCorner} ${styles.contactTwoCornerBl}`} aria-hidden="true"></span>
+            <span className={`${styles.contactTwoCorner} ${styles.contactTwoCornerBr}`} aria-hidden="true"></span>
+            <div className={`${styles.divineBorderContactTwo} ${styles.divineBorderContactTwoBottom}`} role="presentation"></div>
+            <div className={styles.contactTwoBg} role="presentation"></div>
             <div className="container">
                 <div className="section-title text-center sec-title-animation animation-style2">
                     <div className="section-title__tagline-box">
@@ -245,43 +244,43 @@ export default function Home() {
                 </div>
                 <div className="row">
                     <div className="col-xxl-8 col-xl-7 col-lg-6">
-                        <div className="contact-two__left">
+                        <div className={styles.contactTwoLeft}>
                             <iframe
                                 src={MAP_EMBED_URL}
-                                className="contact-two__google-map"
-                                title={HEADER_TOPBAR_ADDRESS}
+                                className={styles.contactTwoGoogleMap}
+                                title={SITE_ADDRESS_SHORT}
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                     <div className="col-xxl-4 col-xl-5 col-lg-6">
-                        <div className="contact-two__right">
-                            <ul className="contact-two__contact-list list-unstyled">
+                        <div className={styles.contactTwoRight}>
+                            <ul className={`${styles.contactTwoContactList} list-unstyled`}>
                                 <li>
                                     <div className="icon">
-                                        <span className="icon-call"></span>
+                                        <span className="fas fa-phone-alt"></span>
                                     </div>
                                     <div className="content">
                                         <h4 lang="mr">दूरध्वनी क्रमांक</h4>
-                                        <p lang="mr"><Link href={HEADER_PHONE_TEL}>{HEADER_PHONE_DISPLAY}</Link></p>
+                                        <p lang="mr"><Link href={SITE_PHONE_TEL}>{SITE_PHONE_DISPLAY}</Link></p>
                                     </div>
                                 </li>
                                 <li>
                                     <div className="icon">
-                                        <span className="icon-envelope"></span>
+                                        <span className="fas fa-envelope"></span>
                                     </div>
                                     <div className="content">
                                         <h4 lang="mr">ईमेल</h4>
-                                        <p><Link href={HEADER_EMAIL_MAILTO}>{HEADER_EMAIL}</Link></p>
+                                        <p><Link href={SITE_EMAIL_MAILTO}>{SITE_EMAIL}</Link></p>
                                     </div>
                                 </li>
                                 <li>
                                     <div className="icon">
-                                        <span className="icon-pin-two"></span>
+                                        <span className="fas fa-map-marker-alt"></span>
                                     </div>
                                     <div className="content">
                                         <h4 lang="mr">पत्ता</h4>
-                                        <p lang="mr" className="contact-two__address"><Link href={MAP_LINK} target="_blank" rel="noopener noreferrer">{HEADER_ADDRESS_PLACE}<br /> {HEADER_ADDRESS_LINE1} {HEADER_ADDRESS_CITY}</Link></p>
+                                        <p lang="mr" className={styles.contactTwoAddress}><Link href={MAP_LINK} target="_blank" rel="noopener noreferrer">{SITE_ADDRESS_PLACE}<br /> {SITE_ADDRESS_LINE1} {SITE_ADDRESS_CITY}</Link></p>
                                     </div>
                                 </li>
                             </ul>
@@ -293,16 +292,16 @@ export default function Home() {
         {/*Contact Two End*/}
 
         {/*Contact Faq Start — hidden for now, kept in place, not deleted */}
-        {false && <section className="contact-faq">
-            <div className="divine-border--contact-faq divine-border--contact-faq-top" role="presentation"></div>
-            <div className="divine-border--contact-faq-vertical divine-border--contact-faq-left" role="presentation"></div>
-            <div className="divine-border--contact-faq-vertical divine-border--contact-faq-right" role="presentation"></div>
-            <span className="contact-faq__corner contact-faq__corner--tl" aria-hidden="true"></span>
-            <span className="contact-faq__corner contact-faq__corner--tr" aria-hidden="true"></span>
-            <span className="contact-faq__corner contact-faq__corner--bl" aria-hidden="true"></span>
-            <span className="contact-faq__corner contact-faq__corner--br" aria-hidden="true"></span>
-            <div className="divine-border--contact-faq divine-border--contact-faq-bottom" role="presentation"></div>
-            <div className="contact-faq__bg" role="presentation"></div>
+        {false && <section className={styles.contactFaq}>
+            <div className={`${styles.divineBorderContactFaq} ${styles.divineBorderContactFaqTop}`} role="presentation"></div>
+            <div className={`${styles.divineBorderContactFaqVertical} ${styles.divineBorderContactFaqLeft}`} role="presentation"></div>
+            <div className={`${styles.divineBorderContactFaqVertical} ${styles.divineBorderContactFaqRight}`} role="presentation"></div>
+            <span className={`${styles.contactFaqCorner} ${styles.contactFaqCornerTl}`} aria-hidden="true"></span>
+            <span className={`${styles.contactFaqCorner} ${styles.contactFaqCornerTr}`} aria-hidden="true"></span>
+            <span className={`${styles.contactFaqCorner} ${styles.contactFaqCornerBl}`} aria-hidden="true"></span>
+            <span className={`${styles.contactFaqCorner} ${styles.contactFaqCornerBr}`} aria-hidden="true"></span>
+            <div className={`${styles.divineBorderContactFaq} ${styles.divineBorderContactFaqBottom}`} role="presentation"></div>
+            <div className={styles.contactFaqBg} role="presentation"></div>
             <div className="container">
                 <div className="section-title text-center sec-title-animation animation-style2">
                     <div className="section-title__tagline-box">
@@ -311,12 +310,12 @@ export default function Home() {
                     <h2 className="section-title__title title-animation" lang="mr">आपल्या शंकांचे निरसन
                     </h2>
                 </div>
-                <div className="row contact-faq__row">
+                <div className={`row ${styles.contactFaqRow}`}>
                     <div className="col-xl-5 col-lg-5">
-                        <div className="visit-card contact-faq__visit-card">
+                        <div className={`visit-card ${styles.contactFaqVisitCard}`}>
                             <div className="visit-card__header">
                                 <span className="visit-card__icon">
-                                    <i className="icon-clock"></i>
+                                    <i className="fas fa-clock"></i>
                                 </span>
                                 <h3 lang="mr">भेटीचे नियोजन करा</h3>
                             </div>
@@ -343,38 +342,38 @@ export default function Home() {
                             <div className="visit-card__divider"></div>
 
                             <div className="visit-card__address">
-                                <i className="icon-pin"></i>
+                                <i className="fas fa-map-marker-alt"></i>
                                 <p>
-                                    <span className="visit-card__address-line1" lang="mr">{HEADER_ADDRESS_LINE1}</span>
-                                    <span className="visit-card__address-line2" lang="mr">{HEADER_ADDRESS_LINE2}</span>
+                                    <span className="visit-card__address-line1" lang="mr">{SITE_ADDRESS_LINE1}</span>
+                                    <span className="visit-card__address-line2" lang="mr">{SITE_ADDRESS_LINE2}</span>
                                 </p>
                             </div>
 
                             <div className="visit-card__actions">
-                                <Link href={HEADER_MAP_URL} target="_blank" rel="noopener noreferrer" className="thm-btn" lang="mr">
+                                <Link href={SITE_MAP_URL} target="_blank" rel="noopener noreferrer" className="thm-btn" lang="mr">
                                     दिशादर्शन मिळवा
                                     <span>
-                                        <i className="icon-arrow-right"></i>
+                                        <i className="fas fa-arrow-right"></i>
                                     </span>
                                 </Link>
-                                <Link href={HEADER_PHONE_TEL} className="visit-card__phone" lang="mr">
-                                    <i className="icon-call"></i>
-                                    {HEADER_PHONE_DISPLAY}
+                                <Link href={SITE_PHONE_TEL} className="visit-card__phone" lang="mr">
+                                    <i className="fas fa-phone-alt"></i>
+                                    {SITE_PHONE_DISPLAY}
                                 </Link>
                             </div>
                         </div>
                     </div>
                     <div className="col-xl-1 d-none d-xl-block">
-                        <div className="contact-faq__divider" role="presentation"></div>
+                        <div className={styles.contactFaqDivider} role="presentation"></div>
                     </div>
                     <div className="col-xl-6 col-lg-6">
-                        <div className="contact-faq__accrodion accrodion-grp" data-grp-name="contact-faq-accrodion">
+                        <div className={`${styles.contactFaqAccrodion} ${styles.accrodionGrp}`} data-grp-name="contact-faq-accrodion">
                             {CONTACT_FAQS.map((faq, index) => (
-                                <div key={index} className={openFaq === index ? "accrodion active" : "accrodion"} onClick={() => setOpenFaq(openFaq === index ? -1 : index)}>
-                                    <div className="accrodion-title">
+                                <div key={index} className={openFaq === index ? `${styles.accrodion} active` : styles.accrodion} onClick={() => setOpenFaq(openFaq === index ? -1 : index)}>
+                                    <div className={styles.accrodionTitle}>
                                         <h4 lang="mr">{faq.question}</h4>
                                     </div>
-                                    <div className="accrodion-content">
+                                    <div className={styles.accrodionContent}>
                                         <p lang="mr">{faq.answer}</p>
                                     </div>
                                 </div>
@@ -387,8 +386,8 @@ export default function Home() {
         {/*Contact Faq End*/}
 
         <Cta />
-        <MantraStrip mantras={CLOSING_MANTRAS} />
-        </Layout>
+        <MantraStrip closing />
+        </>
         </>
     )
 }

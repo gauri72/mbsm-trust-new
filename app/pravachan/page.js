@@ -1,27 +1,21 @@
-'use client'
-import Layout from "@/components/layout/Layout"
-import MantraStrip from "@/components/shared/MantraStrip/MantraStrip"
-import PageHero from "@/components/shared/PageHero/PageHero"
-import { PAGE_HERO_IMAGES } from "@/lib/data/heroImages"
-import { CLOSING_MANTRAS } from "@/lib/data/mantras"
-import TempleGallery from "@/components/shared/TempleGallery/TempleGallery"
-import ComingSoon from "@/components/shared/ComingSoon/ComingSoon"
-import Cta from "@/components/sections/home1/Cta"
+import MantraStrip from "../_shared/_components/MantraStrip/MantraStrip"
+import Breadcrumb from "../_shared/_components/Breadcrumb/Breadcrumb"
+import TempleGallery from "../_shared/_components/TempleGallery/TempleGallery"
+import Cta from "../_shared/_components/Cta/Cta"
+
+export const metadata = {
+    title: "प्रवचन — मंगल भक्त सेवा मंडळ",
+    description: 'Discourses and pravachans from Mangal Bhakta Seva Mandal.',
+}
 
 export default function PravachanPage() {
     return (
         <>
-        <Layout headerStyle={1} footerStyle={1} mantraStrip={<MantraStrip />}>
-
-        <PageHero image={PAGE_HERO_IMAGES.pravachan} />
-
-        <TempleGallery compact />
-
-        <ComingSoon title="प्रवचन" />
-
-        <Cta />
-        <MantraStrip mantras={CLOSING_MANTRAS} />
-        </Layout>
+            <MantraStrip />
+            <Breadcrumb title="प्रवचन" icon="fas fa-microphone-alt" />
+            <TempleGallery />
+            <Cta />
+            <MantraStrip closing />
         </>
     )
 }

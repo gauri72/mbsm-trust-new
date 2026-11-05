@@ -1,0 +1,202 @@
+/* =============================================================================
+   Temple gallery — scrolling square photos on a maroon band (every page).
+
+   Contents
+     1. Design tokens            — the header's / mantra strips' values
+     2. Token breakpoints        — 5 / 4 / 3 photos across
+     3. Band + Om · swastik borders + marquee
+     4. Photo tiles
+     5. Hover                    — mouse / trackpad only
+     6. Reduced motion
+
+   Design rules (same as the header, footer, mantra strips and CTA)
+   - Colours : maroon band; a maroon Om · swastik frame on all four sides (the CTA
+               frame's pattern reversed: gold on maroon), 2px gold dividers between
+               the photos; a light maroon wash over each.
+   - Borders : the CTA frame exactly in size, pattern, shadow and layout (30px bands,
+               plain corners; no side bands on phones).
+   - Layout  : 5 photos across on desktop, 4 on tablet, 3 on phones (the header's
+               breakpoints: 1200px and 768px).
+   - Spacing : the header's scale.
+   ========================================================================== */
+
+
+/* ---- 1. Design tokens ------------------------------------------------------- */
+.root {
+  /* colours */
+  --c-maroon: #620208;
+  --c-gold: #D9982A;
+
+  /* lines + borders */
+  --line-width: 2px;
+  --line-gold: var(--line-width) solid var(--c-gold);
+  --frame: 30px;                         /* = CTA frame: Om · swastik band height */
+  --shadow-frame: 0 2px 8px rgba(0, 0, 0, 0.32);   /* = CTA frame */
+
+  /* layout */
+  --per-view: 5;                         /* photos across the screen */
+  --fade: 6%;                            /* = mantra strips: photos fade in / out at the edges */
+  --wash: 0.18;                          /* maroon over each photo (lighter on hover) */
+  --duration: 33s;                       /* one full loop */
+  --ease: 200ms ease;
+}
+
+
+/* ---- 2. Token breakpoints (values only) ------------------------------------- */
+/* tablet: 4 across */
+@media (max-width: 1199px) {
+  .root {
+    --per-view: 4;
+  }
+}
+
+/* phones: 3 across */
+@media (max-width: 767px) {
+  .root {
+    --per-view: 3;
+  }
+}
+
+
+/* ---- 3. Band + Om · swastik borders + marquee ------------------------------- */
+.root {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--c-maroon);
+}
+
+/* the Om · swastik band above and below: maroon with the gold pattern (shared tile:
+   --pattern-om-swastik-x-gold in globals.css), its shadow over the photos */
+.root::before,
+.root::after {
+  content: "";
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: var(--frame);
+  background-color: var(--c-maroon);
+  background-image: var(--pattern-om-swastik-x-gold);
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: 100px var(--frame);
+  box-shadow: var(--shadow-frame);
+}
+
+/* left + right bands run between the top and bottom ones; four plain maroon corners
+   join them (as the CTA frame) */
+.frameV,
+.corner {
+  position: absolute;
+  background-color: var(--c-maroon);
+  box-shadow: var(--shadow-frame);
+  pointer-events: none;
+}
+
+.frameV {
+  top: var(--frame);
+  bottom: var(--frame);
+  z-index: 2;
+  width: var(--frame);
+  background-image: var(--pattern-om-swastik-y-gold);
+  background-repeat: repeat-y;
+  background-position: top center;
+  background-size: var(--frame) 100px;
+}
+
+.frameLeft  { left: 0; }
+.frameRight { right: 0; }
+
+.corner {
+  z-index: 3;
+  width: var(--frame);
+  height: var(--frame);
+}
+
+.cornerTl { top: 0;    left: 0; }
+.cornerTr { top: 0;    right: 0; }
+.cornerBl { bottom: 0; left: 0; }
+.cornerBr { bottom: 0; right: 0; }
+
+/* phones: top + bottom bands only (as the CTA) */
+@media (max-width: 767px) {
+  .frameV,
+  .corner {
+    display: none;
+  }
+}
+
+/* the mask only fades the edges (its colour is irrelevant — only its alpha is used);
+   cqw = 1% of this band's width, so tiles size to the band, not the window */
+.marquee {
+  container-type: inline-size;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 var(--fade), #000 calc(100% - var(--fade)), transparent 100%);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: scroll var(--duration) linear infinite;
+}
+
+@keyframes scroll {
+  to {
+    transform: translateX(-50%);         /* one copy: the second is an exact repeat */
+  }
+}
+
+
+/* ---- 4. Photo tiles ---------------------------------------------------------- */
+/* square, exactly --per-view across; each tile carries its own gold divider on the
+   right (not a flex gap), so both copies are the same width and the loop is exact */
+.item {
+  position: relative;
+  flex: none;
+  width: calc(100cqw / var(--per-view));
+  aspect-ratio: 1 / 1;
+  border-right: var(--line-gold);
+}
+
+.item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* the maroon wash that ties the photos to the palette */
+.item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--c-maroon);
+  opacity: var(--wash);
+  mix-blend-mode: multiply;
+  transition: opacity var(--ease);
+}
+
+
+/* ---- 5. Hover (mouse / trackpad only) ------------------------------------------
+   The photos are not links: hovering pauses the scroll and clears the wash from
+   the photo under the pointer, so it can be looked at. */
+@media (hover: hover) {
+  .marquee:hover .track {
+    animation-play-state: paused;
+  }
+
+  .item:hover::after {
+    opacity: 0;
+  }
+}
+
+
+/* ---- 6. Reduced motion: no scroll — the first photos stand still --------------- */
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+
+  .item::after {
+    transition: none;
+  }
+}

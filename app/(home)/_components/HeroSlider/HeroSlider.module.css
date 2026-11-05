@@ -1,0 +1,196 @@
+/* =============================================================================
+   Home hero — the artwork slideshow inside the gold Om · swastik frame,
+   fading in as it settles from a slight zoom.
+
+   Contents
+     1. Design tokens
+     2. Slideshow
+     3. Text + reveal        — Rozha names on the plates; the load reveal
+     4. Om · swastik frame   — the CTA's frame
+
+   Design rules (same as the header, footer, mantra strips, CTA, gallery, preloader)
+   - Colours : only the site maroon around the artwork; names white.
+   - Type    : all text on the artwork in Rozha One at the site's large size (shrunk
+               only where a plate is too narrow), at the font's real weight.
+   - Border  : the CTA's gold Om · swastik frame around the whole hero; the artwork
+               sits inside it, whole (the border is padding, never on top of it).
+   - Motion  : one quiet reveal as the preloader fades (fade + settle from a slight
+               zoom, CSS only); none with reduced motion.
+   ========================================================================== */
+
+
+/* ---- 1. Design tokens ------------------------------------------------------------- */
+.root {
+  --c-maroon: #620208;
+  --c-gold: #D9982A;
+  --c-white: #FFFFFF;
+  --frame: 30px;                         /* = CTA frame: Om · swastik band width */
+  --frame-x: var(--frame);               /* side band width (none on phones) */
+  --shadow-frame: 0 2px 8px rgba(0, 0, 0, 0.32);   /* = CTA frame */
+
+  /* text on the artwork: the site's large size (and its steps, below) */
+  --text-lg: 36px;
+  /* ...shrunk only where a plate is narrower than the text: (slot width % ÷ the
+     longest text's width in em, measured in Rozha One) in cqw = 1% of the artwork */
+  --plate-fit: 2.07cqw;                  /* plates: 20.3% ÷ 9.82em ("श्री विश्वेश्वर स्वामी महाराज") */
+}
+
+@media (min-width: 1600px) {
+  .root { --text-lg: 38px; }
+}
+
+@media (max-width: 1199px) {
+  .root { --text-lg: 30px; }
+}
+
+@media (max-width: 767px) {
+  .root { --text-lg: 23px; }
+}
+
+@media (max-width: 359px) {
+  .root { --text-lg: 19px; }
+}
+
+
+/* ---- 2. Slideshow ---------------------------------------------------------------------- */
+/* the border is padding around the artwork, so none of it is hidden */
+.root {
+  position: relative;
+  overflow: hidden;
+  padding: var(--frame) var(--frame-x);
+  background-color: var(--c-maroon);
+}
+
+/* height follows the artwork's 1672×941 shape so each slide shows whole, uncropped */
+.carousel {
+  aspect-ratio: 1672 / 941;
+}
+
+/* one slide: the artwork + its name; cqw = 1% of the slide's width */
+.art {
+  position: absolute;
+  inset: 0;
+  container-type: inline-size;
+}
+
+/* the artwork, on the site maroon while it loads */
+.media {
+  position: absolute;
+  inset: 0;
+  background-color: var(--c-maroon);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+
+/* ---- 3. Text on the artwork + reveal ---------------------------------------------
+   The artwork is exported without lettering; its text is set here in Rozha One,
+   centred on its (--x, --y) point of the artwork, so it stays on its plate at any
+   size. On load the slideshow fade in while settling from a slight zoom and
+   brightening — started by the preloader as it fades (html[data-page-ready]), so it
+   is always seen. Reduced motion: shown as is. */
+.plate {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  z-index: 1;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  font-weight: 400;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* names on the plates: large Rozha (where the plate allows), white */
+.plate {
+  color: var(--c-white);
+  font-family: var(--font-title);
+  font-size: min(var(--text-lg), var(--plate-fit));
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+    filter: brightness(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+:global(html[data-page-ready]) .carousel {
+  animation: reveal 1600ms cubic-bezier(0.22, 1, 0.36, 1) 100ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html[data-page-ready]) .carousel {
+    animation: none;
+  }
+}
+
+/* ---- 4. Om · swastik frame ----------------------------------------------------
+   The CTA's frame exactly (tiles shared in globals.css): gold bands with the maroon
+   pattern on all four sides, above the artwork; top + bottom only on phones. */
+.frameH,
+.frameV,
+.corner {
+  position: absolute;
+  background-color: var(--c-gold);
+  box-shadow: var(--shadow-frame);
+  pointer-events: none;
+}
+
+.frameH {
+  left: 0;
+  right: 0;
+  z-index: 7;
+  height: var(--frame);
+  background-image: var(--pattern-om-swastik-x);
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: 100px var(--frame);
+}
+
+.frameTop    { top: 0; }
+.frameBottom { bottom: 0; }
+
+.frameV {
+  top: var(--frame);
+  bottom: var(--frame);
+  z-index: 6;
+  width: var(--frame);
+  background-image: var(--pattern-om-swastik-y);
+  background-repeat: repeat-y;
+  background-position: top center;
+  background-size: var(--frame) 100px;
+}
+
+.frameLeft  { left: 0; }
+.frameRight { right: 0; }
+
+.corner {
+  z-index: 8;
+  width: var(--frame);
+  height: var(--frame);
+}
+
+.cornerTl { top: 0;    left: 0; }
+.cornerTr { top: 0;    right: 0; }
+.cornerBl { bottom: 0; left: 0; }
+.cornerBr { bottom: 0; right: 0; }
+
+@media (max-width: 767px) {
+  .root {
+    --frame-x: 0px;
+  }
+
+  .frameV,
+  .corner {
+    display: none;
+  }
+}

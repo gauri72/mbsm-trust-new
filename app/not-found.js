@@ -1,34 +1,35 @@
-import Layout from "@/components/layout/Layout"
 import Link from "next/link"
+import Breadcrumb from "./_shared/_components/Breadcrumb/Breadcrumb"
+import styles from "./not-found.module.css"
 export default function Error404() {
 
     return (
         <>
-            <Layout headerStyle={1} footerStyle={2} breadcrumbTitle="Page Not Found">
-            <section className="error-page">
+            <Breadcrumb image="/assets/images/backgrounds/page-header-bg.jpg" />
+            <section className={styles.errorPage}>
                 <div className="container">
                     <div className="row">
                         <div className="col-xl-12">
-                            <div className="error-page__inner">
-                                <div className="error-page__title-box">
-                                    <h2 className="error-page__title">404</h2>
+                            <div className={styles.inner}>
+                                <div className={styles.titleBox}>
+                                    <h2 className={styles.title}>404</h2>
                                 </div>
-                                <h3 className="error-page__tagline">Sorry we can't find that page!</h3>
-                                <p className="error-page__text">The page you are looking for was never existed.</p>
-                                <form className="error-page__form">
-                                    <div className="error-page__form-input">
+                                <h3 className={styles.tagline}>Sorry we can't find that page!</h3>
+                                <p className={styles.text}>The page you are looking for was never existed.</p>
+                                <form className={styles.form}>
+                                    <div className={styles.formInput}>
                                         <input type="search" placeholder="Search here"/>
-                                        <button type="submit"><i className="icon-search"></i></button>
+                                        <button type="submit"><i className="fas fa-search"></i></button>
                                     </div>
                                 </form>
-                                <Link href="/" className="thm-btn error-page__btn">Back to home<span><i
-                                            className="icon-arrow-right"></i></span></Link>
+                                <Link href="/" className={`thm-btn ${styles.btn}`}>Back to home<span><i
+                                            className="fas fa-arrow-right"></i></span></Link>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            </Layout>
+            
         </>
     )
 }

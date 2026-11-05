@@ -1,0 +1,1192 @@
+/*==============================================
+    Contact One
+===============================================*/
+.contactOne {
+    position: relative;
+    display: block;
+    padding: 100px 0;
+    z-index: 1;
+}
+
+.inner {
+    position: relative;
+    display: block;
+    background-color: var(--anity-white);
+    border: 1px solid #DDDDDD;
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    padding: 69px 109px 59px;
+}
+
+/*==============================================
+    Contact One — Gold panel framed by maroon Om/Swastik border
+    (mirrors the .about-One--ornate / .cta-one house pattern — same
+    --au-* palette, same maroon-card-on-gold structure)
+===============================================*/
+.contactOneOrnate {
+    --au-gold: #D9982A;
+    --au-gold-lite: #E9B45A;
+    --au-maroon: #620208;
+    --au-maroon-dk: #4D0601;
+    --au-ink: #2C0405;
+    --au-cream: #FBF1DC;
+}
+
+.contactOne.contactOneOrnate {
+    overflow: hidden;
+    background-color: var(--au-maroon);
+    background-image: linear-gradient(180deg, #660309 0%, var(--au-maroon) 45%, #560106 100%);
+    padding: 100px 0;
+}
+
+.contactOneOrnate .inner {
+    background-color: var(--au-gold);
+    border: 1px solid var(--au-gold-lite);
+    box-shadow: 0 18px 40px rgba(44, 4, 5, 0.30);
+}
+
+.contactOneOrnate :global(.section-title__tagline) {
+    color: var(--au-maroon);
+    font-weight: 700;
+}
+
+.contactOneOrnate :global(.section-title__title) {
+    color: var(--au-ink);
+    text-shadow: 0 1px 0 rgba(255, 248, 231, 0.5);
+}
+
+.contactOneOrnate .inputTitle {
+    color: var(--au-ink);
+}
+
+.bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("/assets/images/backgrounds/section-bg-2.png");
+    background-repeat: repeat;
+    background-size: 1170px auto;
+    opacity: 0.35;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@media (max-width: 991px) {
+    .bg {
+        background-size: 770px auto;
+    }
+}
+
+.contactOne.contactOneOrnate :global(.container) {
+    position: relative;
+    z-index: 1;
+}
+
+/* Horizontal gold strips carrying maroon Om + swastik motif */
+.divineBorderContact {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    height: 30px;
+    background-color: var(--au-gold);
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(61, 10, 12, 0.12) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%23620208'%3E%3Ctext x='25' y='22' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%23620208' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23620208' opacity='0.85'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat-x, repeat-x;
+    background-position: center, center;
+    background-size: 100% 100%, 100px 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.divineBorderContactTop { top: 0; }
+.divineBorderContactBottom { bottom: 0; }
+
+/* Vertical gold strips */
+.divineBorderContactVertical {
+    position: absolute;
+    top: 30px;
+    bottom: 30px;
+    z-index: 2;
+    width: 30px;
+    background-color: var(--au-gold);
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(61, 10, 12, 0.12) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%23620208'%3E%3Ctext x='15' y='32' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%23620208' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23620208' opacity='0.85'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat-y, repeat-y;
+    background-position: top center, top center;
+    background-size: 100% 100%, 30px 100px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.divineBorderContactLeft { left: 0; }
+.divineBorderContactRight { right: 0; }
+
+.corner {
+    position: absolute;
+    z-index: 4;
+    width: 30px;
+    height: 30px;
+    background-color: var(--au-gold);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+}
+
+.cornerTl { top: 0; left: 0; }
+.cornerTr { top: 0; right: 0; }
+.cornerBl { bottom: 0; left: 0; }
+.cornerBr { bottom: 0; right: 0; }
+@media (max-width: 1199px) {
+    .contactOne.contactOneOrnate {
+        padding: 90px 0 100px;
+    }
+
+    .contactOne.contactOneOrnate :global(.container) {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+@media (max-width: 991px) {
+    .contactOne.contactOneOrnate {
+        padding: 78px 0 86px;
+    }
+
+    .inner {
+        padding: 50px 40px 40px;
+    }
+
+    .contactOne.contactOneOrnate :global(.container) {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+@media (max-width: 767px) {
+    .contactOne.contactOneOrnate {
+        padding: 54px 0 58px;
+    }
+
+    /* Keep only the horizontal (top + bottom) border, like the About ornate section */
+    .divineBorderContact {
+        height: 26px;
+        background-size: 100% 100%, 100px 30px;
+    }
+
+    .divineBorderContactVertical,
+.corner {
+        display: none;
+    }
+
+    .contactOne.contactOneOrnate :global(.container) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+@media (max-width: 575px) {
+    .inner {
+        padding: 40px 20px 30px;
+    }
+}
+
+.inner :global(.section-title) {
+    margin-bottom: 42px;
+}
+
+/* heading centred on every screen; the two-line break is kept on mobile too */
+.inner :global(.section-title__tagline-box) {
+    display: flex;
+    justify-content: center;
+}
+
+.inner :global(.section-title__title) br {
+    display: inline;
+}
+
+.form {
+    position: relative;
+    display: block;
+}
+
+.inputBox {
+    position: relative;
+    display: block;
+    margin-bottom: 19px;
+}
+
+.inputTitle {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+    margin-bottom: 6px;
+}
+
+.inputBox input[type="text"],
+.inputBox input[type="email"] {
+    height: 60px;
+    width: 100%;
+    background-color: var(--anity-white);
+    border: 1px solid transparent;
+    padding-left: 20px;
+    padding-right: 30px;
+    outline: none;
+    font-size: 16px;
+    color: var(--anity-black);
+    display: block;
+    font-weight: 400;
+    border-radius: 4px;
+    line-height: 60px;
+    transition: border-color 200ms ease;
+}
+
+.inputBox input[type="text"]:focus,
+.inputBox input[type="email"]:focus,
+.inputBox textarea:focus {
+    border-color: var(--anity-base);
+}
+
+.contactOneOrnate .inputBox input[type="text"]:focus,
+.contactOneOrnate .inputBox input[type="email"]:focus,
+.contactOneOrnate .inputBox textarea:focus {
+    border-color: var(--au-maroon);
+}
+
+.inputBox textarea {
+    position: relative;
+    height: 132px;
+    width: 100%;
+    background-color: var(--anity-white);
+    border: 1px solid transparent;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 30px;
+    outline: none;
+    font-size: 16px;
+    color: var(--anity-black);
+    display: block;
+    font-weight: 400;
+    border-radius: 4px;
+    margin-bottom: 0;
+    transition: border-color 200ms ease;
+}
+
+.inputBox.textMessageBox {
+    height: 132px;
+    margin-bottom: 40px;
+}
+
+.btnBox {
+    position: relative;
+    display: block;
+    text-align: center;
+}
+
+/* ---- CTA button — matches .cta-one__btn-1 exactly (gold fill, maroon chip) ---- */
+.contactOneOrnate {
+    --au-gold: #D9982A;
+    --au-gold-lite: #E9B45A;
+    --au-maroon: #620208;
+    --au-maroon-dk: #4D0601;
+    --au-ink: #2C0405;
+    --au-cream: #FBF1DC;
+}
+
+.contactOneOrnate .btnBox :global(.thm-btn) {
+    background-color: var(--au-maroon);
+    border-color: var(--au-maroon-dk);
+    color: var(--au-cream);
+}
+
+.contactOneOrnate .btnBox :global(.thm-btn)::after {
+    background-color: var(--au-ink);
+}
+
+.contactOneOrnate .btnBox :global(.thm-btn) span {
+    background-color: var(--au-gold);
+    color: var(--au-ink);
+}
+
+.contactOneOrnate .btnBox :global(.thm-btn):hover,
+.contactOneOrnate .btnBox :global(.thm-btn):focus-visible {
+    border-color: var(--au-ink);
+    color: var(--au-gold-lite);
+}
+
+.contactOneOrnate .btnBox :global(.thm-btn):hover span {
+    background-color: var(--au-cream);
+    color: var(--au-ink);
+}
+
+.inputIcon {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.inputIcon span {
+    position: relative;
+    display: inline-block;
+    font-size: 16px;
+    color: var(--anity-base);
+}
+
+.contactOneOrnate .inputIcon span {
+    color: var(--au-maroon);
+}
+
+.inputBox:global(.has-error) input,
+.inputBox:global(.has-error) textarea {
+    border-color: var(--anity-base);
+}
+
+.error {
+    position: relative;
+    display: block;
+    color: var(--anity-base);
+    font-size: 14px;
+    margin-top: -13px;
+    margin-bottom: 19px;
+}
+
+.contactOneOrnate .error {
+    color: var(--au-maroon-dk);
+}
+
+.btn[disabled] {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.result {
+    position: relative;
+    display: block;
+    margin-top: 20px;
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.resultSuccess {
+    background-color: rgba(var(--anity-extra-rgb), 0.12);
+    color: var(--anity-extra);
+    border: 1px solid var(--anity-extra);
+}
+
+.contactOneOrnate .resultSuccess {
+    background-color: rgba(98, 2, 8, 0.10);
+    color: var(--au-maroon-dk);
+    border: 1px solid var(--au-maroon);
+}
+
+.resultError {
+    background-color: rgba(var(--anity-base-rgb), 0.12);
+    color: var(--anity-base);
+    border: 1px solid var(--anity-base);
+}
+
+.contactOneOrnate .resultError {
+    background-color: rgba(255, 85, 40, 0.15);
+    color: var(--au-maroon-dk);
+    border: 1px solid var(--anity-base);
+}
+
+/*--------------------------------------------------------------
+# Contact Two — Maroon field framed by gold Om/Swastik border
+# (mirrors the .cta-one / .divine-border--event house pattern)
+--------------------------------------------------------------*/
+.contactTwo {
+    position: relative;
+    display: block;
+    padding: 100px 0;
+    z-index: 1;
+}
+
+.contactTwoOrnate {
+    overflow: hidden;
+    background-color: var(--au-gold, #D9982A);
+    background-image: linear-gradient(180deg, #E0A238 0%, var(--au-gold, #D9982A) 45%, #CE8E24 100%);
+}
+
+.contactTwoBg {
+    position: absolute;
+    inset: 0;
+    background-image: url("/assets/images/backgrounds/section-bg.png");
+    background-repeat: repeat;
+    background-size: 1170px auto;
+    opacity: 0.25;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@media (max-width: 991px) {
+    .contactTwoBg {
+        background-size: 770px auto;
+    }
+}
+
+.contactTwoOrnate :global(.container) {
+    position: relative;
+    z-index: 1;
+}
+
+.contactTwoOrnate :global(.section-title) {
+    margin-bottom: 50px;
+}
+
+.contactTwoOrnate :global(.section-title__tagline) {
+    color: var(--au-maroon, #620208);
+    font-weight: 700;
+}
+
+.contactTwoOrnate :global(.section-title__title) {
+    color: var(--au-ink, #2C0405);
+    text-shadow: 0 1px 0 rgba(255, 248, 231, 0.5);
+}
+
+/* Horizontal maroon strips carrying gold Om + swastik motif */
+.divineBorderContactTwo {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    height: 30px;
+    background-color: var(--au-maroon-dk, #4D0601);
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(217, 152, 42, 0.14) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%23D9982A'%3E%3Ctext x='25' y='22' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%23D9982A' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23D9982A' opacity='0.85'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat-x, repeat-x;
+    background-position: center, center;
+    background-size: 100% 100%, 100px 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
+}
+
+.divineBorderContactTwoTop { top: 0; }
+.divineBorderContactTwoBottom { bottom: 0; }
+
+/* Vertical maroon strips */
+.divineBorderContactTwoVertical {
+    position: absolute;
+    top: 30px;
+    bottom: 30px;
+    z-index: 2;
+    width: 30px;
+    background-color: var(--au-maroon-dk, #4D0601);
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(217, 152, 42, 0.14) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%23D9982A'%3E%3Ctext x='15' y='32' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%23D9982A' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23D9982A' opacity='0.85'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat-y, repeat-y;
+    background-position: top center, top center;
+    background-size: 100% 100%, 30px 100px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.32);
+}
+
+.divineBorderContactTwoLeft { left: 0; }
+.divineBorderContactTwoRight { right: 0; }
+
+.contactTwoCorner {
+    position: absolute;
+    z-index: 4;
+    width: 30px;
+    height: 30px;
+    background-color: var(--au-maroon-dk, #4D0601);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
+    pointer-events: none;
+}
+
+.contactTwoCornerTl { top: 0; left: 0; }
+.contactTwoCornerTr { top: 0; right: 0; }
+.contactTwoCornerBl { bottom: 0; left: 0; }
+.contactTwoCornerBr { bottom: 0; right: 0; }
+@media (max-width: 1199px) {
+    .contactTwo {
+        padding: 90px 0 100px;
+    }
+
+    .contactTwoOrnate :global(.container) {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+@media (max-width: 991px) {
+    .contactTwo {
+        padding: 78px 0 86px;
+    }
+
+    .contactTwoOrnate :global(.container) {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+@media (max-width: 767px) {
+    .contactTwo {
+        padding: 54px 0 58px;
+    }
+
+    /* Keep only the horizontal (top + bottom) border, like the About ornate section */
+    .divineBorderContactTwo {
+        height: 26px;
+        background-size: 100% 100%, 100px 30px;
+    }
+
+    .divineBorderContactTwoVertical,
+.contactTwoCorner {
+        display: none;
+    }
+
+    .contactTwoOrnate :global(.container) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.contactTwo :global(.row) {
+    align-items: center;
+}
+
+.contactTwoLeft {
+    position: relative;
+    display: block;
+}
+
+@media (max-width: 991px) {
+    .contactTwoLeft {
+        margin-bottom: 30px;
+    }
+}
+
+.contactTwoGoogleMap {
+    position: relative;
+    display: block;
+    height: 480px;
+    width: 100%;
+    border-radius: var(--anity-bdr-radius);
+    border: 1px solid var(--au-gold-lite, #E9B45A);
+    outline: 0px solid var(--au-gold, #D9982A);
+    outline-offset: 0px;
+    transition: transform 400ms ease, box-shadow 400ms ease, border-color 400ms ease, outline-width 400ms ease, outline-offset 400ms ease;
+}
+
+.contactTwoLeft:hover .contactTwoGoogleMap {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+    border-color: var(--au-maroon, #620208);
+    outline-color: var(--au-maroon, #620208);
+    outline-width: 6px;
+    outline-offset: 4px;
+}
+
+.contactTwoRight {
+    position: relative;
+    display: block;
+}
+
+.contactTwoContactList {
+    position: relative;
+    display: block;
+}
+
+.contactTwoContactList li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    background-color: var(--anity-white);
+    box-shadow: 0px 18px 40px rgba(44, 4, 5, 0.30);
+    border-radius: 20px;
+    padding: 30px 24px;
+    transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.contactTwoContactList li:last-child {
+    margin-bottom: 0;
+}
+
+@media (min-width: 992px) {
+
+/* Desktop only: both cards share the map's height equally (card + card + gap = map height) */
+    .contactTwoRight {
+        height: 100%;
+    }
+
+    .contactTwoContactList {
+        display: flex;
+        flex-direction: column;
+        height: 480px;
+    }
+
+    .contactTwoContactList li {
+        flex: 1 1 0;
+        margin-bottom: 30px;
+        /* slimmer top/bottom so the two-line address card fits the same height */
+        padding-top: 18px;
+        padding-bottom: 18px;
+    }
+
+    .contactTwoContactList li:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.contactTwoContactList li:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 24px 50px rgba(44, 4, 5, 0.40);
+}
+
+.contactTwoContactList li :global(.icon) {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 64px;
+    max-width: 64px;
+    width: 100%;
+    height: 64px;
+    border: 2px solid #EEEEEE;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.contactTwoContactList li :global(.icon):before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    border-radius: 50%;
+    background-color: var(--au-maroon, #620208);
+    transform: scale(0);
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transition: all 0.4s cubic-bezier(0.62, 0.21, 0.45, 1.52);
+    z-index: -1;
+}
+
+.contactTwoContactList li:hover :global(.icon):before {
+    transform: scaleX(1);
+}
+
+.contactTwoContactList li :global(.icon) span {
+    position: relative;
+    display: inline-block;
+    font-size: 22px;
+    color: var(--au-maroon, #620208);
+    transition: all 500ms linear;
+    transition-delay: 0.1s;
+    transform: scale(1);
+}
+
+.contactTwoContactList li:hover :global(.icon) span {
+    transform: scale(0.9);
+    color: var(--anity-white);
+}
+
+.contactTwoContactList li :global(.content) {
+    position: relative;
+    display: block;
+    min-width: 0;
+}
+
+.contactTwoContactList li :global(.content) h4 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+    color: var(--anity-black);
+}
+
+.contactTwoContactList li :global(.content) p {
+    margin-top: 6px;
+}
+
+.contactTwoContactList li :global(.content) p a {
+    color: var(--anity-gray);
+}
+
+.contactTwoContactList li :global(.content) p a:hover {
+    color: var(--au-maroon, #620208);
+}
+
+/* address: math name on the first line, street + city on the second */
+.contactTwoContactList li :global(.content) p.contactTwoAddress {
+    overflow-wrap: anywhere;
+}
+
+/*--------------------------------------------------------------
+# Contact Faq — Gold panel framed by maroon Om/Swastik border
+# (mirrors .contact-one--ornate), with a split layout inside:
+# intro + CTA card (left), minimal-list accordion (right).
+--------------------------------------------------------------*/
+.contactFaq {
+    --au-gold: #D9982A;
+    --au-gold-lite: #E9B45A;
+    --au-maroon: #620208;
+    --au-maroon-dk: #4D0601;
+    --au-ink: #2C0405;
+    --au-cream: #FBF1DC;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    padding: 100px 0;
+    background-color: var(--au-gold);
+    background-image: linear-gradient(180deg, #E0A238 0%, var(--au-gold) 45%, #CE8E24 100%);
+    z-index: 1;
+}
+
+.contactFaqBg {
+    position: absolute;
+    inset: 0;
+    background-image: url("/assets/images/backgrounds/section-bg.png");
+    background-repeat: repeat;
+    background-size: 1170px auto;
+    opacity: 0.25;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@media (max-width: 991px) {
+    .contactFaqBg {
+        background-size: 770px auto;
+    }
+}
+
+.contactFaq :global(.container) {
+    position: relative;
+    z-index: 1;
+}
+
+.contactFaqRow {
+    align-items: stretch;
+}
+
+.contactFaqDivider {
+    width: 6px;
+    height: 100%;
+    align-self: stretch;
+    margin: 0 auto;
+    border-radius: 3px;
+    background-color: var(--au-maroon);
+    opacity: 0.55;
+}
+
+/* Horizontal maroon strips carrying gold Om + swastik motif */
+.divineBorderContactFaq {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    height: 30px;
+    background-color: var(--au-maroon-dk);
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(217, 152, 42, 0.14) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%23D9982A'%3E%3Ctext x='25' y='22' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%23D9982A' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23D9982A' opacity='0.85'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat-x, repeat-x;
+    background-position: center, center;
+    background-size: 100% 100%, 100px 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.divineBorderContactFaqTop { top: 0; }
+.divineBorderContactFaqBottom { bottom: 0; }
+
+/* Vertical maroon strips */
+.divineBorderContactFaqVertical {
+    position: absolute;
+    top: 30px;
+    bottom: 30px;
+    z-index: 2;
+    width: 30px;
+    background-color: var(--au-maroon-dk);
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(217, 152, 42, 0.14) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%23D9982A'%3E%3Ctext x='15' y='32' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%23D9982A' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23D9982A' opacity='0.85'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat-y, repeat-y;
+    background-position: top center, top center;
+    background-size: 100% 100%, 30px 100px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.divineBorderContactFaqLeft { left: 0; }
+.divineBorderContactFaqRight { right: 0; }
+
+.contactFaqCorner {
+    position: absolute;
+    z-index: 4;
+    width: 30px;
+    height: 30px;
+    background-color: var(--au-maroon-dk);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+}
+
+.contactFaqCornerTl { top: 0; left: 0; }
+.contactFaqCornerTr { top: 0; right: 0; }
+.contactFaqCornerBl { bottom: 0; left: 0; }
+.contactFaqCornerBr { bottom: 0; right: 0; }
+@media (max-width: 1199px) {
+    .contactFaq {
+        padding: 90px 0 100px;
+    }
+
+    .contactFaq :global(.container) {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+@media (max-width: 991px) {
+    .contactFaq {
+        padding: 78px 0 86px;
+    }
+
+    .contactFaq :global(.container) {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+@media (max-width: 767px) {
+    .contactFaq {
+        padding: 54px 0 58px;
+    }
+
+    /* Keep only the horizontal (top + bottom) border, like the About ornate section */
+    .divineBorderContactFaq {
+        height: 26px;
+        background-size: 100% 100%, 100px 30px;
+    }
+
+    .divineBorderContactFaqVertical,
+.contactFaqCorner {
+        display: none;
+    }
+
+    .contactFaq :global(.container) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.contactFaq :global(.section-title__tagline) {
+    color: var(--au-maroon);
+    font-weight: 700;
+}
+
+.contactFaq :global(.section-title__title) {
+    color: var(--au-ink);
+    text-shadow: 0 1px 0 rgba(255, 248, 231, 0.5);
+}
+
+.contactFaq :global(.section-title) {
+    margin-bottom: 50px;
+}
+
+/* ---- Rounded cards with a circular +/- toggle, tuned for the gold panel ---- */
+.contactFaqAccrodion .accrodion {
+    position: relative;
+    display: block;
+    background-color: var(--anity-white);
+    border: 1px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+.contactFaqAccrodion .accrodion + .accrodion {
+    margin-top: 16px;
+}
+
+.contactFaqAccrodion .accrodion:global(.active) {
+    border-color: var(--au-maroon);
+    box-shadow: 0 12px 30px rgba(44, 4, 5, 0.20);
+}
+
+.contactFaqAccrodion .accrodionTitle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+}
+
+.contactFaqAccrodion .accrodionTitle h4 {
+    margin: 0;
+    flex: 1 1 auto;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: var(--au-ink);
+}
+
+.contactFaqAccrodion .accrodionTitle h4::before,
+.contactFaqAccrodion .accrodionTitle h4::after {
+    content: none;
+}
+
+.contactFaqAccrodion .accrodionTitle::after {
+    content: "\f067";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 700;
+    font-size: 13px;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--au-maroon);
+    color: var(--au-gold-lite);
+    transition: all 250ms ease;
+}
+
+.contactFaqAccrodion .accrodion:global(.active) .accrodionTitle::after {
+    content: "\f068";
+    background-color: var(--au-ink);
+}
+
+.contactFaqAccrodion .accrodionContent {
+    display: none;
+    padding: 0 60px 22px 22px;
+}
+
+.contactFaqAccrodion .accrodion:global(.active) .accrodionContent {
+    display: block;
+}
+
+.contactFaqAccrodion .accrodionContent p {
+    margin: 0;
+    padding-top: 16px;
+    border-top: 1px solid rgba(44, 4, 5, 0.10);
+    color: var(--anity-gray);
+    line-height: 26px;
+}
+
+@media (max-width: 767px) {
+
+/*--------------------------------------------------------------
+# Contact page — phone layout (≤767px): tighter spacing, smaller
+# headings and fields, compact info cards, shorter map
+--------------------------------------------------------------*/
+    .contactOne.contactOneOrnate,
+.contactTwo.contactTwoOrnate {
+        padding: 44px 0 48px;
+    }
+
+    .contactOneOrnate .inner {
+        padding: 30px 18px 28px;
+    }
+
+    .contactOneOrnate .inner :global(.section-title),
+.contactTwoOrnate :global(.section-title) {
+        margin-bottom: 26px;
+    }
+
+    .contactOneOrnate :global(.section-title__title),
+.contactTwoOrnate :global(.section-title__title) {
+        font-size: 28px;
+        line-height: 38px;
+    }
+
+    .contactOneOrnate .inputTitle {
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 4px;
+    }
+
+    .contactOneOrnate .inputBox {
+        margin-bottom: 14px;
+    }
+
+    .contactOneOrnate .inputBox input[type="text"],
+.contactOneOrnate .inputBox input[type="email"] {
+        height: 50px;
+        line-height: 50px;
+        font-size: 15px;
+        padding-left: 16px;
+    }
+
+    .contactOneOrnate .inputBox textarea,
+.contactOneOrnate .inputBox.textMessageBox {
+        height: 110px;
+    }
+
+    .contactOneOrnate .inputBox textarea {
+        font-size: 15px;
+        padding-left: 16px;
+    }
+
+    .contactOneOrnate .inputBox.textMessageBox {
+        margin-bottom: 24px;
+    }
+
+    .contactTwoOrnate .contactTwoLeft {
+        margin-bottom: 18px;
+    }
+
+    .contactTwoOrnate .contactTwoGoogleMap {
+        height: 280px;
+    }
+
+    /* info cards: icon beside the text instead of stacked above it */
+    .contactTwoOrnate .contactTwoContactList li {
+        flex-direction: row;
+        text-align: left;
+        gap: 14px;
+        padding: 16px 18px;
+        margin-bottom: 14px;
+        border-radius: 16px;
+    }
+
+    .contactTwoOrnate .contactTwoContactList li:last-child {
+        margin-bottom: 0;
+    }
+
+    .contactTwoOrnate .contactTwoContactList li :global(.icon) {
+        flex: 0 0 48px;
+        max-width: 48px;
+        height: 48px;
+    }
+
+    .contactTwoOrnate .contactTwoContactList li :global(.icon) span {
+        font-size: 18px;
+    }
+
+    .contactTwoOrnate .contactTwoContactList li :global(.content) h4 {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .contactTwoOrnate .contactTwoContactList li :global(.content) p {
+        margin-top: 2px;
+        font-size: 14px;
+        line-height: 22px;
+    }
+}
+
+@media (min-width: 768px) {
+
+/*--------------------------------------------------------------
+# Contact form + map — same tighter spacing on desktop / tablet (≥768px)
+--------------------------------------------------------------*/
+    .contactOne.contactOneOrnate,
+.contactTwo.contactTwoOrnate {
+        padding: 72px 0;
+    }
+
+    .contactOneOrnate .inner {
+        padding: 48px 90px 44px;
+    }
+
+    .contactOneOrnate .inner :global(.section-title),
+.contactTwoOrnate :global(.section-title) {
+        margin-bottom: 30px;
+    }
+
+    .contactOneOrnate .inputBox {
+        margin-bottom: 16px;
+    }
+
+    .contactOneOrnate .inputBox.textMessageBox {
+        margin-bottom: 28px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .contactOneOrnate .inner {
+        padding: 40px 36px 36px;
+    }
+}
+
+@media (max-width: 991px) {
+
+/* Tablet + phone: info cards stack the icon on top, everything centred */
+    .contactTwoOrnate .contactTwoContactList li {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .contactTwoOrnate .contactTwoContactList li :global(.content) {
+        width: 100%;
+    }
+}
+
+.btn {
+  background-color: transparent;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1319px) {
+
+  .contactTwoContactList li {
+      padding: 30px 15px 30px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+  .inner {
+      padding: 69px 60px 59px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+  .inner {
+      padding: 69px 15px 59px;
+  }
+
+  .contactTwoContactList li {
+      padding: 30px 30px 30px;
+      flex-direction: column;
+      text-align: center;
+  }
+}
+
+section.contactOne.contactOneOrnate,
+section.contactTwo.contactTwoOrnate {
+  padding-top: var(--section-space);
+  padding-bottom: var(--section-space);
+}
+
+section.contactOneOrnate .inner :global(.section-title),
+section.contactTwoOrnate :global(.section-title) {
+  margin-bottom: var(--section-title-gap);
+}
+section.contactOneOrnate :global(.section-title__tagline),
+section.contactTwoOrnate :global(.section-title__tagline) {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+section.contactOneOrnate :global(.section-title__tagline),
+section.contactTwoOrnate :global(.section-title__tagline) {
+  color: #4D0601;
+}
+
+/* संपर्क — phone, email and address cards */
+section.contactTwoOrnate .contactTwoContactList :global(.content) h4 {
+  color: #2C0405;
+}
+
+section.contactTwoOrnate .contactTwoContactList :global(.content) p,
+section.contactTwoOrnate .contactTwoContactList :global(.content) p a {
+  color: #3A0405;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+section.contactTwoOrnate .contactTwoContactList :global(.content) p a:hover,
+section.contactTwoOrnate .contactTwoContactList :global(.content) p a:focus-visible {
+  color: #620208;
+}
+
+@media (max-width: 767px) {
+  section.contactOneOrnate :global(.section-title__tagline),
+section.contactTwoOrnate :global(.section-title__tagline) {
+    font-size: 19px;
+  }
+
+  section.contactTwoOrnate .contactTwoContactList :global(.content) p,
+section.contactTwoOrnate .contactTwoContactList :global(.content) p a {
+    font-size: 17px;
+  }
+}

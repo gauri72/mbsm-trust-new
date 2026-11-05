@@ -1,0 +1,805 @@
+/* =============================================================================
+   Site header — contact strip, sticky bar, desktop menu and the mobile drawer.
+
+   Contents
+     1. Design tokens            — every colour / size / space used below
+     2. Token breakpoints        — screen sizes only change token values here
+     3. Shared                   — resets, icon box, focus ring
+     4. Contact strip
+     5. Sticky bar               — brand, menu tray + dropdown, actions
+     6. Drawer                   — below 1200px
+     7. Hover effects            — mouse / trackpad only
+     8. Responsive layout        — which parts show where
+     9. Reduced motion
+
+   Design rules
+   - Colours : black, white, maroon, gold (+ transparencies of them for shadows).
+   - Type    : Rozha One for large + medium (brand name, CTA), Tiro Devanagari
+               Marathi for everything else. Both ship one weight, so all text is
+               set at that real weight; hierarchy comes from size and colour.
+   - Sizes   : small (contacts, menu, socials) · medium (CTA) · large (brand name;
+               the logo is always 2.8x it).
+   - States  : links: hover / current = the inverse of the surface they sit on
+               (on maroon -> gold + black). Buttons keep their colours and lift on
+               hover: up 4px with a deep shadow, the arrow sliding 6px forward.
+   - Shapes  : pills for links, buttons and panels, circles for icon buttons;
+               every divider is 2px solid (white on maroon, black elsewhere).
+   ========================================================================== */
+
+
+/* ---- 1. Design tokens ------------------------------------------------------- */
+/* Declared on the three top-level parts (strip, bar, drawer) so every child can use them. */
+.topbar,
+.bar,
+.drawerRoot {
+  /* colours */
+  --c-black: #000000;
+  --c-white: #FFFFFF;
+  --c-maroon: #620208;
+  --c-gold: #D9982A;
+
+  /* lines + shadows */
+  --line-width: 2px;
+  --line-light: var(--line-width) solid var(--c-white);
+  --line-dark: var(--line-width) solid var(--c-black);
+  --shadow-bar: 0 4px 16px rgba(0, 0, 0, 0.16);
+  --shadow-panel: 0 12px 32px rgba(0, 0, 0, 0.18);
+  --shadow-medal: 0 0 0 3px rgba(98, 2, 8, 0.28), 0 6px 16px rgba(0, 0, 0, 0.25);
+  --shadow-medal-hover: 0 0 0 3px rgba(98, 2, 8, 0.35), 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 22px rgba(217, 152, 42, 0.75);
+  --shadow-lift: 0 12px 24px rgba(0, 0, 0, 0.38);   /* a button lifted on hover */
+  --lift: -4px;                          /* how far a hovered button rises */
+  --nudge: 6px;                          /* how far a hovered button's arrow slides */
+  --overlay: rgba(0, 0, 0, 0.5);
+
+  /* type sizes */
+  --text-sm: 17px;
+  --text-strip: var(--text-sm);          /* contact strip text; steps down only where one line needs it */
+  --strip-gap: var(--space-5);           /* contact strip: space between items (and around its divider) */
+  --text-md: 19px;
+  --text-lg: 36px;
+  --logo: calc(var(--text-lg) * 2.8);    /* the logo always scales with the brand name */
+
+  /* spacing scale */
+  --space-0: 4px;
+  --space-1: 6px;
+  --space-2: 10px;
+  --space-3: 14px;
+  --space-4: 18px;
+  --space-5: 26px;
+
+  /* layout */
+  --bar-pad: var(--space-4);             /* above and below the logo in the bar */
+  --bar-gap: var(--space-5);             /* between brand, menu and actions */
+  --link-pad: var(--space-3);            /* side padding of menu links */
+  --control-lg: 50px;                    /* CTA, drawer links */
+  --control: 46px;                       /* menu / close button */
+  --control-sm: 42px;                    /* menu links, social icons, strip height */
+  --radius-pill: 999px;
+  --drawer-width: min(88vw, 360px);
+  --gutter: 32px;                        /* page side margin */
+  --max-width: 1600px;
+  --ease: 200ms ease;
+
+  font-family: var(--font-text);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  line-height: 1.5;
+  font-variant-numeric: lining-nums;     /* Tiro's English digits default to old-style (uneven) */
+}
+
+
+/* ---- 2. Token breakpoints (values only — layout changes live in section 8) -- */
+/* wide screens: one step up — brand +2px (logo follows) and every spacing step +2px */
+@media (min-width: 1600px) {
+  .topbar,
+  .bar,
+  .drawerRoot {
+    --text-lg: 38px;
+    --space-0: 6px;
+    --space-1: 8px;
+    --space-2: 12px;
+    --space-3: 16px;
+    --space-4: 20px;
+    --space-5: 28px;
+  }
+}
+
+/* narrower desktops: the brand steps down so the full bar keeps fitting */
+@media (max-width: 1535px) {
+  .topbar,
+  .bar,
+  .drawerRoot {
+    --text-lg: 32px;
+    --gutter: 24px;
+  }
+}
+
+@media (max-width: 1439px) {
+  .topbar,
+  .bar,
+  .drawerRoot {
+    --bar-gap: var(--space-3);
+    --link-pad: var(--space-1);
+  }
+}
+
+@media (max-width: 1365px) {
+  .topbar,
+  .bar,
+  .drawerRoot {
+    --text-lg: 29px;
+  }
+}
+
+@media (max-width: 1279px) {
+  .topbar,
+  .bar,
+  .drawerRoot {
+    --text-lg: 22px;
+  }
+}
+
+/* tablet: no menu in the bar any more, so the brand grows back; the strip gets
+   one step tighter spacing, so its text can stay large and on one line */
+@media (max-width: 1199px) {
+  .topbar,
+  .bar,
+  .drawerRoot {
+    --text-lg: 30px;
+    --bar-gap: var(--space-5);
+  }
+
+  .topbar {
+    --strip-gap: var(--space-3);
+  }
+}
+
+/* narrow tablets: the strip text steps down only as far as one line needs
+   (strip text: 17px ≥1024 · 16px 900–1023 · 14px 768–899 · 14px phones) */
+@media (max-width: 1023px) {
+  .topbar {
+    --text-strip: 16px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 899px) {
+  .topbar {
+    --text-strip: 14px;
+  }
+}
+
+/* phones */
+@media (max-width: 767px) {
+  .topbar,
+  .bar,
+  .drawerRoot {
+    --text-sm: 16px;
+    --text-lg: 23px;
+    --gutter: 16px;
+  }
+
+  .topbar {
+    --text-strip: 14px;
+  }
+}
+
+@media (max-width: 374px) {
+  .topbar {
+    --strip-gap: var(--space-1);
+  }
+}
+
+@media (max-width: 359px) {
+  .topbar,
+  .bar,
+  .drawerRoot {
+    --text-lg: 19px;
+  }
+}
+
+
+/* ---- 3. Shared -------------------------------------------------------------- */
+/* centred content column, used by the strip and the bar */
+.inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* resets use :where() (zero specificity), so every component rule below wins over them */
+:where(.topbar, .bar, .drawerRoot) :where(ul) {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:where(.topbar, .bar, .drawerRoot) :where(p) {
+  margin: 0;
+}
+
+/* every link / button sets its own colour below — the site-wide `a` colours must never show */
+:where(.topbar, .bar, .drawerRoot) :where(a, button) {
+  font: inherit;
+  text-decoration: none;
+  transition: color var(--ease), background-color var(--ease), border-color var(--ease);
+}
+
+/* keyboard focus ring: drawn in the element's own text colour */
+:where(.topbar, .bar, .drawerRoot) :where(a, button):focus-visible {
+  outline: var(--line-width) solid currentColor;
+  outline-offset: var(--line-width);
+}
+
+/* every Font Awesome icon next to text gets the same box, so all labels line up.
+   Optical lift: Devanagari reads higher than its box (marks above the headline),
+   so beside Tiro text the icon sits 0.1em up to share the letters' visual centre.
+   (relative `top`, not transform, so hover transforms are left free) */
+.icon {
+  position: relative;
+  top: -0.1em;
+  flex: none;
+  width: 1.25em;
+  font-size: 1em;
+  line-height: 1;
+  text-align: center;
+}
+
+/* the CTA's Rozha text already centres on its arrow */
+.cta .icon {
+  top: 0;
+}
+
+/* smaller direction marker (dropdown ▾, drawer ›) */
+.chevron {
+  width: auto;
+  font-size: 0.75em;
+  transition: transform var(--ease);
+}
+
+
+/* ---- 4. Contact strip ------------------------------------------------------- */
+/* desktop + tablet: phone | email on the left, address on the right */
+.topbar {
+  position: relative;
+  z-index: 101;
+  background-color: var(--c-maroon);
+  color: var(--c-white);
+  font-size: var(--text-strip);
+}
+
+.topbar .inner {
+  justify-content: space-between;
+  gap: var(--space-2) var(--strip-gap);
+  min-height: var(--control-sm);
+  padding-top: var(--space-1);
+  padding-bottom: var(--space-1);
+}
+
+.topbarList {
+  display: flex;
+  align-items: center;
+  gap: var(--strip-gap);
+}
+
+/* the strip's divider: between phone and email */
+.topbarList li + li {
+  padding-left: var(--strip-gap);
+  border-left: var(--line-light);
+}
+
+.topbarLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--c-white);
+  white-space: nowrap;
+}
+
+.topbarLink .icon {
+  color: var(--c-gold);
+}
+
+
+/* ---- 5. Sticky bar ---------------------------------------------------------- */
+.bar {
+  position: sticky;                      /* needs .page-wrapper { overflow: clip } in globals.css */
+  top: 0;
+  z-index: 100;
+  background-color: var(--c-gold);
+  color: var(--c-black);
+  transition: box-shadow var(--ease);
+}
+
+.bar.isScrolled {
+  box-shadow: var(--shadow-bar);
+}
+
+.bar .inner {
+  gap: var(--bar-gap);
+  min-height: calc(var(--logo) + 2 * var(--bar-pad));
+}
+
+/* -- brand: logo medal + name (the drawer reuses it, stacked) -- */
+.brand {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--c-black);
+}
+
+/* medal: maroon disc, gold ring, soft maroon halo */
+.logo {
+  display: block;
+  flex: none;
+  width: var(--logo);
+  height: var(--logo);
+  padding: calc(var(--logo) * 0.06);     /* a % padding would follow the parent's width */
+  border: var(--line-width) solid var(--c-gold);
+  border-radius: 50%;
+  background-color: var(--c-maroon);
+  box-shadow: var(--shadow-medal);
+  transition: box-shadow var(--ease);
+}
+
+.logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: saturate(0.9) sepia(0.12);     /* warms the seal towards the site palette */
+}
+
+.brandName {
+  font-family: var(--font-title);
+  font-size: var(--text-lg);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* -- menu: a maroon tray of pill links, centred between brand and actions -- */
+.nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: var(--space-0);
+  padding: var(--space-0);
+  border-radius: var(--radius-pill);
+  background-color: var(--c-maroon);
+}
+
+.navGroup {
+  position: relative;
+}
+
+/* a menu link (or the group's button); icons follow the text colour */
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: var(--control-sm);
+  padding: 0 var(--link-pad);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--c-white);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.navLink.isActive {
+  background-color: var(--c-gold);
+  color: var(--c-black);
+}
+
+.navLink[aria-expanded="true"] .chevron {
+  transform: rotate(180deg);
+}
+
+/* -- dropdown: one horizontal row of pills on a white panel, centred under its button -- */
+.dropdown {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  left: 50%;
+  z-index: 10;
+  display: flex;
+  gap: var(--space-0);
+  padding: var(--space-0);
+  border-radius: var(--radius-pill);
+  background-color: var(--c-white);
+  box-shadow: var(--shadow-panel);
+  opacity: 0;
+  visibility: hidden;                    /* hidden panels leave the Tab order */
+  transform: translate(-50%, var(--space-2));
+  transition: opacity var(--ease), transform var(--ease), visibility 0s linear 200ms;
+}
+
+/* invisible bridge over the gap, so the pointer can travel from the button into the panel */
+.dropdown::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: var(--space-2);
+}
+
+.dropdown.isOpen {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+  transition: opacity var(--ease), transform var(--ease), visibility 0s;
+}
+
+.dropdownLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: var(--control-sm);
+  padding: 0 var(--link-pad);
+  border-radius: var(--radius-pill);
+  color: var(--c-maroon);
+  white-space: nowrap;
+}
+
+.dropdownLink.isActive {
+  background-color: var(--c-gold);
+  color: var(--c-black);
+}
+
+/* -- actions: socials │ CTA (desktop), socials │ menu button (tablet) -- */
+.actions {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--bar-gap);
+}
+
+/* title stacked tight above the icon row */
+.social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-0);
+}
+
+.socialTitle {
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.socialList {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-sm);
+  height: var(--control-sm);
+  border-radius: 50%;
+  background-color: var(--c-maroon);
+  color: var(--c-white);
+  font-size: var(--text-sm);
+}
+
+.divider {
+  align-self: stretch;
+  width: 0;
+  margin: var(--space-4) 0;
+  border-left: var(--line-dark);
+}
+
+/* CTA: the one medium-size element */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  height: var(--control-lg);
+  padding: 0 var(--space-5);
+  border-radius: var(--radius-pill);
+  background-color: var(--c-maroon);
+  color: var(--c-white);
+  font-family: var(--font-title);
+  font-size: var(--text-md);
+  white-space: nowrap;
+}
+
+/* round menu button: opens the drawer from the bar, closes it from the drawer */
+.menuButton {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--control);
+  height: var(--control);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--c-maroon);
+  color: var(--c-white);
+  font-size: var(--text-md);
+  cursor: pointer;
+}
+
+
+/* ---- 6. Drawer (below 1200px, slides in from the left) --------------------------
+   gold head (stacked brand + close) / maroon body of full-width link rows /
+   gold foot (socials on phones + CTA). Rows behave like the desktop menu tray. */
+.drawerRoot {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  visibility: hidden;                    /* closed: hidden and out of the Tab order */
+  transition: visibility 0s linear 300ms;
+}
+
+.drawerRoot.isOpen {
+  visibility: visible;
+  transition: visibility 0s;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--overlay);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.drawer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: var(--drawer-width);
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;          /* scrolling inside never scrolls the page behind */
+  background-color: var(--c-maroon);
+  box-shadow: var(--shadow-panel);
+  transform: translateX(-100%);
+  transition: transform 300ms ease;
+}
+
+.drawerRoot.isOpen .overlay {
+  opacity: 1;
+}
+
+.drawerRoot.isOpen .drawer {
+  transform: translateX(0);
+}
+
+.drawerHead {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: var(--line-dark);
+  background-color: var(--c-gold);
+}
+
+/* stacked brand: a standard-size medal above the name */
+.drawerBrand {
+  --text-lg: 30px;
+  --logo: 96px;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.drawerClose {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+}
+
+.drawerNav {
+  flex: 1;
+  padding: var(--space-3) 0;
+}
+
+.drawerList {
+  display: grid;
+}
+
+.drawerLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  height: var(--control-lg);
+  padding: 0 var(--space-5);
+  color: var(--c-white);
+}
+
+.drawerLabel {
+  flex: 1;                               /* pushes the chevron to the right edge */
+}
+
+.drawerLink.isActive {
+  background-color: var(--c-gold);
+  color: var(--c-black);
+}
+
+.drawerFoot {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-top: var(--line-dark);
+  background-color: var(--c-gold);
+  color: var(--c-black);
+}
+
+.drawerSocial {
+  gap: var(--space-2);
+}
+
+/* buttons animate their lift; the CTA's arrow its slide */
+.socialLink,
+.cta,
+.menuButton {
+  transition: transform var(--ease), box-shadow var(--ease);
+}
+
+.cta .icon {
+  transition: transform var(--ease);
+}
+
+
+/* ---- 7. Hover effects (mouse / trackpad only) ----------------------------------
+   Inside (hover: hover) so a tap on a touch screen never leaves an element stuck in
+   its hover colour. Colours are restated on purpose: the site-wide `a:hover`
+   (Bootstrap blue) must never show. */
+@media (hover: hover) {
+  .topbarLink:hover {
+    color: var(--c-gold);
+  }
+
+  /* the text (not the icon) gets a 2px underline — the same link hover as the footer's bottom bar */
+  .topbarLink:hover > span {
+    text-decoration: underline;
+    text-decoration-thickness: var(--line-width);
+    text-underline-offset: 0.2em;
+  }
+
+  .brand:hover {
+    color: var(--c-black);
+  }
+
+  .brand:hover .logo {
+    box-shadow: var(--shadow-medal-hover);
+  }
+
+  .navLink:hover,
+  .dropdownLink:hover,
+  .drawerLink:hover {
+    background-color: var(--c-gold);
+    color: var(--c-black);
+  }
+
+  /* buttons: lift (colours stay); the CTA's arrow slides forward */
+  .socialLink:hover,
+  .cta:hover,
+  .menuButton:hover {
+    color: var(--c-white);               /* restated: Bootstrap's a:hover blue must never show */
+    box-shadow: var(--shadow-lift);
+    transform: translateY(var(--lift));
+  }
+
+  .cta:hover .icon {
+    transform: translateX(var(--nudge));
+  }
+}
+
+
+/* ---- 8. Responsive layout: which parts show where ------------------------------- */
+.barMenuButton {
+  display: none;
+}
+
+/* desktop: the drawer is never needed */
+@media (min-width: 1200px) {
+  .drawerRoot {
+    display: none;
+  }
+}
+
+/* tablet + phones: the menu and CTA move into the drawer; the menu button appears */
+@media (max-width: 1199px) {
+  .nav,
+  .barCta {
+    display: none;
+  }
+
+  .barMenuButton {
+    display: flex;
+  }
+
+  .bar .inner {
+    justify-content: space-between;
+  }
+}
+
+/* tablet: socials stay in the bar, so the drawer does not repeat them */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .drawerSocial {
+    display: none;
+  }
+}
+
+/* phones: the bar keeps brand + menu button (socials move to the drawer);
+   the strip shows phone | email, with the address centred on its own line */
+@media (max-width: 767px) {
+  .barSocial,
+  .divider {
+    display: none;
+  }
+
+  .brand {
+    gap: var(--space-2);
+  }
+
+  .topbar .inner {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: var(--space-0);
+  }
+
+  /* full-width line; the icon flows with the text so both stay centred when it wraps */
+  .topbarAddress {
+    display: block;
+    flex-basis: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .topbarAddress .icon {
+    display: inline-block;
+    margin-right: var(--space-2);
+  }
+}
+
+/* very small phones: phone and email stack, without the divider */
+@media (max-width: 359px) {
+  .topbarList {
+    flex-direction: column;
+    gap: var(--space-0);
+  }
+
+  .topbarList li + li {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+
+/* ---- 9. Reduced motion ---------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .topbar *,
+  .bar *,
+  .drawerRoot,
+  .drawerRoot * {
+    transition: none !important;
+  }
+
+  /* no movement: hovered buttons only gain the shadow */
+  .socialLink:hover,
+  .cta:hover,
+  .menuButton:hover,
+  .cta:hover .icon {
+    transform: none;
+  }
+}

@@ -1,0 +1,1543 @@
+/*==============================================
+    About One
+===============================================*/
+.aboutOne {
+    position: relative;
+    display: block;
+    padding: 140px 0 187px;
+    z-index: 1;
+}
+
+.left {
+    position: relative;
+    display: block;
+    margin-right: 254px;
+}
+
+.imgBox {
+    position: relative;
+    display: block;
+}
+
+.img {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.img::after {
+    background: linear-gradient(90deg, rgba(var(--karoons-white-rgb, 255, 255, 255), 0.05) 0px, rgba(var(--karoons-white-rgb, 255, 255, 255), 0.05) 77%, rgba(var(--karoons-white-rgb, 255, 255, 255), 0.25) 92%, rgba(var(--karoons-white-rgb, 255, 255, 255), 0));
+    content: "";
+    height: 200%;
+    left: -210%;
+    opacity: 0;
+    position: absolute;
+    top: -50%;
+    transition: all 0.7s ease 0s;
+    width: 200%;
+}
+
+.img:hover::after {
+    left: -30%;
+    opacity: 1;
+    top: -20%;
+    transition-duration: 0.7s, 0.7s, 0.15s;
+    transition-property: left, top, opacity;
+    transition-timing-function: linear;
+}
+
+.img img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.img2 {
+    position: absolute;
+    top: 184px;
+    right: -224px;
+    overflow: hidden;
+}
+
+.img2:after {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    display: block;
+    content: "";
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.3) 100%);
+    transform: skewX(-25deg);
+}
+
+.img2:hover:after {
+    -webkit-animation: shine 1.5s;
+    animation: shine 1.5s;
+}
+
+.img2 img {
+    width: auto;
+    border-radius: 20px;
+}
+
+.provideBox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--anity-primary);
+    border-radius: 20px;
+    margin-right: 56px;
+    margin-top: 46px;
+    padding: 21px 31px 23px;
+}
+
+.provideIcon {
+    position: relative;
+    display: inline-block;
+}
+
+.provideIcon span {
+    position: relative;
+    display: inline-block;
+    font-size: 64px;
+    color: var(--anity-black);
+    transition: all 500ms linear;
+    transition-delay: 0.1s;
+    transform: scale(1);
+}
+
+.provideBox:hover .provideIcon span {
+    transform: scale(0.9);
+}
+
+.provideContent {
+    position: relative;
+    display: block;
+}
+
+.provideCount {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.provideCount h3 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 60px;
+}
+
+.provideCount span {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 60px;
+    color: var(--anity-black);
+    font-family: var(--font-text), serif;
+}
+
+.provideCountText {
+    margin-top: 6px;
+    color: var(--anity-black);
+}
+
+.shape1 {
+    position: absolute;
+    width: 265px;
+    height: 279px;
+    right: -200px;
+    top: 92px;
+    border-radius: 50%;
+    background-color: var(--anity-primary);
+    filter: blur(162px);
+    z-index: -1;
+    animation-name: zoomInOut;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-name: zoomInOut;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-name: zoomInOut;
+    -moz-animation-duration: 3s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+    -ms-animation-name: zoomInOut;
+    -ms-animation-duration: 3s;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: ease-in-out;
+    -o-animation-name: zoomInOut;
+    -o-animation-duration: 3s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-timing-function: ease-in-out;
+}
+
+.right {
+    position: relative;
+    display: block;
+    margin-top: 89px;
+}
+
+.right :global(.section-title) {
+    position: relative;
+    display: block;
+    margin-top: -8px;
+    margin-bottom: 48px;
+    z-index: 1;
+}
+
+.vissionMission {
+    position: relative;
+    display: block;
+}
+
+.tabBox {
+    position: relative;
+    display: block;
+}
+
+.tabBox .tabButtons {
+    position: relative;
+    display: flex;
+    margin-bottom: 18px;
+    align-items: center;
+    gap: 15px;
+}
+
+.tabBox .tabButtons .tabBtn {
+    position: relative;
+    display: block;
+}
+
+.tabBox .tabButtons .tabBtn+.tabBtn {
+    margin-left: 0;
+}
+
+.tabBox .tabButtons .tabBtn span {
+    position: relative;
+    display: inline-block;
+    width: 180px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--anity-black);
+    background-color: transparent;
+    padding: 9px 20px 9px;
+    cursor: pointer;
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+    z-index: 1;
+    text-align: center;
+    text-transform: capitalize;
+    border: 1px solid var(--anity-gray);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.tabBox .tabButtons .tabBtn.activeBtn span {
+    color: var(--anity-white);
+    border: 1px solid var(--anity-extra);
+}
+
+.tabBox .tabButtons .tabBtn span:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    background-color: var(--anity-extra);
+    background-position: top bottom;
+    transition-delay: .1s;
+    transition-timing-function: ease-in-out;
+    transition-duration: .5s;
+    transition-property: all;
+    transform-origin: top;
+    transform-style: preserve-3d;
+    transform: scaleY(0);
+    z-index: -1;
+}
+
+.tabBox .tabButtons .tabBtn.activeBtn span:before {
+    transform: scaleY(1.0);
+}
+
+.tabBox .tabsContent {
+    position: relative;
+    display: block;
+}
+
+.tabBox .tabsContent .tab {
+    position: relative;
+    display: none;
+    -webkit-transform: translateY(35px);
+    -ms-transform: translateY(35px);
+    transform: translateY(35px);
+    -webkit-transition: all 600ms ease;
+    -moz-transition: all 600ms ease;
+    -ms-transition: all 600ms ease;
+    -o-transition: all 600ms ease;
+    transition: all 600ms ease;
+    z-index: 10;
+}
+
+.tabBox .tabsContent .tab.activeTab {
+    display: block;
+    margin-top: 0px;
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    transform: translateY(0px);
+
+}
+
+.tabBox .tabsContentInner {
+    position: relative;
+    display: block;
+}
+
+.btnAndNeedHelp {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 41px;
+}
+
+.btnBox {
+    position: relative;
+    display: block;
+}
+
+.needHelp {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.needHelp :global(.icon) {
+    position: relative;
+    display: inline-block;
+    top: 5px;
+}
+
+.needHelp :global(.icon) span {
+    position: relative;
+    display: inline-block;
+    font-size: 46px;
+    color: var(--anity-base);
+    transition: all 500ms linear;
+    transition-delay: 0.1s;
+    transform: scale(1);
+}
+
+.needHelp:hover :global(.icon) span {
+    transform: scale(0.9);
+}
+
+.needHelp :global(.content) {
+    position: relative;
+    display: block;
+}
+
+.needHelp :global(.content) p {
+    color: var(--anity-black);
+}
+
+.needHelp :global(.content) h4 {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
+}
+
+.needHelp :global(.content) h4 a {
+    color: var(--anity-black);
+}
+
+.needHelp :global(.content) h4 a:hover {
+    color: var(--anity-base);
+}
+
+/*==============================================
+    About One — Gold panel framed by maroon Om/Swastik border
+    (mirrors the .cta-one / .divine-border--event house pattern, colours inverted)
+===============================================*/
+.aboutOne.aboutOneOrnate {
+    position: relative;
+    overflow: hidden;
+    background-color: #F2A90A;
+    padding: 96px 0 116px;
+    z-index: 1;
+}
+
+/* Floral pattern on its own low-opacity layer — section-bg-2.png, same
+   tile size and opacity as the Legacy section's maroon-field texture. */
+.bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("/assets/images/backgrounds/section-bg-2.png");
+    background-repeat: repeat;
+    background-size: 1170px auto;
+    opacity: 0.5;
+    z-index: 0;
+    pointer-events: none;
+}
+@media (max-width: 991px) {
+    .bg {
+        background-size: 770px auto;
+    }
+}
+
+.aboutOne.aboutOneOrnate :global(.container) {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 1199px) {
+
+/* Large desktop / small desktop: keep content clear of the 30px side strips */
+    .aboutOne.aboutOneOrnate {
+        padding: 90px 0 100px;
+    }
+    .aboutOne.aboutOneOrnate :global(.container) {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+@media (max-width: 1199px) {
+
+/* Small desktop & below (columns stacked): images side by side */
+    /* Show the two images side by side (flex row); the 240+ box and blur-shape
+       wrap onto their own full-width rows underneath */
+    .aboutOneOrnate .left {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 620px;
+        text-align: center;
+    }
+    .aboutOneOrnate .imgBox {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: stretch;
+        justify-content: center;
+        gap: 20px;
+    }
+    .aboutOneOrnate .img {
+        flex: 0 1 280px;
+        max-width: 280px;
+        margin: 0;
+    }
+    .aboutOneOrnate .img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .aboutOneOrnate .img2 {
+        position: relative;
+        top: 0;
+        right: auto;
+        left: 0;
+        flex: 0 1 280px;
+        max-width: 280px;
+        margin: 0;
+        width: auto;
+    }
+    .aboutOneOrnate .img2 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+    /* 240+ box + blur shape drop to their own row below the images */
+    .aboutOneOrnate .provideBox {
+        flex: 1 1 100%;
+        margin: 30px auto 0;
+        max-width: 340px;
+        justify-content: center;
+        text-align: center;
+    }
+    .aboutOneOrnate .provideContent {
+        text-align: center;
+    }
+    .aboutOneOrnate .provideCount {
+        justify-content: center;
+    }
+    .aboutOneOrnate .shape1 {
+        display: none;
+    }
+}
+
+@media (max-width: 991px) {
+
+/* Tablet & below: stack the two columns, neutralise the desktop image offsets
+   (the base theme only resets these at <=767px, which breaks the 768-991 range) */
+    .aboutOne.aboutOneOrnate {
+        padding: 78px 0 86px;
+    }
+    .aboutOne.aboutOneOrnate :global(.container) {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .aboutOneOrnate :global(.row) {
+        row-gap: 36px;
+    }
+
+    /* Tablet: centre every element */
+    .aboutOneOrnate .imgBox {
+        text-align: center;
+    }
+    .aboutOneOrnate .right {
+        margin-top: 8px;
+        text-align: center;
+    }
+    .aboutOneOrnate :global(.section-title):global(.text-left),
+.aboutOneOrnate :global(.section-title) {
+        text-align: center;
+    }
+    .aboutOneOrnate :global(.section-title__tagline-box) {
+        display: flex;
+        justify-content: center;
+    }
+    /* Heading on a single line */
+    .aboutOneOrnate :global(.section-title__title) {
+        max-width: none;
+        margin-left: auto;
+        margin-right: auto;
+        white-space: nowrap;
+    }
+    .aboutOneOrnate :global(.section-title__title) br {
+        display: none;
+    }
+    .aboutOneOrnate .tabBox .tabButtons {
+        justify-content: center;
+        align-items: center;
+    }
+    .aboutOneOrnate .tabsContentInner {
+        text-align: center;
+    }
+    /* Tablet: CTA button on the left, map icon + text on the right (one row) */
+    .aboutOneOrnate .btnAndNeedHelp {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 22px;
+    }
+    /* Map block: icon on the left, headline + bottom line left-aligned beside it */
+    .aboutOneOrnate .needHelp {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: left;
+        gap: 12px;
+    }
+    .aboutOneOrnate .needHelp :global(.icon) {
+        top: 0;
+        line-height: 1;
+    }
+    .aboutOneOrnate .needHelp :global(.content),
+.aboutOneOrnate .needHelp :global(.content) p {
+        text-align: left;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+
+/* Tablet (768-1199): keep CTA + address on one row — the longer address
+   ("श्री शंकरदत्त महाराज मठ, …") wraps onto two lines beside the button
+   instead of dropping the whole block onto its own left-aligned row */
+    .aboutOneOrnate .btnAndNeedHelp {
+        flex-wrap: nowrap;
+        justify-content: center;
+        gap: 28px;
+    }
+    .aboutOneOrnate .btnBox {
+        flex-shrink: 0;
+    }
+    .aboutOneOrnate .needHelp {
+        min-width: 0;
+    }
+    /* address on two fixed lines (math name / street + city) so the block
+       is only as wide as its text and the pair stays centred */
+    .aboutOneOrnate .addressPlace,
+.aboutOneOrnate .addressNowrap {
+        display: block;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+/* Small laptop / landscape tablet (992-1199): columns are stacked here too,
+   so centre the text block like the 768-991 layout */
+    .aboutOneOrnate .right {
+        text-align: center;
+    }
+    .aboutOneOrnate :global(.section-title):global(.text-left),
+.aboutOneOrnate :global(.section-title) {
+        text-align: center;
+    }
+    .aboutOneOrnate :global(.section-title__tagline-box) {
+        display: flex;
+        justify-content: center;
+    }
+    .aboutOneOrnate .tabBox .tabButtons {
+        justify-content: center;
+    }
+    .aboutOneOrnate .tabsContentInner {
+        text-align: center;
+    }
+    .aboutOneOrnate .btnAndNeedHelp {
+        align-items: center;
+    }
+    .aboutOneOrnate .needHelp {
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 767px) {
+
+/* Mobile: top & bottom ornamental border only (no side strips / corners), stack & centre everything */
+    .aboutOne.aboutOneOrnate {
+        padding: 54px 0 58px;
+    }
+    .aboutOne.aboutOneOrnate :global(.container) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    /* Keep both images on one line, evenly sized and centred */
+    .aboutOneOrnate .left {
+        max-width: 100%;
+    }
+    .aboutOneOrnate .imgBox {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+    .aboutOneOrnate .img,
+.aboutOneOrnate .img2 {
+        flex: 0 1 calc(50% - 6px);
+        max-width: calc(50% - 6px);
+        min-width: 0;
+        margin: 0;
+    }
+    .aboutOneOrnate .img img,
+.aboutOneOrnate .img2 img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+    }
+    /* 240+ counter box drops to its own full-width row below the images */
+    .aboutOneOrnate .provideBox {
+        flex: 1 1 100%;
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin: 24px auto 0;
+        max-width: 300px;
+        justify-content: center;
+        text-align: center;
+    }
+    .aboutOneOrnate .provideContent {
+        text-align: center;
+    }
+    .aboutOneOrnate .provideCount {
+        justify-content: center;
+    }
+
+    .aboutOneOrnate .right {
+        margin-top: 12px;
+        text-align: center;
+    }
+    .aboutOneOrnate :global(.section-title):global(.text-left) {
+        text-align: center;
+    }
+    .aboutOneOrnate :global(.section-title__tagline-box) {
+        display: flex;
+        justify-content: center;
+    }
+    /* Heading on a single line — scaled to fit the mobile width */
+    .aboutOneOrnate :global(.section-title__title) {
+        font-size: 22px;
+        line-height: 1.3em;
+        max-width: none;
+        margin-left: auto;
+        margin-right: auto;
+        white-space: nowrap;
+    }
+    .aboutOneOrnate :global(.section-title__title) br {
+        display: none;
+    }
+    .aboutOneOrnate .tabsContentInner {
+        text-align: center;
+    }
+    .aboutOneOrnate .tabsContentInner p[lang="mr"] {
+        font-size: 15.5px;
+        line-height: 2em;
+    }
+    .aboutOneOrnate .tabBox .tabButtons {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .aboutOneOrnate .tabBox .tabButtons .tabBtn span {
+        width: 220px;
+    }
+    .aboutOneOrnate .btnAndNeedHelp {
+        flex-direction: column;
+        align-items: center;
+        gap: 22px;
+        margin-top: 32px;
+    }
+    /* Location icon stacked on top, centred above the address */
+    .aboutOneOrnate .needHelp {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 8px;
+    }
+    .aboutOneOrnate .needHelp :global(.icon) {
+        top: 0;
+    }
+    .aboutOneOrnate .needHelp :global(.content),
+.aboutOneOrnate .needHelp :global(.content) p {
+        text-align: center;
+    }
+    .aboutOneOrnate .needHelp :global(.content) h4 {
+        font-size: 15px;
+        line-height: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .aboutOneOrnate .btnBox :global(.thm-btn) {
+        width: 100%;
+    }
+}
+
+/* --- CTA button — mirrors the home page's .welcome-one .thm-btn hover effect exactly
+   (maroon fill + maroon circle-reveal on the theme's own timing, white label kept,
+   icon circle flips white/maroon, base bounceright arrow animation on hover). --- */
+.aboutOneOrnate .btnBox :global(.thm-btn) {
+    background-color: #3D0A0C;
+    border-color: #3D0A0C;
+    color: var(--anity-white);
+    box-shadow: 0 8px 20px rgba(61, 10, 12, 0.35);
+}
+
+.aboutOneOrnate .btnBox :global(.thm-btn)::after {
+    background-color: #3D0A0C;
+}
+
+.aboutOneOrnate .btnBox :global(.thm-btn) span {
+    background-color: #F2A90A;
+    color: #3D0A0C;
+}
+
+.aboutOneOrnate .btnBox :global(.thm-btn):hover {
+    border-color: #3D0A0C;
+    color: var(--anity-white);
+}
+
+.aboutOneOrnate .btnBox :global(.thm-btn):hover span {
+    background-color: var(--anity-white);
+    color: #3D0A0C;
+}
+
+/* --- Colour combinations tuned for the gold panel --- */
+.aboutOneOrnate :global(.section-title__tagline) {
+    color: #3D0A0C;
+    font-weight: 700;
+}
+
+.aboutOneOrnate :global(.section-title__title) {
+    color: #3D0A0C;
+    text-shadow: 0 1px 0 rgba(255, 248, 231, 0.5);
+}
+
+@media (min-width: 992px) {
+
+/* Desktop: let the heading wrap on its own; the forced 3-line break is tablet/mobile only */
+    .aboutOneOrnate :global(.section-title__title) br {
+        display: none;
+    }
+}
+
+@media (min-width: 1200px) {
+
+/* Large desktop: image 2 is a large square photo; cap it so it overlaps
+   image 1 instead of rendering at its full natural size */
+    .aboutOneOrnate .img2 img {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+    }
+}
+
+.aboutOneOrnate .provideBox {
+    background-color: #3D0A0C;
+}
+
+.aboutOneOrnate .provideIcon span,
+.aboutOneOrnate .provideCount h3,
+.aboutOneOrnate .provideCount span,
+.aboutOneOrnate .provideCountText {
+    color: #F2A90A;
+}
+
+.aboutOneOrnate .provideCount h3 {
+    -webkit-text-fill-color: #F2A90A;
+}
+
+/* Devotional verse — maroon on gold */
+.aboutOneOrnate .tabsContentInner p[lang="mr"] {
+    margin: 0;
+    color: #3D0A0C;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 2.15em;
+    letter-spacing: 0.2px;
+    text-shadow: 0 1px 0 rgba(255, 248, 231, 0.5);
+}
+
+/* Need-help block */
+.aboutOneOrnate .needHelp :global(.icon) span {
+    color: #3D0A0C;
+}
+
+.aboutOneOrnate .needHelp :global(.content) p {
+    color: rgba(61, 10, 12, 0.75);
+}
+
+.aboutOneOrnate .needHelp :global(.content) h4 a {
+    color: #3D0A0C;
+}
+
+/*==================================================================
+    ABOUT — "ABOUT US" SECTION (.about-One--ornate) — colour scheme
+    keyed to the HOME hero image.  Palette (sampled from
+    slider-v1-img-1.jpg):
+      --au-gold      #D9982A   (hero's L/R gold borders)
+      --au-gold-lite #E9B45A   (bright tint — hovers / active states)
+      --au-maroon    #620208   (field behind the idol)
+      --au-maroon-dk #4D0601   (hero's outer edges)
+      --au-ink       #2C0405   (near-black maroon — copy on the gold field)
+      --au-cream     #FBF1DC   (warm ivory — text on maroon)
+    All rules below are scoped to .about-One--ornate so the other
+    About-page variants are untouched.  Static + hover/focus + the
+    existing responsive @media blocks (size-only) all inherit.
+==================================================================*/
+.aboutOneOrnate {
+    /* Reversed from the original: maroon field with gold accents/borders,
+       matching the same palette family used on Legacy and the header. */
+    --au-gold: #D9982A;
+    --au-gold-lite: #E9B45A;
+    --au-maroon: #620208;
+    --au-maroon-dk: #4D0601;
+    --au-ink: #FBF1DC;
+    --au-cream: #2C0405;
+}
+
+/* ---- Maroon field + floral texture ---- */
+.aboutOne.aboutOneOrnate {
+    background-color: var(--au-maroon);
+    background-image: linear-gradient(180deg, #660309 0%, var(--au-maroon) 45%, #4D0601 100%);
+}
+
+/* ---- Ornamental gold border strips + corners ----
+   Same treatment as Legacy's gold-on-maroon border: gold field with a
+   maroon Om/swastik glyph (the original strip's glyph was gold-on-gold
+   here and vanished, so the glyph image is re-keyed too, not just the
+   base colour). */
+.aboutOneOrnate :global(.divine-border--about) {
+    background-color: var(--au-gold);
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(61, 10, 12, 0.14) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%235C1012'%3E%3Ctext x='25' y='22' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%235C1012' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%235C1012' opacity='0.85'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.aboutOneOrnate :global(.divine-border--about-vertical) {
+    background-color: var(--au-gold);
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(61, 10, 12, 0.14) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%235C1012'%3E%3Ctext x='15' y='32' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%235C1012' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%235C1012' opacity='0.85'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.aboutOneOrnate :global(.about-One__corner) {
+    background-color: var(--au-gold);
+}
+
+/* ---- Section title on the maroon panel ----
+   Boosted to .about-One.about-One--ornate (two classes on the same
+   element) so this outranks the unscoped .about-One rule in style.css,
+   which loads later in the cascade at equal specificity otherwise. */
+.aboutOne.aboutOneOrnate :global(.section-title__tagline) {
+    color: var(--au-ink);
+}
+
+.aboutOne.aboutOneOrnate :global(.section-title__title) {
+    color: var(--au-ink);
+    text-shadow: 0 1px 0 rgba(251, 241, 220, 0.5);
+}
+
+/* ---- "240+ years" stat card — gold panel (now stands out on the maroon field) ---- */
+.aboutOneOrnate .provideBox {
+    background-color: var(--au-gold);
+    box-shadow: 0 18px 40px rgba(44, 4, 5, 0.30);
+    transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.aboutOneOrnate .provideBox:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 50px rgba(44, 4, 5, 0.40);
+}
+
+.aboutOneOrnate .provideIcon span,
+.aboutOneOrnate .provideCount h3,
+.aboutOneOrnate .provideCount span,
+.aboutOneOrnate .provideCountText {
+    color: var(--au-cream);
+}
+
+.aboutOneOrnate .provideCount h3 {
+    -webkit-text-fill-color: var(--au-cream);
+}
+
+/* ---- Devotional verse ---- */
+.aboutOneOrnate .tabsContentInner p[lang="mr"] {
+    color: var(--au-ink);
+    text-shadow: 0 1px 0 rgba(251, 241, 220, 0.5);
+}
+
+/* ---- Mission / Vision tab buttons ----
+   select / hover fill uses the hero image's brighter red #7A1418 */
+.aboutOneOrnate {
+    --au-red-select: #7A1418;
+}
+
+.aboutOneOrnate .tabButtons .tabBtn {
+    border-radius: 12px;
+}
+
+/* Matched to .about-One__tab-box .tab-buttons .tab-btn span's specificity
+   in style.css (4 classes) so this wins instead of the unscoped base rule. */
+.aboutOneOrnate .tabBox .tabButtons .tabBtn span {
+    color: var(--au-ink);
+    background-color: transparent;
+    border-color: rgba(251, 241, 220, 0.30);
+    transition: color 260ms ease, border-color 260ms ease, background-color 260ms ease;
+}
+
+.aboutOneOrnate .tabButtons .tabBtn span:before {
+    background-color: var(--au-gold);
+}
+
+/* hover — the gold fill sweeps up (base :before scaleY), maroon-ink label */
+.aboutOneOrnate .tabBox .tabButtons .tabBtn:hover span {
+    color: var(--au-cream);
+    border-color: var(--au-gold);
+    background-color: transparent;
+}
+
+.aboutOneOrnate .tabButtons .tabBtn:hover span:before {
+    transform: scaleY(1);
+}
+
+/* selected tab — gold fill held, maroon-ink label */
+.aboutOneOrnate .tabBox .tabButtons .tabBtn.activeBtn span {
+    color: var(--au-cream);
+    border-color: var(--au-gold);
+    background-color: transparent;
+    box-shadow: 0 8px 20px rgba(44, 4, 5, 0.28);
+}
+
+/* keyboard focus ring on the clickable list item */
+.aboutOneOrnate .tabButtons .tabBtn:focus-visible {
+    outline: 2px solid var(--au-gold);
+    outline-offset: 3px;
+    border-radius: 12px;
+}
+
+.aboutOneOrnate .tabBox .tabsContentInner p[lang="mr"] {
+    text-shadow: none;
+}
+
+/* ---- Location / "need help" block ---- */
+.aboutOneOrnate .needHelp :global(.icon) span {
+    color: var(--au-gold);
+}
+
+.aboutOneOrnate .needHelp :global(.content) p {
+    color: rgba(251, 241, 220, 0.75);
+}
+
+.aboutOneOrnate .needHelp :global(.content) h4 a {
+    color: var(--au-ink);
+    transition: color 250ms ease;
+}
+
+.aboutOneOrnate .needHelp :global(.content) h4 a:hover,
+.aboutOneOrnate .needHelp :global(.content) h4 a:focus-visible {
+    color: var(--au-gold-lite);
+}
+
+/* ---- CTA button — gold fill, maroon chip.
+   Hover matches the CTA section's own primary button (.cta-one__btn-1):
+   white sweep, dark maroon-ink label, chip flips to maroon-bg/white-icon. ---- */
+.aboutOneOrnate .btnBox :global(.thm-btn) {
+    background-color: var(--au-gold);
+    border-color: var(--au-gold-lite);
+    color: var(--au-cream);
+    box-shadow: 0 8px 20px rgba(44, 4, 5, 0.35);
+}
+
+.aboutOneOrnate .btnBox :global(.thm-btn)::after {
+    background-color: #FFFFFF;
+}
+
+.aboutOneOrnate .btnBox :global(.thm-btn) span {
+    background-color: var(--au-maroon);
+    color: var(--au-ink);
+}
+
+.aboutOneOrnate .btnBox :global(.thm-btn):hover,
+.aboutOneOrnate .btnBox :global(.thm-btn):focus-visible {
+    border-color: #FFFFFF;
+    color: var(--au-cream);
+}
+
+.aboutOneOrnate .btnBox :global(.thm-btn):hover span {
+    background-color: var(--au-maroon);
+    color: #FFFFFF;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .aboutOneOrnate .provideBox,
+.aboutOneOrnate .provideBox:hover {
+        transform: none;
+        transition: none;
+    }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1319px) {
+
+/*--------------------------------------------------------------
+# End
+--------------------------------------------------------------*/
+  .provideBox {
+      margin-right: 0;
+      padding: 21px 25px 23px;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+/* Medium screen  */
+  .left {
+      max-width: 600px;
+      margin: 0 auto;
+  }
+
+  .img2 {
+      top: inherit;
+      bottom: -45px;
+      right: -124px;
+  }
+
+  .provideBox {
+      margin-right: 0;
+      max-width: 320px;
+  }
+
+  .right {
+      max-width: 600px;
+      margin: 95px auto 0;
+  }
+
+  .aboutOne {
+      padding: 140px 0 139px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+/* Tablet Layout: 768px. */
+  .left {
+      max-width: 600px;
+      margin: 0 auto;
+  }
+
+  .img2 {
+      top: inherit;
+      bottom: -45px;
+      right: -124px;
+  }
+
+  .provideBox {
+      margin-right: 0;
+      max-width: 320px;
+  }
+
+  .right {
+      max-width: 600px;
+      margin: 95px auto 0;
+  }
+
+  .aboutOne {
+      padding: 140px 0 139px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+  .left {
+      margin-right: 0;
+  }
+
+  .img2 img {
+      width: 100%;
+  }
+
+  .img2 {
+      top: 0;
+      right: 0;
+      position: relative;
+      margin-top: 30px;
+      max-width: 375px;
+      width: 100%;
+  }
+
+  .provideBox {
+      margin-right: 0;
+      padding: 21px 25px 23px;
+      max-width: 320px;
+  }
+
+  .tabBox .tabButtons {
+      flex-direction: column;
+      align-items: baseline;
+  }
+
+  .btnAndNeedHelp {
+      flex-direction: column;
+      align-items: baseline;
+  }
+
+  .right {
+      margin-top: 47px;
+  }
+
+  .aboutOne {
+      padding: 140px 0 133px;
+  }
+}
+
+/* Shubharay Math about section — red & gold theme */
+.provideBox {
+  background-color: #F2A90A;
+}
+
+.provideIcon span {
+  color: #3D0A0C;
+}
+
+.provideCount span {
+  color: #3D0A0C;
+}
+
+.provideCountText {
+  color: #3D0A0C;
+  font-weight: 600;
+}
+
+.shape1 {
+  background-color: #3D0A0C;
+  opacity: 0.35;
+}
+
+.aboutOne :global(.section-title__tagline) {
+  color: #3D0A0C;
+}
+
+.aboutOne :global(.section-title__title) {
+  color: #2b2b2b;
+}
+
+.tabBox .tabButtons .tabBtn span {
+  color: #2b2b2b;
+  border: 1px solid rgba(61, 10, 12, 0.25);
+}
+
+.tabBox .tabButtons .tabBtn.activeBtn span {
+  color: #FFF8E7;
+  border: 1px solid #3D0A0C;
+}
+
+.tabBox .tabButtons .tabBtn span:before {
+  background-color: #3D0A0C;
+}
+
+/* Mission / Vision tabs on the maroon-field About Us section — select /
+   hover fill is gold (matches the section's ornamental border), with
+   dark maroon-ink label text on that gold fill. Scoped to
+   .about-One--ornate and placed after the module-css import so it wins. */
+.aboutOneOrnate .tabBox .tabButtons .tabBtn span:before {
+  background-color: #D9982A;
+}
+
+.aboutOneOrnate .tabBox .tabButtons .tabBtn.activeBtn span,
+.aboutOneOrnate .tabBox .tabButtons .tabBtn:hover span {
+  color: #2C0405;
+  border-color: #D9982A;
+}
+
+.aboutOneOrnate .tabBox .tabButtons .tabBtn:hover span:before {
+  transform: scaleY(1);
+}
+
+.aboutOneOrnate .tabBox .tabButtons .tabBtn:focus-visible {
+  outline: 2px solid #D9982A;
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+.btnBox :global(.thm-btn) {
+  background-color: #3D0A0C;
+  border-color: #3D0A0C;
+  color: #FFF8E7;
+}
+
+.btnBox :global(.thm-btn)::after {
+  background-color: #F2A90A;
+}
+
+.btnBox :global(.thm-btn) span {
+  background-color: #F2A90A;
+  color: #3D0A0C;
+}
+
+.btnBox :global(.thm-btn):hover {
+  border-color: #3D0A0C;
+  color: #3D0A0C;
+}
+
+.btnBox :global(.thm-btn):hover span {
+  background-color: #3D0A0C;
+  color: #F2A90A;
+}
+
+.needHelp :global(.icon) span {
+  color: #3D0A0C;
+}
+
+.needHelp :global(.content) h4 a {
+  color: #2b2b2b;
+}
+
+.needHelp :global(.content) h4 a:hover {
+  color: #3D0A0C;
+}
+
+/* Desktop & tablet: image 1 sits behind, image 2 overlaps on top */
+.img {
+  z-index: 1;
+}
+
+.img2 {
+  z-index: 2;
+}
+
+@media only screen and (min-width: 992px) {
+
+/* Desktop: 240+ years badge overlaps image 2 (position unchanged, only stacking order raised) */
+  .provideBox {
+    position: relative;
+    z-index: 3;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+/* Tablet: reduce top/bottom spacing */
+  .aboutOne {
+    padding: 70px 0 70px;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .aboutOne {
+    padding: 90px 0 90px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+/* Mobile: reduce spacing, center content, fix alignment */
+  .aboutOne {
+    padding: 60px 0 60px;
+  }
+
+  .left {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .imgBox {
+    text-align: center;
+  }
+
+  .provideBox {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .right {
+    text-align: center;
+  }
+
+  .aboutOne :global(.section-title):global(.text-left) {
+    text-align: center;
+  }
+
+  .aboutOne :global(.section-title__tagline-box) {
+    display: flex;
+    justify-content: center;
+  }
+
+  .tabBox .tabButtons {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tabBox .tabsContentInner {
+    text-align: center;
+  }
+
+  .btnAndNeedHelp {
+    align-items: center;
+  }
+
+  .needHelp {
+    justify-content: center;
+  }
+}
+
+/* ---- Trust logo: logo.png is bright yellow/red, so it sits in a maroon
+   medallion with a gold rim to tie it into the header's maroon + gold
+   palette, with its colours warmed slightly toward the site's gold ---- */
+
+/* Tablet: larger brand name, closer to the desktop scale */
+
+  /* extra .snav so it outranks the base .snav__foot .snav__connect rule below */
+
+/* The End */
+
+/*==================================================================
+    HOME PAGE TYPE SCALE — every section label shares one size, and
+    every section description shares one size (About, Events, CTA).
+    Placed last so it wins over the per-section overrides above.
+==================================================================*/
+.aboutOne.aboutOneOrnate :global(.section-title__tagline) {
+  font-size: 20px;
+}
+
+.aboutOne.aboutOneOrnate .tabBox .tabsContentInner p {
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 767px) {
+  .aboutOne.aboutOneOrnate :global(.section-title__tagline) {
+    font-size: 18px;
+  }
+
+  .aboutOne.aboutOneOrnate .tabBox .tabsContentInner p {
+    font-size: 17px;
+  }
+}
+
+/*==================================================================
+  Header nav — segmented strip + dropdown card (desktop, ≥1200px)
+  - one rounded strip sits behind the whole group of links
+  - the current / hovered link becomes a raised cream pill inside it
+  - dropdowns (e.g. आमचे कार्य) get a thin chevron and open as a light
+    rounded card with a pointer, centred under their link
+==================================================================*/
+  /* current page: same marigold-yellow pill, black text */
+/* Home/About "सद्गुरूंचा संदेश" heading: each .about-One__title-line stays on one line */
+.aboutOne :global(.section-title__title) .titleLine {
+  display: block;
+  white-space: nowrap;
+  color: inherit;
+}
+
+.aboutOne :global(.section-title__title) {
+  font-size: 50px;
+  line-height: 62px;
+}
+
+@media (max-width: 1399px) {
+  .aboutOne :global(.section-title__title) {
+    font-size: 46px;
+    line-height: 58px;
+  }
+}
+
+@media (max-width: 767px) {
+  .aboutOne :global(.section-title__title) {
+    font-size: clamp(24px, 9vw, 36px);
+    line-height: 1.4;
+  }
+}
+
+@media (min-width: 768px) {
+
+/* About section alignment: tabs share the column width instead of a fixed
+   180px each (they overflowed at ~1200px), CTA/pincode never split, and the
+   image + text columns are vertically centred on desktop. */
+  .tabBox .tabButtons {
+    max-width: 570px;
+  }
+
+  .tabBox .tabButtons .tabBtn {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .tabBox .tabButtons .tabBtn span {
+    width: 100%;
+  }
+}
+
+.btnBox :global(.thm-btn) {
+  white-space: nowrap;
+}
+
+.addressNowrap {
+  white-space: nowrap;
+}
+
+@media (min-width: 1200px) {
+  .aboutOneOrnate > :global(.container) > :global(.row) {
+    align-items: center;
+  }
+
+  .aboutOneOrnate .right {
+    margin-top: 0;
+  }
+}
+
+.tabBox .tabsContentInner p {
+  text-wrap: pretty;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .tabBox .tabButtons {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1399px) {
+
+/* Keep each About tab paragraph to two lines where the column narrows */
+  .aboutOne.aboutOneOrnate .tabBox .tabsContentInner p {
+    font-size: 16px;
+    line-height: 34px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .aboutOne.aboutOneOrnate .tabBox .tabsContentInner p {
+    font-size: 15px;
+    line-height: 32px;
+  }
+}
+
+section.aboutOne.aboutOneOrnate {
+  padding-top: var(--section-space);
+  padding-bottom: var(--section-space);
+}
+
+section.aboutOneOrnate .right :global(.section-title) {
+  margin-bottom: var(--section-title-gap);
+}
+
+/*==================================================================
+  Readable section labels and descriptions — home, कार्यक्रम and संपर्क
+  (same treatment as the CTA: larger, bolder, solid colours, no letter
+  spacing — spacing breaks up Devanagari and makes it look thin)
+==================================================================*/
+section.aboutOne.aboutOneOrnate :global(.section-title__tagline) {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+/* labels on maroon: marigold, as in the CTA */
+section.aboutOne.aboutOneOrnate :global(.section-title__tagline) {
+  color: #F2B632;
+}
+
+/* home About: tab text in solid cream */
+section.aboutOne.aboutOneOrnate .tabBox .tabsContentInner p {
+  color: #FBF1DC;
+  font-size: 19px;
+}
+@media (max-width: 767px) {
+  section.aboutOne.aboutOneOrnate :global(.section-title__tagline) {
+    font-size: 19px;
+  }
+
+  section.aboutOne.aboutOneOrnate .tabBox .tabsContentInner p {
+    font-size: 17px;
+  }
+}
+
+@-webkit-keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+
+@-webkit-keyframes zoomInOut {
+  0% {
+    -webkit-transform: rotate(0deg) scale(0.7);
+    transform: rotate(0deg) scale(0.7);
+    opacity: 0;
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg) scale(1);
+    transform: rotate(180deg) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg) scale(0.7);
+    transform: rotate(360deg) scale(0.7);
+    opacity: 0;
+  }
+}
+
+/* Tiro Devanagari Marathi tucks "ृ" inside "द" (reads like "द्द"); for words
+   such as दृष्टी, turn off its below-base forms so "ृ" sits under "द".
+   Applied per word: switching "blws" off everywhere breaks रु / रू / गु. */
+.mrRiBelow {
+  font-feature-settings: "blws" 0;
+}

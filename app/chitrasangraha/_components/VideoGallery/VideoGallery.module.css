@@ -1,0 +1,399 @@
+/* ---- Video Gallery: gold field instead of maroon (opposite of the
+   Photo Gallery above it), same maroon Om/swastik border either way
+   since .divine-border--all-events is already gold-with-maroon-glyph. ---- */
+.galleryGridVideo {
+  background-color: var(--ev-gold);
+}
+
+.galleryGridVideo::before {
+  background-image: url("/assets/images/backgrounds/section-bg.png");
+  opacity: 0.25;
+}
+
+.galleryGridVideo :global(.section-title__tagline) {
+  color: var(--ev-maroon);
+}
+
+.galleryGridVideo :global(.section-title__title) {
+  color: var(--ev-ink);
+}
+
+/* Om/swastik border re-keyed to a maroon field (matching the maroon
+   used across the rest of the site) instead of the shared gold field,
+   since this section already has a gold background of its own. The
+   glyph itself is recoloured gold so it stays visible on maroon. */
+.galleryGridVideo :global(.divine-border--all-events),
+.galleryGridVideo :global(.divine-border--all-events-vertical),
+.galleryGridVideo :global(.all-events__corner) {
+  background-color: var(--ev-maroon);
+}
+
+.galleryGridVideo :global(.divine-border--all-events) {
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(217, 152, 42, 0.14) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%23D9982A'%3E%3Ctext x='25' y='22' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%23D9982A' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23D9982A' opacity='0.85'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.galleryGridVideo :global(.divine-border--all-events-vertical) {
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(217, 152, 42, 0.14) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%23D9982A'%3E%3Ctext x='15' y='32' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%23D9982A' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23D9982A' opacity='0.85'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ---- Video gallery: uniform cards matching the Photo Gallery's
+   bordered-margin pattern. Extra-thick maroon border padding-ring;
+   gold viewfinder corners sit ON the border ring itself (not
+   overlapping the thumbnail). A brief white "shutter flash" plays on
+   click before the lightbox opens, which has prev/next navigation, a
+   thumbnail filmstrip, and swipe support — mirroring Photo Gallery. ---- */
+.videoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+@media (max-width: 1199px) {
+  .videoGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 575px) {
+  .videoGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  border: 14px solid var(--ev-maroon);
+  background-color: var(--ev-maroon);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: transform 350ms ease, box-shadow 350ms ease;
+}
+
+@media (max-width: 767px) {
+  .item {
+    border-width: 9px;
+  }
+}
+
+.item:hover,
+.item:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
+  outline: none;
+}
+
+/* Camera-corner brackets sit directly on the thumbnail image. */
+.border {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.corner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--ev-gold);
+  opacity: 0.95;
+  transition: width 300ms ease, height 300ms ease, border-color 300ms ease;
+}
+
+.cornerTl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+.cornerTr { top: 12px; right: 12px; border-left: none; border-bottom: none; }
+.cornerBl { bottom: 12px; left: 12px; border-right: none; border-top: none; }
+.cornerBr { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+
+.item:hover .corner,
+.item:focus-visible .corner {
+  width: 32px;
+  height: 32px;
+  border-color: var(--ev-gold-lite);
+}
+
+.item img {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms ease;
+}
+
+.item:hover img {
+  transform: scale(1.06);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(44, 4, 5, 0.05) 0%, rgba(44, 4, 5, 0.1) 60%, rgba(44, 4, 5, 0.8) 100%);
+}
+
+.play {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--ev-gold);
+  color: var(--ev-ink);
+  font-size: 14px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  transition: transform 300ms ease, background-color 300ms ease;
+}
+
+.item:hover .play {
+  transform: translateX(-50%) scale(1.12);
+  background-color: var(--ev-gold-lite);
+}
+
+.flash {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background-color: #FFFFFF;
+  animation: photoShutterFlash 260ms ease-out forwards;
+  pointer-events: none;
+}
+
+/* ---- Lightbox: full-screen dim backdrop, autoplaying embed, prev/next
+   navigation, and a thumbnail filmstrip. ---- */
+.videoLightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background-color: rgba(20, 2, 3, 0.88);
+  animation: galleryLightboxFade 250ms ease;
+}
+
+.videoLightboxInner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  max-width: 960px;
+  max-height: 92vh;
+  width: 100%;
+  touch-action: pan-y;
+}
+
+.videoLightboxFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+.videoLightboxFrame iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+
+.videoLightboxClose {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--ev-gold);
+  color: var(--ev-ink);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 200ms ease, transform 200ms ease;
+}
+
+.videoLightboxClose:hover {
+  background-color: var(--ev-gold-lite);
+  transform: scale(1.08);
+}
+
+.videoLightboxNav {
+  position: absolute;
+  top: 40%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  transform: translateY(-50%);
+  border: none;
+  border-radius: 50%;
+  background-color: var(--ev-gold);
+  color: var(--ev-ink);
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+  transition: background-color 200ms ease, transform 200ms ease;
+}
+
+.videoLightboxNav:hover {
+  background-color: var(--ev-gold-lite);
+}
+
+.videoLightboxNavPrev {
+  left: -20px;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.videoLightboxNavPrev:hover {
+  transform: translateY(-50%) rotate(180deg) scale(1.08);
+}
+
+.videoLightboxNavNext {
+  right: -20px;
+}
+
+.videoLightboxNavNext:hover {
+  transform: translateY(-50%) scale(1.08);
+}
+
+.videoLightboxThumbs {
+  display: flex;
+  gap: 10px;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 4px;
+}
+
+.videoLightboxThumb {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 40px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 200ms ease, border-color 200ms ease;
+}
+
+.videoLightboxThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.videoLightboxThumb:hover {
+  opacity: 0.85;
+}
+
+.videoLightboxThumb:global(.is-active) {
+  opacity: 1;
+  border-color: var(--ev-gold);
+}
+
+@media (max-width: 575px) {
+  .videoLightbox {
+    padding: 12px;
+  }
+
+  .videoLightboxClose {
+    top: -38px;
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+  }
+
+  .videoLightboxNav {
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
+  }
+
+  .videoLightboxNavPrev {
+    left: -6px;
+  }
+
+  .videoLightboxNavNext {
+    right: -6px;
+  }
+
+  .videoLightboxThumb {
+    width: 48px;
+    height: 30px;
+  }
+}
+
+.galleryGridVideo :global(.section-title__title) {
+  white-space: nowrap;
+}
+
+.galleryGridPeacock {
+  display: block;
+  flex: 0 0 auto;
+  width: 380px;
+  /* The source PNG is 866x288 with the peacock/floral artwork living in
+     rows 56-240 (184px tall) — a plain transparent margin above and
+     below. Rendered as a background-image (not <img>+object-fit) so the
+     crop is pixel-exact: scale the FULL image to 380px-wide, then shift
+     it up by the scaled top-margin so only the artwork band shows,
+     with no partial cropping of the peacocks' feet/tails at the bottom. */
+  height: calc(380px * 184 / 866);
+  background-image: url("/assets/images/resources/peacock-border.png");
+  background-repeat: no-repeat;
+  background-size: 380px calc(380px * 288 / 866);
+  background-position: 0 calc(-380px * 56 / 866);
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+/* The artwork's peacocks face left by default. Flip the left-side
+   strip so its birds face right (toward the text); the right-side
+   strip keeps its natural left-facing orientation — so both strips'
+   peacocks point inward, toward the heading. Each strip is also
+   nudged 75px further toward the centre from its default flex
+   position (translateX, so it doesn't disturb the flex/gap math). */
+.galleryGridPeacockLeft {
+  transform: scaleX(-1) translateX(-75px);
+}
+
+.galleryGridPeacockRight {
+  transform: translateX(-75px);
+}
+
+@media (max-width: 1199px) {
+  .galleryGridPeacock {
+    display: none;
+  }
+}
+
+@keyframes photoShutterFlash {
+  0% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
+@keyframes galleryLightboxFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

@@ -1,0 +1,293 @@
+/* ---- Photo gallery: 3-per-row grid. Camera-viewfinder corners sit
+   directly on the photo itself (not on a border margin), matching the
+   Video Gallery's card treatment. No captions/text anywhere — pure
+   image display. A brief white "shutter flash" plays on click before
+   the lightbox opens, which itself has a swipeable image, prev/next
+   arrows, and a thumbnail filmstrip for quick jumping. ---- */
+.photoMasonry {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+@media (max-width: 1199px) {
+  .photoMasonry {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 575px) {
+  .photoMasonry {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+.photoMasonryItem {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 0;
+  padding: 0;
+  border: 14px solid var(--ev-gold);
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+@media (max-width: 767px) {
+  .photoMasonryItem {
+    border-width: 9px;
+  }
+}
+
+.photoMasonryItem:hover,
+.photoMasonryItem:focus-visible {
+  transform: translateY(-5px);
+  box-shadow: 0 22px 42px rgba(0, 0, 0, 0.48);
+  outline: none;
+}
+
+.photoMasonryItem img {
+  position: relative;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Shutter-click flash: a brief white pulse over the tile on click,
+   mimicking a camera shutter firing before the lightbox opens. */
+.photoMasonryFlash {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-color: #FFFFFF;
+  animation: photoShutterFlash 260ms ease-out forwards;
+  pointer-events: none;
+}
+
+/* ---- Photo lightbox: full-screen dim backdrop, swipeable full-res
+   image, prev/next navigation, and a thumbnail filmstrip. ---- */
+.photoLightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background-color: rgba(20, 2, 3, 0.9);
+  animation: galleryLightboxFade 250ms ease;
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  max-width: 1100px;
+  max-height: 92vh;
+  width: 100%;
+  touch-action: pan-y;
+}
+
+.img {
+  max-width: 100%;
+  max-height: 72vh;
+  width: auto;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+.close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--ev-gold);
+  color: var(--ev-ink);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 200ms ease, transform 200ms ease;
+}
+
+.close:hover {
+  background-color: var(--ev-gold-lite);
+  transform: scale(1.08);
+}
+
+.nav {
+  position: absolute;
+  top: calc(36vh);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  transform: translateY(-50%);
+  border: none;
+  border-radius: 50%;
+  background-color: var(--ev-gold);
+  color: var(--ev-ink);
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+  transition: background-color 200ms ease, transform 200ms ease;
+}
+
+.nav:hover {
+  background-color: var(--ev-gold-lite);
+}
+
+.navPrev {
+  left: -20px;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.navPrev:hover {
+  transform: translateY(-50%) rotate(180deg) scale(1.08);
+}
+
+.navNext {
+  right: -20px;
+}
+
+.navNext:hover {
+  transform: translateY(-50%) scale(1.08);
+}
+
+/* Thumbnail filmstrip */
+.thumbs {
+  display: flex;
+  gap: 10px;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 4px;
+}
+
+.thumb {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 40px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 200ms ease, border-color 200ms ease;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumb:hover {
+  opacity: 0.85;
+}
+
+.thumb:global(.is-active) {
+  opacity: 1;
+  border-color: var(--ev-gold);
+}
+
+@media (max-width: 575px) {
+  .photoLightbox {
+    padding: 12px;
+  }
+
+  .close {
+    top: -38px;
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+  }
+
+  .nav {
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
+  }
+
+  .navPrev {
+    left: -6px;
+  }
+
+  .navNext {
+    right: -6px;
+  }
+
+  .thumb {
+    width: 48px;
+    height: 30px;
+  }
+}
+
+/* Photo Gallery's feathers sit closer to the heading than the Video
+   Gallery's peacock strips (scoped override — doesn't touch the
+   shared .video-gallery__head gap used by Video Gallery). */
+.galleryGridPhoto :global(.video-gallery__head) {
+  gap: 18px;
+}
+
+.galleryGridPhoto :global(.section-title__title) {
+  white-space: nowrap;
+}
+
+/* ---- Photo Gallery decoration: a single peacock feather flanking the
+   heading on each side (feather-border.png has no transparent padding
+   to crop, unlike the peacock strip, so a plain background-image at
+   its native ratio is enough). The artwork's "eye" sits on the right
+   with the quill trailing left — so the left-side feather keeps its
+   natural orientation (eye already points inward, toward the text)
+   and the right-side one is flipped so its eye also points inward. ---- */
+.galleryGridFeather {
+  display: block;
+  flex: 0 0 auto;
+  width: 260px;
+  aspect-ratio: 790 / 316;
+  background-image: url("/assets/images/resources/feather-border.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.galleryGridFeatherLeft {
+  transform: translateX(150px);
+}
+
+.galleryGridFeatherRight {
+  transform: scaleX(-1) translateX(150px);
+}
+
+@media (max-width: 1199px) {
+  .galleryGridFeather {
+    display: none;
+  }
+}
+
+@keyframes photoShutterFlash {
+  0% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
+@keyframes galleryLightboxFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

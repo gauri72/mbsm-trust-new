@@ -1,0 +1,185 @@
+/* =============================================================================
+   Mantra strip — scrolling verses on a maroon band (top + closing of every page).
+
+   Contents
+     1. Design tokens            — the header's / footer's values
+     2. Token breakpoints
+     3. Band + lines + marquee
+     4. Verse + divider
+     5. Hover                    — mouse / trackpad only
+     6. Reduced motion
+
+   Design rules (same as the header and footer)
+   - Colours : maroon band; verses white, gold on hover (as the header strip's
+               links); the gold flower divider with a maroon centre.
+   - Lines   : 2px solid gold above and below the verses (matching the flower).
+   - Type    : Rozha One at medium (19px, the header CTA's size) at every width,
+               at the font's real weight.
+   - Icon    : the flower, the same medium size as the text.
+   - Spacing : the header's scale; verses are spaced like the header strip's items.
+   ========================================================================== */
+
+
+/* ---- 1. Design tokens ------------------------------------------------------- */
+.root {
+  /* colours */
+  --c-white: #FFFFFF;
+  --c-maroon: #620208;
+  --c-gold: #D9982A;
+
+  /* lines */
+  --line-width: 2px;
+  --line-gold: var(--line-width) solid var(--c-gold);
+
+  /* type size */
+  --text-md: 19px;                       /* medium: the header CTA's size */
+
+  /* spacing scale: identical to the header's */
+  --space-1: 6px;
+  --space-3: 14px;
+  --space-5: 26px;
+
+  /* layout */
+  --strip-pad: var(--space-1);           /* maroon above the top line and below the bottom line */
+  --strip-gap: var(--space-5);           /* = header strip: space on each side of a divider */
+  --control-sm: 42px;                    /* = header strip height: the verse row between the lines */
+  --fade: 6%;                            /* verses fade in / out at the screen edges */
+  --duration: 45s;                       /* one full loop */
+  --ease: 200ms ease;
+}
+
+
+/* ---- 2. Token breakpoints (values only) ------------------------------------- */
+/* wide screens: every spacing step +2px, as in the header */
+@media (min-width: 1600px) {
+  .root {
+    --space-1: 8px;
+    --space-3: 16px;
+    --space-5: 28px;
+  }
+}
+
+/* tablet + phones: one step tighter, as the header strip */
+@media (max-width: 1199px) {
+  .root {
+    --strip-gap: var(--space-3);
+  }
+}
+
+
+/* ---- 3. Band + lines + marquee ---------------------------------------------- */
+.root {
+  padding: var(--strip-pad) 0;
+  overflow: hidden;
+  background-color: var(--c-maroon);
+}
+
+/* the two gold lines, full width, above and below the verses */
+.root::before,
+.root::after {
+  content: "";
+  display: block;
+  border-top: var(--line-gold);
+}
+
+/* the mask only fades the edges (its colour is irrelevant — only its alpha is used) */
+.marquee {
+  display: flex;
+  align-items: center;
+  min-height: var(--control-sm);
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 var(--fade), #000 calc(100% - var(--fade)), transparent 100%);
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: scroll var(--duration) linear infinite;
+}
+
+@keyframes scroll {
+  to {
+    transform: translateX(-50%);         /* one half: the second half is an exact copy */
+  }
+}
+
+
+/* ---- 4. Verse + divider ----------------------------------------------------- */
+/* verse │ flower │ verse … — the divider has --strip-gap on both sides */
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--strip-gap);
+  padding-right: var(--strip-gap);       /* the same space after the flower, before the next verse */
+}
+
+.text {
+  color: var(--c-white);
+  font-family: var(--font-title);
+  font-size: var(--text-md);
+  font-weight: 400;
+  line-height: 1.5;
+  white-space: nowrap;
+  transition: color var(--ease);
+}
+
+/* the flower: medium, like the text */
+.icon {
+  flex: none;
+  width: var(--text-md);
+  height: var(--text-md);
+  fill: var(--c-gold);
+}
+
+.dot {
+  fill: var(--c-maroon);
+}
+
+
+/* ---- 5. Hover (mouse / trackpad only) ------------------------------------------
+   Inside (hover: hover) so a tap never leaves a verse stuck in gold. The hovered
+   verse turns gold and the scroll pauses, so it can be read. */
+@media (hover: hover) {
+  .marquee:hover .track {
+    animation-play-state: paused;
+  }
+
+  .item:hover .text {
+    color: var(--c-gold);
+  }
+}
+
+
+/* ---- 6. Reduced motion: no scroll — the first verse, centred, may wrap ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+    width: 100%;
+    justify-content: center;
+    padding: 0 var(--strip-gap);         /* a wrapped verse keeps clear of the screen edges */
+  }
+
+  .item:not(:first-child) {
+    display: none;
+  }
+
+  /* a single verse has no neighbour, so no divider or trailing space */
+  .item {
+    padding-right: 0;
+  }
+
+  .item .icon {
+    display: none;
+  }
+
+  .marquee {
+    mask-image: none;
+  }
+
+  .text {
+    white-space: normal;
+    text-align: center;
+    transition: none;
+  }
+}

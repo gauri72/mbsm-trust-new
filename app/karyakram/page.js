@@ -1,43 +1,28 @@
-import Layout from "@/components/layout/Layout"
-import MantraStrip from "@/components/shared/MantraStrip/MantraStrip"
-import PageHero from "@/components/shared/PageHero/PageHero"
-import { PAGE_HERO_IMAGES } from "@/lib/data/heroImages"
-import { CLOSING_MANTRAS } from "@/lib/data/mantras"
-import TempleGallery from "@/components/shared/TempleGallery/TempleGallery"
-import FeaturedEvents from "@/components/sections/home1/FeaturedEvents"
-import AllEvents from "@/components/sections/home1/AllEvents"
-// Upcoming events section hidden on the Sadhana page for now.
-// import Event from "@/components/sections/home1/Event"
-import Cta from "@/components/sections/home1/Cta"
+import MantraStrip from "../_shared/_components/MantraStrip/MantraStrip"
+import Breadcrumb from "../_shared/_components/Breadcrumb/Breadcrumb"
+import TempleGallery from "../_shared/_components/TempleGallery/TempleGallery"
+import Cta from "../_shared/_components/Cta/Cta"
+import AllEvents from "./_components/AllEvents/AllEvents"
+import FeaturedEvents from "./_components/FeaturedEvents/FeaturedEvents"
+// Upcoming events section hidden on this page for now.
+// import Event from "../(home)/_components/Event/Event"
 
 export const metadata = {
-    title: 'कार्यक्रम — मंगल भक्त सेवा मंडळ',
+    title: "कार्यक्रम — मंगल भक्त सेवा मंडळ",
     description: 'Explore the daily sadhana, spiritual practices and disciplines followed at Shri Shubharay Maharaj Math.',
 }
 
-export default function Sadhana() {
+export default function KaryakramPage() {
     return (
         <>
-            <Layout headerStyle={1} footerStyle={1}>
-
-                {/*Mantra Strip (between header and breadcrumb) */}
-                <MantraStrip />
-
-                <PageHero image={PAGE_HERO_IMAGES.karyakram} />
-
-                <TempleGallery compact />
-
-                <AllEvents />
-
-                <FeaturedEvents />
-
-                {/* <Event /> */}
-
-                <Cta />
-
-                <MantraStrip mantras={CLOSING_MANTRAS} />
-
-            </Layout>
+            <MantraStrip />
+            <Breadcrumb title="कार्यक्रम" icon="fas fa-calendar-alt" />
+            <TempleGallery />
+            <AllEvents />
+            <FeaturedEvents />
+            {/* <Event /> */}
+            <Cta />
+            <MantraStrip closing />
         </>
     )
 }

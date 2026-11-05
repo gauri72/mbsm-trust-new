@@ -1,0 +1,1339 @@
+/* AlphaLoopVideo: one transparent clip on a native loop */
+
+  /* compact buttons sized to their label + arrow, not full-bleed bars */
+
+/* ---------- Legacy — full-size realistic 3D flip-book (Shubharay Maharaj / Buwa Gharane / Shubhangi Tai) ---------- */
+.legacyOne {
+  position: relative;
+  overflow: hidden;
+  padding: 90px 0;
+  background-color: #3D0A0C;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.legacyOne > :global(.section-title) {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 48px;
+}
+
+.legacyOne :global(.section-title__tagline) {
+  color: #F2A90A;
+  font-weight: 700;
+}
+
+.legacyOne :global(.section-title__title) {
+  color: #FFF8E7;
+  text-shadow: none;
+}
+
+@media (min-width: 992px) {
+
+/* Desktop: force the heading onto a single line */
+  .legacyOne :global(.section-title__title) {
+    white-space: nowrap;
+  }
+
+  .legacyOneTitleBreak {
+    display: none;
+  }
+}
+
+@media (max-width: 991px) {
+
+/* Tablet/phone: keep the intended two-line split (the template hides
+   heading <br>s on small screens, which left "प्रवास" alone on line two) */
+  .legacyOne :global(.section-title__title) br.legacyOneTitleBreak {
+    display: inline;
+  }
+}
+
+.legacyOne::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/assets/images/backgrounds/section-bg-2.png");
+  background-repeat: repeat;
+  /* tile at the artwork's native width so the flower motifs match the
+     size used in the Mandir section (section-bg @ 1672px) */
+  background-size: 1170px auto;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 991px) {
+  .legacyOne::before {
+    background-size: 770px auto;
+  }
+}
+
+.legacyOne > .legacyBookStage {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Desktop diya-pillars: in .legacy-book-stage, hugging the book's left /
+   right edges with a minimal gap, vertically centred on the book --- */
+.legacyOneAside {
+  display: none;
+}
+@media (min-width: 1200px) {
+  .legacyOneAside {
+    display: block;
+    position: absolute;
+    top: 50%;                 /* centred on the stage = the book's height */
+    width: clamp(280px, 30vw, 680px);
+    height: auto;
+    z-index: 0;
+    pointer-events: none;
+    transform-origin: 50% 100%;
+    filter:
+      drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5))
+      drop-shadow(0 0 30px rgba(242, 169, 10, 0.28));
+    opacity: 1;
+    transition:
+      opacity 900ms ease,
+      transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+      filter 900ms ease;
+  }
+
+  /* The pillars are only ever visible while the book is CLOSED, when the cover
+     renders as a single page ~half the book's width (≈ 300px each side of
+     centre). Hug that closed-cover edge with a minimal 6px gap. */
+  .legacyOneAsideLeft {
+    left: calc(50% - 236px);
+    transform: translate(-100%, -50%);
+  }
+  .legacyOneAsideRight {
+    right: calc(50% - 271px);
+    transform: translate(100%, -50%);
+  }
+
+  /* book CLOSED → the samai settles in: a slow, weighted fade-and-rise
+     (no bounce, no squash), then an unhurried flame glow — the glow
+     pulses in intensity only, the lamp itself never scales. */
+  .legacyOneBookClosed .legacyOneAsideLeft {
+    animation:
+      legacyPillarLight 1400ms cubic-bezier(0.22, 1, 0.36, 1) both,
+      legacyPillarFlameL 7s ease-in-out 1600ms infinite;
+  }
+  .legacyOneBookClosed .legacyOneAsideRight {
+    animation:
+      legacyPillarLightR 1400ms cubic-bezier(0.22, 1, 0.36, 1) 220ms both,
+      legacyPillarFlameR 7s ease-in-out 2000ms infinite;
+  }
+
+  /* book OPEN → the samai recedes: the glow dims and it eases down and
+     out, calmly — no squash, no snap. */
+  .legacyOneBookOpen .legacyOneAside {
+    animation: none;
+  }
+  .legacyOneBookOpen .legacyOneAsideLeft {
+    opacity: 0;
+    transform: translate(-100%, -42%);
+    filter: drop-shadow(0 16px 26px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 6px rgba(242, 169, 10, 0.06));
+    transition:
+      opacity 620ms ease,
+      transform 720ms cubic-bezier(0.4, 0, 0.2, 1),
+      filter 520ms ease;
+  }
+  .legacyOneBookOpen .legacyOneAsideRight {
+    opacity: 0;
+    transform: translate(100%, -42%);
+    filter: drop-shadow(0 16px 26px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 6px rgba(242, 169, 10, 0.06));
+    transition:
+      opacity 620ms ease,
+      transform 720ms cubic-bezier(0.4, 0, 0.2, 1),
+      filter 520ms ease;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+
+/* entrance — a slow, weighted fade + rise; the flame glow eases up
+   alongside it. No scaling of the lamp, no overshoot. */
+
+/* idle flame — the glow softly swells and eases back; the lamp is
+   perfectly still. Slow (7s), asymmetric so it never feels metronomic. */
+  .legacyOneAside,
+.legacyOneBookClosed .legacyOneAside,
+.legacyOneBookOpen .legacyOneAside {
+    animation: none;
+    transition: opacity 200ms ease;
+  }
+}
+@media (max-width: 767px) {
+  .legacyOne {
+    padding: 64px 0;
+    min-height: 0;
+  }
+
+  .divineBorderLegacyVertical,
+.legacyOneCorner {
+    display: none;
+  }
+}
+
+/* Ornamental border — gold strip with maroon Om/swastik motif (inverted from Welcome's maroon/gold) */
+.divineBorderLegacy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  height: 30px;
+  background-color: #F2A90A;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(61, 10, 12, 0.14) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%235C1012'%3E%3Ctext x='25' y='22' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%235C1012' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%235C1012' opacity='0.85'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-x, repeat-x;
+  background-position: center, center;
+  background-size: 100% 100%, 100px 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
+}
+
+.divineBorderLegacy:before,
+.divineBorderLegacy:after {
+  content: none;
+}
+
+.divineBorderLegacyTop {
+  top: 0;
+}
+
+.divineBorderLegacyBottom {
+  bottom: 0;
+}
+
+.divineBorderLegacyVertical {
+  position: absolute;
+  top: 30px;
+  bottom: 30px;
+  height: auto;
+  z-index: 4;
+  width: 30px;
+  background-color: #F2A90A;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(61, 10, 12, 0.14) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%235C1012'%3E%3Ctext x='15' y='32' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%235C1012' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%235C1012' opacity='0.85'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-y, repeat-y;
+  background-position: top center, top center;
+  background-size: 100% 100%, 30px 100px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.32);
+}
+
+.divineBorderLegacyVertical:before,
+.divineBorderLegacyVertical:after {
+  content: none;
+}
+
+.divineBorderLegacyLeft {
+  left: 0;
+}
+
+.divineBorderLegacyRight {
+  right: 0;
+}
+
+.legacyOneCorner {
+  position: absolute;
+  z-index: 6;
+  width: 30px;
+  height: 30px;
+  background-color: #F2A90A;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
+  pointer-events: none;
+}
+
+.legacyOneCornerTl {
+  top: 0;
+  left: 0;
+}
+
+.legacyOneCornerTr {
+  top: 0;
+  right: 0;
+}
+
+.legacyOneCornerBl {
+  bottom: 0;
+  left: 0;
+}
+
+.legacyOneCornerBr {
+  bottom: 0;
+  right: 0;
+}
+
+.legacyBookStage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.legacyBookWrap {
+  position: relative;
+  width: 100%;
+  max-width: 1160px;
+  perspective: 2400px;
+  perspective-origin: 50% 30%;
+}
+
+.legacyBookArrowRow {
+  display: none;
+}
+
+.legacyBookLoading {
+  width: 100%;
+  aspect-ratio: 620 / 720;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #FBF2D9 0%, #F5E7C6 100%);
+  opacity: 0.4;
+}
+
+/* the book itself sits on a soft ambient shadow pool so it reads as a real object on a surface */
+.legacyBookWrap::after {
+  content: "";
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  bottom: -34px;
+  height: 50px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, transparent 72%);
+  z-index: -1;
+  pointer-events: none;
+  transition: transform 620ms cubic-bezier(0.22, 1, 0.36, 1), opacity 620ms ease;
+}
+@media (min-width: 992px) {
+
+/* Desktop: when the book is closed it fills only half the stage. The wrap itself is
+   already shifted, so here we just tighten the shadow to sit under the single cover
+   (right half for the front, left half for the back) and deepen it slightly. */
+  .legacyBookStageClosedFront .legacyBookWrap::after {
+    left: 52%;
+    right: 4%;
+    opacity: 0.95;
+    transform: translateY(4px);
+  }
+
+  .legacyBookStageClosedBack .legacyBookWrap::after {
+    left: 4%;
+    right: 52%;
+    opacity: 0.95;
+    transform: translateY(4px);
+  }
+}
+
+.legacyBook {
+  margin: 0 auto;
+  transform: rotateX(11deg);
+  transform-style: preserve-3d;
+  transition: transform 500ms ease;
+}
+
+.legacyBookWrap:hover .legacyBook {
+  transform: rotateX(5deg);
+}
+
+/* ===== Page surfaces ===== */
+.legacyBookPage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 8% 8%, rgba(61, 10, 12, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 92% 92%, rgba(61, 10, 12, 0.05) 0%, transparent 40%),
+    linear-gradient(135deg, #FFFBF0 0%, #FBF2D9 55%, #F5E7C6 100%);
+  border: 2px solid rgba(61, 10, 12, 0.3);
+  box-shadow:
+    inset 0 0 0 1px rgba(61, 10, 12, 0.08),
+    inset -14px 0 22px -16px rgba(0, 0, 0, 0.4),
+    inset 14px 0 22px -16px rgba(0, 0, 0, 0.4),
+    inset 0 -4px 8px -4px rgba(61, 10, 12, 0.16);
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.number {
+  position: absolute;
+  right: 26px;
+  bottom: 18px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #8a5a1f;
+  opacity: 0.65;
+}
+
+.photo {
+  position: relative;
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto 22px;
+  border-radius: 6px;
+  box-shadow: 0 18px 32px rgba(0, 0, 0, 0.35);
+  flex: 0 0 auto;
+}
+
+.photo img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.photoFrame {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border: 3px solid #3D0A0C;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.photoFrame::before,
+.photoFrame::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #3D0A0C;
+  background: #FFFBF0;
+  transform: rotate(45deg);
+}
+
+.photoFrame::before {
+  top: -9px;
+  left: -9px;
+}
+
+.photoFrame::after {
+  bottom: -9px;
+  right: -9px;
+}
+
+.photoFull {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  aspect-ratio: auto;
+  flex: 1 1 auto;
+  margin: 0;
+}
+
+.photoFull img {
+  height: 100%;
+  width: 100%;
+}
+
+.photoImgMobile {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .photoImgDesktop {
+    display: none;
+  }
+
+  .photoImgMobile {
+    display: block;
+  }
+}
+
+/* ===== Portrait page — image only, filling the page ===== */
+.legacyBookPagePortrait {
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 10px;
+}
+
+.body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 4px 24px 0;
+}
+
+.name {
+  display: block;
+  font-family: var(--font-title), serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #1A1A1A;
+  text-align: center;
+  padding-top: 4px;
+}
+
+.nameRule {
+  display: none;
+}
+
+.role {
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: #1A1A1A;
+  text-align: center;
+  margin-top: 6px;
+  margin-bottom: 18px;
+}
+
+.text {
+  color: #1A1A1A;
+  font-size: 18px;
+  line-height: 31px;
+  margin-bottom: 0;
+  text-align: justify;
+}
+
+/* ===== Cover / back-cover — plain gold cover, black text ===== */
+.legacyBookPageCover {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  background-image: url("/assets/images/backgrounds/book-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 16px;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -3px 8px rgba(0, 0, 0, 0.18),
+    0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.coverInner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  text-align: center;
+}
+
+.coverSymbol {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: rgba(61, 10, 12, 0.1);
+  border: 5px solid #3D0A0C;
+  box-shadow:
+    0 3px 4px rgba(0, 0, 0, 0.45),
+    0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 2px 3px rgba(0, 0, 0, 0.5),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.coverSymbol img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.25));
+  opacity: 0.94;
+}
+
+.coverTitle {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-family: var(--font-title), serif;
+  font-size: 52px;
+  font-weight: 400;
+  color: #000000;
+  margin: 0;
+  letter-spacing: 0.2px;
+  line-height: 1.15;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.coverTitleBar {
+  font-size: 0.85em;
+  font-weight: 400;
+  color: #000000;
+  -webkit-text-stroke: 0.8px #000000;
+}
+
+.coverSubtitle {
+  position: relative;
+  z-index: 1;
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  color: #000000;
+  max-width: 90%;
+  line-height: 1.4;
+  -webkit-text-stroke: 0.3px #000000;
+}
+
+.coverSubtitleBack {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+}
+
+.cta {
+  position: relative;
+  z-index: 5;
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 44px;
+  border: 2px solid #3D0A0C;
+  border-radius: 999px;
+  background: #3D0A0C;
+  color: #F3D68A;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+  transition: background-color 260ms ease, color 260ms ease,
+    border-color 260ms ease, box-shadow 260ms ease;
+}
+
+/* react-pageflip's drag handler (checkTarget) only ignores targets whose
+   tagName is "button"/"a". If a click lands on any nested element (span, <i>
+   icon), that element becomes event.target, the library starts a flip-drag and
+   calls preventDefault() on mousedown — which suppresses the button's click in
+   Chrome (Safari still synthesizes it). Neutralise every descendant so the
+   <button> itself is always the target. */
+.cta * {
+  pointer-events: none;
+}
+
+.ctaLabel {
+  position: relative;
+}
+
+.ctaIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+  font-size: 14px;
+  color: currentColor;
+}
+
+/* one effect on hover: fill flips to ivory, text/border go maroon */
+.cta:hover,
+.cta:focus-visible {
+  background: #FFF8E7;
+  color: #3D0A0C;
+  border-color: #C8971B;
+  box-shadow: 0 10px 22px rgba(61, 10, 12, 0.35);
+}
+
+.cta:focus-visible {
+  outline: 3px solid rgba(61, 10, 12, 0.4);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta {
+    transition-duration: 1ms;
+  }
+}
+
+@media (min-width: 992px) {
+
+/* Desktop only: when the book is fully closed (front cover / back cover), react-pageflip
+   renders a single page on one half of the flip area, leaving the book visually off-centre.
+   Slide the flip wrapper by half a page so the closed book sits centred on the stage, and
+   let it "present" itself with a gentle lift + angle. */
+  .legacyBookWrap {
+    transition:
+      transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
+      filter 520ms ease;
+    will-change: transform;
+  }
+
+  /* front cover — single page renders on the right half; shift left, no tilt */
+  .legacyBookStageClosedFront .legacyBookWrap {
+    transform: translateX(-25%);
+    filter: drop-shadow(22px 30px 40px rgba(0, 0, 0, 0.5));
+  }
+
+  /* back cover — single page renders on the left half */
+  .legacyBookStageClosedBack .legacyBookWrap {
+    transform: translateX(25%);
+    filter: drop-shadow(-22px 30px 40px rgba(0, 0, 0, 0.5));
+  }
+
+  .legacyBookStageOpened .legacyBookWrap {
+    transform: translateX(0);
+    filter: drop-shadow(0 26px 40px rgba(0, 0, 0, 0.45));
+  }
+}
+
+/* Book itself: one calm spine flip in each direction — no bounce, no
+   overshoot, no scale pop. The perspective/rotateX tilt stays fixed. */
+.legacyBookClosed {
+  animation: legacyBookClose 520ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.legacyBookOpened {
+  animation: legacyBookOpen 520ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) and (min-width: 992px) {
+
+/* Opening: the cover swings back on its spine, settles flat */
+
+/* Closing: mirror of opening — a single even swing shut */
+  .legacyBookStageClosedFront .legacyBookWrap {
+    transform: translateX(-25%);
+  }
+
+  .legacyBookStageClosedBack .legacyBookWrap {
+    transform: translateX(25%);
+  }
+}
+
+/* ===== StPageFlip internals — realistic shadow/gradient it injects during flip ===== */
+.legacyBook :global(.stf__parent) {
+  filter: drop-shadow(0 40px 90px rgba(0, 0, 0, 0.55));
+}
+
+.legacyBook :global(.stf__block) {
+  touch-action: pan-y;
+}
+
+/* ===== Arrows — deep maroon medallion with a gold ring and inline chevron ===== */
+.legacyBookArrow {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 2px solid #E8C766;
+  background: radial-gradient(circle at 35% 30%, #6E1518 0%, #3D0A0C 60%, #2C0708 100%);
+  color: #F3D68A;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -3px 6px rgba(0, 0, 0, 0.4);
+  transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+}
+
+.legacyBookArrowIcon {
+  width: 20px;
+  height: 20px;
+  stroke: #F3D68A;
+  stroke-width: 2.4;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.3));
+}
+
+.legacyBookArrowPrev .legacyBookArrowIcon {
+  transform: rotate(180deg);
+}
+
+/* one effect on hover: border brightens, shadow deepens slightly */
+.legacyBookArrow:hover:not(:disabled) {
+  border-color: #FFF6E4;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.legacyBookArrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .legacyOne {
+    padding: 56px 0;
+    min-height: 0;
+  }
+
+  .legacyOne > :global(.section-title) {
+    margin-bottom: 24px;
+  }
+
+  .legacyBookStage {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 14px;
+  }
+
+  .legacyBookWrap {
+    order: 1;
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .legacyBookArrow:not(.legacyBookArrowStacked) {
+    display: none;
+  }
+
+  .legacyBookArrowRow {
+    order: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .legacyBookArrow {
+    width: 46px;
+    height: 46px;
+  }
+
+  .legacyBookArrowIcon {
+    width: 17px;
+    height: 17px;
+  }
+
+  .legacyBookPage {
+    padding: 22px 22px 30px;
+  }
+
+  .number {
+    right: 20px;
+    bottom: 14px;
+    font-size: 12px;
+  }
+
+  .photo:not(.photoFull) {
+    max-width: 200px;
+    margin: 0 auto 22px;
+  }
+
+  /* tablet-only: clear bottom padding on the text page so the last line
+     of text doesn't run into the page border (all 3 text pages) */
+  .body {
+    overflow-y: auto;
+    padding: 0 6px 40px 0;
+  }
+
+  .text {
+    margin-bottom: 0;
+  }
+
+  .name {
+    font-size: 30px;
+    padding-top: 0;
+  }
+
+  .role {
+    font-size: 20px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+  }
+
+  .text {
+    font-size: 19px;
+    line-height: 30px;
+  }
+
+  .coverInner {
+    gap: 24px;
+    padding: 32px;
+  }
+
+  .coverTitle {
+    font-size: 52px;
+  }
+
+  .coverSymbol {
+    width: 210px;
+    height: 210px;
+  }
+
+  .coverSubtitle {
+    font-size: 22px;
+    line-height: 1.4;
+  }
+
+  .coverSubtitleBack {
+    font-size: 30px;
+  }
+
+  .cta {
+    padding: 16px 40px;
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 767px) {
+  .legacyOne > :global(.section-title) {
+    margin-bottom: 18px;
+  }
+
+  .legacyBookStage {
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 10px;
+  }
+
+  .legacyBookWrap {
+    order: 1;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .legacyBookArrow:not(.legacyBookArrowStacked) {
+    display: none;
+  }
+
+  .legacyBookArrowRow {
+    order: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .legacyBookArrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .legacyBookArrowIcon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .legacyBookPage {
+    padding: 16px;
+  }
+
+  .number {
+    right: 18px;
+    bottom: 12px;
+    font-size: 11px;
+  }
+
+  .photo:not(.photoFull) {
+    max-width: 160px;
+    margin: 0 auto 16px;
+  }
+
+  .body {
+    overflow-y: hidden;
+    padding: 0 4px 0 0;
+  }
+
+  .name {
+    font-size: 23px;
+    padding-top: 0;
+  }
+
+  .role {
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 12px;
+  }
+
+  .text {
+    font-size: 16px;
+    line-height: 25.5px;
+  }
+
+  .coverInner {
+    gap: 16px;
+    padding: 22px;
+  }
+
+  .coverSymbol {
+    width: 130px;
+    height: 130px;
+    border-width: 3px;
+  }
+
+  .coverTitle {
+    font-size: 36px;
+  }
+
+  .coverSubtitle {
+    font-size: 16px;
+  }
+
+  .coverSubtitleBack {
+    font-size: 22px;
+  }
+
+  .cta {
+    padding: 14px 36px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .legacyBookStage {
+    gap: 12px;
+    padding: 0 6px;
+  }
+
+  .legacyBookWrap {
+    max-width: 320px;
+  }
+
+  .legacyBookArrowRow {
+    gap: 16px;
+  }
+
+  .legacyBookArrow {
+    width: 34px;
+    height: 34px;
+  }
+
+  .legacyBookArrowIcon {
+    width: 13px;
+    height: 13px;
+  }
+
+  .legacyBookPage {
+    padding: 12px;
+  }
+
+  .number {
+    right: 14px;
+    bottom: 10px;
+    font-size: 10px;
+  }
+
+  .photo:not(.photoFull) {
+    max-width: 130px;
+    margin: 0 auto 12px;
+  }
+
+  .body {
+    overflow-y: hidden;
+    padding: 0 3px 0 0;
+  }
+
+  .name {
+    font-size: 20px;
+    padding-top: 0;
+  }
+
+  .role {
+    font-size: 14px;
+    margin-top: 4px;
+    margin-bottom: 10px;
+  }
+
+  .text {
+    font-size: 14px;
+    line-height: 21.5px;
+  }
+
+  .coverInner {
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .coverTitle {
+    font-size: 28px;
+  }
+
+  .coverSymbol {
+    width: 96px;
+    height: 96px;
+  }
+
+  .coverSubtitle {
+    font-size: 14px;
+  }
+
+  .coverSubtitleBack {
+    font-size: 18px;
+  }
+}
+.legacyOne {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .legacyOne {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .legacyOne {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .legacyOne {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+/* ---- Section background ---- */
+.legacyOne {
+  background-color: var(--lg-maroon);
+}
+
+.legacyOne::before {
+  /* keep the enlarged floral tile; nudge opacity for the deeper maroon */
+  opacity: 0.42;
+}
+
+/* ---- Section title ---- */
+.legacyOne :global(.section-title__tagline) {
+  color: var(--lg-gold);
+}
+
+.legacyOne :global(.section-title__title) {
+  color: var(--lg-cream);
+}
+
+/* ---- Ornamental gold frame: borders + corners ----
+   (only the base colour is retuned; the Om/swastik motif SVG layered on
+   top via background-image is left intact) */
+.divineBorderLegacy,
+.divineBorderLegacyVertical,
+.legacyOneCorner {
+  background-color: var(--lg-gold);
+}
+@media (min-width: 1200px) {
+
+/* ---- Diya-pillar glow (desktop) — retint warm gold to the hero gold ---- */
+  .legacyOneAside {
+    filter:
+      drop-shadow(0 24px 40px rgba(0, 0, 0, 0.55))
+      drop-shadow(0 0 34px rgba(233, 180, 90, 0.34));
+  }
+}
+
+/* ---- Book page photo frame ---- */
+.photoFrame,
+.photoFrame::before,
+.photoFrame::after {
+  border-color: var(--lg-maroon);
+}
+
+/* ---- Cover symbol ring ---- */
+.coverSymbol {
+  background: rgba(98, 2, 8, 0.10);
+  border-color: var(--lg-maroon);
+}
+
+/* ---- "पोथी उघडा" CTA on the cover ---- */
+.cta {
+  border-color: var(--lg-maroon-dk);
+  background: var(--lg-maroon);
+  color: var(--lg-gold-pale);
+}
+
+/* one effect on hover: fill flips to ivory, text/border go maroon */
+.cta:hover,
+.cta:focus-visible {
+  background: var(--lg-cream);
+  color: var(--lg-maroon);
+  border-color: var(--lg-gold);
+  box-shadow: 0 10px 22px rgba(76, 6, 1, 0.35);
+}
+
+.cta:focus-visible {
+  outline-color: rgba(98, 2, 8, 0.45);
+}
+
+/* ---- Prev / next arrows — maroon medallion, gold ring ---- */
+.legacyBookArrow {
+  border-color: var(--lg-gold);
+  background: radial-gradient(circle at 35% 30%, var(--lg-maroon-2) 0%, var(--lg-maroon) 60%, var(--lg-maroon-dk) 100%);
+  color: var(--lg-gold-pale);
+}
+
+.legacyBookArrowIcon {
+  stroke: var(--lg-gold-pale);
+}
+
+/* one effect on hover: border brightens, shadow deepens slightly */
+.legacyBookArrow:hover:not(:disabled) {
+  border-color: var(--lg-cream);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* desktop header: icon beside each page link (white on the maroon pill) */
+
+  /* link spacing: 12px between neighbouring pills, and the same 12px between
+     the end pills and the ends of the strip */
+
+/*==================================================================
+  About-page book (12 chapters): paragraph spacing, running chapter name
+  on continued pages, and the chapter-quote page
+==================================================================*/
+.text + .text {
+  margin-top: 12px;
+}
+
+.running {
+  display: block;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.18);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: #620208;
+}
+
+.legacyBookPageQuote .quoteInner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px 28px;
+  text-align: center;
+}
+
+.quoteMark {
+  font-size: 30px;
+  line-height: 1;
+  color: #B47A1E;
+}
+
+.quoteText {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #620208;
+}
+
+.quoteSource {
+  margin-top: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1A1A1A;
+  opacity: 0.75;
+}
+
+@media (max-width: 767px) {
+  .quoteText {
+    font-size: 20px;
+  }
+}
+@keyframes legacyPillarLight {
+  0% {
+    opacity: 0;
+    transform: translate(-100%, -50%) translateY(26px);
+    filter: drop-shadow(0 14px 26px rgba(0, 0, 0, 0.2)) drop-shadow(0 0 0 rgba(242, 169, 10, 0));
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-100%, -50%) translateY(0);
+    filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 30px rgba(242, 169, 10, 0.28));
+  }
+}
+@keyframes legacyPillarFlameL {
+  0%, 100% {
+    filter:
+      drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5))
+      drop-shadow(0 0 24px rgba(242, 169, 10, 0.24));
+  }
+  40% {
+    filter:
+      drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5))
+      drop-shadow(0 0 40px rgba(255, 198, 92, 0.42));
+  }
+  70% {
+    filter:
+      drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5))
+      drop-shadow(0 0 30px rgba(248, 184, 74, 0.32));
+  }
+}
+@keyframes legacyPillarLightR {
+  0% {
+    opacity: 0;
+    transform: translate(100%, -50%) translateY(26px);
+    filter: drop-shadow(0 14px 26px rgba(0, 0, 0, 0.2)) drop-shadow(0 0 0 rgba(242, 169, 10, 0));
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translate(100%, -50%) translateY(0);
+    filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 30px rgba(242, 169, 10, 0.28));
+  }
+}
+@keyframes legacyPillarFlameR {
+  0%, 100% {
+    filter:
+      drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5))
+      drop-shadow(0 0 24px rgba(242, 169, 10, 0.24));
+  }
+  40% {
+    filter:
+      drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5))
+      drop-shadow(0 0 40px rgba(255, 198, 92, 0.42));
+  }
+  70% {
+    filter:
+      drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5))
+      drop-shadow(0 0 30px rgba(248, 184, 74, 0.32));
+  }
+}
+@keyframes legacyBookClose {
+  0%   { transform: perspective(2200px) rotateX(11deg) rotateY(10deg); }
+  100% { transform: perspective(2200px) rotateX(11deg) rotateY(0deg); }
+}
+@keyframes legacyBookOpen {
+  0%   { transform: perspective(2200px) rotateX(11deg) rotateY(0deg); }
+  100% { transform: perspective(2200px) rotateX(11deg) rotateY(0deg); }
+}
+
+/* see fixRi() in Legacy.js */
+.mrRiBelow {
+  font-feature-settings: "blws" 0;
+}

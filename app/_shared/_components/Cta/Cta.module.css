@@ -1,0 +1,382 @@
+/* =============================================================================
+   Closing call-to-action — maroon section in the gold Om/swastik frame.
+
+   Contents
+     1. Design tokens            — the header's values
+     2. Token breakpoints
+     3. Section, photo + frame
+     4. Elephants
+     5. Content                  — label, heading, description
+     6. Buttons
+     7. Hover effects            — mouse / trackpad only
+     8. Responsive layout
+     9. Reduced motion
+
+   Design rules (same as the header, footer and mantra strips)
+   - Colours : black, white, maroon, gold (+ transparencies of black for shadows).
+   - Type    : label and buttons medium (19px) Rozha · heading large Rozha ·
+               description small Tiro — all at the fonts' real weight.
+   - Icons   : Font Awesome (the arrow; the frame's Om is Font Awesome's Om outline).
+   - Buttons : the header CTA's button exactly (medium Rozha, 50px flat pill, arrow
+               after the text, as wide as its label); on hover they keep their
+               colours and lift — up 4px, a deep shadow, the arrow sliding 6px forward.
+   - Spacing : the header's scale.
+   ========================================================================== */
+
+
+/* ---- 1. Design tokens ------------------------------------------------------- */
+.cta {
+  /* colours */
+  --c-black: #000000;
+  --c-white: #FFFFFF;
+  --c-maroon: #620208;
+  --c-gold: #D9982A;
+
+  /* lines + shadows */
+  --line-width: 2px;
+  --shadow-frame: 0 2px 8px rgba(0, 0, 0, 0.32);
+  --shadow-lift: 0 12px 24px rgba(0, 0, 0, 0.38);   /* = header: a button lifted on hover */
+  --lift: -4px;                              /* = header: how far a hovered button rises */
+  --nudge: 6px;                              /* = header: how far its arrow slides */
+
+  /* type sizes: the header's small / medium / large */
+  --text-sm: 17px;
+  --text-md: 19px;
+  --text-lg: 36px;
+
+  /* spacing scale: identical to the header's */
+  --space-0: 4px;
+  --space-1: 6px;
+  --space-2: 10px;
+  --space-3: 14px;
+  --space-4: 18px;
+  --space-5: 26px;
+
+  /* layout */
+  --frame: 30px;                             /* width of the Om/swastik frame */
+  --control-lg: 50px;                        /* = header CTA height */
+  --radius-pill: 999px;
+  --text-width: 760px;                       /* description line length */
+  --ele-w: clamp(460px, 46vw, 600px);        /* elephant clip width */
+  --ele-gap: var(--space-5);                 /* least space between a trunk and the buttons */
+  --buttons-half: 190px;                     /* half the width of the two buttons side by side */
+  --ease: 200ms ease;
+
+  font-family: var(--font-text);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+
+/* ---- 2. Token breakpoints (values only — layout changes live in section 8) -- */
+/* the header's large-size steps (its narrow-desktop steps only exist so the header
+   bar fits on one line, so they are not repeated here) */
+@media (min-width: 1600px) {
+  .cta {
+    --text-lg: 38px;
+    --space-0: 6px;
+    --space-1: 8px;
+    --space-2: 12px;
+    --space-3: 16px;
+    --space-4: 20px;
+    --space-5: 28px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .cta {
+    --text-lg: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .cta {
+    --text-sm: 16px;
+    --text-lg: 23px;
+  }
+}
+
+@media (max-width: 359px) {
+  .cta {
+    --text-lg: 19px;
+  }
+}
+
+
+/* ---- 3. Section, photo + frame ---------------------------------------------- */
+/* section padding: the site's shared section rhythm (--section-space, globals.css) */
+.cta {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  padding: var(--section-space) 0;
+  background-color: var(--c-maroon);
+  color: var(--c-white);
+}
+
+/* the photo, faint on the maroon; focused on the diners' faces (the middle rows) */
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 60%;
+  opacity: 0.22;
+}
+
+/* frame: gold bands with a maroon Om · swastik pattern (top + bottom run across,
+   left + right run between them; four plain gold corners join them). The pattern
+   tiles are shared site-wide: --pattern-om-swastik-x / -y in globals.css. */
+.frameH,
+.frameV,
+.corner {
+  position: absolute;
+  background-color: var(--c-gold);
+  box-shadow: var(--shadow-frame);
+  pointer-events: none;
+}
+
+.frameH {
+  left: 0;
+  right: 0;
+  z-index: 3;
+  height: var(--frame);
+  background-image: var(--pattern-om-swastik-x);
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: 100px var(--frame);
+}
+
+.frameTop    { top: 0; }
+.frameBottom { bottom: 0; }
+
+.frameV {
+  top: var(--frame);
+  bottom: var(--frame);
+  z-index: 2;
+  width: var(--frame);
+  background-image: var(--pattern-om-swastik-y);
+  background-repeat: repeat-y;
+  background-position: top center;
+  background-size: var(--frame) 100px;
+}
+
+.frameLeft  { left: 0; }
+.frameRight { right: 0; }
+
+.corner {
+  z-index: 4;
+  width: var(--frame);
+  height: var(--frame);
+}
+
+.cornerTl { top: 0;    left: 0; }
+.cornerTr { top: 0;    right: 0; }
+.cornerBl { bottom: 0; left: 0; }
+.cornerBr { bottom: 0; right: 0; }
+
+
+/* ---- 4. Elephants ----------------------------------------------------------- */
+/* One clip per side (the right one mirrored), walking in from behind the side band.
+   Each is pushed off the edge by the larger of
+     - its natural offset (the hind quarter hidden: 27.5% of its width), or
+     - whatever keeps its trunk tip (82.5% across the clip) --ele-gap clear of the
+       buttons in the middle,
+   so on wide screens the whole elephant shows, and on narrower ones it slides
+   further out instead of reaching into the buttons. */
+.elephant {
+  position: absolute;
+  z-index: 0;
+  /* the clip has empty space under the feet (~4.7% of its width): lift by that much
+     less than the frame, so the feet rest exactly on the bottom band at any size */
+  bottom: calc(var(--frame) - var(--ele-w) * 0.047);
+  display: block;
+  width: var(--ele-w);
+  aspect-ratio: 4 / 3;
+  opacity: 0.85;
+  pointer-events: none;
+  /* 50% = the section's centre (left / right percentages follow its width) */
+  --ele-offset: max(
+    var(--ele-w) * 0.275,
+    var(--ele-w) * 0.825 - (50% - var(--buttons-half) - var(--ele-gap))
+  );
+}
+
+.elephantLeft  { left: calc(-1 * var(--ele-offset)); }
+.elephantRight { right: calc(-1 * var(--ele-offset)); transform: scaleX(-1); }
+
+
+/* ---- 5. Content -------------------------------------------------------------- */
+.inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+:where(.cta) :where(p, h2) {
+  margin: 0;
+}
+
+/* label: medium, gold (Rozha, as the header CTA / footer titles) */
+.label {
+  color: var(--c-gold);
+  font-family: var(--font-title);
+  font-size: var(--text-md);
+  line-height: 1.3;
+}
+
+/* heading: large, white (Rozha, as the brand name); colour restated so the
+   site-wide h2 colour never shows */
+.heading {
+  margin-top: var(--space-3);
+  color: var(--c-white);
+  font-family: var(--font-title);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+/* description: small, white (Tiro) */
+.text {
+  max-width: var(--text-width);
+  margin: var(--space-4) auto 0;
+  color: var(--c-white);
+  line-height: 1.8;
+}
+
+/* the first break only applies below 1200px (see Cta.js) */
+@media (min-width: 1200px) {
+  .brCompact {
+    display: none;
+  }
+}
+
+
+/* ---- 6. Buttons --------------------------------------------------------------- */
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+/* the header CTA's button: medium Rozha in a flat 50px pill */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  height: var(--control-lg);
+  padding: 0 var(--space-5);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-title);
+  font-size: var(--text-md);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform var(--ease), box-shadow var(--ease);
+}
+
+/* colours restated: the site-wide `a` colours must never show */
+.primary {
+  background-color: var(--c-gold);
+  color: var(--c-black);
+}
+
+.secondary {
+  background-color: var(--c-white);
+  color: var(--c-maroon);
+}
+
+/* arrow: the header's icon box, in the text colour */
+.icon {
+  flex: none;
+  width: 1.25em;
+  font-size: 1em;
+  line-height: 1;
+  text-align: center;
+  transition: transform var(--ease);
+}
+
+/* keyboard focus: a white 2px ring, visible on the maroon section */
+.btn:focus-visible {
+  outline: var(--line-width) solid var(--c-white);
+  outline-offset: var(--line-width);
+}
+
+
+/* ---- 7. Hover effects (mouse / trackpad only) ----------------------------------
+   Inside (hover: hover) so a tap never leaves a stuck hover colour. Colours are
+   restated on purpose: the site-wide `a:hover` (Bootstrap blue) must never show. */
+@media (hover: hover) {
+  /* lift, as the header's buttons (colours stay); the arrow slides forward */
+  .btn:hover {
+    box-shadow: var(--shadow-lift);
+    transform: translateY(var(--lift));
+  }
+
+  .btn:hover .icon {
+    transform: translateX(var(--nudge));
+  }
+
+  /* colours restated: Bootstrap's a:hover blue must never show */
+  .primary:hover {
+    color: var(--c-black);
+  }
+
+  .secondary:hover {
+    color: var(--c-maroon);
+  }
+}
+
+
+/* ---- 8. Responsive layout ------------------------------------------------------- */
+/* narrow tablets: a smaller elephant, so more of it shows beside the buttons */
+@media (max-width: 991px) {
+  .cta {
+    --ele-w: 400px;
+  }
+}
+
+/* phones: no side bands; buttons stack, each as wide as its label. Only the
+   elephants' heads + trunks peek in beside the buttons (the clearance is now half
+   of one stacked button, with a one-step-tighter gap). */
+@media (max-width: 767px) {
+  .cta {
+    --ele-w: 340px;
+    --buttons-half: 95px;
+    --ele-gap: var(--space-3);
+  }
+
+  .frameV,
+  .corner {
+    display: none;
+  }
+
+  .text {
+    padding: 0 var(--space-2);
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+}
+
+
+/* ---- 9. Reduced motion ---------------------------------------------------------- */
+/* no movement: hovered buttons only gain the shadow */
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .icon {
+    transition: none;
+  }
+
+  .btn:hover,
+  .btn:hover .icon {
+    transform: none;
+  }
+}

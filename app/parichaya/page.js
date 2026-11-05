@@ -1,39 +1,25 @@
-'use client'
-import Layout from "@/components/layout/Layout"
-import MantraStrip from "@/components/shared/MantraStrip/MantraStrip"
-import PageHero from "@/components/shared/PageHero/PageHero"
-import { PAGE_HERO_IMAGES } from "@/lib/data/heroImages"
-import { CLOSING_MANTRAS } from "@/lib/data/mantras"
-import TempleGallery from "@/components/shared/TempleGallery/TempleGallery"
-import OurStory from "@/components/sections/about/OurStory"
-import Legacy from "@/components/sections/home1/Legacy"
+import MantraStrip from "../_shared/_components/MantraStrip/MantraStrip"
+import Breadcrumb from "../_shared/_components/Breadcrumb/Breadcrumb"
+import TempleGallery from "../_shared/_components/TempleGallery/TempleGallery"
+import Cta from "../_shared/_components/Cta/Cta"
+import Legacy from "./_components/Legacy/Legacy"
+import OurStory from "./_components/OurStory/OurStory"
 
-import Cta from "@/components/sections/home1/Cta"
+export const metadata = {
+    title: "परिचय — मंगल भक्त सेवा मंडळ",
+    description: 'Learn about Shri Shubharay Maharaj Math, our history, mission and the community we serve.',
+}
 
-
-export default function Home() {
+export default function ParichayaPage() {
     return (
         <>
-        <Layout headerStyle={1} footerStyle={1}>
-
-       {/*Mantra Strip (between header and breadcrumb) */}
-       <MantraStrip />
-
-       <PageHero image={PAGE_HERO_IMAGES.parichaya} />
-
-       <TempleGallery compact />
-
-       <Legacy />
-
-        <OurStory />
-
-        <Cta />
-
-        <MantraStrip mantras={CLOSING_MANTRAS} />
-
-        </Layout>
+            <MantraStrip />
+            <Breadcrumb title="परिचय" icon="fas fa-om" />
+            <TempleGallery />
+            <Legacy />
+            <OurStory />
+            <Cta />
+            <MantraStrip closing />
         </>
     )
 }
-
-

@@ -1,0 +1,1804 @@
+/* Site-wide theme styles shared by many sections: colours, fonts, buttons, section titles, layout helpers.
+   Styles for a single section live next to that section in a .module.css file. */
+
+/* ---- Font Awesome 5.15.1 — the site's only icon set: just the icons it uses ---- */
+/*!
+ * Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+.fa,.fab,.far,.fas {
+  -moz-osx-font-smoothing:grayscale;
+  -webkit-font-smoothing:antialiased;
+  display:inline-block;
+  font-style:normal;
+  font-variant:normal;
+  text-rendering:auto;
+  line-height:1
+}
+.fa-angle-right:before {
+  content:"\f105"
+}
+.fa-arrow-right:before {
+  content:"\f061"
+}
+.fa-bars:before {
+  content:"\f0c9"
+}
+.fa-book-open:before {
+  content:"\f518"
+}
+.fa-calendar-alt:before {
+  content:"\f073"
+}
+.fa-chevron-down:before {
+  content:"\f078"
+}
+.fa-chevron-right:before {
+  content:"\f054"
+}
+.fa-clock:before {
+  content:"\f017"
+}
+.fa-envelope:before {
+  content:"\f0e0"
+}
+.fa-hand-holding-heart:before {
+  content:"\f4be"
+}
+.fa-hands-helping:before {
+  content:"\f4c4"
+}
+.fa-home:before {
+  content:"\f015"
+}
+.fa-images:before {
+  content:"\f302"
+}
+.fa-instagram:before {
+  content:"\f16d"
+}
+.fa-map-marker-alt:before {
+  content:"\f3c5"
+}
+.fa-microphone-alt:before {
+  content:"\f3c9"
+}
+.fa-om:before {
+  content:"\f679"
+}
+.fa-phone-alt:before {
+  content:"\f879"
+}
+.fa-play-circle:before {
+  content:"\f144"
+}
+.fa-praying-hands:before {
+  content:"\f684"
+}
+.fa-search:before {
+  content:"\f002"
+}
+.fa-times:before {
+  content:"\f00d"
+}
+.fa-user:before {
+  content:"\f007"
+}
+.fa-whatsapp:before {
+  content:"\f232"
+}
+.fa-youtube:before {
+  content:"\f167"
+}
+@font-face{
+  font-family:"Font Awesome 5 Brands";
+  font-style:normal;
+  font-weight:400;
+  font-display:block;
+  src:url("/assets/fonts/fa-brands-400.woff2") format("woff2")
+}
+.fab {
+  font-family:"Font Awesome 5 Brands"
+}
+.fab,.far {
+  font-weight:400
+}
+@font-face{
+  font-family:"Font Awesome 5 Free";
+  font-style:normal;
+  font-weight:900;
+  font-display:block;
+  src:url("/assets/fonts/fa-solid-900.woff2") format("woff2")
+}
+.fa,.far,.fas {
+  font-family:"Font Awesome 5 Free"
+}
+.fa,.fas {
+  font-weight:900
+}
+
+/* ---- Bootstrap 5.0: only the parts this site uses (base styles, grid: container/row/col-*, a few helpers) ---- */
+@charset "UTF-8";/*!
+ * Bootstrap v5.0.0-beta3 (https://getbootstrap.com/)
+ * Copyright 2011-2021 The Bootstrap Authors
+ * Copyright 2011-2021 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
+:root {
+  --bs-blue:#0d6efd;
+  --bs-indigo:#6610f2;
+  --bs-purple:#6f42c1;
+  --bs-pink:#d63384;
+  --bs-red:#dc3545;
+  --bs-orange:#fd7e14;
+  --bs-yellow:#ffc107;
+  --bs-green:#198754;
+  --bs-teal:#20c997;
+  --bs-cyan:#0dcaf0;
+  --bs-white:#fff;
+  --bs-gray:#6c757d;
+  --bs-gray-dark:#343a40;
+  --bs-primary:#0d6efd;
+  --bs-secondary:#6c757d;
+  --bs-success:#198754;
+  --bs-info:#0dcaf0;
+  --bs-warning:#ffc107;
+  --bs-danger:#dc3545;
+  --bs-light:#f8f9fa;
+  --bs-dark:#212529;
+  --bs-gradient:linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0))
+}
+*,::after,::before {
+  box-sizing:border-box
+}
+@media (prefers-reduced-motion:no-preference){
+  :root {
+  scroll-behavior:smooth
+  }
+}
+body {
+  margin:0;
+  font-size:1rem;
+  font-weight:400;
+  line-height:1.5;
+  color:#212529;
+  background-color:#fff;
+  -webkit-text-size-adjust:100%;
+  -webkit-tap-highlight-color:transparent
+}
+.h2,.h3,.h4,h2,h3,h4 {
+  margin-top:0;
+  margin-bottom:.5rem;
+  font-weight:500;
+  line-height:1.2
+}
+.h2,h2 {
+  font-size:calc(1.325rem + .9vw)
+}
+@media (min-width:1200px){
+  .h2,h2 {
+  font-size:2rem
+  }
+}
+.h3,h3 {
+  font-size:calc(1.3rem + .6vw)
+}
+@media (min-width:1200px){
+  .h3,h3 {
+  font-size:1.75rem
+  }
+}
+.h4,h4 {
+  font-size:calc(1.275rem + .3vw)
+}
+@media (min-width:1200px){
+  .h4,h4 {
+  font-size:1.5rem
+  }
+}
+p {
+  margin-top:0;
+  margin-bottom:1rem
+}
+address {
+  margin-bottom:1rem;
+  font-style:normal;
+  line-height:inherit
+}
+ul {
+  padding-left:2rem
+}
+ul {
+  margin-top:0;
+  margin-bottom:1rem
+}
+ul ul {
+  margin-bottom:0
+}
+b {
+  font-weight:bolder
+}
+a {
+  color:#0d6efd;
+  text-decoration:underline
+}
+a:hover {
+  color:#0a58ca
+}
+a:not([href]):not([class]),a:not([href]):not([class]):hover {
+  color:inherit;
+  text-decoration:none
+}
+img,svg {
+  vertical-align:middle
+}
+caption {
+  padding-top:.5rem;
+  padding-bottom:.5rem;
+  color:#6c757d;
+  text-align:left
+}
+label {
+  display:inline-block
+}
+button {
+  border-radius:0
+}
+button:focus:not(:focus-visible) {
+  outline:0
+}
+button,input,select,textarea {
+  margin:0;
+  font-family:inherit;
+  font-size:inherit;
+  line-height:inherit
+}
+button,select {
+  text-transform:none
+}
+[role=button] {
+  cursor:pointer
+}
+select {
+  word-wrap:normal
+}
+select:disabled {
+  opacity:1
+}
+[list]::-webkit-calendar-picker-indicator {
+  display:none
+}
+[type=button],[type=submit],button {
+  -webkit-appearance:button
+}
+[type=button]:not(:disabled),[type=submit]:not(:disabled),button:not(:disabled) {
+  cursor:pointer
+}
+::-moz-focus-inner {
+  padding:0;
+  border-style:none
+}
+textarea {
+  resize:vertical
+}
+::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field {
+  padding:0
+}
+::-webkit-inner-spin-button {
+  height:auto
+}
+[type=search] {
+  outline-offset:-2px;
+  -webkit-appearance:textfield
+}
+::-webkit-search-decoration {
+  -webkit-appearance:none
+}
+::-webkit-color-swatch-wrapper {
+  padding:0
+}
+::file-selector-button {
+  font:inherit
+}
+::-webkit-file-upload-button {
+  font:inherit;
+  -webkit-appearance:button
+}
+iframe {
+  border:0
+}
+[hidden] {
+  display:none!important
+}
+.list-unstyled {
+  padding-left:0;
+  list-style:none
+}
+.container {
+  width:100%;
+  padding-right:var(--bs-gutter-x,.75rem);
+  padding-left:var(--bs-gutter-x,.75rem);
+  margin-right:auto;
+  margin-left:auto
+}
+@media (min-width:576px){
+  .container {
+  max-width:540px
+  }
+}
+@media (min-width:768px){
+  .container {
+  max-width:720px
+  }
+}
+@media (min-width:992px){
+  .container {
+  max-width:960px
+  }
+}
+@media (min-width:1200px){
+  .container {
+  max-width:1140px
+  }
+}
+@media (min-width:1400px){
+  .container {
+  max-width:1320px
+  }
+}
+.row {
+  --bs-gutter-x:1.5rem;
+  --bs-gutter-y:0;
+  display:flex;
+  flex-wrap:wrap;
+  margin-top:calc(var(--bs-gutter-y) * -1);
+  margin-right:calc(var(--bs-gutter-x)/ -2);
+  margin-left:calc(var(--bs-gutter-x)/ -2)
+}
+.row>* {
+  flex-shrink:0;
+  width:100%;
+  max-width:100%;
+  padding-right:calc(var(--bs-gutter-x)/ 2);
+  padding-left:calc(var(--bs-gutter-x)/ 2);
+  margin-top:var(--bs-gutter-y)
+}
+@media (min-width:768px){
+  .col-md-4 {
+  flex:0 0 auto;
+  width:33.3333333333%
+  }
+  .col-md-6 {
+  flex:0 0 auto;
+  width:50%
+  }
+}
+@media (min-width:992px){
+  .col-lg-4 {
+  flex:0 0 auto;
+  width:33.3333333333%
+  }
+  .col-lg-5 {
+  flex:0 0 auto;
+  width:41.6666666667%
+  }
+  .col-lg-6 {
+  flex:0 0 auto;
+  width:50%
+  }
+  .col-lg-12 {
+  flex:0 0 auto;
+  width:100%
+  }
+}
+@media (min-width:1200px){
+  .col-xl-1 {
+  flex:0 0 auto;
+  width:8.3333333333%
+  }
+  .col-xl-4 {
+  flex:0 0 auto;
+  width:33.3333333333%
+  }
+  .col-xl-5 {
+  flex:0 0 auto;
+  width:41.6666666667%
+  }
+  .col-xl-6 {
+  flex:0 0 auto;
+  width:50%
+  }
+  .col-xl-7 {
+  flex:0 0 auto;
+  width:58.3333333333%
+  }
+  .col-xl-12 {
+  flex:0 0 auto;
+  width:100%
+  }
+}
+@media (min-width:1400px){
+  .col-xxl-4 {
+  flex:0 0 auto;
+  width:33.3333333333%
+  }
+  .col-xxl-8 {
+  flex:0 0 auto;
+  width:66.6666666667%
+  }
+}
+.btn {
+  display:inline-block;
+  font-weight:400;
+  line-height:1.5;
+  color:#212529;
+  text-align:center;
+  text-decoration:none;
+  vertical-align:middle;
+  cursor:pointer;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  user-select:none;
+  background-color:transparent;
+  border:1px solid transparent;
+  padding:.375rem .75rem;
+  font-size:1rem;
+  border-radius:.25rem;
+  transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
+}
+@media (prefers-reduced-motion:reduce){
+  .btn {
+  transition:none
+  }
+}
+.btn:hover {
+  color:#212529
+}
+.btn:focus {
+  outline:0;
+  box-shadow:0 0 0 .25rem rgba(13,110,253,.25)
+}
+.btn.disabled,.btn:disabled {
+  pointer-events:none;
+  opacity:.65
+}
+.fade {
+  transition:opacity .15s linear
+}
+@media (prefers-reduced-motion:reduce){
+  .fade {
+  transition:none
+  }
+}
+.fade:not(.show) {
+  opacity:0
+}
+.dropdown {
+  position:relative
+}
+.nav {
+  display:flex;
+  flex-wrap:wrap;
+  padding-left:0;
+  margin-bottom:0;
+  list-style:none
+}
+.card {
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  word-wrap:break-word;
+  background-color:#fff;
+  background-clip:border-box;
+  border:1px solid rgba(0,0,0,.125);
+  border-radius:.25rem
+}
+.pagination {
+  display:flex;
+  padding-left:0;
+  list-style:none
+}
+.alert {
+  position:relative;
+  padding:1rem 1rem;
+  margin-bottom:1rem;
+  border:1px solid transparent;
+  border-radius:.25rem
+}
+.carousel {
+  position:relative
+}
+.clearfix::after {
+  display:block;
+  clear:both;
+  content:""
+}
+.d-none {
+  display:none!important
+}
+.shadow {
+  box-shadow:0 .5rem 1rem rgba(0,0,0,.15)!important
+}
+.border {
+  border:1px solid #dee2e6!important
+}
+.align-items-center {
+  align-items:center!important
+}
+.text-center {
+  text-align:center!important
+}
+.visible {
+  visibility:visible!important
+}
+@media (min-width:1200px){
+  .d-xl-block {
+  display:block!important
+  }
+}
+
+/* Wrapper around every page (app/template.js) */
+.page-wrapper {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  min-width: 300px;
+  /* clip (not hidden): same clipping, but it doesn't create a scroll container,
+     so the header's position: sticky keeps working. Older browsers fall back to hidden. */
+  overflow: hidden;
+  overflow: clip;
+}
+
+/* Scroll-in animations used with WOW (className="wow fadeInUp" etc.), from Animate.css */
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(-20px);
+        transform: translateX(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(-20px);
+        -ms-transform: translateX(-20px);
+        transform: translateX(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+.fadeInLeft {
+    -webkit-animation-name: fadeInLeft;
+    animation-name: fadeInLeft;
+}
+
+@-webkit-keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(20px);
+        transform: translateX(20px);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(20px);
+        -ms-transform: translateX(20px);
+        transform: translateX(20px);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+.fadeInRight {
+    -webkit-animation-name: fadeInRight;
+    animation-name: fadeInRight;
+}
+
+@-webkit-keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(20px);
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(20px);
+        -ms-transform: translateY(20px);
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+.fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+}
+
+@-webkit-keyframes zoomIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.zoomIn {
+    -webkit-animation-name: zoomIn;
+    animation-name: zoomIn;
+}
+
+@-webkit-keyframes slideInLeft {
+    0% {
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes slideInLeft {
+    0% {
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.slideInLeft {
+    -webkit-animation-name: slideInLeft;
+    animation-name: slideInLeft;
+}
+
+
+/* Horizontal maroon strips carrying gold Om + swastik motif */
+.divine-border--about {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    height: 30px;
+    background-color: #3D0A0C;
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(242, 169, 10, 0.14) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%23F2A90A'%3E%3Ctext x='25' y='22' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%23F2A90A' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23F2A90A' opacity='0.85'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat-x, repeat-x;
+    background-position: center, center;
+    background-size: 100% 100%, 100px 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.divine-border--about-top { top: 0; }
+.divine-border--about-bottom { bottom: 0; }
+
+/* Vertical maroon strips */
+.divine-border--about-vertical {
+    position: absolute;
+    top: 30px;
+    bottom: 30px;
+    z-index: 2;
+    width: 30px;
+    background-color: #3D0A0C;
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(242, 169, 10, 0.14) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%23F2A90A'%3E%3Ctext x='15' y='32' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%23F2A90A' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23F2A90A' opacity='0.85'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat-y, repeat-y;
+    background-position: top center, top center;
+    background-size: 100% 100%, 30px 100px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.divine-border--about-left { left: 0; }
+.divine-border--about-right { right: 0; }
+
+.about-One__corner {
+    position: absolute;
+    z-index: 4;
+    width: 30px;
+    height: 30px;
+    background-color: #3D0A0C;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+}
+
+.about-One__corner--tl { top: 0; left: 0; }
+.about-One__corner--tr { top: 0; right: 0; }
+.about-One__corner--bl { bottom: 0; left: 0; }
+.about-One__corner--br { bottom: 0; right: 0; }
+@media (max-width: 991px) {
+    /* Keep the ornamental border at full size — shrinking it distorted the Om
+       glyph and clipped the separator dots into stray "." marks */
+    .divine-border--about {
+        height: 30px;
+        background-size: 100% 100%, 100px 30px;
+    }
+    .divine-border--about-vertical {
+        top: 30px;
+        bottom: 30px;
+        width: 30px;
+        background-size: 100% 100%, 30px 100px;
+    }
+    .about-One__corner {
+        width: 30px;
+        height: 30px;
+    }
+}
+@media (max-width: 767px) {
+    /* Keep only the horizontal (top + bottom) border */
+    .divine-border--about {
+        height: 26px;
+        background-size: 100% 100%, 100px 30px;
+    }
+    .divine-border--about-vertical,
+.about-One__corner {
+        display: none;
+    }
+}
+@media (max-width: 767px) {
+    .divine-border--about-vertical,
+.about-One__corner {
+        display: none;
+    }
+}/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Utility
+# Cards
+# Common
+# Form
+# Navigations
+# Animations
+# Mobile Nav
+# Search Popup
+# Page Header
+# Google Map
+# Client Carousel
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Om · swastik border pattern (shared by the CTA frame and the temple gallery)
+   Repeating tiles: Om (Font Awesome's Om outline) · swastik · dots.
+   -x runs across (100 × 30px tile), -y runs down (30 × 100px): maroon, for a gold
+   band (the CTA frame). -x-gold / -y-gold: the same tiles in gold, for a maroon
+   band (the temple gallery).
+--------------------------------------------------------------*/
+:root {
+  --pattern-om-swastik-x: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%23620208'%3E%3Cpath transform='translate(17 7) scale(0.03125) translate(0 448) scale(1 -1)' d='M362 387 340 409Q337 412 337.0 416.0Q337 420 340 423L362 445Q369 452 376 445L398 423Q401 420 401.0 416.0Q401 412 398 409L376 387Q373 384 369.0 384.0Q365 384 362 387ZM513 156V56Q513 20 483.5 -6.0Q454 -32 417 -32Q390 -32 370.5 -25.5Q351 -19 341.5 -9.5Q332 0 327.0 9.5Q322 19 322 25L321 32V70Q321 76 326.5 77.5Q332 79 335 75Q370 32 417 32Q428 32 438.5 39.5Q449 47 449 56V156Q449 171 438.5 181.5Q428 192 413.0 192.0Q398 192 388 182L363 157Q334 128 293 128H271Q289 97 289 64Q289 11 251.5 -26.5Q214 -64 161 -64Q119 -64 86.5 -48.5Q54 -33 36.0 -9.0Q18 15 9.5 39.5Q1 64 1 87Q1 93 6.5 95.5Q12 98 16 92Q17 90 20 86Q31 66 39.0 55.5Q47 45 63.5 29.5Q80 14 104.5 7.0Q129 0 161 0Q187 0 206.0 19.0Q225 38 225.0 64.0Q225 90 206.0 109.0Q187 128 161 128H128Q119 129 115 137L99 169Q95 177 99.5 184.5Q104 192 113 192H145Q165 192 179.0 206.0Q193 220 193.0 240.0Q193 260 179.0 274.0Q165 288 145 288Q128 288 115 277Q105 270 95 277L69 297Q63 301 63.0 308.5Q63 316 68 322Q108 360 164 350Q186 347 204.5 335.5Q223 324 236.0 306.0Q249 288 254 267Q263 228 246 192H293Q308 192 318 202L342 227Q372 256 413.0 256.0Q454 256 483.5 226.5Q513 197 513 156ZM455 381Q463 387 472.0 382.5Q481 378 481 368V332Q481 329 479.5 326.0Q478 323 475.5 319.5Q473 316 465.5 310.0Q458 304 447.5 299.5Q437 295 418.5 291.5Q400 288 378 288Q362 288 346.5 292.0Q331 296 320.0 302.0Q309 308 298.5 316.0Q288 324 281.5 330.5Q275 337 269.5 344.5Q264 352 262.0 355.0Q260 358 259 360Q253 372 262.5 380.5Q272 389 283 381Q287 377 294.0 373.0Q301 369 320.0 361.5Q339 354 358.5 351.5Q378 349 404.5 355.5Q431 362 455 381Z'/%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%23620208' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23620208'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  --pattern-om-swastik-x-gold: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%23D9982A'%3E%3Cpath transform='translate(17 7) scale(0.03125) translate(0 448) scale(1 -1)' d='M362 387 340 409Q337 412 337.0 416.0Q337 420 340 423L362 445Q369 452 376 445L398 423Q401 420 401.0 416.0Q401 412 398 409L376 387Q373 384 369.0 384.0Q365 384 362 387ZM513 156V56Q513 20 483.5 -6.0Q454 -32 417 -32Q390 -32 370.5 -25.5Q351 -19 341.5 -9.5Q332 0 327.0 9.5Q322 19 322 25L321 32V70Q321 76 326.5 77.5Q332 79 335 75Q370 32 417 32Q428 32 438.5 39.5Q449 47 449 56V156Q449 171 438.5 181.5Q428 192 413.0 192.0Q398 192 388 182L363 157Q334 128 293 128H271Q289 97 289 64Q289 11 251.5 -26.5Q214 -64 161 -64Q119 -64 86.5 -48.5Q54 -33 36.0 -9.0Q18 15 9.5 39.5Q1 64 1 87Q1 93 6.5 95.5Q12 98 16 92Q17 90 20 86Q31 66 39.0 55.5Q47 45 63.5 29.5Q80 14 104.5 7.0Q129 0 161 0Q187 0 206.0 19.0Q225 38 225.0 64.0Q225 90 206.0 109.0Q187 128 161 128H128Q119 129 115 137L99 169Q95 177 99.5 184.5Q104 192 113 192H145Q165 192 179.0 206.0Q193 220 193.0 240.0Q193 260 179.0 274.0Q165 288 145 288Q128 288 115 277Q105 270 95 277L69 297Q63 301 63.0 308.5Q63 316 68 322Q108 360 164 350Q186 347 204.5 335.5Q223 324 236.0 306.0Q249 288 254 267Q263 228 246 192H293Q308 192 318 202L342 227Q372 256 413.0 256.0Q454 256 483.5 226.5Q513 197 513 156ZM455 381Q463 387 472.0 382.5Q481 378 481 368V332Q481 329 479.5 326.0Q478 323 475.5 319.5Q473 316 465.5 310.0Q458 304 447.5 299.5Q437 295 418.5 291.5Q400 288 378 288Q362 288 346.5 292.0Q331 296 320.0 302.0Q309 308 298.5 316.0Q288 324 281.5 330.5Q275 337 269.5 344.5Q264 352 262.0 355.0Q260 358 259 360Q253 372 262.5 380.5Q272 389 283 381Q287 377 294.0 373.0Q301 369 320.0 361.5Q339 354 358.5 351.5Q378 349 404.5 355.5Q431 362 455 381Z'/%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%23D9982A' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23D9982A'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  --pattern-om-swastik-y: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%23620208'%3E%3Cpath transform='translate(7 17) scale(0.03125) translate(0 448) scale(1 -1)' d='M362 387 340 409Q337 412 337.0 416.0Q337 420 340 423L362 445Q369 452 376 445L398 423Q401 420 401.0 416.0Q401 412 398 409L376 387Q373 384 369.0 384.0Q365 384 362 387ZM513 156V56Q513 20 483.5 -6.0Q454 -32 417 -32Q390 -32 370.5 -25.5Q351 -19 341.5 -9.5Q332 0 327.0 9.5Q322 19 322 25L321 32V70Q321 76 326.5 77.5Q332 79 335 75Q370 32 417 32Q428 32 438.5 39.5Q449 47 449 56V156Q449 171 438.5 181.5Q428 192 413.0 192.0Q398 192 388 182L363 157Q334 128 293 128H271Q289 97 289 64Q289 11 251.5 -26.5Q214 -64 161 -64Q119 -64 86.5 -48.5Q54 -33 36.0 -9.0Q18 15 9.5 39.5Q1 64 1 87Q1 93 6.5 95.5Q12 98 16 92Q17 90 20 86Q31 66 39.0 55.5Q47 45 63.5 29.5Q80 14 104.5 7.0Q129 0 161 0Q187 0 206.0 19.0Q225 38 225.0 64.0Q225 90 206.0 109.0Q187 128 161 128H128Q119 129 115 137L99 169Q95 177 99.5 184.5Q104 192 113 192H145Q165 192 179.0 206.0Q193 220 193.0 240.0Q193 260 179.0 274.0Q165 288 145 288Q128 288 115 277Q105 270 95 277L69 297Q63 301 63.0 308.5Q63 316 68 322Q108 360 164 350Q186 347 204.5 335.5Q223 324 236.0 306.0Q249 288 254 267Q263 228 246 192H293Q308 192 318 202L342 227Q372 256 413.0 256.0Q454 256 483.5 226.5Q513 197 513 156ZM455 381Q463 387 472.0 382.5Q481 378 481 368V332Q481 329 479.5 326.0Q478 323 475.5 319.5Q473 316 465.5 310.0Q458 304 447.5 299.5Q437 295 418.5 291.5Q400 288 378 288Q362 288 346.5 292.0Q331 296 320.0 302.0Q309 308 298.5 316.0Q288 324 281.5 330.5Q275 337 269.5 344.5Q264 352 262.0 355.0Q260 358 259 360Q253 372 262.5 380.5Q272 389 283 381Q287 377 294.0 373.0Q301 369 320.0 361.5Q339 354 358.5 351.5Q378 349 404.5 355.5Q431 362 455 381Z'/%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%23620208' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23620208'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  --pattern-om-swastik-y-gold: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%23D9982A'%3E%3Cpath transform='translate(7 17) scale(0.03125) translate(0 448) scale(1 -1)' d='M362 387 340 409Q337 412 337.0 416.0Q337 420 340 423L362 445Q369 452 376 445L398 423Q401 420 401.0 416.0Q401 412 398 409L376 387Q373 384 369.0 384.0Q365 384 362 387ZM513 156V56Q513 20 483.5 -6.0Q454 -32 417 -32Q390 -32 370.5 -25.5Q351 -19 341.5 -9.5Q332 0 327.0 9.5Q322 19 322 25L321 32V70Q321 76 326.5 77.5Q332 79 335 75Q370 32 417 32Q428 32 438.5 39.5Q449 47 449 56V156Q449 171 438.5 181.5Q428 192 413.0 192.0Q398 192 388 182L363 157Q334 128 293 128H271Q289 97 289 64Q289 11 251.5 -26.5Q214 -64 161 -64Q119 -64 86.5 -48.5Q54 -33 36.0 -9.0Q18 15 9.5 39.5Q1 64 1 87Q1 93 6.5 95.5Q12 98 16 92Q17 90 20 86Q31 66 39.0 55.5Q47 45 63.5 29.5Q80 14 104.5 7.0Q129 0 161 0Q187 0 206.0 19.0Q225 38 225.0 64.0Q225 90 206.0 109.0Q187 128 161 128H128Q119 129 115 137L99 169Q95 177 99.5 184.5Q104 192 113 192H145Q165 192 179.0 206.0Q193 220 193.0 240.0Q193 260 179.0 274.0Q165 288 145 288Q128 288 115 277Q105 270 95 277L69 297Q63 301 63.0 308.5Q63 316 68 322Q108 360 164 350Q186 347 204.5 335.5Q223 324 236.0 306.0Q249 288 254 267Q263 228 246 192H293Q308 192 318 202L342 227Q372 256 413.0 256.0Q454 256 483.5 226.5Q513 197 513 156ZM455 381Q463 387 472.0 382.5Q481 378 481 368V332Q481 329 479.5 326.0Q478 323 475.5 319.5Q473 316 465.5 310.0Q458 304 447.5 299.5Q437 295 418.5 291.5Q400 288 378 288Q362 288 346.5 292.0Q331 296 320.0 302.0Q309 308 298.5 316.0Q288 324 281.5 330.5Q275 337 269.5 344.5Q264 352 262.0 355.0Q260 358 259 360Q253 372 262.5 380.5Q272 389 283 381Q287 377 294.0 373.0Q301 369 320.0 361.5Q339 354 358.5 351.5Q378 349 404.5 355.5Q431 362 455 381Z'/%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%23D9982A' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23D9982A'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/*--------------------------------------------------------------
+# Common
+--------------------------------------------------------------*/
+:root {
+  
+  --anity-gray: #727272;
+  --anity-gray-rgb: 114, 114, 114;
+  --anity-base: #FF5528;
+  --anity-base-rgb: 255, 85, 40;
+  --anity-black: #343434;
+  --anity-black-rgb: 52, 52, 52;
+  --anity-primary: #FFA415;
+  --anity-primary-rgb: 255, 164, 21;
+  --anity-extra: #26CC8C;
+  --anity-extra-rgb: 38, 204, 140;
+  --anity-extra-two: #F2F0EC;
+  --anity-extra-two-rgb: 242, 240, 236;
+  --anity-white: #ffffff;
+  --anity-white-rgb: 255, 255, 255;
+  --anity-bdr-color: #e3e3e3;
+  --anity-bdr-radius: 20px;
+
+  /* brand palette, shared by every section */
+  --brand-maroon: #620208;
+  --brand-maroon-dark: #4D0601;
+  --brand-maroon-deep: #3D0A0C;
+  --brand-ink: #3A0405;
+  --brand-ink-deep: #2C0405;
+  --brand-gold: #D9982A;
+  --brand-gold-lite: #E9B45A;
+  --brand-saffron: #F2A90A;
+  --brand-cream: #FBF1DC;
+}
+
+.row {
+  --bs-gutter-x: 30px;
+}
+
+/* Single-weight font: never let the browser fake bold or italic */
+html {
+  font-synthesis: none;
+}
+
+body {
+  font-family: var(--font-text), serif;
+  color: var(--anity-gray);
+  font-size: 16px;
+  line-height: 34px;
+  font-weight: 400;
+}
+
+a {
+  color: var(--anity-base);
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+
+a,
+a:hover,
+a:focus,
+a:visited {
+  text-decoration: none;
+}
+
+::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 1;
+}
+
+::-ms-input-placeholder {
+  color: inherit;
+  opacity: 1;
+}
+
+::placeholder {
+  color: inherit;
+  opacity: 1;
+}
+
+h2,
+h3,
+h4 {
+  font-family: var(--font-text), serif;
+  color: var(--anity-black);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 1;
+}
+
+::-ms-input-placeholder {
+  color: inherit;
+  opacity: 1;
+}
+
+::placeholder {
+  color: inherit;
+  opacity: 1;
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.list-unstyled {
+  padding-left: 0;
+}
+
+@media (min-width: 1320px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 1;
+}
+
+::-ms-input-placeholder {
+  color: inherit;
+  opacity: 1;
+}
+
+::placeholder {
+  color: inherit;
+  opacity: 1;
+}
+
+/* Section Title Css */
+
+.section-title {
+  position: relative;
+  display: block;
+  margin-top: -8px;
+  margin-bottom: 52px;
+  z-index: 1;
+}
+
+.section-title__tagline {
+  position: relative;
+  display: inline-block;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--anity-base);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+}
+
+.section-title__title {
+  font-family: var(--font-title), serif;
+  color: var(--anity-black);
+  font-size: 50px;
+  line-height: 60px;
+  font-weight: 400;
+  margin: 9px 0 0;
+}
+
+.section-title__title span {
+  color: var(--anity-base);
+}
+
+/* Thm Btn Css */
+
+.thm-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none !important;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--anity-black);
+  border: 1px solid var(--anity-base);
+  padding: 7px 25px 7px;
+  padding-right: 9px;
+  border-radius: 30px;
+  transition: 0.5s ease-in-out;
+  text-transform: uppercase;
+  overflow: hidden;
+  letter-spacing: 1.4px;
+  gap: 10px;
+  z-index: 2;
+  text-align: center;
+}
+
+.thm-btn::after {
+  content: "";
+  background-color: var(--anity-black);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  clip-path: circle(0% at 50% 50%);
+  transition: all cubic-bezier(0, 0.96, 0.58, 1.1) 0.8s;
+  z-index: -1;
+}
+
+.thm-btn:hover:after {
+  clip-path: circle(100% at 50% 50%);
+  transition: all cubic-bezier(0, 0.96, 0.58, 1.1) 4s;
+}
+
+.thm-btn span {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background-color: var(--anity-base);
+  border-radius: 50%;
+  font-size: 14px;
+  color: var(--anity-white);
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+
+.thm-btn:hover span {
+  background-color: var(--anity-white);
+  color: var(--anity-base);
+  transition-delay: 200ms;
+}
+
+.thm-btn:hover span i {
+  -webkit-animation: bounceright .3s alternate ease infinite;
+  animation: bounceright .3s alternate ease infinite;
+}
+
+.thm-btn:hover {
+  color: var(--anity-white);
+  border: 1px solid var(--anity-black);
+}
+
+@media (max-width: 767px) {
+
+  .divine-border--welcome-vertical,
+.welcome-one__corner {
+    display: none;
+  }
+}
+
+.divine-border--welcome {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  height: 30px;
+  background-color: #3D0A0C;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(232, 199, 102, 0.12) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%23E8C766'%3E%3Ctext x='25' y='22' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%23E8C766' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23E8C766' opacity='0.85'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-x, repeat-x;
+  background-position: center, center;
+  background-size: 100% 100%, 100px 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
+}
+
+.divine-border--welcome:before,
+.divine-border--welcome:after {
+  content: none;
+}
+
+.divine-border--welcome-top {
+  top: 0;
+}
+
+.divine-border--welcome-bottom {
+  bottom: 0;
+}
+
+.divine-border--welcome-vertical {
+  position: absolute;
+  top: 30px;
+  bottom: 30px;
+  height: auto;
+  z-index: 2;
+  width: 30px;
+  background-color: #3D0A0C;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(232, 199, 102, 0.12) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%23E8C766'%3E%3Ctext x='15' y='32' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%23E8C766' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23E8C766' opacity='0.85'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-y, repeat-y;
+  background-position: top center, top center;
+  background-size: 100% 100%, 30px 100px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.32);
+}
+
+.divine-border--welcome-vertical:before,
+.divine-border--welcome-vertical:after {
+  content: none;
+}
+
+.divine-border--welcome-left {
+  left: 0;
+}
+
+.divine-border--welcome-right {
+  right: 0;
+}
+
+.welcome-one__corner {
+  position: absolute;
+  z-index: 4;
+  width: 30px;
+  height: 30px;
+  background-color: #3D0A0C;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
+  pointer-events: none;
+}
+
+.welcome-one__corner--tl {
+  top: 0;
+  left: 0;
+}
+
+.welcome-one__corner--tr {
+  top: 0;
+  right: 0;
+}
+
+.welcome-one__corner--bl {
+  bottom: 0;
+  left: 0;
+}
+
+.welcome-one__corner--br {
+  bottom: 0;
+  right: 0;
+}
+
+@media only screen and (max-width: 767px) {
+
+/* Mobile Layout: 320px. */
+  .section-title {
+      margin-bottom: 45px;
+  }
+
+  .section-title__title br {
+      display: none;
+  }
+
+  .section-title__title {
+      font-size: 40px;
+      line-height: 50px;
+  }
+}
+
+/* Visit / Darshan timings card */
+.visit-card {
+  position: relative;
+  background: linear-gradient(160deg, #6B1315 0%, #4a0e10 60%, #3D0A0C 100%);
+  box-shadow:
+    0 24px 55px rgba(20, 4, 5, 0.45),
+    0 8px 20px rgba(46, 8, 9, 0.35),
+    inset 0 1px 0 rgba(232, 199, 102, 0.15);
+  border-top: 3px solid #E8C766;
+  border-radius: 8px;
+  padding: 43px 45px 45px;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.visit-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 30px 65px rgba(20, 4, 5, 0.5),
+    0 10px 24px rgba(46, 8, 9, 0.4),
+    inset 0 1px 0 rgba(232, 199, 102, 0.2);
+}
+
+.visit-card__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 26px;
+  margin-bottom: 26px;
+  border-bottom: 1px solid rgba(232, 199, 102, 0.3);
+}
+
+.visit-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: rgba(232, 199, 102, 0.15);
+  color: #E8C766;
+  font-size: 24px;
+}
+
+.visit-card__header h3 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #FFF6E4;
+  margin: 0;
+}
+
+.visit-card__timings {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.visit-card__timings li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px dashed rgba(232, 199, 102, 0.25);
+}
+
+.visit-card__timings li:last-child {
+  border-bottom: none;
+}
+
+.visit-card__label {
+  color: #E8C7A6;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.visit-card__value {
+  color: #E8C766;
+  font-size: 17px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.visit-card__divider {
+  height: 1px;
+  margin: 18px 0;
+  background-color: rgba(232, 199, 102, 0.25);
+}
+
+.visit-card__address {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.visit-card__address i {
+  margin-top: 4px;
+  color: #E8C766;
+  font-size: 18px;
+}
+
+.visit-card__address p {
+  margin: 0;
+  color: #FFF6E4;
+  font-size: 17px;
+  line-height: 1.5em;
+}
+
+.visit-card__address-line2 {
+  margin-left: 4px;
+}
+
+.visit-card__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.visit-card__phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #FFF6E4;
+  font-size: 17px;
+  font-weight: 700;
+  transition: color 300ms ease;
+}
+
+.visit-card__phone i {
+  color: #E8C766;
+}
+
+.visit-card__phone:hover {
+  color: #E8C766;
+}
+
+@media (max-width: 991px) {
+  .visit-card {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 575px) {
+  .visit-card {
+    padding: 32px 26px 34px;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .visit-card__header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .visit-card__timings li {
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .visit-card__address {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .visit-card__address-line1,
+.visit-card__address-line2 {
+    display: block;
+  }
+
+  .visit-card__address-line2 {
+    margin-left: 0;
+  }
+
+  .visit-card__actions {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/*==================================================================
+    HOME — LEGACY SECTION — colour scheme keyed to the hero image.
+    Palette (sampled from slider-v1-img-1.jpg):
+      --lg-gold      #D9982A   (hero's L/R gold borders)
+      --lg-gold-lite #E9B45A   (bright tint — hovers / active states)
+      --lg-gold-pale #F0CE93   (soft gold — small text on maroon)
+      --lg-maroon    #620208   (field behind the idol)
+      --lg-maroon-dk #4D0601   (hero's outer edges)
+      --lg-maroon-2  #7A1418   (mid maroon — radial highlights on medallions)
+      --lg-cream     #FBF1DC   (warm ivory — headline + button text)
+    Section chrome (background, borders, corners, cover, arrows, diya glow)
+    is re-keyed; the book's parchment PAGES keep their cream/ink for
+    readability. Static + hover/focus + tablet + mobile all covered.
+==================================================================*/
+:root {
+  --lg-gold: #D9982A;
+  --lg-gold-lite: #E9B45A;
+  --lg-gold-pale: #F0CE93;
+  --lg-maroon: #620208;
+  --lg-maroon-dk: #4D0601;
+  --lg-maroon-2: #7A1418;
+  --lg-cream: #FBF1DC;
+}
+
+/* ---- Ornamental maroon borders / corners ---- */
+.divine-border--welcome,
+.divine-border--welcome-vertical,
+.welcome-one__corner {
+  background-color: var(--brand-maroon-dark);
+}
+
+/* ---- Visit / Darshan card: maroon panel, gold trim ---- */
+.visit-card {
+  background: linear-gradient(160deg, #7A1418 0%, #560106 60%, var(--brand-maroon-dark) 100%);
+  border-top: 3px solid var(--brand-gold);
+  box-shadow:
+    0 24px 55px rgba(20, 4, 5, 0.45),
+    0 8px 20px rgba(46, 8, 9, 0.35),
+    inset 0 1px 0 rgba(217, 152, 42, 0.18);
+}
+
+.visit-card:hover {
+  box-shadow:
+    0 30px 65px rgba(20, 4, 5, 0.5),
+    0 10px 24px rgba(46, 8, 9, 0.4),
+    inset 0 1px 0 rgba(233, 180, 90, 0.28);
+}
+
+.visit-card__header {
+  border-bottom-color: rgba(217, 152, 42, 0.32);
+}
+
+.visit-card__header h3,
+.visit-card__address p {
+  color: var(--brand-cream);
+}
+
+.visit-card__icon {
+  background-color: rgba(217, 152, 42, 0.16);
+  color: var(--brand-gold);
+}
+
+.visit-card__timings li {
+  border-bottom-color: rgba(217, 152, 42, 0.26);
+}
+
+.visit-card__label {
+  color: #E9CBA0;
+}
+
+.visit-card__value,
+.visit-card__address i,
+.visit-card__phone i {
+  color: var(--brand-gold);
+}
+
+.visit-card__divider {
+  background-color: rgba(217, 152, 42, 0.26);
+}
+
+.visit-card__phone {
+  color: var(--brand-cream);
+}
+
+.visit-card__phone:hover,
+.visit-card__phone:focus-visible {
+  color: var(--brand-gold-lite);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .visit-card {
+    transition: none;
+  }
+  .visit-card:hover {
+    transform: none;
+  }
+}
+
+/*==================================================================
+    HOME — SADHANA SECTION (.found-one) — colour scheme keyed to the
+    hero image.  Palette (sampled from slider-v1-img-1.jpg):
+      --sd-gold      #D9982A   (hero's L/R gold borders)
+      --sd-gold-lite #E9B45A   (bright tint — hovers / active states)
+      --sd-gold-pale #F0CE93   (soft gold on maroon)
+      --sd-maroon    #620208   (field behind the idol)
+      --sd-maroon-dk #4D0601   (hero's outer edges)
+      --sd-ink       #2C0405   (near-black maroon — copy on gold)
+      --sd-cream     #FBF1DC   (warm ivory — text on maroon)
+    Section chrome (gold field, ornamental borders/corners, cards,
+    buttons) re-keyed. Static + hover/focus + tablet + mobile covered
+    (the existing @media blocks only touch sizes, so they inherit).
+==================================================================*/
+:root {
+  --sd-gold: #D9982A;
+  --sd-gold-lite: #E9B45A;
+  --sd-gold-pale: #F0CE93;
+  --sd-maroon: #620208;
+  --sd-maroon-dk: #4D0601;
+  --sd-ink: #2C0405;
+  --sd-cream: #FBF1DC;
+}
+
+/*==================================================================
+    HOME — UPCOMING EVENTS SECTION (.event-one) — colour scheme keyed
+    to the hero image.  Palette (sampled from slider-v1-img-1.jpg):
+      --ev-gold      #D9982A   (hero's L/R gold borders)
+      --ev-gold-lite #E9B45A   (bright tint — hovers / active states)
+      --ev-gold-pale #F0CE93   (soft gold on maroon)
+      --ev-maroon    #620208   (field behind the idol)
+      --ev-maroon-dk #4D0601   (hero's outer edges)
+      --ev-ink       #2C0405   (near-black maroon — copy on cards)
+      --ev-cream     #FBF1DC   (warm ivory — text on maroon)
+    Static + hover/focus + tablet + mobile covered (existing @media
+    blocks only touch spacing, so they inherit these colours).
+==================================================================*/
+:root {
+  --ev-gold: #D9982A;
+  --ev-gold-lite: #E9B45A;
+  --ev-gold-pale: #F0CE93;
+  --ev-maroon: #620208;
+  --ev-maroon-dk: #4D0601;
+  --ev-ink: #2C0405;
+  --ev-cream: #FBF1DC;
+}
+
+/* ---- Ornamental border — gold strip with maroon Om/swastik motif ---- */
+.divine-border--all-events {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  height: 30px;
+  background-color: var(--ev-gold);
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(61, 10, 12, 0.12) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%23620208'%3E%3Ctext x='25' y='22' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%23620208' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23620208' opacity='0.85'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-x, repeat-x;
+  background-position: center, center;
+  background-size: 100% 100%, 100px 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
+}
+
+.divine-border--all-events-top {
+  top: 0;
+}
+
+.divine-border--all-events-bottom {
+  bottom: 0;
+}
+
+.divine-border--all-events-vertical {
+  position: absolute;
+  top: 30px;
+  bottom: 30px;
+  z-index: 2;
+  width: 30px;
+  background-color: var(--ev-gold);
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(61, 10, 12, 0.12) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%23620208'%3E%3Ctext x='15' y='32' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%23620208' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23620208' opacity='0.85'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-y, repeat-y;
+  background-position: top center, top center;
+  background-size: 100% 100%, 30px 100px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.32);
+}
+
+.divine-border--all-events-left {
+  left: 0;
+}
+
+.divine-border--all-events-right {
+  right: 0;
+}
+
+.all-events__corner {
+  position: absolute;
+  z-index: 4;
+  width: 30px;
+  height: 30px;
+  background-color: var(--ev-gold);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
+  pointer-events: none;
+}
+
+.all-events__corner--tl {
+  top: 0;
+  left: 0;
+}
+
+.all-events__corner--tr {
+  top: 0;
+  right: 0;
+}
+
+.all-events__corner--bl {
+  bottom: 0;
+  left: 0;
+}
+
+.all-events__corner--br {
+  bottom: 0;
+  right: 0;
+}
+
+@media (max-width: 767px) {
+  .divine-border--all-events-vertical,
+.all-events__corner {
+    display: none;
+  }
+}
+
+/*==================================================================
+    GALLERY PAGE — PHOTO + VIDEO GRID SECTIONS
+    Same gold-on-maroon Om/swastik framing as .all-events (--ev-* palette
+    is already global via :root). Photo grid is a light CSS masonry
+    (one column shifted down); video grid is a uniform card grid with a
+    YouTube thumbnail, play badge and gold nameplate; clicking a video
+    opens a full-screen lightbox with an embedded, autoplaying player.
+==================================================================*/
+.gallery-grid {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--ev-maroon);
+  padding: 100px 0;
+}
+
+.gallery-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("/assets/images/backgrounds/section-bg-2.png");
+  background-repeat: repeat;
+  background-size: 1170px auto;
+  opacity: 0.42;
+}
+
+.gallery-grid > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-grid .section-title__tagline {
+  color: var(--ev-gold);
+  font-weight: 700;
+}
+
+.gallery-grid .section-title__title {
+  color: var(--ev-cream);
+  text-shadow: none;
+}
+
+@media (max-width: 1199px) {
+  .gallery-grid {
+    padding: 90px 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .gallery-grid {
+    padding: 70px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .gallery-grid {
+    padding: 60px 0;
+  }
+}
+
+/* ---- Video Gallery decoration: peacock/floral strips flanking the
+   heading on the left and right (desktop only — too busy to keep
+   legible once the heading has to wrap at narrower widths). ---- */
+.video-gallery__head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  /* the section-title's own 52px margin-bottom is moved out here so
+     centering the flex row aligns the peacocks to the visible text,
+     not to "text + trailing margin" as one taller box. */
+  margin-bottom: 52px;
+}
+
+.video-gallery__head .section-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 720px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 991px) {
+
+/* Tighter heading-to-content gap on tablet/mobile for both galleries
+   (desktop's 52px is unaffected). */
+  .video-gallery__head {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 575px) {
+  .video-gallery__head {
+    margin-bottom: 20px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Consistent section spacing — home + contact page sections
+# One vertical rhythm for every content section: same top/bottom
+# padding and the same gap under each section heading.
+--------------------------------------------------------------*/
+:root {
+  --section-space: 80px;
+  --section-title-gap: 40px;
+}
+@media (max-width: 1199px) {
+  :root {
+    --section-space: 72px;
+  }
+}
+@media (max-width: 767px) {
+  :root {
+    --section-space: 56px;
+    --section-title-gap: 28px;
+  }
+}
+
+@keyframes scale5 {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes hdr-medal-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 0 3px rgba(98, 2, 8, 0.28),
+      0 6px 16px rgba(58, 4, 5, 0.38),
+      0 0 6px rgba(233, 180, 90, 0.35),
+      inset 0 0 10px rgba(0, 0, 0, 0.45);
+  }
+  50% {
+    box-shadow:
+      0 0 0 3px rgba(98, 2, 8, 0.28),
+      0 6px 16px rgba(58, 4, 5, 0.38),
+      0 0 18px rgba(233, 180, 90, 0.7),
+      inset 0 0 10px rgba(0, 0, 0, 0.45);
+  }
+}

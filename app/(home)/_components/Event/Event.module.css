@@ -1,0 +1,629 @@
+/*==============================================
+    Event One
+===============================================*/
+.eventOne {
+    position: relative;
+    display: block;
+    padding: 140px 0 0px;
+    z-index: 1;
+}
+
+/* Section head: centred heading */
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    margin-bottom: 30px;
+}
+
+.head :global(.section-title) {
+    margin-bottom: 0;
+    flex: 0 1 auto;
+}
+
+.single {
+    position: relative;
+    display: block;
+    background-color: var(--anity-white);
+    border: 1px solid var(--anity-extra-two);
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    margin-bottom: 30px;
+    padding: 19px 19px 29px;
+}
+
+.imgBox {
+    position: relative;
+    display: block;
+}
+
+.img {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.img::after {
+    background: rgba(var(--anity-white-rgb, 255, 255, 255), 0.3);
+    bottom: 0;
+    content: "";
+    left: 50%;
+    position: absolute;
+    right: 51%;
+    top: 0;
+    opacity: 1;
+    pointer-events: none;
+    transition: all 400ms linear;
+}
+
+.single:hover .img::after {
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: all 400ms linear;
+}
+
+.img::before {
+    background: rgba(var(--anity-white-rgb, 255, 255, 255), 0.3);
+    bottom: 50%;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    top: 51%;
+    opacity: 1;
+    pointer-events: none;
+    transition: all 400ms linear;
+}
+
+.single:hover .img::before {
+    bottom: 0;
+    top: 0;
+    opacity: 0;
+    transition: all 400ms linear;
+}
+
+.img img {
+    width: 100%;
+    border-radius: var(--anity-bdr-radius);
+}
+
+.date {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    border-radius: 10px;
+    background-color: var(--anity-white);
+    padding: 5px 15px 5px;
+    padding-right: 52px;
+    z-index: 2;
+}
+
+.date p {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    color: var(--anity-black);
+}
+
+.date p span {
+    color: var(--anity-extra);
+}
+
+.content {
+    position: relative;
+    display: block;
+    padding-top: 22px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+    text-transform: capitalize;
+}
+
+.title a {
+    color: var(--anity-black);
+    background: linear-gradient(to right, currentcolor 0%, currentcolor 100%) 0px 95%/0px 1px no-repeat;
+    transition: all 500ms ease;
+}
+
+.title a:hover {
+    color: var(--anity-base);
+    background-size: 100% 1px;
+}
+
+/* Shubharay Math event-one section — standard white-card grid, same language as Sadhana cards */
+.eventOne {
+  position: relative;
+  padding: 90px 0 80px;
+  background-color: #3D0A0C;
+  overflow: hidden;
+}
+
+.eventOne::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/assets/images/backgrounds/section-bg-2.png");
+  background-repeat: repeat;
+  /* tile at the artwork's native width so the flower motifs match the
+     size used in the Legacy section (section-bg-2 @ 1672px) */
+  background-size: 1170px auto;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 991px) {
+  .eventOne::before {
+    background-size: 770px auto;
+  }
+}
+
+.eventOne > :global(.container) {
+  position: relative;
+  z-index: 1;
+}
+
+.eventOne :global(.section-title__tagline) {
+  color: #F2A90A;
+  font-weight: 700;
+}
+
+.eventOne :global(.section-title__title) {
+  color: #FFF8E7;
+  text-shadow: none;
+}
+
+/* Welcome-style gold field (see .welcome-one) swapped in for the
+   section's original maroon bg; border/corners switched to the maroon
+   Welcome frame in JSX. Content colours (tagline, cards, button, etc.)
+   are keyed to the hero palette in the dedicated block further down
+   this file (search "HOME — UPCOMING EVENTS SECTION") — kept in one
+   place to avoid the two blocks drifting out of sync. */
+.eventOneWelcomeBg {
+  background-color: #F2A90A;
+  background-image: linear-gradient(180deg, #E0A238 0%, #F2A90A 45%, #CE8E24 100%);
+}
+
+.eventOneWelcomeBg::before {
+  background-image: url("/assets/images/backgrounds/section-bg.png");
+  opacity: 0.25;
+}
+
+/* Ornamental border — gold strip with maroon Om/swastik motif, framing the maroon event section */
+
+.eventOne :global(.row) {
+  align-items: stretch;
+  row-gap: 30px;
+}
+
+.single {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+  background-color: var(--anity-white);
+  box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.05);
+  border-radius: var(--anity-bdr-radius);
+  padding: 20px 20px 30px;
+  margin-bottom: 30px;
+  transition: transform 350ms ease, box-shadow 350ms ease;
+}
+
+.single:hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 20px 50px rgba(61, 10, 12, 0.12);
+}
+
+.imgBox {
+  position: relative;
+  display: block;
+}
+
+.img {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--anity-bdr-radius);
+  aspect-ratio: 4 / 3;
+}
+
+.img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #3D0A0C;
+  opacity: 0.18;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 350ms ease;
+}
+
+.single:hover .img::after {
+  opacity: 0.08;
+}
+
+.img img,
+.img video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--anity-bdr-radius);
+  transition: transform 500ms ease;
+}
+
+.single:hover .img img,
+.single:hover .img video {
+  transform: scale(1.08);
+}
+
+.eventOne .date {
+  position: static;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  margin: 0 0 14px;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: #8a8a8a;
+  white-space: nowrap;
+}
+
+.eventOne .date p {
+  position: static;
+  display: contents;
+  color: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+}
+
+.eventOne .date :global(.fa-calendar-alt) {
+  color: #F2A90A;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  padding-top: 20px;
+}
+
+.title {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.title a {
+  color: #2b2b2b;
+}
+
+.title a:hover {
+  color: #3D0A0C;
+}
+
+.cta {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn {
+  background-color: #F2A90A;
+  border-color: #F2A90A;
+  color: #3D0A0C;
+}
+
+.btn::after {
+  background-color: #FFF8E7;
+}
+
+.btn span {
+  background-color: #3D0A0C;
+  color: #F2A90A;
+}
+
+.btn:hover {
+  border-color: #FFF8E7;
+  color: #3D0A0C;
+}
+
+.btn:hover span {
+  background-color: #F2A90A;
+  color: #3D0A0C;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .eventOne {
+    padding: 80px 0 70px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .eventOne {
+    padding: 80px 0 70px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .eventOne {
+    padding: 70px 0 60px;
+  }
+}
+.eventOne {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .eventOne {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .eventOne {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .eventOne {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+/* ---- PRIMARY on maroon background (Event, CTA primary, Welcome visit-card) ---- */
+.btn {
+  background-color: #F2A90A;
+  border: 1px solid #F2A90A;
+  color: #3D0A0C;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.30);
+  padding: 7px 25px 7px;
+  padding-right: 9px;
+}
+
+.btn::after {
+  background-color: #FFFFFF;
+}
+
+.btn span {
+  background-color: #3D0A0C;
+  color: #F2A90A;
+}
+
+.btn:hover {
+  border-color: #FFFFFF;
+  color: #3D0A0C;
+}
+
+.btn:hover span {
+  background-color: #3D0A0C;
+  color: #FFFFFF;
+}
+
+/* ---- Section field ----
+   The section now uses the Welcome-style gold field (.event-one--welcome-bg,
+   defined earlier); this hero-keyed palette drives everything ON TOP of
+   it (cards, text, button), not the field itself. */
+.eventOne::before {
+  opacity: 0.42;
+}
+
+.eventOneWelcomeBg :global(.section-title__tagline) {
+  color: var(--ev-maroon-dk);
+  font-size: 19px;
+}
+
+.eventOneWelcomeBg :global(.section-title__title) {
+  color: var(--ev-ink);
+}
+
+/* ---- Cards: deep maroon on the gold field, cream text, gold accents ---- */
+.eventOneWelcomeBg .single {
+  background-color: var(--ev-maroon-dk);
+  border: 1px solid rgba(217, 152, 42, 0.35);
+  box-shadow: 0 14px 34px rgba(44, 4, 5, 0.28);
+}
+
+.eventOneWelcomeBg .single:hover {
+  border-color: var(--ev-gold);
+  box-shadow: 0 24px 52px rgba(44, 4, 5, 0.4);
+}
+
+.eventOneWelcomeBg .img::after {
+  background-color: var(--ev-ink);
+  opacity: 0.22;
+}
+
+.eventOneWelcomeBg .single:hover .img::after {
+  opacity: 0.1;
+}
+
+.eventOneWelcomeBg .date {
+  color: var(--ev-gold-pale);
+}
+
+.eventOneWelcomeBg .eventOne .date :global(.fa-calendar-alt) {
+  color: var(--ev-gold);
+}
+
+/* Event names are plain text (not links); sized up since each card
+   now carries only the name and date */
+.eventOneWelcomeBg .title {
+  color: var(--ev-cream);
+  font-size: 24px;
+}
+
+.eventOne.eventOneWelcomeBg .date {
+  font-size: 16px;
+}
+
+.eventOne.eventOneWelcomeBg .date :global(.fa-calendar-alt) {
+  font-size: 17px;
+}
+
+@media only screen and (max-width: 767px) {
+  .eventOneWelcomeBg .title {
+    font-size: 22px;
+  }
+}
+
+/* Cards show only name + date, so the date is the last line — drop the
+   gap it used to leave above the description, and pin it to the card's
+   foot so dates line up even when one name wraps to two lines */
+.eventOneWelcomeBg .date {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+/* height:100% of the column would include the card's own 30px bottom
+   margin, leaving an empty band under the date — subtract it */
+.eventOneWelcomeBg .single {
+  height: calc(100% - 30px);
+}
+
+/* ---- "View all events" button — the CTA sits directly on the gold
+   field (not on a card), so it takes a deep-maroon fill for contrast,
+   matching the section's maroon border/cards instead of blending into
+   the gold behind it ---- */
+.eventOneWelcomeBg .btn {
+  background-color: #620208;
+  border-color: #4D0601;
+  color: var(--ev-cream);
+  box-shadow: 0 8px 20px rgba(44, 4, 5, 0.35);
+}
+
+/* hover: white sweep, maroon label, gold chip (same as the header button) */
+.eventOneWelcomeBg .btn::after {
+  background-color: #FFFFFF;
+}
+
+.eventOneWelcomeBg .btn span {
+  background-color: var(--ev-gold);
+  color: var(--ev-ink);
+}
+
+.eventOneWelcomeBg .btn:hover,
+.eventOneWelcomeBg .btn:focus-visible {
+  border-color: #FFFFFF;
+  color: #620208;
+}
+
+.eventOneWelcomeBg .btn:hover span {
+  background-color: var(--ev-gold);
+  color: var(--ev-ink);
+}
+.eventOne.eventOneWelcomeBg :global(.section-title__tagline) {
+  font-size: 20px;
+}
+@media only screen and (max-width: 767px) {
+  .eventOne.eventOneWelcomeBg :global(.section-title__tagline) {
+    font-size: 18px;
+  }
+}
+
+/* Home "मठातील आगामी उत्सव": tighter, compact spacing */
+.eventOne.eventOneWelcomeBg {
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+
+.eventOneWelcomeBg .head {
+  margin-bottom: 36px;
+}
+
+/* Home events label "उत्सव-परंपरा": dark text on the gold field reads
+   thinner than the light labels on the maroon sections (same 20px / 700),
+   so thicken it to match them visually */
+.eventOneWelcomeBg :global(.section-title__tagline) {
+  font-size: 20px;
+  -webkit-text-stroke: 0.6px currentColor;
+}
+@media (max-width: 991px) {
+
+/* Footer "उपयुक्त दुवे": sit centred between the आमचे कार्य text and the
+   संपर्क माहिती column, so it has equal space on its left and right */
+  /* आमचे कार्य column sized to its text (no hidden slack after it) */
+
+/* Home events on tablet & phone (cards stacked): the card's own 30px
+   bottom margin stacked on the row's 30px row-gap (60px between cards).
+   Drop it so cards are the standard 30px apart, like the desktop gutter. */
+  .eventOneWelcomeBg .single {
+    margin-bottom: 0;
+    height: auto;
+  }
+}
+@media (max-width: 991px) {
+
+/* Home events — consistent tablet & phone rhythm:
+   heading → cards = card gap = cards → button = 30px, and equal space
+   between the ornamental border and the content at top and bottom
+   (40px tablet / 30px phone). Paddings are offset for the 30px border
+   and the title/button line boxes. */
+  .eventOne.eventOneWelcomeBg {
+    padding-top: 77px;
+    padding-bottom: 70px;
+  }
+
+  .eventOneWelcomeBg .head {
+    margin-bottom: 30px;
+  }
+
+  .eventOneWelcomeBg .cta {
+    margin-top: 30px;
+  }
+}
+@media (max-width: 767px) {
+  .eventOne.eventOneWelcomeBg {
+    padding-top: 64px;
+    padding-bottom: 60px;
+  }
+}
+
+section.eventOne.eventOneWelcomeBg {
+  padding-top: var(--section-space);
+  padding-bottom: var(--section-space);
+}
+
+section.eventOneWelcomeBg .head {
+  margin-bottom: var(--section-title-gap);
+}
+section.eventOne.eventOneWelcomeBg :global(.section-title__tagline) {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+/* labels on gold: deep maroon */
+section.eventOne.eventOneWelcomeBg :global(.section-title__tagline) {
+  color: #4D0601;
+}
+@media (max-width: 767px) {
+  section.eventOne.eventOneWelcomeBg :global(.section-title__tagline) {
+    font-size: 19px;
+  }
+}

@@ -1,0 +1,376 @@
+.featuredEvents {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .featuredEvents {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .featuredEvents {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .featuredEvents {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+/*==================================================================
+    SADHANA — FEATURED EVENTS SECTION (.featured-events) — same gold
+    field + maroon Om/swastik border as Upcoming Events, styled as a
+    plain, minimalist 2-up editorial layout (large image + name + one
+    line of copy — no card chrome, no icons, no button).
+    Colour scheme keyed to the shared hero palette (--ev-*).
+==================================================================*/
+.featuredEvents {
+  position: relative;
+  overflow: hidden;
+}
+
+.featuredEventsWelcomeBg {
+  background-color: #F2A90A;
+  background-image: linear-gradient(180deg, #E0A238 0%, #F2A90A 45%, #CE8E24 100%);
+}
+
+.featuredEventsWelcomeBg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("/assets/images/backgrounds/section-bg.png");
+  background-repeat: repeat;
+  background-size: 1170px auto;
+  opacity: 0.25;
+}
+
+@media (max-width: 991px) {
+  .featuredEventsWelcomeBg::before {
+    background-size: 770px auto;
+  }
+}
+
+.featuredEvents > :global(.container) {
+  position: relative;
+  z-index: 1;
+}
+
+.featuredEvents :global(.section-title__tagline) {
+  color: var(--ev-maroon-dk);
+  font-weight: 700;
+  font-size: 19px;
+}
+
+.featuredEvents :global(.section-title__title) {
+  color: var(--ev-ink);
+  text-shadow: none;
+}
+
+/* ---- Orange flags flanking the section label/heading ----
+   The source art has its solid/anchored edge on the LEFT and its
+   flowing, tattered swallowtail edge on the RIGHT. So the tattered
+   edge always points outward, away from the text: the left flag is
+   mirrored (anchor edge innermost, facing the heading), the right
+   flag is used as-is (anchor edge already faces inward). */
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  margin-top: -30px;
+  margin-bottom: 30px;
+}
+
+.head :global(.section-title) {
+  margin-bottom: 0;
+  flex: 0 1 auto;
+}
+
+.flag {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  min-width: 0;
+  max-width: 420px;
+}
+
+.flagLeft {
+  justify-content: flex-end;
+}
+
+.flagRight {
+  justify-content: flex-start;
+}
+
+.flag img,
+.flag video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 420px;
+  filter: drop-shadow(0 6px 14px rgba(44, 4, 5, 0.3));
+}
+
+.flagLeft img,
+.flagLeft video {
+  transform: scaleX(-1);
+}
+
+@media (max-width: 991px) {
+  .flag {
+    display: none;
+  }
+
+  /* The -30px margin-top on .featured-events__head exists to offset the
+     flag videos' own vertical padding on desktop — with the flags hidden
+     here, it was pulling the heading up flush against the section's top
+     edge instead of leaving standard breathing room. */
+  .head {
+    margin-top: 0;
+  }
+}
+
+.featuredEvents :global(.row) {
+  row-gap: 34px;
+  align-items: stretch;
+}
+
+/* ---- Single feature: plain image + name + one line, no card box ---- */
+.single {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.img {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--anity-bdr-radius);
+  aspect-ratio: 1672 / 941;
+}
+
+.img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 500ms ease;
+}
+
+.single:hover .img img {
+  transform: scale(1.05);
+}
+
+/* Date tag — a plain gold pill, no icon, keeps the minimalist tone */
+
+.content {
+  padding-top: 22px;
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 10px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.title a {
+  color: var(--ev-ink);
+}
+
+.title a:hover,
+.title a:focus-visible {
+  color: var(--ev-maroon-dk);
+}
+
+.text {
+  margin: 0 auto;
+  max-width: 90%;
+  color: var(--ev-maroon-dk);
+  line-height: 1.7;
+}
+
+@media (max-width: 767px) {
+  .title {
+    font-size: 22px;
+  }
+  /* .featured-events__head's own margin-bottom (30px) is what actually
+     drives the heading-to-image gap here, since .featured-events__head
+     .section-title zeroes the title's own margin-bottom. */
+  .head {
+    margin-bottom: 16px;
+  }
+  .featuredEvents :global(.row) {
+    row-gap: 20px;
+  }
+  .content {
+    padding-top: 14px;
+  }
+}
+section.featuredEvents :global(.section-title__tagline) {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+section.featuredEvents :global(.section-title__tagline) {
+  color: #4D0601;
+}
+
+/* कार्यक्रम — आषाढी / कार्तिकी descriptions */
+section.featuredEvents .text {
+  color: #2C0405;
+  font-size: 18px;
+  font-weight: 500;
+}
+@media (max-width: 767px) {
+  section.featuredEvents :global(.section-title__tagline) {
+    font-size: 19px;
+  }
+
+  section.featuredEvents .text {
+    font-size: 17px;
+  }
+}
+section.featuredEvents.featuredEventsWelcomeBg {
+  padding-top: var(--section-space);
+  padding-bottom: var(--section-space);
+}
+
+section.featuredEventsWelcomeBg .head {
+  margin-bottom: var(--section-title-gap);
+}
+
+/* the head's -30px top offset only balanced the flag videos, which are
+   hidden now — let the heading start at the section padding */
+section.featuredEventsWelcomeBg .head {
+  margin-top: 0;
+}
+
+/* मठातील नियमित सेवा — hover: a soft diagonal band of light sweeps
+   once across the photo, like light catching gold; the photo stays still */
+section.featuredEventsWelcomeBg .img::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  z-index: 2;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(100deg,
+    rgba(255, 248, 225, 0) 0%,
+    rgba(255, 248, 225, 0.12) 35%,
+    rgba(255, 244, 205, 0.5) 50%,
+    rgba(255, 248, 225, 0.12) 65%,
+    rgba(255, 248, 225, 0) 100%);
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
+
+section.featuredEventsWelcomeBg .single:hover .img img {
+  transform: none;
+}
+
+@media (hover: hover) {
+  section.featuredEventsWelcomeBg .single:hover .img::after {
+    animation: featured-events-shine 950ms ease-in-out;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section.featuredEventsWelcomeBg .single:hover .img::after {
+    animation: none;
+  }
+}
+
+/* मठातील नियमित कार्यक्रम — responsive sizing. Two cards side by side
+   from tablet up (stacked, each photo was ~690px wide on tablet), one
+   column on phones; type scales down with the cards. */
+section.featuredEventsWelcomeBg :global(.row) {
+  --bs-gutter-x: 30px;
+  row-gap: 40px;
+}
+
+section.featuredEventsWelcomeBg .content {
+  padding-top: 20px;
+}
+
+section.featuredEventsWelcomeBg .title {
+  margin-bottom: 8px;
+  font-size: 26px;
+  line-height: 1.3;
+}
+
+section.featuredEventsWelcomeBg .text {
+  max-width: 560px;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+@media (max-width: 1199px) {
+  section.featuredEventsWelcomeBg :global(.row) {
+    --bs-gutter-x: 24px;
+  }
+  section.featuredEventsWelcomeBg .title {
+    font-size: 23px;
+  }
+  section.featuredEventsWelcomeBg .text {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  section.featuredEventsWelcomeBg :global(.row) {
+    --bs-gutter-x: 20px;
+  }
+  section.featuredEventsWelcomeBg .content {
+    padding-top: 16px;
+  }
+  section.featuredEventsWelcomeBg .title {
+    font-size: 20px;
+  }
+  section.featuredEventsWelcomeBg .text {
+    max-width: none;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+}
+
+@media (max-width: 767px) {
+  section.featuredEventsWelcomeBg :global(.row) {
+    row-gap: 36px;
+  }
+  section.featuredEventsWelcomeBg .content {
+    padding-top: 14px;
+  }
+  section.featuredEventsWelcomeBg .title {
+    font-size: 21px;
+    margin-bottom: 6px;
+  }
+  section.featuredEventsWelcomeBg .text {
+    max-width: 340px;
+    font-size: 15.5px;
+    line-height: 1.65;
+  }
+  /* keep "मठातील नियमित कार्यक्रम" on one line on most phones */
+  section.featuredEventsWelcomeBg :global(.section-title__title) {
+    font-size: 29px;
+  }
+}
+
+@media (max-width: 359px) {
+  section.featuredEventsWelcomeBg :global(.section-title__title) {
+    font-size: 25px;
+  }
+}
+
+@keyframes featured-events-shine {
+  from { left: -75%; }
+  to { left: 130%; }
+}
