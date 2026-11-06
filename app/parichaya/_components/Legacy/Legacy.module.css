@@ -6,7 +6,7 @@
 .legacyOne {
   position: relative;
   overflow: hidden;
-  padding: 90px 0;
+  padding: var(--space-9) 0;
   background-color: #3D0A0C;
   display: flex;
   flex-direction: column;
@@ -18,16 +18,16 @@
 .legacyOne > :global(.section-title) {
   position: relative;
   z-index: 1;
-  margin-bottom: 48px;
+  margin-bottom: var(--space-6);
 }
 
 .legacyOne :global(.section-title__tagline) {
-  color: #F2A90A;
+  color: var(--c-gold);
   font-weight: 700;
 }
 
 .legacyOne :global(.section-title__title) {
-  color: #FFF8E7;
+  color: var(--c-white);
   text-shadow: none;
 }
 
@@ -93,8 +93,7 @@
     pointer-events: none;
     transform-origin: 50% 100%;
     filter:
-      drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5))
-      drop-shadow(0 0 30px rgba(242, 169, 10, 0.28));
+      none;
     opacity: 1;
     transition:
       opacity 900ms ease,
@@ -136,7 +135,7 @@
   .legacyOneBookOpen .legacyOneAsideLeft {
     opacity: 0;
     transform: translate(-100%, -42%);
-    filter: drop-shadow(0 16px 26px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 6px rgba(242, 169, 10, 0.06));
+    filter: none;
     transition:
       opacity 620ms ease,
       transform 720ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -145,7 +144,7 @@
   .legacyOneBookOpen .legacyOneAsideRight {
     opacity: 0;
     transform: translate(100%, -42%);
-    filter: drop-shadow(0 16px 26px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 6px rgba(242, 169, 10, 0.06));
+    filter: none;
     transition:
       opacity 620ms ease,
       transform 720ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -168,7 +167,7 @@
 }
 @media (max-width: 767px) {
   .legacyOne {
-    padding: 64px 0;
+    padding: var(--space-7) 0;
     min-height: 0;
   }
 
@@ -187,12 +186,12 @@
   height: 30px;
   background-color: #F2A90A;
   background-image:
-    radial-gradient(circle at 50% 50%, rgba(61, 10, 12, 0.14) 0%, transparent 70%),
+    
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%235C1012'%3E%3Ctext x='25' y='22' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%235C1012' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%235C1012' opacity='0.85'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: repeat-x, repeat-x;
   background-position: center, center;
   background-size: 100% 100%, 100px 30px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
+  box-shadow: none;
 }
 
 .divineBorderLegacy:before,
@@ -215,7 +214,7 @@
   height: auto;
   z-index: 4;
   width: 30px;
-  background-color: #F2A90A;
+  background-color: var(--c-gold);
   background-image:
     radial-gradient(circle at 50% 50%, rgba(61, 10, 12, 0.14) 0%, transparent 70%),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%235C1012'%3E%3Ctext x='15' y='32' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%235C1012' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%235C1012' opacity='0.85'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
@@ -243,7 +242,7 @@
   z-index: 6;
   width: 30px;
   height: 30px;
-  background-color: #F2A90A;
+  background-color: var(--c-gold);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
   pointer-events: none;
 }
@@ -273,11 +272,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 36px;
+  gap: var(--space-6);
   width: 100%;
   max-width: 1320px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--space-5);
 }
 
 .legacyBookWrap {
@@ -310,7 +309,7 @@
   right: 5%;
   bottom: -34px;
   height: 50px;
-  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, transparent 72%);
+  
   z-index: -1;
   pointer-events: none;
   transition: transform 620ms cubic-bezier(0.22, 1, 0.36, 1), opacity 620ms ease;
@@ -357,7 +356,7 @@
     radial-gradient(circle at 8% 8%, rgba(61, 10, 12, 0.06) 0%, transparent 40%),
     radial-gradient(circle at 92% 92%, rgba(61, 10, 12, 0.05) 0%, transparent 40%),
     linear-gradient(135deg, #FFFBF0 0%, #FBF2D9 55%, #F5E7C6 100%);
-  border: 2px solid rgba(61, 10, 12, 0.3);
+  border: 2px solid var(--c-maroon);
   box-shadow:
     inset 0 0 0 1px rgba(61, 10, 12, 0.08),
     inset -14px 0 22px -16px rgba(0, 0, 0, 0.4),
@@ -365,7 +364,7 @@
     inset 0 -4px 8px -4px rgba(61, 10, 12, 0.16);
   overflow: hidden;
   border-radius: 10px;
-  padding: 20px;
+  padding: var(--space-4);
 }
 
 .number {
@@ -373,9 +372,9 @@
   right: 26px;
   bottom: 18px;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.5px;
-  color: #8a5a1f;
+  color: var(--c-maroon);
   opacity: 0.65;
 }
 
@@ -384,9 +383,9 @@
   width: 100%;
   max-width: 220px;
   aspect-ratio: 1 / 1;
-  margin: 0 auto 22px;
+  margin: 0 auto var(--space-4);
   border-radius: 6px;
-  box-shadow: 0 18px 32px rgba(0, 0, 0, 0.35);
+  box-shadow: none;
   flex: 0 0 auto;
 }
 
@@ -415,7 +414,7 @@
   position: absolute;
   width: 18px;
   height: 18px;
-  border: 2px solid #3D0A0C;
+  border: 2px solid var(--c-maroon);
   background: #FFFBF0;
   transform: rotate(45deg);
 }
@@ -462,7 +461,7 @@
 .legacyBookPagePortrait {
   align-items: stretch;
   justify-content: stretch;
-  padding: 10px;
+  padding: var(--space-2);
 }
 
 .body {
@@ -477,7 +476,7 @@
 .name {
   display: block;
   font-family: var(--font), serif;
-  font-size: 32px;
+  font-size: var(--text-lg);
   font-weight: 400;
   line-height: 1.25;
   color: #1A1A1A;
@@ -492,16 +491,16 @@
 .role {
   display: block;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.2px;
-  color: #1A1A1A;
+  color: var(--c-black);
   text-align: center;
-  margin-top: 6px;
+  margin-top: var(--space-1);
   margin-bottom: 18px;
 }
 
 .text {
-  color: #1A1A1A;
+  color: var(--c-black);
   font-size: 18px;
   line-height: 31px;
   margin-bottom: 0;
@@ -519,9 +518,7 @@
   background-repeat: no-repeat;
   border-radius: 16px;
   box-shadow:
-    inset 0 2px 0 rgba(255, 255, 255, 0.35),
-    inset 0 -3px 8px rgba(0, 0, 0, 0.18),
-    0 18px 40px rgba(0, 0, 0, 0.45);
+    none;
 }
 
 .coverInner {
@@ -535,7 +532,7 @@
   gap: 26px;
   width: 100%;
   height: 100%;
-  padding: 40px;
+  padding: var(--space-6);
   text-align: center;
 }
 
@@ -548,13 +545,10 @@
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  background: rgba(61, 10, 12, 0.1);
+  
   border: 5px solid #3D0A0C;
   box-shadow:
-    0 3px 4px rgba(0, 0, 0, 0.45),
-    0 1px 0 rgba(255, 255, 255, 0.15),
-    inset 0 2px 3px rgba(0, 0, 0, 0.5),
-    inset 0 -1px 1px rgba(255, 255, 255, 0.2);
+    none;
 }
 
 .coverSymbol img {
@@ -589,14 +583,14 @@
 .coverTitleBar {
   font-size: 0.85em;
   font-weight: 400;
-  color: #000000;
+  color: var(--c-black);
   -webkit-text-stroke: 0.8px #000000;
 }
 
 .coverSubtitle {
   position: relative;
   z-index: 1;
-  font-size: 23px;
+  font-size: var(--text-md);
   font-weight: 800;
   letter-spacing: 0.3px;
   color: #000000;
@@ -606,7 +600,7 @@
 }
 
 .coverSubtitleBack {
-  font-size: 26px;
+  font-size: var(--text-md);
   font-weight: 800;
   letter-spacing: 0.4px;
 }
@@ -614,17 +608,17 @@
 .cta {
   position: relative;
   z-index: 5;
-  margin-top: 10px;
+  margin-top: var(--space-2);
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 18px 44px;
+  padding: var(--space-4) var(--space-6);
   border: 2px solid #3D0A0C;
   border-radius: 999px;
   background: #3D0A0C;
-  color: #F3D68A;
+  color: var(--c-gold);
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.4px;
   cursor: pointer;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
@@ -653,21 +647,21 @@
   width: 22px;
   height: 22px;
   flex: 0 0 auto;
-  font-size: 14px;
+  font-size: var(--text-sm);
   color: currentColor;
 }
 
 /* one effect on hover: fill flips to ivory, text/border go maroon */
 .cta:hover,
 .cta:focus-visible {
-  background: #FFF8E7;
+  background: var(--c-white);
   color: #3D0A0C;
-  border-color: #C8971B;
+  border-color: var(--c-gold);
   box-shadow: 0 10px 22px rgba(61, 10, 12, 0.35);
 }
 
 .cta:focus-visible {
-  outline: 3px solid rgba(61, 10, 12, 0.4);
+  outline: 3px solid var(--c-maroon);
   outline-offset: 3px;
 }
 
@@ -734,7 +728,7 @@
 
 /* ===== StPageFlip internals — realistic shadow/gradient it injects during flip ===== */
 .legacyBook :global(.stf__parent) {
-  filter: drop-shadow(0 40px 90px rgba(0, 0, 0, 0.55));
+  filter: none;
 }
 
 .legacyBook :global(.stf__block) {
@@ -751,18 +745,18 @@
   width: 58px;
   height: 58px;
   border-radius: 50%;
-  border: 2px solid #E8C766;
+  border: 2px solid var(--c-gold);
   background: radial-gradient(circle at 35% 30%, #6E1518 0%, #3D0A0C 60%, #2C0708 100%);
-  color: #F3D68A;
+  color: var(--c-gold);
   cursor: pointer;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -3px 6px rgba(0, 0, 0, 0.4);
+  box-shadow: none;
   transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
 }
 
 .legacyBookArrowIcon {
   width: 20px;
   height: 20px;
-  stroke: #F3D68A;
+  stroke: var(--c-gold);
   stroke-width: 2.4;
   fill: none;
   stroke-linecap: round;
@@ -776,7 +770,7 @@
 
 /* one effect on hover: border brightens, shadow deepens slightly */
 .legacyBookArrow:hover:not(:disabled) {
-  border-color: #FFF6E4;
+  border-color: var(--c-white);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
@@ -787,18 +781,18 @@
 
 @media (min-width: 768px) and (max-width: 991px) {
   .legacyOne {
-    padding: 56px 0;
+    padding: var(--space-7) 0;
     min-height: 0;
   }
 
   .legacyOne > :global(.section-title) {
-    margin-bottom: 24px;
+    margin-bottom: var(--space-5);
   }
 
   .legacyBookStage {
     flex-direction: column;
     gap: 20px;
-    padding: 0 14px;
+    padding: 0 var(--space-3);
   }
 
   .legacyBookWrap {
@@ -817,7 +811,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 24px;
+    gap: var(--space-5);
   }
 
   .legacyBookArrow {
@@ -831,13 +825,13 @@
   }
 
   .legacyBookPage {
-    padding: 22px 22px 30px;
+    padding: var(--space-4) var(--space-4) var(--space-5);
   }
 
   .number {
     right: 20px;
     bottom: 14px;
-    font-size: 12px;
+    font-size: var(--text-sm);
   }
 
   .photo:not(.photoFull) {
@@ -857,28 +851,28 @@
   }
 
   .name {
-    font-size: 30px;
+    font-size: var(--text-lg);
     padding-top: 0;
   }
 
   .role {
-    font-size: 20px;
+    font-size: var(--text-md);
     margin-top: 6px;
-    margin-bottom: 16px;
+    margin-bottom: var(--space-3);
   }
 
   .text {
-    font-size: 19px;
+    font-size: var(--text-md);
     line-height: 30px;
   }
 
   .coverInner {
-    gap: 24px;
+    gap: var(--space-5);
     padding: 32px;
   }
 
   .coverTitle {
-    font-size: 52px;
+    font-size: var(--text-lg);
   }
 
   .coverSymbol {
@@ -887,29 +881,29 @@
   }
 
   .coverSubtitle {
-    font-size: 22px;
+    font-size: var(--text-md);
     line-height: 1.4;
   }
 
   .coverSubtitleBack {
-    font-size: 30px;
+    font-size: var(--text-lg);
   }
 
   .cta {
-    padding: 16px 40px;
+    padding: var(--space-3) var(--space-6);
     font-size: 19px;
   }
 }
 
 @media (max-width: 767px) {
   .legacyOne > :global(.section-title) {
-    margin-bottom: 18px;
+    margin-bottom: var(--space-4);
   }
 
   .legacyBookStage {
     flex-direction: column;
     gap: 16px;
-    padding: 0 10px;
+    padding: 0 var(--space-2);
   }
 
   .legacyBookWrap {
@@ -928,7 +922,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: var(--space-4);
   }
 
   .legacyBookArrow {
@@ -942,13 +936,13 @@
   }
 
   .legacyBookPage {
-    padding: 16px;
+    padding: var(--space-3);
   }
 
   .number {
     right: 18px;
     bottom: 12px;
-    font-size: 11px;
+    font-size: var(--text-sm);
   }
 
   .photo:not(.photoFull) {
@@ -962,23 +956,23 @@
   }
 
   .name {
-    font-size: 23px;
+    font-size: var(--text-md);
     padding-top: 0;
   }
 
   .role {
-    font-size: 16px;
+    font-size: var(--text-sm);
     margin-top: 5px;
-    margin-bottom: 12px;
+    margin-bottom: var(--space-2);
   }
 
   .text {
-    font-size: 16px;
+    font-size: var(--text-sm);
     line-height: 25.5px;
   }
 
   .coverInner {
-    gap: 16px;
+    gap: var(--space-3);
     padding: 22px;
   }
 
@@ -989,26 +983,26 @@
   }
 
   .coverTitle {
-    font-size: 36px;
+    font-size: var(--text-lg);
   }
 
   .coverSubtitle {
-    font-size: 16px;
+    font-size: var(--text-sm);
   }
 
   .coverSubtitleBack {
-    font-size: 22px;
+    font-size: var(--text-md);
   }
 
   .cta {
-    padding: 14px 36px;
+    padding: var(--space-3) var(--space-6);
     font-size: 16px;
   }
 }
 
 @media (max-width: 400px) {
   .legacyBookStage {
-    gap: 12px;
+    gap: var(--space-2);
     padding: 0 6px;
   }
 
@@ -1017,7 +1011,7 @@
   }
 
   .legacyBookArrowRow {
-    gap: 16px;
+    gap: var(--space-3);
   }
 
   .legacyBookArrow {
@@ -1031,13 +1025,13 @@
   }
 
   .legacyBookPage {
-    padding: 12px;
+    padding: var(--space-2);
   }
 
   .number {
     right: 14px;
     bottom: 10px;
-    font-size: 10px;
+    font-size: var(--text-sm);
   }
 
   .photo:not(.photoFull) {
@@ -1051,28 +1045,28 @@
   }
 
   .name {
-    font-size: 20px;
+    font-size: var(--text-md);
     padding-top: 0;
   }
 
   .role {
-    font-size: 14px;
+    font-size: var(--text-sm);
     margin-top: 4px;
-    margin-bottom: 10px;
+    margin-bottom: var(--space-2);
   }
 
   .text {
-    font-size: 14px;
+    font-size: var(--text-sm);
     line-height: 21.5px;
   }
 
   .coverInner {
-    gap: 14px;
+    gap: var(--space-3);
     padding: 18px;
   }
 
   .coverTitle {
-    font-size: 28px;
+    font-size: var(--text-lg);
   }
 
   .coverSymbol {
@@ -1081,32 +1075,32 @@
   }
 
   .coverSubtitle {
-    font-size: 14px;
+    font-size: var(--text-sm);
   }
 
   .coverSubtitleBack {
-    font-size: 18px;
+    font-size: var(--text-sm);
   }
 }
 .legacyOne {
-  padding-top: 100px;
+  padding-top: var(--space-9);
   padding-bottom: 100px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .legacyOne {
-    padding-top: 100px;
+    padding-top: var(--space-9);
     padding-bottom: 100px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .legacyOne {
-    padding-top: 80px;
+    padding-top: var(--space-9);
     padding-bottom: 80px;
   }
 }
 @media only screen and (max-width: 767px) {
   .legacyOne {
-    padding-top: 60px;
+    padding-top: var(--space-7);
     padding-bottom: 60px;
   }
 }
@@ -1143,8 +1137,7 @@
 /* ---- Diya-pillar glow (desktop) — retint warm gold to the hero gold ---- */
   .legacyOneAside {
     filter:
-      drop-shadow(0 24px 40px rgba(0, 0, 0, 0.55))
-      drop-shadow(0 0 34px rgba(233, 180, 90, 0.34));
+      none;
   }
 }
 
@@ -1157,7 +1150,7 @@
 
 /* ---- Cover symbol ring ---- */
 .coverSymbol {
-  background: rgba(98, 2, 8, 0.10);
+  
   border-color: var(--lg-maroon);
 }
 
@@ -1178,7 +1171,7 @@
 }
 
 .cta:focus-visible {
-  outline-color: rgba(98, 2, 8, 0.45);
+  outline-color: var(--c-maroon);
 }
 
 /* ---- Prev / next arrows — maroon medallion, gold ring ---- */
@@ -1208,15 +1201,15 @@
   on continued pages, and the chapter-quote page
 ==================================================================*/
 .text + .text {
-  margin-top: 12px;
+  margin-top: var(--space-2);
 }
 
 .running {
   display: block;
   margin-bottom: 14px;
-  padding-bottom: 8px;
+  padding-bottom: var(--space-1);
   border-bottom: 1px solid rgba(26, 26, 26, 0.18);
-  font-size: 15px;
+  font-size: var(--text-sm);
   font-weight: 600;
   letter-spacing: 0.2px;
   color: #620208;
@@ -1229,42 +1222,42 @@
   align-items: center;
   justify-content: center;
   gap: 14px;
-  padding: 24px 28px;
+  padding: var(--space-5) var(--space-5);
   text-align: center;
 }
 
 .quoteMark {
-  font-size: 30px;
+  font-size: var(--text-lg);
   line-height: 1;
-  color: #B47A1E;
+  color: var(--c-gold);
 }
 
 .quoteText {
   margin: 0;
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.6;
-  color: #620208;
+  color: var(--c-maroon);
 }
 
 .quoteSource {
-  margin-top: 6px;
+  margin-top: var(--space-1);
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 400;
   color: #1A1A1A;
   opacity: 0.75;
 }
 
 @media (max-width: 767px) {
   .quoteText {
-    font-size: 20px;
+    font-size: var(--text-md);
   }
 }
 @keyframes legacyPillarLight {
   0% {
     opacity: 0;
     transform: translate(-100%, -50%) translateY(26px);
-    filter: drop-shadow(0 14px 26px rgba(0, 0, 0, 0.2)) drop-shadow(0 0 0 rgba(242, 169, 10, 0));
+    filter: none;
   }
   60% {
     opacity: 1;
@@ -1272,31 +1265,28 @@
   100% {
     opacity: 1;
     transform: translate(-100%, -50%) translateY(0);
-    filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 30px rgba(242, 169, 10, 0.28));
+    filter: none;
   }
 }
 @keyframes legacyPillarFlameL {
   0%, 100% {
     filter:
-      drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5))
-      drop-shadow(0 0 24px rgba(242, 169, 10, 0.24));
+      none;
   }
   40% {
     filter:
-      drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5))
-      drop-shadow(0 0 40px rgba(255, 198, 92, 0.42));
+      none;
   }
   70% {
     filter:
-      drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5))
-      drop-shadow(0 0 30px rgba(248, 184, 74, 0.32));
+      none;
   }
 }
 @keyframes legacyPillarLightR {
   0% {
     opacity: 0;
     transform: translate(100%, -50%) translateY(26px);
-    filter: drop-shadow(0 14px 26px rgba(0, 0, 0, 0.2)) drop-shadow(0 0 0 rgba(242, 169, 10, 0));
+    filter: none;
   }
   60% {
     opacity: 1;
@@ -1304,24 +1294,21 @@
   100% {
     opacity: 1;
     transform: translate(100%, -50%) translateY(0);
-    filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 30px rgba(242, 169, 10, 0.28));
+    filter: none;
   }
 }
 @keyframes legacyPillarFlameR {
   0%, 100% {
     filter:
-      drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5))
-      drop-shadow(0 0 24px rgba(242, 169, 10, 0.24));
+      none;
   }
   40% {
     filter:
-      drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5))
-      drop-shadow(0 0 40px rgba(255, 198, 92, 0.42));
+      none;
   }
   70% {
     filter:
-      drop-shadow(0 24px 40px rgba(0, 0, 0, 0.5))
-      drop-shadow(0 0 30px rgba(248, 184, 74, 0.32));
+      none;
   }
 }
 @keyframes legacyBookClose {
