@@ -4,7 +4,7 @@
 .errorPage {
     position: relative;
     display: block;
-    padding: 130px 0 140px;
+    padding: var(--space-9) 0 var(--space-9);
     z-index: 1;
 }
 
@@ -23,15 +23,15 @@
 .title {
     position: relative;
     display: inline-block;
-    font-size: 350px;
+    font-size: var(--text-lg);
     line-height: 350px;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--anity-base);
     z-index: 2;
 }
 
 .tagline {
-    font-size: 40px;
+    font-size: var(--text-lg);
     line-height: 49px;
     font-weight: 400;
     color: var(--anity-black);
@@ -40,13 +40,13 @@
 }
 
 .text {
-    font-size: 20px;
+    font-size: var(--text-md);
 }
 
 .form {
     position: relative;
     display: block;
-    margin: 47px auto 20px;
+    margin: var(--space-6) auto var(--space-4);
 }
 
 .formInput {
@@ -66,7 +66,7 @@
     font-size: 14px;
     color: var(--anity-gray);
     font-weight: 500;
-    padding-left: 50px;
+    padding-left: var(--space-7);
     padding-right: 75px;
     border-radius: var(--anity-bdr-radius);
 }
@@ -74,7 +74,7 @@
 .form button[type="submit"] {
     background-color: transparent;
     color: var(--anity-black);
-    font-size: 22px;
+    font-size: var(--text-md);
     position: absolute;
     top: 0;
     right: 0px;
@@ -90,12 +90,12 @@
 @media only screen and (max-width: 767px) {
 
   .title {
-      font-size: 150px;
+      font-size: var(--text-lg);
       line-height: 150px;
   }
 
   .form input[type="search"] {
-      padding-left: 20px;
+      padding-left: var(--space-4);
       padding-right: 45px;
   }
 
