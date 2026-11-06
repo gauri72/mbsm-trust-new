@@ -754,14 +754,8 @@
 }
 
 .legacyBookArrowIcon {
-  width: 20px;
-  height: 20px;
-  stroke: var(--c-gold);
-  stroke-width: 2.4;
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.3));
+  font-size: var(--text-sm);
+  color: var(--c-gold);
 }
 
 .legacyBookArrowPrev .legacyBookArrowIcon {
@@ -820,8 +814,7 @@
   }
 
   .legacyBookArrowIcon {
-    width: 17px;
-    height: 17px;
+    font-size: var(--text-sm);
   }
 
   .legacyBookPage {

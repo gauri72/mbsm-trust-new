@@ -257,9 +257,7 @@ export default function Legacy() {
                     disabled={pageIndex === 0}
                     aria-label="मागील पान"
                 >
-                    <svg className={styles.legacyBookArrowIcon} viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M9 5l7 7-7 7" />
-                    </svg>
+                    <i className={`fas fa-chevron-right ${styles.legacyBookArrowIcon}`} aria-hidden="true"></i>
                 </button>
 
                 {/* Desktop diya-pillars hugging the book's left/right edges —
@@ -313,9 +311,7 @@ export default function Legacy() {
                     disabled={pageIndex === totalPages - 1}
                     aria-label="पुढील पान"
                 >
-                    <svg className={styles.legacyBookArrowIcon} viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M9 5l7 7-7 7" />
-                    </svg>
+                    <i className={`fas fa-chevron-right ${styles.legacyBookArrowIcon}`} aria-hidden="true"></i>
                 </button>
 
                 <div className={styles.legacyBookArrowRow}>
@@ -326,9 +322,7 @@ export default function Legacy() {
                         disabled={pageIndex === 0}
                         aria-label="मागील पान"
                     >
-                        <svg className={styles.legacyBookArrowIcon} viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M9 5l7 7-7 7" />
-                        </svg>
+                        <i className={`fas fa-chevron-right ${styles.legacyBookArrowIcon}`} aria-hidden="true"></i>
                     </button>
                     <button
                         type="button"
@@ -337,9 +331,7 @@ export default function Legacy() {
                         disabled={pageIndex === totalPages - 1}
                         aria-label="पुढील पान"
                     >
-                        <svg className={styles.legacyBookArrowIcon} viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M9 5l7 7-7 7" />
-                        </svg>
+                        <i className={`fas fa-chevron-right ${styles.legacyBookArrowIcon}`} aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
