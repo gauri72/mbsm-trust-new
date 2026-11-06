@@ -20,7 +20,7 @@ export const ABOUT_BOOK = [
     },
     {
         num: "२",
-        image: "assets/media/parichaya/about-2.png",
+        image: "assets/media/parichaya/about-2.webp",
         name: "कोठारी कुटुंबाचा वारसा",
         quote: "तीन पिढ्यांनी केलेल्या सत्कर्माचे पुण्य स्वामी महाराजांच्या पाठीशी उभे राहिले.",
         paras: [
@@ -31,7 +31,7 @@ export const ABOUT_BOOK = [
     },
     {
         num: "३",
-        image: "assets/media/parichaya/about-3.png",
+        image: "assets/media/parichaya/about-3.webp",
         name: "स्वामी महाराज आणि व्यवसाय",
         quote: "आपले काम नीट करावे, सत्कर्म करावे आणि व्यवसाय प्रामाणिकपणे चालवावा — हीच त्यांची श्रद्धा होती.",
         paras: [
@@ -57,7 +57,7 @@ export const ABOUT_BOOK = [
     },
     {
         num: "५",
-        image: "assets/media/parichaya/about-5.png",
+        image: "assets/media/parichaya/about-5.webp",
         name: "पाचोरा येथे दत्त आणि शिवदर्शन",
         quote: "तू जिथे जाशील तिथे मी सदैव तुझ्यासोबत आहे.",
         paras: [
@@ -86,7 +86,7 @@ export const ABOUT_BOOK = [
     },
     {
         num: "७",
-        image: "assets/media/parichaya/about-7.png",
+        image: "assets/media/parichaya/about-7.webp",
         name: "ज्ञानदीप प्रज्वलित झाला, सत्याची प्रचिती आली",
         quote: "काडी पेटवण्याआधीच वात आपोआप प्रज्वलित झाली आणि सर्व शंका दूर झाल्या.",
         paras: [
@@ -136,7 +136,7 @@ export const ABOUT_BOOK = [
     },
     {
         num: "१०",
-        image: "assets/media/parichaya/about-10.png",
+        image: "assets/media/parichaya/about-10.webp",
         name: "लोककल्याणाचे उपक्रम — निःस्वार्थ लोकसेवा",
         quote: "मी घेण्यासाठी नव्हे, तर देण्यासाठी आलो आहे.",
         paras: [

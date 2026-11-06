@@ -3,7 +3,6 @@ import { useEffect, useRef } from "react"
 import { Autoplay, EffectFade } from "swiper/modules"
 import { Swiper, SwiperSlide, useSwiperSlide } from "swiper/react"
 import { motion, MotionConfig } from "framer-motion"
-import usePageReady from "../../../_shared/usePageReady"
 import { SLIDE_SCALE, SLIDE_TRANSITION } from "../../../_shared/heroMotion"
 import styles from "./HeroSlider.module.css"
 
@@ -15,8 +14,8 @@ import styles from "./HeroSlider.module.css"
    ========================================================================== */
 
 const HOME_SLIDES = [
-    "/assets/media/home/slider-v1-img-1-plain.jpg",
-    "/assets/media/home/slider-v1-img-2-plain.jpg",
+    "/assets/media/home/slider-v1-img-1-plain.webp",
+    "/assets/media/home/slider-v1-img-2-plain.webp",
 ]
 
 // the slideshow starts a moment after the page is shown
@@ -52,17 +51,15 @@ function Slide({ src }) {
 }
 
 export default function HeroSlider() {
-    const ready = usePageReady()
     const swiperRef = useRef(null)
 
     useEffect(() => {
-        if (!ready) return
         const timer = setTimeout(() => {
             const swiper = swiperRef.current
             if (swiper && !swiper.destroyed) swiper.autoplay.start()
         }, SLIDESHOW_START_MS)
         return () => clearTimeout(timer)
-    }, [ready])
+    }, [])
 
     return (
         <MotionConfig reducedMotion="user">

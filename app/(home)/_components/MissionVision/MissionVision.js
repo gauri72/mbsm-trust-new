@@ -35,10 +35,10 @@ export default function MissionVision() {
                         <div className={`${styles.left}  wow slideInLeft`} data-wow-delay="100ms" data-wow-duration="2500ms">
                             <div className={styles.imgBox}>
                                 <div className={styles.img}>
-                                    <img src="assets/media/home/about-one-img-1.jpg" alt=""/>
+                                    <img src="assets/media/home/about-one-img-1.webp" alt=""/>
                                 </div>
                                 <div className={styles.img2}>
-                                    <img src="assets/media/home/about-one-img-2.jpg" alt=""/>
+                                    <img src="assets/media/home/about-one-img-2.webp" alt=""/>
                                 </div>
                                 <div className={`${styles.provideBox} wow zoomIn animated animated`} data-wow-delay="500ms"
                                     data-wow-duration="2500ms">

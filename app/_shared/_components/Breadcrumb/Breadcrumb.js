@@ -10,14 +10,14 @@ import styles from "./Breadcrumb.module.css"
        name on the scroll (its h1), its icon in the medallion and the two characters' names on
        the plates. Name and icon come from siteContent.js — the same ones the header and
        footer use.
-   <Breadcrumb image="/assets/media/shared/page-header-bg.jpg" />
+   <Breadcrumb image="/assets/media/shared/page-header-bg.webp" />
        any other artwork, without text (the 404 page)
 
    No reveal animation is applied.
    Sizes and positions: see Breadcrumb.module.css.
    ========================================================================== */
 
-const ARTWORK = { src: "/assets/media/shared/page-hero-plain.jpg", width: 1670, height: 942 }
+const ARTWORK = { src: "/assets/media/shared/page-hero-plain.webp", width: 1670, height: 942 }
 
 // where the scroll, the medallion and the two plates sit on the artwork (% of its width / height)
 const LAYOUT = {

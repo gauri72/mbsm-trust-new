@@ -4,12 +4,12 @@ import useLightbox from "../useLightbox"
 import styles from "./PhotoGallery.module.css"
 
 const PHOTOS = [
-    { src: "assets/media/chitrasangraha/photo-1.png", label: "गाभाऱ्यातील सुशोभित मूर्ती" },
-    { src: "assets/media/chitrasangraha/photo-2.png", label: "उत्सवकालीन सजावट" },
-    { src: "assets/media/chitrasangraha/photo-3.png", label: "पुष्प अलंकार" },
-    { src: "assets/media/chitrasangraha/photo-4.png", label: "नित्य पूजा-अर्चा" },
-    { src: "assets/media/chitrasangraha/photo-5.png", label: "आरतीची तयारी" },
-    { src: "assets/media/chitrasangraha/photo-6.png", label: "भक्तिभावाचे क्षण" },
+    { src: "assets/media/chitrasangraha/photo-1.webp", label: "गाभाऱ्यातील सुशोभित मूर्ती" },
+    { src: "assets/media/chitrasangraha/photo-2.webp", label: "उत्सवकालीन सजावट" },
+    { src: "assets/media/chitrasangraha/photo-3.webp", label: "पुष्प अलंकार" },
+    { src: "assets/media/chitrasangraha/photo-4.webp", label: "नित्य पूजा-अर्चा" },
+    { src: "assets/media/chitrasangraha/photo-5.webp", label: "आरतीची तयारी" },
+    { src: "assets/media/chitrasangraha/photo-6.webp", label: "भक्तिभावाचे क्षण" },
 ]
 
 const SWIPE_THRESHOLD = 50

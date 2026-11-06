@@ -5,13 +5,13 @@ import styles from "./FeaturedEvents.module.css"
 
 const featuredEvents = [
     {
-        img: "assets/media/karyakram/aashadhi-ekadashi.png",
+        img: "assets/media/karyakram/aashadhi-ekadashi.webp",
         date: "दर गुरुवारी",
         title: "गुरुवार गादी सेवा",
         text: "दर गुरुवारी श्री गुरुदेव गादीवर विराजमान होऊन भाविकांच्या अडचणी ऐकतात आणि मार्गदर्शन करतात. चिंता घेऊन आलेले भाविक समाधानाने परततात.",
     },
     {
-        img: "assets/media/karyakram/kartiki-ekadashi.png",
+        img: "assets/media/karyakram/kartiki-ekadashi.webp",
         date: "दर महिन्याला",
         title: "दुर्गाष्टमी पालखी सोहळा",
         text: "दर महिन्याच्या दुर्गाष्टमीला मठात पालखी सोहळा साजरा होतो. भजन आणि जयघोषाच्या गजरात निघणाऱ्या या पालखीत भाविक भक्तिभावाने सहभागी होतात.",

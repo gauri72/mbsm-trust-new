@@ -249,7 +249,7 @@
 }
 
 /* ---- Photo Gallery decoration: a single peacock feather flanking the
-   heading on each side (feather-border.png has no transparent padding
+   heading on each side (feather-border.webp has no transparent padding
    to crop, unlike the peacock strip, so a plain background-image at
    its native ratio is enough). The artwork's "eye" sits on the right
    with the quill trailing left — so the left-side feather keeps its
@@ -260,7 +260,7 @@
   flex: 0 0 auto;
   width: 260px;
   aspect-ratio: 790 / 316;
-  background-image: url("/assets/media/shared/feather-border.png");
+  background-image: url("/assets/media/shared/feather-border.webp");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;

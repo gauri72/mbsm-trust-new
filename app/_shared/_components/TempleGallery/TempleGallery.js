@@ -10,12 +10,12 @@ import styles from "./TempleGallery.module.css"
    ========================================================================== */
 
 const TEMPLE_IMAGES = [
-    "/assets/media/shared/temple-1.png",
-    "/assets/media/shared/temple-2.png",
-    "/assets/media/shared/temple-3.png",
-    "/assets/media/shared/temple-4.png",
-    "/assets/media/shared/temple-5.png",
-    "/assets/media/shared/temple-6.png",
+    "/assets/media/shared/temple-1.webp",
+    "/assets/media/shared/temple-2.webp",
+    "/assets/media/shared/temple-3.webp",
+    "/assets/media/shared/temple-4.webp",
+    "/assets/media/shared/temple-5.webp",
+    "/assets/media/shared/temple-6.webp",
 ]
 
 // The track holds the photos twice and scrolls by -50%, so the end of the first

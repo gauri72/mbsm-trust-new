@@ -5,7 +5,7 @@ export default function Error404() {
 
     return (
         <>
-            <Breadcrumb image="/assets/media/shared/page-header-bg.jpg" />
+            <Breadcrumb image="/assets/media/shared/page-header-bg.webp" />
             <section className={styles.errorPage}>
                 <div className="container">
                     <div className="row">

@@ -1,6 +1,7 @@
 'use client'
 import { forwardRef, lazy, Suspense, useEffect, useRef, useState } from "react"
 
+import AlphaLoopVideo from "../../../_shared/_components/Cta/AlphaLoopVideo/AlphaLoopVideo"
 import { ABOUT_BOOK } from "./aboutBook"
 import styles from "./Legacy.module.css"
 
@@ -71,7 +72,7 @@ const CoverPage = forwardRef(({ onOpen }, ref) => (
     <div className={`${styles.legacyBookPage} ${styles.legacyBookPageCover}`} ref={ref}>
         <div className={styles.coverInner}>
             <span className={styles.coverSymbol} aria-hidden="true">
-                <img src="assets/media/parichaya/about.png" alt="" />
+                <img src="assets/media/parichaya/about.webp" alt="" />
             </span>
 
             <h3 className={styles.coverTitle}>
@@ -171,7 +172,7 @@ const BackCoverPage = forwardRef((props, ref) => (
     <div className={`${styles.legacyBookPage} ${styles.legacyBookPageCover}`} ref={ref}>
         <div className={styles.coverInner}>
             <span className={styles.coverSymbol} aria-hidden="true">
-                <img src="assets/media/parichaya/about.png" alt="" />
+                <img src="assets/media/parichaya/about.webp" alt="" />
             </span>
             <span className={`${styles.coverSubtitle} ${styles.coverSubtitleBack}`}>मंगल भक्त सेवा मंडळ, अहिल्यानगर</span>
         </div>
@@ -263,15 +264,11 @@ export default function Legacy() {
                 {/* Desktop diya-pillars hugging the book's left/right edges —
                     they rise in when the book is closed, recede when it opens */}
                 {["left", "right"].map((side) => (
-                    <video
+                    <AlphaLoopVideo
                         key={side}
-                        src="assets/media/parichaya/diya-pillar.mov"
-                        aria-hidden="true"
+                        src="/assets/media/parichaya/diya-pillar.mov"
+                        webmSrc="/assets/media/parichaya/diya-pillar.webm"
                         className={`${styles.legacyOneAside} ${side === "left" ? styles.legacyOneAsideLeft : styles.legacyOneAsideRight}`}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
                     />
                 ))}
 

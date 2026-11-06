@@ -373,12 +373,12 @@
     z-index: 1;
 }
 
-/* Floral pattern on its own low-opacity layer — section-bg-2.png, same
+/* Floral pattern on its own low-opacity layer — section-bg-2.webp, same
    tile size and opacity as the Legacy section's maroon-field texture. */
 .bg {
     position: absolute;
     inset: 0;
-    background-image: url("/assets/media/shared/section-bg-2.png");
+    background-image: url("/assets/media/shared/section-bg-2.webp");
     background-repeat: repeat;
     background-size: 1170px auto;
     opacity: 0.5;
@@ -826,7 +826,7 @@
 /*==================================================================
     ABOUT — "ABOUT US" SECTION (.about-One--ornate) — colour scheme
     keyed to the HOME hero image.  Palette (sampled from
-    slider-v1-img-1.jpg):
+    slider-v1-img-1.webp):
       --au-gold      #D9982A   (hero's L/R gold borders)
       --au-gold-lite #E9B45A   (bright tint — hovers / active states)
       --au-maroon    #620208   (field behind the idol)
@@ -1332,7 +1332,7 @@
   }
 }
 
-/* ---- Trust logo: logo.png is bright yellow/red, so it sits in a maroon
+/* ---- Trust logo: logo.webp is bright yellow/red, so it sits in a maroon
    medallion with a gold rim to tie it into the header's maroon + gold
    palette, with its colours warmed slightly toward the site's gold ---- */
 

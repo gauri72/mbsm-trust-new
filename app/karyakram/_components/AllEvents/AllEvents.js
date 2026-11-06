@@ -4,14 +4,14 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import styles from "./AllEvents.module.css"
 
 const allEvents = [
-    { img: "assets/media/karyakram/event-1.png", title: "श्री विश्वेश्‍वर स्वामी महाराज", subtitle: "जन्मदिन" },
-    { img: "assets/media/karyakram/event-2.png", title: "श्री शंकर महाराज", subtitle: "प्रकट दिन आणि पुण्यतिथी" },
-    { img: "assets/media/karyakram/event-3.png", title: "श्री दत्त प्रभू", subtitle: "जयंती आणि गुरुपौर्णिमा" },
+    { img: "assets/media/karyakram/event-1.webp", title: "श्री विश्वेश्‍वर स्वामी महाराज", subtitle: "जन्मदिन" },
+    { img: "assets/media/karyakram/event-2.webp", title: "श्री शंकर महाराज", subtitle: "प्रकट दिन आणि पुण्यतिथी" },
+    { img: "assets/media/karyakram/event-3.webp", title: "श्री दत्त प्रभू", subtitle: "जयंती आणि गुरुपौर्णिमा" },
     // hidden for now:
-    // { img: "assets/media/karyakram/event-4.png", title: "श्री गुरुपौर्णिमा उत्सव" },
-    // { img: "assets/media/karyakram/event-5.png", title: "श्री जनू काका जयंती आणि पुण्यतिथी" },
-    // { img: "assets/media/karyakram/event-6.png", title: "श्री मधू बुवा जयंती आणि पुण्यतिथी", zoom: true },
-    // { img: "assets/media/karyakram/event-7.png", title: "श्री शुभांगी माई वाढदिवस" },
+    // { img: "assets/media/karyakram/event-4.webp", title: "श्री गुरुपौर्णिमा उत्सव" },
+    // { img: "assets/media/karyakram/event-5.webp", title: "श्री जनू काका जयंती आणि पुण्यतिथी" },
+    // { img: "assets/media/karyakram/event-6.webp", title: "श्री मधू बुवा जयंती आणि पुण्यतिथी", zoom: true },
+    // { img: "assets/media/karyakram/event-7.webp", title: "श्री शुभांगी माई वाढदिवस" },
 ]
 
 const swiperOptions = {

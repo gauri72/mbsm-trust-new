@@ -1,6 +1,6 @@
 /*==============================================
     Our Story — मंदिर कमान (temple-arch) 3D coverflow
-    Gold section (section-bg.png texture) + maroon Om/swastik border —
+    Gold section (section-bg.webp texture) + maroon Om/swastik border —
     matches the About section. Maroon arches float against the gold canvas.
     Theme: gold #F2A90A / maroon #3D0A0C / cream #FFF8E7
 ===============================================*/
@@ -13,11 +13,11 @@
 }
 
 /* floral pattern layer — tile rendered near the artwork's native width
-   (section-bg.png is 1672px wide) so the flower motifs read at full scale */
+   (section-bg.webp is 1672px wide) so the flower motifs read at full scale */
 .bg {
     position: absolute;
     inset: 0;
-    background-image: url("/assets/media/shared/section-bg.png");
+    background-image: url("/assets/media/shared/section-bg.webp");
     background-repeat: repeat;
     background-size: 1170px auto;
     opacity: 0.25;
@@ -692,7 +692,7 @@
 
 /*==================================================================
     ABOUT — OUR STORY (.mandir) — colour scheme keyed to the HOME
-    hero image.  Palette (sampled from slider-v1-img-1.jpg):
+    hero image.  Palette (sampled from slider-v1-img-1.webp):
       --ms-gold      #D9982A   (hero's L/R gold borders)
       --ms-gold-lite #E9B45A   (bright tint — hovers / active states)
       --ms-gold-pale #F0CE93   (soft gold on maroon)

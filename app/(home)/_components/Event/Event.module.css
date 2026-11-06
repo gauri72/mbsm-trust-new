@@ -153,7 +153,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("/assets/media/shared/section-bg-2.png");
+  background-image: url("/assets/media/shared/section-bg-2.webp");
   background-repeat: repeat;
   /* tile at the artwork's native width so the flower motifs match the
      size used in the Legacy section (section-bg-2 @ 1672px) */
@@ -196,7 +196,7 @@
 }
 
 .eventOneWelcomeBg::before {
-  background-image: url("/assets/media/shared/section-bg.png");
+  background-image: url("/assets/media/shared/section-bg.webp");
   opacity: 0.25;
 }
 

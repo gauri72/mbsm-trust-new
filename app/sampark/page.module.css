@@ -62,7 +62,7 @@
 .bg {
     position: absolute;
     inset: 0;
-    background-image: url("/assets/media/shared/section-bg-2.png");
+    background-image: url("/assets/media/shared/section-bg-2.webp");
     background-repeat: repeat;
     background-size: 1170px auto;
     opacity: 0.35;
@@ -409,7 +409,7 @@
 .contactTwoBg {
     position: absolute;
     inset: 0;
-    background-image: url("/assets/media/shared/section-bg.png");
+    background-image: url("/assets/media/shared/section-bg.webp");
     background-repeat: repeat;
     background-size: 1170px auto;
     opacity: 0.25;
@@ -735,7 +735,7 @@
 .contactFaqBg {
     position: absolute;
     inset: 0;
-    background-image: url("/assets/media/shared/section-bg.png");
+    background-image: url("/assets/media/shared/section-bg.webp");
     background-repeat: repeat;
     background-size: 1170px auto;
     opacity: 0.25;

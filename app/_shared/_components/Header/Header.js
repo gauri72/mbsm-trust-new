@@ -22,7 +22,7 @@ const SITE_NAME = "मंगल भक्त सेवा मंडळ"
 // The title font can stack क्त into a ligature that does not read as Marathi; a zero-width
 // joiner (U+200D) after क् asks for the half-क form. Used for the visible name only.
 const SITE_NAME_DISPLAY = "मंगल भक्‍त सेवा मंडळ"
-const SITE_LOGO_SRC = "/assets/media/shared/logo.png"
+const SITE_LOGO_SRC = "/assets/media/shared/logo.webp"
 
 const PHONE = { icon: "fas fa-phone-alt", href: "tel:+917588797788", label: "+91 75887 97788" }
 const EMAIL = { icon: "fas fa-envelope", href: "mailto:mbsmtrust@gmail.com", label: "mbsmtrust@gmail.com" }

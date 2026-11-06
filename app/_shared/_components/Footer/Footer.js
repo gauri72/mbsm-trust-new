@@ -26,8 +26,8 @@ import styles from "./Footer.module.css"
 const SITE_NAME_DISPLAY = "मंगल भक्‍त सेवा मंडळ"
 // the same fix for the column title in Annapurna SIL ("उपयुक्त" also has क्त)
 const LINKS_TITLE = "उपयुक्\u200Dत दुवे"
-const SITE_LOGO_SRC = "/assets/media/shared/logo.png"
-const ABOUT_TEXT = "मंगल भक्त सेवा मंडळ ही सामाजिक संस्था आहे. विविध उपक्रम व कार्यक्रमांतून मानवसेवा, धार्मिक समता, ऐक्य व आध्यात्मिक मार्गदर्शनाचे कार्य करतो."
+const SITE_LOGO_SRC = "/assets/media/shared/logo.webp"
+const ABOUT_TEXT = "मंगल भक्त सेवा मंडळ ही सामाजिक संस्था आहे. विविध उपक्रम व कार्यक्रमांतून मानवसेवा, धार्मिक समता, ऐक्य व आध्यात्मिक मार्गदर्शनाचे कार्य आम्ही करतो."
 const CREDIT = { name: "गौरी कोळेकर", href: "mailto:kolekargauri8@gmail.com" }
 
 // आमचे कार्य: the trust's areas of work (text, not links)
@@ -35,11 +35,17 @@ const SEVA = [
     "मानवसेवा व मदतकार्य",
     "धार्मिक समता व एकता",
     "आध्यात्मिक मार्गदर्शन",
-    "सामाजिक उपक्रम व कार्यक्रम",
+    "उपक्रम व कार्यक्रम",
 ]
 
 // उपयुक्त दुवे
-const QUICK_LINKS = [PAGES.home, PAGES.parichaya, PAGES.chitrasangraha, PAGES.sampark]   // names from siteContent.js, as the header
+// the same pages as before, under footer names of their own (the href and icon come from siteContent.js)
+const QUICK_LINKS = [
+    { href: PAGES.home.href, label: "मुख्य पान" },
+    { href: PAGES.parichaya.href, label: "आमच्याबद्दल" },
+    { href: PAGES.chitrasangraha.href, label: "आठवणी" },
+    { href: PAGES.sampark.href, label: "संपर्क साधा" },
+]
 
 // संपर्क माहिती (same details as the header's contact strip; keep the two in step).
 // external: opens in a new tab (the map); phone + email open the visitor's own app.

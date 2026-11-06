@@ -60,7 +60,7 @@
   --space-5: 26px;
 
   /* layout: the header's spacing roles */
-  --strip-pad: var(--space-1);               /* = header strip: bottom bar, space above and below */
+  --strip-pad: var(--space-3);               /* the bottom bar's space above and below (roomier than the header strip's) */
   --bar-gap: var(--space-5);                 /* = header bar: minimum gap between columns / rows */
   --strip-gap: var(--space-5);               /* = header strip: gap between the bottom bar's lines */
   --control-sm: 42px;                        /* = header strip height (the bottom bar) */
@@ -134,7 +134,7 @@
   .footer {
     --edge: 40px;
     --text-lg: 30px;
-    --bar-gap: var(--space-5);
+    --bar-gap: calc(var(--space-5) + var(--space-2));   /* 36px: the least space between the three columns */
     --strip-gap: var(--space-3);
   }
 }
@@ -462,7 +462,7 @@
   .grid {
     grid-template-columns: repeat(3, auto);
     justify-content: space-evenly;
-    row-gap: var(--section-gap);
+    row-gap: calc(var(--section-gap) + var(--space-3));   /* brand + description → the columns: one step roomier */
   }
 
   .grid > :first-child {

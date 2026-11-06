@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
             </head>
             <body>
                 {/* Shared frame — mounted once and kept across page changes.
-                    Per-page parts (preloader, scroll animations) are in template.js */}
+                    Per-page parts (scroll animations) are in template.js */}
                 <div className="page-wrapper">
                     <Header />
                     {children}

@@ -1508,7 +1508,7 @@ ul {
 
 /*==================================================================
     HOME — LEGACY SECTION — colour scheme keyed to the hero image.
-    Palette (sampled from slider-v1-img-1.jpg):
+    Palette (sampled from slider-v1-img-1.webp):
       --lg-gold      #D9982A   (hero's L/R gold borders)
       --lg-gold-lite #E9B45A   (bright tint — hovers / active states)
       --lg-gold-pale #F0CE93   (soft gold — small text on maroon)
@@ -1606,7 +1606,7 @@ ul {
 
 /*==================================================================
     HOME — SADHANA SECTION (.found-one) — colour scheme keyed to the
-    hero image.  Palette (sampled from slider-v1-img-1.jpg):
+    hero image.  Palette (sampled from slider-v1-img-1.webp):
       --sd-gold      #D9982A   (hero's L/R gold borders)
       --sd-gold-lite #E9B45A   (bright tint — hovers / active states)
       --sd-gold-pale #F0CE93   (soft gold on maroon)
@@ -1630,7 +1630,7 @@ ul {
 
 /*==================================================================
     HOME — UPCOMING EVENTS SECTION (.event-one) — colour scheme keyed
-    to the hero image.  Palette (sampled from slider-v1-img-1.jpg):
+    to the hero image.  Palette (sampled from slider-v1-img-1.webp):
       --ev-gold      #D9982A   (hero's L/R gold borders)
       --ev-gold-lite #E9B45A   (bright tint — hovers / active states)
       --ev-gold-pale #F0CE93   (soft gold on maroon)
@@ -1758,7 +1758,7 @@ ul {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: url("/assets/media/shared/section-bg-2.png");
+  background-image: url("/assets/media/shared/section-bg-2.webp");
   background-repeat: repeat;
   background-size: 1170px auto;
   opacity: 0.42;

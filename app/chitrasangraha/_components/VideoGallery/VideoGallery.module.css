@@ -6,7 +6,7 @@
 }
 
 .galleryGridVideo::before {
-  background-image: url("/assets/media/shared/section-bg.png");
+  background-image: url("/assets/media/shared/section-bg.webp");
   opacity: 0.25;
 }
 
@@ -360,7 +360,7 @@
      it up by the scaled top-margin so only the artwork band shows,
      with no partial cropping of the peacocks' feet/tails at the bottom. */
   height: calc(380px * 184 / 866);
-  background-image: url("/assets/media/shared/peacock-border.png");
+  background-image: url("/assets/media/shared/peacock-border.webp");
   background-repeat: no-repeat;
   background-size: 380px calc(380px * 288 / 866);
   background-position: 0 calc(-380px * 56 / 866);

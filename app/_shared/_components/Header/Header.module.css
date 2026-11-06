@@ -45,7 +45,7 @@
   --line-dark: var(--line-width) solid var(--c-black);
   /* "shadows" are solid lines and rings (no blur, no transparency) */
   --shadow-bar: 0 2px 0 var(--c-black);                                        /* the bar, once the page has scrolled */
-  --shadow-panel: 0 0 0 2px var(--c-black);                                    /* the dropdown and the drawer */
+  --shadow-panel: 0 0 0 2px var(--c-black);                                    /* the drawer */
   --shadow-medal: 0 0 0 3px var(--c-maroon);                                   /* a maroon ring round the logo medal */
   --shadow-medal-hover: 0 0 0 3px var(--c-maroon), 0 0 0 6px var(--c-black);   /* + a black one on hover */
   --shadow-lift: 0 4px 0 var(--c-black);                                       /* a button lifted on hover: a solid ledge */
@@ -476,7 +476,7 @@
   padding: var(--space-0);
   border-radius: var(--radius-pill);
   background-color: var(--c-white);
-  box-shadow: var(--shadow-panel);
+  box-shadow: 0 0 0 var(--line-width) var(--c-maroon);
   opacity: 0;
   visibility: hidden;                    /* hidden panels leave the Tab order */
   transform: translate(-50%, var(--space-2));

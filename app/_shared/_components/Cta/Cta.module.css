@@ -105,13 +105,21 @@
 
 
 /* ---- 3. Section ---------------------------------------------------- */
-/* section padding: the site's shared section rhythm (--section-space, globals.css) */
+/* section padding: the header's spacing scale */
 .cta {
   position: relative;
   z-index: 1;
   overflow: hidden;
-  padding: var(--section-space) 0;
+  padding: calc(var(--space-5) * 2) 0;     /* the header's 26px step, twice: the same gap above and below the content */
+  /* the seva photo under one even maroon wash (the average of the old top and bottom
+     strengths), so the text, buttons and elephants read the same everywhere */
   background-color: var(--c-maroon);
+  background-image:
+    linear-gradient(rgba(98, 2, 8, 0.86), rgba(98, 2, 8, 0.86)),
+    url("/assets/media/shared/cta-one-bg.webp");
+  background-position: center, center 60%;
+  background-size: cover, cover;
+  background-repeat: no-repeat;
   color: var(--c-white);
 }
 
