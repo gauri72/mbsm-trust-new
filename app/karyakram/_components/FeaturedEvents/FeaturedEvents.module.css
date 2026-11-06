@@ -1,22 +1,22 @@
 .featuredEvents {
-  padding-top: 100px;
+  padding-top: var(--space-9);
   padding-bottom: 100px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .featuredEvents {
-    padding-top: 100px;
+    padding-top: var(--space-9);
     padding-bottom: 100px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .featuredEvents {
-    padding-top: 80px;
+    padding-top: var(--space-9);
     padding-bottom: 80px;
   }
 }
 @media only screen and (max-width: 767px) {
   .featuredEvents {
-    padding-top: 60px;
+    padding-top: var(--space-7);
     padding-bottom: 60px;
   }
 }
@@ -34,7 +34,7 @@
 }
 
 .featuredEventsWelcomeBg {
-  background-color: #F2A90A;
+  background-color: var(--c-gold);
   background-image: linear-gradient(180deg, #E0A238 0%, #F2A90A 45%, #CE8E24 100%);
 }
 
@@ -64,7 +64,7 @@
 .featuredEvents :global(.section-title__tagline) {
   color: var(--ev-maroon-dk);
   font-weight: 700;
-  font-size: 19px;
+  font-size: var(--text-md);
 }
 
 .featuredEvents :global(.section-title__title) {
@@ -83,7 +83,7 @@
   align-items: center;
   justify-content: center;
   gap: 48px;
-  margin-top: -30px;
+  margin-top: calc(-1 * var(--space-5));
   margin-bottom: 30px;
 }
 
@@ -114,7 +114,7 @@
   width: 100%;
   height: auto;
   max-width: 420px;
-  filter: drop-shadow(0 6px 14px rgba(44, 4, 5, 0.3));
+  filter: none;
 }
 
 .flagLeft img,
@@ -137,7 +137,7 @@
 }
 
 .featuredEvents :global(.row) {
-  row-gap: 34px;
+  row-gap: var(--space-6);
   align-items: stretch;
 }
 
@@ -171,14 +171,14 @@
 /* Date tag — a plain gold pill, no icon, keeps the minimalist tone */
 
 .content {
-  padding-top: 22px;
+  padding-top: var(--space-4);
   text-align: center;
 }
 
 .title {
-  margin-bottom: 10px;
+  margin-bottom: var(--space-2);
   font-size: 26px;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .title a {
@@ -199,43 +199,43 @@
 
 @media (max-width: 767px) {
   .title {
-    font-size: 22px;
+    font-size: var(--text-md);
   }
   /* .featured-events__head's own margin-bottom (30px) is what actually
      drives the heading-to-image gap here, since .featured-events__head
      .section-title zeroes the title's own margin-bottom. */
   .head {
-    margin-bottom: 16px;
+    margin-bottom: var(--space-3);
   }
   .featuredEvents :global(.row) {
-    row-gap: 20px;
+    row-gap: var(--space-4);
   }
   .content {
-    padding-top: 14px;
+    padding-top: var(--space-3);
   }
 }
 section.featuredEvents :global(.section-title__tagline) {
-  font-size: 22px;
+  font-size: var(--text-md);
   font-weight: 800;
   letter-spacing: 0;
 }
 section.featuredEvents :global(.section-title__tagline) {
-  color: #4D0601;
+  color: var(--c-maroon);
 }
 
 /* कार्यक्रम — आषाढी / कार्तिकी descriptions */
 section.featuredEvents .text {
-  color: #2C0405;
+  color: var(--c-black);
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 400;
 }
 @media (max-width: 767px) {
   section.featuredEvents :global(.section-title__tagline) {
-    font-size: 19px;
+    font-size: var(--text-md);
   }
 
   section.featuredEvents .text {
-    font-size: 17px;
+    font-size: var(--text-sm);
   }
 }
 section.featuredEvents.featuredEventsWelcomeBg {
@@ -298,11 +298,11 @@ section.featuredEventsWelcomeBg :global(.row) {
 }
 
 section.featuredEventsWelcomeBg .content {
-  padding-top: 20px;
+  padding-top: var(--space-4);
 }
 
 section.featuredEventsWelcomeBg .title {
-  margin-bottom: 8px;
+  margin-bottom: var(--space-1);
   font-size: 26px;
   line-height: 1.3;
 }
@@ -318,10 +318,10 @@ section.featuredEventsWelcomeBg .text {
     --bs-gutter-x: 24px;
   }
   section.featuredEventsWelcomeBg .title {
-    font-size: 23px;
+    font-size: var(--text-md);
   }
   section.featuredEventsWelcomeBg .text {
-    font-size: 16px;
+    font-size: var(--text-sm);
   }
 }
 
@@ -330,10 +330,10 @@ section.featuredEventsWelcomeBg .text {
     --bs-gutter-x: 20px;
   }
   section.featuredEventsWelcomeBg .content {
-    padding-top: 16px;
+    padding-top: var(--space-3);
   }
   section.featuredEventsWelcomeBg .title {
-    font-size: 20px;
+    font-size: var(--text-md);
   }
   section.featuredEventsWelcomeBg .text {
     max-width: none;
@@ -344,13 +344,13 @@ section.featuredEventsWelcomeBg .text {
 
 @media (max-width: 767px) {
   section.featuredEventsWelcomeBg :global(.row) {
-    row-gap: 36px;
+    row-gap: var(--space-6);
   }
   section.featuredEventsWelcomeBg .content {
-    padding-top: 14px;
+    padding-top: var(--space-3);
   }
   section.featuredEventsWelcomeBg .title {
-    font-size: 21px;
+    font-size: var(--text-md);
     margin-bottom: 6px;
   }
   section.featuredEventsWelcomeBg .text {
@@ -360,13 +360,13 @@ section.featuredEventsWelcomeBg .text {
   }
   /* keep "मठातील नियमित कार्यक्रम" on one line on most phones */
   section.featuredEventsWelcomeBg :global(.section-title__title) {
-    font-size: 29px;
+    font-size: var(--text-lg);
   }
 }
 
 @media (max-width: 359px) {
   section.featuredEventsWelcomeBg :global(.section-title__title) {
-    font-size: 25px;
+    font-size: var(--text-md);
   }
 }
 
