@@ -56,7 +56,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("/assets/images/backgrounds/section-bg-2.png");
+  background-image: url("/assets/media/shared/section-bg-2.png");
   background-repeat: repeat;
   /* tile at the artwork's native width so the flower motifs match the
      size used in the Mandir section (section-bg @ 1672px) */
@@ -476,7 +476,7 @@
 
 .name {
   display: block;
-  font-family: var(--font-title), serif;
+  font-family: var(--font), serif;
   font-size: 32px;
   font-weight: 400;
   line-height: 1.25;
@@ -513,7 +513,7 @@
   display: flex;
   align-items: stretch;
   justify-content: stretch;
-  background-image: url("/assets/images/backgrounds/book-bg.jpg");
+  background-image: url("/assets/media/parichaya/book-bg.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -576,7 +576,7 @@
   align-items: center;
   justify-content: center;
   gap: 16px;
-  font-family: var(--font-title), serif;
+  font-family: var(--font), serif;
   font-size: 52px;
   font-weight: 400;
   color: #000000;
@@ -1333,7 +1333,3 @@
   100% { transform: perspective(2200px) rotateX(11deg) rotateY(0deg); }
 }
 
-/* see fixRi() in Legacy.js */
-.mrRiBelow {
-  font-feature-settings: "blws" 0;
-}

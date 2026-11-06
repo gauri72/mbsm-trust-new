@@ -35,10 +35,10 @@ export default function MissionVision() {
                         <div className={`${styles.left}  wow slideInLeft`} data-wow-delay="100ms" data-wow-duration="2500ms">
                             <div className={styles.imgBox}>
                                 <div className={styles.img}>
-                                    <img src="assets/images/resources/about-one-img-1.jpg" alt=""/>
+                                    <img src="assets/media/home/about-one-img-1.jpg" alt=""/>
                                 </div>
                                 <div className={styles.img2}>
-                                    <img src="assets/images/resources/about-one-img-2.jpg" alt=""/>
+                                    <img src="assets/media/home/about-one-img-2.jpg" alt=""/>
                                 </div>
                                 <div className={`${styles.provideBox} wow zoomIn animated animated`} data-wow-delay="500ms"
                                     data-wow-duration="2500ms">
@@ -71,7 +71,7 @@ export default function MissionVision() {
                                 <div className={`${styles.tabBox} ${styles.tabsBox}`}>
                                     <ul className={`${styles.tabButtons} clearfix list-unstyled`}>
                                         <li className={activeIndex == 1 ? `${styles.tabBtn} ${styles.activeBtn}` : styles.tabBtn} onClick={() => handleOnClick(1)}><span lang="mr">आमचे ध्येय</span></li>
-                                        <li className={activeIndex == 2 ? `${styles.tabBtn} ${styles.activeBtn}` : styles.tabBtn} onClick={() => handleOnClick(2)}><span className={styles.mrRiBelow}>आमची दृष्टी</span></li>
+                                        <li className={activeIndex == 2 ? `${styles.tabBtn} ${styles.activeBtn}` : styles.tabBtn} onClick={() => handleOnClick(2)}>आमची दृष्टी</li>
                                         <li className={activeIndex == 3 ? `${styles.tabBtn} ${styles.activeBtn}` : styles.tabBtn} onClick={() => handleOnClick(3)}><span lang="mr">आमचे उद्दिष्ट</span></li>
                                     </ul>
                                     <div className={styles.tabsContent}>
@@ -90,7 +90,7 @@ export default function MissionVision() {
                                             <div className={styles.tabsContentInner}>
                                                 <p lang="mr">
                                                     या वाटेवरचा सर्वात मोठा अडथळा म्हणजे अहंकार, जो अशांतता आणि असमाधानाचे मूळ आहे. तो दूर सारून
-                                                    सुख, शांती आणि समाधान नांदणारा समाज उभा करावा, हीच आमची <span className={styles.mrRiBelow}>दृष्टी</span> आहे.
+                                                    सुख, शांती आणि समाधान नांदणारा समाज उभा करावा, हीच आमची दृष्टी आहे.
                                                 </p>
                                             </div>
                                         </div>

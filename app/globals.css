@@ -117,6 +117,31 @@
   font-weight:900
 }
 
+/* ---- Annapurna SIL Bold (SIL International, SIL Open Font License 1.1 — see
+   /assets/fonts/AnnapurnaSIL-OFL.txt): the site's ONLY font, for every piece of text, English + Marathi.
+   Self-hosted, split into a Marathi and an English file so a page only downloads what it shows.
+   Only the bold weight exists, so it is served for every font-weight (nothing is ever faked);
+   hierarchy comes from size and colour. ---- */
+@font-face{
+  font-family:"Annapurna SIL";
+  font-style:normal;
+  font-weight:100 900;
+  font-display:swap;
+  src:url("/assets/fonts/annapurna-sil-devanagari-700.woff2") format("woff2");
+  unicode-range:U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09;
+}
+@font-face{
+  font-family:"Annapurna SIL";
+  font-style:normal;
+  font-weight:100 900;
+  font-display:swap;
+  src:url("/assets/fonts/annapurna-sil-latin-700.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+:root{
+  --font:"Annapurna SIL";
+}
+
 /* ---- Bootstrap 5.0: only the parts this site uses (base styles, grid: container/row/col-*, a few helpers) ---- */
 @charset "UTF-8";/*!
  * Bootstrap v5.0.0-beta3 (https://getbootstrap.com/)
@@ -855,55 +880,94 @@ iframe {
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
-# Om · swastik border pattern (shared by the CTA frame and the temple gallery)
-   Repeating tiles: Om (Font Awesome's Om outline) · swastik · dots.
-   -x runs across (100 × 30px tile), -y runs down (30 × 100px): maroon, for a gold
-   band (the CTA frame). -x-gold / -y-gold: the same tiles in gold, for a maroon
-   band (the temple gallery).
---------------------------------------------------------------*/
-:root {
-  --pattern-om-swastik-x: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%23620208'%3E%3Cpath transform='translate(17 7) scale(0.03125) translate(0 448) scale(1 -1)' d='M362 387 340 409Q337 412 337.0 416.0Q337 420 340 423L362 445Q369 452 376 445L398 423Q401 420 401.0 416.0Q401 412 398 409L376 387Q373 384 369.0 384.0Q365 384 362 387ZM513 156V56Q513 20 483.5 -6.0Q454 -32 417 -32Q390 -32 370.5 -25.5Q351 -19 341.5 -9.5Q332 0 327.0 9.5Q322 19 322 25L321 32V70Q321 76 326.5 77.5Q332 79 335 75Q370 32 417 32Q428 32 438.5 39.5Q449 47 449 56V156Q449 171 438.5 181.5Q428 192 413.0 192.0Q398 192 388 182L363 157Q334 128 293 128H271Q289 97 289 64Q289 11 251.5 -26.5Q214 -64 161 -64Q119 -64 86.5 -48.5Q54 -33 36.0 -9.0Q18 15 9.5 39.5Q1 64 1 87Q1 93 6.5 95.5Q12 98 16 92Q17 90 20 86Q31 66 39.0 55.5Q47 45 63.5 29.5Q80 14 104.5 7.0Q129 0 161 0Q187 0 206.0 19.0Q225 38 225.0 64.0Q225 90 206.0 109.0Q187 128 161 128H128Q119 129 115 137L99 169Q95 177 99.5 184.5Q104 192 113 192H145Q165 192 179.0 206.0Q193 220 193.0 240.0Q193 260 179.0 274.0Q165 288 145 288Q128 288 115 277Q105 270 95 277L69 297Q63 301 63.0 308.5Q63 316 68 322Q108 360 164 350Q186 347 204.5 335.5Q223 324 236.0 306.0Q249 288 254 267Q263 228 246 192H293Q308 192 318 202L342 227Q372 256 413.0 256.0Q454 256 483.5 226.5Q513 197 513 156ZM455 381Q463 387 472.0 382.5Q481 378 481 368V332Q481 329 479.5 326.0Q478 323 475.5 319.5Q473 316 465.5 310.0Q458 304 447.5 299.5Q437 295 418.5 291.5Q400 288 378 288Q362 288 346.5 292.0Q331 296 320.0 302.0Q309 308 298.5 316.0Q288 324 281.5 330.5Q275 337 269.5 344.5Q264 352 262.0 355.0Q260 358 259 360Q253 372 262.5 380.5Q272 389 283 381Q287 377 294.0 373.0Q301 369 320.0 361.5Q339 354 358.5 351.5Q378 349 404.5 355.5Q431 362 455 381Z'/%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%23620208' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23620208'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
-  --pattern-om-swastik-x-gold: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%23D9982A'%3E%3Cpath transform='translate(17 7) scale(0.03125) translate(0 448) scale(1 -1)' d='M362 387 340 409Q337 412 337.0 416.0Q337 420 340 423L362 445Q369 452 376 445L398 423Q401 420 401.0 416.0Q401 412 398 409L376 387Q373 384 369.0 384.0Q365 384 362 387ZM513 156V56Q513 20 483.5 -6.0Q454 -32 417 -32Q390 -32 370.5 -25.5Q351 -19 341.5 -9.5Q332 0 327.0 9.5Q322 19 322 25L321 32V70Q321 76 326.5 77.5Q332 79 335 75Q370 32 417 32Q428 32 438.5 39.5Q449 47 449 56V156Q449 171 438.5 181.5Q428 192 413.0 192.0Q398 192 388 182L363 157Q334 128 293 128H271Q289 97 289 64Q289 11 251.5 -26.5Q214 -64 161 -64Q119 -64 86.5 -48.5Q54 -33 36.0 -9.0Q18 15 9.5 39.5Q1 64 1 87Q1 93 6.5 95.5Q12 98 16 92Q17 90 20 86Q31 66 39.0 55.5Q47 45 63.5 29.5Q80 14 104.5 7.0Q129 0 161 0Q187 0 206.0 19.0Q225 38 225.0 64.0Q225 90 206.0 109.0Q187 128 161 128H128Q119 129 115 137L99 169Q95 177 99.5 184.5Q104 192 113 192H145Q165 192 179.0 206.0Q193 220 193.0 240.0Q193 260 179.0 274.0Q165 288 145 288Q128 288 115 277Q105 270 95 277L69 297Q63 301 63.0 308.5Q63 316 68 322Q108 360 164 350Q186 347 204.5 335.5Q223 324 236.0 306.0Q249 288 254 267Q263 228 246 192H293Q308 192 318 202L342 227Q372 256 413.0 256.0Q454 256 483.5 226.5Q513 197 513 156ZM455 381Q463 387 472.0 382.5Q481 378 481 368V332Q481 329 479.5 326.0Q478 323 475.5 319.5Q473 316 465.5 310.0Q458 304 447.5 299.5Q437 295 418.5 291.5Q400 288 378 288Q362 288 346.5 292.0Q331 296 320.0 302.0Q309 308 298.5 316.0Q288 324 281.5 330.5Q275 337 269.5 344.5Q264 352 262.0 355.0Q260 358 259 360Q253 372 262.5 380.5Q272 389 283 381Q287 377 294.0 373.0Q301 369 320.0 361.5Q339 354 358.5 351.5Q378 349 404.5 355.5Q431 362 455 381Z'/%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%23D9982A' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23D9982A'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
-  --pattern-om-swastik-y: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%23620208'%3E%3Cpath transform='translate(7 17) scale(0.03125) translate(0 448) scale(1 -1)' d='M362 387 340 409Q337 412 337.0 416.0Q337 420 340 423L362 445Q369 452 376 445L398 423Q401 420 401.0 416.0Q401 412 398 409L376 387Q373 384 369.0 384.0Q365 384 362 387ZM513 156V56Q513 20 483.5 -6.0Q454 -32 417 -32Q390 -32 370.5 -25.5Q351 -19 341.5 -9.5Q332 0 327.0 9.5Q322 19 322 25L321 32V70Q321 76 326.5 77.5Q332 79 335 75Q370 32 417 32Q428 32 438.5 39.5Q449 47 449 56V156Q449 171 438.5 181.5Q428 192 413.0 192.0Q398 192 388 182L363 157Q334 128 293 128H271Q289 97 289 64Q289 11 251.5 -26.5Q214 -64 161 -64Q119 -64 86.5 -48.5Q54 -33 36.0 -9.0Q18 15 9.5 39.5Q1 64 1 87Q1 93 6.5 95.5Q12 98 16 92Q17 90 20 86Q31 66 39.0 55.5Q47 45 63.5 29.5Q80 14 104.5 7.0Q129 0 161 0Q187 0 206.0 19.0Q225 38 225.0 64.0Q225 90 206.0 109.0Q187 128 161 128H128Q119 129 115 137L99 169Q95 177 99.5 184.5Q104 192 113 192H145Q165 192 179.0 206.0Q193 220 193.0 240.0Q193 260 179.0 274.0Q165 288 145 288Q128 288 115 277Q105 270 95 277L69 297Q63 301 63.0 308.5Q63 316 68 322Q108 360 164 350Q186 347 204.5 335.5Q223 324 236.0 306.0Q249 288 254 267Q263 228 246 192H293Q308 192 318 202L342 227Q372 256 413.0 256.0Q454 256 483.5 226.5Q513 197 513 156ZM455 381Q463 387 472.0 382.5Q481 378 481 368V332Q481 329 479.5 326.0Q478 323 475.5 319.5Q473 316 465.5 310.0Q458 304 447.5 299.5Q437 295 418.5 291.5Q400 288 378 288Q362 288 346.5 292.0Q331 296 320.0 302.0Q309 308 298.5 316.0Q288 324 281.5 330.5Q275 337 269.5 344.5Q264 352 262.0 355.0Q260 358 259 360Q253 372 262.5 380.5Q272 389 283 381Q287 377 294.0 373.0Q301 369 320.0 361.5Q339 354 358.5 351.5Q378 349 404.5 355.5Q431 362 455 381Z'/%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%23620208' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23620208'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
-  --pattern-om-swastik-y-gold: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%23D9982A'%3E%3Cpath transform='translate(7 17) scale(0.03125) translate(0 448) scale(1 -1)' d='M362 387 340 409Q337 412 337.0 416.0Q337 420 340 423L362 445Q369 452 376 445L398 423Q401 420 401.0 416.0Q401 412 398 409L376 387Q373 384 369.0 384.0Q365 384 362 387ZM513 156V56Q513 20 483.5 -6.0Q454 -32 417 -32Q390 -32 370.5 -25.5Q351 -19 341.5 -9.5Q332 0 327.0 9.5Q322 19 322 25L321 32V70Q321 76 326.5 77.5Q332 79 335 75Q370 32 417 32Q428 32 438.5 39.5Q449 47 449 56V156Q449 171 438.5 181.5Q428 192 413.0 192.0Q398 192 388 182L363 157Q334 128 293 128H271Q289 97 289 64Q289 11 251.5 -26.5Q214 -64 161 -64Q119 -64 86.5 -48.5Q54 -33 36.0 -9.0Q18 15 9.5 39.5Q1 64 1 87Q1 93 6.5 95.5Q12 98 16 92Q17 90 20 86Q31 66 39.0 55.5Q47 45 63.5 29.5Q80 14 104.5 7.0Q129 0 161 0Q187 0 206.0 19.0Q225 38 225.0 64.0Q225 90 206.0 109.0Q187 128 161 128H128Q119 129 115 137L99 169Q95 177 99.5 184.5Q104 192 113 192H145Q165 192 179.0 206.0Q193 220 193.0 240.0Q193 260 179.0 274.0Q165 288 145 288Q128 288 115 277Q105 270 95 277L69 297Q63 301 63.0 308.5Q63 316 68 322Q108 360 164 350Q186 347 204.5 335.5Q223 324 236.0 306.0Q249 288 254 267Q263 228 246 192H293Q308 192 318 202L342 227Q372 256 413.0 256.0Q454 256 483.5 226.5Q513 197 513 156ZM455 381Q463 387 472.0 382.5Q481 378 481 368V332Q481 329 479.5 326.0Q478 323 475.5 319.5Q473 316 465.5 310.0Q458 304 447.5 299.5Q437 295 418.5 291.5Q400 288 378 288Q362 288 346.5 292.0Q331 296 320.0 302.0Q309 308 298.5 316.0Q288 324 281.5 330.5Q275 337 269.5 344.5Q264 352 262.0 355.0Q260 358 259 360Q253 372 262.5 380.5Q272 389 283 381Q287 377 294.0 373.0Q301 369 320.0 361.5Q339 354 358.5 351.5Q378 349 404.5 355.5Q431 362 455 381Z'/%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%23D9982A' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23D9982A'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
-}
-
-/*--------------------------------------------------------------
 # Common
 --------------------------------------------------------------*/
 :root {
-  
-  --anity-gray: #727272;
-  --anity-gray-rgb: 114, 114, 114;
-  --anity-base: #FF5528;
-  --anity-base-rgb: 255, 85, 40;
-  --anity-black: #343434;
-  --anity-black-rgb: 52, 52, 52;
-  --anity-primary: #FFA415;
-  --anity-primary-rgb: 255, 164, 21;
-  --anity-extra: #26CC8C;
-  --anity-extra-rgb: 38, 204, 140;
-  --anity-extra-two: #F2F0EC;
-  --anity-extra-two-rgb: 242, 240, 236;
-  --anity-white: #ffffff;
-  --anity-white-rgb: 255, 255, 255;
-  --anity-bdr-color: #e3e3e3;
+  /* ===== THE DESIGN RULES (apply to every section and every page) ==========================
+     1. Colour  : only these four, solid — no shades of them, no transparency, nothing inherited
+     2. Spacing : the steps below (the header's scale, plus fixed layout steps), lines 2px solid
+     4. Sizing  : small, medium, large — no other font size
+     5. Weight  : one (declare 400; the Annapurna SIL Bold file is the only weight there is)
+     6. Icons   : Font Awesome only          7. Font : Annapurna SIL Bold only (--font)
+     ======================================================================================== */
+
+  /* colours */
+  --c-white: #FFFFFF;
+  --c-black: #000000;
+  --c-maroon: #620208;
+  --c-gold: #D9982A;
+
+  /* sizes: small (17px, 16px on phones) · medium (19px) · large (36px, steps below) */
+  --text-sm: 17px;
+  --text-md: 19px;
+  --text-lg: 36px;
+
+  /* spacing: the header's scale, then the fixed layout steps (gutter, section padding) */
+  --space-0: 4px;
+  --space-1: 6px;
+  --space-2: 10px;
+  --space-3: 14px;      /* = the page gutter */
+  --space-4: 18px;
+  --space-5: 26px;
+  --space-6: 40px;
+  --space-7: 56px;
+  --space-8: 72px;
+  --space-9: 80px;
+  --line-width: 2px;
+
+  /* The template's and the brand's old colour names are kept only as aliases of the four colours,
+     so every stylesheet that still uses one lands on the palette (no second maroon, no light gold,
+     no grey, no orange, no green, no cream). */
+  --anity-gray: var(--c-black);
+  --anity-base: var(--c-gold);
+  --anity-black: var(--c-black);
+  --anity-primary: var(--c-gold);
+  --anity-extra: var(--c-gold);
+  --anity-extra-two: var(--c-white);
+  --anity-white: var(--c-white);
+  --anity-bdr-color: var(--c-gold);
   --anity-bdr-radius: 20px;
 
-  /* brand palette, shared by every section */
-  --brand-maroon: #620208;
-  --brand-maroon-dark: #4D0601;
-  --brand-maroon-deep: #3D0A0C;
-  --brand-ink: #3A0405;
-  --brand-ink-deep: #2C0405;
-  --brand-gold: #D9982A;
-  --brand-gold-lite: #E9B45A;
-  --brand-saffron: #F2A90A;
-  --brand-cream: #FBF1DC;
+  --brand-maroon: var(--c-maroon);
+  --brand-maroon-dark: var(--c-maroon);
+  --brand-maroon-deep: var(--c-maroon);
+  --brand-ink: var(--c-maroon);
+  --brand-ink-deep: var(--c-black);
+  --brand-gold: var(--c-gold);
+  --brand-gold-lite: var(--c-gold);
+  --brand-saffron: var(--c-gold);
+  --brand-cream: var(--c-white);
+}
+
+@media (min-width: 1600px) {
+  :root {
+    --text-lg: 38px;
+    --space-0: 6px;
+    --space-1: 8px;
+    --space-2: 12px;
+    --space-3: 16px;
+    --space-4: 20px;
+    --space-5: 28px;
+  }
+}
+
+@media (max-width: 1199px) {
+  :root { --text-lg: 30px; }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --text-sm: 16px;
+    --text-lg: 23px;
+  }
+}
+
+@media (max-width: 359px) {
+  :root { --text-lg: 19px; }
 }
 
 .row {
-  --bs-gutter-x: 30px;
+  --bs-gutter-x: 28px;                  /* = 2 x the page gutter (14px), so columns and the page line up */
 }
 
 /* Single-weight font: never let the browser fake bold or italic */
@@ -912,15 +976,15 @@ html {
 }
 
 body {
-  font-family: var(--font-text), serif;
-  color: var(--anity-gray);
-  font-size: 16px;
+  font-family: var(--font), serif;
+  color: var(--c-black);
+  font-size: var(--text-sm);
   line-height: 34px;
   font-weight: 400;
 }
 
 a {
-  color: var(--anity-base);
+  color: var(--c-gold);
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
@@ -933,26 +997,40 @@ a:visited {
 }
 
 ::-webkit-input-placeholder {
-  color: inherit;
+  color: var(--c-maroon);
   opacity: 1;
 }
 
 ::-ms-input-placeholder {
-  color: inherit;
+  color: var(--c-maroon);
   opacity: 1;
 }
 
 ::placeholder {
-  color: inherit;
+  color: var(--c-maroon);
   opacity: 1;
 }
 
+h1,
 h2,
 h3,
-h4 {
-  font-family: var(--font-text), serif;
-  color: var(--anity-black);
+h4,
+h5,
+h6 {
+  font-family: var(--font), serif;
+  color: var(--c-black);
+  font-weight: 400;                      /* one weight: headings are not bolder than the rest */
   margin: 0;
+}
+
+b,
+strong,
+th,
+dt,
+label,
+legend,
+summary {
+  font-weight: 400;
 }
 
 p {
@@ -972,23 +1050,23 @@ ul {
 }
 
 ::-webkit-input-placeholder {
-  color: inherit;
+  color: var(--c-maroon);
   opacity: 1;
 }
 
 ::-ms-input-placeholder {
-  color: inherit;
+  color: var(--c-maroon);
   opacity: 1;
 }
 
 ::placeholder {
-  color: inherit;
+  color: var(--c-maroon);
   opacity: 1;
 }
 
 .container {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: var(--space-3);          /* the page gutter: 14px (16px on wide screens) */
+  padding-right: var(--space-3);
 }
 
 .list-unstyled {
@@ -1002,17 +1080,17 @@ ul {
 }
 
 ::-webkit-input-placeholder {
-  color: inherit;
+  color: var(--c-maroon);
   opacity: 1;
 }
 
 ::-ms-input-placeholder {
-  color: inherit;
+  color: var(--c-maroon);
   opacity: 1;
 }
 
 ::placeholder {
-  color: inherit;
+  color: var(--c-maroon);
   opacity: 1;
 }
 
@@ -1038,7 +1116,7 @@ ul {
 }
 
 .section-title__title {
-  font-family: var(--font-title), serif;
+  font-family: var(--font), serif;
   color: var(--anity-black);
   font-size: 50px;
   line-height: 60px;
@@ -1680,7 +1758,7 @@ ul {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: url("/assets/images/backgrounds/section-bg-2.png");
+  background-image: url("/assets/media/shared/section-bg-2.png");
   background-repeat: repeat;
   background-size: 1170px auto;
   opacity: 0.42;

@@ -1,36 +1,37 @@
 import Link from "next/link"
 import AlphaLoopVideo from "./AlphaLoopVideo/AlphaLoopVideo"
+import { PAGES, CTA } from "../../siteContent"
 import styles from "./Cta.module.css"
 
 /* =============================================================================
    Closing call-to-action (just above the closing mantra strip on every page).
 
-   A maroon section with a faint photo, framed by the gold Om/swastik border,
+   A flat maroon section,
    with an elephant walking in from each side. Content, centred:
-     label       medium (19px) Rozha, gold
-     heading     large Rozha, white
-     description small Tiro, white
-     buttons     medium Rozha (the header CTA's button) — gold + white pill, lifting on hover
+     label       medium (19px) Annapurna SIL, gold
+     heading     large Annapurna SIL, white
+     description small Annapurna SIL, white
+     buttons     medium Annapurna SIL (the header CTA's button) — gold + white pill, both as
+                 wide as the wider label, lifting on hover
 
    Colours, sizes and spacing are tokens in Cta.module.css (the header's values).
    ========================================================================== */
 
 // ---- Content -------------------------------------------------------------------
-// Rozha One stacks क्त into a ligature that does not read as Marathi; a zero-width
+// The title font can stack क्त into a ligature that does not read as Marathi; a zero-width
 // joiner (U+200D) after क् asks for the half-क form (as in the header and footer).
 const LABEL = "मंगल भक्‍त सेवा मंडळ"
 
+// Names from siteContent.js: the gold button is the header's CTA, the white one the Sampark page
 const BUTTONS = [
-    { href: "/parichaya", label: "आमच्याविषयी", variant: "primary" },
-    { href: "/sampark", label: "संपर्क साधा", variant: "secondary" },
+    { ...CTA, variant: "primary" },
+    { href: PAGES.sampark.href, label: PAGES.sampark.label, variant: "secondary" },
 ]
 
 const ELEPHANT = {
-    src: "/assets/images/resources/elephant-loop.mov",
-    webmSrc: "/assets/images/resources/elephant-loop.webm",
+    src: "/assets/media/shared/elephant-loop.mov",
+    webmSrc: "/assets/media/shared/elephant-loop.webm",
 }
-
-const BG_IMAGE = "/assets/images/backgrounds/cta-one-bg.jpg"
 
 // join class names, skipping falsy ones
 const cx = (...names) => names.filter(Boolean).join(" ")
@@ -38,16 +39,7 @@ const cx = (...names) => names.filter(Boolean).join(" ")
 export default function Cta() {
     return (
         <section className={styles.cta}>
-            {/* decoration: photo, the four frame sides + corners, the two elephants */}
-            <div className={styles.bg} style={{ backgroundImage: `url(${BG_IMAGE})` }} aria-hidden="true"></div>
-            <div className={cx(styles.frameH, styles.frameTop)} aria-hidden="true"></div>
-            <div className={cx(styles.frameH, styles.frameBottom)} aria-hidden="true"></div>
-            <div className={cx(styles.frameV, styles.frameLeft)} aria-hidden="true"></div>
-            <div className={cx(styles.frameV, styles.frameRight)} aria-hidden="true"></div>
-            <span className={cx(styles.corner, styles.cornerTl)} aria-hidden="true"></span>
-            <span className={cx(styles.corner, styles.cornerTr)} aria-hidden="true"></span>
-            <span className={cx(styles.corner, styles.cornerBl)} aria-hidden="true"></span>
-            <span className={cx(styles.corner, styles.cornerBr)} aria-hidden="true"></span>
+            {/* decoration: the two elephants */}
             <AlphaLoopVideo {...ELEPHANT} className={cx(styles.elephant, styles.elephantLeft)} />
             <AlphaLoopVideo {...ELEPHANT} className={cx(styles.elephant, styles.elephantRight)} />
 

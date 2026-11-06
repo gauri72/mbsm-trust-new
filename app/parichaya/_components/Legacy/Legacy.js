@@ -16,11 +16,6 @@ const HTMLFlipBook = lazy(() => import("react-pageflip"))
 const PAGE_CHARS = 900
 const FIRST_PAGE_CHARS = 760
 
-// Tiro Devanagari Marathi tucks "ृ" inside "द"; wrap each "दृ" so its
-// below-base forms can be switched off just there (see .mrRiBelow)
-const fixRi = (text) => typeof text !== "string" ? text : text.split(/(दृ)/).map((part, i) =>
-    part === "दृ" ? <span key={i} className={styles.mrRiBelow}>{part}</span> : part)
-
 const sentencesOf =(para) => para.match(/[^.?!।]+[.?!।]+["”'’]?\s*|[^.?!।]+$/g)?.map((t) => t.trim()).filter(Boolean) ?? [para]
 
 // split a chapter's paragraphs into pages; each page is a list of paragraphs
@@ -76,7 +71,7 @@ const CoverPage = forwardRef(({ onOpen }, ref) => (
     <div className={`${styles.legacyBookPage} ${styles.legacyBookPageCover}`} ref={ref}>
         <div className={styles.coverInner}>
             <span className={styles.coverSymbol} aria-hidden="true">
-                <img src="assets/images/about/about.png" alt="" />
+                <img src="assets/media/parichaya/about.png" alt="" />
             </span>
 
             <h3 className={styles.coverTitle}>
@@ -143,7 +138,7 @@ const TextPage = forwardRef(({ page }, ref) => (
             )}
             {page.continued && <span className={styles.running}>{page.name}</span>}
             {page.paras.map((para, i) => (
-                <p key={i} className={styles.text}>{fixRi(para)}</p>
+                <p key={i} className={styles.text}>{para}</p>
             ))}
         </div>
     </div>
@@ -155,7 +150,7 @@ const QuotePage = forwardRef(({ page }, ref) => (
     <div className={`${styles.legacyBookPage} ${styles.legacyBookPageQuote}`} ref={ref}>
         <div className={styles.quoteInner}>
             <span className={styles.quoteMark} aria-hidden="true">॥</span>
-            <p className={styles.quoteText}>{fixRi(page.quote)}</p>
+            <p className={styles.quoteText}>{page.quote}</p>
             <span className={styles.quoteMark} aria-hidden="true">॥</span>
             <span className={styles.quoteSource}>{page.name}</span>
         </div>
@@ -176,7 +171,7 @@ const BackCoverPage = forwardRef((props, ref) => (
     <div className={`${styles.legacyBookPage} ${styles.legacyBookPageCover}`} ref={ref}>
         <div className={styles.coverInner}>
             <span className={styles.coverSymbol} aria-hidden="true">
-                <img src="assets/images/about/about.png" alt="" />
+                <img src="assets/media/parichaya/about.png" alt="" />
             </span>
             <span className={`${styles.coverSubtitle} ${styles.coverSubtitleBack}`}>मंगल भक्त सेवा मंडळ, अहिल्यानगर</span>
         </div>
@@ -272,7 +267,7 @@ export default function Legacy() {
                 {["left", "right"].map((side) => (
                     <video
                         key={side}
-                        src="assets/images/resources/diya-pillar.mov"
+                        src="assets/media/parichaya/diya-pillar.mov"
                         aria-hidden="true"
                         className={`${styles.legacyOneAside} ${side === "left" ? styles.legacyOneAsideLeft : styles.legacyOneAsideRight}`}
                         autoPlay

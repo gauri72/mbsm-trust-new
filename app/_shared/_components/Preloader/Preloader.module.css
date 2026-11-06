@@ -5,19 +5,24 @@
      1. Design tokens            — the header's values
      2. Token breakpoints
      3. Stage + fade
-     4. Om · swastik frame       — the CTA's frame
-     5. Medal, ring, name, text
-     6. Animations
-     7. Reduced motion
+     4. Medal, ring, name, text
+     5. Animations
+     6. Reduced motion
 
    Design rules (same as the header, footer, mantra strips, CTA and gallery)
-   - Colours : maroon stage; the CTA's gold Om · swastik frame; the header's logo
-               medal (maroon disc, gold ring); name white, "Loading…" gold.
-   - Type    : name large Rozha (as the brand name), "Loading…" small Tiro, both at
-               the fonts' real weight.
+   - Colours : plain maroon stage; the header's logo medal (maroon disc, gold
+               ring); name white, "Loading…" gold.
+   - Type    : name large (as the brand name), "Loading…" small, both Annapurna SIL.
    - Lines   : the turning ring is a 2px gold line (as every line on the site).
-   - Layout  : medal above name, as the menu drawer's brand; the logo is 5.6x the
-               name (twice the header and footer's 2.8x).
+   - Layout  : medal above name, as the menu drawer's brand; the medal is one
+               standard 128px on every screen.
+   - Modes   : desktop, tablet and phones are the same design — medal, name and
+               "Loading…" in the same order; only the text steps with the screen:
+               name 38px ≥1600 · 36px desktop · 30px tablet · 23px phones · 19px under 360px,
+               "Loading…" 17px (16px on phones) — the medal never changes size.
+   - Spacing : the header's scale: 14px (16px ≥1600) between the parts; the medal's turning
+               ring sits one such step outside it, so medal → name is two steps.
+   - Weight  : Annapurna SIL Bold, the site's only font and weight.
    ========================================================================== */
 
 
@@ -30,26 +35,24 @@
 
   /* lines + shadows */
   --line-width: 2px;
-  --shadow-frame: 0 2px 8px rgba(0, 0, 0, 0.32);   /* = CTA frame */
-  --shadow-medal: 0 0 0 3px rgba(98, 2, 8, 0.28), 0 6px 16px rgba(0, 0, 0, 0.25);   /* = header medal */
-  --shadow-medal-hover: 0 0 0 3px rgba(98, 2, 8, 0.35), 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 22px rgba(217, 152, 42, 0.75);
+  /* "shadows" are solid rings (no blur, no transparency); the second one breathes in and out */
+  --shadow-medal: 0 0 0 3px var(--c-maroon);
+  --shadow-medal-hover: 0 0 0 3px var(--c-maroon), 0 0 0 6px var(--c-gold);
 
-  /* type sizes: the header's small / large; the logo is 5.6x the name — exactly
-     twice the header and footer's 2.8x, as the stage's centrepiece */
+  /* type sizes: the header's small / large. The medal is one standard size (128px) on
+     every screen, so it does not follow the name's steps */
   --text-sm: 17px;
   --text-lg: 36px;
-  --logo: calc(var(--text-lg) * 5.6);
+  --logo: 128px;
 
-  /* spacing scale: identical to the header's */
-  --space-2: 10px;
+  /* spacing: the header's --space-3 step (the only one used here) */
   --space-3: 14px;
 
   /* layout */
-  --frame: 30px;                        /* = CTA frame: Om · swastik band width */
   --ring-gap: var(--space-3);           /* space between the medal and its turning ring */
   --fade: 400ms ease;                   /* = FADE_MS in Preloader.js */
 
-  font-family: var(--font-text);
+  font-family: var(--font);
   font-size: var(--text-sm);
   font-weight: 400;
   line-height: 1.5;
@@ -60,7 +63,6 @@
 @media (min-width: 1600px) {
   .preloader {
     --text-lg: 38px;
-    --space-2: 12px;
     --space-3: 16px;
   }
 }
@@ -108,68 +110,18 @@
 }
 
 
-/* ---- 4. Om · swastik frame (the CTA's frame; tiles shared in globals.css) ---- */
-.frameH,
-.frameV,
-.corner {
-  position: absolute;
-  background-color: var(--c-gold);
-  box-shadow: var(--shadow-frame);
-  pointer-events: none;
-}
-
-.frameH {
-  left: 0;
-  right: 0;
-  z-index: 3;
-  height: var(--frame);
-  background-image: var(--pattern-om-swastik-x);
-  background-repeat: repeat-x;
-  background-position: center;
-  background-size: 100px var(--frame);
-}
-
-.frameTop    { top: 0; }
-.frameBottom { bottom: 0; }
-
-.frameV {
-  top: var(--frame);
-  bottom: var(--frame);
-  z-index: 2;
-  width: var(--frame);
-  background-image: var(--pattern-om-swastik-y);
-  background-repeat: repeat-y;
-  background-position: top center;
-  background-size: var(--frame) 100px;
-}
-
-.frameLeft  { left: 0; }
-.frameRight { right: 0; }
-
-.corner {
-  z-index: 4;
-  width: var(--frame);
-  height: var(--frame);
-}
-
-.cornerTl { top: 0;    left: 0; }
-.cornerTr { top: 0;    right: 0; }
-.cornerBl { bottom: 0; left: 0; }
-.cornerBr { bottom: 0; right: 0; }
-
-
-/* ---- 5. Medal, ring, name, text ---------------------------------------------- */
+/* ---- 4. Medal, ring, name, text ---------------------------------------------- */
 /* medal above name, as the menu drawer's brand */
 .inner {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-3);
-  padding: 0 calc(var(--frame) + var(--space-3));   /* never under the side bands */
+  padding: 0 var(--space-3);            /* keeps the name off the screen edges */
   animation: enter 500ms ease-out;
 }
 
-/* the header's medal: maroon disc, gold ring, soft halo (glowing in and out) */
+/* the header's medal: maroon disc, gold ring, a gold ring breathing out and in around it */
 .logo {
   position: relative;
   display: block;
@@ -192,7 +144,6 @@
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  filter: saturate(0.9) sepia(0.12);    /* = header: warms the seal towards the palette */
 }
 
 /* the turning ring: a 2px gold half-circle, --ring-gap outside the medal */
@@ -200,28 +151,28 @@
   content: "";
   position: absolute;
   inset: calc(-1 * (var(--ring-gap) + var(--line-width) * 2));
-  border: var(--line-width) solid transparent;
+  border: var(--line-width) solid var(--c-maroon);   /* the stage's own colour: the other half of the ring is not seen */
   border-top-color: var(--c-gold);
   border-right-color: var(--c-gold);
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
 }
 
-/* name: large Rozha, white (the brand name's size, the CTA heading's colour) */
+/* name: large Annapurna SIL, white (the brand name's size, the CTA heading's colour) */
 .name {
   color: var(--c-white);
-  font-family: var(--font-title);
+  font-family: var(--font);
   font-size: var(--text-lg);
   line-height: 1.2;
 }
 
-/* "Loading…": small Tiro, gold */
+/* "Loading…": small, gold */
 .text {
   color: var(--c-gold);
 }
 
 
-/* ---- 6. Animations ------------------------------------------------------------ */
+/* ---- 5. Animations ------------------------------------------------------------ */
 @keyframes enter {
   from { opacity: 0; transform: scale(0.94); }
   to   { opacity: 1; transform: scale(1); }
@@ -237,7 +188,7 @@
 }
 
 
-/* ---- 7. Reduced motion: a still medal with a full gold ring -------------------- */
+/* ---- 6. Reduced motion: a still medal with a full gold ring -------------------- */
 @media (prefers-reduced-motion: reduce) {
   .inner,
   .logo,
@@ -251,17 +202,5 @@
 
   .preloader {
     transition: none;
-  }
-}
-
-/* phones: top + bottom bands only (as the CTA) */
-@media (max-width: 767px) {
-  .frameV,
-  .corner {
-    display: none;
-  }
-
-  .inner {
-    padding: 0 var(--space-3);
   }
 }

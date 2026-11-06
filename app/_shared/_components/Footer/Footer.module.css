@@ -7,22 +7,25 @@
      3. Shared                   — resets, icon box, focus ring
      4. Main area                — grid, brand, about, columns, lists
      5. Bottom bar
-     6. Hover effects            — mouse / trackpad only
-     7. Responsive layout
-     8. Reduced motion
+     6. Explicit colours         — nothing is inherited
+     7. Hover effects            — mouse / trackpad only
+     8. Responsive layout
+     9. Reduced motion
 
    Design rules (same as the header)
-   - Colours : black, white, maroon, gold (+ transparencies of them for shadows).
-   - Type    : Rozha One for the brand name, column titles and bottom bar, Tiro
-               Devanagari Marathi for everything else, all at the fonts' real weight.
+   - Colours : black, white, maroon, gold — solid only: no transparency, and nothing inherited
+               (every text and icon states its own colour: section 6).
+   - Type    : Annapurna SIL Bold, the site's only font; hierarchy from size and colour.
    - Sizes   : the header's three sizes, at the header's breakpoints —
-               small  (description, column items)
-               medium (column titles, copyright + credit line — the header CTA's size)
+               small  (description, column items, copyright + credit line)
+               medium (column titles — the header CTA's size)
                large  (brand name; the logo is always 2.8x it).
    - States  : on gold, black links go maroon; on maroon (gold text), white links
                go gold — exactly the header strip's links. Focus = 2px ring.
-   - Spacing : the header's scale and roles, value for value — the gold area is
-               padded like the header bar, the bottom bar like the header strip.
+   - Spacing : one rule — space around (above / below) = space between sections =
+               2 x space inside a section: desktop 48 / 20 · tablet 40 / 20 · phones
+               32 / 16px (seen); the bottom bar is sized as the header strip.
+   - Icons   : beside the text, lifted 0.1em to the letters' centre (as the header).
    - Lines   : 2px solid — black on gold.
    ========================================================================== */
 
@@ -38,8 +41,9 @@
   /* lines + shadows */
   --line-width: 2px;
   --line-dark: var(--line-width) solid var(--c-black);
-  --shadow-medal: 0 0 0 3px rgba(98, 2, 8, 0.28), 0 6px 16px rgba(0, 0, 0, 0.25);
-  --shadow-medal-hover: 0 0 0 3px rgba(98, 2, 8, 0.35), 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 22px rgba(217, 152, 42, 0.75);
+  /* "shadows" are solid rings (no blur, no transparency) */
+  --shadow-medal: 0 0 0 3px var(--c-maroon);
+  --shadow-medal-hover: 0 0 0 3px var(--c-maroon), 0 0 0 6px var(--c-black);
 
   /* type sizes */
   --text-sm: 17px;
@@ -56,26 +60,40 @@
   --space-5: 26px;
 
   /* layout: the header's spacing roles */
-  --bar-pad: var(--space-4);                 /* = header bar: gold area, space above and below */
   --strip-pad: var(--space-1);               /* = header strip: bottom bar, space above and below */
   --bar-gap: var(--space-5);                 /* = header bar: minimum gap between columns / rows */
   --strip-gap: var(--space-5);               /* = header strip: gap between the bottom bar's lines */
   --control-sm: 42px;                        /* = header strip height (the bottom bar) */
+  --strip-height: 42px;                 /* the top / bottom strip (steps below) */
+  /* one spacing rule (sizes seen): the space AROUND the footer's content (above and
+     below) = the space BETWEEN its sections = 2 x the space INSIDE a section (rows,
+     title → list, brand → description). By mode:
+                 inside   between = around
+       desktop   ≈ 20px   48px
+       tablet    ≈ 20px   40px
+       phones    ≈ 16px   32px
+     (text lines carry ≈ 0.4em of their own space, so the gaps are set that much smaller) */
+  --edge: 48px;
+  --inner: var(--space-3);                                  /* 14px + text space ≈ 20px */
+  --nudge: 4px;                          /* a hovered quick link's arrow slides this far */
+  --section-gap: calc(var(--edge) - 0.4em);                 /* + text space = --edge */
   --about-width: 40ch;                       /* description: at most 3 lines at every width */
   --ease: 200ms ease;
 
-  font-family: var(--font-text);
+  font-family: var(--font);
   font-size: var(--text-sm);
   font-weight: 400;
-  line-height: 1.5;
-  font-variant-numeric: lining-nums;         /* Tiro's English digits default to old-style */
+  --line-height: 1.5;
+  line-height: var(--line-height);
+  font-variant-numeric: lining-nums;         /* keep English digits lining (even height) */
 }
 
 
-/* ---- 2. Token breakpoints (values only — layout changes live in section 7) -- */
+/* ---- 2. Token breakpoints (values only — layout changes live in section 8) -- */
 /* the same steps as the header: wide screens get +2px brand and +2px on every spacing step */
 @media (min-width: 1600px) {
   .footer {
+    --edge: 52px;
     --text-lg: 38px;
     --space-0: 6px;
     --space-1: 8px;
@@ -114,6 +132,7 @@
 /* tablet: the header's tablet values */
 @media (max-width: 1199px) {
   .footer {
+    --edge: 40px;
     --text-lg: 30px;
     --bar-gap: var(--space-5);
     --strip-gap: var(--space-3);
@@ -123,6 +142,8 @@
 /* phones */
 @media (max-width: 767px) {
   .footer {
+    --edge: 32px;
+    --inner: var(--space-2);           /* 10px + text space ≈ 16px */
     --text-sm: 16px;
     --text-lg: 23px;
   }
@@ -132,6 +153,31 @@
   .footer {
     --text-lg: 19px;
   }
+}
+
+
+/* ---- the strips' shared height ---------------------------------------------
+   The header's top strip and the footer's bottom strip are always the same size:
+   one height per screen range, big enough for whichever has more lines there
+   (contacts in the header, copyright + credit in the footer); content centred. */
+@media (min-width: 1600px) {
+  .footer { --strip-height: 44px; }
+}
+
+@media (max-width: 1023px) {
+  .footer { --strip-height: 70px; }   /* 2 lines */
+}
+
+@media (max-width: 767px) {
+  .footer { --strip-height: 64px; }   /* 2 lines */
+}
+
+@media (max-width: 374px) {
+  .footer { --strip-height: 88px; }   /* 3 lines (the copyright wraps) */
+}
+
+@media (max-width: 359px) {
+  .footer { --strip-height: 122px; }  /* 4 lines */
 }
 
 
@@ -153,19 +199,33 @@
   transition: color var(--ease), background-color var(--ease);
 }
 
-/* keyboard focus ring: drawn in the element's own text colour */
+/* keyboard focus ring: black on the gold body, white on the maroon bottom bar */
 :where(.footer) :where(a):focus-visible {
-  outline: var(--line-width) solid currentColor;
+  outline: var(--line-width) solid var(--c-black);
   outline-offset: var(--line-width);
 }
 
+.bottom a:focus-visible {
+  outline-color: var(--c-white);
+}
+
 /* every Font Awesome icon next to text gets the same box, so all labels line up */
+/* the box is exactly one text line tall (so the icon stays on the first line of
+   wrapped text) with the glyph centred in it, then nudged to sit level with the
+   letters — measured to match the header strip's icons pixel for pixel */
 .icon {
+  position: relative;
+  top: var(--icon-nudge, 0.12em);
+  display: inline-flex;
   flex: none;
+  align-items: center;
+  justify-content: center;
   width: 1.25em;
+  height: calc(1em * var(--line-height));
   font-size: 1em;
-  line-height: inherit;                      /* sits on the first line of wrapped text */
-  text-align: center;
+  line-height: 1;
+  vertical-align: top;                       /* inline (tablet + phones): fills the line box */
+  transition: transform var(--ease);
 }
 
 
@@ -176,8 +236,11 @@
   z-index: 1;
 }
 
+/* above and below: --edge for the mode. The bottom gives back the last text line's
+   own space below its letters (a quarter of its 1.5 line height), so the gap you
+   see above and below the content is the same */
 .main {
-  padding: var(--bar-pad) 0;
+  padding: var(--edge) 0 calc(var(--edge) - 0.25em);
   background-color: var(--c-gold);
   color: var(--c-black);
 }
@@ -220,19 +283,20 @@
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  filter: saturate(0.9) sepia(0.12);         /* warms the seal towards the site palette */
 }
 
 .brandName {
-  font-family: var(--font-title);
+  font-family: var(--font);
   font-size: var(--text-lg);
   line-height: 1.2;
   white-space: nowrap;
 }
 
+/* + one small step for the logo's shadow, which eats into the gap, so the space
+   seen below the brand matches every other inner gap */
 .aboutText {
   max-width: var(--about-width);
-  margin-top: var(--space-3);
+  margin-top: calc(var(--inner) + var(--space-1));
 }
 
 
@@ -246,7 +310,7 @@
 /* colour restated: the site-wide h2 colour (template grey) must never show */
 .title {
   color: var(--c-black);
-  font-family: var(--font-title);
+  font-family: var(--font);
   font-size: var(--text-md);
   font-weight: 400;
   line-height: 1.3;
@@ -261,10 +325,19 @@
   border-top: var(--line-dark);
 }
 
+/* rows: --inner apart. Title → list adds the quarter line the first row has above
+   its letters but the title's underline doesn't, so that gap is seen the same as
+   the gap between rows */
 .list {
   display: grid;
-  gap: var(--space-2);
-  margin-top: var(--space-3);
+  gap: var(--inner);
+  margin-top: calc(var(--inner) + 0.25em);
+}
+
+/* every row is a flex box, so a plain item (आमचे कार्य) and a link row are exactly
+   the same height and all three columns share one rhythm */
+.list > li {
+  display: flex;
 }
 
 /* icon + text (a service, a quick link or a contact); the icon stays on the
@@ -282,13 +355,11 @@
 
 
 /* ---- 5. Bottom bar ---------------------------------------------------------- */
-/* copyright + credit: medium size (19px), Rozha (as the header's CTA) */
+/* the header strip exactly: small text; static text gold, its links white */
 .bottom {
-  padding: var(--strip-pad) 0;
   background-color: var(--c-maroon);
-  color: var(--c-gold);                      /* static text gold; its links are white (below) */
-  font-family: var(--font-title);
-  font-size: var(--text-md);
+  color: var(--c-gold);
+  font-size: var(--text-sm);
 }
 
 /* spaced like the header's top strip */
@@ -298,12 +369,27 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-0) var(--strip-gap);
-  min-height: var(--control-sm);
+  min-height: var(--strip-height);           /* = the header's top strip (see section 2) */
+  padding-top: var(--strip-pad);
+  padding-bottom: var(--strip-pad);
 }
 
 /* links in the bar: white, gold on hover — as the header strip's links */
 .bottomLink {
   color: var(--c-white);
+  /* a taller tap / click area (≥24px) without moving the line */
+  padding: var(--space-0) 0;
+}
+
+/* text for screen readers only */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* keeps each phrase whole, so a narrow screen only breaks the line between phrases */
@@ -312,7 +398,22 @@
 }
 
 
-/* ---- 6. Hover effects (mouse / trackpad only) ----------------------------------
+/* ---- 6. Explicit colours ---------------------------------------------------------
+   Nothing is inherited: every text states its own colour (a link used to hand its colour down
+   to its label). Gold body → black (maroon on hover); maroon bottom bar → gold, its links white. */
+.brandName,
+.aboutText,
+.item > span,
+.srOnly {
+  color: var(--c-black);
+}
+
+.bottom span {
+  color: var(--c-gold);
+}
+
+
+/* ---- 7. Hover effects (mouse / trackpad only) ----------------------------------
    Inside (hover: hover) so a tap never leaves a stuck hover colour. Colours are
    restated on purpose: the site-wide `a:hover` (Bootstrap blue) must never show. */
 @media (hover: hover) {
@@ -335,6 +436,11 @@
     text-underline-offset: 0.2em;
   }
 
+  /* a quick link's arrow slides forward, as the buttons' arrows do */
+  .link:hover :global(.fa-arrow-right) {
+    transform: translateX(var(--nudge));
+  }
+
   /* hover turns it gold like the text around it, so an underline keeps it readable as a link */
   .bottomLink:hover {
     color: var(--c-gold);
@@ -345,16 +451,18 @@
 }
 
 
-/* ---- 7. Responsive layout ------------------------------------------------------- */
-/* tablet + phones: everything centred — columns, titles (and their underline),
-   list items and the bottom bar */
+/* ---- 8. Responsive layout ------------------------------------------------------- */
+/* tablet + phones: columns and titles (with their underline) centred; each list is
+   centred as a block with its rows left-aligned inside, so the icons form a neat
+   column (the bottom bar stacks below 1024px, as the header strip) */
 @media (max-width: 1199px) {
   /* tablet: brand + about across the top, then the three columns in one row,
-     with equal space between and around them */
+     with equal space between and around them. One spacing rule from the edge in:
+     spacing: around (--edge) = between (--section-gap) = 2 x inside (--inner) */
   .grid {
     grid-template-columns: repeat(3, auto);
     justify-content: space-evenly;
-    row-gap: var(--bar-gap);
+    row-gap: var(--section-gap);
   }
 
   .grid > :first-child {
@@ -372,22 +480,25 @@
   }
 
   .list {
-    justify-items: center;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    justify-items: start;
+    text-align: left;
   }
 
-  /* items flow as text with the icon inline, so a wrapped line (the address)
-     keeps its icon and text centred together */
-  .item {
-    display: block;
+  /* centred text: balanced lines, so no short, ragged last line */
+  .aboutText {
+    text-wrap: balance;
   }
+}
 
-  .item .icon {
-    display: inline-block;
-    margin-right: var(--space-2);
-  }
-
+/* below 1024px the copyright + credit no longer fit one line: they stack, centred
+   (the header strip wraps at the same width) */
+@media (max-width: 1023px) {
   .bottomInner {
     flex-direction: column;
+    justify-content: center;
     text-align: center;
   }
 }
@@ -401,10 +512,25 @@
   .brand {
     gap: var(--space-2);
   }
+
+  /* the three lists stack, so they share one width (the widest list's: the contact
+     list, measured at 12.5em): every icon then sits on one vertical line */
+  /* each list is centred under its own title (as on tablet); rows keep the
+     desktop rhythm. Links get a taller invisible tap area that fills the gap
+     between rows, so every row is easy to tap without spreading the list out */
+  .link {
+    position: relative;
+  }
+
+  .link::after {
+    content: "";
+    position: absolute;
+    inset: calc(var(--space-2) / -2) 0;
+  }
 }
 
 
-/* ---- 8. Reduced motion ---------------------------------------------------------- */
+/* ---- 9. Reduced motion ---------------------------------------------------------- */
 /* colour fades and the medal glow switch instantly (as in the header) */
 @media (prefers-reduced-motion: reduce) {
   .footer * {

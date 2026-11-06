@@ -4,17 +4,17 @@ import styles from "./Event.module.css"
 
 const events = [
     {
-        img: "assets/images/event/event-1-1.jpg",
+        img: "assets/media/home/event-1-1.jpg",
         date: "17 Nov 2026",
         title: "श्री शंकर महाराज प्रकट दिन",
     },
     {
-        img: "assets/images/event/event-1-2.jpg",
+        img: "assets/media/home/event-1-2.jpg",
         date: "23 Dec 2026",
         title: "श्री दत्त प्रभू जयंती",
     },
     {
-        img: "assets/images/event/event-1-3.jpg",
+        img: "assets/media/home/event-1-3.jpg",
         date: "06 Feb 2027",
         // "\u200D" keeps the second श्व as half-श + व (श्‍व), matching the hero name plaque
         title: "श्री विश्वेश\u094D\u200Dवर स्वामी महाराज जन्मदिन",

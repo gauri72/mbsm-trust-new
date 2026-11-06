@@ -136,7 +136,7 @@
     font-weight: 700;
     line-height: 60px;
     color: var(--anity-black);
-    font-family: var(--font-text), serif;
+    font-family: var(--font), serif;
 }
 
 .provideCountText {
@@ -378,7 +378,7 @@
 .bg {
     position: absolute;
     inset: 0;
-    background-image: url("/assets/images/backgrounds/section-bg-2.png");
+    background-image: url("/assets/media/shared/section-bg-2.png");
     background-repeat: repeat;
     background-size: 1170px auto;
     opacity: 0.5;
@@ -1535,9 +1535,3 @@ section.aboutOne.aboutOneOrnate .tabBox .tabsContentInner p {
   }
 }
 
-/* Tiro Devanagari Marathi tucks "ृ" inside "द" (reads like "द्द"); for words
-   such as दृष्टी, turn off its below-base forms so "ृ" sits under "द".
-   Applied per word: switching "blws" off everywhere breaks रु / रू / गु. */
-.mrRiBelow {
-  font-feature-settings: "blws" 0;
-}

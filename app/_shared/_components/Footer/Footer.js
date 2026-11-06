@@ -1,6 +1,7 @@
 'use client'
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { PAGES } from "../../siteContent"
 import styles from "./Footer.module.css"
 
 /* =============================================================================
@@ -20,11 +21,13 @@ import styles from "./Footer.module.css"
    ========================================================================== */
 
 // ---- Trust details ----------------------------------------------------------
-// Rozha One stacks क्त into a ligature that does not read as Marathi; a zero-width
-// joiner (U+200D) after क् asks for the half-क form (brand + copyright, both in Rozha).
+// The title font can stack क्त into a ligature that does not read as Marathi; a zero-width
+// joiner (U+200D) after क् asks for the half-क form (used for the brand; harmless in the regular font).
 const SITE_NAME_DISPLAY = "मंगल भक्‍त सेवा मंडळ"
-const SITE_LOGO_SRC = "/assets/images/resources/logo.png"
-const ABOUT_TEXT = "मंगल भक्त सेवा मंडळ ट्रस्ट ही एक सामाजिक संस्था आहे. विविध उपक्रम व कार्यक्रमांतून मानवसेवा, धार्मिक समता, ऐक्य आणि आध्यात्मिक मार्गदर्शनाचे कार्य आम्ही करतो."
+// the same fix for the column title in Annapurna SIL ("उपयुक्त" also has क्त)
+const LINKS_TITLE = "उपयुक्\u200Dत दुवे"
+const SITE_LOGO_SRC = "/assets/media/shared/logo.png"
+const ABOUT_TEXT = "मंगल भक्त सेवा मंडळ ही सामाजिक संस्था आहे. विविध उपक्रम व कार्यक्रमांतून मानवसेवा, धार्मिक समता, ऐक्य व आध्यात्मिक मार्गदर्शनाचे कार्य करतो."
 const CREDIT = { name: "गौरी कोळेकर", href: "mailto:kolekargauri8@gmail.com" }
 
 // आमचे कार्य: the trust's areas of work (text, not links)
@@ -36,20 +39,15 @@ const SEVA = [
 ]
 
 // उपयुक्त दुवे
-const QUICK_LINKS = [
-    { href: "/", label: "आमचे मुखपृष्ठ" },
-    { href: "/parichaya", label: "आमची वाटचाल" },
-    { href: "/chitrasangraha", label: "चित्रसंग्रह" },
-    { href: "/sampark", label: "संवाद साधा" },
-]
+const QUICK_LINKS = [PAGES.home, PAGES.parichaya, PAGES.chitrasangraha, PAGES.sampark]   // names from siteContent.js, as the header
 
 // संपर्क माहिती (same details as the header's contact strip; keep the two in step).
 // external: opens in a new tab (the map); phone + email open the visitor's own app.
 const CONTACTS = [
     { icon: "fas fa-phone-alt", href: "tel:+917588797788", label: "+91 75887 97788" },
     { icon: "fas fa-envelope", href: "mailto:mbsmtrust@gmail.com", label: "mbsmtrust@gmail.com" },
-    // the address is set on two lines, so the column is exactly as wide as its longest line
-    { icon: "fas fa-map-marker-alt", href: "https://share.google/eUPrIPLwsBu6afTGg", label: <>श्री शंकरदत्त महाराज मठ,<br />एफ 70, एमआयडीसी, अहिल्यानगर</>, external: true },
+    // the address on three lines: the math · the plot · the city + pincode
+    { icon: "fas fa-map-marker-alt", href: "https://share.google/eUPrIPLwsBu6afTGg", label: <>श्री शंकरदत्त महाराज मठ,<br />एफ 70, एमआयडीसी,<br />अहिल्यानगर - 414111</>, external: true },
 ]
 
 // join class names, skipping falsy ones
@@ -104,11 +102,17 @@ export default function Footer() {
 
                     {/* उपयुक्त दुवे */}
                     <nav className={styles.column} aria-label="उपयुक्त दुवे">
-                        <Title>उपयुक्त दुवे</Title>
+                        <Title>{LINKS_TITLE}</Title>
                         <ul className={styles.list}>
                             {QUICK_LINKS.map((l) => (
                                 <li key={l.href}>
-                                    <Link href={l.href} className={cx(styles.item, styles.link)} onClick={l.href === "/" ? onHomeClick : undefined}>
+                                    {/* the current page is announced to screen readers (no visual change) */}
+                                    <Link
+                                        href={l.href}
+                                        className={cx(styles.item, styles.link)}
+                                        aria-current={pathname === l.href ? "page" : undefined}
+                                        onClick={l.href === "/" ? onHomeClick : undefined}
+                                    >
                                         <i className={cx(styles.icon, "fas fa-arrow-right")} aria-hidden="true"></i>
                                         <span>{l.label}</span>
                                     </Link>
@@ -130,6 +134,8 @@ export default function Footer() {
                                     >
                                         <i className={cx(styles.icon, c.icon)} aria-hidden="true"></i>
                                         <span>{c.label}</span>
+                                        {/* screen readers are told the map opens in a new tab */}
+                                        {c.external && <span className={styles.srOnly}> (नवीन टॅबमध्ये उघडते)</span>}
                                     </a>
                                 </li>
                             ))}
@@ -148,10 +154,10 @@ export default function Footer() {
                         <span className={styles.nowrap}>
                             {/* pages are pre-rendered at build time: if the year has changed
                                 since, the browser's value replaces it without a hydration error */}
-                            Copyright &copy; <span suppressHydrationWarning>{year}</span>{" "}
+                            &copy; <span suppressHydrationWarning>{year}</span>{" "}
                             <Link href="/" className={styles.bottomLink} lang="mr" onClick={onHomeClick}>{SITE_NAME_DISPLAY}</Link>.
                         </span>{" "}
-                        <span className={styles.nowrap}>All Rights Reserved.</span>
+                        <span className={styles.nowrap}>All rights reserved.</span>
                     </p>
                     <p lang="en">
                         <span className={styles.nowrap}>Designed &amp; Developed by</span>{" "}

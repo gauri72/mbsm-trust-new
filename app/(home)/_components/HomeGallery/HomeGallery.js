@@ -3,12 +3,12 @@ import Link from "next/link"
 import styles from "./HomeGallery.module.css"
 
 const galleryItems = [
-    { src: "assets/images/gallery/gallery-1.png", label: "भक्तीचा सोहळा", position: "center 40%" },
-    { src: "assets/images/gallery/gallery-2.png", label: "कट्यारधारी मारुती", position: "center 35%" },
-    { src: "assets/images/gallery/gallery-3.png", label: "हिरवा शृंगार", position: "center 30%" },
-    { src: "assets/images/gallery/gallery-4.png", label: "अर्पण भाव", position: "center 45%" },
-    { src: "assets/images/gallery/gallery-5.png", label: "तपाची साधना", position: "center 20%" },
-    { src: "assets/images/gallery/gallery-6.png", label: "दिव्य दर्शन", position: "center 25%" },
+    { src: "assets/media/home/gallery-1.png", label: "भक्तीचा सोहळा", position: "center 40%" },
+    { src: "assets/media/home/gallery-2.png", label: "कट्यारधारी मारुती", position: "center 35%" },
+    { src: "assets/media/home/gallery-3.png", label: "हिरवा शृंगार", position: "center 30%" },
+    { src: "assets/media/home/gallery-4.png", label: "अर्पण भाव", position: "center 45%" },
+    { src: "assets/media/home/gallery-5.png", label: "तपाची साधना", position: "center 20%" },
+    { src: "assets/media/home/gallery-6.png", label: "दिव्य दर्शन", position: "center 25%" },
 ]
 
 export default function HomeGallery() {
@@ -33,13 +33,13 @@ export default function HomeGallery() {
                     {/* Peacock-feather borders flanking the heading, left & right */}
                     <img
                         className={`${styles.feather} ${styles.featherLeft}`}
-                        src="assets/images/resources/feather-border.png"
+                        src="assets/media/shared/feather-border.png"
                         alt=""
                         aria-hidden="true"
                     />
                     <img
                         className={`${styles.feather} ${styles.featherRight}`}
-                        src="assets/images/resources/feather-border.png"
+                        src="assets/media/shared/feather-border.png"
                         alt=""
                         aria-hidden="true"
                     />
@@ -76,7 +76,7 @@ export default function HomeGallery() {
                 <div className={`${styles.btnBox} ${styles.foundOneBtnBox} text-center wow fadeInUp`} data-wow-delay="200ms">
                     <img
                         className={`${styles.peacock} ${styles.peacockLeft}`}
-                        src="assets/images/resources/peacock-border.png"
+                        src="assets/media/shared/peacock-border.png"
                         alt=""
                         aria-hidden="true"
                     />
@@ -85,7 +85,7 @@ export default function HomeGallery() {
                     </Link>
                     <img
                         className={`${styles.peacock} ${styles.peacockRight}`}
-                        src="assets/images/resources/peacock-border.png"
+                        src="assets/media/shared/peacock-border.png"
                         alt=""
                         aria-hidden="true"
                     />

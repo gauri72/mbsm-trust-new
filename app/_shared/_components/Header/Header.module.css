@@ -10,18 +10,19 @@
      6. Drawer                   — below 1200px
      7. Hover effects            — mouse / trackpad only
      8. Responsive layout        — which parts show where
-     9. Reduced motion
+     9. Explicit colours         — nothing is inherited
+    10. Reduced motion
 
    Design rules
-   - Colours : black, white, maroon, gold (+ transparencies of them for shadows).
-   - Type    : Rozha One for large + medium (brand name, CTA), Tiro Devanagari
-               Marathi for everything else. Both ship one weight, so all text is
-               set at that real weight; hierarchy comes from size and colour.
+   - Colours : black, white, maroon, gold — solid only: no transparency, and nothing inherited
+               (every text and icon states its own colour, in every state: section 9).
+   - Type    : Annapurna SIL Bold, the site's only font, for all text; hierarchy comes
+               from size and colour.
    - Sizes   : small (contacts, menu, socials) · medium (CTA) · large (brand name;
                the logo is always 2.8x it).
    - States  : links: hover / current = the inverse of the surface they sit on
                (on maroon -> gold + black). Buttons keep their colours and lift on
-               hover: up 4px with a deep shadow, the arrow sliding 6px forward.
+               hover: up 4px with a solid black ledge, the arrow sliding 6px forward.
    - Shapes  : pills for links, buttons and panels, circles for icon buttons;
                every divider is 2px solid (white on maroon, black elsewhere).
    ========================================================================== */
@@ -42,18 +43,17 @@
   --line-width: 2px;
   --line-light: var(--line-width) solid var(--c-white);
   --line-dark: var(--line-width) solid var(--c-black);
-  --shadow-bar: 0 4px 16px rgba(0, 0, 0, 0.16);
-  --shadow-panel: 0 12px 32px rgba(0, 0, 0, 0.18);
-  --shadow-medal: 0 0 0 3px rgba(98, 2, 8, 0.28), 0 6px 16px rgba(0, 0, 0, 0.25);
-  --shadow-medal-hover: 0 0 0 3px rgba(98, 2, 8, 0.35), 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 22px rgba(217, 152, 42, 0.75);
-  --shadow-lift: 0 12px 24px rgba(0, 0, 0, 0.38);   /* a button lifted on hover */
+  /* "shadows" are solid lines and rings (no blur, no transparency) */
+  --shadow-bar: 0 2px 0 var(--c-black);                                        /* the bar, once the page has scrolled */
+  --shadow-panel: 0 0 0 2px var(--c-black);                                    /* the dropdown and the drawer */
+  --shadow-medal: 0 0 0 3px var(--c-maroon);                                   /* a maroon ring round the logo medal */
+  --shadow-medal-hover: 0 0 0 3px var(--c-maroon), 0 0 0 6px var(--c-black);   /* + a black one on hover */
+  --shadow-lift: 0 4px 0 var(--c-black);                                       /* a button lifted on hover: a solid ledge */
   --lift: -4px;                          /* how far a hovered button rises */
   --nudge: 6px;                          /* how far a hovered button's arrow slides */
-  --overlay: rgba(0, 0, 0, 0.5);
 
   /* type sizes */
   --text-sm: 17px;
-  --text-strip: var(--text-sm);          /* contact strip text; steps down only where one line needs it */
   --strip-gap: var(--space-5);           /* contact strip: space between items (and around its divider) */
   --text-md: 19px;
   --text-lg: 36px;
@@ -70,21 +70,31 @@
   /* layout */
   --bar-pad: var(--space-4);             /* above and below the logo in the bar */
   --bar-gap: var(--space-5);             /* between brand, menu and actions */
-  --link-pad: var(--space-3);            /* side padding of menu links */
+  /* side padding of every menu pill (tray AND dropdown — one size, so both match). It is
+     as roomy as the bar allows: whatever width is left between the brand and the actions
+     once the tray's fixed parts are in (a link's text + icons, the tray's padding and gaps)
+     is shared over the 10 link sides, between 6px and 18px; 16px is kept free. */
+  --link-pad: clamp(
+    6px,
+    calc((min(100vw, var(--max-width)) - 2 * var(--gutter) - 11.12 * var(--text-lg)
+          - 2 * (var(--space-2) + var(--space-3) + var(--space-5)) - 4 * var(--bar-gap)
+          - 6 * var(--space-0) - 704.45px) / 10),
+    18px
+  );
   --control-lg: 50px;                    /* CTA, drawer links */
-  --control: 46px;                       /* menu / close button */
-  --control-sm: 42px;                    /* menu links, social icons, strip height */
+  --control-sm: 42px;                    /* menu links, social icons, menu + close buttons, strip height */
+  --strip-height: 42px;                 /* the top / bottom strip (steps below) */
   --radius-pill: 999px;
   --drawer-width: min(88vw, 360px);
   --gutter: 32px;                        /* page side margin */
   --max-width: 1600px;
   --ease: 200ms ease;
 
-  font-family: var(--font-text);
+  font-family: var(--font);
   font-size: var(--text-sm);
   font-weight: 400;
   line-height: 1.5;
-  font-variant-numeric: lining-nums;     /* Tiro's English digits default to old-style (uneven) */
+  font-variant-numeric: lining-nums;     /* keep English digits lining (even height) */
 }
 
 
@@ -101,6 +111,7 @@
     --space-3: 16px;
     --space-4: 20px;
     --space-5: 28px;
+    --bar-gap: var(--space-4);           /* the bar's three parts stay inside the 1600px column */
   }
 }
 
@@ -114,12 +125,11 @@
   }
 }
 
-@media (max-width: 1439px) {
+@media (max-width: 1479px) {
   .topbar,
   .bar,
   .drawerRoot {
     --bar-gap: var(--space-3);
-    --link-pad: var(--space-1);
   }
 }
 
@@ -131,11 +141,20 @@
   }
 }
 
-@media (max-width: 1279px) {
+@media (max-width: 1319px) {
   .topbar,
   .bar,
   .drawerRoot {
     --text-lg: 22px;
+    --bar-gap: var(--space-2);
+  }
+}
+
+@media (max-width: 1239px) {
+  .topbar,
+  .bar,
+  .drawerRoot {
+    --text-lg: 20px;
   }
 }
 
@@ -154,20 +173,6 @@
   }
 }
 
-/* narrow tablets: the strip text steps down only as far as one line needs
-   (strip text: 17px ≥1024 · 16px 900–1023 · 14px 768–899 · 14px phones) */
-@media (max-width: 1023px) {
-  .topbar {
-    --text-strip: 16px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 899px) {
-  .topbar {
-    --text-strip: 14px;
-  }
-}
-
 /* phones */
 @media (max-width: 767px) {
   .topbar,
@@ -178,12 +183,14 @@
     --gutter: 16px;
   }
 
+  /* the strip stays at 2 lines (phone | email · address): its text steps down to
+     14px and the address drops its pincode (below) */
   .topbar {
-    --text-strip: 14px;
+    --text-sm: 14px;
   }
 }
 
-@media (max-width: 374px) {
+@media (max-width: 379px) {
   .topbar {
     --strip-gap: var(--space-1);
   }
@@ -195,6 +202,31 @@
   .drawerRoot {
     --text-lg: 19px;
   }
+}
+
+
+/* ---- the strips' shared height ---------------------------------------------
+   The header's top strip and the footer's bottom strip are always the same size:
+   one height per screen range, big enough for whichever has more lines there
+   (contacts in the header, copyright + credit in the footer); content centred. */
+@media (min-width: 1600px) {
+  .topbar { --strip-height: 44px; }
+}
+
+@media (max-width: 1023px) {
+  .topbar { --strip-height: 70px; }   /* 2 lines */
+}
+
+@media (max-width: 767px) {
+  .topbar { --strip-height: 64px; }   /* 2 lines */
+}
+
+@media (max-width: 374px) {
+  .topbar { --strip-height: 88px; }   /* the footer's copyright takes 3 lines here */
+}
+
+@media (max-width: 359px) {
+  .topbar { --strip-height: 122px; }  /* 4 lines */
 }
 
 
@@ -227,15 +259,42 @@
   transition: color var(--ease), background-color var(--ease), border-color var(--ease);
 }
 
-/* keyboard focus ring: drawn in the element's own text colour */
-:where(.topbar, .bar, .drawerRoot) :where(a, button):focus-visible {
-  outline: var(--line-width) solid currentColor;
+/* keyboard focus ring: a 2px ring in the colour that shows on what the element sits on —
+   white on maroon, black on gold, maroon on white */
+:where(.topbar, .drawerRoot) :where(a, button):focus-visible {
+  outline: var(--line-width) solid var(--c-white);
   outline-offset: var(--line-width);
+}
+
+.bar :where(a, button):focus-visible,
+.drawerHead :where(a, button):focus-visible,
+.drawerFoot :where(a, button):focus-visible {
+  outline: var(--line-width) solid var(--c-black);
+  outline-offset: var(--line-width);
+}
+
+.navList :where(a, button):focus-visible,
+.drawerNav :where(a, button):focus-visible,
+.socialLink:focus-visible,
+.menuButton:focus-visible,
+.cta:focus-visible {
+  outline-color: var(--c-white);
+}
+
+.dropdown :where(a):focus-visible {
+  outline-color: var(--c-maroon);
+}
+
+/* menu pills change only colour on hover: pinned here because the site-wide `a { transition: all }`
+   would otherwise also animate their padding whenever the window is resized */
+.navLink,
+.dropdownLink {
+  transition: color var(--ease), background-color var(--ease);
 }
 
 /* every Font Awesome icon next to text gets the same box, so all labels line up.
    Optical lift: Devanagari reads higher than its box (marks above the headline),
-   so beside Tiro text the icon sits 0.1em up to share the letters' visual centre.
+   so beside the Devanagari text the icon sits 0.1em up to share the letters' visual centre.
    (relative `top`, not transform, so hover transforms are left free) */
 .icon {
   position: relative;
@@ -247,7 +306,7 @@
   text-align: center;
 }
 
-/* the CTA's Rozha text already centres on its arrow */
+/* the CTA's Annapurna SIL text already centres on its arrow */
 .cta .icon {
   top: 0;
 }
@@ -267,13 +326,14 @@
   z-index: 101;
   background-color: var(--c-maroon);
   color: var(--c-white);
-  font-size: var(--text-strip);
+  font-size: var(--text-sm);
 }
 
 .topbar .inner {
   justify-content: space-between;
   gap: var(--space-2) var(--strip-gap);
-  min-height: var(--control-sm);
+  min-height: var(--strip-height);        /* = the footer's bottom strip (see section 2) */
+  align-content: center;                  /* wrapped lines stay together, centred */
   padding-top: var(--space-1);
   padding-bottom: var(--space-1);
 }
@@ -351,11 +411,10 @@
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  filter: saturate(0.9) sepia(0.12);     /* warms the seal towards the site palette */
 }
 
 .brandName {
-  font-family: var(--font-title);
+  font-family: var(--font);
   font-size: var(--text-lg);
   line-height: 1.2;
   white-space: nowrap;
@@ -390,7 +449,7 @@
   padding: 0 var(--link-pad);
   border: 0;
   border-radius: var(--radius-pill);
-  background: transparent;
+  background-color: var(--c-maroon);
   color: var(--c-white);
   cursor: pointer;
   white-space: nowrap;
@@ -405,7 +464,8 @@
   transform: rotate(180deg);
 }
 
-/* -- dropdown: one horizontal row of pills on a white panel, centred under its button -- */
+/* -- dropdown: one horizontal row of pills on a white panel, centred under its button.
+   Same panel padding, gap, pill height and pill padding (--link-pad) as the tray -- */
 .dropdown {
   position: absolute;
   top: calc(100% + var(--space-2));
@@ -473,6 +533,7 @@
 }
 
 .socialTitle {
+  font-family: var(--font);
   line-height: 1.2;
   white-space: nowrap;
 }
@@ -512,7 +573,7 @@
   border-radius: var(--radius-pill);
   background-color: var(--c-maroon);
   color: var(--c-white);
-  font-family: var(--font-title);
+  font-family: var(--font);
   font-size: var(--text-md);
   white-space: nowrap;
 }
@@ -523,8 +584,8 @@
   flex: none;
   align-items: center;
   justify-content: center;
-  width: var(--control);
-  height: var(--control);
+  width: var(--control-sm);
+  height: var(--control-sm);
   padding: 0;
   border: 0;
   border-radius: 50%;
@@ -553,10 +614,7 @@
 
 .overlay {
   position: absolute;
-  inset: 0;
-  background-color: var(--overlay);
-  opacity: 0;
-  transition: opacity 300ms ease;
+  inset: 0;                              /* an invisible catcher: a tap outside the drawer closes it */
 }
 
 .drawer {
@@ -575,10 +633,6 @@
   transition: transform 300ms ease;
 }
 
-.drawerRoot.isOpen .overlay {
-  opacity: 1;
-}
-
 .drawerRoot.isOpen .drawer {
   transform: translateX(0);
 }
@@ -592,7 +646,8 @@
   background-color: var(--c-gold);
 }
 
-/* stacked brand: a standard-size medal above the name */
+/* stacked brand: a standard-size medal above the name, the same on every screen
+   (the one deliberate exception to the brand's sizes: the drawer has the room) */
 .drawerBrand {
   --text-lg: 30px;
   --logo: 96px;
@@ -740,18 +795,9 @@
   }
 }
 
-/* phones: the bar keeps brand + menu button (socials move to the drawer);
-   the strip shows phone | email, with the address centred on its own line */
-@media (max-width: 767px) {
-  .barSocial,
-  .divider {
-    display: none;
-  }
-
-  .brand {
-    gap: var(--space-2);
-  }
-
+/* below 1024px the strip's small text no longer fits one line: it shows
+   phone | email, with the address centred on its own line */
+@media (max-width: 1023px) {
   .topbar .inner {
     flex-wrap: wrap;
     justify-content: center;
@@ -772,6 +818,37 @@
   }
 }
 
+/* phones: no pincode in the strip's address, so it fits one line */
+@media (max-width: 767px) {
+  .pincode {
+    display: none;
+  }
+}
+
+/* narrow phones: the address icon sits a little closer and the strip's side margins
+   step in a little, so the address still fits one line */
+@media (max-width: 379px) {
+  .topbar {
+    --gutter: 12px;
+  }
+
+  .topbarAddress .icon {
+    margin-right: var(--space-0);
+  }
+}
+
+/* phones: the bar keeps brand + menu button (socials move to the drawer) */
+@media (max-width: 767px) {
+  .barSocial,
+  .divider {
+    display: none;
+  }
+
+  .brand {
+    gap: var(--space-2);
+  }
+}
+
 /* very small phones: phone and email stack, without the divider */
 @media (max-width: 359px) {
   .topbarList {
@@ -786,7 +863,61 @@
 }
 
 
-/* ---- 9. Reduced motion ---------------------------------------------------------- */
+/* ---- 9. Explicit colours ------------------------------------------------------------
+   Nothing is inherited: every text and icon states its own colour, in every state (a link
+   used to hand its colour down to its icon and label). Each pair follows what it sits on:
+   maroon strip / tray / drawer → white, gold on hover; gold bar → black; white panel → maroon;
+   a gold pill (current page, hover) → black. */
+.topbarLink > span,
+.pincode,
+.navLink .icon,
+.navLink > span,
+.drawerLink .icon,
+.drawerLink .drawerLabel,
+.cta > span,
+.cta .icon,
+.socialLink i,
+.menuButton i {
+  color: var(--c-white);
+}
+
+.brandName,
+.socialTitle {
+  color: var(--c-black);
+}
+
+.dropdownLink .icon,
+.dropdownLink > span {
+  color: var(--c-maroon);
+}
+
+.navLink.isActive .icon,
+.navLink.isActive > span,
+.dropdownLink.isActive .icon,
+.dropdownLink.isActive > span,
+.drawerLink.isActive .icon,
+.drawerLink.isActive .drawerLabel {
+  color: var(--c-black);
+}
+
+@media (hover: hover) {
+  .topbarLink:hover > span,
+  .topbarLink:hover .pincode {
+    color: var(--c-gold);
+  }
+
+  .navLink:hover .icon,
+  .navLink:hover > span,
+  .dropdownLink:hover .icon,
+  .dropdownLink:hover > span,
+  .drawerLink:hover .icon,
+  .drawerLink:hover .drawerLabel {
+    color: var(--c-black);
+  }
+}
+
+
+/* ---- 10. Reduced motion ---------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   .topbar *,
   .bar *,

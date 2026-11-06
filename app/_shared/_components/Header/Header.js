@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useId, useRef, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { PAGES, WORK_GROUP, CTA } from "../../siteContent"
 import styles from "./Header.module.css"
 
 /* =============================================================================
@@ -18,17 +19,18 @@ import styles from "./Header.module.css"
 
 // ---- Trust details ----------------------------------------------------------
 const SITE_NAME = "मंगल भक्त सेवा मंडळ"
-// Rozha One stacks क्त into a ligature that does not read as Marathi; a zero-width
+// The title font can stack क्त into a ligature that does not read as Marathi; a zero-width
 // joiner (U+200D) after क् asks for the half-क form. Used for the visible name only.
 const SITE_NAME_DISPLAY = "मंगल भक्‍त सेवा मंडळ"
-const SITE_LOGO_SRC = "/assets/images/resources/logo.png"
+const SITE_LOGO_SRC = "/assets/media/shared/logo.png"
 
 const PHONE = { icon: "fas fa-phone-alt", href: "tel:+917588797788", label: "+91 75887 97788" }
 const EMAIL = { icon: "fas fa-envelope", href: "mailto:mbsmtrust@gmail.com", label: "mbsmtrust@gmail.com" }
 const ADDRESS = {
     icon: "fas fa-map-marker-alt",
     href: "https://share.google/eUPrIPLwsBu6afTGg",
-    label: "श्री शंकरदत्त महाराज मठ, एफ 70, एमआयडीसी, अहिल्यानगर",
+    // the pincode is hidden on phones, so the strip's address fits one line there
+    label: <>श्री शंकरदत्त महाराज मठ, एफ 70, एमआयडीसी, अहिल्यानगर<span className={styles.pincode}> - 414111</span></>,
     external: true,
     lang: "mr",
 }
@@ -39,25 +41,19 @@ const SOCIALS = [
     { href: "https://youtube.com/@mangalbhaktasevamandaltrus2349?si=s6NqyknikeBmWmSi", label: "YouTube", icon: "fab fa-youtube" },
 ]
 const SOCIAL_TITLE = "आमच्यासोबत जोडा:"
-const CTA = { href: "/parichaya", label: "आमचा परिचय" }
 
 // ---- Navigation (one list, shared by the desktop menu and the drawer) --------
+// Names and icons come from siteContent.js (the same ones the footer and the hero use).
 // An item with `children` is a group: a dropdown on desktop, flattened in the drawer.
 const NAV_ITEMS = [
-    { href: "/", label: "मुखपृष्ठ", icon: "fas fa-home" },
-    { href: "/parichaya", label: "परिचय", icon: "fas fa-om" },
+    PAGES.home,
+    PAGES.parichaya,
     {
-        label: "आमचे कार्य",
-        icon: "fas fa-praying-hands",
-        children: [
-            { href: "/karyakram", label: "कार्यक्रम", icon: "fas fa-calendar-alt" },
-            { href: "/upkram", label: "उपक्रम", icon: "fas fa-hands-helping" },
-            { href: "/prakashan", label: "प्रकाशन", icon: "fas fa-book-open" },
-            { href: "/pravachan", label: "प्रवचन", icon: "fas fa-microphone-alt" },
-        ],
+        ...WORK_GROUP,
+        children: [PAGES.karyakram, PAGES.upkram, PAGES.prakashan, PAGES.pravachan],
     },
-    { href: "/chitrasangraha", label: "चित्रसंग्रह", icon: "fas fa-images" },
-    { href: "/sampark", label: "संपर्क", icon: "fas fa-phone-alt" },
+    PAGES.chitrasangraha,
+    PAGES.sampark,
 ]
 const DRAWER_ITEMS = NAV_ITEMS.flatMap((item) => item.children ?? [item])
 

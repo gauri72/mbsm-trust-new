@@ -13,9 +13,11 @@
    - Colours : maroon band; verses white, gold on hover (as the header strip's
                links); the gold flower divider with a maroon centre.
    - Lines   : 2px solid gold above and below the verses (matching the flower).
-   - Type    : Rozha One at medium (19px, the header CTA's size) at every width,
-               at the font's real weight.
-   - Icon    : the flower, the same medium size as the text.
+   - Type    : Annapurna SIL at the CTA buttons' text size — the site's medium (19px) —
+               on every screen.
+   - Space   : generous and the same on every screen — the space-4 step above and below
+               the verses (inside the gold lines), the space-5 step on each side of a flower.
+   - Icon    : the flower, the same size as the text.
    - Spacing : the header's scale; verses are spaced like the header strip's items.
    ========================================================================== */
 
@@ -31,19 +33,19 @@
   --line-width: 2px;
   --line-gold: var(--line-width) solid var(--c-gold);
 
-  /* type size */
-  --text-md: 19px;                       /* medium: the header CTA's size */
+  /* type size: the CTA buttons' text size = the site's medium (19px), the same on every screen */
+  --text-md: 19px;
+  --text-verse: var(--text-md);
 
   /* spacing scale: identical to the header's */
-  --space-1: 6px;
-  --space-3: 14px;
+  --space-2: 10px;
+  --space-4: 18px;
   --space-5: 26px;
 
   /* layout */
-  --strip-pad: var(--space-1);           /* maroon above the top line and below the bottom line */
-  --strip-gap: var(--space-5);           /* = header strip: space on each side of a divider */
-  --control-sm: 42px;                    /* = header strip height: the verse row between the lines */
-  --fade: 6%;                            /* verses fade in / out at the screen edges */
+  --strip-pad: var(--space-2);           /* maroon above the top line and below the bottom line */
+  --verse-space: var(--space-4);         /* blank space above and below the verses, inside the gold lines */
+  --strip-gap: var(--space-5);           /* space on each side of a divider (flower), on every screen */
   --duration: 45s;                       /* one full loop */
   --ease: 200ms ease;
 }
@@ -53,16 +55,9 @@
 /* wide screens: every spacing step +2px, as in the header */
 @media (min-width: 1600px) {
   .root {
-    --space-1: 8px;
-    --space-3: 16px;
+    --space-2: 12px;
+    --space-4: 20px;
     --space-5: 28px;
-  }
-}
-
-/* tablet + phones: one step tighter, as the header strip */
-@media (max-width: 1199px) {
-  .root {
-    --strip-gap: var(--space-3);
   }
 }
 
@@ -82,13 +77,11 @@
   border-top: var(--line-gold);
 }
 
-/* the mask only fades the edges (its colour is irrelevant — only its alpha is used) */
 .marquee {
   display: flex;
   align-items: center;
-  min-height: var(--control-sm);
+  padding: var(--verse-space) 0;         /* generous blank space between the gold lines and the verses */
   overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent 0%, #000 var(--fade), #000 calc(100% - var(--fade)), transparent 100%);
 }
 
 .track {
@@ -116,10 +109,10 @@
 
 .text {
   color: var(--c-white);
-  font-family: var(--font-title);
-  font-size: var(--text-md);
+  font-family: var(--font);
+  font-size: var(--text-verse);
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.3;                      /* display-size text: a little tighter */
   white-space: nowrap;
   transition: color var(--ease);
 }
@@ -127,9 +120,10 @@
 /* the flower: medium, like the text */
 .icon {
   flex: none;
-  width: var(--text-md);
-  height: var(--text-md);
+  width: var(--text-verse);
+  height: var(--text-verse);
   fill: var(--c-gold);
+  color: var(--c-gold);                   /* stated, not inherited */
 }
 
 .dot {
@@ -171,10 +165,6 @@
 
   .item .icon {
     display: none;
-  }
-
-  .marquee {
-    mask-image: none;
   }
 
   .text {

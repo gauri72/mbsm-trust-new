@@ -110,7 +110,7 @@ export default function Home() {
         <>
         <MantraStrip />
 
-        <Breadcrumb title="संपर्क" icon="fas fa-phone-alt" />
+        <Breadcrumb page="sampark" />
 
         <TempleGallery />
 

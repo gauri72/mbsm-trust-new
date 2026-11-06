@@ -7,7 +7,7 @@ import styles from "./MantraStrip.module.css"
    <MantraStrip closing />  CLOSING_MANTRAS, above the footer's gold area (end of every page)
 
    Designed as the header's contact strip: maroon band between two 2px gold lines,
-   medium (19px) Rozha verses in white (gold on hover), the trust's gold flower as
+   medium (19px) Annapurna SIL verses in white (gold on hover), the trust's gold flower as
    the divider between verses. Colours, sizes and spacing are tokens in
    MantraStrip.module.css.
    ========================================================================== */

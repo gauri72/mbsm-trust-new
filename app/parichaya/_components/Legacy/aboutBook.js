@@ -8,7 +8,7 @@ export const ABOUT_BOOK_TITLE = "श्री विश्वेश्वर स
 export const ABOUT_BOOK = [
     {
         num: "१",
-        image: "assets/images/about/about-1.png",
+        image: "assets/media/parichaya/about-1.png",
         name: "दैवी निवड आणि बालपण",
         quote: "जात, धर्म, देश वा काळ यांचे बंधन न मानता महाराज योग्य जिवाची निवड करतात.",
         paras: [
@@ -20,7 +20,7 @@ export const ABOUT_BOOK = [
     },
     {
         num: "२",
-        image: "assets/images/about/about-2.png",
+        image: "assets/media/parichaya/about-2.png",
         name: "कोठारी कुटुंबाचा वारसा",
         quote: "तीन पिढ्यांनी केलेल्या सत्कर्माचे पुण्य स्वामी महाराजांच्या पाठीशी उभे राहिले.",
         paras: [
@@ -31,7 +31,7 @@ export const ABOUT_BOOK = [
     },
     {
         num: "३",
-        image: "assets/images/about/about-3.png",
+        image: "assets/media/parichaya/about-3.png",
         name: "स्वामी महाराज आणि व्यवसाय",
         quote: "आपले काम नीट करावे, सत्कर्म करावे आणि व्यवसाय प्रामाणिकपणे चालवावा — हीच त्यांची श्रद्धा होती.",
         paras: [
@@ -43,7 +43,7 @@ export const ABOUT_BOOK = [
     },
     {
         num: "४",
-        image: "assets/images/about/about-4.png",
+        image: "assets/media/parichaya/about-4.png",
         name: "दत्ताचे शिंगवे येथील दत्तकृपा",
         quote: "आरतीच्या वेळी देह तेजाने उजळून निघाला आणि मन अपार आनंदाने भरून आले.",
         paras: [
@@ -57,7 +57,7 @@ export const ABOUT_BOOK = [
     },
     {
         num: "५",
-        image: "assets/images/about/about-5.png",
+        image: "assets/media/parichaya/about-5.png",
         name: "पाचोरा येथे दत्त आणि शिवदर्शन",
         quote: "तू जिथे जाशील तिथे मी सदैव तुझ्यासोबत आहे.",
         paras: [
@@ -72,7 +72,7 @@ export const ABOUT_BOOK = [
     },
     {
         num: "६",
-        image: "assets/images/about/about-6.png",
+        image: "assets/media/parichaya/about-6.png",
         name: "एमआयडीसीतील दत्तस्थान",
         quote: "हे लेकरू एक दिवस आपल्याला स्वीकारेलच, याची गुरूंना खात्री होती.",
         paras: [
@@ -86,7 +86,7 @@ export const ABOUT_BOOK = [
     },
     {
         num: "७",
-        image: "assets/images/about/about-7.png",
+        image: "assets/media/parichaya/about-7.png",
         name: "ज्ञानदीप प्रज्वलित झाला, सत्याची प्रचिती आली",
         quote: "काडी पेटवण्याआधीच वात आपोआप प्रज्वलित झाली आणि सर्व शंका दूर झाल्या.",
         paras: [
@@ -103,7 +103,7 @@ export const ABOUT_BOOK = [
     },
     {
         num: "८",
-        image: "assets/images/about/about-8.png",
+        image: "assets/media/parichaya/about-8.png",
         name: "योगिराज शंकर महाराजांचे प्रत्यक्ष दर्शन",
         quote: "गरिबांना औषध देऊन त्यांची सेवा कर, भूमीची सेवा कर आणि माणसाला माणूस बनवण्याचे काम कर.",
         paras: [
@@ -118,7 +118,7 @@ export const ABOUT_BOOK = [
     },
     {
         num: "९",
-        image: "assets/images/about/about-9.png",
+        image: "assets/media/parichaya/about-9.png",
         name: "मंगल उत्पादने, सत्कर्म आणि अखंड लोकसेवा",
         quote: "धार्मिक आणि सामाजिक कार्यासाठी ते सढळ हाताने खर्च करतात.",
         paras: [
@@ -136,7 +136,7 @@ export const ABOUT_BOOK = [
     },
     {
         num: "१०",
-        image: "assets/images/about/about-10.png",
+        image: "assets/media/parichaya/about-10.png",
         name: "लोककल्याणाचे उपक्रम — निःस्वार्थ लोकसेवा",
         quote: "मी घेण्यासाठी नव्हे, तर देण्यासाठी आलो आहे.",
         paras: [
@@ -156,7 +156,7 @@ export const ABOUT_BOOK = [
     },
     {
         num: "११",
-        image: "assets/images/about/about-11.png",
+        image: "assets/media/parichaya/about-11.png",
         name: "अजमेर दर्ग्यात विशेष स्वागत",
         quote: "कृपेच्या आणि चमत्कारांच्या अशा असंख्य कथा आहेत.",
         paras: [
@@ -168,7 +168,7 @@ export const ABOUT_BOOK = [
     },
     {
         num: "१२",
-        image: "assets/images/about/about-12.png",
+        image: "assets/media/parichaya/about-12.png",
         name: "आव्हाने आणि पुढील वाटचाल",
         quote: "मी जे बोलतो ती प्रार्थना, मी जे चालतो ती प्रदक्षिणा, आणि निष्काम कर्म हीच माझी पूजा.",
         paras: [

@@ -4,14 +4,14 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import styles from "./AllEvents.module.css"
 
 const allEvents = [
-    { img: "assets/images/event/event-1.png", title: "श्री विश्वेश्‍वर स्वामी महाराज", subtitle: "जन्मदिन" },
-    { img: "assets/images/event/event-2.png", title: "श्री शंकर महाराज", subtitle: "प्रकट दिन आणि पुण्यतिथी" },
-    { img: "assets/images/event/event-3.png", title: "श्री दत्त प्रभू", subtitle: "जयंती आणि गुरुपौर्णिमा" },
+    { img: "assets/media/karyakram/event-1.png", title: "श्री विश्वेश्‍वर स्वामी महाराज", subtitle: "जन्मदिन" },
+    { img: "assets/media/karyakram/event-2.png", title: "श्री शंकर महाराज", subtitle: "प्रकट दिन आणि पुण्यतिथी" },
+    { img: "assets/media/karyakram/event-3.png", title: "श्री दत्त प्रभू", subtitle: "जयंती आणि गुरुपौर्णिमा" },
     // hidden for now:
-    // { img: "assets/images/event/event-4.png", title: "श्री गुरुपौर्णिमा उत्सव" },
-    // { img: "assets/images/event/event-5.png", title: "श्री जनू काका जयंती आणि पुण्यतिथी" },
-    // { img: "assets/images/event/event-6.png", title: "श्री मधू बुवा जयंती आणि पुण्यतिथी", zoom: true },
-    // { img: "assets/images/event/event-7.png", title: "श्री शुभांगी माई वाढदिवस" },
+    // { img: "assets/media/karyakram/event-4.png", title: "श्री गुरुपौर्णिमा उत्सव" },
+    // { img: "assets/media/karyakram/event-5.png", title: "श्री जनू काका जयंती आणि पुण्यतिथी" },
+    // { img: "assets/media/karyakram/event-6.png", title: "श्री मधू बुवा जयंती आणि पुण्यतिथी", zoom: true },
+    // { img: "assets/media/karyakram/event-7.png", title: "श्री शुभांगी माई वाढदिवस" },
 ]
 
 const swiperOptions = {
@@ -149,14 +149,14 @@ export default function AllEvents() {
             <div className="container">
                 <div className={`section-title text-center sec-title-animation animation-style1 ${styles.titleRow}`}>
                     {/* toran animations beside the heading hidden for now */}
-                    {/* <video src="assets/images/resources/toran.mov" className="all-events__toran all-events__toran--left" aria-hidden="true" muted loop playsInline autoPlay/> */}
+                    {/* <video src="assets/media/karyakram/toran.mov" className="all-events__toran all-events__toran--left" aria-hidden="true" muted loop playsInline autoPlay/> */}
                     <div className={styles.titleInner}>
                         <div className="section-title__tagline-box">
                             <span className="section-title__tagline">सेवा, भक्ती आणि आनंदाचे क्षण</span>
                         </div>
                         <h2 className="section-title__title title-animation">मठातील वार्षिक उत्सव</h2>
                     </div>
-                    {/* <video src="assets/images/resources/toran.mov" className="all-events__toran all-events__toran--right" aria-hidden="true" muted loop playsInline autoPlay/> */}
+                    {/* <video src="assets/media/karyakram/toran.mov" className="all-events__toran all-events__toran--right" aria-hidden="true" muted loop playsInline autoPlay/> */}
                 </div>
 
                 <div className={styles.carouselWrap}>

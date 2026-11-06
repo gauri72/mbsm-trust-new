@@ -62,7 +62,7 @@
 .bg {
     position: absolute;
     inset: 0;
-    background-image: url("/assets/images/backgrounds/section-bg-2.png");
+    background-image: url("/assets/media/shared/section-bg-2.png");
     background-repeat: repeat;
     background-size: 1170px auto;
     opacity: 0.35;
@@ -366,7 +366,7 @@
 }
 
 .resultSuccess {
-    background-color: rgba(var(--anity-extra-rgb), 0.12);
+    background-color: var(--c-white);
     color: var(--anity-extra);
     border: 1px solid var(--anity-extra);
 }
@@ -378,7 +378,7 @@
 }
 
 .resultError {
-    background-color: rgba(var(--anity-base-rgb), 0.12);
+    background-color: var(--c-white);
     color: var(--anity-base);
     border: 1px solid var(--anity-base);
 }
@@ -409,7 +409,7 @@
 .contactTwoBg {
     position: absolute;
     inset: 0;
-    background-image: url("/assets/images/backgrounds/section-bg.png");
+    background-image: url("/assets/media/shared/section-bg.png");
     background-repeat: repeat;
     background-size: 1170px auto;
     opacity: 0.25;
@@ -735,7 +735,7 @@
 .contactFaqBg {
     position: absolute;
     inset: 0;
-    background-image: url("/assets/images/backgrounds/section-bg.png");
+    background-image: url("/assets/media/shared/section-bg.png");
     background-repeat: repeat;
     background-size: 1170px auto;
     opacity: 0.25;

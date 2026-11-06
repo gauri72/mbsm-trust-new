@@ -1,22 +1,19 @@
 /* =============================================================================
-   Breadcrumb — the inner-page hero: one full-width artwork inside the gold
-   Om · swastik frame, fading in as it settles from a slight zoom.
+   Breadcrumb — the inner-page hero: one full-width 16:9 artwork, shown exactly as
+   supplied, with the page's name, its icon and the two characters' names set on it.
 
    Contents
      1. Design tokens
-     2. Hero + artwork
-     3. Text + reveal        — Rozha text on the artwork; the load reveal
-     4. Om · swastik frame   — the CTA's frame
+     2. Hero + artwork           — always 16:9
+     3. Text on the artwork
 
-   Design rules (same as the header, footer, mantra strips, CTA, gallery, preloader)
-   - Colours : only the site maroon around the artwork; names white, the page title
-               maroon, the icon gold.
-   - Type    : all text on the artwork in Rozha One at the site's large size (shrunk
-               only where a plate is too narrow), at the font's real weight.
-   - Border  : the CTA's gold Om · swastik frame around the whole hero; the artwork
-               sits inside it, whole (the border is padding, never on top of it).
-   - Motion  : one quiet reveal as the preloader fades (fade + settle from a slight
-               zoom, CSS only); none with reduced motion.
+   Design rules (same as the header, footer, preloader, mantra strips and CTA)
+   - Colours : maroon (the page name on its scroll), gold (the page icon in its medallion),
+               white (the names on their plates).
+   - Shape   : 16:9 at every screen size (cropped to it, never stretched).
+   - Type    : Annapurna SIL. Everything is sized from the artwork's own width (cqw = 1% of
+               it), so each piece keeps its place and proportion on desktop, tablet and
+               mobile, with a legible floor under each.
    ========================================================================== */
 
 
@@ -25,91 +22,84 @@
   --c-maroon: #620208;
   --c-gold: #D9982A;
   --c-white: #FFFFFF;
-  --frame: 30px;                         /* = CTA frame: Om · swastik band width */
-  --frame-x: var(--frame);               /* side band width (none on phones) */
-  --shadow-frame: 0 2px 8px rgba(0, 0, 0, 0.32);   /* = CTA frame */
 
-  /* text on the artwork: the site's large size (and its steps, below) */
-  --text-lg: 36px;
-  /* ...shrunk only where a plate is narrower than the text: (slot width % ÷ the
-     longest text's width in em, measured in Rozha One) in cqw = 1% of the artwork */
-  --plate-fit: 1.71cqw;                  /* plates: 16.8% ÷ 9.82em ("श्री विश्वेश्वर स्वामी महाराज") */
-  --title-fit: 5.5cqw;                   /* scroll: 18.3% of the width ÷ 3.31em ("चित्रसंग्रह") */
-  --icon-size: 2.9cqw;                   /* = the medallion's original icon */
-}
-
-@media (min-width: 1600px) {
-  .root { --text-lg: 38px; }
-}
-
-@media (max-width: 1199px) {
-  .root { --text-lg: 30px; }
-}
-
-@media (max-width: 767px) {
-  .root { --text-lg: 23px; }
-}
-
-@media (max-width: 359px) {
-  .root { --text-lg: 19px; }
+  /* sizes, all from the artwork's own width (cqw), so each piece keeps its proportion at every
+     screen size: the names fit the plates (16.8% of the width ÷ 9.8em, the longer name), the
+     page name fills its scroll comfortably, the icon fills its medallion (7.2cqw across) */
+  --plate-size: 1.71cqw;
+  --title-size: 3.4cqw;
+  --icon-size: 3.1cqw;
 }
 
 
 /* ---- 2. Hero + artwork ----------------------------------------------------------------- */
-/* the border is padding around the artwork, so none of it is hidden */
 .root {
   position: relative;
   overflow: hidden;
-  padding: var(--frame) var(--frame-x);
   background-color: var(--c-maroon);
 }
 
-/* the artwork + its text; cqw = 1% of the artwork's width */
+/* the artwork + its text: always 16:9; cqw = 1% of its width */
 .art {
   position: relative;
+  aspect-ratio: 16 / 9;
   container-type: inline-size;
+  overflow: hidden;
+  background-color: var(--c-maroon);     /* the band, while the artwork loads */
 }
 
 .img {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;                     /* cropped to 16:9, never stretched */
 }
 
 
-/* ---- 3. Text on the artwork + reveal ---------------------------------------------
-   The artwork is exported without lettering; its text is set here in Rozha One,
-   centred on its (--x, --y) point of the artwork, so it stays on its plate at any
-   size. On load the artwork and its text fade in while settling from a slight zoom and
-   brightening — started by the preloader as it fades (html[data-page-ready]), so it
-   is always seen. Reduced motion: shown as is. */
-.plate,
-.title,
-.icon {
+/* ---- 3. Text on the artwork --------------------------------------------------------
+   The artwork has no lettering of its own; every piece of text is centred on its (--x, --y)
+   point of the artwork, so it stays on its plate / scroll / medallion at any size. */
+.anchor {
   position: absolute;
   left: var(--x);
   top: var(--y);
   z-index: 1;
-  margin: 0;
   transform: translate(-50%, -50%);
-  font-weight: 400;
+}
+
+.plate,
+.title,
+.icon {
+  margin: 0;
   line-height: 1.2;
   white-space: nowrap;
   text-align: center;
 }
 
-/* names on the plates: large Rozha (where the plate allows), white */
-.plate {
-  color: var(--c-white);
-  font-family: var(--font-title);
-  font-size: min(var(--text-lg), var(--plate-fit));
+/* the text pieces use the site font; the icon keeps Font Awesome's own */
+.plate,
+.title {
+  font-family: var(--font);
 }
 
-/* the page title on the scroll: large Rozha, maroon (the page's h1) */
+/* Devanagari's tall vowel marks sit above the line, so a plainly centred line looks high: each
+   piece is nudged down by what was measured (the ink's own centre vs the centre of its plate
+   / scroll), in em so it holds at every size */
+
+/* the characters' names on their plates: white; never under 7px, so mobile stays legible */
+.plate {
+  color: var(--c-white);
+  font-size: max(7px, var(--plate-size));
+  transform: translateY(0.3em);
+}
+
+/* the page's name on the scroll: maroon (the page's h1) */
 .title {
   color: var(--c-maroon);
-  font-family: var(--font-title);
-  font-size: min(var(--text-lg), var(--title-fit));
+  font-size: max(14px, var(--title-size));
+  transform: translateY(0.23em);
 }
 
 /* the page's icon in the medallion: Font Awesome, gold, centred on the medallion
@@ -119,91 +109,6 @@
   width: 1em;
   height: 1em;
   color: var(--c-gold);
-  font-size: var(--icon-size);
+  font-size: max(11px, var(--icon-size));
   line-height: 1;
-}
-
-@keyframes reveal {
-  from {
-    opacity: 0;
-    transform: scale(1.06);
-    filter: brightness(0.7);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-    filter: brightness(1);
-  }
-}
-
-:global(html[data-page-ready]) .art {
-  animation: reveal 1600ms cubic-bezier(0.22, 1, 0.36, 1) 100ms both;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  :global(html[data-page-ready]) .art {
-    animation: none;
-  }
-}
-
-/* ---- 4. Om · swastik frame ----------------------------------------------------
-   The CTA's frame exactly (tiles shared in globals.css): gold bands with the maroon
-   pattern on all four sides, above the artwork; top + bottom only on phones. */
-.frameH,
-.frameV,
-.corner {
-  position: absolute;
-  background-color: var(--c-gold);
-  box-shadow: var(--shadow-frame);
-  pointer-events: none;
-}
-
-.frameH {
-  left: 0;
-  right: 0;
-  z-index: 7;
-  height: var(--frame);
-  background-image: var(--pattern-om-swastik-x);
-  background-repeat: repeat-x;
-  background-position: center;
-  background-size: 100px var(--frame);
-}
-
-.frameTop    { top: 0; }
-.frameBottom { bottom: 0; }
-
-.frameV {
-  top: var(--frame);
-  bottom: var(--frame);
-  z-index: 6;
-  width: var(--frame);
-  background-image: var(--pattern-om-swastik-y);
-  background-repeat: repeat-y;
-  background-position: top center;
-  background-size: var(--frame) 100px;
-}
-
-.frameLeft  { left: 0; }
-.frameRight { right: 0; }
-
-.corner {
-  z-index: 8;
-  width: var(--frame);
-  height: var(--frame);
-}
-
-.cornerTl { top: 0;    left: 0; }
-.cornerTr { top: 0;    right: 0; }
-.cornerBl { bottom: 0; left: 0; }
-.cornerBr { bottom: 0; right: 0; }
-
-@media (max-width: 767px) {
-  .root {
-    --frame-x: 0px;
-  }
-
-  .frameV,
-  .corner {
-    display: none;
-  }
 }

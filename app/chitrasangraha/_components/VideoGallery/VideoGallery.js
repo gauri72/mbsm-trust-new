@@ -26,7 +26,7 @@ function ThumbImg({ id, ...props }) {
             ? `https://img.youtube.com/vi/${id}/maxresdefault.jpg`
             : tier === "hq"
                 ? `https://img.youtube.com/vi/${id}/hqdefault.jpg`
-                : "assets/images/resources/logo-shubharay-math.svg"
+                : "assets/media/chitrasangraha/logo-shubharay-math.svg"
     return (
         <img
             src={src}

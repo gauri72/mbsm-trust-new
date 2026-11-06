@@ -5,13 +5,13 @@ import styles from "./FeaturedEvents.module.css"
 
 const featuredEvents = [
     {
-        img: "assets/images/event/aashadhi-ekadashi.png",
+        img: "assets/media/karyakram/aashadhi-ekadashi.png",
         date: "दर गुरुवारी",
         title: "गुरुवार गादी सेवा",
         text: "दर गुरुवारी श्री गुरुदेव गादीवर विराजमान होऊन भाविकांच्या अडचणी ऐकतात आणि मार्गदर्शन करतात. चिंता घेऊन आलेले भाविक समाधानाने परततात.",
     },
     {
-        img: "assets/images/event/kartiki-ekadashi.png",
+        img: "assets/media/karyakram/kartiki-ekadashi.png",
         date: "दर महिन्याला",
         title: "दुर्गाष्टमी पालखी सोहळा",
         text: "दर महिन्याच्या दुर्गाष्टमीला मठात पालखी सोहळा साजरा होतो. भजन आणि जयघोषाच्या गजरात निघणाऱ्या या पालखीत भाविक भक्तिभावाने सहभागी होतात.",
@@ -36,7 +36,7 @@ export default function FeaturedEvents() {
                 <div className={styles.head}>
                     {/* varkari flag animations beside the heading hidden for now */}
                     {/* <span className="featured-events__flag featured-events__flag--left" aria-hidden="true">
-                        <LoopingFlagVideo src="assets/images/resources/varkari.mov" />
+                        <LoopingFlagVideo src="assets/media/karyakram/varkari.mov" />
                     </span> */}
                     <div className="section-title text-center sec-title-animation animation-style1">
                         <div className="section-title__tagline-box">
@@ -45,7 +45,7 @@ export default function FeaturedEvents() {
                         <h2 className="section-title__title title-animation">मठातील नियमित कार्यक्रम</h2>
                     </div>
                     {/* <span className="featured-events__flag featured-events__flag--right" aria-hidden="true">
-                        <LoopingFlagVideo src="assets/images/resources/varkari.mov" />
+                        <LoopingFlagVideo src="assets/media/karyakram/varkari.mov" />
                     </span> */}
                 </div>
 
