@@ -111,11 +111,10 @@
   z-index: 1;
   overflow: hidden;
   padding: calc(var(--space-5) * 2) 0;     /* the header's 26px step, twice: the same gap above and below the content */
-  /* the seva photo under one even maroon wash (the average of the old top and bottom
-     strengths), so the text, buttons and elephants read the same everywhere */
+  /* the seva photo under one even maroon wash (75%: the photo clearly shows, the white text still reads) */
   background-color: var(--c-maroon);
   background-image:
-    linear-gradient(rgba(98, 2, 8, 0.86), rgba(98, 2, 8, 0.86)),
+    linear-gradient(rgba(98, 2, 8, 0.75), rgba(98, 2, 8, 0.75)),
     url("/assets/media/shared/cta-one-bg.webp");
   background-position: center, center 60%;
   background-size: cover, cover;

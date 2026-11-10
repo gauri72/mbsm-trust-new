@@ -19,15 +19,6 @@ export default function MissionVision() {
         <>
        {/*About One Start */}
        <section className={`${styles.aboutOne} ${styles.aboutOneOrnate}`}>
-            {/* Maroon Om/swastik ornamental border framing the gold About section */}
-            <div className="divine-border--about divine-border--about-top" role="presentation"></div>
-            <div className="divine-border--about-vertical divine-border--about-left" role="presentation"></div>
-            <div className="divine-border--about-vertical divine-border--about-right" role="presentation"></div>
-            <span className="about-One__corner about-One__corner--tl" aria-hidden="true"></span>
-            <span className="about-One__corner about-One__corner--tr" aria-hidden="true"></span>
-            <span className="about-One__corner about-One__corner--bl" aria-hidden="true"></span>
-            <span className="about-One__corner about-One__corner--br" aria-hidden="true"></span>
-            <div className="divine-border--about divine-border--about-bottom" role="presentation"></div>
             <div className={styles.bg} role="presentation"></div>
             <div className="container">
                 <div className="row">
@@ -61,57 +52,53 @@ export default function MissionVision() {
                         <div className={`${styles.right} wow fadeInRight`} data-wow-delay="300ms">
                             <div className="section-title text-left sec-title-animation animation-style2">
                                 <div className="section-title__tagline-box">
-                                    <span className="section-title__tagline" lang="mr">सद्‌गुरूंचा संदेश</span>
+                                    <span className="section-title__tagline" lang="mr">आमची ओळख</span>
                                 </div>
                                 <h2 className="section-title__title title-animation" lang="mr">
-                                    <span className={styles.titleLine}>कर्म हाच कलियुगाचा धर्म</span>
+                                    <span className={styles.titleLine}>सेवा हाच धर्म, हेच आमचे कर्म</span>
                                 </h2>
                             </div>
                             <div className={styles.vissionMission}>
                                 <div className={`${styles.tabBox} ${styles.tabsBox}`}>
                                     <ul className={`${styles.tabButtons} clearfix list-unstyled`}>
                                         <li className={activeIndex == 1 ? `${styles.tabBtn} ${styles.activeBtn}` : styles.tabBtn} onClick={() => handleOnClick(1)}><span lang="mr">आमचे ध्येय</span></li>
-                                        <li className={activeIndex == 2 ? `${styles.tabBtn} ${styles.activeBtn}` : styles.tabBtn} onClick={() => handleOnClick(2)}>आमची दृष्टी</li>
-                                        <li className={activeIndex == 3 ? `${styles.tabBtn} ${styles.activeBtn}` : styles.tabBtn} onClick={() => handleOnClick(3)}><span lang="mr">आमचे उद्दिष्ट</span></li>
+                                        <li className={activeIndex == 2 ? `${styles.tabBtn} ${styles.activeBtn}` : styles.tabBtn} onClick={() => handleOnClick(2)}><span lang="mr">आमची दृष्टी</span></li>
                                     </ul>
                                     <div className={styles.tabsContent}>
-                                        {/*tab*/}
+                                        {/*tab: Mission*/}
                                         <div className={activeIndex == 1 ? `${styles.tab} fadeInUp animated show ${styles.activeTab}` : `${styles.tab} fadeInUp animated`}>
                                             <div className={styles.tabsContentInner}>
-                                                <p lang="mr">
-                                                    श्री शंकर महाराज व दत्तप्रभूंनी दाखवलेल्या मार्गावर चालत, प्रत्येकाला शुद्ध भावाने सत्कर्म करण्याची प्रेरणा देणे, हे आमचे
-                                                    ध्येय आहे. कारण योग्य कर्म हेच भगवंताच्या कृपेचे खरे द्वार आहे.
-                                                </p>
+                                                <ul className={styles.points}>
+                                                    <li className={styles.point}>
+                                                        <i className="fas fa-arrow-right" aria-hidden="true"></i>
+                                                        <p lang="mr">शंकर महाराजांचे विचार आणि तत्त्वज्ञान लोकांपर्यंत पोहोचवणे.</p>
+                                                    </li>
+                                                    <li className={styles.point}>
+                                                        <i className="fas fa-arrow-right" aria-hidden="true"></i>
+                                                        <p lang="mr">शंकर महाराजांचा कृपामाध्यम बनून जात-पात, धर्म यांचा भेदभाव न करता जास्तीत जास्त लोकांना, विनामूल्य विविध उपक्रमांमधून मदत व सेवा पुरविणे. तसेच, लोकांमध्ये सदाचार रुजवणे आणि भगवंतावरील विश्वास दृढ करणे.</p>
+                                                    </li>
+                                                    <li className={styles.point}>
+                                                        <i className="fas fa-arrow-right" aria-hidden="true"></i>
+                                                        <p lang="mr">दर गुरुवारी मठात गादी सेवेतून शंकर महाराजांच्या आदेशाप्रमाणे भाविकांना त्यांच्या अडचणींसाठी विशेष मार्गदर्शन व उपाय देऊन त्यांचे जीवन सुखकर करणे आणि त्यांची भौतिक व आध्यात्मिक प्रगती साधण्यास मदत करणे.</p>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </div>
-                                        {/*tab*/}
-                                        {/*tab*/}
+                                        {/*tab: Vision*/}
                                         <div className={activeIndex == 2 ? `${styles.tab} fadeInUp animated show ${styles.activeTab}` : `${styles.tab} fadeInUp animated`}>
                                             <div className={styles.tabsContentInner}>
-                                                <p lang="mr">
-                                                    या वाटेवरचा सर्वात मोठा अडथळा म्हणजे अहंकार, जो अशांतता आणि असमाधानाचे मूळ आहे. तो दूर सारून
-                                                    सुख, शांती आणि समाधान नांदणारा समाज उभा करावा, हीच आमची दृष्टी आहे.
-                                                </p>
+                                                <p lang="mr">एक असा समाज निर्माण करणे जिथे लोकांच्या मनात भगवंत आणि एकमेकांप्रती सेवाभाव असेल. आणि लोक स्वार्थ आणि अहंकार सोडून एकमेकांची मदत करतील. समाजात होणारी वैचारिक व आध्यात्मिक अधोगती थांबवून समाजाला योग्य दिशा देणे.</p>
                                             </div>
                                         </div>
-                                        {/*tab*/}
-                                        {/*tab*/}
-                                        <div className={activeIndex == 3 ? `${styles.tab} fadeInUp animated show ${styles.activeTab}` : `${styles.tab} fadeInUp animated`}>
-                                            <div className={styles.tabsContentInner}>
-                                                <p lang="mr">
-                                                    मनात शुद्ध भाव जागला की आपल्या हातून सहज सत्कर्म घडू लागते. अन्नदान, आरोग्यसेवा, गोसेवा आणि
-                                                    गरजूंना आधार देत हे सत्कर्म समाजात अखंड घडवत राहणे, हे आमचे उद्दिष्ट आहे.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        {/*tab*/}
                                     </div>
                                 </div>
                             </div>
                             <div className={styles.btnAndNeedHelp}>
                                 <div className={styles.btnBox}>
-                                    <Link href="/parichaya" className={`${styles.btn} thm-btn`} lang="mr">अधिक जाणून घ्या<span><i
-                                                className="fas fa-arrow-right"></i></span></Link>
+                                    <Link href="/parichaya" className={styles.moreBtn} lang="mr">
+                                        <span>अधिक जाणून घ्या</span>
+                                        <i className={`${styles.moreBtnIcon} fas fa-arrow-right`} aria-hidden="true"></i>
+                                    </Link>
                                 </div>
                                 <div className={styles.needHelp}>
                                     <div className="icon">

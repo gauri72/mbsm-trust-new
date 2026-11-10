@@ -4,8 +4,10 @@ import Link from "next/link"
 import { useState } from "react"
 import MantraStrip from "../_shared/_components/MantraStrip/MantraStrip"
 import Breadcrumb from "../_shared/_components/Breadcrumb/Breadcrumb"
+import Border from "../_shared/_components/Border/Border"
 import TempleGallery from "../_shared/_components/TempleGallery/TempleGallery"
 import Cta from "../_shared/_components/Cta/Cta"
+import ComingSoon from "../_shared/_components/ComingSoon/ComingSoon"
 import styles from "./page.module.css"
 
 // Trust contact details
@@ -112,8 +114,13 @@ export default function Home() {
 
         <Breadcrumb page="sampark" />
 
+        <Border />
         <TempleGallery />
 
+        <ComingSoon />
+
+        {/* Hidden for now (kept in place, not deleted): the contact form and the map */}
+        {false && (<>
         {/*Contact One Start*/}
         <section id="contact-one" className={`${styles.contactOne} ${styles.contactOneOrnate}`}>
             <div className={`${styles.divineBorderContact} ${styles.divineBorderContactTop}`} role="presentation"></div>
@@ -290,6 +297,7 @@ export default function Home() {
             </div>
         </section>
         {/*Contact Two End*/}
+        </>)}
 
         {/*Contact Faq Start — hidden for now, kept in place, not deleted */}
         {false && <section className={styles.contactFaq}>

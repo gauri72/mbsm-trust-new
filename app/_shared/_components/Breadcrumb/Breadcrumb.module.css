@@ -27,8 +27,8 @@
      screen size: the names fit the plates (16.8% of the width ÷ 9.8em, the longer name), the
      page name fills its scroll comfortably, the icon fills its medallion (7.2cqw across) */
   --plate-size: 1.71cqw;
-  --title-size: 3.4cqw;
-  --icon-size: 3.1cqw;
+  --title-size: 4.6cqw;
+  --icon-size: 4cqw;
 }
 
 
@@ -98,7 +98,7 @@
 /* the page's name on the scroll: maroon (the page's h1) */
 .title {
   color: var(--c-maroon);
-  font-size: max(14px, var(--title-size));
+  font-size: max(16px, var(--title-size));
   transform: translateY(0.23em);
 }
 
@@ -109,6 +109,6 @@
   width: 1em;
   height: 1em;
   color: var(--c-gold);
-  font-size: max(11px, var(--icon-size));
+  font-size: max(13px, var(--icon-size));
   line-height: 1;
 }

@@ -66,6 +66,18 @@
 .fa-om:before {
   content:"\f679"
 }
+.fa-landmark:before {
+  content:"\f66f"
+}
+.fa-utensils:before {
+  content:"\f2e7"
+}
+.fa-heartbeat:before {
+  content:"\f21e"
+}
+.fa-book-reader:before {
+  content:"\f5da"
+}
 .fa-phone-alt:before {
   content:"\f879"
 }
@@ -420,6 +432,10 @@ iframe {
   .col-xl-1 {
   flex:0 0 auto;
   width:8.3333333333%
+  }
+  .col-xl-3 {
+  flex:0 0 auto;
+  width:25%
   }
   .col-xl-4 {
   flex:0 0 auto;

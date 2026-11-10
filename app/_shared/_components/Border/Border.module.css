@@ -1,0 +1,111 @@
+/* =============================================================================
+   Border — between the hero and the temple gallery.
+
+   Contents
+     1. Design tokens
+     2. Token breakpoints
+     3. Strip
+     4. Signs
+
+   Design rules (same as the header, footer and mantra strips)
+   - Colours : gold strip, maroon signs — solid only, nothing see-through
+   - Icons   : the Om is a Font Awesome icon (Font Awesome has no swastik, so that one is drawn)
+   - Spacing : the strip is the site's 40px layout step on desktop and grows or shrinks with the
+               screen; every sign sits in a slot 0.75 x the strip's height wide, so the signs
+               are always evenly spaced and scale together
+   - Fit     : only whole signs fit on the strip, centred; the rest wrap out of sight
+   ========================================================================== */
+
+
+/* ---- 1. Design tokens ------------------------------------------------------- */
+.root {
+  /* colours */
+  --c-maroon: #620208;
+  --c-gold: #D9982A;
+
+  /* size: the site's 40px layout step (--space-6); everything else is a share of it */
+  --strip-height: var(--space-6, 40px);
+  --slot: calc(var(--strip-height) * 0.75);        /* the width each sign is centred in */
+  --om-size: calc(var(--strip-height) * 0.55);     /* the Font Awesome Om */
+  --swastik-size: calc(var(--strip-height) * 0.5);
+  --diamond-size: calc(var(--strip-height) * 0.18);   /* the square, before it is turned */
+}
+
+
+/* ---- 2. Token breakpoints (only the height changes; the signs follow it) ---- */
+/* very wide screens */
+@media (min-width: 1600px) {
+  .root {
+    --strip-height: 48px;
+  }
+}
+
+/* tablet and small desktop */
+@media (max-width: 1199px) {
+  .root {
+    --strip-height: 36px;
+  }
+}
+
+/* phones */
+@media (max-width: 767px) {
+  .root {
+    --strip-height: 30px;
+  }
+}
+
+/* very small phones */
+@media (max-width: 359px) {
+  .root {
+    --strip-height: 26px;
+  }
+}
+
+
+/* ---- 3. Strip ---------------------------------------------------------------- */
+.root {
+  display: flex;
+  flex-wrap: wrap;               /* signs that do not fit wrap to a row that is clipped away */
+  align-content: flex-start;
+  justify-content: center;
+  width: 100%;
+  height: var(--strip-height);
+  overflow: hidden;
+  background-color: var(--c-gold);
+  color: var(--c-maroon);
+}
+
+/* the repeats add no box of their own: their signs are the row's items */
+.repeat {
+  display: contents;
+}
+
+
+/* ---- 4. Signs ---------------------------------------------------------------- */
+.sign {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: var(--slot);
+  height: var(--strip-height);
+}
+
+.om {
+  color: var(--c-maroon);
+  font-size: var(--om-size);
+  line-height: 1;
+}
+
+.swastik {
+  width: var(--swastik-size);
+  height: var(--swastik-size);
+  color: var(--c-maroon);
+}
+
+.diamond {
+  width: var(--diamond-size);
+  height: var(--diamond-size);
+  background-color: var(--c-maroon);
+  transform: rotate(45deg);
+}

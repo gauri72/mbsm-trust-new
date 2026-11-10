@@ -27,21 +27,13 @@ export default function Event() {
 
         {/**Event One Start */}
         <section className={`${styles.eventOne} ${styles.eventOneWelcomeBg}`}>
-            <div className="divine-border--welcome divine-border--welcome-top" role="presentation"></div>
-            <div className="divine-border--welcome-vertical divine-border--welcome-left" role="presentation"></div>
-            <div className="divine-border--welcome-vertical divine-border--welcome-right" role="presentation"></div>
-            <span className="welcome-one__corner welcome-one__corner--tl" aria-hidden="true"></span>
-            <span className="welcome-one__corner welcome-one__corner--tr" aria-hidden="true"></span>
-            <span className="welcome-one__corner welcome-one__corner--bl" aria-hidden="true"></span>
-            <span className="welcome-one__corner welcome-one__corner--br" aria-hidden="true"></span>
-            <div className="divine-border--welcome divine-border--welcome-bottom" role="presentation"></div>
             <div className="container">
                 <div className={styles.head}>
                     <div className="section-title text-center sec-title-animation animation-style1">
                         <div className="section-title__tagline-box">
-                            <span className="section-title__tagline">उत्सव-परंपरा</span>
+                            <span className="section-title__tagline" lang="mr">आगामी उत्सव</span>
                         </div>
-                        <h2 className="section-title__title title-animation">मठातील आगामी उत्सव</h2>
+                        <h2 className="section-title__title title-animation" lang="mr">भक्तीचा सोहळा, आनंदाचा मेळा</h2>
                     </div>
                 </div>
                 <div className="row">
@@ -61,13 +53,14 @@ export default function Event() {
                                             <img src={event.img} alt={event.title}/>
                                         )}
                                     </div>
+                                    {/* date badge: the day large, the month and year below */}
+                                    <div className={styles.badge} aria-label={event.date}>
+                                        <span className={styles.badgeDay}>{event.date.split(" ")[0]}</span>
+                                        <span className={styles.badgeMonth}>{event.date.split(" ").slice(1).join(" ")}</span>
+                                    </div>
                                 </div>
                                 <div className={styles.content}>
                                     <h4 className={styles.title}>{event.title}</h4>
-                                    <p className={styles.date}>
-                                        <span className="fas fa-calendar-alt" aria-hidden="true"></span>
-                                        <span>{event.date}</span>
-                                    </p>
                                 </div>
                             </div>
                         </div>

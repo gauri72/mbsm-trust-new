@@ -1,0 +1,296 @@
+/* =============================================================================
+   Home — Pravachan: a maroon section with the three newest pravachans on gold cards.
+
+   Design rules (same as Upcoming Events, Projects, Mission/Vision, the header and the CTA)
+   - Colours : black, white, maroon, gold — solid only, no shadows
+   - Type    : label + titles + dates + buttons medium, heading large, category small (Annapurna SIL, 400)
+   - Icons   : Font Awesome
+   - Spacing : the shared --space-* scale; 20px corners
+   - Buttons : a flat pill that lifts 4px on a solid black ledge, the arrow sliding 6px
+   ========================================================================== */
+
+/* ---- Type tokens: the same small / medium / large steps as the other sections ---- */
+section.pravachan.pravachanGold {
+  --text-sm: 17px;
+  --text-md: 19px;
+  --text-lg: 36px;
+}
+
+@media (min-width: 1600px) {
+  section.pravachan.pravachanGold { --text-lg: 38px; }
+}
+
+@media (max-width: 1199px) {
+  section.pravachan.pravachanGold { --text-lg: 30px; }
+}
+
+@media (max-width: 767px) {
+  section.pravachan.pravachanGold {
+    --text-sm: 16px;
+    --text-lg: 23px;
+  }
+}
+
+@media (max-width: 359px) {
+  section.pravachan.pravachanGold { --text-lg: 19px; }
+}
+
+/* ---- Section: the Mission/Vision field — maroon with its floral texture ---- */
+section.pravachan.pravachanGold {
+  position: relative;
+  display: block;
+  /* = Mission/Vision, Projects, Upcoming Events and the CTA: the header's 26px step, twice */
+  padding: calc(var(--space-5) * 2) 0;
+  background-color: var(--c-maroon);
+  /* the Mission/Vision field: maroon fading from a lighter top to a darker foot */
+  background-image: linear-gradient(180deg, #660309 0%, var(--c-maroon) 45%, #4D0601 100%);
+  overflow: hidden;
+  z-index: 1;
+}
+
+section.pravachan.pravachanGold::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/assets/media/shared/section-bg-2.webp");
+  background-repeat: repeat;
+  background-size: 1170px auto;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 991px) {
+  section.pravachan.pravachanGold::before {
+    background-size: 770px auto;
+  }
+}
+
+section.pravachan.pravachanGold > :global(.container) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Heading: label medium gold, title large white ---- */
+section.pravachan.pravachanGold .head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--section-title-gap);
+}
+
+section.pravachan.pravachanGold .head :global(.section-title) {
+  margin-bottom: 0;
+}
+
+section.pravachan.pravachanGold .head :global(.section-title__tagline-box) {
+  margin-bottom: var(--space-3);
+}
+
+section.pravachan.pravachanGold .head :global(.section-title__tagline) {
+  color: var(--c-gold);
+  font-family: var(--font);
+  font-size: var(--text-md);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+section.pravachan.pravachanGold .head :global(.section-title__title) {
+  color: var(--c-white);
+  font-family: var(--font);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-transform: none;
+  text-shadow: none;
+}
+
+/* ---- Cards: solid gold, black text, 20px corners, no shadow ---- */
+section.pravachan.pravachanGold :global(.row) {
+  align-items: stretch;
+  row-gap: var(--space-5);
+}
+
+section.pravachan.pravachanGold .card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  padding: var(--space-5);
+  border-radius: 20px;
+  background-color: var(--c-gold);
+  color: var(--c-black);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+/* icon (Font Awesome, large) on the left, category pill on the right */
+section.pravachan.pravachanGold .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 100%;
+  margin-bottom: var(--space-4);
+}
+
+section.pravachan.pravachanGold .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--text-lg) * 2);
+  height: calc(var(--text-lg) * 2);
+  border-radius: 50%;
+  background-color: var(--c-maroon);
+  color: var(--c-gold);
+  font-size: var(--text-lg);
+  line-height: 1;
+}
+
+section.pravachan.pravachanGold .icon i {
+  color: var(--c-gold);
+}
+
+section.pravachan.pravachanGold .category {
+  padding: var(--space-1) var(--space-3);
+  border-radius: 999px;
+  background-color: var(--c-maroon);
+  color: var(--c-white);
+  font-family: var(--font);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+section.pravachan.pravachanGold .title {
+  margin: 0 0 var(--space-3);
+  color: var(--c-black);
+  font-family: var(--font);
+  font-size: var(--text-md);
+  font-weight: 400;
+  line-height: 1.6;
+  text-transform: none;
+}
+
+/* date: medium, black, with the Font Awesome calendar */
+section.pravachan.pravachanGold .date {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-5);
+  color: var(--c-black);
+  font-family: var(--font);
+  font-size: var(--text-md);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+section.pravachan.pravachanGold .date i {
+  color: var(--c-black);
+  font-size: 1em;
+}
+
+/* ---- Buttons: flat pills ---- */
+section.pravachan.pravachanGold .more,
+section.pravachan.pravachanGold .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  border: 0;
+  border-radius: 999px;
+  font-family: var(--font);
+  font-size: var(--text-md);
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+/* card link, on the gold card: maroon pill, white text */
+section.pravachan.pravachanGold .more {
+  height: 50px;
+  margin-top: auto;
+  padding: 0 var(--space-5);
+  background-color: var(--c-maroon);
+  color: var(--c-white);
+}
+
+section.pravachan.pravachanGold .more span,
+section.pravachan.pravachanGold .more i {
+  color: var(--c-white);
+  font-size: 1em;
+  line-height: 1;
+}
+
+/* section button, on the maroon field: gold pill, black text */
+section.pravachan.pravachanGold .cta {
+  margin-top: var(--space-5);
+  text-align: center;
+}
+
+section.pravachan.pravachanGold .btn {
+  height: 58px;
+  padding: 0 var(--space-6);
+  background-color: var(--c-gold);
+  color: var(--c-black);
+}
+
+section.pravachan.pravachanGold .btn span,
+section.pravachan.pravachanGold .btn i {
+  color: var(--c-black);
+  font-size: 1em;
+  line-height: 1;
+}
+
+section.pravachan.pravachanGold .more i,
+section.pravachan.pravachanGold .btn i {
+  transition: transform 200ms ease;
+}
+
+section.pravachan.pravachanGold .more:focus-visible {
+  outline: var(--line-width) solid var(--c-black);
+  outline-offset: 2px;
+}
+
+section.pravachan.pravachanGold .btn:focus-visible {
+  outline: var(--line-width) solid var(--c-white);
+  outline-offset: 2px;
+}
+
+/* ---- Hover: mouse / trackpad only ---- */
+@media (hover: hover) {
+  section.pravachan.pravachanGold .card:hover,
+  section.pravachan.pravachanGold .more:hover,
+  section.pravachan.pravachanGold .btn:hover {
+    box-shadow: 0 4px 0 var(--c-black);
+    transform: translateY(-4px);
+  }
+
+  section.pravachan.pravachanGold .more:hover i,
+  section.pravachan.pravachanGold .btn:hover i {
+    transform: translateX(6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section.pravachan.pravachanGold .card,
+  section.pravachan.pravachanGold .more,
+  section.pravachan.pravachanGold .btn,
+  section.pravachan.pravachanGold .more i,
+  section.pravachan.pravachanGold .btn i {
+    transition: none;
+  }
+
+  section.pravachan.pravachanGold .card:hover,
+  section.pravachan.pravachanGold .more:hover,
+  section.pravachan.pravachanGold .btn:hover,
+  section.pravachan.pravachanGold .more:hover i,
+  section.pravachan.pravachanGold .btn:hover i {
+    transform: none;
+  }
+}
