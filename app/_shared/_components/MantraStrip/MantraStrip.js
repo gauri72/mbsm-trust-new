@@ -30,6 +30,10 @@ const CLOSING_MANTRAS = [
 const REPEAT_COUNT = 4
 const MIN_ITEMS_PER_HALF = 8
 
+// Scroll speed: a fixed pace per character, so a long verse scrolls no faster than a short one.
+// (A fixed loop time would speed the strip up as the verses get longer.)
+const SECONDS_PER_CHAR = 0.15
+
 // Divider: a four-petal gold flower with a maroon centre (drawn as SVG, not a font
 // icon, so it keeps its two colours). Sized in em, so it follows the text's size.
 const Divider = () => (
@@ -46,10 +50,12 @@ export default function MantraStrip({ closing = false }) {
     const mantras = closing ? CLOSING_MANTRAS : TOP_MANTRAS
     const repeat = Math.max(REPEAT_COUNT, Math.ceil(MIN_ITEMS_PER_HALF / mantras.length))
     const items = Array(repeat * 2).fill(mantras).flat()
+    const chars = repeat * mantras.join("").length
+    const duration = `${Math.round(chars * SECONDS_PER_CHAR)}s`
 
     return (
         // screen readers get the verses once, as one label; the moving copies are hidden
-        <div className={styles.root} role="img" aria-label={mantras.join(" । ")}>
+        <div className={styles.root} role="img" aria-label={mantras.join(". ")} style={{ "--duration": duration }}>
             <div className={styles.marquee}>
                 <div className={styles.track} aria-hidden="true">
                     {items.map((mantra, index) => (

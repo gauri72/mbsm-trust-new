@@ -5,7 +5,7 @@ import TempleGallery from "../_shared/_components/TempleGallery/TempleGallery"
 import Cta from "../_shared/_components/Cta/Cta"
 import MissionVision from "./_components/MissionVision/MissionVision"
 import Projects from "./_components/Projects/Projects"
-import Pravachan from "./_components/Pravachan/Pravachan"
+import BlogCategories from "./_components/BlogCategories/BlogCategories"
 // Hidden on the home page for now (to bring one back, uncomment its import and its tag):
 // - Welcome: its visit-card lives in the Contact page's FAQ section
 // - HomeGallery: the bottom mosaic
@@ -24,11 +24,11 @@ export default function Home() {
             {/* <Welcome /> */}
             <MissionVision />
             <Border />
-            <Event />
-            <Border />
             <Projects />
             <Border />
-            <Pravachan />
+            <Event />
+            <Border />
+            <BlogCategories />
             <Border />
             <Cta />
             <MantraStrip closing />

@@ -46,7 +46,7 @@
   --strip-pad: var(--space-2);           /* maroon above the top line and below the bottom line */
   --verse-space: var(--space-4);         /* blank space above and below the verses, inside the gold lines */
   --strip-gap: var(--space-5);           /* space on each side of a divider (flower), on every screen */
-  --duration: 45s;                       /* one full loop */
+  --duration: 45s;                       /* one full loop (set per strip from the verse length) */
   --ease: 200ms ease;
 }
 
@@ -64,9 +64,23 @@
 
 /* ---- 3. Band + lines + marquee ---------------------------------------------- */
 .root {
+  position: relative;
   padding: var(--strip-pad) 0;
   overflow: hidden;
   background-color: var(--c-maroon);
+  /* the section field: maroon fading from a lighter top to a darker foot */
+  background-image: linear-gradient(180deg, #660309 0%, var(--c-maroon) 50%, #4D0601 100%);
+}
+
+/* the floral texture of the maroon sections, faint */
+.root > .marquee::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/assets/media/shared/section-bg-2.webp");
+  background-size: 770px auto;
+  opacity: 0.35;
+  pointer-events: none;
 }
 
 /* the two gold lines, full width, above and below the verses */
@@ -80,13 +94,18 @@
 .marquee {
   display: flex;
   align-items: center;
+  position: relative;
   padding: var(--verse-space) 0;         /* generous blank space between the gold lines and the verses */
   overflow: hidden;
+  /* verses fade in and out at the edges instead of being cut off */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
 }
 
 .track {
   display: flex;
   align-items: center;
+  position: relative;
   width: max-content;
   animation: scroll var(--duration) linear infinite;
 }

@@ -72,6 +72,15 @@
 .fa-utensils:before {
   content:"\f2e7"
 }
+.fa-fire:before {
+  content:"\f06d"
+}
+.fa-image:before {
+  content:"\f03e"
+}
+.fa-spa:before {
+  content:"\f5bb"
+}
 .fa-heartbeat:before {
   content:"\f21e"
 }

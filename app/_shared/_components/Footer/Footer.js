@@ -7,7 +7,7 @@ import styles from "./Footer.module.css"
 /* =============================================================================
    Site footer (rendered once in app/layout.js, so it stays mounted across pages)
 
-   ┌ main ─── brand + about │ आमचे कार्य │ उपयुक्त दुवे │ संपर्क माहिती ┐ gold
+   ┌ main ─── brand + about │ उपयुक्त दुवे │ संपर्क माहिती │ आमची उद्दिष्टे ┐ gold
    └ bottom ─ © year, name ................... designed & developed by ┘ maroon
 
    Desktop (≥1200px) : 4 left-aligned columns, equal blank space between them.
@@ -30,7 +30,7 @@ const SITE_LOGO_SRC = "/assets/media/shared/logo.webp"
 const ABOUT_TEXT = "मंगल भक्त सेवा मंडळ ही सामाजिक संस्था आहे. विविध उपक्रम व कार्यक्रमांतून मानवसेवा, धार्मिक समता, ऐक्य व आध्यात्मिक मार्गदर्शनाचे कार्य आम्ही करतो."
 const CREDIT = { name: "गौरी कोळेकर", href: "mailto:kolekargauri8@gmail.com" }
 
-// आमचे कार्य: the trust's areas of work (text, not links)
+// आमची उद्दिष्टे: the trust's areas of work (text, not links)
 const SEVA = [
     "मानवसेवा व मदतकार्य",
     "धार्मिक समता व एकता",
@@ -93,19 +93,6 @@ export default function Footer() {
                         <p className={styles.aboutText}>{ABOUT_TEXT}</p>
                     </div>
 
-                    {/* आमचे कार्य */}
-                    <div className={styles.column}>
-                        <Title>आमचे कार्य</Title>
-                        <ul className={styles.list}>
-                            {SEVA.map((item) => (
-                                <li key={item} className={styles.item}>
-                                    <i className={cx(styles.icon, "fas fa-hand-holding-heart")} aria-hidden="true"></i>
-                                    <span>{item}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
                     {/* उपयुक्त दुवे */}
                     <nav className={styles.column} aria-label="उपयुक्त दुवे">
                         <Title>{LINKS_TITLE}</Title>
@@ -143,6 +130,19 @@ export default function Footer() {
                                         {/* screen readers are told the map opens in a new tab */}
                                         {c.external && <span className={styles.srOnly}> (नवीन टॅबमध्ये उघडते)</span>}
                                     </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* आमची उद्दिष्टे */}
+                    <div className={styles.column}>
+                        <Title>आमची उद्दिष्टे</Title>
+                        <ul className={styles.list}>
+                            {SEVA.map((item) => (
+                                <li key={item} className={styles.item}>
+                                    <i className={cx(styles.icon, "fas fa-hand-holding-heart")} aria-hidden="true"></i>
+                                    <span>{item}</span>
                                 </li>
                             ))}
                         </ul>
