@@ -1,20 +1,19 @@
 /* =============================================================================
-   Mantra strip — scrolling verses on a maroon band (top + closing of every page).
+   Mantra — scrolling verses on a maroon band (top + closing of every page).
 
    Contents
-     1. Design tokens            — the header's / footer's values
-     2. Token breakpoints
-     3. Band + lines + marquee
-     4. Verse + divider
-     5. Hover                    — mouse / trackpad only
-     6. Reduced motion
+     1. Design tokens            — the band's own (colours and spacing steps: globals.css)
+     2. Band + lines + marquee
+     3. Verse + divider
+     4. Hover + pause            — hover (mouse), tap / click / Enter / Space (everyone)
+     5. Reduced motion
 
    Design rules (same as the header and footer)
    - Colours : maroon band; verses white, gold on hover (as the header strip's
                links); the gold flower divider with a maroon centre.
    - Lines   : 2px solid gold above and below the verses (matching the flower).
-   - Type    : Annapurna SIL at the CTA buttons' text size — the site's medium (19px) —
-               on every screen.
+   - Type    : Annapurna SIL at the site's medium size on desktop (22px), kept at 22px on
+               every screen (the global medium steps down to 20px on phones).
    - Space   : generous and the same on every screen — the space-4 step above and below
                the verses (inside the gold lines), the space-5 step on each side of a flower.
    - Icon    : the flower, the same size as the text.
@@ -42,16 +41,14 @@
 }
 
 
-/* ---- 2. Token breakpoints: none here — the spacing steps come from globals.css -- */
-
-/* ---- 3. Band + lines + marquee ---------------------------------------------- */
+/* ---- 2. Band + lines + marquee ---------------------------------------------- */
 .root {
   position: relative;
   padding: var(--strip-pad) 0;
   overflow: hidden;
   background-color: var(--c-maroon);
-  /* the section field: maroon fading from a lighter top to a darker foot */
-  background-image: linear-gradient(180deg, #620208 0%, var(--c-maroon) 50%, #620208 100%);
+  cursor: pointer;                       /* tap / click pauses the scroll (see section 5) */
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* the floral texture of the maroon sections, faint */
@@ -80,8 +77,9 @@
   padding: var(--verse-space) 0;         /* generous blank space between the gold lines and the verses */
   overflow: hidden;
   /* verses fade in and out at the edges instead of being cut off */
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  /* (a mask only reads alpha: black = fully shown) */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, var(--c-black) 8%, var(--c-black) 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, var(--c-black) 8%, var(--c-black) 92%, transparent 100%);
 }
 
 .track {
@@ -99,7 +97,7 @@
 }
 
 
-/* ---- 4. Verse + divider ----------------------------------------------------- */
+/* ---- 3. Verse + divider ----------------------------------------------------- */
 /* verse │ flower │ verse … — the divider has --strip-gap on both sides */
 .item {
   display: flex;
@@ -132,9 +130,21 @@
 }
 
 
-/* ---- 5. Hover (mouse / trackpad only) ------------------------------------------
-   Inside (hover: hover) so a tap never leaves a verse stuck in gold. The hovered
-   verse turns gold and the scroll pauses, so it can be read. */
+/* ---- 4. Hover + pause ------------------------------------------------------------
+   The whole band is a toggle button: a tap, click, Enter or Space pauses / resumes the scroll
+   (.paused), so touch and keyboard users can stop the moving text too. */
+.paused .track {
+  animation-play-state: paused;
+}
+
+/* keyboard focus: a white 2px ring inside the band (the band clips anything outside it) */
+.root:focus-visible {
+  outline: var(--line-width) solid var(--c-white);
+  outline-offset: calc(var(--line-width) * -3);
+}
+
+/* Mouse hover also pauses it, and turns the hovered verse gold so it can be read.
+   Inside (hover: hover) so a tap never leaves a verse stuck in gold. */
 @media (hover: hover) {
   .marquee:hover .track {
     animation-play-state: paused;
@@ -146,8 +156,12 @@
 }
 
 
-/* ---- 6. Reduced motion: no scroll — the first verse, centred, may wrap ---------- */
+/* ---- 5. Reduced motion: no scroll — the first verse, centred, may wrap ---------- */
 @media (prefers-reduced-motion: reduce) {
+  .root {
+    cursor: default;                     /* nothing to pause */
+  }
+
   .track {
     animation: none;
     width: 100%;

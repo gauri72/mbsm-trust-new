@@ -1,7 +1,7 @@
 import styles from "./ComingSoon.module.css"
 
 /* =============================================================================
-   Coming soon: a centred note shown under the temple gallery on the inner pages whose
+   Coming soon: a centred note shown under the gallery on the inner pages whose
    content is not ready yet (every page except home).
    Styles: see ComingSoon.module.css.
    ========================================================================== */

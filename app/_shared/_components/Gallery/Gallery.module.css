@@ -1,20 +1,20 @@
 /* =============================================================================
-   Temple gallery — scrolling square photos on a maroon band (every page).
+   Gallery — scrolling square photos on a maroon band (every page).
 
    Contents
-     1. Design tokens            — the header's / mantra strips' values
+     1. Design tokens
      2. Token breakpoints        — 5 / 4 / 3 photos across
      3. Band + marquee
      4. Photo tiles
-     5. Hover                    — mouse / trackpad only
+     5. Pause                    — hover (mouse), tap / click, and the keyboard button
      6. Reduced motion
 
-   Design rules (same as the header, footer, mantra strips and CTA)
+   Design rules (same as the header, footer, mantra and CTA)
    - Colours : a flat maroon band; 2px solid gold dividers between the photos; the photos
                themselves are shown as they are (nothing laid over them).
    - Layout  : 5 photos across on desktop, 4 on tablet, 3 on phones (the header's
                breakpoints: 1200px and 768px).
-   - Spacing : the header's scale.
+   - Pause   : hover, a tap / click on the band, or the button that shows when it has keyboard focus.
    ========================================================================== */
 
 
@@ -27,7 +27,6 @@
   /* layout */
   --per-view: 5;                         /* photos across the screen */
   --duration: 33s;                       /* one full loop */
-  --ease: 200ms ease;
 }
 
 
@@ -49,6 +48,7 @@
 
 /* ---- 3. Band + marquee ------------------------------------------------------ */
 .root {
+  position: relative;
   overflow: hidden;
   background-color: var(--c-maroon);
 }
@@ -57,6 +57,8 @@
 .marquee {
   container-type: inline-size;
   overflow: hidden;
+  cursor: pointer;                       /* a tap / click pauses the scroll (section 5) */
+  -webkit-tap-highlight-color: transparent;
 }
 
 .track {
@@ -78,6 +80,7 @@
 .item {
   position: relative;
   flex: none;
+  width: calc(100vw / var(--per-view));   /* fallback for browsers without container units */
   width: calc(100cqw / var(--per-view));
   aspect-ratio: 1 / 1;
   border-right: var(--line-gold);
@@ -90,12 +93,49 @@
   object-fit: cover;
 }
 
-/* ---- 5. Hover (mouse / trackpad only) ------------------------------------------
-   The photos are not links: hovering pauses the scroll so a photo can be looked at. */
+/* ---- 5. Pause ------------------------------------------------------------------
+   The photos are not links: pausing the scroll lets a photo be looked at. A tap or click on the band
+   toggles it (.paused); hovering with a mouse pauses it too; the button below is the way in for the
+   keyboard and screen readers. */
+.paused .track {
+  animation-play-state: paused;
+}
+
 @media (hover: hover) {
   .marquee:hover .track {
     animation-play-state: paused;
   }
+}
+
+/* the keyboard button: out of sight until Tab reaches it, then a gold pill in the band's corner */
+.pause {
+  position: absolute;
+  z-index: 2;
+  top: var(--space-2);
+  left: var(--space-2);
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  border-radius: 999px;
+  background-color: var(--c-gold);
+  color: var(--c-black);
+  font-family: var(--font);
+  font-size: var(--text-sm);
+  line-height: 1.3;
+}
+
+.pause:focus-visible {
+  width: auto;
+  height: auto;
+  padding: var(--space-1) var(--space-3);
+  overflow: visible;
+  clip-path: none;
+  outline: var(--line-width) solid var(--c-white);
+  outline-offset: var(--line-width);
 }
 
 
@@ -103,5 +143,9 @@
 @media (prefers-reduced-motion: reduce) {
   .track {
     animation: none;
+  }
+
+  .marquee {
+    cursor: default;                     /* nothing to pause */
   }
 }

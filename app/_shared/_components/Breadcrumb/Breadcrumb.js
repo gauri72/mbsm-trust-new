@@ -1,5 +1,5 @@
 'use client'
-import { PAGES, CHARACTERS } from "../../siteContent"
+import { PAGES, CHARACTERS } from "../siteContent"
 import styles from "./Breadcrumb.module.css"
 
 /* =============================================================================

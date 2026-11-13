@@ -7,8 +7,10 @@
 // Reduced motion: wrap the hero in <MotionConfig reducedMotion="user"> — the zoom is skipped and
 // only the dissolve remains.
 
-export const HERO_EASE = [0.22, 1, 0.36, 1]          // quick start, long gentle settle
+const HERO_EASE = [0.22, 1, 0.36, 1]          // quick start, long gentle settle
 
 // a slide: settled while it is the active one, a little larger while it waits or leaves
 export const SLIDE_SCALE = { active: 1, idle: 1.12 }
-export const SLIDE_TRANSITION = { duration: 1.5, ease: HERO_EASE }
+// how long a slide change takes, in seconds: the zoom and Swiper's cross-fade (its `speed`) both use it
+export const SLIDE_DURATION = 1.5
+export const SLIDE_TRANSITION = { duration: SLIDE_DURATION, ease: HERO_EASE }

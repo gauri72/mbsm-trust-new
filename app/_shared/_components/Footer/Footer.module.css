@@ -2,7 +2,7 @@
    Site footer — main area (brand, link columns, contacts) + bottom bar.
 
    Contents
-     1. Design tokens            — the header's values, so both read as one system
+     1. Design tokens            — the footer's own (colours, spacing steps and text sizes: globals.css)
      2. Token breakpoints
      3. Shared                   — resets, icon box, focus ring
      4. Main area                — grid, brand, about, columns, lists
@@ -49,7 +49,7 @@
   --strip-pad: var(--space-3);               /* the bottom bar's space above and below (roomier than the header strip's) */
   --bar-gap: var(--space-5);                 /* = header bar: minimum gap between columns / rows */
   --strip-gap: var(--space-5);               /* = header strip: gap between the bottom bar's lines */
-  --strip-height: 42px;                 /* the top / bottom strip (steps below) */
+  --strip-height: 42px;                      /* the top / bottom strip (steps below) */
   /* one spacing rule (sizes seen): the space AROUND the footer's content (above and
      below) = the space BETWEEN its sections = 2 x the space INSIDE a section (rows,
      title → list, brand → description). By mode:
@@ -60,7 +60,7 @@
      (text lines carry ≈ 0.4em of their own space, so the gaps are set that much smaller) */
   --edge: 48px;
   --inner: var(--space-3);                                  /* 14px + text space ≈ 20px */
-  --nudge: 4px;                          /* a hovered quick link's arrow slides this far */
+  --nudge: 4px;                              /* a hovered quick link's arrow slides this far */
   --section-gap: calc(var(--edge) - 0.4em);                 /* + text space = --edge */
   --about-width: 40ch;                       /* description: at most 3 lines at every width */
   --ease: 200ms ease;

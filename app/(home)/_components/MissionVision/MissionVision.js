@@ -1,7 +1,7 @@
 'use client'
 import Link from "next/link"
 import { useState } from "react"
-import { SITE_MAP_URL, SITE_ADDRESS_PLACE, SITE_ADDRESS_LINE1, SITE_ADDRESS_CITY } from "../../../_shared/siteContent"
+import { SITE_MAP_URL, SITE_ADDRESS_PLACE, SITE_ADDRESS_LINE1, SITE_ADDRESS_CITY } from "../../../_shared/_components/siteContent"
 import styles from "./MissionVision.module.css"
 
 // Mission / vision / objective tabs — shared by the Home and About pages.

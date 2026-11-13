@@ -1,5 +1,5 @@
 /* =============================================================================
-   Border — between the hero and the temple gallery.
+   Border — between the page's sections.
 
    Contents
      1. Design tokens
@@ -7,21 +7,24 @@
      3. Strip
      4. Signs
 
-   Design rules (same as the header, footer and mantra strips)
+   Design rules (same as the header, footer and mantra)
    - Colours : gold strip, maroon signs — solid only, nothing see-through
    - Icons   : the Om is a Font Awesome icon (Font Awesome has no swastik, so that one is drawn)
    - Spacing : the strip is the site's 40px layout step on desktop and grows or shrinks with the
-               screen; every sign sits in a slot 0.75 x the strip's height wide, so the signs
-               are always evenly spaced and scale together
-   - Fit     : only whole signs fit on the strip, centred; the rest wrap out of sight
+               screen; every sign sits in a slot at least 0.75 x the strip's height wide, and the
+               slots share any leftover width equally, so the signs are always evenly spaced
+   - Fit     : Border.js draws only the signs that fit (always 1 more than a multiple of 4: the
+               pattern reads the same from both ends); before it has measured, extra signs wrap
+               out of sight
    ========================================================================== */
 
 
 /* ---- 1. Design tokens ------------------------------------------------------- */
 .root {
   /* size: the site's 40px layout step (--space-6); everything else is a share of it */
-  --strip-height: var(--space-6, 40px);
-  --slot: calc(var(--strip-height) * 0.75);        /* the width each sign is centred in */
+  --strip-height: var(--space-6);
+  --slot-ratio: 0.75;                              /* Border.js reads this to count the signs that fit */
+  --slot: calc(var(--strip-height) * var(--slot-ratio));   /* the least width each sign is centred in */
   --om-size: calc(var(--strip-height) * 0.55);     /* the Font Awesome Om */
   --swastik-size: calc(var(--strip-height) * 0.5);
   --diamond-size: calc(var(--strip-height) * 0.18);   /* the square, before it is turned */
@@ -61,7 +64,7 @@
 /* ---- 3. Strip ---------------------------------------------------------------- */
 .root {
   display: flex;
-  flex-wrap: wrap;               /* signs that do not fit wrap to a row that is clipped away */
+  flex-wrap: wrap;               /* before the count is measured, extra signs wrap to a row that is clipped away */
   align-content: flex-start;
   justify-content: center;
   width: 100%;
@@ -71,19 +74,12 @@
   color: var(--c-maroon);
 }
 
-/* the repeats add no box of their own: their signs are the row's items */
-.repeat {
-  display: contents;
-}
-
-
 /* ---- 4. Signs ---------------------------------------------------------------- */
 .sign {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: none;
-  width: var(--slot);
+  flex: 1 0 var(--slot);                 /* never narrower than the slot; the leftover width is shared equally */
   height: var(--strip-height);
 }
 

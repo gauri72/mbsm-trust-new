@@ -2,21 +2,24 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import MantraStrip from "../_shared/_components/MantraStrip/MantraStrip"
+import Mantra from "../_shared/_components/Mantra/Mantra"
 import Breadcrumb from "../_shared/_components/Breadcrumb/Breadcrumb"
 import Border from "../_shared/_components/Border/Border"
-import TempleGallery from "../_shared/_components/TempleGallery/TempleGallery"
+import Gallery from "../_shared/_components/Gallery/Gallery"
 import Cta from "../_shared/_components/Cta/Cta"
 import ComingSoon from "../_shared/_components/ComingSoon/ComingSoon"
-import { SITE_PHONE_TEL, SITE_EMAIL, SITE_EMAIL_MAILTO, SITE_MAP_URL } from "../_shared/siteContent"
+import {
+    SITE_NAME, SITE_PHONE_TEL, SITE_PHONE_DISPLAY as PHONE_DISPLAY, SITE_EMAIL, SITE_EMAIL_MAILTO, SITE_MAP_URL,
+    SITE_ADDRESS_PLACE, SITE_ADDRESS_LINE1 as ADDRESS_LINE1, SITE_ADDRESS_CITY, SITE_ADDRESS_PINCODE as ADDRESS_PINCODE,
+    toDevanagariDigits,
+} from "../_shared/_components/siteContent"
 import styles from "./page.module.css"
 
-// Trust contact details
-const SITE_PHONE_DISPLAY = "+९१ ७५८८७ ९७७८८"
-const SITE_ADDRESS_PLACE = "श्री शंकरदत्त महाराज मठ,"
-const SITE_ADDRESS_LINE1 = "एफ ७०, एमआयडीसी,"
-const SITE_ADDRESS_LINE2 = "अहिल्यानगर - ४१४१११"
-const SITE_ADDRESS_CITY = "अहिल्यानगर"
+// Trust contact details: the shared data (siteContent.js), shown here with Devanagari digits
+const SITE_PHONE_DISPLAY = toDevanagariDigits(PHONE_DISPLAY)
+const SITE_ADDRESS_LINE1 = toDevanagariDigits(ADDRESS_LINE1)
+// non-breaking spaces around the dash, so the line never breaks between the city and the pincode
+const SITE_ADDRESS_LINE2 = `${SITE_ADDRESS_CITY}\u00A0-\u00A0${toDevanagariDigits(ADDRESS_PINCODE)}`
 const SITE_ADDRESS_SHORT = `${SITE_ADDRESS_PLACE} ${SITE_ADDRESS_LINE1} ${SITE_ADDRESS_CITY}`
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -26,13 +29,11 @@ const INITIAL_FORM = { name: "", email: "", phone: "", message: "" }
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xnpnqgoq"
 
 // Formspree uses `_subject` as the notification email's subject line
-const EMAIL_SUBJECT = "मंगल भक्त सेवा मंडळ — संकेतस्थळावरून नवीन संदेश"
+const EMAIL_SUBJECT = `${SITE_NAME} — संकेतस्थळावरून नवीन संदेश`
 
 // Google Maps "Embed a map" URL for the "Mangal Bhakta Seva Mandal (MBSM) Trust" listing
 // (F 70, Manmad Rd, MIDC, Nagapur, Ahilyanagar); the place id makes it show the pin + name card
 const MAP_EMBED_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.0!2d74.6929024!3d19.1503465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdcba2a1b363501%3A0xb70bfcce19e73dee!2sMangal%20Bhakta%20Seva%20Mandal%20(MBSM)%20Trust!5e0!3m2!1sen!2sin!4v1761900000000!5m2!1sen!2sin"
-// opens that same listing in Google Maps
-const MAP_LINK = "https://share.google/dv2NZPiwDDyqzAbgK"
 
 const CONTACT_FAQS = [
     {
@@ -107,12 +108,12 @@ export default function Home() {
     return (
         <>
         <>
-        <MantraStrip />
+        <Mantra />
 
         <Breadcrumb page="sampark" />
 
         <Border />
-        <TempleGallery />
+        <Gallery />
 
         <ComingSoon />
 
@@ -284,7 +285,7 @@ export default function Home() {
                                     </div>
                                     <div className="content">
                                         <h4 lang="mr">पत्ता</h4>
-                                        <p lang="mr" className={styles.contactTwoAddress}><Link href={MAP_LINK} target="_blank" rel="noopener noreferrer">{SITE_ADDRESS_PLACE}<br /> {SITE_ADDRESS_LINE1} {SITE_ADDRESS_CITY}</Link></p>
+                                        <p lang="mr" className={styles.contactTwoAddress}><Link href={SITE_MAP_URL} target="_blank" rel="noopener noreferrer">{SITE_ADDRESS_PLACE}<br /> {SITE_ADDRESS_LINE1} {SITE_ADDRESS_CITY}</Link></p>
                                     </div>
                                 </li>
                             </ul>
@@ -391,7 +392,7 @@ export default function Home() {
         {/*Contact Faq End*/}
 
         <Cta />
-        <MantraStrip closing />
+        <Mantra closing />
         </>
         </>
     )

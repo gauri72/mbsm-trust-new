@@ -6,7 +6,7 @@ import {
     SITE_NAME_DISPLAY, SITE_LOGO_SRC,
     SITE_ADDRESS_PLACE, SITE_ADDRESS_LINE1, SITE_ADDRESS_CITY, SITE_ADDRESS_PINCODE,
     SITE_PHONE_TEL, SITE_PHONE_DISPLAY, SITE_EMAIL, SITE_EMAIL_MAILTO, SITE_MAP_URL,
-} from "../../siteContent"
+} from "../siteContent"
 import styles from "./Footer.module.css"
 
 /* =============================================================================
@@ -19,7 +19,8 @@ import styles from "./Footer.module.css"
    Tablet (768–1199) : brand + about centred across the top, then the 3 columns in one row.
    Phones (<768)     : a single centred column.
    Width: the site's standard Bootstrap .container (1320px max, with side margins).
-   Colours, sizes and spacing are tokens in Footer.module.css (the header's values).
+   Colours, sizes and spacing: the site's shared tokens (globals.css) plus the footer's own in Footer.module.css.
+   The name, logo, address and contact details come from siteContent.js, shared with the header.
 
    'use client' is needed for usePathname (the home-link scroll below).
    All content lives in the constants just below: edit text there, not in the markup.
@@ -40,7 +41,7 @@ const SEVA = [
 ]
 
 // उपयुक्त दुवे
-// the same pages as before, under footer names of their own (the href and icon come from siteContent.js)
+// the pages the footer links to, under footer names of their own (the href comes from siteContent.js)
 const QUICK_LINKS = [
     { href: PAGES.home.href, label: "मुख्य पान" },
     { href: PAGES.parichaya.href, label: "आमच्याबद्दल" },

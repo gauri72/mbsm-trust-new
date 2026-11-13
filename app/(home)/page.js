@@ -1,7 +1,7 @@
-import MantraStrip from "../_shared/_components/MantraStrip/MantraStrip"
+import Mantra from "../_shared/_components/Mantra/Mantra"
 import HeroSlider from "./_components/HeroSlider/HeroSlider"
 import Border from "../_shared/_components/Border/Border"
-import TempleGallery from "../_shared/_components/TempleGallery/TempleGallery"
+import Gallery from "../_shared/_components/Gallery/Gallery"
 import Cta from "../_shared/_components/Cta/Cta"
 import MissionVision from "./_components/MissionVision/MissionVision"
 import Projects from "./_components/Projects/Projects"
@@ -14,10 +14,10 @@ import Event from "./_components/Event/Event"
 export default function Home() {
     return (
         <>
-            <MantraStrip />
+            <Mantra />
             <HeroSlider />
             <Border />
-            <TempleGallery />
+            <Gallery />
             <Border />
             <MissionVision />
             <Border />
@@ -28,7 +28,7 @@ export default function Home() {
             <BlogCategories />
             <Border />
             <Cta />
-            <MantraStrip closing />
+            <Mantra closing />
         </>
     )
 }

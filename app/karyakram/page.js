@@ -1,8 +1,8 @@
-import MantraStrip from "../_shared/_components/MantraStrip/MantraStrip"
+import Mantra from "../_shared/_components/Mantra/Mantra"
 import Breadcrumb from "../_shared/_components/Breadcrumb/Breadcrumb"
-import { pageTitle } from "../_shared/siteContent"
+import { pageTitle } from "../_shared/_components/siteContent"
 import Border from "../_shared/_components/Border/Border"
-import TempleGallery from "../_shared/_components/TempleGallery/TempleGallery"
+import Gallery from "../_shared/_components/Gallery/Gallery"
 import Cta from "../_shared/_components/Cta/Cta"
 import ComingSoon from "../_shared/_components/ComingSoon/ComingSoon"
 // Hidden for now (to bring them back, uncomment their imports and tags):
@@ -18,14 +18,14 @@ export const metadata = {
 export default function KaryakramPage() {
     return (
         <>
-            <MantraStrip />
+            <Mantra />
             <Breadcrumb page="karyakram" />
             <Border />
-            <TempleGallery />
+            <Gallery />
             <ComingSoon />
             {/* Hidden for now: <AllEvents />, <FeaturedEvents />, <Event /> */}
             <Cta />
-            <MantraStrip closing />
+            <Mantra closing />
         </>
     )
 }

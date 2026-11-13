@@ -6,16 +6,17 @@ import 'swiper/css/free-mode';
 import 'swiper/css/effect-fade';
 import Header from './_shared/_components/Header/Header'
 import Footer from './_shared/_components/Footer/Footer'
+import { SITE_NAME, SITE_TAGLINE } from './_shared/_components/siteContent'
 
 // Font: Annapurna SIL Bold, the site's only font, is self-hosted — @font-face and
 // --font in globals.css, files in /public/assets/fonts
 
 export const metadata = {
     title: {
-        default: 'मंगल भक्त सेवा मंडळ',
+        default: SITE_NAME,
         template: '%s',
     },
-    description: 'Shri Shubharay Maharaj Math — a spiritual home dedicated to devotion, seva and community upliftment in Ahilyanagar.',
+    description: `${SITE_NAME} — ${SITE_TAGLINE}`,
 }
 
 export default function RootLayout({ children }) {

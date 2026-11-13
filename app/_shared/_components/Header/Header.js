@@ -3,10 +3,10 @@ import { useCallback, useEffect, useId, useRef, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
-    PAGES, WORK_GROUP, CTA, isCurrentPage,
+    PAGES, WORK_GROUP, CTA, SOCIALS, isCurrentPage,
     SITE_NAME_DISPLAY, SITE_LOGO_SRC, SITE_ADDRESS_SHORT, SITE_ADDRESS_PINCODE,
-    SITE_PHONE_TEL, SITE_PHONE_DISPLAY, SITE_EMAIL, SITE_EMAIL_MAILTO, SITE_MAP_URL, SITE_WHATSAPP_URL,
-} from "../../siteContent"
+    SITE_PHONE_TEL, SITE_PHONE_DISPLAY, SITE_EMAIL, SITE_EMAIL_MAILTO, SITE_MAP_URL,
+} from "../siteContent"
 import styles from "./Header.module.css"
 
 /* =============================================================================
@@ -34,11 +34,6 @@ const ADDRESS = {
     lang: "mr",
 }
 
-const SOCIALS = [
-    { href: SITE_WHATSAPP_URL, label: "WhatsApp", icon: "fab fa-whatsapp" },
-    { href: "https://www.instagram.com/mangal_bhakta_seva_mandal_", label: "Instagram", icon: "fab fa-instagram" },
-    { href: "https://youtube.com/@mangalbhaktasevamandaltrus2349", label: "YouTube", icon: "fab fa-youtube" },
-]
 const SOCIAL_TITLE = "आमच्यासोबत जोडा:"
 
 // ---- Navigation (one list, shared by the desktop menu and the drawer) --------

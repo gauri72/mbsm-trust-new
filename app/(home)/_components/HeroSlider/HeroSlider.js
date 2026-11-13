@@ -3,13 +3,13 @@ import { useEffect, useRef } from "react"
 import { Autoplay, EffectFade } from "swiper/modules"
 import { Swiper, SwiperSlide, useSwiperSlide } from "swiper/react"
 import { motion, MotionConfig } from "framer-motion"
-import { SLIDE_SCALE, SLIDE_TRANSITION } from "../../../_shared/heroMotion"
+import { SLIDE_DURATION, SLIDE_SCALE, SLIDE_TRANSITION } from "./heroMotion"
 import styles from "./HeroSlider.module.css"
 
 /* =============================================================================
    Home hero: two 16:9 artworks fading in turn, shown exactly as supplied (their nameplates
    carry their own lettering). Nothing is layered on them and there is no reveal animation
-   when the page opens. The slides change with a slow zoom dissolve (_shared/heroMotion.js).
+   when the page opens. The slides change with a slow zoom dissolve (heroMotion.js).
    Styles: see HeroSlider.module.css.
    ========================================================================== */
 
@@ -25,7 +25,7 @@ const swiperOptions = {
     modules: [Autoplay, EffectFade],
     effect: "fade",
     fadeEffect: { crossFade: true },
-    speed: 1500,                      // = the zoom dissolve's duration
+    speed: SLIDE_DURATION * 1000,     // = the zoom dissolve's duration (milliseconds here)
     loop: true,
     allowTouchMove: false,
     autoplay: {

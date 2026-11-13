@@ -920,6 +920,7 @@ iframe {
   --c-white: #FFFFFF;
   --c-black: #000000;
   --c-maroon: #620208;
+  --c-maroon-rgb: 98, 2, 8;               /* the same maroon as r, g, b: for the one wash that needs it see-through */
   --c-gold: #D9982A;
 
   /* sizes: small (17px, 16px on phones) · medium (19px) · large (36px, steps below) */

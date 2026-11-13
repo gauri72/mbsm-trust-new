@@ -13,24 +13,57 @@ import styles from "./AlphaLoopVideo.module.css"
 // canPlayType.
 function supportsHevcAlpha() {
     const ua = navigator.userAgent
-    const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+    // (iPadOS asks for desktop sites and reports a Mac: a Mac with a touch screen is an iPad)
+    const isIOS = /iPad|iPhone|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)
     const isMacSafari = /Macintosh/.test(ua) && /Safari/.test(ua) && !/Chrome|Chromium|Edg|OPR|Firefox/.test(ua)
     return isIOS || isMacSafari
 }
 
+// The clip is decoration, and it is big (about 2-3 MB): it is only fetched once it is near the screen (the
+// closing section sits at the very bottom of every page), it plays only while it is near the screen, and
+// it is not shown at all to visitors who ask their device for reduced motion (it never stops moving).
+const NEAR_SCREEN = "300px 0px"
+
 export default function AlphaLoopVideo({ src, webmSrc, className }) {
-    const ref = useRef(null)
-    // null until we know the browser on the client, so no opaque video
+    const rootRef = useRef(null)
+    const videoRef = useRef(null)
+    const [reduceMotion, setReduceMotion] = useState(false)
+    const [near, setNear] = useState(false)
+    // null until the clip is wanted and we know the browser, so no opaque video
     // box ever flashes on browsers that can't do HEVC alpha
     const [videoSrc, setVideoSrc] = useState(null)
 
+    // reduced motion: no clip (and the choice follows the setting live)
     useEffect(() => {
-        setVideoSrc(webmSrc && !supportsHevcAlpha() ? webmSrc : src)
-    }, [src, webmSrc])
+        const query = window.matchMedia("(prefers-reduced-motion: reduce)")
+        const update = () => setReduceMotion(query.matches)
+        update()
+        query.addEventListener("change", update)
+        return () => query.removeEventListener("change", update)
+    }, [])
 
+    // near the screen or not
     useEffect(() => {
-        const v = ref.current
+        const root = rootRef.current
+        if (!root || reduceMotion) return
+        const observer = new IntersectionObserver((entries) => setNear(entries.some((e) => e.isIntersecting)), { rootMargin: NEAR_SCREEN })
+        observer.observe(root)
+        return () => observer.disconnect()
+    }, [reduceMotion])
+
+    // the first time it is near the screen, pick the file for this browser (and start fetching it)
+    useEffect(() => {
+        if (near && !reduceMotion && !videoSrc) setVideoSrc(webmSrc && !supportsHevcAlpha() ? webmSrc : src)
+    }, [near, reduceMotion, videoSrc, src, webmSrc])
+
+    // play while near the screen, pause when it has scrolled far away
+    useEffect(() => {
+        const v = videoRef.current
         if (!v) return
+        if (!near) {
+            v.pause()
+            return
+        }
 
         // iOS only autoplays muted video, and React sets `muted` as a
         // property late, so set it explicitly before play()
@@ -48,12 +81,13 @@ export default function AlphaLoopVideo({ src, webmSrc, className }) {
         })
 
         return () => gestures.forEach((g) => window.removeEventListener(g, onGesture))
-    }, [videoSrc])
+    }, [videoSrc, near])
 
     return (
-        <span className={className ? `${styles.root} ${className}` : styles.root}>
-            {videoSrc && (
-                <video ref={ref} src={videoSrc} className={styles.video} muted playsInline autoPlay loop preload="auto" />
+        // decoration: hidden from screen readers
+        <span ref={rootRef} aria-hidden="true" className={className ? `${styles.root} ${className}` : styles.root}>
+            {videoSrc && !reduceMotion && (
+                <video ref={videoRef} src={videoSrc} className={styles.video} muted playsInline loop preload="auto" />
             )}
         </span>
     )
