@@ -112,11 +112,12 @@ section.projects.projectsMaroon .head :global(.section-title__title) {
 
 /* ---- Stats under the heading: big gold number, white label, a thin gold line between ---- */
 section.projects.projectsMaroon .stats {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);   /* two equal columns, so the divider sits exactly in the page's centre */
   align-items: stretch;
-  justify-content: center;
-  margin-bottom: var(--section-title-gap);
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto var(--section-title-gap);
 }
 
 section.projects.projectsMaroon .stat {

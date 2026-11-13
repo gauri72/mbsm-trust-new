@@ -5,7 +5,7 @@ import styles from "./MissionVision.module.css"
 
 // Trust contact details
 const SITE_ADDRESS_PLACE = "श्री शंकरदत्त महाराज मठ,"
-const SITE_ADDRESS_LINE1 = "एफ ७०, एमआयडीसी,"
+const SITE_ADDRESS_LINE1 = "एफ 70, एमआयडीसी,"
 const SITE_ADDRESS_CITY = "अहिल्यानगर"
 const SITE_MAP_URL = "https://share.google/eUPrIPLwsBu6afTGg"
 
@@ -38,7 +38,7 @@ export default function MissionVision() {
                                     </div>
                                     <div className={styles.provideContent}>
                                         <div className={`${styles.provideCount} ${styles.countBox}`}>
-                                            <h3 className={styles.countText}>२५</h3>
+                                            <h3 className={styles.countText}>25</h3>
                                             <span>+</span>
                                         </div>
                                         <p className={styles.provideCountText} lang="mr">वर्षांची अखंड सेवा</p>

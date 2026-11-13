@@ -35,7 +35,7 @@ const CAUSES = [
 /* Verified totals from https://mbsmtrust.org/our-causes (the card counts add up to 30). Add more only with real figures. */
 const STATS = [
     { number: "30", label: "एकूण उपक्रम" },
-    { number: "4", label: "सेवाक्षेत्रे" },
+    { number: "04", label: "सेवाक्षेत्रे" },
 ]
 
 export default function Projects() {

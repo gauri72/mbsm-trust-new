@@ -3,7 +3,7 @@ import Link from "next/link"
 import styles from "./Welcome.module.css"
 
 // Older Solapur contact details, used only by this (currently hidden) section
-const WELCOME_PHONE_DISPLAY = "+९१ ९७६७५ ८८७०१"
+const WELCOME_PHONE_DISPLAY = "+91 97675 88701"
 const WELCOME_PHONE_TEL = "tel:+919767588701"
 const WELCOME_MAP_URL = "https://maps.app.goo.gl/EqJwJAt4kihAkHt3A"
 
@@ -36,10 +36,10 @@ export default function Welcome() {
                                 </div>
                                 <div className={styles.text}>
                                     <p>
-                                        सन १७८३ मध्ये शुभराय महाराजांनी किल्लेदार आबासाहेब कुंदले यांनी दान
+                                        सन 1783 मध्ये शुभराय महाराजांनी किल्लेदार आबासाहेब कुंदले यांनी दान
                                         दिलेल्या जागेवर, सिद्धेश्वर मंदिराजवळ तळ्याकाठी एका चिंचेच्या झाडाखाली या
                                         मठाची स्थापना केली. शिष्य मल्लिकार्जुन शेटे यांनी पंढरपूरच्या पुंडलिक
-                                        डोहातून आणलेली वालुकामय विठ्ठलमूर्ती सन १७८५ मध्ये गाभाऱ्यात प्रतिष्ठापित
+                                        डोहातून आणलेली वालुकामय विठ्ठलमूर्ती सन 1785 मध्ये गाभाऱ्यात प्रतिष्ठापित
                                         झाली, आणि तेव्हापासून हा मठ सोलापूर शहराच्या हृदयस्थानी, दत्त चौकात
                                         भक्तिभावाचे केंद्र बनून उभा आहे.
                                     </p>
@@ -58,7 +58,7 @@ export default function Welcome() {
                                             <i className="fas fa-calendar-alt"></i>
                                         </div>
                                         <div className={styles.title}>
-                                            <h4>१७८३</h4>
+                                            <h4>1783</h4>
                                             <h3>स्थापना</h3>
                                         </div>
                                     </li>
@@ -118,7 +118,7 @@ export default function Welcome() {
                                     </li>
                                     <li>
                                         <span className="visit-card__label">स्थापना वर्ष</span>
-                                        <span className="visit-card__value">१७८३</span>
+                                        <span className="visit-card__value">1783</span>
                                     </li>
                                 </ul>
 
