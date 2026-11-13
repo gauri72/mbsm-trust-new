@@ -28,30 +28,13 @@
 
 /* ---- 1. Design tokens ------------------------------------------------------- */
 .cta {
-  /* colours */
-  --c-black: #000000;
-  --c-white: #FFFFFF;
-  --c-maroon: #620208;
-  --c-gold: #D9982A;
+  /* colours, the spacing scale and --text-sm / --text-md / --text-lg come from :root in globals.css */
 
   /* lines + shadows */
   --line-width: 2px;
   --shadow-lift: 0 4px 0 var(--c-black);     /* = header: a button lifted on hover (a solid ledge) */
   --lift: -4px;                              /* = header: how far a hovered button rises */
   --nudge: 6px;                              /* = header: how far its arrow slides */
-
-  /* type sizes: the header's small / medium / large */
-  --text-sm: 19px;
-  --text-md: 22px;
-  --text-lg: 36px;
-
-  /* spacing scale: identical to the header's */
-  --space-0: 4px;
-  --space-1: 6px;
-  --space-2: 10px;
-  --space-3: 14px;
-  --space-4: 18px;
-  --space-5: 26px;
 
   /* layout */
   --control-lg: 50px;                        /* = header CTA height */
@@ -70,40 +53,6 @@
 
 
 /* ---- 2. Token breakpoints (values only — layout changes live in section 8) -- */
-/* the header's large-size steps (its narrow-desktop steps only exist so the header
-   bar fits on one line, so they are not repeated here) */
-@media (min-width: 1600px) {
-  .cta {
-    --text-lg: 38px;
-    --space-0: 6px;
-    --space-1: 8px;
-    --space-2: 12px;
-    --space-3: 16px;
-    --space-4: 20px;
-    --space-5: 28px;
-  }
-}
-
-@media (max-width: 1199px) {
-  .cta {
-    --text-lg: 30px;
-  }
-}
-
-@media (max-width: 767px) {
-  .cta {
-    --text-sm: 18px;
-    --text-md: 20px;
-    --text-lg: 23px;
-  }
-}
-
-@media (max-width: 359px) {
-  .cta {
-    --text-lg: 19px;
-  }
-}
-
 
 /* ---- 3. Section ---------------------------------------------------- */
 /* section padding: the header's spacing scale */

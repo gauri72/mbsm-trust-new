@@ -1441,7 +1441,6 @@ section.aboutOne.aboutOneOrnate .tabBox .tabsContentInner p {
 }
 
 
-
 /*==================================================================
     TEXT DESIGN — every text in this section follows the site's type
     rules: Annapurna SIL, one weight, three sizes (small 17px / 16px
@@ -1451,35 +1450,9 @@ section.aboutOne.aboutOneOrnate .tabBox .tabsContentInner p {
     Only text changes here: layout, boxes and images are untouched.
 ==================================================================*/
 section.aboutOne.aboutOneOrnate.aboutOneOrnate {
-  --c-black: #000000;
-  --c-white: #FFFFFF;
-  --c-gold: #D9982A;
-  --c-maroon: #620208;
-  --text-sm: 19px;
-  --text-md: 22px;
-  --text-lg: 36px;
   --step-6: 40px;                            /* the site's fixed layout step */
 }
 
-@media (min-width: 1600px) {
-  section.aboutOne.aboutOneOrnate.aboutOneOrnate { --text-lg: 38px; }
-}
-
-@media (max-width: 1199px) {
-  section.aboutOne.aboutOneOrnate.aboutOneOrnate { --text-lg: 30px; }
-}
-
-@media (max-width: 767px) {
-  section.aboutOne.aboutOneOrnate.aboutOneOrnate {
-    --text-sm: 18px;
-    --text-md: 20px;
-    --text-lg: 23px;
-  }
-}
-
-@media (max-width: 359px) {
-  section.aboutOne.aboutOneOrnate.aboutOneOrnate { --text-lg: 19px; }
-}
 
 /* tagline: medium, gold */
 section.aboutOne.aboutOneOrnate.aboutOneOrnate :global(.section-title__tagline) {

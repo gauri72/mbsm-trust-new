@@ -7,6 +7,17 @@
    ========================================================================== */
 
 export const SITE_NAME = "मंगल भक्त सेवा मंडळ"
+// The title font can stack क्त into a ligature that does not read as Marathi; a zero-width joiner (U+200D)
+// after क् asks for the half-क form. Used for the name shown on the page (header and footer), not for titles.
+export const SITE_NAME_DISPLAY = "मंगल भक्\u200Dत सेवा मंडळ"
+export const SITE_LOGO_SRC = "/assets/media/shared/logo.webp"
+
+// ---- Address: one copy (English digits), used by the header strip, the footer and the home page ----
+export const SITE_ADDRESS_PLACE = "श्री शंकरदत्त महाराज मठ,"
+export const SITE_ADDRESS_LINE1 = "एफ 70, एमआयडीसी,"
+export const SITE_ADDRESS_CITY = "अहिल्यानगर"
+export const SITE_ADDRESS_PINCODE = "414111"
+export const SITE_ADDRESS_SHORT = `${SITE_ADDRESS_PLACE} ${SITE_ADDRESS_LINE1} ${SITE_ADDRESS_CITY}`
 
 // ---- Contact details: one copy, used by the header strip, the footer, the home page and the contact page ----
 export const SITE_PHONE_TEL = "tel:+917588797788"
@@ -26,6 +37,11 @@ export const PAGES = {
     chitrasangraha: { href: "/chitrasangraha", label: "चित्रसंग्रह",  icon: "fas fa-images" },
     sampark:        { href: "/sampark",        label: "संपर्क",       icon: "fas fa-phone-alt" },
 }
+
+// Is this link the page being shown? "/" only matches the home page; any other link also matches its sub-pages.
+// (the header and the footer use the same rule)
+export const isCurrentPage = (pathname, href) =>
+    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`)
 
 // the call-to-action button: the header's pill and the closing section's gold button are the same
 export const CTA = { href: PAGES.parichaya.href, label: "आमचा परिचय" }

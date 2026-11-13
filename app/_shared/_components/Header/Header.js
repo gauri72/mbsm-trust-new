@@ -2,7 +2,11 @@
 import { useCallback, useEffect, useId, useRef, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { PAGES, WORK_GROUP, CTA, SITE_PHONE_TEL, SITE_PHONE_DISPLAY, SITE_EMAIL, SITE_EMAIL_MAILTO, SITE_MAP_URL, SITE_WHATSAPP_URL } from "../../siteContent"
+import {
+    PAGES, WORK_GROUP, CTA, isCurrentPage,
+    SITE_NAME_DISPLAY, SITE_LOGO_SRC, SITE_ADDRESS_SHORT, SITE_ADDRESS_PINCODE,
+    SITE_PHONE_TEL, SITE_PHONE_DISPLAY, SITE_EMAIL, SITE_EMAIL_MAILTO, SITE_MAP_URL, SITE_WHATSAPP_URL,
+} from "../../siteContent"
 import styles from "./Header.module.css"
 
 /* =============================================================================
@@ -17,21 +21,15 @@ import styles from "./Header.module.css"
    All colours, sizes and spacing live as tokens in Header.module.css.
    ========================================================================== */
 
-// ---- Trust details ----------------------------------------------------------
-// The title font can stack क्त into a ligature that does not read as Marathi; a zero-width
-// joiner (U+200D) after क् asks for the half-क form. Used for the visible name only.
-const SITE_NAME_DISPLAY = "मंगल भक्‍त सेवा मंडळ"
-const SITE_LOGO_SRC = "/assets/media/shared/logo.webp"
-
+// ---- Trust details (the values themselves are shared: see siteContent.js) -------
 const PHONE = { icon: "fas fa-phone-alt", href: SITE_PHONE_TEL, label: SITE_PHONE_DISPLAY }
 const EMAIL = { icon: "fas fa-envelope", href: SITE_EMAIL_MAILTO, label: SITE_EMAIL }
-const ADDRESS_TEXT = "श्री शंकरदत्त महाराज मठ, एफ 70, एमआयडीसी, अहिल्यानगर"
 const ADDRESS = {
     icon: "fas fa-map-marker-alt",
     href: SITE_MAP_URL,
     // the pincode is hidden on phones, so the strip's address fits one line there
-    label: <>{ADDRESS_TEXT}<span className={styles.pincode}> - 414111</span></>,
-    chars: ADDRESS_TEXT.length,   // lets the CSS shrink the one-line phone address to its own length
+    label: <>{SITE_ADDRESS_SHORT}<span className={styles.pincode}> - {SITE_ADDRESS_PINCODE}</span></>,
+    chars: SITE_ADDRESS_SHORT.length,   // lets the CSS shrink the one-line phone address to its own length
     external: true,
     lang: "mr",
 }
@@ -57,10 +55,6 @@ const NAV_ITEMS = [
     PAGES.sampark,
 ]
 const DRAWER_ITEMS = NAV_ITEMS.flatMap((item) => item.children ?? [item])
-
-// "/" only matches the home page; any other link also matches its sub-pages
-const isActive = (pathname, href) =>
-    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`)
 
 // join class names, skipping falsy ones: cx("a", isOpen && "b")
 const cx = (...names) => names.filter(Boolean).join(" ")
@@ -135,7 +129,7 @@ function NavGroup({ item, pathname }) {
     const buttonRef = useRef(null)
     const openedByHover = useRef(false)
     const panelId = useId()
-    const groupActive = item.children.some((child) => isActive(pathname, child.href))
+    const groupActive = item.children.some((child) => isCurrentPage(pathname, child.href))
 
     useEffect(() => setOpen(false), [pathname])
 
@@ -199,7 +193,7 @@ function NavGroup({ item, pathname }) {
             </button>
             <ul id={panelId} className={cx(styles.dropdown, open && styles.isOpen)}>
                 {item.children.map((child) => {
-                    const active = isActive(pathname, child.href)
+                    const active = isCurrentPage(pathname, child.href)
                     return (
                         <li key={child.href}>
                             <Link href={child.href} className={cx(styles.dropdownLink, active && styles.isActive)} aria-current={active ? "page" : undefined}>
@@ -221,7 +215,7 @@ function NavMenu({ pathname }) {
             <ul className={styles.navList}>
                 {NAV_ITEMS.map((item) => {
                     if (item.children) return <NavGroup key={item.label} item={item} pathname={pathname} />
-                    const active = isActive(pathname, item.href)
+                    const active = isCurrentPage(pathname, item.href)
                     return (
                         <li key={item.href}>
                             <Link href={item.href} className={cx(styles.navLink, active && styles.isActive)} aria-current={active ? "page" : undefined}>
@@ -308,7 +302,7 @@ function Drawer({ open, onClose, pathname, returnFocusRef }) {
                 <nav className={styles.drawerNav} aria-label="मुख्य मेनू">
                     <ul className={styles.drawerList}>
                         {DRAWER_ITEMS.map((item) => {
-                            const active = isActive(pathname, item.href)
+                            const active = isCurrentPage(pathname, item.href)
                             return (
                                 <li key={item.href}>
                                     <Link href={item.href} className={cx(styles.drawerLink, active && styles.isActive)} aria-current={active ? "page" : undefined} onClick={onNavigate}>

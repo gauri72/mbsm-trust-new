@@ -1,13 +1,8 @@
 'use client'
 import Link from "next/link"
 import { useState } from "react"
-import { SITE_MAP_URL } from "../../../_shared/siteContent"
+import { SITE_MAP_URL, SITE_ADDRESS_PLACE, SITE_ADDRESS_LINE1, SITE_ADDRESS_CITY } from "../../../_shared/siteContent"
 import styles from "./MissionVision.module.css"
-
-// Trust contact details
-const SITE_ADDRESS_PLACE = "श्री शंकरदत्त महाराज मठ,"
-const SITE_ADDRESS_LINE1 = "एफ 70, एमआयडीसी,"
-const SITE_ADDRESS_CITY = "अहिल्यानगर"
 
 // Mission / vision / objective tabs — shared by the Home and About pages.
 export default function MissionVision() {

@@ -9,32 +9,7 @@
    - Buttons : a flat pill that lifts 4px on a solid black ledge, the arrow sliding 6px
    ========================================================================== */
 
-/* ---- Type tokens: the same small / medium / large steps as the other sections ---- */
-section.projects.projectsMaroon {
-  --text-sm: 19px;
-  --text-md: 22px;
-  --text-lg: 36px;
-}
-
-@media (min-width: 1600px) {
-  section.projects.projectsMaroon { --text-lg: 38px; }
-}
-
-@media (max-width: 1199px) {
-  section.projects.projectsMaroon { --text-lg: 30px; }
-}
-
-@media (max-width: 767px) {
-  section.projects.projectsMaroon {
-    --text-sm: 18px;
-    --text-md: 20px;
-    --text-lg: 23px;
-  }
-}
-
-@media (max-width: 359px) {
-  section.projects.projectsMaroon { --text-lg: 19px; }
-}
+/* (type sizes and spacing steps: the site's tokens in globals.css) */
 
 /* ---- Section ---- */
 section.projects.projectsMaroon {

@@ -1921,3 +1921,14 @@ ul {
 @media (max-width: 359px) {
   :root { --head-label: 28px; --head-title: 20px; }
 }
+
+/* ---- Brand name size: ONE ladder for the header and the footer (the logo is always 2.8x it) ---- */
+:root { --brand-size: 36px; }
+@media (min-width: 1600px) { :root { --brand-size: 38px; } }
+@media (max-width: 1535px) { :root { --brand-size: 32px; } }
+@media (max-width: 1365px) { :root { --brand-size: 29px; } }
+@media (max-width: 1319px) { :root { --brand-size: 22px; } }
+@media (max-width: 1239px) { :root { --brand-size: 20px; } }
+@media (max-width: 1199px) { :root { --brand-size: 30px; } }
+@media (max-width: 767px)  { :root { --brand-size: 23px; } }
+@media (max-width: 359px)  { :root { --brand-size: 19px; } }

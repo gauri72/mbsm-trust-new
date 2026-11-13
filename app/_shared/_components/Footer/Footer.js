@@ -1,7 +1,12 @@
 'use client'
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { PAGES, SITE_PHONE_TEL, SITE_PHONE_DISPLAY, SITE_EMAIL, SITE_EMAIL_MAILTO, SITE_MAP_URL } from "../../siteContent"
+import {
+    PAGES, isCurrentPage,
+    SITE_NAME_DISPLAY, SITE_LOGO_SRC,
+    SITE_ADDRESS_PLACE, SITE_ADDRESS_LINE1, SITE_ADDRESS_CITY, SITE_ADDRESS_PINCODE,
+    SITE_PHONE_TEL, SITE_PHONE_DISPLAY, SITE_EMAIL, SITE_EMAIL_MAILTO, SITE_MAP_URL,
+} from "../../siteContent"
 import styles from "./Footer.module.css"
 
 /* =============================================================================
@@ -21,12 +26,8 @@ import styles from "./Footer.module.css"
    ========================================================================== */
 
 // ---- Trust details ----------------------------------------------------------
-// The title font can stack क्त into a ligature that does not read as Marathi; a zero-width
-// joiner (U+200D) after क् asks for the half-क form (used for the brand; harmless in the regular font).
-const SITE_NAME_DISPLAY = "मंगल भक्‍त सेवा मंडळ"
-// the same fix for the column title in Annapurna SIL ("उपयुक्त" also has क्त)
+// the same half-क fix (see SITE_NAME_DISPLAY in siteContent.js) for the column title in Annapurna SIL ("उपयुक्त" also has क्त)
 const LINKS_TITLE = "उपयुक्\u200Dत दुवे"
-const SITE_LOGO_SRC = "/assets/media/shared/logo.webp"
 const ABOUT_TEXT = "मंगल भक्त सेवा मंडळ ही सामाजिक संस्था आहे. विविध उपक्रम व कार्यक्रमांतून मानवसेवा, धार्मिक समता, ऐक्य व आध्यात्मिक मार्गदर्शनाचे कार्य आम्ही करतो."
 const CREDIT = { name: "गौरी कोळेकर", href: "mailto:kolekargauri8@gmail.com" }
 
@@ -47,13 +48,13 @@ const QUICK_LINKS = [
     { href: PAGES.sampark.href, label: "संपर्क साधा" },
 ]
 
-// संपर्क माहिती (same details as the header's contact strip; keep the two in step).
+// संपर्क माहिती (the same shared details as the header's contact strip: see siteContent.js).
 // external: opens in a new tab (the map); phone + email open the visitor's own app.
 const CONTACTS = [
     { icon: "fas fa-phone-alt", href: SITE_PHONE_TEL, label: SITE_PHONE_DISPLAY },
     { icon: "fas fa-envelope", href: SITE_EMAIL_MAILTO, label: SITE_EMAIL },
     // the address on three lines: the math · the plot · the city + pincode
-    { icon: "fas fa-map-marker-alt", href: SITE_MAP_URL, label: <>श्री शंकरदत्त महाराज मठ,<br />एफ 70, एमआयडीसी,<br />अहिल्यानगर - 414111</>, external: true },
+    { icon: "fas fa-map-marker-alt", href: SITE_MAP_URL, label: <>{SITE_ADDRESS_PLACE}<br />{SITE_ADDRESS_LINE1}<br />{SITE_ADDRESS_CITY} - {SITE_ADDRESS_PINCODE}</>, external: true },
 ]
 
 // join class names, skipping falsy ones
@@ -103,7 +104,7 @@ export default function Footer() {
                                     <Link
                                         href={l.href}
                                         className={cx(styles.item, styles.link)}
-                                        aria-current={pathname === l.href ? "page" : undefined}
+                                        aria-current={isCurrentPage(pathname, l.href) ? "page" : undefined}
                                         onClick={l.href === "/" ? onHomeClick : undefined}
                                     >
                                         <i className={cx(styles.icon, "fas fa-arrow-right")} aria-hidden="true"></i>

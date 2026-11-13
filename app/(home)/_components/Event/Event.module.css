@@ -10,32 +10,7 @@
    Colours, sizes and spacing are the shared tokens from globals.css.
    ========================================================================== */
 
-/* ---- Type tokens: the same small / medium / large steps as Mission/Vision and the CTA ---- */
-section.eventOne.eventOneWelcomeBg {
-  --text-sm: 19px;
-  --text-md: 22px;
-  --text-lg: 36px;
-}
-
-@media (min-width: 1600px) {
-  section.eventOne.eventOneWelcomeBg { --text-lg: 38px; }
-}
-
-@media (max-width: 1199px) {
-  section.eventOne.eventOneWelcomeBg { --text-lg: 30px; }
-}
-
-@media (max-width: 767px) {
-  section.eventOne.eventOneWelcomeBg {
-    --text-sm: 18px;
-    --text-md: 20px;
-    --text-lg: 23px;
-  }
-}
-
-@media (max-width: 359px) {
-  section.eventOne.eventOneWelcomeBg { --text-lg: 19px; }
-}
+/* (type sizes and spacing steps: the site's tokens in globals.css) */
 
 /* ---- Section ---- */
 section.eventOne.eventOneWelcomeBg {

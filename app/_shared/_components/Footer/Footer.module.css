@@ -32,11 +32,7 @@
 
 /* ---- 1. Design tokens ------------------------------------------------------- */
 .footer {
-  /* colours */
-  --c-black: #000000;
-  --c-white: #FFFFFF;
-  --c-maroon: #620208;
-  --c-gold: #D9982A;
+  /* colours, the spacing scale and --text-sm / --text-md come from :root in globals.css */
 
   /* lines + shadows */
   --line-width: 2px;
@@ -45,25 +41,14 @@
   --shadow-medal: 0 0 0 3px var(--c-maroon);
   --shadow-medal-hover: 0 0 0 3px var(--c-maroon), 0 0 0 6px var(--c-black);
 
-  /* type sizes */
-  --text-sm: 19px;
-  --text-md: 22px;                       /* medium: the header CTA's size */
-  --text-lg: 36px;
+  /* the brand name: the same ladder as the header's (--brand-size in globals.css) */
+  --text-lg: var(--brand-size);
   --logo: calc(var(--text-lg) * 2.8);    /* the logo always scales with the brand name */
-
-  /* spacing scale: identical to the header's */
-  --space-0: 4px;
-  --space-1: 6px;
-  --space-2: 10px;
-  --space-3: 14px;
-  --space-4: 18px;
-  --space-5: 26px;
 
   /* layout: the header's spacing roles */
   --strip-pad: var(--space-3);               /* the bottom bar's space above and below (roomier than the header strip's) */
   --bar-gap: var(--space-5);                 /* = header bar: minimum gap between columns / rows */
   --strip-gap: var(--space-5);               /* = header strip: gap between the bottom bar's lines */
-  --control-sm: 42px;                        /* = header strip height (the bottom bar) */
   --strip-height: 42px;                 /* the top / bottom strip (steps below) */
   /* one spacing rule (sizes seen): the space AROUND the footer's content (above and
      below) = the space BETWEEN its sections = 2 x the space INSIDE a section (rows,
@@ -90,42 +75,17 @@
 
 
 /* ---- 2. Token breakpoints (values only — layout changes live in section 8) -- */
-/* the same steps as the header: wide screens get +2px brand and +2px on every spacing step */
+/* the header's steps (the brand size and the spacing steps themselves come from globals.css) */
 @media (min-width: 1600px) {
   .footer {
     --edge: 52px;
-    --text-lg: 38px;
-    --space-0: 6px;
-    --space-1: 8px;
-    --space-2: 12px;
-    --space-3: 16px;
-    --space-4: 20px;
-    --space-5: 28px;
   }
 }
 
-@media (max-width: 1535px) {
-  .footer {
-    --text-lg: 32px;
-  }
-}
-
-/* small desktops: tighter gaps, as in the header */
-@media (max-width: 1439px) {
+/* small desktops: tighter gaps, at the header's breakpoint */
+@media (max-width: 1479px) {
   .footer {
     --bar-gap: var(--space-3);
-  }
-}
-
-@media (max-width: 1365px) {
-  .footer {
-    --text-lg: 29px;
-  }
-}
-
-@media (max-width: 1279px) {
-  .footer {
-    --text-lg: 22px;
   }
 }
 
@@ -133,7 +93,6 @@
 @media (max-width: 1199px) {
   .footer {
     --edge: 40px;
-    --text-lg: 30px;
     --bar-gap: calc(var(--space-5) + var(--space-2));   /* 36px: the least space between the three columns */
     --strip-gap: var(--space-3);
   }
@@ -144,15 +103,6 @@
   .footer {
     --edge: 32px;
     --inner: var(--space-2);           /* 10px + text space ≈ 16px */
-    --text-sm: 18px;
-    --text-md: 20px;
-    --text-lg: 23px;
-  }
-}
-
-@media (max-width: 359px) {
-  .footer {
-    --text-lg: 19px;
   }
 }
 
@@ -216,7 +166,7 @@
    letters — measured to match the header strip's icons pixel for pixel */
 .icon {
   position: relative;
-  top: var(--icon-nudge, 0.12em);
+  top: 0.12em;
   display: inline-flex;
   flex: none;
   align-items: center;

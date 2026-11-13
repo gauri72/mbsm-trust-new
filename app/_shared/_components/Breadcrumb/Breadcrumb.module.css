@@ -19,10 +19,6 @@
 
 /* ---- 1. Design tokens ------------------------------------------------------------- */
 .root {
-  --c-maroon: #620208;
-  --c-gold: #D9982A;
-  --c-white: #FFFFFF;
-
   /* sizes, all from the artwork's own width (cqw), so each piece keeps its proportion at every
      screen size: the names fit the plates (16.8% of the width ÷ 9.8em, the longer name), the
      page name fills its scroll comfortably, the icon fills its medallion (7.2cqw across) */

@@ -11,27 +11,16 @@
 section.soon.soonMaroon {
   --text-sm: 17px;
   --text-md: 19px;
-  --text-lg: 36px;
 }
 
-@media (min-width: 1600px) {
-  section.soon.soonMaroon { --text-lg: 38px; }
-}
 
-@media (max-width: 1199px) {
-  section.soon.soonMaroon { --text-lg: 30px; }
-}
 
 @media (max-width: 767px) {
   section.soon.soonMaroon {
     --text-sm: 16px;
-    --text-lg: 23px;
   }
 }
 
-@media (max-width: 359px) {
-  section.soon.soonMaroon { --text-lg: 19px; }
-}
 
 section.soon.soonMaroon {
   display: block;

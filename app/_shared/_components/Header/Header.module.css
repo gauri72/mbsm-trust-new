@@ -33,11 +33,7 @@
 .topbar,
 .bar,
 .drawerRoot {
-  /* colours */
-  --c-black: #000000;
-  --c-white: #FFFFFF;
-  --c-maroon: #620208;
-  --c-gold: #D9982A;
+  /* colours, the spacing scale and --text-sm / --text-md come from :root in globals.css */
 
   /* lines + shadows */
   --line-width: 2px;
@@ -52,20 +48,10 @@
   --lift: -4px;                          /* how far a hovered button rises */
   --nudge: 6px;                          /* how far a hovered button's arrow slides */
 
-  /* type sizes */
-  --text-sm: 19px;
+  /* sizes */
   --strip-gap: var(--space-5);           /* contact strip: space between items (and around its divider) */
-  --text-md: 22px;
-  --text-lg: 36px;
+  --text-lg: var(--brand-size);        /* the brand name: the shared ladder in globals.css */
   --logo: calc(var(--text-lg) * 2.8);    /* the logo always scales with the brand name */
-
-  /* spacing scale */
-  --space-0: 4px;
-  --space-1: 6px;
-  --space-2: 10px;
-  --space-3: 14px;
-  --space-4: 18px;
-  --space-5: 26px;
 
   /* layout */
   --bar-pad: var(--space-4);             /* above and below the logo in the bar */
@@ -93,28 +79,21 @@
 
 
 /* ---- 2. Token breakpoints (values only — layout changes live in section 8) -- */
-/* wide screens: one step up — brand +2px (logo follows) and every spacing step +2px */
+/* wide screens: the bar's three parts stay inside the 1600px column (the brand size and the spacing steps
+   also grow here, from globals.css) */
 @media (min-width: 1600px) {
   .topbar,
   .bar,
   .drawerRoot {
-    --text-lg: 38px;
-    --space-0: 6px;
-    --space-1: 8px;
-    --space-2: 12px;
-    --space-3: 16px;
-    --space-4: 20px;
-    --space-5: 28px;
     --bar-gap: var(--space-4);           /* the bar's three parts stay inside the 1600px column */
   }
 }
 
-/* narrower desktops: the brand steps down so the full bar keeps fitting */
+/* narrower desktops: a smaller side margin (the brand name also steps down, from globals.css) */
 @media (max-width: 1535px) {
   .topbar,
   .bar,
   .drawerRoot {
-    --text-lg: 32px;
     --gutter: 24px;
   }
 }
@@ -127,28 +106,11 @@
   }
 }
 
-@media (max-width: 1365px) {
-  .topbar,
-  .bar,
-  .drawerRoot {
-    --text-lg: 29px;
-  }
-}
-
 @media (max-width: 1319px) {
   .topbar,
   .bar,
   .drawerRoot {
-    --text-lg: 22px;
     --bar-gap: var(--space-2);
-  }
-}
-
-@media (max-width: 1239px) {
-  .topbar,
-  .bar,
-  .drawerRoot {
-    --text-lg: 20px;
   }
 }
 
@@ -158,7 +120,6 @@
   .topbar,
   .bar,
   .drawerRoot {
-    --text-lg: 30px;
     --bar-gap: var(--space-5);
   }
 
@@ -172,9 +133,6 @@
   .topbar,
   .bar,
   .drawerRoot {
-    --text-sm: 18px;
-    --text-md: 20px;
-    --text-lg: 23px;
     --gutter: 16px;
   }
 
@@ -188,14 +146,6 @@
 @media (max-width: 379px) {
   .topbar {
     --strip-gap: var(--space-1);
-  }
-}
-
-@media (max-width: 359px) {
-  .topbar,
-  .bar,
-  .drawerRoot {
-    --text-lg: 19px;
   }
 }
 

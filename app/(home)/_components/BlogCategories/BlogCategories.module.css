@@ -9,25 +9,9 @@
    - Buttons : a flat pill that lifts 4px on a solid black ledge, the arrow sliding 6px
    ========================================================================== */
 
-/* ---- Type tokens: the same small / medium / large steps as the other sections ---- */
-section.blogs.blogsGold {
-  --text-sm: 19px;
-  --text-md: 22px;
-  --text-lg: 36px;
-}
-
-@media (min-width: 1600px) {
-  section.blogs.blogsGold { --text-lg: 38px; }
-}
-
-@media (max-width: 1199px) {
-  section.blogs.blogsGold { --text-lg: 30px; }
-}
-
+/* ---- Type tokens: the site's small / medium / large steps (globals.css) — only the icon size differs on phones ---- */
 @media (max-width: 767px) {
   section.blogs.blogsGold {
-    --text-sm: 18px;
-    --text-md: 20px;
     --text-lg: 26px;
   }
 }
@@ -35,6 +19,7 @@ section.blogs.blogsGold {
 @media (max-width: 359px) {
   section.blogs.blogsGold { --text-lg: 19px; }
 }
+
 
 /* ---- Section: the Mission/Vision field — maroon with its floral texture ---- */
 section.blogs.blogsGold {

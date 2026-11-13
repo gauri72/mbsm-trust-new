@@ -20,10 +20,6 @@
 
 /* ---- 1. Design tokens ------------------------------------------------------- */
 .root {
-  /* colours */
-  --c-maroon: #620208;
-  --c-gold: #D9982A;
-
   /* lines */
   --line-width: 2px;
   --line-gold: var(--line-width) solid var(--c-gold);
