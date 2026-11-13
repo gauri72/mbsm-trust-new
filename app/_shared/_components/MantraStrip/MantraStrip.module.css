@@ -69,7 +69,7 @@
   overflow: hidden;
   background-color: var(--c-maroon);
   /* the section field: maroon fading from a lighter top to a darker foot */
-  background-image: linear-gradient(180deg, #660309 0%, var(--c-maroon) 50%, #4D0601 100%);
+  background-image: linear-gradient(180deg, #620208 0%, var(--c-maroon) 50%, #620208 100%);
 }
 
 /* the floral texture of the maroon sections, faint */

@@ -171,27 +171,27 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root {
-  --bs-blue:#0d6efd;
-  --bs-indigo:#6610f2;
-  --bs-purple:#6f42c1;
-  --bs-pink:#d63384;
-  --bs-red:#dc3545;
-  --bs-orange:#fd7e14;
-  --bs-yellow:#ffc107;
-  --bs-green:#198754;
-  --bs-teal:#20c997;
-  --bs-cyan:#0dcaf0;
-  --bs-white:#fff;
-  --bs-gray:#6c757d;
-  --bs-gray-dark:#343a40;
-  --bs-primary:#0d6efd;
-  --bs-secondary:#6c757d;
-  --bs-success:#198754;
-  --bs-info:#0dcaf0;
-  --bs-warning:#ffc107;
-  --bs-danger:#dc3545;
-  --bs-light:#f8f9fa;
-  --bs-dark:#212529;
+  --bs-blue:#620208;
+  --bs-indigo:#620208;
+  --bs-purple:#620208;
+  --bs-pink:#620208;
+  --bs-red:#620208;
+  --bs-orange:#620208;
+  --bs-yellow:#D9982A;
+  --bs-green:#620208;
+  --bs-teal:#000000;
+  --bs-cyan:#D9982A;
+  --bs-white:#FFFFFF;
+  --bs-gray:#000000;
+  --bs-gray-dark:#000000;
+  --bs-primary:#620208;
+  --bs-secondary:#000000;
+  --bs-success:#620208;
+  --bs-info:#D9982A;
+  --bs-warning:#D9982A;
+  --bs-danger:#620208;
+  --bs-light:#FFFFFF;
+  --bs-dark:#000000;
   --bs-gradient:linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0))
 }
 *,::after,::before {
@@ -207,8 +207,8 @@ body {
   font-size:1rem;
   font-weight:400;
   line-height:1.5;
-  color:#212529;
-  background-color:#fff;
+  color:#000000;
+  background-color:#FFFFFF;
   -webkit-text-size-adjust:100%;
   -webkit-tap-highlight-color:transparent
 }
@@ -265,11 +265,11 @@ b {
   font-weight:bolder
 }
 a {
-  color:#0d6efd;
+  color:#620208;
   text-decoration:underline
 }
 a:hover {
-  color:#0a58ca
+  color:#620208
 }
 a:not([href]):not([class]),a:not([href]):not([class]):hover {
   color:inherit;
@@ -281,7 +281,7 @@ img,svg {
 caption {
   padding-top:.5rem;
   padding-bottom:.5rem;
-  color:#6c757d;
+  color:#000000;
   text-align:left
 }
 label {
@@ -481,7 +481,7 @@ iframe {
   display:inline-block;
   font-weight:400;
   line-height:1.5;
-  color:#212529;
+  color:#000000;
   text-align:center;
   text-decoration:none;
   vertical-align:middle;
@@ -502,11 +502,11 @@ iframe {
   }
 }
 .btn:hover {
-  color:#212529
+  color:#000000
 }
 .btn:focus {
   outline:0;
-  box-shadow:0 0 0 .25rem rgba(13,110,253,.25)
+  box-shadow:0 0 0 .25rem rgba(98, 2, 8,.25)
 }
 .btn.disabled,.btn:disabled {
   pointer-events:none;
@@ -539,7 +539,7 @@ iframe {
   flex-direction:column;
   min-width:0;
   word-wrap:break-word;
-  background-color:#fff;
+  background-color:#FFFFFF;
   background-clip:border-box;
   border:1px solid rgba(0,0,0,.125);
   border-radius:.25rem
@@ -571,7 +571,7 @@ iframe {
   box-shadow:0 .5rem 1rem rgba(0,0,0,.15)!important
 }
 .border {
-  border:1px solid #dee2e6!important
+  border:1px solid #FFFFFF!important
 }
 .align-items-center {
   align-items:center!important
@@ -807,9 +807,9 @@ iframe {
     right: 0;
     z-index: 3;
     height: 30px;
-    background-color: #3D0A0C;
+    background-color: #620208;
     background-image:
-        radial-gradient(circle at 50% 50%, rgba(242, 169, 10, 0.14) 0%, transparent 70%),
+        radial-gradient(circle at 50% 50%, rgba(217, 152, 42, 0.14) 0%, transparent 70%),
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%23F2A90A'%3E%3Ctext x='25' y='22' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%23F2A90A' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23F2A90A' opacity='0.85'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
     background-repeat: repeat-x, repeat-x;
     background-position: center, center;
@@ -827,9 +827,9 @@ iframe {
     bottom: 30px;
     z-index: 2;
     width: 30px;
-    background-color: #3D0A0C;
+    background-color: #620208;
     background-image:
-        radial-gradient(circle at 50% 50%, rgba(242, 169, 10, 0.14) 0%, transparent 70%),
+        radial-gradient(circle at 50% 50%, rgba(217, 152, 42, 0.14) 0%, transparent 70%),
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%23F2A90A'%3E%3Ctext x='15' y='32' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%23F2A90A' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23F2A90A' opacity='0.85'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
     background-repeat: repeat-y, repeat-y;
     background-position: top center, top center;
@@ -845,7 +845,7 @@ iframe {
     z-index: 4;
     width: 30px;
     height: 30px;
-    background-color: #3D0A0C;
+    background-color: #620208;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     pointer-events: none;
 }
@@ -1244,9 +1244,9 @@ ul {
   right: 0;
   z-index: 3;
   height: 30px;
-  background-color: #3D0A0C;
+  background-color: #620208;
   background-image:
-    radial-gradient(circle at 50% 50%, rgba(232, 199, 102, 0.12) 0%, transparent 70%),
+    radial-gradient(circle at 50% 50%, rgba(217, 152, 42, 0.12) 0%, transparent 70%),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%23E8C766'%3E%3Ctext x='25' y='22' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%23E8C766' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23E8C766' opacity='0.85'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: repeat-x, repeat-x;
   background-position: center, center;
@@ -1274,9 +1274,9 @@ ul {
   height: auto;
   z-index: 2;
   width: 30px;
-  background-color: #3D0A0C;
+  background-color: #620208;
   background-image:
-    radial-gradient(circle at 50% 50%, rgba(232, 199, 102, 0.12) 0%, transparent 70%),
+    radial-gradient(circle at 50% 50%, rgba(217, 152, 42, 0.12) 0%, transparent 70%),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%23E8C766'%3E%3Ctext x='15' y='32' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%23E8C766' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23E8C766' opacity='0.85'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: repeat-y, repeat-y;
   background-position: top center, top center;
@@ -1302,7 +1302,7 @@ ul {
   z-index: 4;
   width: 30px;
   height: 30px;
-  background-color: #3D0A0C;
+  background-color: #620208;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
   pointer-events: none;
 }
@@ -1347,12 +1347,12 @@ ul {
 /* Visit / Darshan timings card */
 .visit-card {
   position: relative;
-  background: linear-gradient(160deg, #6B1315 0%, #4a0e10 60%, #3D0A0C 100%);
+  background: linear-gradient(160deg, #620208 0%, #620208 60%, #620208 100%);
   box-shadow:
-    0 24px 55px rgba(20, 4, 5, 0.45),
-    0 8px 20px rgba(46, 8, 9, 0.35),
-    inset 0 1px 0 rgba(232, 199, 102, 0.15);
-  border-top: 3px solid #E8C766;
+    0 24px 55px rgba(0, 0, 0, 0.45),
+    0 8px 20px rgba(98, 2, 8, 0.35),
+    inset 0 1px 0 rgba(217, 152, 42, 0.15);
+  border-top: 3px solid #D9982A;
   border-radius: 8px;
   padding: 43px 45px 45px;
   transition: transform 300ms ease, box-shadow 300ms ease;
@@ -1361,9 +1361,9 @@ ul {
 .visit-card:hover {
   transform: translateY(-4px);
   box-shadow:
-    0 30px 65px rgba(20, 4, 5, 0.5),
-    0 10px 24px rgba(46, 8, 9, 0.4),
-    inset 0 1px 0 rgba(232, 199, 102, 0.2);
+    0 30px 65px rgba(0, 0, 0, 0.5),
+    0 10px 24px rgba(98, 2, 8, 0.4),
+    inset 0 1px 0 rgba(217, 152, 42, 0.2);
 }
 
 .visit-card__header {
@@ -1372,7 +1372,7 @@ ul {
   gap: 16px;
   padding-bottom: 26px;
   margin-bottom: 26px;
-  border-bottom: 1px solid rgba(232, 199, 102, 0.3);
+  border-bottom: 1px solid rgba(217, 152, 42, 0.3);
 }
 
 .visit-card__icon {
@@ -1383,15 +1383,15 @@ ul {
   height: 54px;
   flex-shrink: 0;
   border-radius: 50%;
-  background-color: rgba(232, 199, 102, 0.15);
-  color: #E8C766;
+  background-color: rgba(217, 152, 42, 0.15);
+  color: #D9982A;
   font-size: 24px;
 }
 
 .visit-card__header h3 {
   font-size: 26px;
   font-weight: 800;
-  color: #FFF6E4;
+  color: #FFFFFF;
   margin: 0;
 }
 
@@ -1407,7 +1407,7 @@ ul {
   justify-content: space-between;
   gap: 12px;
   padding: 9px 0;
-  border-bottom: 1px dashed rgba(232, 199, 102, 0.25);
+  border-bottom: 1px dashed rgba(217, 152, 42, 0.25);
 }
 
 .visit-card__timings li:last-child {
@@ -1415,13 +1415,13 @@ ul {
 }
 
 .visit-card__label {
-  color: #E8C7A6;
+  color: #D9982A;
   font-size: 17px;
   font-weight: 600;
 }
 
 .visit-card__value {
-  color: #E8C766;
+  color: #D9982A;
   font-size: 17px;
   font-weight: 800;
   white-space: nowrap;
@@ -1430,7 +1430,7 @@ ul {
 .visit-card__divider {
   height: 1px;
   margin: 18px 0;
-  background-color: rgba(232, 199, 102, 0.25);
+  background-color: rgba(217, 152, 42, 0.25);
 }
 
 .visit-card__address {
@@ -1441,13 +1441,13 @@ ul {
 
 .visit-card__address i {
   margin-top: 4px;
-  color: #E8C766;
+  color: #D9982A;
   font-size: 18px;
 }
 
 .visit-card__address p {
   margin: 0;
-  color: #FFF6E4;
+  color: #FFFFFF;
   font-size: 17px;
   line-height: 1.5em;
 }
@@ -1469,18 +1469,18 @@ ul {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #FFF6E4;
+  color: #FFFFFF;
   font-size: 17px;
   font-weight: 700;
   transition: color 300ms ease;
 }
 
 .visit-card__phone i {
-  color: #E8C766;
+  color: #D9982A;
 }
 
 .visit-card__phone:hover {
-  color: #E8C766;
+  color: #D9982A;
 }
 
 @media (max-width: 991px) {
@@ -1535,24 +1535,24 @@ ul {
     HOME — LEGACY SECTION — colour scheme keyed to the hero image.
     Palette (sampled from slider-v1-img-1.webp):
       --lg-gold      #D9982A   (hero's L/R gold borders)
-      --lg-gold-lite #E9B45A   (bright tint — hovers / active states)
-      --lg-gold-pale #F0CE93   (soft gold — small text on maroon)
+      --lg-gold-lite #D9982A   (bright tint — hovers / active states)
+      --lg-gold-pale #D9982A   (soft gold — small text on maroon)
       --lg-maroon    #620208   (field behind the idol)
-      --lg-maroon-dk #4D0601   (hero's outer edges)
-      --lg-maroon-2  #7A1418   (mid maroon — radial highlights on medallions)
-      --lg-cream     #FBF1DC   (warm ivory — headline + button text)
+      --lg-maroon-dk #620208   (hero's outer edges)
+      --lg-maroon-2  #620208   (mid maroon — radial highlights on medallions)
+      --lg-cream     #FFFFFF   (warm ivory — headline + button text)
     Section chrome (background, borders, corners, cover, arrows, diya glow)
     is re-keyed; the book's parchment PAGES keep their cream/ink for
     readability. Static + hover/focus + tablet + mobile all covered.
 ==================================================================*/
 :root {
   --lg-gold: #D9982A;
-  --lg-gold-lite: #E9B45A;
-  --lg-gold-pale: #F0CE93;
+  --lg-gold-lite: #D9982A;
+  --lg-gold-pale: #D9982A;
   --lg-maroon: #620208;
-  --lg-maroon-dk: #4D0601;
-  --lg-maroon-2: #7A1418;
-  --lg-cream: #FBF1DC;
+  --lg-maroon-dk: #620208;
+  --lg-maroon-2: #620208;
+  --lg-cream: #FFFFFF;
 }
 
 /* ---- Ornamental maroon borders / corners ---- */
@@ -1564,19 +1564,19 @@ ul {
 
 /* ---- Visit / Darshan card: maroon panel, gold trim ---- */
 .visit-card {
-  background: linear-gradient(160deg, #7A1418 0%, #560106 60%, var(--brand-maroon-dark) 100%);
+  background: linear-gradient(160deg, #620208 0%, #620208 60%, var(--brand-maroon-dark) 100%);
   border-top: 3px solid var(--brand-gold);
   box-shadow:
-    0 24px 55px rgba(20, 4, 5, 0.45),
-    0 8px 20px rgba(46, 8, 9, 0.35),
+    0 24px 55px rgba(0, 0, 0, 0.45),
+    0 8px 20px rgba(98, 2, 8, 0.35),
     inset 0 1px 0 rgba(217, 152, 42, 0.18);
 }
 
 .visit-card:hover {
   box-shadow:
-    0 30px 65px rgba(20, 4, 5, 0.5),
-    0 10px 24px rgba(46, 8, 9, 0.4),
-    inset 0 1px 0 rgba(233, 180, 90, 0.28);
+    0 30px 65px rgba(0, 0, 0, 0.5),
+    0 10px 24px rgba(98, 2, 8, 0.4),
+    inset 0 1px 0 rgba(217, 152, 42, 0.28);
 }
 
 .visit-card__header {
@@ -1598,7 +1598,7 @@ ul {
 }
 
 .visit-card__label {
-  color: #E9CBA0;
+  color: #D9982A;
 }
 
 .visit-card__value,
@@ -1633,47 +1633,47 @@ ul {
     HOME — SADHANA SECTION (.found-one) — colour scheme keyed to the
     hero image.  Palette (sampled from slider-v1-img-1.webp):
       --sd-gold      #D9982A   (hero's L/R gold borders)
-      --sd-gold-lite #E9B45A   (bright tint — hovers / active states)
-      --sd-gold-pale #F0CE93   (soft gold on maroon)
+      --sd-gold-lite #D9982A   (bright tint — hovers / active states)
+      --sd-gold-pale #D9982A   (soft gold on maroon)
       --sd-maroon    #620208   (field behind the idol)
-      --sd-maroon-dk #4D0601   (hero's outer edges)
-      --sd-ink       #2C0405   (near-black maroon — copy on gold)
-      --sd-cream     #FBF1DC   (warm ivory — text on maroon)
+      --sd-maroon-dk #620208   (hero's outer edges)
+      --sd-ink       #000000   (near-black maroon — copy on gold)
+      --sd-cream     #FFFFFF   (warm ivory — text on maroon)
     Section chrome (gold field, ornamental borders/corners, cards,
     buttons) re-keyed. Static + hover/focus + tablet + mobile covered
     (the existing @media blocks only touch sizes, so they inherit).
 ==================================================================*/
 :root {
   --sd-gold: #D9982A;
-  --sd-gold-lite: #E9B45A;
-  --sd-gold-pale: #F0CE93;
+  --sd-gold-lite: #D9982A;
+  --sd-gold-pale: #D9982A;
   --sd-maroon: #620208;
-  --sd-maroon-dk: #4D0601;
-  --sd-ink: #2C0405;
-  --sd-cream: #FBF1DC;
+  --sd-maroon-dk: #620208;
+  --sd-ink: #000000;
+  --sd-cream: #FFFFFF;
 }
 
 /*==================================================================
     HOME — UPCOMING EVENTS SECTION (.event-one) — colour scheme keyed
     to the hero image.  Palette (sampled from slider-v1-img-1.webp):
       --ev-gold      #D9982A   (hero's L/R gold borders)
-      --ev-gold-lite #E9B45A   (bright tint — hovers / active states)
-      --ev-gold-pale #F0CE93   (soft gold on maroon)
+      --ev-gold-lite #D9982A   (bright tint — hovers / active states)
+      --ev-gold-pale #D9982A   (soft gold on maroon)
       --ev-maroon    #620208   (field behind the idol)
-      --ev-maroon-dk #4D0601   (hero's outer edges)
-      --ev-ink       #2C0405   (near-black maroon — copy on cards)
-      --ev-cream     #FBF1DC   (warm ivory — text on maroon)
+      --ev-maroon-dk #620208   (hero's outer edges)
+      --ev-ink       #000000   (near-black maroon — copy on cards)
+      --ev-cream     #FFFFFF   (warm ivory — text on maroon)
     Static + hover/focus + tablet + mobile covered (existing @media
     blocks only touch spacing, so they inherit these colours).
 ==================================================================*/
 :root {
   --ev-gold: #D9982A;
-  --ev-gold-lite: #E9B45A;
-  --ev-gold-pale: #F0CE93;
+  --ev-gold-lite: #D9982A;
+  --ev-gold-pale: #D9982A;
   --ev-maroon: #620208;
-  --ev-maroon-dk: #4D0601;
-  --ev-ink: #2C0405;
-  --ev-cream: #FBF1DC;
+  --ev-maroon-dk: #620208;
+  --ev-ink: #000000;
+  --ev-cream: #FFFFFF;
 }
 
 /* ---- Ornamental border — gold strip with maroon Om/swastik motif ---- */
@@ -1685,7 +1685,7 @@ ul {
   height: 30px;
   background-color: var(--ev-gold);
   background-image:
-    radial-gradient(circle at 50% 50%, rgba(61, 10, 12, 0.12) 0%, transparent 70%),
+    radial-gradient(circle at 50% 50%, rgba(98, 2, 8, 0.12) 0%, transparent 70%),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%23620208'%3E%3Ctext x='25' y='22' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%23620208' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23620208' opacity='0.85'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: repeat-x, repeat-x;
   background-position: center, center;
@@ -1709,7 +1709,7 @@ ul {
   width: 30px;
   background-color: var(--ev-gold);
   background-image:
-    radial-gradient(circle at 50% 50%, rgba(61, 10, 12, 0.12) 0%, transparent 70%),
+    radial-gradient(circle at 50% 50%, rgba(98, 2, 8, 0.12) 0%, transparent 70%),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%23620208'%3E%3Ctext x='15' y='32' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%23620208' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23620208' opacity='0.85'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: repeat-y, repeat-y;
   background-position: top center, top center;
@@ -1893,15 +1893,15 @@ ul {
   0%, 100% {
     box-shadow:
       0 0 0 3px rgba(98, 2, 8, 0.28),
-      0 6px 16px rgba(58, 4, 5, 0.38),
-      0 0 6px rgba(233, 180, 90, 0.35),
+      0 6px 16px rgba(98, 2, 8, 0.38),
+      0 0 6px rgba(217, 152, 42, 0.35),
       inset 0 0 10px rgba(0, 0, 0, 0.45);
   }
   50% {
     box-shadow:
       0 0 0 3px rgba(98, 2, 8, 0.28),
-      0 6px 16px rgba(58, 4, 5, 0.38),
-      0 0 18px rgba(233, 180, 90, 0.7),
+      0 6px 16px rgba(98, 2, 8, 0.38),
+      0 0 18px rgba(217, 152, 42, 0.7),
       inset 0 0 10px rgba(0, 0, 0, 0.45);
   }
 }

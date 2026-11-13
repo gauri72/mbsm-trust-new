@@ -12,36 +12,42 @@ const CATEGORIES = [
     {
         icon: "fas fa-hand-holding-heart",
         title: "कर्म आणि कलियुग",
+        image: "/assets/media/home/blogs-1.webp",
         desc: "कर्माचे महत्त्व, कलियुगातील उद्धाराचा मार्ग आणि कर्माचे फळ.",
         count: 16,
     },
     {
         icon: "fas fa-spa",
         title: "शांती आणि आत्मचिंतन",
+        image: "/assets/media/home/blogs-2.webp",
         desc: "सुख, समाधान, अंतर्मुखता आणि जीवनाकडे पाहण्याची दृष्टी.",
         count: 17,
     },
     {
         icon: "fas fa-fire",
         title: "अहंकार आणि षड्रिपू",
+        image: "/assets/media/home/blogs-3.webp",
         desc: "अहंकार, षड्रिपू आणि स्वार्थी वृत्तीवर मात कशी करावी.",
         count: 11,
     },
     {
         icon: "fas fa-om",
         title: "शंकर महाराज आणि लीला",
+        image: "/assets/media/home/blogs-4.webp",
         desc: "सद्गुरु शंकर महाराजांचे संदेश, लीला आणि भक्तांवरची माया.",
         count: 11,
     },
     {
         icon: "fas fa-praying-hands",
         title: "गुरू आणि गुरुकृपा",
+        image: "/assets/media/home/blogs-5.webp",
         desc: "गुरूची संकल्पना, गुरुवचनाचे महत्त्व आणि सद्गुरु कृपा.",
         count: 6,
     },
     {
         icon: "fas fa-hands-helping",
         title: "मठ आणि सेवा",
+        image: "/assets/media/home/blogs-6.webp",
         desc: "गादी सेवा, अन्नदान आणि मठातील भक्ती व सेवेचे अनुभव.",
         count: 7,
     },
@@ -67,9 +73,8 @@ export default function BlogCategories() {
                             data-wow-delay={`${(Math.floor(index / 2) + 1) * 100}ms`}
                         >
                             <Link href="/pravachan" className={styles.tile} lang="mr">
-                                {/* image placeholder: swap for <Image> once the category photos are ready */}
-                                <div className={styles.image} aria-hidden="true">
-                                    <i className="fas fa-image"></i>
+                                <div className={styles.image}>
+                                    <img src={cat.image} alt="" loading="lazy" />
                                 </div>
                                 <div className={styles.body}>
                                     {/* left: the round icon, the article count below it */}

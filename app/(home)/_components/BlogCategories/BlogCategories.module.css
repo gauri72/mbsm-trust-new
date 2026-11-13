@@ -43,7 +43,7 @@ section.blogs.blogsGold {
   padding: calc(var(--space-5) * 2) 0;
   background-color: var(--c-maroon);
   /* the Mission/Vision field: maroon fading from a lighter top to a darker foot */
-  background-image: linear-gradient(180deg, #660309 0%, var(--c-maroon) 45%, #4D0601 100%);
+  background-image: linear-gradient(180deg, #620208 0%, var(--c-maroon) 45%, #620208 100%);
   overflow: hidden;
   z-index: 1;
 }
@@ -134,7 +134,7 @@ section.blogs.blogsGold .tile:focus-visible {
   outline-offset: 4px;
 }
 
-/* image placeholder: a maroon SQUARE block (left) with a gold image icon, replaced by a photo later */
+/* the category photo: a SQUARE block (left), cropped to fit */
 section.blogs.blogsGold .image {
   display: flex;
   align-items: center;
@@ -142,14 +142,18 @@ section.blogs.blogsGold .image {
   flex: 0 0 36%;
   align-self: center;
   aspect-ratio: 1 / 1;                    /* always a square, on every screen */
+  box-sizing: border-box;
+  border: var(--space-1) solid var(--c-maroon);   /* thick maroon frame, 6px */
   border-radius: 12px;
   background-color: var(--c-maroon);
-  color: var(--c-gold);
-  font-size: var(--text-lg);
+  overflow: hidden;
 }
 
-section.blogs.blogsGold .image i {
-  color: var(--c-gold);
+section.blogs.blogsGold .image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* content: on the left the round icon with the article count below it; on the right the heading,

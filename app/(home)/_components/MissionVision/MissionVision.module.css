@@ -368,7 +368,7 @@
 .aboutOne.aboutOneOrnate {
     position: relative;
     overflow: hidden;
-    background-color: #F2A90A;
+    background-color: #D9982A;
     padding: 96px 0 116px;
     z-index: 1;
 }
@@ -722,13 +722,13 @@
 
 /* --- Colour combinations tuned for the gold panel --- */
 .aboutOneOrnate :global(.section-title__tagline) {
-    color: #3D0A0C;
+    color: #620208;
     font-weight: 700;
 }
 
 .aboutOneOrnate :global(.section-title__title) {
-    color: #3D0A0C;
-    text-shadow: 0 1px 0 rgba(255, 248, 231, 0.5);
+    color: #620208;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 @media (min-width: 992px) {
@@ -751,42 +751,42 @@
 }
 
 .aboutOneOrnate .provideBox {
-    background-color: #3D0A0C;
+    background-color: #620208;
 }
 
 .aboutOneOrnate .provideIcon span,
 .aboutOneOrnate .provideCount h3,
 .aboutOneOrnate .provideCount span,
 .aboutOneOrnate .provideCountText {
-    color: #F2A90A;
+    color: #D9982A;
 }
 
 .aboutOneOrnate .provideCount h3 {
-    -webkit-text-fill-color: #F2A90A;
+    -webkit-text-fill-color: #D9982A;
 }
 
 /* Devotional verse — maroon on gold */
 .aboutOneOrnate .tabsContentInner p[lang="mr"] {
     margin: 0;
-    color: #3D0A0C;
+    color: #620208;
     font-weight: 600;
     font-size: 17px;
     line-height: 2.15em;
     letter-spacing: 0.2px;
-    text-shadow: 0 1px 0 rgba(255, 248, 231, 0.5);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 /* Need-help block */
 .aboutOneOrnate .needHelp :global(.icon) span {
-    color: #3D0A0C;
+    color: #620208;
 }
 
 .aboutOneOrnate .needHelp :global(.content) p {
-    color: rgba(61, 10, 12, 0.75);
+    color: rgba(98, 2, 8, 0.75);
 }
 
 .aboutOneOrnate .needHelp :global(.content) h4 a {
-    color: #3D0A0C;
+    color: #620208;
 }
 
 /*==================================================================
@@ -794,11 +794,11 @@
     keyed to the HOME hero image.  Palette (sampled from
     slider-v1-img-1.webp):
       --au-gold      #D9982A   (hero's L/R gold borders)
-      --au-gold-lite #E9B45A   (bright tint — hovers / active states)
+      --au-gold-lite #D9982A   (bright tint — hovers / active states)
       --au-maroon    #620208   (field behind the idol)
-      --au-maroon-dk #4D0601   (hero's outer edges)
-      --au-ink       #2C0405   (near-black maroon — copy on the gold field)
-      --au-cream     #FBF1DC   (warm ivory — text on maroon)
+      --au-maroon-dk #620208   (hero's outer edges)
+      --au-ink       #000000   (near-black maroon — copy on the gold field)
+      --au-cream     #FFFFFF   (warm ivory — text on maroon)
     All rules below are scoped to .about-One--ornate so the other
     About-page variants are untouched.  Static + hover/focus + the
     existing responsive @media blocks (size-only) all inherit.
@@ -807,17 +807,17 @@
     /* Reversed from the original: maroon field with gold accents/borders,
        matching the same palette family used on Legacy and the header. */
     --au-gold: #D9982A;
-    --au-gold-lite: #E9B45A;
+    --au-gold-lite: #D9982A;
     --au-maroon: #620208;
-    --au-maroon-dk: #4D0601;
-    --au-ink: #FBF1DC;
-    --au-cream: #2C0405;
+    --au-maroon-dk: #620208;
+    --au-ink: #FFFFFF;
+    --au-cream: #000000;
 }
 
 /* ---- Maroon field + floral texture ---- */
 .aboutOne.aboutOneOrnate {
     background-color: var(--au-maroon);
-    background-image: linear-gradient(180deg, #660309 0%, var(--au-maroon) 45%, #4D0601 100%);
+    background-image: linear-gradient(180deg, #620208 0%, var(--au-maroon) 45%, #620208 100%);
 }
 
 /* ---- Ornamental gold border strips + corners ----
@@ -828,14 +828,14 @@
 .aboutOneOrnate :global(.divine-border--about) {
     background-color: var(--au-gold);
     background-image:
-        radial-gradient(circle at 50% 50%, rgba(61, 10, 12, 0.14) 0%, transparent 70%),
+        radial-gradient(circle at 50% 50%, rgba(98, 2, 8, 0.14) 0%, transparent 70%),
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%235C1012'%3E%3Ctext x='25' y='22' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%235C1012' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%235C1012' opacity='0.85'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 .aboutOneOrnate :global(.divine-border--about-vertical) {
     background-color: var(--au-gold);
     background-image:
-        radial-gradient(circle at 50% 50%, rgba(61, 10, 12, 0.14) 0%, transparent 70%),
+        radial-gradient(circle at 50% 50%, rgba(98, 2, 8, 0.14) 0%, transparent 70%),
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%235C1012'%3E%3Ctext x='15' y='32' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%235C1012' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%235C1012' opacity='0.85'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
 }
 
@@ -853,19 +853,19 @@
 
 .aboutOne.aboutOneOrnate :global(.section-title__title) {
     color: var(--au-ink);
-    text-shadow: 0 1px 0 rgba(251, 241, 220, 0.5);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 /* ---- "240+ years" stat card — gold panel (now stands out on the maroon field) ---- */
 .aboutOneOrnate .provideBox {
     background-color: var(--au-gold);
-    box-shadow: 0 18px 40px rgba(44, 4, 5, 0.30);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.30);
     transition: transform 300ms ease, box-shadow 300ms ease;
 }
 
 .aboutOneOrnate .provideBox:hover {
     transform: translateY(-4px);
-    box-shadow: 0 24px 50px rgba(44, 4, 5, 0.40);
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.40);
 }
 
 .aboutOneOrnate .provideIcon span,
@@ -882,13 +882,13 @@
 /* ---- Devotional verse ---- */
 .aboutOneOrnate .tabsContentInner p[lang="mr"] {
     color: var(--au-ink);
-    text-shadow: 0 1px 0 rgba(251, 241, 220, 0.5);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 /* ---- Mission / Vision tab buttons ----
-   select / hover fill uses the hero image's brighter red #7A1418 */
+   select / hover fill uses the hero image's brighter red #620208 */
 .aboutOneOrnate {
-    --au-red-select: #7A1418;
+    --au-red-select: #620208;
 }
 
 .aboutOneOrnate .tabButtons .tabBtn {
@@ -900,7 +900,7 @@
 .aboutOneOrnate .tabBox .tabButtons .tabBtn span {
     color: var(--au-ink);
     background-color: transparent;
-    border-color: rgba(251, 241, 220, 0.30);
+    border-color: rgba(255, 255, 255, 0.30);
     transition: color 260ms ease, border-color 260ms ease, background-color 260ms ease;
 }
 
@@ -924,7 +924,7 @@
     color: var(--au-cream);
     border-color: var(--au-gold);
     background-color: transparent;
-    box-shadow: 0 8px 20px rgba(44, 4, 5, 0.28);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
 }
 
 /* keyboard focus ring on the clickable list item */
@@ -944,7 +944,7 @@
 }
 
 .aboutOneOrnate .needHelp :global(.content) p {
-    color: rgba(251, 241, 220, 0.75);
+    color: rgba(255, 255, 255, 0.75);
 }
 
 .aboutOneOrnate .needHelp :global(.content) h4 a {
@@ -1082,47 +1082,47 @@
 
 /* Shubharay Math about section — red & gold theme */
 .provideBox {
-  background-color: #F2A90A;
+  background-color: #D9982A;
 }
 
 .provideIcon span {
-  color: #3D0A0C;
+  color: #620208;
 }
 
 .provideCount span {
-  color: #3D0A0C;
+  color: #620208;
 }
 
 .provideCountText {
-  color: #3D0A0C;
+  color: #620208;
   font-weight: 600;
 }
 
 .shape1 {
-  background-color: #3D0A0C;
+  background-color: #620208;
   opacity: 0.35;
 }
 
 .aboutOne :global(.section-title__tagline) {
-  color: #3D0A0C;
+  color: #620208;
 }
 
 .aboutOne :global(.section-title__title) {
-  color: #2b2b2b;
+  color: #000000;
 }
 
 .tabBox .tabButtons .tabBtn span {
-  color: #2b2b2b;
-  border: 1px solid rgba(61, 10, 12, 0.25);
+  color: #000000;
+  border: 1px solid rgba(98, 2, 8, 0.25);
 }
 
 .tabBox .tabButtons .tabBtn.activeBtn span {
-  color: #FFF8E7;
-  border: 1px solid #3D0A0C;
+  color: #FFFFFF;
+  border: 1px solid #620208;
 }
 
 .tabBox .tabButtons .tabBtn span:before {
-  background-color: #3D0A0C;
+  background-color: #620208;
 }
 
 /* Mission / Vision tabs on the maroon-field About Us section — select /
@@ -1135,7 +1135,7 @@
 
 .aboutOneOrnate .tabBox .tabButtons .tabBtn.activeBtn span,
 .aboutOneOrnate .tabBox .tabButtons .tabBtn:hover span {
-  color: #2C0405;
+  color: #000000;
   border-color: #D9982A;
 }
 
@@ -1148,15 +1148,15 @@
   outline-offset: 3px;
   border-radius: 12px;
 }.needHelp :global(.icon) span {
-  color: #3D0A0C;
+  color: #620208;
 }
 
 .needHelp :global(.content) h4 a {
-  color: #2b2b2b;
+  color: #000000;
 }
 
 .needHelp :global(.content) h4 a:hover {
-  color: #3D0A0C;
+  color: #620208;
 }
 
 /* Desktop & tablet: image 1 sits behind, image 2 overlaps on top */
@@ -1390,12 +1390,12 @@ section.aboutOne.aboutOneOrnate :global(.section-title__tagline) {
 
 /* labels on maroon: marigold, as in the CTA */
 section.aboutOne.aboutOneOrnate :global(.section-title__tagline) {
-  color: #F2B632;
+  color: #D9982A;
 }
 
 /* home About: tab text in solid cream */
 section.aboutOne.aboutOneOrnate .tabBox .tabsContentInner p {
-  color: #FBF1DC;
+  color: #FFFFFF;
   font-size: 19px;
 }
 @media (max-width: 767px) {
