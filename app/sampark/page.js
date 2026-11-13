@@ -8,19 +8,16 @@ import Border from "../_shared/_components/Border/Border"
 import TempleGallery from "../_shared/_components/TempleGallery/TempleGallery"
 import Cta from "../_shared/_components/Cta/Cta"
 import ComingSoon from "../_shared/_components/ComingSoon/ComingSoon"
+import { SITE_PHONE_TEL, SITE_EMAIL, SITE_EMAIL_MAILTO, SITE_MAP_URL } from "../_shared/siteContent"
 import styles from "./page.module.css"
 
 // Trust contact details
 const SITE_PHONE_DISPLAY = "+९१ ७५८८७ ९७७८८"
-const SITE_PHONE_TEL = "tel:+917588797788"
-const SITE_EMAIL = "mbsmtrust@gmail.com"
-const SITE_EMAIL_MAILTO = "mailto:mbsmtrust@gmail.com"
 const SITE_ADDRESS_PLACE = "श्री शंकरदत्त महाराज मठ,"
 const SITE_ADDRESS_LINE1 = "एफ ७०, एमआयडीसी,"
 const SITE_ADDRESS_LINE2 = "अहिल्यानगर - ४१४१११"
 const SITE_ADDRESS_CITY = "अहिल्यानगर"
 const SITE_ADDRESS_SHORT = `${SITE_ADDRESS_PLACE} ${SITE_ADDRESS_LINE1} ${SITE_ADDRESS_CITY}`
-const SITE_MAP_URL = "https://share.google/eUPrIPLwsBu6afTGg"
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 

@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useId, useRef, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { PAGES, WORK_GROUP, CTA } from "../../siteContent"
+import { PAGES, WORK_GROUP, CTA, SITE_PHONE_TEL, SITE_PHONE_DISPLAY, SITE_EMAIL, SITE_EMAIL_MAILTO, SITE_MAP_URL, SITE_WHATSAPP_URL } from "../../siteContent"
 import styles from "./Header.module.css"
 
 /* =============================================================================
@@ -18,27 +18,28 @@ import styles from "./Header.module.css"
    ========================================================================== */
 
 // ---- Trust details ----------------------------------------------------------
-const SITE_NAME = "मंगल भक्त सेवा मंडळ"
 // The title font can stack क्त into a ligature that does not read as Marathi; a zero-width
 // joiner (U+200D) after क् asks for the half-क form. Used for the visible name only.
 const SITE_NAME_DISPLAY = "मंगल भक्‍त सेवा मंडळ"
 const SITE_LOGO_SRC = "/assets/media/shared/logo.webp"
 
-const PHONE = { icon: "fas fa-phone-alt", href: "tel:+917588797788", label: "+91 75887 97788" }
-const EMAIL = { icon: "fas fa-envelope", href: "mailto:mbsmtrust@gmail.com", label: "mbsmtrust@gmail.com" }
+const PHONE = { icon: "fas fa-phone-alt", href: SITE_PHONE_TEL, label: SITE_PHONE_DISPLAY }
+const EMAIL = { icon: "fas fa-envelope", href: SITE_EMAIL_MAILTO, label: SITE_EMAIL }
+const ADDRESS_TEXT = "श्री शंकरदत्त महाराज मठ, एफ 70, एमआयडीसी, अहिल्यानगर"
 const ADDRESS = {
     icon: "fas fa-map-marker-alt",
-    href: "https://share.google/eUPrIPLwsBu6afTGg",
+    href: SITE_MAP_URL,
     // the pincode is hidden on phones, so the strip's address fits one line there
-    label: <>श्री शंकरदत्त महाराज मठ, एफ 70, एमआयडीसी, अहिल्यानगर<span className={styles.pincode}> - 414111</span></>,
+    label: <>{ADDRESS_TEXT}<span className={styles.pincode}> - 414111</span></>,
+    chars: ADDRESS_TEXT.length,   // lets the CSS shrink the one-line phone address to its own length
     external: true,
     lang: "mr",
 }
 
 const SOCIALS = [
-    { href: "https://wa.me/917588797788", label: "WhatsApp", icon: "fab fa-whatsapp" },
-    { href: "https://www.instagram.com/mangal_bhakta_seva_mandal_?igsh=NDVnb3JhendmcmFs", label: "Instagram", icon: "fab fa-instagram" },
-    { href: "https://youtube.com/@mangalbhaktasevamandaltrus2349?si=s6NqyknikeBmWmSi", label: "YouTube", icon: "fab fa-youtube" },
+    { href: SITE_WHATSAPP_URL, label: "WhatsApp", icon: "fab fa-whatsapp" },
+    { href: "https://www.instagram.com/mangal_bhakta_seva_mandal_", label: "Instagram", icon: "fab fa-instagram" },
+    { href: "https://youtube.com/@mangalbhaktasevamandaltrus2349", label: "YouTube", icon: "fab fa-youtube" },
 ]
 const SOCIAL_TITLE = "आमच्यासोबत जोडा:"
 
@@ -66,12 +67,14 @@ const cx = (...names) => names.filter(Boolean).join(" ")
 
 // ---- Small building blocks ----------------------------------------------------
 // Logo medal + name. The logo is decorative (alt="") because the name sits right
-// beside it — otherwise screen readers would announce the name twice.
+// beside it — otherwise screen readers would announce the name twice. A plain <img> on purpose: like the
+// rest of the site it is a ready-made .webp from /public (no image optimiser is set up), and it sits at
+// the top of every page, so it is decoded off the main thread.
 function Brand({ className, onClick }) {
     return (
         <Link href="/" className={cx(styles.brand, className)} onClick={onClick}>
             <span className={styles.logo}>
-                <img src={SITE_LOGO_SRC} alt="" width="792" height="711" />
+                <img src={SITE_LOGO_SRC} alt="" width="792" height="711" decoding="async" />
             </span>
             <span className={styles.brandName}>{SITE_NAME_DISPLAY}</span>
         </Link>
@@ -85,6 +88,7 @@ function ContactLink({ item, className }) {
             href={item.href}
             className={className}
             lang={item.lang}
+            style={item.chars ? { "--chars": item.chars } : undefined}
             {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         >
             <i className={cx(styles.icon, item.icon)} aria-hidden="true"></i>
@@ -129,6 +133,7 @@ function NavGroup({ item, pathname }) {
     const [open, setOpen] = useState(false)
     const groupRef = useRef(null)
     const buttonRef = useRef(null)
+    const openedByHover = useRef(false)
     const panelId = useId()
     const groupActive = item.children.some((child) => isActive(pathname, child.href))
 
@@ -152,8 +157,25 @@ function NavGroup({ item, pathname }) {
 
     // hover-open for a real mouse only: on touch screens the tap's emulated
     // "enter" would open the panel and the click would immediately close it again
-    const onPointerEnter = (e) => e.pointerType === "mouse" && setOpen(true)
-    const onPointerLeave = (e) => e.pointerType === "mouse" && setOpen(false)
+    const onPointerEnter = (e) => {
+        if (e.pointerType !== "mouse") return
+        openedByHover.current = true
+        setOpen(true)
+    }
+    const onPointerLeave = (e) => {
+        if (e.pointerType !== "mouse") return
+        openedByHover.current = false
+        setOpen(false)
+    }
+    // a click on a panel that hover already opened keeps it open (it would otherwise flash shut under the
+    // cursor); every other click (touch, keyboard, a second click) toggles
+    const onClick = () => {
+        if (open && openedByHover.current) {
+            openedByHover.current = false
+            return
+        }
+        setOpen((v) => !v)
+    }
 
     return (
         <li
@@ -169,7 +191,7 @@ function NavGroup({ item, pathname }) {
                 className={cx(styles.navLink, groupActive && styles.isActive)}
                 aria-expanded={open}
                 aria-controls={panelId}
-                onClick={() => setOpen((v) => !v)}
+                onClick={onClick}
             >
                 <i className={cx(styles.icon, item.icon)} aria-hidden="true"></i>
                 <span>{item.label}</span>
@@ -195,7 +217,7 @@ function NavGroup({ item, pathname }) {
 // The maroon menu tray (≥1200px; hidden by CSS below that)
 function NavMenu({ pathname }) {
     return (
-        <nav className={styles.nav} aria-label="Primary">
+        <nav className={styles.nav} aria-label="मुख्य मेनू">
             <ul className={styles.navList}>
                 {NAV_ITEMS.map((item) => {
                     if (item.children) return <NavGroup key={item.label} item={item} pathname={pathname} />
@@ -220,10 +242,24 @@ function NavMenu({ pathname }) {
 function Drawer({ open, onClose, pathname, returnFocusRef }) {
     const drawerRef = useRef(null)
     const closeRef = useRef(null)
+    const navigating = useRef(false)
+
+    // a tap on a link closes the drawer to go to another page: focus should not jump back to the menu button then
+    const onNavigate = () => {
+        navigating.current = true
+        onClose()
+    }
 
     useEffect(() => {
         if (!open) return
         const returnTo = returnFocusRef.current
+        navigating.current = false
+
+        // everything behind the drawer (strip, bar, page, footer) is switched off while it is open: not focusable,
+        // not read out by screen readers
+        const root = drawerRef.current.parentElement
+        const behind = [...root.parentElement.children].filter((el) => el !== root)
+        behind.forEach((el) => el.setAttribute("inert", ""))
 
         const onKey = (e) => {
             if (e.key === "Escape") return onClose()
@@ -242,34 +278,40 @@ function Drawer({ open, onClose, pathname, returnFocusRef }) {
             }
         }
 
+        // lock the page's scroll; where the scrollbar takes up room (classic scrollbars), pad the page by its
+        // width so the content does not jump sideways when the scrollbar disappears
+        const scrollbar = window.innerWidth - document.documentElement.clientWidth
         document.body.style.overflow = "hidden"
+        if (scrollbar > 0) document.body.style.paddingRight = `${scrollbar}px`
         document.addEventListener("keydown", onKey)
         closeRef.current?.focus()
         return () => {
             document.body.style.overflow = ""
+            document.body.style.paddingRight = ""
             document.removeEventListener("keydown", onKey)
-            returnTo?.focus()
+            behind.forEach((el) => el.removeAttribute("inert"))
+            if (!navigating.current) returnTo?.focus()
         }
     }, [open, onClose, returnFocusRef])
 
     return (
         <div className={cx(styles.drawerRoot, open && styles.isOpen)}>
             <div className={styles.overlay} onClick={onClose} aria-hidden="true"></div>
-            <aside ref={drawerRef} id="site-drawer" className={styles.drawer} role="dialog" aria-modal="true" aria-label="Menu">
+            <aside ref={drawerRef} id="site-drawer" className={styles.drawer} role="dialog" aria-modal="true" aria-label="मेनू">
                 <div className={styles.drawerHead}>
-                    <Brand className={styles.drawerBrand} onClick={onClose} />
-                    <button ref={closeRef} type="button" className={cx(styles.menuButton, styles.drawerClose)} onClick={onClose} aria-label="Close menu">
+                    <Brand className={styles.drawerBrand} onClick={onNavigate} />
+                    <button ref={closeRef} type="button" className={cx(styles.menuButton, styles.drawerClose)} onClick={onClose} aria-label="मेनू बंद करा">
                         <i className="fas fa-times" aria-hidden="true"></i>
                     </button>
                 </div>
 
-                <nav className={styles.drawerNav} aria-label="Primary">
+                <nav className={styles.drawerNav} aria-label="मुख्य मेनू">
                     <ul className={styles.drawerList}>
                         {DRAWER_ITEMS.map((item) => {
                             const active = isActive(pathname, item.href)
                             return (
                                 <li key={item.href}>
-                                    <Link href={item.href} className={cx(styles.drawerLink, active && styles.isActive)} aria-current={active ? "page" : undefined} onClick={onClose}>
+                                    <Link href={item.href} className={cx(styles.drawerLink, active && styles.isActive)} aria-current={active ? "page" : undefined} onClick={onNavigate}>
                                         <i className={cx(styles.icon, item.icon)} aria-hidden="true"></i>
                                         <span className={styles.drawerLabel}>{item.label}</span>
                                         <i className={cx(styles.icon, styles.chevron, "fas fa-chevron-right")} aria-hidden="true"></i>
@@ -283,7 +325,7 @@ function Drawer({ open, onClose, pathname, returnFocusRef }) {
                 {/* socials (phones only — tablets already show them in the bar), then the CTA */}
                 <div className={styles.drawerFoot}>
                     <Socials className={styles.drawerSocial} />
-                    <CtaLink onClick={onClose} />
+                    <CtaLink onClick={onNavigate} />
                 </div>
             </aside>
         </div>
@@ -300,6 +342,15 @@ export default function Header() {
 
     // the header stays mounted across pages: close the drawer on any navigation
     useEffect(() => setDrawerOpen(false), [pathname])
+
+    // the drawer is hidden by CSS from 1200px up: if the screen grows past that (a rotated tablet, a resized
+    // window) while it is open, close it, or it would keep the page's scroll locked with nothing to see
+    useEffect(() => {
+        const wide = window.matchMedia("(min-width: 1200px)")
+        const onChange = (e) => e.matches && setDrawerOpen(false)
+        wide.addEventListener("change", onChange)
+        return () => wide.removeEventListener("change", onChange)
+    }, [])
 
     // the sticky bar casts a shadow once the page has scrolled
     useEffect(() => {
@@ -336,7 +387,7 @@ export default function Header() {
                             type="button"
                             className={cx(styles.menuButton, styles.barMenuButton)}
                             onClick={() => setDrawerOpen(true)}
-                            aria-label="Open menu"
+                            aria-label="मेनू उघडा"
                             aria-expanded={drawerOpen}
                             aria-controls="site-drawer"
                         >

@@ -70,17 +70,11 @@
   /* layout */
   --bar-pad: var(--space-4);             /* above and below the logo in the bar */
   --bar-gap: var(--space-5);             /* between brand, menu and actions */
-  /* side padding of every menu pill (tray AND dropdown — one size, so both match). It is
-     as roomy as the bar allows: whatever width is left between the brand and the actions
-     once the tray's fixed parts are in (a link's text + icons, the tray's padding and gaps)
-     is shared over the 10 link sides, between 4px and 16px; 16px is kept free. */
-  --link-pad: clamp(
-    4px,
-    calc((min(100vw, var(--max-width)) - 2 * var(--gutter) - 11.12 * var(--text-lg)
-          - 2 * (var(--space-2) + var(--space-3) + var(--space-5)) - 4 * var(--bar-gap)
-          - 6 * var(--space-0) - 716.45px) / 10),
-    16px
-  );
+  /* the menu tray fills the space between the brand and the actions (see .nav); every pill keeps a
+     minimum side padding of --space-0 and grows evenly into whatever room is left. Nothing here
+     depends on measured text widths or the scrollbar, so a different font or a classic scrollbar
+     can never push the bar's parts apart. The dropdown's pills use --link-pad. */
+  --link-pad: var(--space-3);
   --control-lg: 50px;                    /* CTA, drawer links */
   --control-sm: 42px;                    /* menu links, social icons, menu + close buttons, strip height */
   --strip-height: 42px;                 /* the top / bottom strip (steps below) */
@@ -185,7 +179,7 @@
   }
 
   /* the strip stays at 2 lines (phone | email · address): its text steps down to
-     14px and the address drops its pincode (below) */
+     16px and the address drops its pincode (below) */
   .topbar {
     --text-sm: 16px;
   }
@@ -275,10 +269,7 @@
 }
 
 .navList :where(a, button):focus-visible,
-.drawerNav :where(a, button):focus-visible,
-.socialLink:focus-visible,
-.menuButton:focus-visible,
-.cta:focus-visible {
+.drawerNav :where(a, button):focus-visible {
   outline-color: var(--c-white);
 }
 
@@ -426,15 +417,24 @@
   flex: 1;
   display: flex;
   justify-content: center;
+  min-width: 0;                          /* may shrink below its content instead of pushing the actions out */
 }
 
+/* the tray takes the whole gap (up to 720px) and its pills share the room evenly */
 .navList {
   display: flex;
   align-items: center;
+  width: 100%;
+  max-width: 720px;
   gap: var(--space-0);
   padding: var(--space-0);
   border-radius: var(--radius-pill);
   background-color: var(--c-maroon);
+}
+
+.navList > li {
+  display: flex;
+  flex: 1 1 auto;
 }
 
 .navGroup {
@@ -446,8 +446,10 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
+  flex: 1;
+  justify-content: center;
   height: var(--control-sm);
-  padding: 0 var(--link-pad);
+  padding: 0 var(--space-0);             /* the least padding; the pill grows past it into the free room */
   border: 0;
   border-radius: var(--radius-pill);
   background-color: var(--c-maroon);
@@ -466,7 +468,7 @@
 }
 
 /* -- dropdown: one horizontal row of pills on a white panel, centred under its button.
-   Same panel padding, gap, pill height and pill padding (--link-pad) as the tray -- */
+   Same panel padding, gap and pill height as the tray; the pills' side padding is --link-pad -- */
 .dropdown {
   position: absolute;
   top: calc(100% + var(--space-2));
@@ -820,7 +822,8 @@
 }
 
 /* phones: no pincode in the strip's address, and it always stays on ONE line: it keeps the strip's
-   size while it fits, then shrinks with the screen (the line needs about 24.6px of width per 1px of font) */
+   size while it fits, then shrinks with the screen. --chars is the address's length (set in Header.js), so a longer or shorter
+   address rescales itself; 0.477 is the line's width per character per 1px of font. */
 @media (max-width: 767px) {
   .pincode {
     display: none;
@@ -828,7 +831,7 @@
 
   .topbarAddress {
     white-space: nowrap;
-    font-size: min(var(--text-sm), calc((100vw - 34px) / 24.8));
+    font-size: min(var(--text-sm), calc((100vw - 34px) / (var(--chars) * 0.477)));
   }
 }
 

@@ -1,7 +1,7 @@
 'use client'
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { PAGES } from "../../siteContent"
+import { PAGES, SITE_PHONE_TEL, SITE_PHONE_DISPLAY, SITE_EMAIL, SITE_EMAIL_MAILTO, SITE_MAP_URL } from "../../siteContent"
 import styles from "./Footer.module.css"
 
 /* =============================================================================
@@ -50,10 +50,10 @@ const QUICK_LINKS = [
 // संपर्क माहिती (same details as the header's contact strip; keep the two in step).
 // external: opens in a new tab (the map); phone + email open the visitor's own app.
 const CONTACTS = [
-    { icon: "fas fa-phone-alt", href: "tel:+917588797788", label: "+91 75887 97788" },
-    { icon: "fas fa-envelope", href: "mailto:mbsmtrust@gmail.com", label: "mbsmtrust@gmail.com" },
+    { icon: "fas fa-phone-alt", href: SITE_PHONE_TEL, label: SITE_PHONE_DISPLAY },
+    { icon: "fas fa-envelope", href: SITE_EMAIL_MAILTO, label: SITE_EMAIL },
     // the address on three lines: the math · the plot · the city + pincode
-    { icon: "fas fa-map-marker-alt", href: "https://share.google/eUPrIPLwsBu6afTGg", label: <>श्री शंकरदत्त महाराज मठ,<br />एफ 70, एमआयडीसी,<br />अहिल्यानगर - 414111</>, external: true },
+    { icon: "fas fa-map-marker-alt", href: SITE_MAP_URL, label: <>श्री शंकरदत्त महाराज मठ,<br />एफ 70, एमआयडीसी,<br />अहिल्यानगर - 414111</>, external: true },
 ]
 
 // join class names, skipping falsy ones

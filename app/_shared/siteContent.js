@@ -8,6 +8,14 @@
 
 export const SITE_NAME = "मंगल भक्त सेवा मंडळ"
 
+// ---- Contact details: one copy, used by the header strip, the footer, the home page and the contact page ----
+export const SITE_PHONE_TEL = "tel:+917588797788"
+export const SITE_PHONE_DISPLAY = "+91 75887 97788"      // English digits (the contact page shows its own Devanagari form)
+export const SITE_EMAIL = "mbsmtrust@gmail.com"
+export const SITE_EMAIL_MAILTO = `mailto:${SITE_EMAIL}`
+export const SITE_MAP_URL = "https://share.google/eUPrIPLwsBu6afTGg"
+export const SITE_WHATSAPP_URL = "https://wa.me/917588797788"
+
 // ---- Pages: the name + Font Awesome icon each page goes by ---------------------
 export const PAGES = {
     home:           { href: "/",               label: "मुखपृष्ठ",     icon: "fas fa-home" },
