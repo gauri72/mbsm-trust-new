@@ -34,7 +34,7 @@
   --line-gold: var(--line-width) solid var(--c-gold);
 
   /* type size: the CTA buttons' text size = the site's medium (19px), the same on every screen */
-  --text-md: 19px;
+  --text-md: 22px;
   --text-verse: var(--text-md);
 
   /* spacing scale: identical to the header's */

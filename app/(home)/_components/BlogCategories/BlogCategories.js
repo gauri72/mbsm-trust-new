@@ -97,7 +97,7 @@ export default function BlogCategories() {
 
                 <div className={`${styles.cta} wow fadeInUp`} data-wow-delay="300ms">
                     <Link href="/pravachan" className={styles.btn} lang="mr">
-                        <span>सर्व लेख पाहा</span>
+                        <span>सर्व प्रवचन पाहा</span>
                         <i className="fas fa-arrow-right" aria-hidden="true"></i>
                     </Link>
                 </div>

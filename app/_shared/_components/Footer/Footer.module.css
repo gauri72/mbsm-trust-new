@@ -46,8 +46,8 @@
   --shadow-medal-hover: 0 0 0 3px var(--c-maroon), 0 0 0 6px var(--c-black);
 
   /* type sizes */
-  --text-sm: 17px;
-  --text-md: 19px;                       /* medium: the header CTA's size */
+  --text-sm: 19px;
+  --text-md: 22px;                       /* medium: the header CTA's size */
   --text-lg: 36px;
   --logo: calc(var(--text-lg) * 2.8);    /* the logo always scales with the brand name */
 
@@ -144,7 +144,8 @@
   .footer {
     --edge: 32px;
     --inner: var(--space-2);           /* 10px + text space ≈ 16px */
-    --text-sm: 16px;
+    --text-sm: 18px;
+    --text-md: 20px;
     --text-lg: 23px;
   }
 }

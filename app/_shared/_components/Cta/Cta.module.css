@@ -41,8 +41,8 @@
   --nudge: 6px;                              /* = header: how far its arrow slides */
 
   /* type sizes: the header's small / medium / large */
-  --text-sm: 17px;
-  --text-md: 19px;
+  --text-sm: 19px;
+  --text-md: 22px;
   --text-lg: 36px;
 
   /* spacing scale: identical to the header's */
@@ -92,7 +92,8 @@
 
 @media (max-width: 767px) {
   .cta {
-    --text-sm: 16px;
+    --text-sm: 18px;
+    --text-md: 20px;
     --text-lg: 23px;
   }
 }
@@ -110,7 +111,7 @@
   position: relative;
   z-index: 1;
   overflow: hidden;
-  padding: calc(var(--space-5) * 2) 0;     /* the header's 26px step, twice: the same gap above and below the content */
+  padding: var(--space-6) 0;     /* the header's 26px step, twice: the same gap above and below the content */
   /* the seva photo under one even maroon wash (75%: the photo clearly shows, the white text still reads) */
   background-color: var(--c-maroon);
   background-image:
@@ -142,10 +143,10 @@
   aspect-ratio: 4 / 3;
   pointer-events: none;
   /* 50% = the section's centre (left / right percentages follow its width) */
-  --ele-offset: max(
+  --ele-offset: calc(max(
     var(--ele-w) * 0.275,
     var(--ele-w) * 0.825 - (50% - var(--buttons-half) - var(--ele-gap))
-  );
+  ) + var(--ele-w) * var(--ele-hide, 0));        /* --ele-hide: extra share of the width tucked off-screen */
 }
 
 .elephantLeft  { left: calc(-1 * var(--ele-offset)); }
@@ -167,7 +168,8 @@
 .label {
   color: var(--c-gold);
   font-family: var(--font);
-  font-size: var(--text-md);
+  font-size: var(--head-label);
+  font-weight: 700;
   line-height: 1.3;
 }
 
@@ -177,15 +179,15 @@
   margin-top: var(--space-3);
   color: var(--c-white);
   font-family: var(--font);
-  font-size: var(--text-lg);
-  font-weight: 400;
-  line-height: 1.25;
+  font-size: var(--head-title);
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 /* description: small, white */
 .text {
   max-width: var(--text-width);
-  margin: var(--space-4) auto 0;
+  margin: var(--space-3) auto 0;
   color: var(--c-white);
   line-height: 1.8;
 }
@@ -205,7 +207,7 @@
   grid-auto-columns: 1fr;                /* equal width: the wider label's */
   gap: var(--space-4);
   width: fit-content;
-  margin: var(--space-5) auto 0;
+  margin: var(--space-4) auto 0;
 }
 
 /* the header CTA's button: medium Annapurna SIL in a flat 50px pill */
@@ -214,11 +216,12 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-3);
-  height: var(--control-lg);
-  padding: 0 var(--space-5);
+  height: 58px;                            /* = every other home button */
+  padding: 0 var(--space-6);
   border-radius: var(--radius-pill);
   font-family: var(--font);
   font-size: var(--text-md);
+  font-weight: 700;
   text-decoration: none;
   white-space: nowrap;
   transition: transform var(--ease), box-shadow var(--ease);
@@ -293,6 +296,14 @@
 @media (max-width: 991px) {
   .cta {
     --ele-w: 400px;
+  }
+}
+
+/* tablets: slide the elephants a little further into view (their trunks still stop short of the buttons) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .cta {
+    --ele-hide: 0.085;
+    --ele-gap: var(--space-2);
   }
 }
 
