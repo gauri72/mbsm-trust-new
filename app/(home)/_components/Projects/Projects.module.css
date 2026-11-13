@@ -1,7 +1,7 @@
 /* =============================================================================
    Home — Projects (Upkram): a maroon section with four gold cause cards.
 
-   Design rules (same as Mission/Vision, Upcoming Events, the header and the CTA)
+   Design rules (same as About, Upcoming Events, the header and the CTA)
    - Colours : black, white, maroon, gold — solid only, no shadows
    - Type    : label + buttons medium, heading large, card text small, the big numbers large (Annapurna SIL, 400)
    - Icons   : Font Awesome
@@ -15,10 +15,10 @@
 section.projects.projectsMaroon {
   position: relative;
   display: block;
-  /* = Mission/Vision, the CTA and Upcoming Events: the header's 26px step, twice */
+  /* = About, the CTA and Upcoming Events: the header's 26px step, twice */
   padding: var(--space-6) 0;
   background-color: var(--c-maroon);
-  /* the Mission/Vision field: maroon fading from a lighter top to a darker foot */
+  /* the About field: maroon fading from a lighter top to a darker foot */
   background-image: linear-gradient(180deg, #620208 0%, var(--c-maroon) 45%, #620208 100%);
   overflow: hidden;
   z-index: 1;

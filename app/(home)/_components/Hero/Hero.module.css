@@ -3,8 +3,7 @@
    layered on them.
 
    Contents
-     1. Design tokens
-     2. Slideshow            — always 16:9
+     1. Slideshow            — always 16:9
 
    Design rules (same as the header, footer, mantra and CTA)
    - Colours : maroon band while an artwork loads.
@@ -12,15 +11,9 @@
    ========================================================================== */
 
 
-/* ---- 2. Slideshow ---------------------------------------------------------------------- */
-.root {
-  position: relative;
-  overflow: hidden;
-  background-color: var(--c-maroon);
-}
-
+/* ---- 1. Slideshow ---------------------------------------------------------------------- */
 /* always 16:9, so each artwork shows whole */
-.carousel {
+.root {
   position: relative;
   aspect-ratio: 16 / 9;
   overflow: hidden;

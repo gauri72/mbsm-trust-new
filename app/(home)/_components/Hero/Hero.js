@@ -1,25 +1,21 @@
 'use client'
-import { useEffect, useRef } from "react"
 import { Autoplay, EffectFade } from "swiper/modules"
 import { Swiper, SwiperSlide, useSwiperSlide } from "swiper/react"
 import { motion, MotionConfig } from "framer-motion"
 import { SLIDE_DURATION, SLIDE_SCALE, SLIDE_TRANSITION } from "./heroMotion"
-import styles from "./HeroSlider.module.css"
+import styles from "./Hero.module.css"
 
 /* =============================================================================
    Home hero: two 16:9 artworks fading in turn, shown exactly as supplied (their nameplates
    carry their own lettering). Nothing is layered on them and there is no reveal animation
    when the page opens. The slides change with a slow zoom dissolve (heroMotion.js).
-   Styles: see HeroSlider.module.css.
+   Styles: see Hero.module.css.
    ========================================================================== */
 
 const HOME_SLIDES = [
     "/assets/media/home/slider-v1-img-1-plain.webp",
     "/assets/media/home/slider-v1-img-2-plain.webp",
 ]
-
-// the slideshow starts a moment after the page is shown
-const SLIDESHOW_START_MS = 1000
 
 const swiperOptions = {
     modules: [Autoplay, EffectFade],
@@ -29,9 +25,8 @@ const swiperOptions = {
     loop: true,
     allowTouchMove: false,
     autoplay: {
-        delay: 5000,
+        delay: 5000,                  // how long a slide stays before the next change begins
         disableOnInteraction: false,
-        enabled: false,
     },
 }
 
@@ -50,34 +45,18 @@ function Slide({ src }) {
     )
 }
 
-export default function HeroSlider() {
-    const swiperRef = useRef(null)
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            const swiper = swiperRef.current
-            if (swiper && !swiper.destroyed) swiper.autoplay.start()
-        }, SLIDESHOW_START_MS)
-        return () => clearTimeout(timer)
-    }, [])
-
+export default function Hero() {
     return (
         <MotionConfig reducedMotion="user">
             <section className={styles.root}>
-                <div className={styles.carousel}>
-                    <Swiper
-                        {...swiperOptions}
-                        className={styles.swiper}
-                        onSwiper={(swiper) => { swiperRef.current = swiper }}
-                    >
-                        {HOME_SLIDES.map((src) => (
-                            <SwiperSlide key={src}>
-                                {/* decorative artwork */}
-                                <Slide src={src} />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                </div>
+                <Swiper {...swiperOptions} className={styles.swiper}>
+                    {HOME_SLIDES.map((src) => (
+                        <SwiperSlide key={src}>
+                            {/* decorative artwork */}
+                            <Slide src={src} />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
             </section>
         </MotionConfig>
     )

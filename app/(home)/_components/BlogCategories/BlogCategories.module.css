@@ -1,7 +1,7 @@
 /* =============================================================================
    Home — Blog categories: a maroon section with six category tiles linking to the blogs page.
 
-   Design rules (same as Upcoming Events, Projects, Mission/Vision, the header and the CTA)
+   Design rules (same as Upcoming Events, Projects, About, the header and the CTA)
    - Colours : black, white, maroon, gold — solid only, no shadows
    - Type    : label large, heading + titles + button medium, description + count small (Annapurna SIL, bold where needed)
    - Icons   : Font Awesome
@@ -21,11 +21,11 @@
 }
 
 
-/* ---- Section: the Mission/Vision field — maroon with its floral texture ---- */
+/* ---- Section: the About field — maroon with its floral texture ---- */
 section.blogs.blogsGold {
   position: relative;
   display: block;
-  /* = Mission/Vision, Projects, Upcoming Events and the CTA: the header's 26px step, twice */
+  /* = About, Projects, Upcoming Events and the CTA: the header's 26px step, twice */
   padding: var(--space-6) 0;
   background-color: var(--c-maroon);
   overflow: hidden;

@@ -1535,7 +1535,7 @@ ul {
 
 /*==================================================================
     HOME — LEGACY SECTION — colour scheme keyed to the hero image.
-    Palette (sampled from slider-v1-img-1.webp):
+    Palette (sampled from slider-v1-img-1-plain.webp):
       --lg-gold      #D9982A   (hero's L/R gold borders)
       --lg-gold-lite #D9982A   (bright tint — hovers / active states)
       --lg-gold-pale #D9982A   (soft gold — small text on maroon)
@@ -1633,7 +1633,7 @@ ul {
 
 /*==================================================================
     HOME — SADHANA SECTION (.found-one) — colour scheme keyed to the
-    hero image.  Palette (sampled from slider-v1-img-1.webp):
+    hero image.  Palette (sampled from slider-v1-img-1-plain.webp):
       --sd-gold      #D9982A   (hero's L/R gold borders)
       --sd-gold-lite #D9982A   (bright tint — hovers / active states)
       --sd-gold-pale #D9982A   (soft gold on maroon)
@@ -1657,7 +1657,7 @@ ul {
 
 /*==================================================================
     HOME — UPCOMING EVENTS SECTION (.event-one) — colour scheme keyed
-    to the hero image.  Palette (sampled from slider-v1-img-1.webp):
+    to the hero image.  Palette (sampled from slider-v1-img-1-plain.webp):
       --ev-gold      #D9982A   (hero's L/R gold borders)
       --ev-gold-lite #D9982A   (bright tint — hovers / active states)
       --ev-gold-pale #D9982A   (soft gold on maroon)

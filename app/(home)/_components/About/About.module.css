@@ -1,0 +1,945 @@
+/* =============================================================================
+   About — the trust's introduction on a maroon field: a photo collage with the "25+ years" badge on the
+   left; the label, heading, mission / vision tabs, the "more" button and the address on the right.
+
+   Reading this file: the first part is the section's layout (columns, images, badge, tabs, address), with
+   its tablet and phone layouts in the @media blocks that follow; the last part ("TEXT DESIGN" onwards) is
+   the final colour, type and spacing pass — it uses the site's tokens (globals.css) and wins over the layout
+   part above it by selector specificity.
+
+   Design rules (same as the header, footer, mantra and CTA)
+   - Colours : maroon field, gold panels, white and black text — the site's four tokens only.
+   - Type    : Annapurna SIL; label large, heading medium (--head-label / --head-title), the rest small / medium.
+   - Spacing : the site's --space-* steps.
+   ========================================================================== */
+
+.left {
+    position: relative;
+    margin-right: 254px;
+}
+
+.imgBox {
+    position: relative;
+}
+
+.img img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.img2 img {
+    width: auto;
+    border-radius: 20px;
+}
+
+.provideBox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--c-gold);
+    border-radius: 20px;
+    margin-right: 56px;
+    margin-top: 46px;
+    padding: 21px 31px 23px;
+}
+
+.provideIcon {
+    position: relative;
+}
+
+.provideIcon span {
+    position: relative;
+    transition: all 500ms linear;
+    transition-delay: 0.1s;
+    transform: scale(1);
+}
+
+.provideBox:hover .provideIcon span {
+    transform: scale(0.9);
+}
+
+.provideContent {
+    position: relative;
+}
+
+.provideCount {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.right {
+    position: relative;
+}
+
+.missionVision {
+    position: relative;
+}
+
+.tabBox {
+    position: relative;
+}
+
+.tabBox .tabButtons {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.tabBox .tabButtons .tabBtn {
+    position: relative;
+    padding: 0;                          /* a real <button>: no browser button look */
+    border: 0;
+    background: none;
+    text-align: inherit;
+}
+
+.tabBox .tabButtons .tabBtn span {
+    position: relative;
+    display: inline-block;
+    transition: all 200ms linear;
+    transition-delay: 0.1s;
+    z-index: 1;
+    text-align: center;
+    overflow: hidden;
+}
+
+.tabBox .tabButtons .tabBtn span:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    background-position: top bottom;
+    transition-delay: .1s;
+    transition-timing-function: ease-in-out;
+    transition-duration: .5s;
+    transition-property: all;
+    transform-origin: top;
+    transform-style: preserve-3d;
+    transform: scaleY(0);
+    z-index: -1;
+}
+
+.tabBox .tabButtons .tabBtn.activeBtn span:before {
+    transform: scaleY(1.0);
+}
+
+.tabBox .tabsContent {
+    position: relative;
+}
+
+.tabBox .tabsContent .tab {
+    position: relative;
+    display: none;
+    -webkit-transform: translateY(35px);
+    -ms-transform: translateY(35px);
+    transform: translateY(35px);
+    -webkit-transition: all 600ms ease;
+    -moz-transition: all 600ms ease;
+    -ms-transition: all 600ms ease;
+    -o-transition: all 600ms ease;
+    transition: all 600ms ease;
+    z-index: 10;
+}
+
+.tabBox .tabsContent .tab.activeTab {
+    display: block;
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    transform: translateY(0px);
+
+}
+
+.tabBox .tabsContentInner {
+    position: relative;
+}
+
+.btnAndNeedHelp {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.btnBox {
+    position: relative;
+}
+
+.needHelp {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.needHelp :global(.icon) {
+    position: relative;
+    top: 5px;
+}
+
+.needHelp :global(.icon) span {
+    position: relative;
+    transition: all 500ms linear;
+    transition-delay: 0.1s;
+    transform: scale(1);
+}
+
+.needHelp:hover :global(.icon) span {
+    transform: scale(0.9);
+}
+
+.needHelp :global(.content) {
+    position: relative;
+}
+
+/* Floral pattern on its own low-opacity layer — section-bg-2.webp, same
+   tile size and opacity as the site's other maroon fields. */
+.bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("/assets/media/shared/section-bg-2.webp");
+    background-size: 1170px auto;
+    opacity: 0.5;
+    z-index: 0;
+    pointer-events: none;
+}
+@media (max-width: 991px) {
+    .bg {
+        background-size: 770px auto;
+    }
+}
+
+.aboutOne.aboutOneOrnate :global(.container) {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 1199px) {
+    .aboutOne.aboutOneOrnate :global(.container) {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+@media (max-width: 1199px) {
+
+/* Small desktop & below (columns stacked): images side by side */
+    /* Show the two images side by side (flex row); the 240+ box and blur-shape
+       wrap onto their own full-width rows underneath */
+    .aboutOneOrnate .left {
+        max-width: 620px;
+        text-align: center;
+    }
+    .aboutOneOrnate .imgBox {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: stretch;
+        justify-content: center;
+        gap: 20px;
+    }
+    .aboutOneOrnate .img {
+        flex: 0 1 280px;
+        max-width: 280px;
+    }
+    .aboutOneOrnate .img img {
+        object-fit: cover;
+    }
+    .aboutOneOrnate .img2 {
+        position: relative;
+        top: 0;
+        right: auto;
+        flex: 0 1 280px;
+        max-width: 280px;
+    }
+    .aboutOneOrnate .img2 img {
+        width: 100%;
+        object-fit: cover;
+    }
+    /* 240+ box + blur shape drop to their own row below the images */
+    .aboutOneOrnate .provideBox {
+        justify-content: center;
+    }
+    .aboutOneOrnate .provideCount {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 991px) {
+    .aboutOne.aboutOneOrnate :global(.container) {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .aboutOneOrnate .right {
+        text-align: center;
+    }
+    .aboutOneOrnate :global(.section-title__tagline-box) {
+        display: flex;
+        justify-content: center;
+    }
+    /* Heading on a single line */
+    .aboutOneOrnate :global(.section-title__title) {
+        white-space: nowrap;
+    }
+    .aboutOneOrnate .tabBox .tabButtons {
+        justify-content: center;
+    }
+    /* Tablet: CTA button on the left, map icon + text on the right (one row) */
+    .aboutOneOrnate .btnAndNeedHelp {
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    /* Map block: icon on the left, headline + bottom line left-aligned beside it */
+    .aboutOneOrnate .needHelp {
+        justify-content: flex-start;
+        text-align: left;
+    }
+    .aboutOneOrnate .needHelp :global(.icon) {
+        top: 0;
+        line-height: 1;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+
+/* Tablet (768-1199): keep CTA + address on one row — the longer address
+   ("श्री शंकरदत्त महाराज मठ, …") wraps onto two lines beside the button
+   instead of dropping the whole block onto its own left-aligned row */
+    .aboutOneOrnate .btnAndNeedHelp {
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+    .aboutOneOrnate .btnBox {
+        flex-shrink: 0;
+    }
+    .aboutOneOrnate .needHelp {
+        min-width: 0;
+    }
+    /* address on two fixed lines (math name / street + city) so the block
+       is only as wide as its text and the pair stays centred */
+    .aboutOneOrnate .addressPlace,
+.aboutOneOrnate .addressNowrap {
+        display: block;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+/* Small laptop / landscape tablet (992-1199): columns are stacked here too,
+   so centre the text block like the 768-991 layout */
+    .aboutOneOrnate .right {
+        text-align: center;
+    }
+    .aboutOneOrnate :global(.section-title__tagline-box) {
+        display: flex;
+        justify-content: center;
+    }
+    .aboutOneOrnate .tabBox .tabButtons {
+        justify-content: center;
+    }
+    .aboutOneOrnate .needHelp {
+        text-align: left;
+    }
+}
+
+@media (max-width: 767px) {
+    .aboutOne.aboutOneOrnate :global(.container) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    /* Keep both images on one line, evenly sized and centred */
+    .aboutOneOrnate .left {
+        max-width: 100%;
+    }
+    .aboutOneOrnate .imgBox {
+        gap: 12px;
+    }
+    .aboutOneOrnate .img,
+.aboutOneOrnate .img2 {
+        flex: 0 1 calc(50% - 6px);
+        max-width: calc(50% - 6px);
+        min-width: 0;
+        margin: 0;
+    }
+    .aboutOneOrnate .img img,
+.aboutOneOrnate .img2 img {
+        aspect-ratio: 3 / 4;
+    }
+    .aboutOneOrnate .tabBox .tabButtons .tabBtn span {
+        width: 220px;
+    }
+    /* Location icon stacked on top, centred above the address */
+    .aboutOneOrnate .needHelp {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    .aboutOneOrnate .needHelp :global(.icon) {
+        top: 0;
+    }
+    .aboutOneOrnate .needHelp :global(.content),
+.aboutOneOrnate .needHelp :global(.content) p {
+        text-align: center;
+    }
+    .aboutOneOrnate .needHelp :global(.content) .addressLine {
+        font-size: 15px;
+        line-height: 22px;
+    }
+}
+
+/* --- Colour combinations tuned for the gold panel --- */
+.aboutOneOrnate :global(.section-title__tagline) {
+    color: #620208;
+    font-weight: 700;
+}
+
+.aboutOneOrnate :global(.section-title__title) {
+    color: #620208;
+}
+
+@media (min-width: 992px) {
+
+/* Desktop: let the heading wrap on its own; the forced 3-line break is tablet/mobile only */
+}
+
+@media (min-width: 1200px) {
+
+/* Large desktop: image 2 is a large square photo; cap it so it overlaps
+   image 1 instead of rendering at its full natural size */
+    .aboutOneOrnate .img2 img {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+    }
+}
+
+/* ---- Maroon field + floral texture ---- */
+.aboutOne.aboutOneOrnate {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background-color: var(--c-maroon);
+}
+
+/* ---- Section title on the maroon panel ----
+   Two classes on the same element, so these win over the shared .section-title rules. */
+.aboutOne.aboutOneOrnate :global(.section-title__tagline) {
+    color: var(--c-white);
+}
+
+.aboutOne.aboutOneOrnate :global(.section-title__title) {
+    color: var(--c-white);
+}
+
+/* ---- "240+ years" stat card — gold panel (now stands out on the maroon field) ---- */
+.aboutOneOrnate .provideBox {
+    background-color: var(--c-gold);
+    transition: transform 300ms ease;
+}
+
+.aboutOneOrnate .provideBox:hover {
+    transform: translateY(-4px);
+}
+
+.aboutOneOrnate .provideIcon span,
+.aboutOneOrnate .provideCount .countText,
+.aboutOneOrnate .provideCount span,
+.aboutOneOrnate .provideCountText {
+    color: var(--c-black);
+}
+
+.aboutOneOrnate .provideCount .countText {
+    -webkit-text-fill-color: var(--c-black);
+}
+
+/* ---- Devotional verse ---- */
+.aboutOneOrnate .tabsContentInner p[lang="mr"] {
+    margin: 0;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 2.15em;
+    letter-spacing: 0.2px;
+    color: var(--c-white);
+}
+
+/* ---- Mission / Vision tab buttons ---- */
+
+.aboutOneOrnate .tabButtons .tabBtn {
+    border-radius: 12px;
+}
+
+/* the same specificity as the base tab rule (4 classes), so this wins */
+.aboutOneOrnate .tabBox .tabButtons .tabBtn span {
+    color: var(--c-white);
+    background-color: transparent;
+    border-color: var(--c-white);
+    transition: color 260ms ease, border-color 260ms ease, background-color 260ms ease;
+}
+
+.aboutOneOrnate .tabButtons .tabBtn span:before {
+    background-color: var(--c-gold);
+}
+
+/* hover — the gold fill sweeps up (base :before scaleY), maroon-ink label */
+.aboutOneOrnate .tabBox .tabButtons .tabBtn:hover span {
+    color: var(--c-black);
+    border-color: var(--c-gold);
+    background-color: transparent;
+}
+
+.aboutOneOrnate .tabButtons .tabBtn:hover span:before {
+    transform: scaleY(1);
+}
+
+/* selected tab — gold fill held, maroon-ink label */
+.aboutOneOrnate .tabBox .tabButtons .tabBtn.activeBtn span {
+    color: var(--c-black);
+    border-color: var(--c-gold);
+    background-color: transparent;
+}
+
+/* keyboard focus ring on the clickable list item */
+.aboutOneOrnate .tabButtons .tabBtn:focus-visible {
+    outline: 2px solid var(--c-gold);
+    outline-offset: 3px;
+    border-radius: 12px;
+}
+
+.aboutOneOrnate .tabBox .tabsContentInner p[lang="mr"] {
+    text-shadow: none;
+}
+
+/* ---- Location / "need help" block ---- */
+.aboutOneOrnate .needHelp :global(.icon) span {
+    color: var(--c-gold);
+}
+
+.aboutOneOrnate .needHelp :global(.content) .addressLine a {
+    color: #620208;
+    transition: color 250ms ease;
+}
+
+.aboutOneOrnate .needHelp :global(.content) .addressLine a:hover,
+.aboutOneOrnate .needHelp :global(.content) .addressLine a:focus-visible {
+    color: var(--c-gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .aboutOneOrnate .provideBox,
+.aboutOneOrnate .provideBox:hover {
+        transform: none;
+        transition: none;
+    }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1319px) {
+
+  .provideBox {
+      margin-right: 0;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+  .left {
+      margin: 0 auto;
+  }
+
+  .img2 {
+      bottom: -45px;
+  }
+
+  .right {
+      max-width: 600px;
+      margin: 95px auto 0;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+  .left {
+      margin: 0 auto;
+  }
+
+  .img2 {
+      bottom: -45px;
+  }
+
+  .right {
+      max-width: 600px;
+      margin: 95px auto 0;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+  .tabBox .tabButtons {
+      flex-direction: column;
+  }
+
+  .btnAndNeedHelp {
+      flex-direction: column;
+  }
+}
+
+.aboutOneOrnate .tabBox .tabButtons .tabBtn.activeBtn span,
+.aboutOneOrnate .tabBox .tabButtons .tabBtn:hover span {
+  color: #000000;
+  border-color: #D9982A;
+}
+
+.aboutOneOrnate .tabBox .tabButtons .tabBtn:hover span:before {
+  transform: scaleY(1);
+}
+
+.aboutOneOrnate .tabBox .tabButtons .tabBtn:focus-visible {
+  outline: 2px solid #D9982A;
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+.needHelp :global(.content) .addressLine a:hover {
+  color: #620208;
+}
+
+/* Desktop & tablet: image 1 sits behind, image 2 overlaps on top */
+.img {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.img2 {
+  position: absolute;
+  top: 184px;
+  right: -224px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+@media only screen and (min-width: 992px) {
+
+/* Desktop: 240+ years badge overlaps image 2 (position unchanged, only stacking order raised) */
+  .provideBox {
+    z-index: 3;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+  .left {
+    margin: 0 auto;
+  }
+}
+
+/* the heading stays on one line */
+.aboutOne :global(.section-title__title) .titleLine {
+  display: block;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+
+/* About section alignment: tabs share the column width instead of a fixed
+   180px each (they overflowed at ~1200px), CTA/pincode never split, and the
+   image + text columns are vertically centred on desktop. */
+  .tabBox .tabButtons {
+    max-width: 570px;
+  }
+
+  .tabBox .tabButtons .tabBtn {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .tabBox .tabButtons .tabBtn span {
+    width: 100%;
+  }
+}
+
+.addressNowrap {
+  white-space: nowrap;
+}
+
+@media (min-width: 1200px) {
+  .aboutOneOrnate > :global(.container) > :global(.row) {
+    align-items: center;
+  }
+}
+
+.tabBox .tabsContentInner p {
+  text-wrap: pretty;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .tabBox .tabButtons {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+section.aboutOne.aboutOneOrnate {
+  padding-top: var(--space-6);      /* = the CTA's top and bottom: the header's 26px step, twice */
+  padding-bottom: var(--space-6);
+}
+
+/*==================================================================
+    TEXT DESIGN — every text in this section follows the site's type
+    rules: Annapurna SIL, the site's small / medium / large sizes
+    (--text-sm / --text-md / --text-lg in globals.css), palette colours
+    only (white, gold and black on this maroon field). Placed last, with
+    a higher specificity, so it wins over everything above.
+    Only text changes here: layout, boxes and images are untouched.
+==================================================================*/
+
+/* tagline: gold (its size is set in the last block, with the heading's) */
+section.aboutOne.aboutOneOrnate.aboutOneOrnate :global(.section-title__tagline) {
+  color: var(--c-gold);
+}
+
+/* heading: white */
+section.aboutOne.aboutOneOrnate.aboutOneOrnate :global(.section-title__title),
+section.aboutOne.aboutOneOrnate.aboutOneOrnate :global(.section-title__title) .titleLine {
+  color: var(--c-white);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+/* tab text: white */
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .tabBox .tabsContentInner p {
+  font-family: var(--font);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0;
+}
+
+/* visit block: the label small + gold, the address medium + white (gold on hover) */
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .needHelp :global(.content) p {
+  color: var(--c-gold);
+  font-family: var(--font);
+  line-height: 1.3;
+}
+
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .needHelp :global(.content) .addressLine,
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .needHelp :global(.content) .addressLine a,
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .needHelp :global(.content) .addressLine a span {
+  color: var(--c-white);
+  font-family: var(--font);
+  font-size: var(--text-md);
+  line-height: 1.4;
+}
+
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .needHelp :global(.content) .addressLine a:hover,
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .needHelp :global(.content) .addressLine a:hover span {
+  color: var(--c-gold);
+}
+
+/* TABS — flat pills with a 2px line (as the header's menu links): white outline, gold
+   when open or hovered */
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .tabBox .tabButtons .tabBtn span {
+  font-family: var(--font);
+  font-size: var(--text-md);
+  line-height: 1.3;
+  padding: var(--space-3) var(--space-5);
+  border: 2px solid var(--c-white);
+  border-radius: 999px;
+}
+
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .tabBox .tabButtons .tabBtn.activeBtn span,
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .tabBox .tabButtons .tabBtn:hover span {
+  color: var(--c-black);
+  border-color: var(--c-gold);
+}
+
+/* BUTTON — the site's button: medium text in a flat 58px gold pill, black text,
+   a plain arrow after it; on hover it lifts 4px on a solid black ledge and the arrow
+   slides 6px forward */
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .moreBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  height: 58px;                                    /* the tabs and the badge match it */
+  padding: 0 var(--space-6);
+  border-radius: 999px;
+  background-color: var(--c-gold);
+  color: var(--c-black);
+  font-family: var(--font);
+  font-size: var(--text-md);
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .moreBtnIcon {
+  flex: none;
+  width: 1.25em;
+  text-align: center;
+  transition: transform 200ms ease;
+}
+
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .moreBtn:focus-visible {
+  outline: 2px solid var(--c-white);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) {
+  section.aboutOne.aboutOneOrnate.aboutOneOrnate .moreBtn:hover {
+    box-shadow: 0 4px 0 var(--c-black);
+    transform: translateY(-4px);
+    color: var(--c-black);
+  }
+
+  section.aboutOne.aboutOneOrnate.aboutOneOrnate .moreBtn:hover .moreBtnIcon {
+    transform: translateX(6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section.aboutOne.aboutOneOrnate.aboutOneOrnate .moreBtn,
+  section.aboutOne.aboutOneOrnate.aboutOneOrnate .moreBtnIcon {
+    transition: none;
+  }
+
+  section.aboutOne.aboutOneOrnate.aboutOneOrnate .moreBtn:hover,
+  section.aboutOne.aboutOneOrnate.aboutOneOrnate .moreBtn:hover .moreBtnIcon {
+    transform: none;
+  }
+}
+
+/* VISIT PIN — the map pin is the large text size, as the badge's calendar */
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .needHelp :global(.icon) span {
+  font-size: var(--text-lg);
+}
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .provideIcon span {
+  font-size: var(--text-lg);
+}
+
+/* the number is large */
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .provideCount .countText,
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .provideCount span {
+  font-family: var(--font);
+  font-size: var(--text-lg);
+  line-height: 1.2;
+}
+
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .provideCountText {
+  font-family: var(--font);
+  margin-top: var(--space-0);
+  line-height: 1.3;
+}
+
+@media (max-width: 1199px) {
+  section.aboutOne.aboutOneOrnate.aboutOneOrnate .provideBox {
+    flex: 0 0 auto;
+    margin: 30px auto 0;
+  }
+}
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .point {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  text-align: left;
+}
+
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .point i {
+  flex: none;
+  width: 1.25em;
+  color: var(--c-gold);
+  font-size: var(--text-md);                  /* medium */
+  line-height: calc(var(--text-sm) * 1.8);    /* = the text's line height: the arrow sits on its first line */
+  text-align: center;
+}
+
+/* tablet + phones: each point is centred, its arrow leading the first line (the arrows
+   need not line up under one another) */
+@media (max-width: 1199px) {
+  section.aboutOne.aboutOneOrnate.aboutOneOrnate .point {
+    display: block;
+    text-align: center;
+  }
+
+  section.aboutOne.aboutOneOrnate.aboutOneOrnate .point i {
+    display: inline;
+    margin-right: var(--space-2);
+  }
+
+  section.aboutOne.aboutOneOrnate.aboutOneOrnate .point p {
+    display: inline;
+  }
+}
+
+/* INNER SPACING — every gap inside the section is one of the header's steps:
+   14px (tag line → heading, between the points, icon → text)
+   18px (tabs → text)
+   26px (between the bigger blocks: heading → tabs, text → button row, button → address,
+         photos → badge, the stacked columns) */
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .right {
+  margin-top: 0;
+}
+
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .right :global(.section-title) {
+  margin-top: 0;
+  margin-bottom: var(--space-5);
+}
+
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .right :global(.section-title__tagline-box) {
+  margin-bottom: var(--space-3);
+}
+
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .right :global(.section-title__title) {
+  margin: 0;
+}
+
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .tabBox .tabButtons {
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .points {
+  display: grid;
+  gap: var(--space-3);
+}
+
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .btnAndNeedHelp {
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .needHelp {
+  gap: var(--space-3);
+}
+
+section.aboutOne.aboutOneOrnate.aboutOneOrnate .provideBox {
+  gap: var(--space-4);
+  width: fit-content;
+  max-width: 100%;
+  padding: var(--space-4) var(--space-5);
+  box-shadow: none;
+  margin-top: var(--space-5);
+}
+
+@media (max-width: 1199px) {
+  section.aboutOne.aboutOneOrnate.aboutOneOrnate :global(.row) {
+    row-gap: var(--space-5);
+  }
+}
+
+/* ---- Section heading: label large, heading medium (same as every home section) ---- */
+section.aboutOne.aboutOne.aboutOneOrnate :global(.section-title__tagline) {
+  font-family: var(--font);
+  font-size: var(--head-label);
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+section.aboutOne.aboutOne.aboutOneOrnate :global(.section-title__title) {
+  font-family: var(--font);
+  font-size: var(--head-title);
+  font-weight: 700;
+  line-height: 1.4;
+}
