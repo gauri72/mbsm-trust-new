@@ -1,10 +1,10 @@
 /* =============================================================================
    Home — Upcoming events: three gold cards, each with a date badge.
-   The maroon field, heading, card base and button are shared: see ../../page.module.css.
+   The maroon field, heading, card base and button are shared: see _shared/_components/Field/Field.module.css.
    Type here: names medium, the badge's day medium and its month and year small.
    ========================================================================== */
 
-/* ---- Cards: the picture runs edge to edge along the top (gold card base: page.module.css) ---- */
+/* ---- Cards: the picture runs edge to edge along the top (gold card base: Field.module.css) ---- */
 section.events .single {
   display: flex;
   flex-direction: column;

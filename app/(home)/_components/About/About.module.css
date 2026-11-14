@@ -1,7 +1,7 @@
 /* =============================================================================
    About — the trust's introduction: a photo collage with the "25+ years" badge on the left;
    the label, heading, mission / vision tabs, the "more" button and the address on the right.
-   The maroon field and the gold button are shared: see ../../page.module.css.
+   The maroon field and the gold button are shared: see _shared/_components/Field/Field.module.css.
 
    Layout is written for desktop first; the @media blocks below it re-flow it for
    tablets (stacked columns) and phones. Type uses the site's tokens (globals.css).

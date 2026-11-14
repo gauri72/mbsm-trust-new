@@ -2,7 +2,7 @@
    The site's content — ONE source for what the whole site says about itself, so it is always said
    the same way: the trust's name, tagline, logo, address and contact details; the social links; the
    pages' names and icons (header menu + drawer, footer links, breadcrumb artwork, every browser-tab
-   title); and the two names on the artwork's plates. Two small helpers are at the end.
+   title); and the two characters on the artwork.
 
    Change a name, an icon, a phone number or an address here and it changes on every page.
    Plain data (and small title builders), no React: it can be imported by pages and components alike.
@@ -26,7 +26,7 @@ export const SITE_ADDRESS_SHORT = `${SITE_ADDRESS_PLACE} ${SITE_ADDRESS_LINE1} $
 // ---- Contact details: one copy, used by the header strip, the footer, the home page and the contact page ----
 const SITE_PHONE_NUMBER = "917588797788"          // country code + number: the tel: and WhatsApp links derive from it
 export const SITE_PHONE_TEL = `tel:+${SITE_PHONE_NUMBER}`
-export const SITE_PHONE_DISPLAY = "+91 75887 97788"      // English digits (the contact page shows its own Devanagari form)
+export const SITE_PHONE_DISPLAY = "+91 75887 97788"      // English digits everywhere
 export const SITE_EMAIL = "mbsmtrust@gmail.com"
 export const SITE_EMAIL_MAILTO = `mailto:${SITE_EMAIL}`
 export const SITE_MAP_URL = "https://share.google/eUPrIPLwsBu6afTGg"
@@ -72,23 +72,8 @@ export const pageKeyOf = (pathname) =>
 // the metadata a page exports: its browser-tab title and the description search engines show
 export const pageMetadata = (key, description) => ({ title: pageTitle(key), description })
 
-// ---- Characters: the two names on the artwork's plates -------------------------
-// `display` is what is drawn: the title font can stack श्व and त्त into ligatures that read
-// differently from the artwork's lettering, so a zero-width joiner (U+200D) asks for the
-// half-letter form instead. `name` is the plain text (for labels, search, alt text).
+// ---- Characters: the two figures on the artwork (their names are part of the pictures) ----
 export const CHARACTERS = {
-    swami: {
-        name: "श्री विश्वेश्वर स्वामी महाराज",
-        display: "श्री विश्\u200Dवेश्\u200Dवर स्वामी महाराज",
-    },
-    datta: {
-        name: "श्री शंकरदत्त महाराज",
-        display: "श्री शंकरदत्\u200Dत महाराज",
-    },
+    swami: { name: "श्री विश्वेश्वर स्वामी महाराज" },
+    datta: { name: "श्री शंकरदत्त महाराज" },
 }
-
-// ---- Small helpers -----------------------------------------------------------------
-// 0-9 -> ०-९ (every other character is left as it is): "+91 75887" -> "+९१ ७५८८७".
-// The data above is written once, with English digits; the contact page shows it in Devanagari digits.
-const DEVANAGARI_DIGITS = "०१२३४५६७८९"
-export const toDevanagariDigits = (text) => String(text).replace(/\d/g, (digit) => DEVANAGARI_DIGITS[digit])

@@ -1,6 +1,6 @@
 /* =============================================================================
    Home — Projects (Upkram): four gold cause cards under a stats strip.
-   The maroon field, heading, card base and button are shared: see ../../page.module.css.
+   The maroon field, heading, card base and button are shared: see _shared/_components/Field/Field.module.css.
    Type here: card text small, the big numbers large, the stats number large and its label medium.
    ========================================================================== */
 
@@ -56,7 +56,7 @@ section.projects .statLabel {
   }
 }
 
-/* ---- Cards: the picture runs edge to edge along the top (gold card base: page.module.css) ---- */
+/* ---- Cards: the picture runs edge to edge along the top (gold card base: Field.module.css) ---- */
 section.projects .card {
   display: flex;
   flex-direction: column;

@@ -10,7 +10,7 @@ import { pageKeyOf } from "./_shared/_components/siteContent"
 
 // The frame every page shares, around the page's own content:
 //
-//     mantra · [inner pages: breadcrumb artwork · border · gallery] · the page · closing call-to-action · closing mantra
+//     mantra · [inner pages: breadcrumb artwork · border · gallery · border] · the page · border · closing call-to-action · closing mantra
 //
 // (the home page brings its own hero and gallery; the 404 page its own artwork).
 // Unlike layout.js, Next.js re-creates a template on every page change, so the scroll-in animations (WOW)
@@ -18,6 +18,11 @@ import { pageKeyOf } from "./_shared/_components/siteContent"
 // content changes.
 export default function Template({ children }) {
     const innerPage = pageKeyOf(usePathname())
+
+    // every page opens at its top: the shared header stays mounted, so the browser would otherwise keep the old position
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" })
+    }, [])
 
     useEffect(() => {
         const WOW = require("wowjs")
@@ -33,9 +38,11 @@ export default function Template({ children }) {
                     <Breadcrumb page={innerPage} />
                     <Border />
                     <Gallery />
+                    <Border />
                 </>
             )}
             {children}
+            <Border />
             <Cta />
             <Mantra closing />
         </>

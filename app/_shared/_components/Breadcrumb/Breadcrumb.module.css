@@ -1,10 +1,9 @@
 /* =============================================================================
    Breadcrumb — the inner-page hero: one full-width 16:9 artwork, shown exactly as
-   supplied, with the page's name, its icon and the two characters' names set on it.
+   supplied (it carries the two characters' names), with the page's name and its icon set on it.
 
    Design rules (same as the header, footer, mantra and CTA)
-   - Colours : maroon (the page name on its scroll), gold (the page icon in its medallion),
-               white (the names on their plates).
+   - Colours : maroon (the page name on its scroll), gold (the page icon in its medallion).
    - Shape   : 16:9 at every screen size (cropped to it, never stretched).
    - Type    : Annapurna SIL. Everything is sized from the artwork's own width (cqw = 1% of
                it), so each piece keeps its place and proportion on desktop, tablet and
@@ -15,11 +14,11 @@
 /* ---- Hero + artwork ---- */
 .root {
   /* sizes, all from the artwork's own width (cqw), so each piece keeps its proportion at every
-     screen size: the names fit the plates (16.8% of the width ÷ 9.8em, the longer name), the
-     page name fills its scroll comfortably, the icon fills its medallion (7.2cqw across) */
-  --plate-size: 1.71cqw;
-  --title-size: 4.6cqw;
-  --icon-size: 4cqw;
+     screen size: the page name fills its scroll comfortably, the icon sits inside its medallion's
+     inner ring (about 6cqw across; the widest icon is 1.25em wide, so 3.2cqw leaves it a margin) */
+  --title-size: 6.4cqw;
+  --icon-size: 3.2cqw;
+  --boldness: 0.045em;                   /* extra weight on top of the one bold face (a stroke in the text's own colour) */
 
   position: relative;
   overflow: hidden;
@@ -47,7 +46,7 @@
 
 /* ---- Text on the artwork --------------------------------------------------------
    The artwork has no lettering of its own; every piece of text is centred on its (--x, --y)
-   point of the artwork, so it stays on its plate / scroll / medallion at any size. */
+   point of the artwork, so it stays on its scroll / medallion at any size. */
 .anchor {
   position: absolute;
   left: var(--x);
@@ -56,7 +55,6 @@
   transform: translate(-50%, -50%);
 }
 
-.plate,
 .title,
 .icon {
   margin: 0;
@@ -66,25 +64,18 @@
 }
 
 /* the text pieces use the site font; the icon keeps Font Awesome's own */
-.plate,
 .title {
   font-family: var(--font);
 }
 
-/* Devanagari's tall vowel marks sit above the line, so a plainly centred line looks high: each
-   piece is nudged down by what was measured (the ink's own centre vs the centre of its plate
-   / scroll), in em so it holds at every size */
-
-/* the characters' names on their plates: white; never under 7px, so mobile stays legible */
-.plate {
-  color: var(--c-white);
-  font-size: max(7px, var(--plate-size));
-  transform: translateY(0.3em);
-}
+/* Devanagari's tall vowel marks sit above the line, so a plainly centred line looks high: the title is
+   nudged down by what was measured (the ink's own centre vs the centre of its scroll), in em so it holds
+   at every size */
 
 /* the page's name on the scroll: maroon (the page's h1) */
 .title {
   color: var(--c-maroon);
+  -webkit-text-stroke: var(--boldness) currentColor;
   font-size: max(16px, var(--title-size));
   transform: translateY(0.23em);
 }
@@ -96,6 +87,7 @@
   width: 1em;
   height: 1em;
   color: var(--c-gold);
+  -webkit-text-stroke: 0.03em currentColor;
   font-size: max(13px, var(--icon-size));
   line-height: 1;
 }

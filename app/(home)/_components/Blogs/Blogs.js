@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { PAGES } from "../../../_shared/_components/siteContent"
-import { SectionHead, MoreButton } from "../../parts"
-import shared from "../../page.module.css"
+import { SectionHead, MoreButton } from "../../../_shared/_components/Field/Field"
+import shared from "../../../_shared/_components/Field/Field.module.css"
 import styles from "./Blogs.module.css"
 
 /* =============================================================================

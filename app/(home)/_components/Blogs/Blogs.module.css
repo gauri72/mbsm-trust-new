@@ -1,6 +1,6 @@
 /* =============================================================================
    Home — Blogs: six gold category tiles linking to the blogs page.
-   The maroon field, heading, card base and button are shared: see ../../page.module.css.
+   The maroon field, heading, card base and button are shared: see _shared/_components/Field/Field.module.css.
    Type here: titles medium, description + count small, the round icon large (smaller on phones).
    ========================================================================== */
 section.blogs {
@@ -20,7 +20,7 @@ section.blogs {
   section.blogs { --blogs-icon-size: 19px; }
 }
 
-/* ---- Tiles: a horizontal card, the image on the left and the content on the right (gold card base: page.module.css) ---- */
+/* ---- Tiles: a horizontal card, the image on the left and the content on the right (gold card base: Field.module.css) ---- */
 section.blogs .tile {
   display: flex;
   flex-direction: row;

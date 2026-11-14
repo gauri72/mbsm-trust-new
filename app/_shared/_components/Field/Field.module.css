@@ -1,7 +1,7 @@
 /* =============================================================================
-   Home — what the maroon sections (About, Projects, Upcoming events, Blogs) share.
-   Each section keeps only its own layout in its own .module.css and applies these
-   classes beside its own:  className={`${shared.field} ${styles.projects}`}
+   Field — what the maroon sections share (home: About, Projects, Upcoming events, Blogs; contact page: the
+   form and the location). Each section keeps only its own layout in its own .module.css and applies these
+   classes beside its own:  className={`${field.field} ${styles.projects}`}
 
    Design rules (same as About, the header and the CTA)
    - Colours : black, white, maroon, gold — solid only; the only shadow is the black ledge under a hovered button
@@ -35,6 +35,7 @@
   inset: 0;
   background-image: url("/assets/media/shared/section-bg-2.webp");
   background-repeat: repeat;
+  background-position: center;                     /* the pattern is centred in the section, top to bottom too */
   background-size: 1170px auto;
   opacity: 0.5;
   pointer-events: none;

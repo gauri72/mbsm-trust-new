@@ -1,0 +1,164 @@
+/* =============================================================================
+   Contact page — the location: the map on a gold card, and three gold detail cards beside it.
+   The maroon field, heading, card base and button are shared: see _shared/_components/Field/Field.module.css.
+   Type: the label small, the value medium. The map card and the detail cards are one height on a wide screen (1200px and up); below that the cards go under the map: two to a row up to 992px, one per row under that.
+   ========================================================================== */
+section.location {
+  --location-map-height: 460px;
+  --location-photo-radius: 12px;
+  --location-frame: var(--space-1);      /* the maroon frame round the map */
+  --location-icon-size: 56px;
+}
+
+/* ---- The map: a maroon frame, a gold gap, then the map (the same frame as the blog photos) ---- */
+section.location .mapCard {
+  padding: var(--space-3);
+}
+
+.map {
+  display: block;
+  width: 100%;
+  height: var(--location-map-height);
+  border: var(--location-frame) solid var(--c-maroon);
+  border-radius: var(--location-photo-radius);
+  background-color: var(--c-white);
+}
+
+/* ---- The details: three cards stacked beside the map, sharing its height ---- */
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.detailItem {
+  flex: 1;
+  display: flex;
+}
+
+section.location .detail {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--space-4);
+  height: auto;
+  padding: var(--space-4);
+  text-decoration: none;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+section.location .detail:focus-visible {
+  outline: var(--line-width) solid var(--c-white);
+  outline-offset: 4px;
+}
+
+@media (hover: hover) {
+  section.location .detail:hover {
+    box-shadow: 0 4px 0 var(--c-black);
+    transform: translateY(-4px);
+  }
+}
+
+.icon {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--location-icon-size);
+  height: var(--location-icon-size);
+  border-radius: 50%;
+  background-color: var(--c-maroon);
+  color: var(--c-gold);
+  font-size: var(--text-md);
+  line-height: 1;
+}
+
+.icon i {
+  color: var(--c-gold);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.label {
+  color: var(--c-maroon);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.together {
+  white-space: nowrap;
+}
+
+.value {
+  color: var(--c-black);
+  font-size: var(--text-md);
+  font-weight: 700;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+/* the cards beside the map on a laptop screen: a smaller value, so the address stays on its two lines
+   (the plot, city and pincode line is the longest) */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .value {
+    font-size: var(--text-sm);
+  }
+}
+
+/* tablet and phone (the cards are under the map): each card is centred, the icon above its text */
+@media (max-width: 1199px) {
+  section.location .detail {
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-3);
+    text-align: center;
+  }
+
+  .text {
+    align-items: center;
+  }
+}
+
+/* a tablet's wide screen (below the side-by-side layout): the cards sit two to a row, the last across both */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .detailItem:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 991px) {
+  section.location {
+    --location-map-height: 380px;
+  }
+}
+
+@media (max-width: 575px) {
+  section.location {
+    --location-map-height: 300px;
+    --location-icon-size: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section.location .detail {
+    transition: none;
+  }
+
+  section.location .detail:hover {
+    transform: none;
+  }
+}

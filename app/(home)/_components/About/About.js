@@ -2,12 +2,12 @@
 import { useRef, useState } from "react"
 import Link from "next/link"
 import { PAGES, SITE_MAP_URL, SITE_ADDRESS_PLACE, SITE_ADDRESS_LINE1, SITE_ADDRESS_CITY } from "../../../_shared/_components/siteContent"
-import shared from "../../page.module.css"
+import shared from "../../../_shared/_components/Field/Field.module.css"
 import styles from "./About.module.css"
 
 /* =============================================================================
    About: the trust's introduction — a photo collage, the 25+ years badge, and mission / vision tabs.
-   The maroon field and the gold button are shared (../../page.module.css). Styles: see About.module.css.
+   The maroon field and the gold button are shared (_shared/_components/Field/Field.module.css). Styles: see About.module.css.
    ========================================================================== */
 
 const MISSION_POINTS = [

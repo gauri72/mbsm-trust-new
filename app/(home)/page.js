@@ -6,7 +6,7 @@ import Projects from "./_components/Projects/Projects"
 import Events from "./_components/Events/Events"
 import Blogs from "./_components/Blogs/Blogs"
 
-// The mantra, the closing call-to-action and the closing mantra are the shared frame in app/template.js.
+// The mantra, the border above the closing call-to-action, the call-to-action itself and the closing mantra are the shared frame in app/template.js.
 export default function HomePage() {
     return (
         <>
@@ -21,7 +21,6 @@ export default function HomePage() {
             <Events />
             <Border />
             <Blogs />
-            <Border />
         </>
     )
 }
