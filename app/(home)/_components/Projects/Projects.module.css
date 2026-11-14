@@ -1,92 +1,18 @@
 /* =============================================================================
-   Home — Projects (Upkram): a maroon section with four gold cause cards.
-
-   Design rules (same as About, Upcoming Events, the header and the CTA)
-   - Colours : black, white, maroon, gold — solid only, no shadows
-   - Type    : label + buttons medium, heading large, card text small, the big numbers large (Annapurna SIL, 400)
-   - Icons   : Font Awesome
-   - Spacing : the shared --space-* scale; 20px corners
-   - Buttons : a flat pill that lifts 4px on a solid black ledge, the arrow sliding 6px
+   Home — Projects (Upkram): four gold cause cards under a stats strip.
+   The maroon field, heading, card base and button are shared: see ../../page.module.css.
+   Type here: card text small, the big numbers large, the stats number large and its label medium.
    ========================================================================== */
 
-/* (type sizes and spacing steps: the site's tokens in globals.css) */
-
-/* ---- Section ---- */
-section.projects.projectsMaroon {
-  position: relative;
-  display: block;
-  /* = About, the CTA and Upcoming Events: the header's 26px step, twice */
-  padding: var(--space-6) 0;
-  background-color: var(--c-maroon);
-  /* the About field: maroon fading from a lighter top to a darker foot */
-  background-image: linear-gradient(180deg, #620208 0%, var(--c-maroon) 45%, #620208 100%);
-  overflow: hidden;
-  z-index: 1;
-}
-
-/* ... with its floral texture, tiled at the same size */
-section.projects.projectsMaroon::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("/assets/media/shared/section-bg-2.webp");
-  background-repeat: repeat;
-  background-size: 1170px auto;
-  opacity: 0.5;
-  pointer-events: none;
-  z-index: 0;
-}
-
-@media (max-width: 991px) {
-  section.projects.projectsMaroon::before {
-    background-size: 770px auto;
-  }
-}
-
-section.projects.projectsMaroon > :global(.container) {
-  position: relative;
-  z-index: 1;
-}
-
-/* ---- Heading: label medium gold, title large white ---- */
-section.projects.projectsMaroon .head {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: var(--space-5);
-}
-
-section.projects.projectsMaroon .head :global(.section-title) {
-  margin-bottom: 0;
-}
-
-section.projects.projectsMaroon .head :global(.section-title__tagline-box) {
-  margin-bottom: var(--space-3);
-}
-
-section.projects.projectsMaroon .head :global(.section-title__tagline) {
-  color: var(--c-gold);
-  font-family: var(--font);
-  font-size: var(--head-label);
-  font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: 0;
-  text-transform: none;
-}
-
-section.projects.projectsMaroon .head :global(.section-title__title) {
-  color: var(--c-white);
-  font-family: var(--font);
-  font-size: var(--head-title);
-  font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: 0;
-  text-transform: none;
-  text-shadow: none;
+/* ---- This section's own measures (the maroon field itself is shared) ---- */
+section.projects {
+  --home-head-gap: var(--space-5);       /* room for the stats under the heading */
+  --projects-slot-radius: 12px;
+  --projects-frame: 8px;
 }
 
 /* ---- Stats under the heading: big gold number, white label, a thin gold line between ---- */
-section.projects.projectsMaroon .stats {
+section.projects .stats {
   display: grid;
   grid-template-columns: repeat(2, 1fr);   /* two equal columns, so the divider sits exactly in the page's centre */
   align-items: stretch;
@@ -95,7 +21,7 @@ section.projects.projectsMaroon .stats {
   margin: 0 auto var(--section-title-gap);
 }
 
-section.projects.projectsMaroon .stat {
+section.projects .stat {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,11 +29,11 @@ section.projects.projectsMaroon .stat {
   text-align: center;
 }
 
-section.projects.projectsMaroon .stat + .stat {
+section.projects .stat + .stat {
   border-left: var(--line-width) solid var(--c-gold);
 }
 
-section.projects.projectsMaroon .statNumber {
+section.projects .statNumber {
   color: var(--c-gold);
   font-family: var(--font);
   font-size: var(--text-lg);
@@ -115,7 +41,7 @@ section.projects.projectsMaroon .statNumber {
   line-height: 1.1;
 }
 
-section.projects.projectsMaroon .statLabel {
+section.projects .statLabel {
   margin-top: var(--space-1);
   color: var(--c-white);
   font-family: var(--font);
@@ -124,41 +50,38 @@ section.projects.projectsMaroon .statLabel {
   line-height: 1.3;
 }
 
-/* ---- Cards: solid gold, black text, 20px corners, no shadow; the picture runs edge to edge along the top ---- */
-section.projects.projectsMaroon :global(.row) {
-  align-items: stretch;
-  row-gap: var(--space-4);
+@media (max-width: 480px) {
+  section.projects .stat {
+    padding: 0 var(--space-4);
+  }
 }
 
-section.projects.projectsMaroon .card {
+/* ---- Cards: the picture runs edge to edge along the top (gold card base: page.module.css) ---- */
+section.projects .card {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  overflow: hidden;                          /* the card's rounded corners clip the slot */
-  border-radius: 20px;
-  background-color: var(--c-gold);
-  color: var(--c-black);
-  transition: transform 250ms ease;
 }
 
 /* picture: framed by a thick maroon border on all four sides, shown whole (never cropped);
    the padding is the same gold as the picture's background, so it reads as space inside the frame */
-section.projects.projectsMaroon .slot {
+section.projects .slot {
   margin: var(--space-3) var(--space-3) 0;
   padding: var(--space-3);
-  border: 8px solid var(--c-maroon);
-  border-radius: 12px;
+  border: var(--projects-frame) solid var(--c-maroon);
+  border-radius: var(--projects-slot-radius);
   overflow: hidden;
   background-color: var(--c-gold);
 }
 
-section.projects.projectsMaroon .slot img {
+section.projects .slot img {
   display: block;
   width: 100%;
   height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
 }
 
-section.projects.projectsMaroon .body {
+section.projects .body {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -168,7 +91,7 @@ section.projects.projectsMaroon .body {
 }
 
 /* project count: a large number with its unit beside it */
-section.projects.projectsMaroon .count {
+section.projects .count {
   display: flex;
   justify-content: center;
   align-items: baseline;
@@ -179,18 +102,18 @@ section.projects.projectsMaroon .count {
   font-weight: 400;
 }
 
-section.projects.projectsMaroon .countNumber {
+section.projects .countNumber {
   font-size: var(--text-lg);
   line-height: 1.1;
 }
 
-section.projects.projectsMaroon .countUnit {
+section.projects .countUnit {
   font-size: var(--text-md);
   line-height: 1.3;
 }
 
 /* title: medium, with a short 2px maroon line above it */
-section.projects.projectsMaroon .title {
+section.projects .title {
   margin: 0 0 var(--space-2);
   padding-top: var(--space-3);
   border-top: var(--line-width) solid var(--c-maroon);
@@ -201,76 +124,4 @@ section.projects.projectsMaroon .title {
   font-weight: 400;
   line-height: 1.4;
   text-transform: none;
-}
-
-/* ---- Button under the cards (same as Upcoming Events): flat gold pill, black text, arrow after ---- */
-section.projects.projectsMaroon .cta {
-  margin-top: var(--space-4);
-  text-align: center;
-}
-
-section.projects.projectsMaroon .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-3);
-  height: 58px;
-  padding: 0 var(--space-6);
-  border-radius: 999px;
-  background-color: var(--c-gold);
-  color: var(--c-black);
-  font-family: var(--font);
-  font-size: var(--text-md);
-  font-weight: 700;
-  line-height: 1;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: transform 200ms ease, box-shadow 200ms ease;
-}
-
-section.projects.projectsMaroon .btn span,
-section.projects.projectsMaroon .btn i {
-  color: var(--c-black);
-  font-size: 1em;
-  line-height: 1;
-}
-
-section.projects.projectsMaroon .btn i {
-  transition: transform 200ms ease;
-}
-
-section.projects.projectsMaroon .btn:focus-visible {
-  outline: var(--line-width) solid var(--c-white);
-  outline-offset: 2px;
-}
-
-/* ---- Hover: mouse / trackpad only ---- */
-@media (hover: hover) {
-  /* card: grows slightly, nothing else changes */
-  section.projects.projectsMaroon .card:hover {
-    transform: scale(1.03);
-  }
-
-  section.projects.projectsMaroon .btn:hover {
-    box-shadow: 0 4px 0 var(--c-black);
-    transform: translateY(-4px);
-  }
-
-  section.projects.projectsMaroon .btn:hover i {
-    transform: translateX(6px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  section.projects.projectsMaroon .card,
-  section.projects.projectsMaroon .btn,
-  section.projects.projectsMaroon .btn i {
-    transition: none;
-  }
-
-  section.projects.projectsMaroon .card:hover,
-  section.projects.projectsMaroon .btn:hover,
-  section.projects.projectsMaroon .btn:hover i {
-    transform: none;
-  }
 }

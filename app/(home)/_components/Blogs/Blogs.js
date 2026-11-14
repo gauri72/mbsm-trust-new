@@ -1,11 +1,15 @@
 import Link from "next/link"
-import styles from "./BlogCategories.module.css"
+import { PAGES } from "../../../_shared/_components/siteContent"
+import { SectionHead, MoreButton } from "../../parts"
+import shared from "../../page.module.css"
+import styles from "./Blogs.module.css"
 
 /* =============================================================================
    Home: the blogs page (https://mbsmtrust.org/our-blogs, 68 articles) sorted by theme
    into six categories. The site's own "Pravachan" / "Nirupan" labels are not used.
    `count` = number of articles in the category (ids 1-68 on the live blogs page).
-   Each tile is one link to the blogs page. Styles: see BlogCategories.module.css.
+   Each tile is one link to the blogs page (it has no category filter yet, so all six go to the same place;
+   when it gets one, give each category its own link here). Styles: see Blogs.module.css.
    ========================================================================== */
 
 const CATEGORIES = [
@@ -53,28 +57,27 @@ const CATEGORIES = [
     },
 ]
 
-export default function BlogCategories() {
+/* Sanity check while developing: the counts must add up to the live site's 68 articles. */
+if (process.env.NODE_ENV !== "production") {
+    const total = CATEGORIES.reduce((sum, cat) => sum + cat.count, 0)
+    if (total !== 68) console.warn(`Blogs: the category counts add up to ${total}, expected 68`)
+}
+
+export default function Blogs() {
     return (
-        <section className={`${styles.blogs} ${styles.blogsGold}`}>
+        <section className={`${shared.field} ${styles.blogs}`}>
             <div className="container">
-                <div className={styles.head}>
-                    <div className="section-title text-center sec-title-animation animation-style1">
-                        <div className="section-title__tagline-box">
-                            <span className="section-title__tagline" lang="mr">अमृतवाणी</span>
-                        </div>
-                        <h2 className="section-title__title title-animation" lang="mr">शब्दांचा गंध, भक्तीचा छंद</h2>
-                    </div>
-                </div>
-                <div className="row">
+                <SectionHead label="अमृतवाणी" title="शब्दांचा गंध, भक्तीचा छंद" />
+                <div className={`row ${shared.cards}`}>
                     {CATEGORIES.map((cat, index) => (
                         <div
                             key={cat.title}
                             className={`col-lg-6 wow ${index % 2 === 0 ? "fadeInLeft" : "fadeInRight"}`}
                             data-wow-delay={`${(Math.floor(index / 2) + 1) * 100}ms`}
                         >
-                            <Link href="/pravachan" className={styles.tile} lang="mr">
+                            <Link href={PAGES.pravachan.href} className={`${shared.card} ${styles.tile}`} lang="mr" aria-label={`${cat.title}, ${cat.count} लेख`}>
                                 <div className={styles.image}>
-                                    <img src={cat.image} alt="" loading="lazy" />
+                                    <img src={cat.image} alt="" width="800" height="800" loading="lazy" />
                                 </div>
                                 <div className={styles.body}>
                                     {/* left: the round icon, the article count below it */}
@@ -82,12 +85,12 @@ export default function BlogCategories() {
                                         <span className={styles.icon}>
                                             <i className={cat.icon} aria-hidden="true"></i>
                                         </span>
-                                        <span className={styles.count} lang="mr">{cat.count} लेख</span>
+                                        <span className={styles.count}>{cat.count} लेख</span>
                                     </div>
                                     {/* right: the heading, a line, then the description */}
                                     <div className={styles.text}>
-                                        <h3 className={styles.title} lang="mr">{cat.title} :</h3>
-                                        <p className={styles.desc} lang="mr">{cat.desc}</p>
+                                        <h3 className={styles.title}>{cat.title}</h3>
+                                        <p className={styles.desc}>{cat.desc}</p>
                                     </div>
                                 </div>
                             </Link>
@@ -95,12 +98,7 @@ export default function BlogCategories() {
                     ))}
                 </div>
 
-                <div className={`${styles.cta} wow fadeInUp`} data-wow-delay="300ms">
-                    <Link href="/pravachan" className={styles.btn} lang="mr">
-                        <span>सर्व प्रवचन पाहा</span>
-                        <i className="fas fa-arrow-right" aria-hidden="true"></i>
-                    </Link>
-                </div>
+                <MoreButton href={PAGES.pravachan.href}>सर्व प्रवचन पाहा</MoreButton>
             </div>
         </section>
     )

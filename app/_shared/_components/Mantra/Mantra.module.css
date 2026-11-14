@@ -1,13 +1,6 @@
 /* =============================================================================
    Mantra — scrolling verses on a maroon band (top + closing of every page).
 
-   Contents
-     1. Design tokens            — the band's own (colours and spacing steps: globals.css)
-     2. Band + lines + marquee
-     3. Verse + divider
-     4. Hover + pause            — hover (mouse), tap / click / Enter / Space (everyone)
-     5. Reduced motion
-
    Design rules (same as the header and footer)
    - Colours : maroon band; verses white, gold on hover (as the header strip's
                links); the gold flower divider with a maroon centre.
@@ -26,7 +19,6 @@
   /* colours and the spacing scale come from :root in globals.css */
 
   /* lines */
-  --line-width: 2px;
   --line-gold: var(--line-width) solid var(--c-gold);
 
   /* type size: the site's medium size on desktop (22px), kept at 22px on every screen (the global medium steps down to 20px on phones) */

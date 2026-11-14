@@ -1,26 +1,14 @@
 /* =============================================================================
    Closing call-to-action — a flat maroon section with two elephants.
 
-   Contents
-     1. Design tokens
-     2. Section
-     3. Elephants
-     4. Content                  — label, heading, description
-     5. Buttons
-     6. Hover effects            — mouse / trackpad only
-     7. Responsive layout
-     8. Reduced motion
-
    Design rules (same as the header, footer and mantra)
    - Colours : black, white, maroon, gold — solid only: no transparency, and nothing inherited
                (every label and arrow states its own colour).
    - Type    : label large · heading and buttons medium · description small — all Annapurna SIL
                (sizes: --head-label / --head-title / --text-* in globals.css).
    - Icons   : Font Awesome (the arrow).
-   - Buttons : the site's button (medium Annapurna SIL, 58px flat pill, arrow after the
-               text, like every home button); the two are always the same width (the wider label's) and
-               the same distance apart, side by side or stacked; on hover they keep their
-               colours and lift — up 4px on a solid black ledge, the arrow sliding 6px forward.
+   - Buttons : the global .pill-btn (see globals.css), the two always the same width (the wider label's) and
+               the same distance apart, side by side or stacked.
    - Spacing : the site's scale (globals.css).
    ========================================================================== */
 
@@ -29,14 +17,7 @@
 .cta {
   /* colours, the spacing scale and --text-sm / --text-md / --text-lg come from :root in globals.css */
 
-  /* lines + shadows */
-  --line-width: 2px;
-  --shadow-lift: 0 4px 0 var(--c-black);     /* = header: a button lifted on hover (a solid ledge) */
-  --lift: -4px;                              /* = header: how far a hovered button rises */
-  --nudge: 6px;                              /* = header: how far its arrow slides */
-
   /* layout */
-  --radius-pill: 999px;
   --text-width: 760px;                       /* description line length */
   --ele-w: clamp(460px, 46vw, 600px);        /* elephant clip width */
   /* The least clear space between a trunk tip and the buttons. Negative: the tip (a thin point) may reach a little past
@@ -45,7 +26,6 @@
   /* Half the width of the buttons (side by side, or one stacked button): Cta.js measures it and sets it on the section;
      this is only the starting value, used until the page is running. */
   --buttons-half: 251px;
-  --ease: 200ms ease;
 
   font-family: var(--font);
   font-size: var(--text-sm);
@@ -158,88 +138,14 @@
   margin: var(--space-4) auto 0;
 }
 
-/* the site's button: medium Annapurna SIL in a flat 58px pill */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-3);
-  height: 58px;
-  padding: 0 var(--space-6);
-  border-radius: var(--radius-pill);
-  font-family: var(--font);
-  font-size: var(--text-md);
-  font-weight: 700;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: transform var(--ease), box-shadow var(--ease);
-}
-
-/* colours restated: the site-wide `a` colours must never show */
-.primary {
-  background-color: var(--c-gold);
-  color: var(--c-black);
-}
-
-.secondary {
-  background-color: var(--c-white);
-  color: var(--c-maroon);
-}
-
-/* a button's label and arrow state their own colour (they do not inherit it) */
-.primary > span,
-.primary .icon {
-  color: var(--c-black);
-}
-
-.secondary > span,
-.secondary .icon {
-  color: var(--c-maroon);
-}
-
-/* arrow: the header's icon box, in the text colour */
+/* the arrow of the global .pill-btn: the header's icon box, centred in it */
 .icon {
   flex: none;
   width: 1.25em;
-  font-size: 1em;
-  line-height: 1;
   text-align: center;
-  transition: transform var(--ease);
 }
 
-/* keyboard focus: a white 2px ring, visible on the maroon section */
-.btn:focus-visible {
-  outline: var(--line-width) solid var(--c-white);
-  outline-offset: var(--line-width);
-}
-
-
-/* ---- 6. Hover effects (mouse / trackpad only) ----------------------------------
-   Inside (hover: hover) so a tap never leaves a stuck hover colour. Colours are
-   restated on purpose: the site-wide `a:hover` (Bootstrap blue) must never show. */
-@media (hover: hover) {
-  /* lift, as the header's buttons (colours stay); the arrow slides forward */
-  .btn:hover {
-    box-shadow: var(--shadow-lift);
-    transform: translateY(var(--lift));
-  }
-
-  .btn:hover .icon {
-    transform: translateX(var(--nudge));
-  }
-
-  /* colours restated: Bootstrap's a:hover blue must never show */
-  .primary:hover {
-    color: var(--c-black);
-  }
-
-  .secondary:hover {
-    color: var(--c-maroon);
-  }
-}
-
-
-/* ---- 7. Responsive layout ------------------------------------------------------- */
+/* ---- 6. Responsive layout ------------------------------------------------------- */
 /* narrow tablets: a smaller elephant, so more of it shows beside the buttons */
 @media (max-width: 991px) {
   .cta {
@@ -275,16 +181,3 @@
 }
 
 
-/* ---- 8. Reduced motion ---------------------------------------------------------- */
-/* no movement: hovered buttons only gain the shadow (AlphaLoopVideo shows no elephants at all) */
-@media (prefers-reduced-motion: reduce) {
-  .btn,
-  .icon {
-    transition: none;
-  }
-
-  .btn:hover,
-  .btn:hover .icon {
-    transform: none;
-  }
-}

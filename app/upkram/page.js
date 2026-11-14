@@ -1,26 +1,10 @@
-import Mantra from "../_shared/_components/Mantra/Mantra"
-import Breadcrumb from "../_shared/_components/Breadcrumb/Breadcrumb"
-import { pageTitle } from "../_shared/_components/siteContent"
-import Border from "../_shared/_components/Border/Border"
-import Gallery from "../_shared/_components/Gallery/Gallery"
-import Cta from "../_shared/_components/Cta/Cta"
 import ComingSoon from "../_shared/_components/ComingSoon/ComingSoon"
+import { pageMetadata } from "../_shared/_components/siteContent"
 
-export const metadata = {
-    title: pageTitle("upkram"),
-    description: 'Ongoing initiatives and seva activities of Mangal Bhakta Seva Mandal.',
-}
+// The mantra, the breadcrumb artwork, the border, the gallery and the closing call-to-action are the shared
+// frame in app/template.js: a page only adds its own content.
+export const metadata = pageMetadata("upkram", "Ongoing initiatives and seva activities of Mangal Bhakta Seva Mandal.")
 
 export default function UpkramPage() {
-    return (
-        <>
-            <Mantra />
-            <Breadcrumb page="upkram" />
-            <Border />
-            <Gallery />
-            <ComingSoon />
-            <Cta />
-            <Mantra closing />
-        </>
-    )
+    return <ComingSoon />
 }

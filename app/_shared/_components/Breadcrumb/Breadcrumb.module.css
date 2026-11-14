@@ -2,11 +2,6 @@
    Breadcrumb — the inner-page hero: one full-width 16:9 artwork, shown exactly as
    supplied, with the page's name, its icon and the two characters' names set on it.
 
-   Contents
-     1. Design tokens
-     2. Hero + artwork           — always 16:9
-     3. Text on the artwork
-
    Design rules (same as the header, footer, mantra and CTA)
    - Colours : maroon (the page name on its scroll), gold (the page icon in its medallion),
                white (the names on their plates).
@@ -17,7 +12,7 @@
    ========================================================================== */
 
 
-/* ---- 1. Design tokens ------------------------------------------------------------- */
+/* ---- Hero + artwork ---- */
 .root {
   /* sizes, all from the artwork's own width (cqw), so each piece keeps its proportion at every
      screen size: the names fit the plates (16.8% of the width ÷ 9.8em, the longer name), the
@@ -25,11 +20,7 @@
   --plate-size: 1.71cqw;
   --title-size: 4.6cqw;
   --icon-size: 4cqw;
-}
 
-
-/* ---- 2. Hero + artwork ----------------------------------------------------------------- */
-.root {
   position: relative;
   overflow: hidden;
   background-color: var(--c-maroon);
@@ -54,7 +45,7 @@
 }
 
 
-/* ---- 3. Text on the artwork --------------------------------------------------------
+/* ---- Text on the artwork --------------------------------------------------------
    The artwork has no lettering of its own; every piece of text is centred on its (--x, --y)
    point of the artwork, so it stays on its plate / scroll / medallion at any size. */
 .anchor {

@@ -1,14 +1,6 @@
 /* =============================================================================
    Gallery — scrolling square photos on a maroon band (every page).
 
-   Contents
-     1. Design tokens
-     2. Token breakpoints        — 5 / 4 / 3 photos across
-     3. Band + marquee
-     4. Photo tiles
-     5. Pause                    — hover (mouse), tap / click, and the keyboard button
-     6. Reduced motion
-
    Design rules (same as the header, footer, mantra and CTA)
    - Colours : a flat maroon band; 2px solid gold dividers between the photos; the photos
                themselves are shown as they are (nothing laid over them).
@@ -21,7 +13,6 @@
 /* ---- 1. Design tokens ------------------------------------------------------- */
 .root {
   /* lines */
-  --line-width: 2px;
   --line-gold: var(--line-width) solid var(--c-gold);
 
   /* layout */
@@ -95,7 +86,7 @@
 
 /* ---- 5. Pause ------------------------------------------------------------------
    The photos are not links: pausing the scroll lets a photo be looked at. A tap or click on the band
-   toggles it (.paused); hovering with a mouse pauses it too; the button below is the way in for the
+   toggles it (.paused); hovering with a mouse pauses it too; the global .pause-btn is the way in for the
    keyboard and screen readers. */
 .paused .track {
   animation-play-state: paused;
@@ -106,38 +97,6 @@
     animation-play-state: paused;
   }
 }
-
-/* the keyboard button: out of sight until Tab reaches it, then a gold pill in the band's corner */
-.pause {
-  position: absolute;
-  z-index: 2;
-  top: var(--space-2);
-  left: var(--space-2);
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-  border: 0;
-  border-radius: 999px;
-  background-color: var(--c-gold);
-  color: var(--c-black);
-  font-family: var(--font);
-  font-size: var(--text-sm);
-  line-height: 1.3;
-}
-
-.pause:focus-visible {
-  width: auto;
-  height: auto;
-  padding: var(--space-1) var(--space-3);
-  overflow: visible;
-  clip-path: none;
-  outline: var(--line-width) solid var(--c-white);
-  outline-offset: var(--line-width);
-}
-
 
 /* ---- 6. Reduced motion: no scroll — the first photos stand still --------------- */
 @media (prefers-reduced-motion: reduce) {

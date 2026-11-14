@@ -1,63 +1,79 @@
 'use client'
+import { useEffect, useRef, useState } from "react"
 import { Autoplay, EffectFade } from "swiper/modules"
-import { Swiper, SwiperSlide, useSwiperSlide } from "swiper/react"
-import { motion, MotionConfig } from "framer-motion"
-import { SLIDE_DURATION, SLIDE_SCALE, SLIDE_TRANSITION } from "./heroMotion"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { CHARACTERS, SITE_NAME } from "../../../_shared/_components/siteContent"
+import { useReducedMotion } from "../../../_shared/_components/utils"
 import styles from "./Hero.module.css"
 
 /* =============================================================================
-   Home hero: two 16:9 artworks fading in turn, shown exactly as supplied (their nameplates
-   carry their own lettering). Nothing is layered on them and there is no reveal animation
-   when the page opens. The slides change with a slow zoom dissolve (heroMotion.js).
-   Styles: see Hero.module.css.
+   Home hero: two 16:9 artworks fading in turn, shown exactly as supplied (their nameplates carry their own
+   lettering, so each slide is labelled with that name for screen readers). Styles: see Hero.module.css.
+
+   Slide change — "zoom dissolve": the old picture melts away while slowly zooming out of frame; the new one
+   settles in from slightly larger (Swiper's fade does the dissolve, the CSS the zoom).
+
+   The slideshow pauses while the mouse is over it and can be stopped with the "स्लाइडशो थांबवा" button
+   (it appears when Tab reaches it). Visitors who ask for reduced motion get no slideshow: the first artwork stays.
+
+   The page's h1 is here: the trust's name, hidden from sight (the artwork already shows it).
    ========================================================================== */
 
-const HOME_SLIDES = [
-    "/assets/media/home/slider-v1-img-1-plain.webp",
-    "/assets/media/home/slider-v1-img-2-plain.webp",
+const SLIDES = [
+    { src: "/assets/media/home/slider-v1-img-1-plain.webp", name: CHARACTERS.swami.name },
+    { src: "/assets/media/home/slider-v1-img-2-plain.webp", name: CHARACTERS.datta.name },
 ]
+
+const SLIDE_MS = 1500          // a slide change takes this long: Swiper's cross-fade and the CSS zoom (--slide-ms)
 
 const swiperOptions = {
     modules: [Autoplay, EffectFade],
     effect: "fade",
     fadeEffect: { crossFade: true },
-    speed: SLIDE_DURATION * 1000,     // = the zoom dissolve's duration (milliseconds here)
+    speed: SLIDE_MS,
     loop: true,
     allowTouchMove: false,
     autoplay: {
         delay: 5000,                  // how long a slide stays before the next change begins
         disableOnInteraction: false,
+        pauseOnMouseEnter: true,
     },
 }
 
-// One slide: settled while it is the active one, a little larger while it waits or leaves — so the
-// incoming picture settles in as the outgoing one zooms away (Swiper's fade does the dissolve).
-function Slide({ src }) {
-    const { isActive } = useSwiperSlide()
-    return (
-        <motion.div
-            className={styles.media}
-            style={{ backgroundImage: `url(${src})` }}
-            initial={false}
-            animate={{ scale: isActive ? SLIDE_SCALE.active : SLIDE_SCALE.idle }}
-            transition={SLIDE_TRANSITION}
-        />
-    )
-}
-
 export default function Hero() {
+    const reducedMotion = useReducedMotion()
+    const [paused, setPaused] = useState(false)
+    const swiperRef = useRef(null)
+    const playing = !reducedMotion && !paused
+
+    // start / stop the slideshow when the visitor's choice changes
+    useEffect(() => {
+        const autoplay = swiperRef.current?.autoplay
+        if (autoplay) playing ? autoplay.start() : autoplay.stop()
+    }, [playing])
+
     return (
-        <MotionConfig reducedMotion="user">
-            <section className={styles.root}>
-                <Swiper {...swiperOptions} className={styles.swiper}>
-                    {HOME_SLIDES.map((src) => (
-                        <SwiperSlide key={src}>
-                            {/* decorative artwork */}
-                            <Slide src={src} />
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </section>
-        </MotionConfig>
+        <section className={styles.root} style={{ "--slide-ms": `${SLIDE_MS}ms` }}>
+            <h1 className="visually-hidden" lang="mr">{SITE_NAME}</h1>
+            {!reducedMotion && (
+                <button type="button" className="pause-btn" aria-pressed={paused} onClick={() => setPaused((p) => !p)}>
+                    स्लाइडशो थांबवा
+                </button>
+            )}
+            <Swiper
+                {...swiperOptions}
+                className={styles.swiper}
+                onSwiper={(swiper) => {
+                    swiperRef.current = swiper
+                    if (!playing) swiper.autoplay.stop()
+                }}
+            >
+                {SLIDES.map((slide) => (
+                    <SwiperSlide key={slide.src}>
+                        <div className={styles.media} role="img" aria-label={slide.name} lang="mr" style={{ backgroundImage: `url(${slide.src})` }} />
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+        </section>
     )
 }

@@ -1,5 +1,6 @@
 'use client'
-import { useEffect, useLayoutEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
+import { useIsomorphicLayoutEffect } from "../utils"
 import styles from "./Border.module.css"
 
 /* =============================================================================
@@ -43,9 +44,6 @@ const signsThatFit = (width, slot) => {
     const slots = Math.floor(width / slot)
     return slots < 1 ? 1 : slots - ((slots - 1) % 4)
 }
-
-// useLayoutEffect measures before the browser paints; on the server it does nothing (and warns), so use useEffect there
-const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect
 
 export default function Border() {
     const stripRef = useRef(null)

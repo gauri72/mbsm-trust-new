@@ -7,6 +7,7 @@ import {
     SITE_NAME_DISPLAY, SITE_LOGO_SRC, SITE_ADDRESS_SHORT, SITE_ADDRESS_PINCODE,
     SITE_PHONE_TEL, SITE_PHONE_DISPLAY, SITE_EMAIL, SITE_EMAIL_MAILTO, SITE_MAP_URL,
 } from "../siteContent"
+import { cx } from "../utils"
 import styles from "./Header.module.css"
 
 /* =============================================================================
@@ -50,9 +51,6 @@ const NAV_ITEMS = [
     PAGES.sampark,
 ]
 const DRAWER_ITEMS = NAV_ITEMS.flatMap((item) => item.children ?? [item])
-
-// join class names, skipping falsy ones: cx("a", isOpen && "b")
-const cx = (...names) => names.filter(Boolean).join(" ")
 
 // ---- Small building blocks ----------------------------------------------------
 // Logo medal + name. The logo is decorative (alt="") because the name sits right

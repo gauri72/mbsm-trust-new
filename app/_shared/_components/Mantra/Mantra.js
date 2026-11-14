@@ -1,5 +1,6 @@
 'use client'
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import { cx, useReducedMotion } from "../utils"
 import styles from "./Mantra.module.css"
 
 /* =============================================================================
@@ -53,20 +54,10 @@ const Divider = () => (
     </svg>
 )
 
-// join class names, skipping falsy ones
-const cx = (...names) => names.filter(Boolean).join(" ")
-
 export default function Mantra({ closing = false }) {
     const [paused, setPaused] = useState(false)
     // reduced motion: the CSS shows one still verse, so there is nothing to pause (and no button to offer)
-    const [still, setStill] = useState(false)
-    useEffect(() => {
-        const query = window.matchMedia("(prefers-reduced-motion: reduce)")
-        const update = () => setStill(query.matches)
-        update()
-        query.addEventListener("change", update)
-        return () => query.removeEventListener("change", update)
-    }, [])
+    const still = useReducedMotion()
     const mantras = closing ? CLOSING_MANTRAS : TOP_MANTRAS
     const repeat = Math.max(REPEAT_COUNT, Math.ceil(MIN_ITEMS_PER_HALF / mantras.length))
     const items = Array(repeat * 2).fill(mantras).flat()

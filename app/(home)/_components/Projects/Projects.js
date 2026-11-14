@@ -1,4 +1,6 @@
-import Link from "next/link"
+import { PAGES } from "../../../_shared/_components/siteContent"
+import { SectionHead, MoreButton } from "../../parts"
+import shared from "../../page.module.css"
 import styles from "./Projects.module.css"
 
 /* =============================================================================
@@ -32,24 +34,19 @@ const CAUSES = [
     },
 ]
 
-/* Verified totals from https://mbsmtrust.org/our-causes (the card counts add up to 30). Add more only with real figures. */
+/* Totals are derived from CAUSES, so they can never disagree with the cards
+   (source: https://mbsmtrust.org/our-causes lists 30 projects). Add more only with real figures. */
+const TOTAL_PROJECTS = CAUSES.reduce((sum, cause) => sum + Number(cause.number), 0)
 const STATS = [
-    { number: "30", label: "एकूण उपक्रम" },
-    { number: "04", label: "सेवाक्षेत्रे" },
+    { number: String(TOTAL_PROJECTS), label: "एकूण उपक्रम" },
+    { number: String(CAUSES.length).padStart(2, "0"), label: "सेवाक्षेत्रे" },
 ]
 
 export default function Projects() {
     return (
-        <section className={`${styles.projects} ${styles.projectsMaroon}`}>
+        <section className={`${shared.field} ${styles.projects}`}>
             <div className="container">
-                <div className={styles.head}>
-                    <div className="section-title text-center sec-title-animation animation-style1">
-                        <div className="section-title__tagline-box">
-                            <span className="section-title__tagline" lang="mr">सामाजिक प्रकल्प</span>
-                        </div>
-                        <h2 className="section-title__title title-animation" lang="mr">सेवेचा ध्यास, समाजाचा विकास</h2>
-                    </div>
-                </div>
+                <SectionHead label="सामाजिक प्रकल्प" title="सेवेचा ध्यास, समाजाचा विकास" />
 
                 <div className={`${styles.stats} wow fadeInUp`} data-wow-delay="100ms">
                     {STATS.map((stat) => (
@@ -60,17 +57,17 @@ export default function Projects() {
                     ))}
                 </div>
 
-                <div className="row">
+                <div className={`row ${shared.cards}`}>
                     {CAUSES.map((cause, index) => (
                         <div
                             key={cause.title}
                             className="col-xl-3 col-lg-6 col-md-6 wow fadeInUp"
                             data-wow-delay={`${(index + 1) * 100}ms`}
                         >
-                            <div className={styles.card}>
-                                {/* photo slot */}
+                            <div className={`${shared.card} ${styles.card}`}>
+                                {/* photo slot: decorative (the title below names the cause), so empty alt */}
                                 <div className={styles.slot}>
-                                    <img src={cause.image} alt={cause.title} loading="lazy" />
+                                    <img src={cause.image} alt="" width="800" height="450" loading="lazy" />
                                 </div>
                                 <div className={styles.body}>
                                     <p className={styles.count} lang="mr">
@@ -84,12 +81,7 @@ export default function Projects() {
                     ))}
                 </div>
 
-                <div className={`${styles.cta} wow fadeInUp`} data-wow-delay="300ms">
-                    <Link href="/upkram" className={styles.btn} lang="mr">
-                        <span>सर्व उपक्रम पाहा</span>
-                        <i className="fas fa-arrow-right" aria-hidden="true"></i>
-                    </Link>
-                </div>
+                <MoreButton href={PAGES.upkram.href}>सर्व उपक्रम पाहा</MoreButton>
             </div>
         </section>
     )

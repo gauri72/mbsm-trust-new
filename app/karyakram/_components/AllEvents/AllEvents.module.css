@@ -78,38 +78,10 @@
   flex: 0 1 auto;
 }
 
-.toran {
-  flex: 1 1 0;
-  max-width: 420px;
-  width: 100%;
-  height: auto;
-  /* toran.mov's raw frame is 2560x1440 (16:9) with the actual garland
-     artwork sitting in the top portion of that frame and empty space
-     below — crop to the toran.png artwork's ~3:1 proportions, anchored
-     to the top so the motif isn't cut off. */
-  aspect-ratio: 3 / 1;
-  object-fit: cover;
-  object-position: top;
-  opacity: 0.95;
-}
-
-.toranLeft {
-  justify-self: end;
-}
-
-@media (max-width: 1199px) {
-  .toran {
-    max-width: 300px;
-  }
-}
-
 @media (max-width: 991px) {
 
 /* Tablet and mobile: drop the toran videos entirely so the title row is
    just the tagline + heading, centred with no side ornament. */
-  .toran {
-    display: none;
-  }
 
   .titleRow {
     gap: 0;

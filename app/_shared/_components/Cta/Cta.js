@@ -1,8 +1,9 @@
 'use client'
-import { useEffect, useLayoutEffect, useRef } from "react"
+import { useRef } from "react"
 import Link from "next/link"
 import AlphaLoopVideo from "./AlphaLoopVideo/AlphaLoopVideo"
 import { PAGES, CTA, SITE_NAME_DISPLAY, SITE_TAGLINE } from "../siteContent"
+import { cx, useIsomorphicLayoutEffect } from "../utils"
 import styles from "./Cta.module.css"
 
 /* =============================================================================
@@ -39,12 +40,6 @@ const ELEPHANT = {
     webmSrc: "/assets/media/shared/elephant-loop.webm",
 }
 
-// join class names, skipping falsy ones
-const cx = (...names) => names.filter(Boolean).join(" ")
-
-// useLayoutEffect measures before the browser paints; on the server it does nothing (and warns), so use useEffect there
-const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect
-
 export default function Cta() {
     const sectionRef = useRef(null)
     const buttonsRef = useRef(null)
@@ -80,7 +75,7 @@ export default function Cta() {
                     </div>
                     <div ref={buttonsRef} className={cx(styles.buttons, "wow fadeInUp")} data-wow-delay="200ms">
                         {BUTTONS.map((b) => (
-                            <Link key={b.href} href={b.href} className={cx(styles.btn, styles[b.variant])}>
+                            <Link key={b.href} href={b.href} className={cx("pill-btn", b.variant === "secondary" && "pill-btn--white")}>
                                 <span>{b.label}</span>
                                 <i className={cx(styles.icon, "fas fa-arrow-right")} aria-hidden="true"></i>
                             </Link>

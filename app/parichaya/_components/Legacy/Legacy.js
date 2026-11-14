@@ -250,7 +250,7 @@ export default function Legacy() {
                 <h2 className="section-title__title title-animation">श्रद्धेपासून सेवेपर्यंतचा <br className={styles.legacyOneTitleBreak} /> दिव्य प्रवास</h2>
             </div>
 
-            <div className={`${styles.legacyBookStage} ${isOpen ? styles.legacyBookStageOpened : closedSide === "back" ? `${styles.legacyBookStageClosed} ${styles.legacyBookStageClosedBack}` : `${styles.legacyBookStageClosed} ${styles.legacyBookStageClosedFront}`}`}>
+            <div className={`${styles.legacyBookStage} ${isOpen ? styles.legacyBookStageOpened : closedSide === "back" ? styles.legacyBookStageClosedBack : styles.legacyBookStageClosedFront}`}>
                 <button
                     type="button"
                     className={`${styles.legacyBookArrow} ${styles.legacyBookArrowPrev}`}
@@ -303,7 +303,7 @@ export default function Legacy() {
 
                 <button
                     type="button"
-                    className={`${styles.legacyBookArrow} ${styles.legacyBookArrowNext}`}
+                    className={styles.legacyBookArrow}
                     onClick={goNext}
                     disabled={pageIndex === totalPages - 1}
                     aria-label="पुढील पान"
@@ -323,7 +323,7 @@ export default function Legacy() {
                     </button>
                     <button
                         type="button"
-                        className={`${styles.legacyBookArrow} ${styles.legacyBookArrowNext} ${styles.legacyBookArrowStacked}`}
+                        className={`${styles.legacyBookArrow} ${styles.legacyBookArrowStacked}`}
                         onClick={goNext}
                         disabled={pageIndex === totalPages - 1}
                         aria-label="पुढील पान"

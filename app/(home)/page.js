@@ -1,20 +1,15 @@
-import Mantra from "../_shared/_components/Mantra/Mantra"
-import Hero from "./_components/Hero/Hero"
 import Border from "../_shared/_components/Border/Border"
 import Gallery from "../_shared/_components/Gallery/Gallery"
-import Cta from "../_shared/_components/Cta/Cta"
+import Hero from "./_components/Hero/Hero"
 import About from "./_components/About/About"
 import Projects from "./_components/Projects/Projects"
-import BlogCategories from "./_components/BlogCategories/BlogCategories"
-// Hidden on the home page for now (to bring it back, uncomment its import and its tag):
-// - HomeGallery: the bottom mosaic
-// import HomeGallery from "./_components/HomeGallery/HomeGallery"
-import Event from "./_components/Event/Event"
+import Events from "./_components/Events/Events"
+import Blogs from "./_components/Blogs/Blogs"
 
-export default function Home() {
+// The mantra, the closing call-to-action and the closing mantra are the shared frame in app/template.js.
+export default function HomePage() {
     return (
         <>
-            <Mantra />
             <Hero />
             <Border />
             <Gallery />
@@ -23,12 +18,10 @@ export default function Home() {
             <Border />
             <Projects />
             <Border />
-            <Event />
+            <Events />
             <Border />
-            <BlogCategories />
+            <Blogs />
             <Border />
-            <Cta />
-            <Mantra closing />
         </>
     )
 }

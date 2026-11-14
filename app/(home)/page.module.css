@@ -1,0 +1,85 @@
+/* =============================================================================
+   Home — what the maroon sections (About, Projects, Upcoming events, Blogs) share.
+   Each section keeps only its own layout in its own .module.css and applies these
+   classes beside its own:  className={`${shared.field} ${styles.projects}`}
+
+   Design rules (same as About, the header and the CTA)
+   - Colours : black, white, maroon, gold — solid only; the only shadow is the black ledge under a hovered button
+   - Type    : heading label + title and the button (Annapurna SIL, bold); type sizes and spacing steps are the site's tokens in globals.css
+   - Icons   : Font Awesome
+   - Spacing : the shared --space-* scale; 20px corners
+
+   Classes:  field (the section)  ·  head  ·  cards (the grid row)  ·  card  ·  cta (the row of the button)
+   The heading look (.section-title--maroon) and the button (.pill-btn) are global, in globals.css.
+   A section can change a measure by setting one of the --home-* variables on its own class.
+   ========================================================================== */
+
+/* ---- Field: the maroon section with its floral texture ---- */
+.field {
+  position: relative;
+  display: block;
+  /* = About and the CTA: the header's 26px step, twice */
+  padding: var(--space-6) 0;
+  background-color: var(--c-maroon);
+  overflow: hidden;
+  z-index: 1;
+
+  --home-gap: var(--space-4);                      /* between the card rows, and above the button */
+  --home-head-gap: var(--section-title-gap);       /* between the heading and what follows */
+  --home-card-radius: 20px;
+}
+
+.field::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/assets/media/shared/section-bg-2.webp");
+  background-repeat: repeat;
+  background-size: 1170px auto;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 991px) {
+  .field::before {
+    background-size: 770px auto;
+  }
+}
+
+.field > :global(.container) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Heading: centred; the gold label and the white title are the global .section-title--maroon ---- */
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--home-head-gap);
+}
+
+.head :global(.section-title) {
+  margin-bottom: 0;
+}
+
+/* ---- Cards: the grid row, and a solid gold card with black text and rounded corners ---- */
+.field .cards {
+  align-items: stretch;
+  row-gap: var(--home-gap);
+}
+
+.card {
+  height: 100%;
+  overflow: hidden;                                /* the card's rounded corners clip what is inside */
+  border-radius: var(--home-card-radius);
+  background-color: var(--c-gold);
+  color: var(--c-black);
+}
+
+/* ---- Button row under the cards: the button itself is the global .pill-btn ---- */
+.cta {
+  margin-top: var(--home-gap);
+  text-align: center;
+}

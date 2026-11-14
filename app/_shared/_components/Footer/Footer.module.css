@@ -1,17 +1,6 @@
 /* =============================================================================
    Site footer — main area (brand, link columns, contacts) + bottom bar.
 
-   Contents
-     1. Design tokens            — the footer's own (colours, spacing steps and text sizes: globals.css)
-     2. Token breakpoints
-     3. Shared                   — resets, icon box, focus ring
-     4. Main area                — grid, brand, about, columns, lists
-     5. Bottom bar
-     6. Explicit colours         — nothing is inherited
-     7. Hover effects            — mouse / trackpad only
-     8. Responsive layout
-     9. Reduced motion
-
    Design rules (same as the header)
    - Colours : black, white, maroon, gold — solid only: no transparency, and nothing inherited
                (every text and icon states its own colour: section 6).
@@ -35,7 +24,6 @@
   /* colours, the spacing scale and --text-sm / --text-md come from :root in globals.css */
 
   /* lines + shadows */
-  --line-width: 2px;
   --line-dark: var(--line-width) solid var(--c-black);
   /* "shadows" are solid rings (no blur, no transparency) */
   --shadow-medal: 0 0 0 3px var(--c-maroon);
@@ -332,17 +320,6 @@
   padding: var(--space-0) 0;
 }
 
-/* text for screen readers only */
-.srOnly {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
 /* keeps each phrase whole, so a narrow screen only breaks the line between phrases */
 .nowrap {
   white-space: nowrap;
@@ -354,8 +331,7 @@
    to its label). Gold body → black (maroon on hover); maroon bottom bar → gold, its links white. */
 .brandName,
 .aboutText,
-.item > span,
-.srOnly {
+.item > span {
   color: var(--c-black);
 }
 

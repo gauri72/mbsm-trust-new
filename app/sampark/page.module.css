@@ -272,6 +272,78 @@
     margin-bottom: 40px;
 }
 
+/* ---- The old round-arrow button (.thm-btn) of the hidden contact form and visit card ----
+   Kept here, with the code that uses it; the site's one button for everything else is .pill-btn (globals.css). */
+.thmBtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none !important;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--anity-black);
+  border: 1px solid var(--anity-base);
+  padding: 7px 25px 7px;
+  padding-right: 9px;
+  border-radius: 30px;
+  transition: 0.5s ease-in-out;
+  text-transform: uppercase;
+  overflow: hidden;
+  letter-spacing: 1.4px;
+  gap: 10px;
+  z-index: 2;
+  text-align: center;
+}
+
+.thmBtn::after {
+  content: "";
+  background-color: var(--anity-black);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  clip-path: circle(0% at 50% 50%);
+  transition: all cubic-bezier(0, 0.96, 0.58, 1.1) 0.8s;
+  z-index: -1;
+}
+
+.thmBtn:hover:after {
+  clip-path: circle(100% at 50% 50%);
+  transition: all cubic-bezier(0, 0.96, 0.58, 1.1) 4s;
+}
+
+.thmBtn span {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background-color: var(--anity-base);
+  border-radius: 50%;
+  font-size: 14px;
+  color: var(--anity-white);
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+
+.thmBtn:hover span {
+  background-color: var(--anity-white);
+  color: var(--anity-base);
+  transition-delay: 200ms;
+}
+
+.thmBtn:hover {
+  color: var(--anity-white);
+  border: 1px solid var(--anity-black);
+}
+
 .btnBox {
     position: relative;
     display: block;
@@ -288,28 +360,28 @@
     --au-cream: #FBF1DC;
 }
 
-.contactOneOrnate .btnBox :global(.thm-btn) {
+.contactOneOrnate .btnBox .thmBtn {
     background-color: var(--au-maroon);
     border-color: var(--au-maroon-dk);
     color: var(--au-cream);
 }
 
-.contactOneOrnate .btnBox :global(.thm-btn)::after {
+.contactOneOrnate .btnBox .thmBtn::after {
     background-color: var(--au-ink);
 }
 
-.contactOneOrnate .btnBox :global(.thm-btn) span {
+.contactOneOrnate .btnBox .thmBtn span {
     background-color: var(--au-gold);
     color: var(--au-ink);
 }
 
-.contactOneOrnate .btnBox :global(.thm-btn):hover,
-.contactOneOrnate .btnBox :global(.thm-btn):focus-visible {
+.contactOneOrnate .btnBox .thmBtn:hover,
+.contactOneOrnate .btnBox .thmBtn:focus-visible {
     border-color: var(--au-ink);
     color: var(--au-gold-lite);
 }
 
-.contactOneOrnate .btnBox :global(.thm-btn):hover span {
+.contactOneOrnate .btnBox .thmBtn:hover span {
     background-color: var(--au-cream);
     color: var(--au-ink);
 }

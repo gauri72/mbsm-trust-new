@@ -1,30 +1,14 @@
-import Mantra from "../_shared/_components/Mantra/Mantra"
-import Breadcrumb from "../_shared/_components/Breadcrumb/Breadcrumb"
-import { pageTitle } from "../_shared/_components/siteContent"
-import Border from "../_shared/_components/Border/Border"
-import Gallery from "../_shared/_components/Gallery/Gallery"
-import Cta from "../_shared/_components/Cta/Cta"
 import ComingSoon from "../_shared/_components/ComingSoon/ComingSoon"
+import { pageMetadata } from "../_shared/_components/siteContent"
 // Hidden for now (to bring them back, uncomment their imports and tags):
 // import PhotoGallery from "./_components/PhotoGallery/PhotoGallery"
 // import VideoGallery from "./_components/VideoGallery/VideoGallery"
 
-export const metadata = {
-    title: pageTitle("chitrasangraha"),
-    description: 'Explore photographs from Shri Shubharay Maharaj Math — temple, seva and community events.',
-}
+// The mantra, the breadcrumb artwork, the border, the gallery and the closing call-to-action are the shared
+// frame in app/template.js: a page only adds its own content.
+export const metadata = pageMetadata("chitrasangraha", "Explore photographs from Shri Shubharay Maharaj Math — temple, seva and community events.")
 
 export default function ChitrasangrahaPage() {
-    return (
-        <>
-            <Mantra />
-            <Breadcrumb page="chitrasangraha" />
-            <Border />
-            <Gallery />
-            <ComingSoon />
-            {/* Hidden for now: <PhotoGallery /> and <VideoGallery /> */}
-            <Cta />
-            <Mantra closing />
-        </>
-    )
+    // Hidden for now: <PhotoGallery /> and <VideoGallery />
+    return <ComingSoon />
 }

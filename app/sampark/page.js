@@ -2,11 +2,6 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import Mantra from "../_shared/_components/Mantra/Mantra"
-import Breadcrumb from "../_shared/_components/Breadcrumb/Breadcrumb"
-import Border from "../_shared/_components/Border/Border"
-import Gallery from "../_shared/_components/Gallery/Gallery"
-import Cta from "../_shared/_components/Cta/Cta"
 import ComingSoon from "../_shared/_components/ComingSoon/ComingSoon"
 import {
     SITE_NAME, SITE_PHONE_TEL, SITE_PHONE_DISPLAY as PHONE_DISPLAY, SITE_EMAIL, SITE_EMAIL_MAILTO, SITE_MAP_URL,
@@ -107,14 +102,6 @@ export default function Home() {
 
     return (
         <>
-        <>
-        <Mantra />
-
-        <Breadcrumb page="sampark" />
-
-        <Border />
-        <Gallery />
-
         <ComingSoon />
 
         {/* Hidden for now (kept in place, not deleted): the contact form and the map */}
@@ -139,7 +126,7 @@ export default function Home() {
                         <h2 className="section-title__title title-animation" lang="mr">आपला संदेश<br/> मंगल भक्त सेवा मंडळापर्यंत पोहोचवा
                         </h2>
                     </div>
-                    <form className={`${styles.contactFormValidated} ${styles.form}`} onSubmit={handleSubmit} noValidate>
+                    <form className={styles.form} onSubmit={handleSubmit} noValidate>
                         <div className="row">
                             <div className="col-xl-6 col-lg-6">
                                 <h4 className={styles.inputTitle} lang="mr">आपले नाव</h4>
@@ -208,7 +195,7 @@ export default function Home() {
                                 </div>
                                 {errors.message && <span className={styles.error} lang="mr">{errors.message}</span>}
                                 <div className={styles.btnBox}>
-                                    <button type="submit" className={`thm-btn ${styles.btn}`} lang="mr" disabled={status === "submitting"}>
+                                    <button type="submit" className={`${styles.thmBtn} ${styles.btn}`} lang="mr" disabled={status === "submitting"}>
                                         {status === "submitting" ? "पाठवत आहे..." : "संदेश पाठवा"}
                                         <span><i className="fas fa-arrow-right"></i></span>
                                     </button>
@@ -318,7 +305,7 @@ export default function Home() {
                 </div>
                 <div className={`row ${styles.contactFaqRow}`}>
                     <div className="col-xl-5 col-lg-5">
-                        <div className={`visit-card ${styles.contactFaqVisitCard}`}>
+                        <div className="visit-card">
                             <div className="visit-card__header">
                                 <span className="visit-card__icon">
                                     <i className="fas fa-clock"></i>
@@ -356,7 +343,7 @@ export default function Home() {
                             </div>
 
                             <div className="visit-card__actions">
-                                <Link href={SITE_MAP_URL} target="_blank" rel="noopener noreferrer" className="thm-btn" lang="mr">
+                                <Link href={SITE_MAP_URL} target="_blank" rel="noopener noreferrer" className={styles.thmBtn} lang="mr">
                                     दिशादर्शन मिळवा
                                     <span>
                                         <i className="fas fa-arrow-right"></i>
@@ -373,7 +360,7 @@ export default function Home() {
                         <div className={styles.contactFaqDivider} role="presentation"></div>
                     </div>
                     <div className="col-xl-6 col-lg-6">
-                        <div className={`${styles.contactFaqAccrodion} ${styles.accrodionGrp}`} data-grp-name="contact-faq-accrodion">
+                        <div className={styles.contactFaqAccrodion} data-grp-name="contact-faq-accrodion">
                             {CONTACT_FAQS.map((faq, index) => (
                                 <div key={index} className={openFaq === index ? `${styles.accrodion} active` : styles.accrodion} onClick={() => setOpenFaq(openFaq === index ? -1 : index)}>
                                     <div className={styles.accrodionTitle}>
@@ -391,9 +378,6 @@ export default function Home() {
         </section>}
         {/*Contact Faq End*/}
 
-        <Cta />
-        <Mantra closing />
-        </>
         </>
     )
 }

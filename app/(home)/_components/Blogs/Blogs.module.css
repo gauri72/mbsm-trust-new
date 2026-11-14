@@ -1,0 +1,213 @@
+/* =============================================================================
+   Home — Blogs: six gold category tiles linking to the blogs page.
+   The maroon field, heading, card base and button are shared: see ../../page.module.css.
+   Type here: titles medium, description + count small, the round icon large (smaller on phones).
+   ========================================================================== */
+section.blogs {
+  /* this section's own measures, named once (type sizes and spacing steps: the site's tokens in globals.css) */
+  --blogs-photo-radius: 12px;
+  --blogs-frame: var(--space-1);        /* the maroon frame round the photo */
+  --blogs-meta-width: 100px;            /* the icon + count column; every heading starts at the same place */
+  --blogs-phone-photo: 240px;
+  --blogs-icon-size: var(--text-lg);    /* the round icon; smaller on phones, below */
+}
+
+@media (max-width: 767px) {
+  section.blogs { --blogs-icon-size: 26px; }
+}
+
+@media (max-width: 359px) {
+  section.blogs { --blogs-icon-size: 19px; }
+}
+
+/* ---- Tiles: a horizontal card, the image on the left and the content on the right (gold card base: page.module.css) ---- */
+section.blogs .tile {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  text-decoration: none;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+section.blogs .tile:focus-visible {
+  outline: var(--line-width) solid var(--c-white);
+  outline-offset: 4px;
+}
+
+/* the category photo: a SQUARE block (left) — a thick maroon border, a gold gap, then the photo */
+section.blogs .image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 36%;
+  align-self: center;
+  aspect-ratio: 1 / 1;                    /* always a square, on every screen */
+  box-sizing: border-box;
+  padding: var(--space-2);                /* the blank gap between the border and the photo */
+  border: var(--blogs-frame) solid var(--c-maroon);   /* thick maroon frame */
+  border-radius: var(--blogs-photo-radius);
+  background-color: var(--c-gold);
+  overflow: hidden;
+}
+
+section.blogs .image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--blogs-frame);
+  object-fit: cover;
+}
+
+/* content: on the left the round icon with the article count below it; on the right the heading,
+   a line, then the description */
+section.blogs .body {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+section.blogs .meta {
+  display: flex;
+  flex: 0 0 var(--blogs-meta-width);
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+section.blogs .text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+section.blogs .icon {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--blogs-icon-size) * 2);
+  height: calc(var(--blogs-icon-size) * 2);
+  border-radius: 50%;
+  background-color: var(--c-maroon);
+  color: var(--c-gold);
+  font-size: var(--blogs-icon-size);
+  line-height: 1;
+}
+
+section.blogs .icon i {
+  color: var(--c-gold);
+}
+
+section.blogs .count {
+  padding: var(--space-1) var(--space-2);
+  border-radius: 999px;
+  background-color: var(--c-maroon);
+  color: var(--c-white);
+  font-family: var(--font);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+/* heading: maroon, above a 2px maroon line; the colon is drawn here so screen readers do not read it out */
+section.blogs .title::after {
+  content: " :";
+}
+
+section.blogs .title {
+  margin: 0;
+  padding-bottom: var(--space-1);
+  border-bottom: var(--line-width) solid var(--c-maroon);
+  color: var(--c-maroon);
+  font-family: var(--font);
+  font-size: var(--text-md);
+  font-weight: 700;
+  line-height: 1.4;
+  text-transform: none;
+}
+
+/* description: black, below the line */
+section.blogs .desc {
+  margin: var(--space-1) 0 0;
+  color: var(--c-black);
+  font-family: var(--font);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* mid widths (the cards are narrow): a slimmer photo and icon column leave the title room to sit on one line */
+
+@media (min-width: 576px) and (max-width: 1399px) {
+  section.blogs .image {
+    flex-basis: 30%;
+  }
+
+  section.blogs .meta {
+    --blogs-meta-width: 84px;
+  }
+}
+
+/* phones: the card stacks — a medium square image on top, then the icon + count in one centred row,
+   then the heading, the line and the description at the full card width */
+
+@media (max-width: 575px) {
+  section.blogs .tile {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-4);
+    padding: var(--space-3);
+  }
+
+  section.blogs .image {
+    flex: none;
+    width: min(var(--blogs-phone-photo), 100%);   /* medium, centred, never wider than the card; still a square */
+    align-self: center;
+  }
+
+  section.blogs .body {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-3);
+  }
+
+  section.blogs .meta {
+    flex: none;                           /* undo the desktop's fixed column width */
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  section.blogs .title {
+    text-align: center;
+  }
+
+  section.blogs .desc {
+    text-align: center;
+  }
+}
+
+/* ---- Hover: mouse / trackpad only ---- */
+@media (hover: hover) {
+  section.blogs .tile:hover {
+    box-shadow: 0 4px 0 var(--c-black);
+    transform: translateY(-4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section.blogs .tile {
+    transition: none;
+  }
+
+  section.blogs .tile:hover {
+    transform: none;
+  }
+}

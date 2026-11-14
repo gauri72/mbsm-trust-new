@@ -92,40 +92,7 @@
   flex: 0 1 auto;
 }
 
-.flag {
-  display: flex;
-  flex: 1 1 0;
-  align-items: center;
-  min-width: 0;
-  max-width: 420px;
-}
-
-.flagLeft {
-  justify-content: flex-end;
-}
-
-.flagRight {
-  justify-content: flex-start;
-}
-
-.flag img,
-.flag video {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-width: 420px;
-  filter: none;
-}
-
-.flagLeft img,
-.flagLeft video {
-  transform: scaleX(-1);
-}
-
 @media (max-width: 991px) {
-  .flag {
-    display: none;
-  }
 
   /* The -30px margin-top on .featured-events__head exists to offset the
      flag videos' own vertical padding on desktop — with the flags hidden

@@ -1,18 +1,9 @@
 /* =============================================================================
-   Home hero — two 16:9 artworks fading in turn, shown exactly as supplied. Nothing is
-   layered on them.
-
-   Contents
-     1. Slideshow            — always 16:9
-
-   Design rules (same as the header, footer, mantra and CTA)
-   - Colours : maroon band while an artwork loads.
-   - Shape   : 16:9 at every screen size (cropped to it, never stretched).
+   Home hero — two 16:9 artworks fading in turn, shown exactly as supplied.
+   Always 16:9 at every screen size (cropped to it, never stretched); a maroon band shows while an artwork loads.
+   The pause button is the global .pause-btn.
    ========================================================================== */
 
-
-/* ---- 1. Slideshow ---------------------------------------------------------------------- */
-/* always 16:9, so each artwork shows whole */
 .root {
   position: relative;
   aspect-ratio: 16 / 9;
@@ -25,11 +16,25 @@
   height: 100%;
 }
 
+/* the zoom: a picture waiting or leaving is a little larger, the active one settles to its own size
+   (--slide-ms is set by Hero.js, the same time as the cross-fade) */
 .media {
   position: absolute;
   inset: 0;
-  background-color: var(--c-maroon);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  transform: scale(1.12);
+  transition: transform var(--slide-ms) cubic-bezier(0.22, 1, 0.36, 1);   /* quick start, long gentle settle */
+}
+
+.swiper :global(.swiper-slide-active) .media {
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media {
+    transform: none;
+    transition: none;
+  }
 }

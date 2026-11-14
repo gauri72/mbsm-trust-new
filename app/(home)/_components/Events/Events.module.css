@@ -1,0 +1,82 @@
+/* =============================================================================
+   Home — Upcoming events: three gold cards, each with a date badge.
+   The maroon field, heading, card base and button are shared: see ../../page.module.css.
+   Type here: names medium, the badge's day medium and its month and year small.
+   ========================================================================== */
+
+/* ---- Cards: the picture runs edge to edge along the top (gold card base: page.module.css) ---- */
+section.events .single {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 var(--space-4);                      /* the picture runs edge to edge across the top of the card */
+  text-align: center;
+}
+
+section.events .imgBox {
+  position: relative;
+}
+
+section.events .img {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  aspect-ratio: 4 / 3;
+}
+
+section.events .img img,
+section.events .img video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0;
+}
+
+/* ---- Date badge: solid gold, black text, large day ---- */
+section.events .badge {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--home-card-radius);
+  background-color: var(--c-gold);
+  color: var(--c-black);
+  font-family: var(--font);
+  font-weight: 400;
+  line-height: 1;
+}
+
+section.events .badgeDay {
+  font-size: var(--text-md);
+  line-height: 1.1;
+}
+
+section.events .badgeMonth {
+  margin-top: var(--space-0);
+  font-size: var(--text-sm);
+  white-space: nowrap;
+}
+
+/* ---- Event name: medium, black ---- */
+section.events .content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-4) var(--space-3) 0;
+}
+
+section.events .title {
+  margin: 0;
+  color: var(--c-black);
+  font-family: var(--font);
+  font-size: var(--text-md);
+  font-weight: 400;
+  line-height: 1.6;
+  text-transform: none;
+}

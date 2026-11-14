@@ -1,5 +1,6 @@
 'use client'
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import { cx, useReducedMotion } from "../utils"
 import styles from "./Gallery.module.css"
 
 /* =============================================================================
@@ -24,23 +25,13 @@ const TEMPLE_IMAGES = [
     { src: "/assets/media/shared/temple-6.webp", alt: "काळ्या पाषाणातील मारुतीची मूर्ती, फुलांच्या हारासह" },
 ]
 
-// join class names, skipping falsy ones
-const cx = (...names) => names.filter(Boolean).join(" ")
-
 // The track holds the photos twice and scrolls by -50%, so the end of the first
 // copy lines up exactly with the start of the second and the loop never jumps.
 // The second copy has empty alt text, so screen readers announce each photo once.
 export default function Gallery() {
     const [paused, setPaused] = useState(false)
     // reduced motion: the CSS shows the photos standing still, so there is nothing to pause (and no button to offer)
-    const [still, setStill] = useState(false)
-    useEffect(() => {
-        const query = window.matchMedia("(prefers-reduced-motion: reduce)")
-        const update = () => setStill(query.matches)
-        update()
-        query.addEventListener("change", update)
-        return () => query.removeEventListener("change", update)
-    }, [])
+    const still = useReducedMotion()
 
     const toggle = () => setPaused((p) => !p)
 
@@ -48,7 +39,7 @@ export default function Gallery() {
         <section className={cx(styles.root, paused && styles.paused)}>
             {/* the keyboard / screen reader way to stop the scroll: hidden until it has focus */}
             {!still && (
-                <button type="button" className={styles.pause} aria-pressed={paused} onClick={toggle}>
+                <button type="button" className="pause-btn" aria-pressed={paused} onClick={toggle}>
                     स्क्रोलिंग थांबवा
                 </button>
             )}

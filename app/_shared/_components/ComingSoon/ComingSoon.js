@@ -8,13 +8,13 @@ import styles from "./ComingSoon.module.css"
 
 export default function ComingSoon() {
     return (
-        <section className={`${styles.soon} ${styles.soonMaroon}`}>
+        <section className={styles.soon}>
             <div className="container">
                 <div className={styles.inner}>
                     <span className={styles.icon}>
                         <i className="fas fa-om" aria-hidden="true"></i>
                     </span>
-                    <div className="section-title text-center sec-title-animation animation-style1">
+                    <div className="section-title section-title--maroon text-center sec-title-animation animation-style1">
                         <div className="section-title__tagline-box">
                             <span className="section-title__tagline" lang="mr">आगामी</span>
                         </div>

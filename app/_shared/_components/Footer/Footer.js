@@ -7,6 +7,7 @@ import {
     SITE_ADDRESS_PLACE, SITE_ADDRESS_LINE1, SITE_ADDRESS_CITY, SITE_ADDRESS_PINCODE,
     SITE_PHONE_TEL, SITE_PHONE_DISPLAY, SITE_EMAIL, SITE_EMAIL_MAILTO, SITE_MAP_URL,
 } from "../siteContent"
+import { cx } from "../utils"
 import styles from "./Footer.module.css"
 
 /* =============================================================================
@@ -57,9 +58,6 @@ const CONTACTS = [
     // the address on three lines: the math · the plot · the city + pincode
     { icon: "fas fa-map-marker-alt", href: SITE_MAP_URL, label: <>{SITE_ADDRESS_PLACE}<br />{SITE_ADDRESS_LINE1}<br />{SITE_ADDRESS_CITY} - {SITE_ADDRESS_PINCODE}</>, external: true },
 ]
-
-// join class names, skipping falsy ones
-const cx = (...names) => names.filter(Boolean).join(" ")
 
 // Column title (CSS draws its short 2px underline)
 const Title = ({ children }) => <h2 className={styles.title}>{children}</h2>
@@ -130,7 +128,7 @@ export default function Footer() {
                                         <i className={cx(styles.icon, c.icon)} aria-hidden="true"></i>
                                         <span>{c.label}</span>
                                         {/* screen readers are told the map opens in a new tab */}
-                                        {c.external && <span className={styles.srOnly}> (नवीन टॅबमध्ये उघडते)</span>}
+                                        {c.external && <span className="visually-hidden"> (नवीन टॅबमध्ये उघडते)</span>}
                                     </a>
                                 </li>
                             ))}

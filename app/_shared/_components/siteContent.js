@@ -59,6 +59,19 @@ export const WORK_GROUP = { label: "आमचे कार्य", icon: "fas fa
 // browser-tab title of a page: "<page name> — <site name>"
 export const pageTitle = (key) => `${PAGES[key].label} — ${SITE_NAME}`
 
+// Is this link the page being shown? "/" only matches the home page; any other link also matches its
+// sub-pages. The header's menu and the footer's quick links use the same rule.
+export const isCurrentPage = (pathname, href) =>
+    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`)
+
+// Which inner page a path belongs to ("/upkram" -> "upkram"); undefined for the home page, the 404 page and
+// any path that is not a page. template.js uses it to put the shared inner-page frame around the content.
+export const pageKeyOf = (pathname) =>
+    Object.keys(PAGES).find((key) => key !== "home" && isCurrentPage(pathname, PAGES[key].href))
+
+// the metadata a page exports: its browser-tab title and the description search engines show
+export const pageMetadata = (key, description) => ({ title: pageTitle(key), description })
+
 // ---- Characters: the two names on the artwork's plates -------------------------
 // `display` is what is drawn: the title font can stack श्व and त्त into ligatures that read
 // differently from the artwork's lettering, so a zero-width joiner (U+200D) asks for the
@@ -75,11 +88,6 @@ export const CHARACTERS = {
 }
 
 // ---- Small helpers -----------------------------------------------------------------
-// Is this link the page being shown? "/" only matches the home page; any other link also matches its
-// sub-pages. The header's menu and the footer's quick links use the same rule.
-export const isCurrentPage = (pathname, href) =>
-    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`)
-
 // 0-9 -> ०-९ (every other character is left as it is): "+91 75887" -> "+९१ ७५८८७".
 // The data above is written once, with English digits; the contact page shows it in Devanagari digits.
 const DEVANAGARI_DIGITS = "०१२३४५६७८९"

@@ -15,17 +15,11 @@
   text-rendering:auto;
   line-height:1
 }
-.fa-angle-right:before {
-  content:"\f105"
-}
 .fa-arrow-right:before {
   content:"\f061"
 }
 .fa-bars:before {
   content:"\f0c9"
-}
-.fa-book-open:before {
-  content:"\f518"
 }
 .fa-calendar-alt:before {
   content:"\f073"
@@ -69,23 +63,11 @@
 .fa-landmark:before {
   content:"\f66f"
 }
-.fa-utensils:before {
-  content:"\f2e7"
-}
 .fa-fire:before {
   content:"\f06d"
 }
-.fa-image:before {
-  content:"\f03e"
-}
 .fa-spa:before {
   content:"\f5bb"
-}
-.fa-heartbeat:before {
-  content:"\f21e"
-}
-.fa-book-reader:before {
-  content:"\f5da"
 }
 .fa-phone-alt:before {
   content:"\f879"
@@ -95,9 +77,6 @@
 }
 .fa-praying-hands:before {
   content:"\f684"
-}
-.fa-search:before {
-  content:"\f002"
 }
 .fa-times:before {
   content:"\f00d"
@@ -410,10 +389,6 @@ iframe {
   margin-top:var(--bs-gutter-y)
 }
 @media (min-width:768px){
-  .col-md-4 {
-  flex:0 0 auto;
-  width:33.3333333333%
-  }
   .col-md-6 {
   flex:0 0 auto;
   width:50%
@@ -431,10 +406,6 @@ iframe {
   .col-lg-6 {
   flex:0 0 auto;
   width:50%
-  }
-  .col-lg-12 {
-  flex:0 0 auto;
-  width:100%
   }
 }
 @media (min-width:1200px){
@@ -559,11 +530,6 @@ iframe {
 .carousel {
   position:relative
 }
-.clearfix::after {
-  display:block;
-  clear:both;
-  content:""
-}
 .d-none {
   display:none!important
 }
@@ -572,9 +538,6 @@ iframe {
 }
 .border {
   border:1px solid #FFFFFF!important
-}
-.align-items-center {
-  align-items:center!important
 }
 .text-center {
   text-align:center!important
@@ -586,6 +549,49 @@ iframe {
   .d-xl-block {
   display:block!important
   }
+}
+
+/* ---- Visually hidden: read out by screen readers, not shown (the home page's h1, "opens in a new tab") ---- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---- Pause button of a moving band (the hero, the gallery): out of sight until Tab reaches it, then a gold pill
+   in the band's corner. Put it inside a position: relative band. ---- */
+.pause-btn {
+  position: absolute;
+  z-index: 2;
+  top: var(--space-2);
+  left: var(--space-2);
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  border-radius: 999px;
+  background-color: var(--c-gold);
+  color: var(--c-black);
+  font-family: var(--font);
+  font-size: var(--text-sm);
+  line-height: 1.3;
+}
+
+.pause-btn:focus-visible {
+  width: auto;
+  height: auto;
+  padding: var(--space-1) var(--space-3);
+  overflow: visible;
+  clip-path: none;
+  outline: var(--line-width) solid var(--c-white);
+  outline-offset: var(--line-width);
 }
 
 /* Wrapper around every page (app/template.js) */
@@ -607,7 +613,6 @@ iframe {
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
-
 
 @-webkit-keyframes fadeIn {
     0% {
@@ -798,7 +803,6 @@ iframe {
     -webkit-animation-name: slideInLeft;
     animation-name: slideInLeft;
 }
-
 
 /* Horizontal maroon strips carrying gold Om + swastik motif */
 .divine-border--about {
@@ -1155,178 +1159,109 @@ ul {
   color: var(--anity-base);
 }
 
-/* Thm Btn Css */
+/* ---- Section title on a maroon field: label gold and large, title white and medium ----
+   (the home sections, About and the coming-soon note) — add the modifier beside .section-title */
+.section-title--maroon .section-title__tagline-box {
+  margin-bottom: var(--space-3);
+}
 
-.thm-btn {
-  position: relative;
+.section-title--maroon .section-title__tagline {
+  color: var(--c-gold);
+  font-family: var(--font);
+  font-size: var(--head-label);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.section-title--maroon .section-title__title {
+  color: var(--c-white);
+  font-family: var(--font);
+  font-size: var(--head-title);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: none;
+  text-shadow: none;
+}
+
+/* a part of the title (a line, a word) keeps the title's own look */
+.section-title--maroon .section-title__title span {
+  color: var(--c-white);
+  font: inherit;
+}
+
+/* ---- Pill button: the site's one button (the home sections, About, the closing call-to-action, the 404 page) ----
+   A flat 58px pill in gold: medium bold text, then an arrow. On hover it lifts 4px on a solid black ledge and
+   the arrow slides 6px forward. .pill-btn--white is the white one. */
+.pill-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  vertical-align: middle;
-  -webkit-appearance: none;
-  appearance: none;
-  outline: none !important;
+  gap: var(--space-3);
+  height: 58px;
+  padding: 0 var(--space-6);
+  border-radius: 999px;
+  background-color: var(--c-gold);
+  color: var(--c-black);
+  font-family: var(--font);
+  font-size: var(--text-md);
   font-weight: 700;
-  font-size: 14px;
-  color: var(--anity-black);
-  border: 1px solid var(--anity-base);
-  padding: 7px 25px 7px;
-  padding-right: 9px;
-  border-radius: 30px;
-  transition: 0.5s ease-in-out;
-  text-transform: uppercase;
-  overflow: hidden;
-  letter-spacing: 1.4px;
-  gap: 10px;
-  z-index: 2;
-  text-align: center;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 200ms ease, box-shadow 200ms ease;
 }
 
-.thm-btn::after {
-  content: "";
-  background-color: var(--anity-black);
-  position: absolute;
-  top: 0;
-  width: 100%;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  clip-path: circle(0% at 50% 50%);
-  transition: all cubic-bezier(0, 0.96, 0.58, 1.1) 0.8s;
-  z-index: -1;
+/* the label and the arrow keep the button's own colour, whatever the global link colours say */
+.pill-btn span,
+.pill-btn i {
+  color: var(--c-black);
+  font-size: 1em;
+  line-height: 1;
 }
 
-.thm-btn:hover:after {
-  clip-path: circle(100% at 50% 50%);
-  transition: all cubic-bezier(0, 0.96, 0.58, 1.1) 4s;
+.pill-btn i {
+  transition: transform 200ms ease;
 }
 
-.thm-btn span {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  background-color: var(--anity-base);
-  border-radius: 50%;
-  font-size: 14px;
-  color: var(--anity-white);
-  -webkit-transition: all 500ms ease;
-  transition: all 500ms ease;
+.pill-btn:focus-visible {
+  outline: var(--line-width) solid var(--c-white);
+  outline-offset: 2px;
 }
 
-.thm-btn:hover span {
-  background-color: var(--anity-white);
-  color: var(--anity-base);
-  transition-delay: 200ms;
+.pill-btn--white {
+  background-color: var(--c-white);
+  color: var(--c-maroon);
 }
 
-.thm-btn:hover span i {
-  -webkit-animation: bounceright .3s alternate ease infinite;
-  animation: bounceright .3s alternate ease infinite;
+.pill-btn--white span,
+.pill-btn--white i {
+  color: var(--c-maroon);
 }
 
-.thm-btn:hover {
-  color: var(--anity-white);
-  border: 1px solid var(--anity-black);
-}
+@media (hover: hover) {
+  .pill-btn:hover {
+    box-shadow: 0 4px 0 var(--c-black);
+    transform: translateY(-4px);
+  }
 
-@media (max-width: 767px) {
-
-  .divine-border--welcome-vertical,
-.welcome-one__corner {
-    display: none;
+  .pill-btn:hover i {
+    transform: translateX(6px);
   }
 }
 
-.divine-border--welcome {
-  position: absolute;
-  left: 0;
-  right: 0;
-  z-index: 3;
-  height: 30px;
-  background-color: #620208;
-  background-image:
-    radial-gradient(circle at 50% 50%, rgba(217, 152, 42, 0.12) 0%, transparent 70%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cg fill='%23E8C766'%3E%3Ctext x='25' y='22' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(75 15)' stroke='%23E8C766' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23E8C766' opacity='0.85'%3E%3Ccircle cx='0' cy='15' r='1.6'/%3E%3Ccircle cx='50' cy='15' r='1.6'/%3E%3Ccircle cx='100' cy='15' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat: repeat-x, repeat-x;
-  background-position: center, center;
-  background-size: 100% 100%, 100px 30px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
-}
+@media (prefers-reduced-motion: reduce) {
+  .pill-btn,
+  .pill-btn i {
+    transition: none;
+  }
 
-.divine-border--welcome:before,
-.divine-border--welcome:after {
-  content: none;
-}
-
-.divine-border--welcome-top {
-  top: 0;
-}
-
-.divine-border--welcome-bottom {
-  bottom: 0;
-}
-
-.divine-border--welcome-vertical {
-  position: absolute;
-  top: 30px;
-  bottom: 30px;
-  height: auto;
-  z-index: 2;
-  width: 30px;
-  background-color: #620208;
-  background-image:
-    radial-gradient(circle at 50% 50%, rgba(217, 152, 42, 0.12) 0%, transparent 70%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='100' viewBox='0 0 30 100'%3E%3Cg fill='%23E8C766'%3E%3Ctext x='15' y='32' font-size='19' text-anchor='middle' font-family='Noto Sans Devanagari, Arial, sans-serif'%3E%E0%A5%90%3C/text%3E%3C/g%3E%3Cg transform='translate(15 75)' stroke='%23E8C766' stroke-width='2.4' stroke-linecap='square' fill='none'%3E%3Cpath d='M0 -8 L0 8 M-8 0 L8 0'/%3E%3Cpath d='M0 -8 L5 -8'/%3E%3Cpath d='M8 0 L8 5'/%3E%3Cpath d='M0 8 L-5 8'/%3E%3Cpath d='M-8 0 L-8 -5'/%3E%3C/g%3E%3Cg fill='%23E8C766' opacity='0.85'%3E%3Ccircle cx='15' cy='0' r='1.6'/%3E%3Ccircle cx='15' cy='50' r='1.6'/%3E%3Ccircle cx='15' cy='100' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat: repeat-y, repeat-y;
-  background-position: top center, top center;
-  background-size: 100% 100%, 30px 100px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.32);
-}
-
-.divine-border--welcome-vertical:before,
-.divine-border--welcome-vertical:after {
-  content: none;
-}
-
-.divine-border--welcome-left {
-  left: 0;
-}
-
-.divine-border--welcome-right {
-  right: 0;
-}
-
-.welcome-one__corner {
-  position: absolute;
-  z-index: 4;
-  width: 30px;
-  height: 30px;
-  background-color: #620208;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
-  pointer-events: none;
-}
-
-.welcome-one__corner--tl {
-  top: 0;
-  left: 0;
-}
-
-.welcome-one__corner--tr {
-  top: 0;
-  right: 0;
-}
-
-.welcome-one__corner--bl {
-  bottom: 0;
-  left: 0;
-}
-
-.welcome-one__corner--br {
-  bottom: 0;
-  right: 0;
+  .pill-btn:hover,
+  .pill-btn:hover i {
+    transform: none;
+  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -1555,13 +1490,6 @@ ul {
   --lg-maroon-dk: #620208;
   --lg-maroon-2: #620208;
   --lg-cream: #FFFFFF;
-}
-
-/* ---- Ornamental maroon borders / corners ---- */
-.divine-border--welcome,
-.divine-border--welcome-vertical,
-.welcome-one__corner {
-  background-color: var(--brand-maroon-dark);
 }
 
 /* ---- Visit / Darshan card: maroon panel, gold trim ---- */

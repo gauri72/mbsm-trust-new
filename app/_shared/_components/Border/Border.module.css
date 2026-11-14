@@ -1,12 +1,6 @@
 /* =============================================================================
    Border — between the page's sections.
 
-   Contents
-     1. Design tokens
-     2. Token breakpoints
-     3. Strip
-     4. Signs
-
    Design rules (same as the header, footer and mantra)
    - Colours : gold strip, maroon signs — solid only, nothing see-through
    - Icons   : the Om is a Font Awesome icon (Font Awesome has no swastik, so that one is drawn)
@@ -19,50 +13,15 @@
    ========================================================================== */
 
 
-/* ---- 1. Design tokens ------------------------------------------------------- */
+/* ---- Strip: the height is the token every other measure follows ---- */
 .root {
-  /* size: the site's 40px layout step (--space-6); everything else is a share of it */
-  --strip-height: var(--space-6);
+  --strip-height: var(--space-6);                  /* the site's 40px layout step; everything else is a share of it */
   --slot-ratio: 0.75;                              /* Border.js reads this to count the signs that fit */
   --slot: calc(var(--strip-height) * var(--slot-ratio));   /* the least width each sign is centred in */
   --om-size: calc(var(--strip-height) * 0.55);     /* the Font Awesome Om */
   --swastik-size: calc(var(--strip-height) * 0.5);
   --diamond-size: calc(var(--strip-height) * 0.18);   /* the square, before it is turned */
-}
 
-
-/* ---- 2. Token breakpoints (only the height changes; the signs follow it) ---- */
-/* very wide screens */
-@media (min-width: 1600px) {
-  .root {
-    --strip-height: 48px;
-  }
-}
-
-/* tablet and small desktop */
-@media (max-width: 1199px) {
-  .root {
-    --strip-height: 36px;
-  }
-}
-
-/* phones */
-@media (max-width: 767px) {
-  .root {
-    --strip-height: 30px;
-  }
-}
-
-/* very small phones */
-@media (max-width: 359px) {
-  .root {
-    --strip-height: 26px;
-  }
-}
-
-
-/* ---- 3. Strip ---------------------------------------------------------------- */
-.root {
   display: flex;
   flex-wrap: wrap;               /* before the count is measured, extra signs wrap to a row that is clipped away */
   align-content: flex-start;
@@ -74,7 +33,24 @@
   color: var(--c-maroon);
 }
 
-/* ---- 4. Signs ---------------------------------------------------------------- */
+/* only the height changes with the screen; the signs follow it */
+@media (min-width: 1600px) {
+  .root { --strip-height: 48px; }
+}
+
+@media (max-width: 1199px) {
+  .root { --strip-height: 36px; }
+}
+
+@media (max-width: 767px) {
+  .root { --strip-height: 30px; }
+}
+
+@media (max-width: 359px) {
+  .root { --strip-height: 26px; }
+}
+
+/* ---- Signs ---- */
 .sign {
   display: flex;
   align-items: center;

@@ -1,18 +1,6 @@
 /* =============================================================================
    Site header — contact strip, sticky bar, desktop menu and the mobile drawer.
 
-   Contents
-     1. Design tokens            — every colour / size / space used below
-     2. Token breakpoints        — screen sizes only change token values here
-     3. Shared                   — resets, icon box, focus ring
-     4. Contact strip
-     5. Sticky bar               — brand, menu tray + dropdown, actions
-     6. Drawer                   — below 1200px
-     7. Hover effects            — mouse / trackpad only
-     8. Responsive layout        — which parts show where
-     9. Explicit colours         — nothing is inherited
-    10. Reduced motion
-
    Design rules
    - Colours : black, white, maroon, gold — solid only: no transparency, and nothing inherited
                (every text and icon states its own colour, in every state: section 9).
@@ -36,7 +24,6 @@
   /* colours, the spacing scale and --text-sm / --text-md come from :root in globals.css */
 
   /* lines + shadows */
-  --line-width: 2px;
   --line-light: var(--line-width) solid var(--c-white);
   --line-dark: var(--line-width) solid var(--c-black);
   /* "shadows" are solid lines and rings (no blur, no transparency) */

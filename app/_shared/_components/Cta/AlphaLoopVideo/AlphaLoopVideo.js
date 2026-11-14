@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useRef, useState } from "react"
+import { useReducedMotion } from "../../utils"
 import styles from "./AlphaLoopVideo.module.css"
 
 // A single transparent clip played on a native `loop`. The clips are
@@ -27,22 +28,13 @@ const NEAR_SCREEN = "300px 0px"
 export default function AlphaLoopVideo({ src, webmSrc, className }) {
     const rootRef = useRef(null)
     const videoRef = useRef(null)
-    const [reduceMotion, setReduceMotion] = useState(false)
+    const reduceMotion = useReducedMotion()
     const [near, setNear] = useState(false)
     // null until the clip is wanted and we know the browser, so no opaque video
     // box ever flashes on browsers that can't do HEVC alpha
     const [videoSrc, setVideoSrc] = useState(null)
 
-    // reduced motion: no clip (and the choice follows the setting live)
-    useEffect(() => {
-        const query = window.matchMedia("(prefers-reduced-motion: reduce)")
-        const update = () => setReduceMotion(query.matches)
-        update()
-        query.addEventListener("change", update)
-        return () => query.removeEventListener("change", update)
-    }, [])
-
-    // near the screen or not
+    // near the screen or not (reduced motion: no clip at all)
     useEffect(() => {
         const root = rootRef.current
         if (!root || reduceMotion) return
