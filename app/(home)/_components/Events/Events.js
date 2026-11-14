@@ -42,7 +42,7 @@ export default function Events() {
     return (
         <section className={`${shared.field} ${styles.events}`}>
             <div className="container">
-                <SectionHead label="आगामी उत्सव" title="भक्तीचा सोहळा, आनंदाचा मेळा" />
+                <SectionHead label="आगामी उत्सव" title="भक्‍तीचा सोहळा, आनंदाचा मेळा" />
 
                 <div className={`row ${shared.cards}`}>
                     {EVENTS.map((event, index) => (

@@ -174,7 +174,7 @@ const BackCoverPage = forwardRef((props, ref) => (
             <span className={styles.coverSymbol} aria-hidden="true">
                 <img src="assets/media/parichaya/about.webp" alt="" />
             </span>
-            <span className={`${styles.coverSubtitle} ${styles.coverSubtitleBack}`}>मंगल भक्त सेवा मंडळ, अहिल्यानगर</span>
+            <span className={`${styles.coverSubtitle} ${styles.coverSubtitleBack}`}>मंगल भक्‍त सेवा मंडळ, अहिल्यानगर</span>
         </div>
     </div>
 ))

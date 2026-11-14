@@ -152,7 +152,7 @@ export default function AllEvents() {
                     {/* <video src="assets/media/karyakram/toran.mov" className="all-events__toran all-events__toran--left" aria-hidden="true" muted loop playsInline autoPlay/> */}
                     <div className={styles.titleInner}>
                         <div className="section-title__tagline-box">
-                            <span className="section-title__tagline">सेवा, भक्ती आणि आनंदाचे क्षण</span>
+                            <span className="section-title__tagline">सेवा, भक्‍ती आणि आनंदाचे क्षण</span>
                         </div>
                         <h2 className="section-title__title title-animation">मठातील वार्षिक उत्सव</h2>
                     </div>

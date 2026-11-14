@@ -11,7 +11,6 @@ export default function HomePage() {
     return (
         <>
             <Hero />
-            <Border />
             <Gallery />
             <Border />
             <About />

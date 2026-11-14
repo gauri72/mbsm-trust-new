@@ -123,7 +123,7 @@ export default function Home() {
                         <div className="section-title__tagline-box">
                             <span className="section-title__tagline" lang="mr">आमच्याशी संपर्क साधा</span>
                         </div>
-                        <h2 className="section-title__title title-animation" lang="mr">आपला संदेश<br/> मंगल भक्त सेवा मंडळापर्यंत पोहोचवा
+                        <h2 className="section-title__title title-animation" lang="mr">आपला संदेश<br/> मंगल भक्‍त सेवा मंडळापर्यंत पोहोचवा
                         </h2>
                     </div>
                     <form className={styles.form} onSubmit={handleSubmit} noValidate>

@@ -23,22 +23,22 @@ const CATEGORIES = [
     {
         icon: "fas fa-spa",
         title: "शांती आणि आत्मचिंतन",
-        image: "/assets/media/home/blogs-2.webp",
+        image: "/assets/media/home/blogs-3.webp",
         desc: "सुख, समाधान, अंतर्मुखता आणि जीवनाकडे पाहण्याची दृष्टी.",
         count: 17,
     },
     {
         icon: "fas fa-fire",
-        title: "अहंकार आणि षड्रिपू",
-        image: "/assets/media/home/blogs-3.webp",
-        desc: "अहंकार, षड्रिपू आणि स्वार्थी वृत्तीवर मात कशी करावी.",
+        title: "अहंकार आणि षडरिपू",
+        image: "/assets/media/home/blogs-4.webp",
+        desc: "अहंकार, षडरिपू आणि स्वार्थी वृत्तीवर मात कशी करावी.",
         count: 11,
     },
     {
         icon: "fas fa-om",
         title: "शंकर महाराज आणि लीला",
-        image: "/assets/media/home/blogs-4.webp",
-        desc: "सद्गुरु शंकर महाराजांचे संदेश, लीला आणि भक्तांवरची माया.",
+        image: "/assets/media/home/blogs-6.webp",
+        desc: "सद्गुरु शंकर महाराजांचे संदेश, लीला आणि भक्‍तांवरची माया.",
         count: 11,
     },
     {
@@ -51,8 +51,8 @@ const CATEGORIES = [
     {
         icon: "fas fa-hands-helping",
         title: "मठ आणि सेवा",
-        image: "/assets/media/home/blogs-6.webp",
-        desc: "गादी सेवा, अन्नदान आणि मठातील भक्ती व सेवेचे अनुभव.",
+        image: "/assets/media/home/blogs-2.webp",
+        desc: "गादी सेवा, अन्नदान आणि मठातील भक्‍ती व सेवेचे अनुभव.",
         count: 7,
     },
 ]
@@ -67,7 +67,7 @@ export default function Blogs() {
     return (
         <section className={`${shared.field} ${styles.blogs}`}>
             <div className="container">
-                <SectionHead label="अमृतवाणी" title="शब्दांचा गंध, भक्तीचा छंद" />
+                <SectionHead label="अमृतवाणी" title="शब्दांचा गंध, भक्‍तीचा छंद" />
                 <div className={`row ${shared.cards}`}>
                     {CATEGORIES.map((cat, index) => (
                         <div

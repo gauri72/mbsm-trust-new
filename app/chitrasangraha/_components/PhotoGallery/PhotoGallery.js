@@ -9,7 +9,7 @@ const PHOTOS = [
     { src: "assets/media/chitrasangraha/photo-3.webp", label: "पुष्प अलंकार" },
     { src: "assets/media/chitrasangraha/photo-4.webp", label: "नित्य पूजा-अर्चा" },
     { src: "assets/media/chitrasangraha/photo-5.webp", label: "आरतीची तयारी" },
-    { src: "assets/media/chitrasangraha/photo-6.webp", label: "भक्तिभावाचे क्षण" },
+    { src: "assets/media/chitrasangraha/photo-6.webp", label: "भक्‍तिभावाचे क्षण" },
 ]
 
 const SWIPE_THRESHOLD = 50
@@ -66,7 +66,7 @@ export default function PhotoGallery() {
                     <span className={`${styles.galleryGridFeather} ${styles.galleryGridFeatherLeft}`} aria-hidden="true"></span>
                     <div className="section-title text-center sec-title-animation animation-style1">
                         <div className="section-title__tagline-box">
-                            <span className="section-title__tagline">श्री शुभराय महाराज मठातील भक्तिमय क्षण</span>
+                            <span className="section-title__tagline">श्री शुभराय महाराज मठातील भक्‍तिमय क्षण</span>
                         </div>
                         <h2 className="section-title__title title-animation">फोटो गॅलरी</h2>
                     </div>

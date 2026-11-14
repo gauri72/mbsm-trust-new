@@ -13,7 +13,7 @@ import styles from "./Footer.module.css"
 /* =============================================================================
    Site footer (rendered once in app/layout.js, so it stays mounted across pages)
 
-   ┌ main ─── brand + about │ उपयुक्त दुवे │ संपर्क माहिती │ आमची उद्दिष्टे ┐ gold
+   ┌ main ─── brand + about │ उपयुक्‍त दुवे │ संपर्क माहिती │ आमची उद्दिष्टे ┐ gold
    └ bottom ─ © year, name ................... designed & developed by ┘ maroon
 
    Desktop (≥1200px) : 4 left-aligned columns, equal blank space between them.
@@ -30,7 +30,7 @@ import styles from "./Footer.module.css"
 // ---- Trust details ----------------------------------------------------------
 // the same half-क fix (see SITE_NAME_DISPLAY in siteContent.js) for the column title in Annapurna SIL ("उपयुक्त" also has क्त)
 const LINKS_TITLE = "उपयुक्\u200Dत दुवे"
-const ABOUT_TEXT = "मंगल भक्त सेवा मंडळ ही सामाजिक संस्था आहे. विविध उपक्रम व कार्यक्रमांतून मानवसेवा, धार्मिक समता, ऐक्य व आध्यात्मिक मार्गदर्शनाचे कार्य आम्ही करतो."
+const ABOUT_TEXT = `${SITE_NAME_DISPLAY} ही सामाजिक संस्था आहे. विविध उपक्रम व कार्यक्रमांतून मानवसेवा, धार्मिक समता, ऐक्य व आध्यात्मिक मार्गदर्शनाचे कार्य आम्ही करतो.`
 const CREDIT = { name: "गौरी कोळेकर", href: "mailto:kolekargauri8@gmail.com" }
 
 // आमची उद्दिष्टे: the trust's areas of work (text, not links)
@@ -93,8 +93,8 @@ export default function Footer() {
                         <p className={styles.aboutText}>{ABOUT_TEXT}</p>
                     </div>
 
-                    {/* उपयुक्त दुवे */}
-                    <nav className={styles.column} aria-label="उपयुक्त दुवे">
+                    {/* उपयुक्‍त दुवे */}
+                    <nav className={styles.column} aria-label="उपयुक्‍त दुवे">
                         <Title>{LINKS_TITLE}</Title>
                         <ul className={styles.list}>
                             {QUICK_LINKS.map((l) => (

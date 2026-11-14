@@ -4,8 +4,8 @@ import useLightbox from "../useLightbox"
 import styles from "./VideoGallery.module.css"
 
 const VIDEOS = [
-    { id: "PTV3-PZzozo", label: "भक्तिसोहळा" },
-    { id: "w-lyni2N3M0", label: "भक्तिगीत" },
+    { id: "PTV3-PZzozo", label: "भक्‍तिसोहळा" },
+    { id: "w-lyni2N3M0", label: "भक्‍तिगीत" },
     { id: "LWmc6Jq4SKU", label: "उत्सव सोहळा" },
     { id: "rnbfULtFN7A", label: "सत्संग" },
     { id: "EbpUn2b6H6E", label: "प्रवचन" },
@@ -93,7 +93,7 @@ export default function VideoGallery() {
                     <span className={`${styles.galleryGridPeacock} ${styles.galleryGridPeacockLeft}`} aria-hidden="true"></span>
                     <div className="section-title text-center sec-title-animation animation-style1">
                         <div className="section-title__tagline-box">
-                            <span className="section-title__tagline">भक्तिरसाचे क्षण</span>
+                            <span className="section-title__tagline">भक्‍तिरसाचे क्षण</span>
                         </div>
                         <h2 className="section-title__title title-animation">व्हिडिओ गॅलरी</h2>
                     </div>
