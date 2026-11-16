@@ -58,10 +58,10 @@ export default function About() {
                         <div className={`${styles.left} wow slideInLeft`} data-wow-delay="100ms" data-wow-duration="2500ms">
                             <div className={styles.imgBox}>
                                 <div className={styles.img}>
-                                    <img src="/assets/media/home/about-one-img-1.webp" alt="" loading="lazy" decoding="async" />
+                                    <img src="/assets/media/home/about-1.webp" alt="" loading="lazy" decoding="async" />
                                 </div>
                                 <div className={styles.img2}>
-                                    <img src="/assets/media/home/about-one-img-2.webp" alt="" loading="lazy" decoding="async" />
+                                    <img src="/assets/media/home/about-2.webp" alt="" loading="lazy" decoding="async" />
                                 </div>
                                 <div className={`${styles.badge} wow zoomIn animated`} data-wow-delay="500ms" data-wow-duration="2500ms">
                                     <i className="fas fa-calendar-alt" aria-hidden="true"></i>

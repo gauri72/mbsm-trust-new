@@ -10,7 +10,6 @@
                mobile, with a legible floor under each.
    ========================================================================== */
 
-
 /* ---- Hero + artwork ---- */
 .root {
   /* sizes, all from the artwork's own width (cqw), so each piece keeps its proportion at every
@@ -43,10 +42,9 @@
   object-fit: cover;                     /* cropped to 16:9, never stretched */
 }
 
-
 /* ---- Text on the artwork --------------------------------------------------------
-   The artwork has no lettering of its own; every piece of text is centred on its (--x, --y)
-   point of the artwork, so it stays on its scroll / medallion at any size. */
+   The artwork has the two characters' names built in, but not the page's name or icon: those are set on its
+   scroll and medallion, each centred on its (--x, --y) point of the artwork, so it stays there at any size. */
 .anchor {
   position: absolute;
   left: var(--x);
@@ -63,17 +61,11 @@
   text-align: center;
 }
 
-/* the text pieces use the site font; the icon keeps Font Awesome's own */
+/* the page's name on the scroll: maroon (the page's h1), in the site font. Devanagari's tall vowel marks sit
+   above the line, so a plainly centred line looks high: the title is nudged down by what was measured
+   (the ink's own centre vs the centre of its scroll), in em so it holds at every size */
 .title {
   font-family: var(--font);
-}
-
-/* Devanagari's tall vowel marks sit above the line, so a plainly centred line looks high: the title is
-   nudged down by what was measured (the ink's own centre vs the centre of its scroll), in em so it holds
-   at every size */
-
-/* the page's name on the scroll: maroon (the page's h1) */
-.title {
   color: var(--c-maroon);
   -webkit-text-stroke: var(--boldness) currentColor;
   font-size: max(16px, var(--title-size));

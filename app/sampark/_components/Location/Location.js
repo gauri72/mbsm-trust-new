@@ -1,16 +1,15 @@
-import Link from "next/link"
 import {
     SITE_PHONE_TEL, SITE_PHONE_DISPLAY, SITE_EMAIL, SITE_EMAIL_MAILTO, SITE_MAP_URL,
     SITE_ADDRESS_PLACE, SITE_ADDRESS_LINE1, SITE_ADDRESS_CITY, SITE_ADDRESS_PINCODE,
 } from "../../../_shared/_components/siteContent"
 import { SectionHead, MoreButton } from "../../../_shared/_components/Field/Field"
 import field from "../../../_shared/_components/Field/Field.module.css"
-import { cx } from "../../../_shared/_components/utils"
 import styles from "./Location.module.css"
 
 /* =============================================================================
-   Contact page: where to find the math. A map on a gold card, and the phone, email and address as three
-   gold cards beside it (below it on a screen narrower than 1200px), in a maroon field (the look of the home sections). Styles: Location.module.css.
+   Contact page: where to find the math. A map on a gold card, and the phone, email and address as three gold
+   cards beside it (below it on a screen narrower than 1200px), in a maroon field (the look of the home sections).
+   Styles: Location.module.css.
    ========================================================================== */
 
 // Google Maps "Embed a map" URL of the "Mangal Bhakta Seva Mandal (MBSM) Trust" listing; the place id makes it
@@ -48,12 +47,12 @@ const DETAILS = [
 
 export default function Location() {
     return (
-        <section className={cx(field.field, styles.location)} id="location">
+        <section className={`${field.field} ${styles.location}`} id="location">
             <div className="container">
                 <SectionHead label="आमचे स्थान" title="मठापर्यंत कसे पोहोचाल" />
                 <div className={`row ${field.cards}`}>
                     <div className="col-xl-7 wow fadeInLeft" data-wow-delay="100ms">
-                        <div className={cx(field.card, styles.mapCard)}>
+                        <div className={`${field.card} ${styles.mapCard}`}>
                             <iframe
                                 src={MAP_EMBED_URL}
                                 className={styles.map}
@@ -67,9 +66,9 @@ export default function Location() {
                         <ul className={styles.details}>
                             {DETAILS.map((d) => (
                                 <li key={d.label} className={styles.detailItem}>
-                                    <Link
+                                    <a
                                         href={d.href}
-                                        className={cx(field.card, styles.detail)}
+                                        className={`${field.card} ${styles.detail}`}
                                         lang="mr"
                                         {...(d.external && { target: "_blank", rel: "noopener noreferrer" })}
                                     >
@@ -77,8 +76,9 @@ export default function Location() {
                                         <span className={styles.text}>
                                             <span className={styles.label}>{d.label}</span>
                                             {d.lines.map((line, i) => <span key={i} className={styles.value}>{line}</span>)}
+                                            {d.external && <span className="visually-hidden"> (नवीन टॅबमध्ये उघडते)</span>}
                                         </span>
-                                    </Link>
+                                    </a>
                                 </li>
                             ))}
                         </ul>

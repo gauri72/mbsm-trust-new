@@ -56,10 +56,10 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("/assets/media/shared/section-bg-2.webp");
+  background-image: url("/assets/media/shared/pattern-maroon.webp");
   background-repeat: repeat;
   /* tile at the artwork's native width so the flower motifs match the
-     size used in the Mandir section (section-bg @ 1672px) */
+     size used in the Mandir section (pattern-gold @ 1672px) */
   background-size: 1170px auto;
   opacity: 0.5;
   pointer-events: none;

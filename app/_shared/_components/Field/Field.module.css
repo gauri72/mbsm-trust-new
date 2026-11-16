@@ -33,7 +33,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("/assets/media/shared/section-bg-2.webp");
+  background-image: url("/assets/media/shared/pattern-maroon.webp");
   background-repeat: repeat;
   background-position: center;                     /* the pattern is centred in the section, top to bottom too */
   background-size: 1170px auto;

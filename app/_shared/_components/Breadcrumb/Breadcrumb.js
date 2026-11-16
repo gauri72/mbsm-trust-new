@@ -1,4 +1,3 @@
-'use client'
 import { PAGES, CHARACTERS } from "../siteContent"
 import styles from "./Breadcrumb.module.css"
 
@@ -9,14 +8,14 @@ import styles from "./Breadcrumb.module.css"
    <Breadcrumb page="parichaya" />     the artwork (the two characters' names are part of the picture)
        + the page's name on the scroll (its h1) and its icon in the medallion. Name and icon come from
        siteContent.js — the same ones the header and footer use.
-   <Breadcrumb image="/assets/media/shared/page-header-bg.webp" />
+   <Breadcrumb image="/assets/media/shared/not-found-bg.webp" />
        any other artwork, without text (the 404 page)
 
    No reveal animation is applied.
    Sizes and positions: see Breadcrumb.module.css.
    ========================================================================== */
 
-const ARTWORK = { src: "/assets/media/shared/page-hero-plain.webp", width: 1670, height: 942 }
+const ARTWORK = { src: "/assets/media/shared/breadcrumb-hero.webp", width: 1670, height: 942 }
 
 // where the scroll and the medallion sit on the artwork (% of its width / height)
 const LAYOUT = {
@@ -38,7 +37,7 @@ export default function Breadcrumb({ page, image }) {
             <div className={styles.art}>
                 {/* the artwork names its two characters; the page's own name is the h1 below */}
                 {withText
-                    ? <img src={ARTWORK.src} alt={ARTWORK_ALT} width={ARTWORK.width} height={ARTWORK.height} className={styles.img} />
+                    ? <img src={ARTWORK.src} alt={ARTWORK_ALT} width={ARTWORK.width} height={ARTWORK.height} fetchPriority="high" className={styles.img} />
                     : <img src={image} alt="" className={styles.img} />}
 
                 {withText && (

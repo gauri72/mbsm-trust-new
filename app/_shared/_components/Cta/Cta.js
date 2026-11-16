@@ -2,7 +2,7 @@
 import { useRef } from "react"
 import Link from "next/link"
 import AlphaLoopVideo from "./AlphaLoopVideo/AlphaLoopVideo"
-import { PAGES, CTA, SITE_NAME_DISPLAY, SITE_TAGLINE } from "../siteContent"
+import { PAGES, CTA, SITE_TAGLINE } from "../siteContent"
 import { cx, useIsomorphicLayoutEffect } from "../utils"
 import styles from "./Cta.module.css"
 
@@ -23,8 +23,8 @@ import styles from "./Cta.module.css"
    ========================================================================== */
 
 // ---- Content -------------------------------------------------------------------
-// the trust's name, with the half-क fix (shared with the header and footer: siteContent.js)
-const LABEL = SITE_NAME_DISPLAY
+// the small line above the heading
+const LABEL = "आमच्यासोबत जोडले जा"
 
 // the tagline in its two lines ("जिथे कमी," / "तिथे कुवतीनुसार आम्ही"): the heading breaks after the comma
 const [TAGLINE_FIRST, TAGLINE_SECOND] = SITE_TAGLINE.split(", ")

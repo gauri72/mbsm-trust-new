@@ -45,7 +45,7 @@
   background-color: var(--c-maroon);
   background-image:
     linear-gradient(rgba(var(--c-maroon-rgb), 0.75), rgba(var(--c-maroon-rgb), 0.75)),
-    url("/assets/media/shared/cta-one-bg.webp");
+    url("/assets/media/shared/cta-bg.webp");
   background-position: center, center 60%;
   background-size: cover, cover;
   background-repeat: no-repeat;

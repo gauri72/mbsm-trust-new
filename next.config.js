@@ -1,0 +1,19 @@
+// Next.js settings.
+
+// The pictures, videos and fonts under /assets are served from public/, where Next sends "no cache". They change
+// rarely, so browsers may keep them for a week, and show the old copy for another day while fetching the new one.
+// (To replace a file at once, give the new one a new name.)
+const ASSET_CACHE = "public, max-age=604800, stale-while-revalidate=86400"
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+    poweredByHeader: false,          // no "X-Powered-By: Next.js" on every response
+    async headers() {
+        return [
+            { source: "/assets/:path*", headers: [{ key: "Cache-Control", value: ASSET_CACHE }] },
+            { source: "/:path*", headers: [{ key: "X-Content-Type-Options", value: "nosniff" }] },
+        ]
+    },
+}
+
+module.exports = nextConfig

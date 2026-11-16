@@ -46,7 +46,7 @@ export default function Projects() {
     return (
         <section className={`${shared.field} ${styles.projects}`}>
             <div className="container">
-                <SectionHead label="सामाजिक प्रकल्प" title="सेवेचा ध्यास, समाजाचा विकास" />
+                <SectionHead label="सामाजिक प्रकल्प" title="माणुसकीची ज्योत, प्रकाशाचा स्रोत" />
 
                 <div className={`${styles.stats} wow fadeInUp`} data-wow-delay="100ms">
                     {STATS.map((stat) => (

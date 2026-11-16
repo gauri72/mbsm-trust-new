@@ -1,0 +1,216 @@
+/* =============================================================================
+   Karyakram — the annual festivals: a carousel on the maroon field. Each card: the whole poster (9:16, nothing cut
+   off) in a thick gold border with a black gap inside it, and its title in black on a solid gold plaque that overlaps the poster's lower edge.
+   All cards are the same size, side by side with a gap between: the one in focus in the middle, the previous and the
+   next one on either side; every step moves them all along. An arrow at each side. On a phone the side cards are cut
+   off by the screen's edge. The maroon field and heading are shared: see _shared/_components/Field/Field.module.css.
+   ========================================================================== */
+section.annual {
+  --annual-card-width: 300px;            /* every card (the poster is 9:16) */
+  --annual-gap: var(--space-5);          /* between the cards */
+  --annual-border: 5px;                  /* the thick gold border */
+  --annual-gap-in: 6px;                  /* the black gap inside it */
+  --annual-plaque: 124px;                /* the nameplate's height: the same for every card */
+  --annual-medal: 48px;                  /* the medallion on the nameplate */
+  --annual-lap: calc(var(--annual-plaque) / 2);   /* half of it lies over the poster, half below */
+  --annual-inset: 10%;                   /* the plaque is narrower than the card by this much each side */
+  --annual-control: 48px;                /* the arrow buttons */
+}
+
+.carousel {
+  margin: 0 auto;
+}
+
+.frame {
+  position: relative;
+}
+
+/* ---- Stage: a grid whose one cell holds every card, so it is as tall as the tallest card; the cards are moved aside ---- */
+.stage {
+  display: grid;
+  overflow: hidden;
+  justify-items: center;
+}
+
+section.annual .card {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  width: var(--annual-card-width);
+  text-align: center;
+  transition: transform 600ms ease;
+}
+
+section.annual .card[data-place="center"] {
+  z-index: 2;
+}
+
+section.annual .card[data-place="left"] {
+  z-index: 1;
+  transform: translateX(calc(-100% - var(--annual-gap)));
+}
+
+section.annual .card[data-place="right"] {
+  z-index: 1;
+  transform: translateX(calc(100% + var(--annual-gap)));
+}
+
+/* a card that goes from the left side to the right (or back) jumps there unseen instead of sliding across the others */
+section.annual .card[data-jump="true"] {
+  transition: none;
+}
+
+section.annual .card[data-place="hidden"] {
+  z-index: 0;
+  visibility: hidden;
+}
+
+/* the poster's frame: a thick gold border, then a black gap, then the poster */
+.posterBox {
+  padding: var(--annual-gap-in);
+  border: var(--annual-border) solid var(--c-gold);
+  border-radius: 16px;
+  background-color: var(--c-black);
+}
+
+.poster {
+  display: block;
+  width: 100%;
+  height: auto;                          /* the poster's own proportions: nothing is cut off */
+  border-radius: 8px;
+}
+
+/* ---- Title: a nameplate in the same make as the poster's frame: a thick gold border, a black gap, then a solid gold
+   plate with the title in black. Narrower than the card, half over the poster's lower edge, half below it. All plates
+   are the same height and end on the same line, whatever the length of the titles. ---- */
+.title {
+  position: relative;
+  height: var(--annual-plaque);
+  margin: calc(var(--annual-lap) * -1) var(--annual-inset) 0;
+  padding: var(--annual-gap-in);
+  border: var(--annual-border) solid var(--c-gold);
+  border-radius: 14px;
+  background-color: var(--c-black);
+}
+
+/* the medallion: a maroon circle with a thick gold border and a gold icon, centred on the nameplate's top edge */
+.medal {
+  position: absolute;
+  top: calc(var(--annual-medal) / -2 - var(--annual-border));
+  left: 50%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--annual-medal);
+  height: var(--annual-medal);
+  transform: translateX(-50%);
+  border: var(--annual-border) solid var(--c-gold);
+  border-radius: 50%;
+  background-color: var(--c-maroon);
+  color: var(--c-gold);
+  font-size: var(--text-sm);
+}
+
+.plate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: var(--space-3) var(--space-3) 0;
+  border-radius: 8px;
+  background-color: var(--c-gold);
+  color: var(--c-black);
+  font-family: var(--font);
+  font-size: var(--text-md);
+  font-weight: 700;
+  line-height: 1.3;
+  text-transform: none;
+  text-wrap: balance;
+}
+
+/* ---- Wide screens: bigger cards, the same gap, still clear of the arrows (the container is wider from 1400px) ---- */
+@media (min-width: 1400px) {
+  section.annual {
+    --annual-card-width: 340px;
+  }
+}
+
+/* ---- Arrows ---- */
+.arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 3;                            /* above the cards */
+  margin-top: calc(var(--annual-control) / -2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--annual-control);
+  height: var(--annual-control);
+  padding: 0;
+  border: var(--line-width) solid var(--c-gold);
+  border-radius: 50%;
+  background-color: var(--c-gold);
+  color: var(--c-maroon);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+.arrowPrev {
+  left: var(--space-3);
+}
+
+.arrowNext {
+  right: var(--space-3);
+}
+
+/* the icon font has only the right arrow: the left button shows it mirrored */
+.flip {
+  transform: scaleX(-1);
+}
+
+.arrow:hover,
+.arrow:focus-visible {
+  background-color: var(--c-maroon);
+  color: var(--c-gold);
+}
+
+.arrow:focus-visible {
+  outline: var(--line-width) solid var(--c-white);
+  outline-offset: var(--line-width);
+}
+
+/* ---- Phone: a narrower card; the arrows (maroon, so they show on the posters) high on the side cards ---- */
+@media (max-width: 575px) {
+  section.annual {
+    --annual-card-width: 230px;
+    --annual-plaque: 124px;
+    --annual-inset: 4%;
+  }
+
+  .plate {
+    padding: var(--space-3) var(--space-2) 0;
+    font-size: var(--text-sm);
+  }
+
+  .arrow {
+    top: 35%;
+    background-color: var(--c-maroon);
+    color: var(--c-gold);
+  }
+
+  .arrowPrev {
+    left: var(--space-1);
+  }
+
+  .arrowNext {
+    right: var(--space-1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section.annual .card {
+    transition: none;
+  }
+}

@@ -6,7 +6,7 @@
 }
 
 .galleryGridVideo::before {
-  background-image: url("/assets/media/shared/section-bg.webp");
+  background-image: url("/assets/media/shared/pattern-gold.webp");
   opacity: 0.25;
 }
 

@@ -20,8 +20,8 @@ import styles from "./Hero.module.css"
    ========================================================================== */
 
 const SLIDES = [
-    { src: "/assets/media/home/slider-v1-img-1-plain.webp", name: CHARACTERS.swami.name },
-    { src: "/assets/media/home/slider-v1-img-2-plain.webp", name: CHARACTERS.datta.name },
+    { src: "/assets/media/home/hero-swami.webp", name: CHARACTERS.swami.name },
+    { src: "/assets/media/home/hero-datta.webp", name: CHARACTERS.datta.name },
 ]
 
 const SLIDE_MS = 1500          // a slide change takes this long: Swiper's cross-fade and the CSS zoom (--slide-ms)

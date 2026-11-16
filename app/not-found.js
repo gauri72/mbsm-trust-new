@@ -7,7 +7,7 @@ import styles from "./not-found.module.css"
 export default function Error404() {
     return (
         <>
-            <Breadcrumb image="/assets/media/shared/page-header-bg.webp" />
+            <Breadcrumb image="/assets/media/shared/not-found-bg.webp" />
             <section className={styles.errorPage}>
                 <div className="container">
                     <div className={styles.inner}>

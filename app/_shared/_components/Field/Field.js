@@ -29,6 +29,7 @@ export function MoreButton({ href, external = false, children }) {
         <div className={`${shared.cta} wow fadeInUp`} data-wow-delay="300ms">
             <Link href={href} className="pill-btn" lang="mr" {...(external && { target: "_blank", rel: "noopener noreferrer" })}>
                 <span>{children}</span>
+                {external && <span className="visually-hidden"> (नवीन टॅबमध्ये उघडते)</span>}
                 <i className="fas fa-arrow-right" aria-hidden="true"></i>
             </Link>
         </div>

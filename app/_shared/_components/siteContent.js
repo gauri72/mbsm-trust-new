@@ -9,6 +9,9 @@
    ========================================================================== */
 
 export const SITE_NAME = "मंगल भक्त सेवा मंडळ"
+// The site's public address (for the share previews and the sitemap). Set NEXT_PUBLIC_SITE_URL when building for
+// the real domain; until then this placeholder is used, and the share-preview image link will not resolve.
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://example.org"
 // The title font can stack क्त into a ligature that does not read as Marathi; a zero-width joiner (U+200D)
 // after क् asks for the half-क form. Used for the name shown on the page (header and footer), not for titles.
 export const SITE_NAME_DISPLAY = "मंगल भक्\u200Dत सेवा मंडळ"
@@ -69,8 +72,12 @@ export const isCurrentPage = (pathname, href) =>
 export const pageKeyOf = (pathname) =>
     Object.keys(PAGES).find((key) => key !== "home" && isCurrentPage(pathname, PAGES[key].href))
 
-// the metadata a page exports: its browser-tab title and the description search engines show
-export const pageMetadata = (key, description) => ({ title: pageTitle(key), description })
+// what a link shared on WhatsApp and the like shows: a title, a description and the picture
+export const SHARE_IMAGE = { url: "/assets/media/shared/share-preview.jpg", width: 1200, height: 630, alt: SITE_NAME }
+export const shareCard = (title, description) => ({ title, description, siteName: SITE_NAME, locale: "mr_IN", type: "website", images: [SHARE_IMAGE] })
+
+// the metadata a page exports: its browser-tab title, the description search engines show, and its share card
+export const pageMetadata = (key, description) => ({ title: pageTitle(key), description, openGraph: shareCard(pageTitle(key), description) })
 
 // ---- Characters: the two figures on the artwork (their names are part of the pictures) ----
 export const CHARACTERS = {

@@ -30,8 +30,8 @@
 .fa-chevron-right:before {
   content:"\f054"
 }
-.fa-clock:before {
-  content:"\f017"
+.fa-comment-dots:before {
+  content:"\f4ad"
 }
 .fa-envelope:before {
   content:"\f0e0"
@@ -230,16 +230,6 @@ address {
   font-style:normal;
   line-height:inherit
 }
-ul {
-  padding-left:2rem
-}
-ul {
-  margin-top:0;
-  margin-bottom:1rem
-}
-ul ul {
-  margin-bottom:0
-}
 b {
   font-weight:bolder
 }
@@ -335,14 +325,10 @@ iframe {
 [hidden] {
   display:none!important
 }
-.list-unstyled {
-  padding-left:0;
-  list-style:none
-}
 .container {
   width:100%;
-  padding-right:var(--bs-gutter-x,.75rem);
-  padding-left:var(--bs-gutter-x,.75rem);
+  padding-right:var(--space-3);          /* the page gutter: 14px (16px on wide screens) */
+  padding-left:var(--space-3);
   margin-right:auto;
   margin-left:auto
 }
@@ -366,7 +352,7 @@ iframe {
   max-width:1140px
   }
 }
-@media (min-width:1400px){
+@media (min-width:1320px){
   .container {
   max-width:1320px
   }
@@ -399,20 +385,12 @@ iframe {
   flex:0 0 auto;
   width:33.3333333333%
   }
-  .col-lg-5 {
-  flex:0 0 auto;
-  width:41.6666666667%
-  }
   .col-lg-6 {
   flex:0 0 auto;
   width:50%
   }
 }
 @media (min-width:1200px){
-  .col-xl-1 {
-  flex:0 0 auto;
-  width:8.3333333333%
-  }
   .col-xl-3 {
   flex:0 0 auto;
   width:25%
@@ -432,20 +410,6 @@ iframe {
   .col-xl-7 {
   flex:0 0 auto;
   width:58.3333333333%
-  }
-  .col-xl-12 {
-  flex:0 0 auto;
-  width:100%
-  }
-}
-@media (min-width:1400px){
-  .col-xxl-4 {
-  flex:0 0 auto;
-  width:33.3333333333%
-  }
-  .col-xxl-8 {
-  flex:0 0 auto;
-  width:66.6666666667%
   }
 }
 .btn {
@@ -530,9 +494,6 @@ iframe {
 .carousel {
   position:relative
 }
-.d-none {
-  display:none!important
-}
 .shadow {
   box-shadow:0 .5rem 1rem rgba(0,0,0,.15)!important
 }
@@ -544,11 +505,6 @@ iframe {
 }
 .visible {
   visibility:visible!important
-}
-@media (min-width:1200px){
-  .d-xl-block {
-  display:block!important
-  }
 }
 
 /* ---- Visually hidden: read out by screen readers, not shown (the home page's h1, "opens in a new tab") ---- */
@@ -1095,21 +1051,6 @@ ul {
   opacity: 1;
 }
 
-.container {
-  padding-left: var(--space-3);          /* the page gutter: 14px (16px on wide screens) */
-  padding-right: var(--space-3);
-}
-
-.list-unstyled {
-  padding-left: 0;
-}
-
-@media (min-width: 1320px) {
-  .container {
-    max-width: 1320px;
-  }
-}
-
 ::-webkit-input-placeholder {
   color: var(--c-maroon);
   opacity: 1;
@@ -1281,196 +1222,9 @@ ul {
   }
 }
 
-/* Visit / Darshan timings card */
-.visit-card {
-  position: relative;
-  background: linear-gradient(160deg, #620208 0%, #620208 60%, #620208 100%);
-  box-shadow:
-    0 24px 55px rgba(0, 0, 0, 0.45),
-    0 8px 20px rgba(98, 2, 8, 0.35),
-    inset 0 1px 0 rgba(217, 152, 42, 0.15);
-  border-top: 3px solid #D9982A;
-  border-radius: 8px;
-  padding: 43px 45px 45px;
-  transition: transform 300ms ease, box-shadow 300ms ease;
-}
-
-.visit-card:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 30px 65px rgba(0, 0, 0, 0.5),
-    0 10px 24px rgba(98, 2, 8, 0.4),
-    inset 0 1px 0 rgba(217, 152, 42, 0.2);
-}
-
-.visit-card__header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding-bottom: 26px;
-  margin-bottom: 26px;
-  border-bottom: 1px solid rgba(217, 152, 42, 0.3);
-}
-
-.visit-card__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 54px;
-  height: 54px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background-color: rgba(217, 152, 42, 0.15);
-  color: #D9982A;
-  font-size: 24px;
-}
-
-.visit-card__header h3 {
-  font-size: 26px;
-  font-weight: 800;
-  color: #FFFFFF;
-  margin: 0;
-}
-
-.visit-card__timings {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.visit-card__timings li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 9px 0;
-  border-bottom: 1px dashed rgba(217, 152, 42, 0.25);
-}
-
-.visit-card__timings li:last-child {
-  border-bottom: none;
-}
-
-.visit-card__label {
-  color: #D9982A;
-  font-size: 17px;
-  font-weight: 600;
-}
-
-.visit-card__value {
-  color: #D9982A;
-  font-size: 17px;
-  font-weight: 800;
-  white-space: nowrap;
-}
-
-.visit-card__divider {
-  height: 1px;
-  margin: 18px 0;
-  background-color: rgba(217, 152, 42, 0.25);
-}
-
-.visit-card__address {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.visit-card__address i {
-  margin-top: 4px;
-  color: #D9982A;
-  font-size: 18px;
-}
-
-.visit-card__address p {
-  margin: 0;
-  color: #FFFFFF;
-  font-size: 17px;
-  line-height: 1.5em;
-}
-
-.visit-card__address-line2 {
-  margin-left: 4px;
-}
-
-.visit-card__actions {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 30px;
-}
-
-.visit-card__phone {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: #FFFFFF;
-  font-size: 17px;
-  font-weight: 700;
-  transition: color 300ms ease;
-}
-
-.visit-card__phone i {
-  color: #D9982A;
-}
-
-.visit-card__phone:hover {
-  color: #D9982A;
-}
-
-@media (max-width: 991px) {
-  .visit-card {
-    margin-top: 40px;
-  }
-}
-
-@media (max-width: 575px) {
-  .visit-card {
-    padding: 32px 26px 34px;
-  }
-}
-
-@media (max-width: 767px) {
-
-  .visit-card__header {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .visit-card__timings li {
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    text-align: center;
-  }
-
-  .visit-card__address {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .visit-card__address-line1,
-.visit-card__address-line2 {
-    display: block;
-  }
-
-  .visit-card__address-line2 {
-    margin-left: 0;
-  }
-
-  .visit-card__actions {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-}
-
 /*==================================================================
     HOME — LEGACY SECTION — colour scheme keyed to the hero image.
-    Palette (sampled from slider-v1-img-1-plain.webp):
+    Palette (sampled from hero-swami.webp):
       --lg-gold      #D9982A   (hero's L/R gold borders)
       --lg-gold-lite #D9982A   (bright tint — hovers / active states)
       --lg-gold-pale #D9982A   (soft gold — small text on maroon)
@@ -1492,76 +1246,9 @@ ul {
   --lg-cream: #FFFFFF;
 }
 
-/* ---- Visit / Darshan card: maroon panel, gold trim ---- */
-.visit-card {
-  background: linear-gradient(160deg, #620208 0%, #620208 60%, var(--brand-maroon-dark) 100%);
-  border-top: 3px solid var(--brand-gold);
-  box-shadow:
-    0 24px 55px rgba(0, 0, 0, 0.45),
-    0 8px 20px rgba(98, 2, 8, 0.35),
-    inset 0 1px 0 rgba(217, 152, 42, 0.18);
-}
-
-.visit-card:hover {
-  box-shadow:
-    0 30px 65px rgba(0, 0, 0, 0.5),
-    0 10px 24px rgba(98, 2, 8, 0.4),
-    inset 0 1px 0 rgba(217, 152, 42, 0.28);
-}
-
-.visit-card__header {
-  border-bottom-color: rgba(217, 152, 42, 0.32);
-}
-
-.visit-card__header h3,
-.visit-card__address p {
-  color: var(--brand-cream);
-}
-
-.visit-card__icon {
-  background-color: rgba(217, 152, 42, 0.16);
-  color: var(--brand-gold);
-}
-
-.visit-card__timings li {
-  border-bottom-color: rgba(217, 152, 42, 0.26);
-}
-
-.visit-card__label {
-  color: #D9982A;
-}
-
-.visit-card__value,
-.visit-card__address i,
-.visit-card__phone i {
-  color: var(--brand-gold);
-}
-
-.visit-card__divider {
-  background-color: rgba(217, 152, 42, 0.26);
-}
-
-.visit-card__phone {
-  color: var(--brand-cream);
-}
-
-.visit-card__phone:hover,
-.visit-card__phone:focus-visible {
-  color: var(--brand-gold-lite);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .visit-card {
-    transition: none;
-  }
-  .visit-card:hover {
-    transform: none;
-  }
-}
-
 /*==================================================================
     HOME — SADHANA SECTION (.found-one) — colour scheme keyed to the
-    hero image.  Palette (sampled from slider-v1-img-1-plain.webp):
+    hero image.  Palette (sampled from hero-swami.webp):
       --sd-gold      #D9982A   (hero's L/R gold borders)
       --sd-gold-lite #D9982A   (bright tint — hovers / active states)
       --sd-gold-pale #D9982A   (soft gold on maroon)
@@ -1585,7 +1272,7 @@ ul {
 
 /*==================================================================
     HOME — UPCOMING EVENTS SECTION (.event-one) — colour scheme keyed
-    to the hero image.  Palette (sampled from slider-v1-img-1-plain.webp):
+    to the hero image.  Palette (sampled from hero-swami.webp):
       --ev-gold      #D9982A   (hero's L/R gold borders)
       --ev-gold-lite #D9982A   (bright tint — hovers / active states)
       --ev-gold-pale #D9982A   (soft gold on maroon)
@@ -1713,7 +1400,7 @@ ul {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: url("/assets/media/shared/section-bg-2.webp");
+  background-image: url("/assets/media/shared/pattern-maroon.webp");
   background-repeat: repeat;
   background-size: 1170px auto;
   opacity: 0.42;

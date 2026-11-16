@@ -16,42 +16,42 @@ const CATEGORIES = [
     {
         icon: "fas fa-hand-holding-heart",
         title: "कर्म आणि कलियुग",
-        image: "/assets/media/home/blogs-1.webp",
+        image: "/assets/media/home/blog-karma.webp",
         desc: "कर्माचे महत्त्व, कलियुगातील उद्धाराचा मार्ग आणि कर्माचे फळ.",
         count: 16,
     },
     {
         icon: "fas fa-spa",
         title: "शांती आणि आत्मचिंतन",
-        image: "/assets/media/home/blogs-3.webp",
+        image: "/assets/media/home/blog-shanti.webp",
         desc: "सुख, समाधान, अंतर्मुखता आणि जीवनाकडे पाहण्याची दृष्टी.",
         count: 17,
     },
     {
         icon: "fas fa-fire",
         title: "अहंकार आणि षडरिपू",
-        image: "/assets/media/home/blogs-4.webp",
+        image: "/assets/media/home/blog-ahankar.webp",
         desc: "अहंकार, षडरिपू आणि स्वार्थी वृत्तीवर मात कशी करावी.",
         count: 11,
     },
     {
         icon: "fas fa-om",
         title: "शंकर महाराज आणि लीला",
-        image: "/assets/media/home/blogs-6.webp",
+        image: "/assets/media/home/blog-shankar-leela.webp",
         desc: "सद्गुरु शंकर महाराजांचे संदेश, लीला आणि भक्‍तांवरची माया.",
         count: 11,
     },
     {
         icon: "fas fa-praying-hands",
         title: "गुरू आणि गुरुकृपा",
-        image: "/assets/media/home/blogs-5.webp",
+        image: "/assets/media/home/blog-guru.webp",
         desc: "गुरूची संकल्पना, गुरुवचनाचे महत्त्व आणि सद्गुरु कृपा.",
         count: 6,
     },
     {
         icon: "fas fa-hands-helping",
         title: "मठ आणि सेवा",
-        image: "/assets/media/home/blogs-2.webp",
+        image: "/assets/media/home/blog-math-seva.webp",
         desc: "गादी सेवा, अन्नदान आणि मठातील भक्‍ती व सेवेचे अनुभव.",
         count: 7,
     },
@@ -67,7 +67,7 @@ export default function Blogs() {
     return (
         <section className={`${shared.field} ${styles.blogs}`}>
             <div className="container">
-                <SectionHead label="अमृतवाणी" title="शब्दांचा गंध, भक्‍तीचा छंद" />
+                <SectionHead label="अमृतवाणी" title="शब्दांची शिदोरी, मनाची तिजोरी" />
                 <div className={`row ${shared.cards}`}>
                     {CATEGORIES.map((cat, index) => (
                         <div

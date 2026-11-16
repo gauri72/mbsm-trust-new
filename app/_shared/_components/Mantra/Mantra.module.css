@@ -43,17 +43,6 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-/* the floral texture of the maroon sections, faint */
-.root > .marquee::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("/assets/media/shared/section-bg-2.webp");
-  background-size: 770px auto;
-  opacity: 0.35;
-  pointer-events: none;
-}
-
 /* the two gold lines, full width, above and below the verses */
 .root::before,
 .root::after {

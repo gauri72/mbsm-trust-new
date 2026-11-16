@@ -8,6 +8,12 @@ import Gallery from "./_shared/_components/Gallery/Gallery"
 import Cta from "./_shared/_components/Cta/Cta"
 import { pageKeyOf } from "./_shared/_components/siteContent"
 
+// Browser Back / Forward restores the old scroll position; every other page change opens the page at its top.
+// (A template is re-created on each page change, so these two live outside it.)
+let cameBack = false
+let firstPage = true
+if (typeof window !== "undefined") window.addEventListener("popstate", () => { cameBack = true })
+
 // The frame every page shares, around the page's own content:
 //
 //     mantra · [inner pages: breadcrumb artwork · border · gallery · border] · the page · border · closing call-to-action · closing mantra
@@ -19,9 +25,11 @@ import { pageKeyOf } from "./_shared/_components/siteContent"
 export default function Template({ children }) {
     const innerPage = pageKeyOf(usePathname())
 
-    // every page opens at its top: the shared header stays mounted, so the browser would otherwise keep the old position
+    // the shared header stays mounted, so the browser would otherwise keep the old position when a link is followed
     useEffect(() => {
-        window.scrollTo({ top: 0, left: 0, behavior: "instant" })
+        if (!firstPage && !cameBack) window.scrollTo({ top: 0, left: 0, behavior: "instant" })
+        firstPage = false
+        cameBack = false
     }, [])
 
     useEffect(() => {
