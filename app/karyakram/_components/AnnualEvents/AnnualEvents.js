@@ -11,7 +11,7 @@ import styles from "./AnnualEvents.module.css"
    gap, gold plate) with a round medallion (a Font Awesome icon) on its top edge, half over the poster's lower edge. All cards are the same size, side by side: the one in focus in the middle with the previous and the next one
    on either side; every step moves them all along, round and round.
    It moves on by itself every 5 seconds (not while a mouse pointer or the keyboard focus is on it: a touch or a click does not hold it, and not at all if the visitor
-   asks for reduced motion), and has an arrow at each side. 'use client' is needed for that.
+   asks for reduced motion), and has an arrow at each side on a desktop (a pair below the cards on a tablet and a phone). 'use client' is needed for that.
    Styles: AnnualEvents.module.css.
 
    Four more festivals have posters but are not shown yet (add them to FESTIVALS to show them):

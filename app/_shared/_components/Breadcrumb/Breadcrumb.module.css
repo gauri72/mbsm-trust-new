@@ -1,9 +1,9 @@
 /* =============================================================================
    Breadcrumb — the inner-page hero: one full-width 16:9 artwork, shown exactly as
-   supplied (it carries the two characters' names), with the page's name and its icon set on it.
+   supplied (a blank scroll), with the page's name set on the scroll and its icon in the gold ring below.
 
    Design rules (same as the header, footer, mantra and CTA)
-   - Colours : maroon (the page name on its scroll), gold (the page icon in its medallion).
+   - Colours : maroon (the page name and the double bars on its scroll; the disc in the ring), gold (the icon on that disc).
    - Shape   : 16:9 at every screen size (cropped to it, never stretched).
    - Type    : Annapurna SIL. Everything is sized from the artwork's own width (cqw = 1% of
                it), so each piece keeps its place and proportion on desktop, tablet and
@@ -12,11 +12,11 @@
 
 /* ---- Hero + artwork ---- */
 .root {
-  /* sizes, all from the artwork's own width (cqw), so each piece keeps its proportion at every
-     screen size: the page name fills its scroll comfortably, the icon sits inside its medallion's
-     inner ring (about 6cqw across; the widest icon is 1.25em wide, so 3.2cqw leaves it a margin) */
+  /* the size comes from the artwork's own width (cqw), so the name keeps its proportion at every
+     screen size: it fills its scroll comfortably */
   --title-size: 6.4cqw;
-  --icon-size: 3.2cqw;
+  --ring-size: 5.1cqw;                   /* the disc inside the artwork's gold ring (its hole is about 5.6cqw across) */
+  --bars-gap: 3cqw;                      /* between a double bar and the name */
   --boldness: 0.045em;                   /* extra weight on top of the one bold face (a stroke in the text's own colour) */
 
   position: relative;
@@ -43,8 +43,8 @@
 }
 
 /* ---- Text on the artwork --------------------------------------------------------
-   The artwork has the two characters' names built in, but not the page's name or icon: those are set on its
-   scroll and medallion, each centred on its (--x, --y) point of the artwork, so it stays there at any size. */
+   The artwork is a blank scroll; the page's name is set on it, centred on its (--x, --y) point of the artwork, so it
+   stays there at any size. */
 .anchor {
   position: absolute;
   left: var(--x);
@@ -53,33 +53,49 @@
   transform: translate(-50%, -50%);
 }
 
-.title,
-.icon {
+/* the page's name on the scroll: maroon (the page's h1), in the site font. Devanagari's tall vowel marks sit
+   above the line, so a plainly centred line looks high: the title is nudged down by what was measured
+   (the ink's own centre vs the midpoint between the scroll's two ornaments), in em so it holds at every size */
+.title {
   margin: 0;
+  font-family: var(--font);
   line-height: 1.2;
   white-space: nowrap;
   text-align: center;
-}
-
-/* the page's name on the scroll: maroon (the page's h1), in the site font. Devanagari's tall vowel marks sit
-   above the line, so a plainly centred line looks high: the title is nudged down by what was measured
-   (the ink's own centre vs the centre of its scroll), in em so it holds at every size */
-.title {
-  font-family: var(--font);
   color: var(--c-maroon);
   -webkit-text-stroke: var(--boldness) currentColor;
   font-size: max(16px, var(--title-size));
-  transform: translateY(0.23em);
+  transform: translateY(0.245em);
 }
 
-/* the page's icon in the medallion: Font Awesome, gold, centred on the medallion
-   (a 1em square box, so every icon's glyph sits on the same centre point) */
-.icon {
-  display: block;
-  width: 1em;
-  height: 1em;
+/* the name between its two double bars: the row is centred on the point between the scroll's ornaments, and so are the bars */
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--bars-gap);
+}
+
+/* the double bar (||): two thick maroon lines, taller than the name's lettering (the scroll has room for about 14cqw
+   between its two ornaments) */
+.bars {
+  flex: none;
+  width: max(12px, 2.6cqw);
+  height: max(28px, 9cqw);
+  border-right: max(3px, 0.7cqw) solid var(--c-maroon);
+  border-left: max(3px, 0.7cqw) solid var(--c-maroon);
+}
+
+/* the page's icon: a maroon disc filling the hole of the artwork's gold ring, with a gold Font Awesome icon on it */
+.medal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max(22px, var(--ring-size));
+  height: max(22px, var(--ring-size));
+  border-radius: 50%;
+  background-color: var(--c-maroon);
   color: var(--c-gold);
+  font-size: max(13px, calc(var(--ring-size) * 0.62));
   -webkit-text-stroke: 0.03em currentColor;
-  font-size: max(13px, var(--icon-size));
   line-height: 1;
 }

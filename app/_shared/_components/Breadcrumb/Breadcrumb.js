@@ -1,13 +1,13 @@
-import { PAGES, CHARACTERS } from "../siteContent"
+import { PAGES } from "../siteContent"
 import styles from "./Breadcrumb.module.css"
 
 /* =============================================================================
    Breadcrumb — the inner-page hero (every page except home, and the 404 page): a 16:9
-   artwork shown exactly as supplied, with the page's name and icon set on it in Annapurna SIL.
+   artwork (a blank scroll between two lamps) shown exactly as supplied, with the page's name
+   set on the scroll in Annapurna SIL between two double bars (||), with the page's icon in the gold ring below it.
 
-   <Breadcrumb page="parichaya" />     the artwork (the two characters' names are part of the picture)
-       + the page's name on the scroll (its h1) and its icon in the medallion. Name and icon come from
-       siteContent.js — the same ones the header and footer use.
+   <Breadcrumb page="parichaya" />     the artwork + the page's name on the scroll (its h1) between two double bars, and its icon in the ring.
+       The name and icon come from siteContent.js — the same one the header and footer use.
    <Breadcrumb image="/assets/media/shared/not-found-bg.webp" />
        any other artwork, without text (the 404 page)
 
@@ -17,14 +17,11 @@ import styles from "./Breadcrumb.module.css"
 
 const ARTWORK = { src: "/assets/media/shared/breadcrumb-hero.webp", width: 1670, height: 942 }
 
-// where the scroll and the medallion sit on the artwork (% of its width / height)
-const LAYOUT = {
-    title: { x: 50, y: 26.8 },
-    icon: { x: 50, y: 66.4 },
-}
+// where the page's name sits on the artwork: the middle between the scroll's two ornaments (% of the artwork's width / height)
+const TITLE = { x: 50, y: 48.3 }
 
-// the artwork shows both characters; it is described once here, for screen readers
-const ARTWORK_ALT = `${CHARACTERS.swami.name} · ${CHARACTERS.datta.name}`
+// the centre of the gold ring that hangs below the scroll (it holds the page's icon)
+const RING = { x: 50, y: 82.9 }
 
 const at = ({ x, y }) => ({ "--x": `${x}%`, "--y": `${y}%` })   // a point of the artwork, in %
 
@@ -35,18 +32,22 @@ export default function Breadcrumb({ page, image }) {
     return (
         <section className={styles.root}>
             <div className={styles.art}>
-                {/* the artwork names its two characters; the page's own name is the h1 below */}
+                {/* the artwork is decoration; the page's own name is the h1 below */}
                 {withText
-                    ? <img src={ARTWORK.src} alt={ARTWORK_ALT} width={ARTWORK.width} height={ARTWORK.height} fetchPriority="high" className={styles.img} />
+                    ? <img src={ARTWORK.src} alt="" width={ARTWORK.width} height={ARTWORK.height} fetchPriority="high" className={styles.img} />
                     : <img src={image} alt="" className={styles.img} />}
 
                 {withText && (
                     <>
-                        <div className={styles.anchor} style={at(LAYOUT.title)}>
+                        <div className={`${styles.anchor} ${styles.row}`} style={at(TITLE)}>
+                            {/* a double bar (||) on each side of the name, filling the scroll's empty ends */}
+                            <span className={styles.bars} aria-hidden="true" />
                             <h1 className={styles.title}>{current.label}</h1>
+                            <span className={styles.bars} aria-hidden="true" />
                         </div>
-                        <div className={styles.anchor} style={at(LAYOUT.icon)}>
-                            <i className={`${styles.icon} ${current.icon}`} aria-hidden="true" />
+                        {/* the page's icon, inside the gold ring that hangs below the scroll */}
+                        <div className={styles.anchor} style={at(RING)}>
+                            <span className={styles.medal} aria-hidden="true"><i className={current.icon} /></span>
                         </div>
                     </>
                 )}

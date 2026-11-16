@@ -2,7 +2,7 @@
    Karyakram — the annual festivals: a carousel on the maroon field. Each card: the whole poster (9:16, nothing cut
    off) in a thick gold border with a black gap inside it, and its title in black on a solid gold plaque that overlaps the poster's lower edge.
    All cards are the same size, side by side with a gap between: the one in focus in the middle, the previous and the
-   next one on either side; every step moves them all along. An arrow at each side. On a phone the side cards are cut
+   next one on either side; every step moves them all along. An arrow at each side on a desktop, a pair below the cards on a tablet and a phone. On a phone the side cards are cut
    off by the screen's edge. The maroon field and heading are shared: see _shared/_components/Field/Field.module.css.
    ========================================================================== */
 section.annual {
@@ -29,6 +29,7 @@ section.annual {
 .stage {
   display: grid;
   overflow: hidden;
+  padding: var(--space-4) 0;               /* room for the card in focus, which is bigger than its box */
   justify-items: center;
 }
 
@@ -41,18 +42,21 @@ section.annual .card {
   transition: transform 600ms ease;
 }
 
+/* the highlight: the card in focus is a little bigger than its neighbours, which are a little smaller (size only, so
+   every colour stays as it is) */
 section.annual .card[data-place="center"] {
   z-index: 2;
+  transform: scale(1.06);
 }
 
 section.annual .card[data-place="left"] {
   z-index: 1;
-  transform: translateX(calc(-100% - var(--annual-gap)));
+  transform: translateX(calc(-100% - var(--annual-gap))) scale(0.92);
 }
 
 section.annual .card[data-place="right"] {
   z-index: 1;
-  transform: translateX(calc(100% + var(--annual-gap)));
+  transform: translateX(calc(100% + var(--annual-gap))) scale(0.92);
 }
 
 /* a card that goes from the left side to the right (or back) jumps there unseen instead of sliding across the others */
@@ -181,7 +185,28 @@ section.annual .card[data-place="hidden"] {
   outline-offset: var(--line-width);
 }
 
-/* ---- Phone: a narrower card; the arrows (maroon, so they show on the posters) high on the side cards ---- */
+/* ---- Tablet and phone: the arrows move from the sides to a row of their own below the cards, side by side in the
+   middle; desktop (992px and up) keeps them at the sides ---- */
+@media (max-width: 991px) {
+  .frame {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+  }
+
+  .stage {
+    flex: 0 0 100%;
+  }
+
+  .arrow {
+    position: static;
+    margin: 0;
+  }
+}
+
+/* ---- Phone: a narrower card ---- */
 @media (max-width: 575px) {
   section.annual {
     --annual-card-width: 230px;
@@ -192,20 +217,6 @@ section.annual .card[data-place="hidden"] {
   .plate {
     padding: var(--space-3) var(--space-2) 0;
     font-size: var(--text-sm);
-  }
-
-  .arrow {
-    top: 35%;
-    background-color: var(--c-maroon);
-    color: var(--c-gold);
-  }
-
-  .arrowPrev {
-    left: var(--space-1);
-  }
-
-  .arrowNext {
-    right: var(--space-1);
   }
 }
 
