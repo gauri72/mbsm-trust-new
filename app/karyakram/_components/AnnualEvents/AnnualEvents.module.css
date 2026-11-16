@@ -1,15 +1,15 @@
 /* =============================================================================
    Karyakram — the annual festivals: a carousel on the maroon field. Each card: the whole poster (9:16, nothing cut
-   off) in a thick gold border with a black gap inside it, and its title in black on a solid gold plaque that overlaps the poster's lower edge.
+   off) in a thick gold border with a maroon gap inside it, and its title in black on a solid gold plaque that overlaps the poster's lower edge.
    All cards are the same size, side by side with a gap between: the one in focus in the middle, the previous and the
-   next one on either side; every step moves them all along. An arrow at each side on a desktop, a pair below the cards on a tablet and a phone. On a phone the side cards are cut
+   next one on either side; every step moves them all along. An arrow at each side from 1200px wide, a pair below the cards on anything narrower. On a phone the side cards are cut
    off by the screen's edge. The maroon field and heading are shared: see _shared/_components/Field/Field.module.css.
    ========================================================================== */
 section.annual {
   --annual-card-width: 300px;            /* every card (the poster is 9:16) */
   --annual-gap: var(--space-5);          /* between the cards */
   --annual-border: 5px;                  /* the thick gold border */
-  --annual-gap-in: 6px;                  /* the black gap inside it */
+  --annual-gap-in: 6px;                  /* the maroon gap inside it */
   --annual-plaque: 124px;                /* the nameplate's height: the same for every card */
   --annual-medal: 48px;                  /* the medallion on the nameplate */
   --annual-lap: calc(var(--annual-plaque) / 2);   /* half of it lies over the poster, half below */
@@ -18,6 +18,7 @@ section.annual {
 }
 
 .carousel {
+  position: relative;                    /* the stop button is placed in it */
   margin: 0 auto;
 }
 
@@ -81,7 +82,7 @@ section.annual .card[data-place="hidden"] {
   height: auto;                          /* the poster's own proportions: nothing is cut off */
 }
 
-/* ---- Title: a nameplate in the same make as the poster's frame: a thick gold border, a black gap, then a solid gold
+/* ---- Title: a nameplate in the same make as the poster's frame: a thick gold border, a maroon gap, then a solid gold
    plate with the title in black. Narrower than the card, half over the poster's lower edge, half below it. All plates
    are the same height and end on the same line, whatever the length of the titles. ---- */
 .title {
@@ -91,7 +92,7 @@ section.annual .card[data-place="hidden"] {
   padding: var(--annual-gap-in);
   border: var(--annual-border) solid var(--c-gold);
   border-radius: 14px;
-  background-color: var(--c-black);
+  background-color: var(--c-maroon);
 }
 
 /* the medallion: a maroon circle with a thick gold border and a gold icon, centred on the nameplate's top edge */
@@ -130,8 +131,8 @@ section.annual .card[data-place="hidden"] {
   text-wrap: balance;
 }
 
-/* ---- Wide screens: bigger cards, the same gap, still clear of the arrows (the container is wider from 1400px) ---- */
-@media (min-width: 1400px) {
+/* ---- Wide screens (the page container is 1320px wide from 1320px): bigger cards, the same gap, still clear of the arrows ---- */
+@media (min-width: 1320px) {
   section.annual {
     --annual-card-width: 340px;
   }
@@ -182,9 +183,10 @@ section.annual .card[data-place="hidden"] {
   outline-offset: var(--line-width);
 }
 
-/* ---- Tablet and phone: the arrows move from the sides to a row of their own below the cards, side by side in the
-   middle; desktop (992px and up) keeps them at the sides ---- */
-@media (max-width: 991px) {
+/* ---- Tablet, phone and small laptop (up to 1199px): the arrows move from the sides to a row of their own below the
+   cards, side by side in the middle (at the sides they would sit on the cards there: the page container is only 960px
+   wide up to 1199px); from 1200px they stay at the sides ---- */
+@media (max-width: 1199px) {
   .frame {
     display: flex;
     flex-wrap: wrap;

@@ -10,7 +10,10 @@ const nextConfig = {
     poweredByHeader: false,          // no "X-Powered-By: Next.js" on every response
     async headers() {
         return [
-            { source: "/assets/:path*", headers: [{ key: "Cache-Control", value: ASSET_CACHE }] },
+            // only in production: while developing, a replaced picture or font must show at once
+            ...(process.env.NODE_ENV === "production"
+                ? [{ source: "/assets/:path*", headers: [{ key: "Cache-Control", value: ASSET_CACHE }] }]
+                : []),
             { source: "/:path*", headers: [{ key: "X-Content-Type-Options", value: "nosniff" }] },
         ]
     },

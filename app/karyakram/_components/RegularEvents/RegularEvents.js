@@ -42,7 +42,7 @@ export default function RegularEvents() {
                             <article className={`${field.card} ${styles.card}`}>
                                 <div className={styles.imgBox}>
                                     <div className={styles.img}>
-                                        <img src={event.img} alt="" width="1672" height="941" loading="lazy" />
+                                        <img src={event.img} alt="" width="1200" height="675" loading="lazy" />
                                     </div>
                                     {/* the medallion: sits on the picture's lower edge */}
                                     <span className={styles.medal} aria-hidden="true"><i className={event.icon}></i></span>
