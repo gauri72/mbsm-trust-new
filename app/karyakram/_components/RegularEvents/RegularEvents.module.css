@@ -95,6 +95,13 @@ section.regular .title {
   text-transform: none;
 }
 
+/* a phone: the site's large size steps down to 23px there; the name is a quarter bigger than that (about 29px) */
+@media (max-width: 767px) {
+  section.regular .title {
+    font-size: calc(var(--text-lg) * 1.25);
+  }
+}
+
 /* ---- The saint's line: white on a rounded maroon plate inset at the foot of the card, in gold quotation marks ---- */
 section.regular .line {
   margin: var(--regular-step);

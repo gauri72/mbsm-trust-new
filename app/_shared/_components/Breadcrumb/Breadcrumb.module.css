@@ -14,9 +14,9 @@
 .root {
   /* the size comes from the artwork's own width (cqw), so the name keeps its proportion at every
      screen size: it fills its scroll comfortably */
-  --title-size: 6.4cqw;
+  --title-size: 9cqw;
+  --bars-gap: 1.5cqw;                    /* between a double bar and the name */
   --ring-size: 5.1cqw;                   /* the disc inside the artwork's gold ring (its hole is about 5.6cqw across) */
-  --bars-gap: 3cqw;                      /* between a double bar and the name */
   --boldness: 0.045em;                   /* extra weight on top of the one bold face (a stroke in the text's own colour) */
 
   position: relative;
@@ -75,14 +75,15 @@
   gap: var(--bars-gap);
 }
 
-/* the double bar (||): two thick maroon lines, taller than the name's lettering (the scroll has room for about 14cqw
-   between its two ornaments) */
+/* the double bar (||): two thick maroon lines, a little taller than the name's lettering (sized with the name: the name is
+   9cqw, the bars 11cqw tall; the scroll has room for about 12.5cqw between its two lotus ornaments) */
 .bars {
+  box-sizing: border-box;
   flex: none;
-  width: max(12px, 2.6cqw);
-  height: max(28px, 9cqw);
-  border-right: max(3px, 0.7cqw) solid var(--c-maroon);
-  border-left: max(3px, 0.7cqw) solid var(--c-maroon);
+  width: max(10px, 2.6cqw);
+  height: max(22px, 11cqw);
+  border-right: max(2px, 0.8cqw) solid var(--c-maroon);
+  border-left: max(2px, 0.8cqw) solid var(--c-maroon);
 }
 
 /* the page's icon: a maroon disc filling the hole of the artwork's gold ring, with a gold Font Awesome icon on it */

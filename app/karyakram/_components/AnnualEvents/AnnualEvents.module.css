@@ -69,19 +69,16 @@ section.annual .card[data-place="hidden"] {
   visibility: hidden;
 }
 
-/* the poster's frame: a thick gold border, then a black gap, then the poster */
+/* the poster: on its own, with rounded corners (no border; the nameplate keeps its own) */
 .posterBox {
-  padding: var(--annual-gap-in);
-  border: var(--annual-border) solid var(--c-gold);
+  overflow: hidden;
   border-radius: 16px;
-  background-color: var(--c-black);
 }
 
 .poster {
   display: block;
   width: 100%;
   height: auto;                          /* the poster's own proportions: nothing is cut off */
-  border-radius: 8px;
 }
 
 /* ---- Title: a nameplate in the same make as the poster's frame: a thick gold border, a black gap, then a solid gold
