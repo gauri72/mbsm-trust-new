@@ -36,7 +36,7 @@ export default function RegularEvents() {
                     {EVENTS.map((event, index) => (
                         <div
                             key={event.title}
-                            className={`col-md-6 wow ${index % 2 === 0 ? "fadeInLeft" : "fadeInRight"}`}
+                            className={`col-lg-6 wow ${index % 2 === 0 ? "fadeInLeft" : "fadeInRight"}`}
                             data-wow-delay={`${(index + 1) * 100}ms`}
                         >
                             <article className={`${field.card} ${styles.card}`}>

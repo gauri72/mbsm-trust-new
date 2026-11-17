@@ -5,8 +5,8 @@
    - Colours : maroon band; verses white, gold on hover (as the header strip's
                links); the gold flower divider with a maroon centre.
    - Lines   : 2px solid gold above and below the verses (matching the flower).
-   - Type    : Annapurna SIL at the site's medium size on desktop (22px), kept at 22px on
-               every screen (the global medium steps down to 20px on phones).
+   - Type    : Annapurna SIL at the site's medium size on desktop (22px), 18px on
+               a phone (767px and below).
    - Space   : generous and the same on every screen — the space-4 step above and below
                the verses (inside the gold lines), the space-5 step on each side of a flower.
    - Icon    : the flower, the same size as the text.
@@ -21,7 +21,7 @@
   /* lines */
   --line-gold: var(--line-width) solid var(--c-gold);
 
-  /* type size: the site's medium size on desktop (22px), kept at 22px on every screen (the global medium steps down to 20px on phones) */
+  /* type size: the site's medium size on desktop (22px), smaller on a phone (18px) */
   --text-verse: 22px;
 
   /* layout */
@@ -30,6 +30,14 @@
   --strip-gap: var(--space-5);           /* space on each side of a divider (flower), on every screen */
   --duration: 45s;                       /* one full loop (set per strip from the verse length) */
   --ease: 200ms ease;
+}
+
+
+/* a phone: a smaller verse (the flower follows, it is the same size as the text) */
+@media (max-width: 767px) {
+  .root {
+    --text-verse: 18px;
+  }
 }
 
 

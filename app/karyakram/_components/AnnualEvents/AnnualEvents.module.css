@@ -208,7 +208,7 @@ section.annual .card[data-place="hidden"] {
 /* ---- Phone: a narrower card ---- */
 @media (max-width: 575px) {
   section.annual {
-    --annual-card-width: 230px;
+    --annual-card-width: 260px;
     --annual-plaque: 124px;
     --annual-inset: 4%;
   }

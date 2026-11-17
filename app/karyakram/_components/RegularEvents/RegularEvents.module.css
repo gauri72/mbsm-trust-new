@@ -3,7 +3,7 @@
    (home/Events): the picture runs edge to edge across the top, the name below, large in black, then the saint's line
    in white on a rounded maroon plate at the foot of the card, with a maroon medallion (icon) on the picture's lower edge.
    The maroon field, heading and card base are shared: see _shared/_components/Field/Field.module.css.
-   Type here: the name large, the line medium. Two cards side by side from 768px (26px apart, each no wider than 600px, the pair centred), one under the other below
+   Type here: the name large, the line medium. Two cards side by side from 992px (26px apart, each no wider than 600px, the pair centred), one under the other below (full container width on a tablet, 768-991px)
    (each no wider than a card should be, centred); on a phone the inner spacing is one step smaller.
    ========================================================================== */
 section.regular {
@@ -13,8 +13,8 @@ section.regular {
   --regular-step: var(--space-4);        /* one steady rhythm: the card's inner spacing (18px; 14px on a phone) */
 }
 
-/* two cards side by side (768px and up): the gap between them is the same 26px as between stacked cards (--home-gap), not a wide empty strip */
-@media (min-width: 768px) {
+/* two cards side by side (992px and up; on a tablet one card at a time, full width): the gap between them is the same 26px as between stacked cards (--home-gap), not a wide empty strip */
+@media (min-width: 992px) {
   section.regular {
     --regular-card-width: 600px;         /* two cards side by side: each no wider than this */
   }
@@ -25,6 +25,13 @@ section.regular {
     max-width: calc(2 * (var(--regular-card-width) + var(--bs-gutter-x)));
     margin-right: auto;
     margin-left: auto;
+  }
+}
+
+/* a tablet (768-991px): one card at a time, one under the other, each the full width of the container like the home page's Upcoming events cards */
+@media (min-width: 768px) and (max-width: 991px) {
+  section.regular {
+    --regular-card-width: none;
   }
 }
 

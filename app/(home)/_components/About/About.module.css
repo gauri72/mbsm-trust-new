@@ -422,7 +422,7 @@
 
   .img img,
   .img2 img {
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 1 / 1;
   }
 
   .tabButtons {
