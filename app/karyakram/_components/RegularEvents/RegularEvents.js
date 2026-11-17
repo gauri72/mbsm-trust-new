@@ -6,7 +6,7 @@ import styles from "./RegularEvents.module.css"
    Karyakram: the programmes the math holds every week and every month: two gold cards in a maroon field
    (the look of the home page's Upcoming events cards). Each card: the picture edge to edge across the top with a
    maroon medallion (a Font Awesome icon) on its lower edge, then the programme's name and, on a rounded maroon plate at the foot of the card, a line from the saint (`line`: its two halves;
-   on a tablet and a phone the line breaks between them). The pictures are decorative (empty alt): the name
+   on a phone the line breaks between them, on a tablet it stays on one line). The pictures are decorative (empty alt): the name
    and the line say it in text.
    Styles: see RegularEvents.module.css.
    ========================================================================== */

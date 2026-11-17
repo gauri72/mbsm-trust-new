@@ -146,14 +146,20 @@ section.regular .line::after {
   transform: translateX(0.3em);
 }
 
-/* the line breaks between its two halves on a tablet and a phone (the second half starts a new line) */
+/* the line breaks between its two halves on a phone (the second half starts a new line); on a tablet it stays on one line */
 section.regular .br {
   display: none;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 767px) {
   section.regular .br {
     display: inline;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  section.regular .line {
+    white-space: nowrap;
   }
 }
 
