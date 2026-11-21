@@ -12,7 +12,6 @@ import { pageKeyOf } from "./_shared/_components/siteContent"
 // (A template is re-created on each page change, so these two live outside it.)
 let cameBack = false
 let firstPage = true
-if (typeof window !== "undefined") window.addEventListener("popstate", () => { cameBack = true })
 
 // The frame every page shares, around the page's own content:
 //
@@ -24,6 +23,13 @@ if (typeof window !== "undefined") window.addEventListener("popstate", () => { c
 // content changes.
 export default function Template({ children }) {
     const innerPage = pageKeyOf(usePathname())
+
+    // Track browser history navigation only while this template is mounted.
+    useEffect(() => {
+        const onPopState = () => { cameBack = true }
+        window.addEventListener("popstate", onPopState)
+        return () => window.removeEventListener("popstate", onPopState)
+    }, [])
 
     // the shared header stays mounted, so the browser would otherwise keep the old position when a link is followed
     useEffect(() => {
