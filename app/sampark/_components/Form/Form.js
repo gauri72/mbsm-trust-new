@@ -121,6 +121,7 @@ export default function Form() {
                                             onChange={handleChange}
                                             autoComplete={f.autoComplete}
                                             aria-invalid={error ? "true" : undefined}
+                                            aria-required="true"
                                             aria-describedby={error ? `form-${f.name}-error` : undefined}
                                             {...(f.multiline ? { rows: 5 } : { type: f.type })}
                                         />
@@ -134,7 +135,8 @@ export default function Form() {
                             )
                         })}
                         <div className={cx(styles.full, styles.actions)}>
-                            <button type="submit" className={cx("pill-btn", styles.send)} lang="mr" disabled={status === "submitting"}>
+                            <button type="submit" className={cx("pill-btn", styles.send)} lang="mr" disabled={status === "submitting"}
+                                aria-busy={status === "submitting"}>
                                 <span>{status === "submitting" ? "पाठवत आहे..." : "संदेश पाठवा"}</span>
                                 <i className="fas fa-arrow-right" aria-hidden="true"></i>
                             </button>
