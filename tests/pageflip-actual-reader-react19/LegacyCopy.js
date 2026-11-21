@@ -3,7 +3,7 @@ import { forwardRef, lazy, Suspense, useEffect, useRef, useState } from "react"
 
 import AlphaLoopVideo from "./AlphaLoopVideoStub"
 import { ABOUT_BOOK } from "./aboutBook"
-import styles from "./Legacy.module.css"
+import styles from "./LegacyCopy.module.css"
 
 const HTMLFlipBook = lazy(() => import("react-pageflip"))
 
