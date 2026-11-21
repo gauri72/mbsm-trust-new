@@ -1,4 +1,4 @@
-name: Migrate staging to Next.js 15
+name: Migrate staging to Next.js 15 (controlled)
 on:
   push:
     branches:
