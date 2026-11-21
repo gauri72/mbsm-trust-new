@@ -124,7 +124,12 @@ function NavGroup({ item, pathname }) {
     const panelId = useId()
     const groupActive = item.children.some((child) => isCurrentPage(pathname, child.href))
 
-    useEffect(() => setOpen(false), [pathname])
+    // close on navigation (state adjusted while rendering, not in an effect)
+    const [prevPathname, setPrevPathname] = useState(pathname)
+    if (prevPathname !== pathname) {
+        setPrevPathname(pathname)
+        setOpen(false)
+    }
 
     useEffect(() => {
         if (!open) return
@@ -328,7 +333,12 @@ export default function Header() {
     const closeDrawer = useCallback(() => setDrawerOpen(false), [])
 
     // the header stays mounted across pages: close the drawer on any navigation
-    useEffect(() => setDrawerOpen(false), [pathname])
+    // (state adjusted while rendering, not in an effect)
+    const [prevPathname, setPrevPathname] = useState(pathname)
+    if (prevPathname !== pathname) {
+        setPrevPathname(pathname)
+        setDrawerOpen(false)
+    }
 
     // the drawer is hidden by CSS from 1200px up: if the screen grows past that (a rotated tablet, a resized
     // window) while it is open, close it, or it would keep the page's scroll locked with nothing to see
