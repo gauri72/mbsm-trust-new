@@ -29,9 +29,6 @@ export default function RootLayout({ children }) {
             <head>
                 {/* The Marathi font file: needed above the fold on every page */}
                 <link rel="preload" href="/assets/fonts/annapurna-sil-devanagari-700.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-                {/* Speeds up the Video Gallery's YouTube thumbnails/embeds */}
-                <link rel="preconnect" href="https://img.youtube.com" />
-                <link rel="preconnect" href="https://www.youtube-nocookie.com" />
             </head>
             <body>
                 {/* Shared frame — mounted once and kept across page changes.
