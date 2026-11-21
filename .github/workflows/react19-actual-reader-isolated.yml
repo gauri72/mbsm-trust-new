@@ -1,0 +1,24 @@
+name: React 19 actual reader source fixture
+on:
+  push:
+    branches: [upgrade/next14-staging]
+    paths: ['tests/pageflip-actual-reader-react19/**','.github/workflows/react19-actual-reader-isolated.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: upgrade/next14-staging
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+        working-directory: tests/pageflip-actual-reader-react19
+      - run: npx playwright install --with-deps chromium
+        working-directory: tests/pageflip-actual-reader-react19
+      - run: npm test
+        working-directory: tests/pageflip-actual-reader-react19
