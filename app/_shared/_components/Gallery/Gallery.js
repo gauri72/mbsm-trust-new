@@ -40,7 +40,7 @@ export default function Gallery() {
             {/* the keyboard / screen reader way to stop the scroll: hidden until it has focus */}
             {!still && (
                 <button type="button" className="pause-btn" aria-pressed={paused} onClick={toggle}>
-                    स्क्रोलिंग थांबवा
+                    {paused ? "स्क्रोलिंग सुरू करा" : "स्क्रोलिंग थांबवा"}
                 </button>
             )}
             <div className={styles.marquee} onClick={still ? undefined : toggle}>
