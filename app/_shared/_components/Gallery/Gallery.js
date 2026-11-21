@@ -8,7 +8,7 @@ import styles from "./Gallery.module.css"
    (under the hero on every page).
 
    Scrolls like the mantra: photos split by 2px gold dividers. It can be paused: hover (mouse), a tap or click
-   on the band, or the "{paused ? "स्क्रोलिंग सुरू करा" : "स्क्रोलिंग थांबवा"}" button that appears when Tab reaches it (keyboard, screen readers).
+   on the band, or the "स्क्रोलिंग थांबवा" button that appears when Tab reaches it (keyboard, screen readers).
    Across the screen: 5 photos on desktop, 4 on tablet, 3 on phones.
    Colours, sizes and spacing are tokens in Gallery.module.css. ('use client' is needed for the pause state.)
    ========================================================================== */
