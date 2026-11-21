@@ -68,10 +68,10 @@ export default function Hero() {
                     if (!playing) swiper.autoplay.stop()
                 }}
             >
-                {SLIDES.map((slide) => (
+                {SLIDES.map((slide, index) => (
                     <SwiperSlide key={slide.src}>
                         <div className={styles.media}>
-                            <img src={slide.src} alt={slide.name} lang="mr" width="1920" height="1080" loading={SLIDES.indexOf(slide) === 0 ? "eager" : "lazy"} fetchPriority={SLIDES.indexOf(slide) === 0 ? "high" : "auto"} decoding="async" />
+                            <img src={slide.src} alt={slide.name} lang="mr" width="1920" height="1080" loading={index === 0 ? "eager" : "lazy"} fetchPriority={index === 0 ? "high" : "auto"} decoding="async" />
                         </div>
                     </SwiperSlide>
                 ))}
