@@ -34,12 +34,12 @@
   transition: transform var(--slide-ms) cubic-bezier(0.22, 1, 0.36, 1);   /* quick start, long gentle settle */
 }
 
-.swiper :global(.swiper-slide-active) .media {
+.swiper :global(.swiper-slide-active) .media img {
   transform: scale(1);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .media {
+  .media img {
     transform: none;
     transition: none;
   }
