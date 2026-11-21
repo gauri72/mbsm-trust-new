@@ -2,7 +2,7 @@ name: React 19 actual reader source fixture
 on:
   push:
     branches: [upgrade/next14-staging]
-    paths: ['tests/pageflip-actual-reader-react19/**','.github/workflows/react19-actual-reader-isolated.yml']
+    paths: ['tests/pageflip-actual-reader-react19/**','.github/workflows/react19-actual-reader-isolated.yml','package.json','package-lock.json']
   workflow_dispatch:
 permissions:
   contents: read
