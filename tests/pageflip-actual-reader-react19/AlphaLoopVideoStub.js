@@ -1,0 +1,1 @@
+export default function AlphaLoopVideoStub({className}) { return <span aria-hidden="true" className={className}/> }
