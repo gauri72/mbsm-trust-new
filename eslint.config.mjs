@@ -2,7 +2,9 @@
 // Run with: npm run lint
 import coreWebVitals from "eslint-config-next/core-web-vitals"
 
-export default [
+const eslintConfig = [
     ...coreWebVitals,
     { ignores: [".next/**", "node_modules/**", "public/**"] },
 ]
+
+export default eslintConfig
