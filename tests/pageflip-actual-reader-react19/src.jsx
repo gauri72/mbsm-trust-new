@@ -1,0 +1,1 @@
+import React from "react"; import {createRoot} from "react-dom/client"; import Legacy from "./LegacyCopy.jsx"; import "./fixture.css"; createRoot(document.getElementById("root")).render(<Legacy/>);
