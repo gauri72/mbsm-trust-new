@@ -1,0 +1,30 @@
+name: Migrate staging to Next.js 16 (controlled)
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - upgrade/next14-staging
+permissions:
+  contents: write
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: upgrade/next14-staging
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Upgrade dependencies to Next.js 16
+        run: npm install next@16 react@19 react-dom@19
+      - name: Build staging
+        run: npm run build
+      - name: Commit dependency files only if build succeeds
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json
+          git diff --cached --quiet || git commit -m "Upgrade staging dependencies to Next.js 16"
+          git push origin upgrade/next14-staging
