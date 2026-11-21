@@ -17,6 +17,7 @@ export const metadata = {
         template: '%s',
     },
     description: DESCRIPTION,
+    alternates: { canonical: "/" },
     openGraph: shareCard(SITE_NAME, DESCRIPTION),
     twitter: { card: 'summary_large_image' },
 }
