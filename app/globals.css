@@ -1036,20 +1036,7 @@ ul {
   margin-bottom: 0;
 }
 
-::-webkit-input-placeholder {
-  color: var(--c-maroon);
-  opacity: 1;
-}
 
-::-ms-input-placeholder {
-  color: var(--c-maroon);
-  opacity: 1;
-}
-
-::placeholder {
-  color: var(--c-maroon);
-  opacity: 1;
-}
 
 ::-webkit-input-placeholder {
   color: var(--c-maroon);
