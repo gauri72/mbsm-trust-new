@@ -1,8 +1,5 @@
 name: Migrate staging to Next.js 15 (controlled)
 on:
-  push:
-    branches:
-      - upgrade/next14-staging
   workflow_dispatch:
 permissions:
   contents: write
