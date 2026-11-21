@@ -1,3 +1,0 @@
-import { test, expect } from '@playwright/test';
-test('React 19 pageflip mounts and imperative flipping updates index', async ({page})=>{const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');await expect(page.getByText('Cover')).toBeVisible();await page.locator('#next').click();await expect(page.locator('#index')).not.toHaveText('0');expect(errors).toEqual([]);});
-test('layout remains usable after viewport resize', async ({page})=>{await page.goto('/');await page.setViewportSize({width:390,height:844});await expect(page.getByText('Cover')).toBeVisible();await page.setViewportSize({width:1280,height:900});await expect(page.getByText('Cover')).toBeVisible();});

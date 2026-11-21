@@ -1,1 +1,0 @@
-import React from "react"; export default function AlphaLoopVideoStub({className}) { return React.createElement("span", { "aria-hidden": true, className }); }
