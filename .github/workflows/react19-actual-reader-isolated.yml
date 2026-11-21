@@ -1,4 +1,5 @@
 name: React 19 actual reader source fixture
+# Staging-only trigger verification; no production deployment.
 on:
   push:
     branches: [upgrade/next14-staging]
