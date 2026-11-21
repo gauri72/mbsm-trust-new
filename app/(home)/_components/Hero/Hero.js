@@ -70,7 +70,9 @@ export default function Hero() {
             >
                 {SLIDES.map((slide) => (
                     <SwiperSlide key={slide.src}>
-                        <div className={styles.media} role="img" aria-label={slide.name} lang="mr" style={{ backgroundImage: `url(${slide.src})` }} />
+                        <div className={styles.media}>
+                            <img src={slide.src} alt={slide.name} lang="mr" width="1920" height="1080" loading={SLIDES.indexOf(slide) === 0 ? "eager" : "lazy"} fetchPriority={SLIDES.indexOf(slide) === 0 ? "high" : "auto"} decoding="async" />
+                        </div>
                     </SwiperSlide>
                 ))}
             </Swiper>
