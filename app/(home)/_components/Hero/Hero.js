@@ -13,7 +13,7 @@ import styles from "./Hero.module.css"
    Slide change — "zoom dissolve": the old picture melts away while slowly zooming out of frame; the new one
    settles in from slightly larger (Swiper's fade does the dissolve, the CSS the zoom).
 
-   The slideshow pauses while the mouse is over it and can be stopped with the "{paused ? "स्लाइडशो सुरू करा" : "स्लाइडशो थांबवा"}" button
+   The slideshow pauses while the mouse is over it and can be stopped with the "स्लाइडशो थांबवा" button
    (it appears when Tab reaches it). Visitors who ask for reduced motion get no slideshow: the first artwork stays.
 
    The page's h1 is here: the trust's name, hidden from sight (the artwork already shows it).
