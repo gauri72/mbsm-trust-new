@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { SectionHead } from "../../../_shared/_components/Field/Field"
 import field from "../../../_shared/_components/Field/Field.module.css"
 import { cx, useReducedMotion } from "../../../_shared/_components/utils"
@@ -48,14 +48,14 @@ export default function AnnualEvents() {
     const last = FESTIVALS.length - 1
     const playing = !(hovered || focused || stopped || reduced)
 
-    const show = (next) => setPosition((p) => ({ active: next < 0 ? last : next > last ? 0 : next, before: p.active }))
+    const show = useCallback((next) => setPosition((p) => ({ active: next < 0 ? last : next > last ? 0 : next, before: p.active })), [last])
 
     // advance every 5 seconds; the timer restarts whenever the slide changes (an arrow or the timer itself)
     useEffect(() => {
         if (!playing) return
         const timer = setTimeout(() => show(active + 1), INTERVAL)
         return () => clearTimeout(timer)
-    }, [active, playing])
+    }, [active, playing, show])
 
     return (
         <section className={`${field.field} ${styles.annual}`}>
