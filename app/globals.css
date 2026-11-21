@@ -843,12 +843,7 @@ iframe {
         display: none;
     }
 }
-@media (max-width: 767px) {
-    .divine-border--about-vertical,
-.about-One__corner {
-        display: none;
-    }
-}/*--------------------------------------------------------------
+/*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
 # Utility
@@ -1038,20 +1033,7 @@ ul {
 
 
 
-::-webkit-input-placeholder {
-  color: var(--c-maroon);
-  opacity: 1;
-}
 
-::-ms-input-placeholder {
-  color: var(--c-maroon);
-  opacity: 1;
-}
-
-::placeholder {
-  color: var(--c-maroon);
-  opacity: 1;
-}
 
 /* Section Title Css */
 
