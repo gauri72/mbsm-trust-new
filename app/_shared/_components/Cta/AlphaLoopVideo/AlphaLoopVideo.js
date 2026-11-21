@@ -34,19 +34,19 @@ export default function AlphaLoopVideo({ src, webmSrc, className }) {
     // box ever flashes on browsers that can't do HEVC alpha
     const [videoSrc, setVideoSrc] = useState(null)
 
-    // near the screen or not (reduced motion: no clip at all)
+    // near the screen or not (reduced motion: no clip at all); the first time it is near the screen,
+    // pick the file for this browser (and start fetching it)
     useEffect(() => {
         const root = rootRef.current
         if (!root || reduceMotion) return
-        const observer = new IntersectionObserver((entries) => setNear(entries.some((e) => e.isIntersecting)), { rootMargin: NEAR_SCREEN })
+        const observer = new IntersectionObserver((entries) => {
+            const isNear = entries.some((e) => e.isIntersecting)
+            setNear(isNear)
+            if (isNear) setVideoSrc((current) => current ?? (webmSrc && !supportsHevcAlpha() ? webmSrc : src))
+        }, { rootMargin: NEAR_SCREEN })
         observer.observe(root)
         return () => observer.disconnect()
-    }, [reduceMotion])
-
-    // the first time it is near the screen, pick the file for this browser (and start fetching it)
-    useEffect(() => {
-        if (near && !reduceMotion && !videoSrc) setVideoSrc(webmSrc && !supportsHevcAlpha() ? webmSrc : src)
-    }, [near, reduceMotion, videoSrc, src, webmSrc])
+    }, [reduceMotion, src, webmSrc])
 
     // play while near the screen, pause when it has scrolled far away
     useEffect(() => {
