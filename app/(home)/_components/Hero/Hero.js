@@ -57,7 +57,7 @@ export default function Hero() {
             <h1 className="visually-hidden" lang="mr">{SITE_NAME}</h1>
             {!reducedMotion && (
                 <button type="button" className="pause-btn" aria-pressed={paused} onClick={() => setPaused((p) => !p)}>
-                    स्लाइडशो थांबवा
+                    {paused ? "स्लाइडशो सुरू करा" : "स्लाइडशो थांबवा"}
                 </button>
             )}
             <Swiper
