@@ -77,7 +77,7 @@ export const SHARE_IMAGE = { url: "/assets/media/shared/share-preview.jpg", widt
 export const shareCard = (title, description) => ({ title, description, siteName: SITE_NAME, locale: "mr_IN", type: "website", images: [SHARE_IMAGE] })
 
 // the metadata a page exports: its browser-tab title, the description search engines show, and its share card
-export const pageMetadata = (key, description) => ({ title: pageTitle(key), description, openGraph: shareCard(pageTitle(key), description) })
+export const pageMetadata = (key, description) => ({ title: pageTitle(key), description, alternates: { canonical: PAGES[key].href }, openGraph: shareCard(pageTitle(key), description) })
 
 // ---- Characters: the two figures on the artwork (their names are part of the pictures) ----
 export const CHARACTERS = {
