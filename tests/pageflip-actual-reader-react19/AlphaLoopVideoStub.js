@@ -1,1 +1,1 @@
-export default function AlphaLoopVideoStub({className}) { return <span aria-hidden="true" className={className}/> }
+import React from "react"; export default function AlphaLoopVideoStub({className}) { return React.createElement("span", { "aria-hidden": true, className }); }
