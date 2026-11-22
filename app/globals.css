@@ -66,6 +66,15 @@
 .fa-fire:before {
   content:"\f06d"
 }
+.fa-book-open:before {
+  content:"\f518"
+}
+.fa-utensils:before {
+  content:"\f2e7"
+}
+.fa-heartbeat:before {
+  content:"\f21e"
+}
 .fa-spa:before {
   content:"\f5bb"
 }
@@ -108,7 +117,7 @@
   font-style:normal;
   font-weight:900;
   font-display:block;
-  src:url("/assets/fonts/fa-solid-900.woff2") format("woff2")
+  src:url("/assets/fonts/fa-solid-900-v2.woff2") format("woff2")
 }
 .fa,.far,.fas {
   font-family:"Font Awesome 5 Free"
