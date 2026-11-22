@@ -16,7 +16,7 @@ import styles from "./AnnualEvents.module.css"
    ========================================================================== */
 
 const FESTIVALS = [
-    { img: "/assets/media/karyakram/annual-swami.webp", title: "श्री विश्‍वेश्‍वर स्वामी महाराज जन्मदिन आणि गुरुपौर्णिमा", icon: "praying-hands" },
+    { img: "/assets/media/karyakram/annual-swami-v2.webp", title: "श्री विश्‍वेश्‍वर स्वामी महाराज जन्मदिन आणि गुरुपौर्णिमा", icon: "praying-hands" },
     { img: "/assets/media/karyakram/annual-shankar.webp", title: "श्री शंकर महाराज प्रकट दिन आणि समाधी सोहळा", icon: "om" },
     { img: "/assets/media/karyakram/annual-datta.webp", title: "श्री दत्त प्रभू जयंती", icon: "spa" },
 ]

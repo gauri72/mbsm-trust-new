@@ -1,4 +1,3 @@
-import Link from "next/link"
 import { PAGES } from "../../../_shared/_components/siteContent"
 import { SectionHead, MoreButton } from "../../../_shared/_components/Field/Field"
 import shared from "../../../_shared/_components/Field/Field.module.css"
@@ -6,10 +5,14 @@ import styles from "./Blogs.module.css"
 
 /* =============================================================================
    Home: the blogs page (https://mbsmtrust.org/our-blogs, 68 articles) sorted by theme
-   into six categories. The site's own "Pravachan" / "Nirupan" labels are not used.
-   `count` = number of articles in the category (ids 1-68 on the live blogs page).
-   Each tile is one link to the blogs page (it has no category filter yet, so all six go to the same place;
-   when it gets one, give each category its own link here). Styles: see Blogs.module.css.
+   into six themes. The site's own "Pravachan" / "Nirupan" labels are not used.
+   `count` = number of articles in the theme (ids 1-68 on the live blogs page): figures from that hand sorting, not
+   worked out from the articles.
+   The tiles are plain cards, not links: the pravachan page filters by the old site's two categories (Pravachan,
+   Nirupan), not by these six themes, and no article is assigned to a theme anywhere, so a tile could not lead to its
+   own articles. The one link is the button below them, to the pravachan page (all 68 articles). When the articles are
+   given a theme, the tiles can become links to their own filter, with the counts worked out from the articles.
+   Styles: see Blogs.module.css.
    ========================================================================== */
 
 const CATEGORIES = [
@@ -75,12 +78,12 @@ export default function Blogs() {
                             className={`col-lg-6 wow ${index % 2 === 0 ? "fadeInLeft" : "fadeInRight"}`}
                             data-wow-delay={`${(Math.floor(index / 2) + 1) * 100}ms`}
                         >
-                            <Link href={PAGES.pravachan.href} className={`${shared.card} ${styles.tile}`} lang="mr" aria-label={`${cat.title}, ${cat.count} लेख`}>
+                            <div className={`${shared.card} ${styles.tile}`} lang="mr">
                                 <div className={styles.image}>
                                     <img src={cat.image} alt="" width="800" height="800" loading="lazy" />
                                 </div>
                                 <div className={styles.body}>
-                                    {/* left: the round icon, the article count below it */}
+                                    {/* left (above the text on a phone, beside each other): the round icon, the article count below it */}
                                     <div className={styles.meta}>
                                         <span className={styles.icon}>
                                             <i className={cat.icon} aria-hidden="true"></i>
@@ -93,7 +96,7 @@ export default function Blogs() {
                                         <p className={styles.desc}>{cat.desc}</p>
                                     </div>
                                 </div>
-                            </Link>
+                            </div>
                         </div>
                     ))}
                 </div>

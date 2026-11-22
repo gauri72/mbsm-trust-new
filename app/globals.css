@@ -528,8 +528,10 @@ iframe {
 }
 
 /* ---- Pause button of a moving band (the hero, the gallery): out of sight until Tab reaches it, then a gold pill
-   in the band's corner. Put it inside a position: relative band. ---- */
-.pause-btn {
+   in the band's corner. Put it inside a position: relative band.
+   The header's skip link ("मुख्य मजकुराकडे जा") looks the same, but is fixed to the top left of the window. ---- */
+.pause-btn,
+.skip-link {
   position: absolute;
   z-index: 2;
   top: var(--space-2);
@@ -549,7 +551,14 @@ iframe {
   line-height: 1.3;
 }
 
-.pause-btn:focus-visible {
+.skip-link {
+  position: fixed;
+  z-index: 1001;                         /* above the sticky bar (100) and the drawer (1000) */
+  transition: none;                      /* it appears at once (every <a> otherwise eases its size over 500ms) */
+}
+
+.pause-btn:focus-visible,
+.skip-link:focus-visible {
   width: auto;
   height: auto;
   padding: var(--space-1) var(--space-3);
@@ -557,6 +566,16 @@ iframe {
   clip-path: none;
   outline: var(--line-width) solid var(--c-white);
   outline-offset: var(--line-width);
+}
+
+/* the skip link's target: focused by code, not a control, so no focus ring; when the link scrolls to it, stop below
+   the sticky bar (146px at its tallest) instead of under it */
+#main-content {
+  scroll-margin-top: 150px;
+}
+
+#main-content:focus {
+  outline: none;
 }
 
 /* Wrapper around every page (app/template.js) */

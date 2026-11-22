@@ -1,5 +1,5 @@
 /* =============================================================================
-   Home — Blogs: six gold category tiles linking to the blogs page.
+   Home — Blogs: six gold theme cards (plain cards: not links, no hover; the button below them is the link).
    The maroon field, heading, card base and button are shared: see _shared/_components/Field/Field.module.css.
    Type here: titles medium, description + count small, the round icon large (smaller on phones).
    ========================================================================== */
@@ -8,7 +8,7 @@ section.blogs {
   --blogs-photo-radius: 12px;
   --blogs-frame: var(--space-1);        /* the maroon frame round the photo */
   --blogs-meta-width: 100px;            /* the icon + count column; every heading starts at the same place */
-  --blogs-phone-photo: 240px;
+  --blogs-phone-photo: 110px;           /* the photo on a phone (never more than a third of the card) */
   --blogs-icon-size: var(--text-lg);    /* the round icon; smaller on phones, below */
 }
 
@@ -27,13 +27,6 @@ section.blogs .tile {
   align-items: stretch;
   gap: var(--space-3);
   padding: var(--space-3);
-  text-decoration: none;
-  transition: transform 200ms ease, box-shadow 200ms ease;
-}
-
-section.blogs .tile:focus-visible {
-  outline: var(--line-width) solid var(--c-white);
-  outline-offset: 4px;
 }
 
 /* the category photo: a SQUARE block (left) — a thick maroon border, a gold gap, then the photo */
@@ -116,11 +109,7 @@ section.blogs .count {
   white-space: nowrap;
 }
 
-/* heading: maroon, above a 2px maroon line; the colon is drawn here so screen readers do not read it out */
-section.blogs .title::after {
-  content: " :";
-}
-
+/* heading: maroon, above a 2px maroon line */
 section.blogs .title {
   margin: 0;
   padding-bottom: var(--space-1);
@@ -155,59 +144,25 @@ section.blogs .desc {
   }
 }
 
-/* phones: the card stacks — a medium square image on top, then the icon + count in one centred row,
-   then the heading, the line and the description at the full card width */
+/* phones: the card stays horizontal but compact — a small square photo on the left (about 110px, never more than a
+   third of the card); on the right the round icon with the count beside it, then the heading, the line and the
+   description */
 
 @media (max-width: 575px) {
-  section.blogs .tile {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--space-4);
-    padding: var(--space-3);
-  }
-
   section.blogs .image {
-    flex: none;
-    width: min(var(--blogs-phone-photo), 100%);   /* medium, centred, never wider than the card; still a square */
-    align-self: center;
+    flex: 0 0 min(var(--blogs-phone-photo), 34%);
   }
 
   section.blogs .body {
     flex-direction: column;
     align-items: stretch;
-    gap: var(--space-3);
+    gap: var(--space-2);
   }
 
   section.blogs .meta {
     flex: none;                           /* undo the desktop's fixed column width */
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: row;                  /* the count beside the icon, so the card is no taller */
+    align-items: center;
     gap: var(--space-3);
-  }
-
-  section.blogs .title {
-    text-align: center;
-  }
-
-  section.blogs .desc {
-    text-align: center;
-  }
-}
-
-/* ---- Hover: mouse / trackpad only ---- */
-@media (hover: hover) {
-  section.blogs .tile:hover {
-    box-shadow: 0 4px 0 var(--c-black);
-    transform: translateY(-4px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  section.blogs .tile {
-    transition: none;
-  }
-
-  section.blogs .tile:hover {
-    transform: none;
   }
 }

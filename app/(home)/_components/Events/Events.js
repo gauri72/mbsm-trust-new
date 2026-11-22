@@ -12,20 +12,12 @@ import styles from "./Events.module.css"
 
 const EVENTS = [
     {
-        img: "/assets/media/home/event-1-1.webp",
-        iso: "2026-11-17",
-        day: "17",
-        month: "Nov 2026",
-        title: "श्री शंकर महाराज प्रकट दिन",
-        animation: "fadeInLeft",
-    },
-    {
         img: "/assets/media/home/event-1-2.webp",
         iso: "2026-12-23",
         day: "23",
         month: "Dec 2026",
         title: "श्री दत्त प्रभू जयंती",
-        animation: "fadeInUp",
+        animation: "fadeInLeft",
     },
     {
         img: "/assets/media/home/event-1-3.webp",
@@ -34,6 +26,14 @@ const EVENTS = [
         month: "Feb 2027",
         // "‍" keeps the second श्व as half-श + व (श्‍व), matching the hero name plaque
         title: "श्री विश्वेश्‍वर स्वामी महाराज जन्मदिन",
+        animation: "fadeInUp",
+    },
+    {
+        img: "/assets/media/home/event-1-4.webp",
+        iso: "2027-05-13",
+        day: "13",
+        month: "May 2027",
+        title: "श्री शंकर महाराज समाधी सोहळा",
         animation: "fadeInRight",
     },
 ]

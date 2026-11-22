@@ -36,7 +36,11 @@ export default function RootLayout({ children }) {
                     Per-page parts (scroll animations) are in template.js */}
                 <div className="page-wrapper">
                     <Header />
-                    {children}
+                    {/* the page's main landmark and the target of the header's skip link; tabIndex -1 lets the
+                        skip link move focus here (it is not a tab stop) */}
+                    <main id="main-content" tabIndex={-1}>
+                        {children}
+                    </main>
                     <Footer />
                 </div>
             </body>

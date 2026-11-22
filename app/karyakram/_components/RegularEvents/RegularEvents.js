@@ -6,8 +6,8 @@ import styles from "./RegularEvents.module.css"
    Karyakram: the programmes the math holds every week and every month: two gold cards in a maroon field
    (the look of the home page's Upcoming events cards). Each card: the picture edge to edge across the top with a
    maroon medallion (a Font Awesome icon) on its lower edge, then the programme's name and, on a rounded maroon plate at the foot of the card, a line from the saint (`line`: its two halves;
-   on a phone the line breaks between them, on a tablet it stays on one line). The pictures are decorative (empty alt): the name
-   and the line say it in text.
+   on a phone the line breaks between them, on a tablet it stays on one line), flanked by the gold flower of the Mantra band.
+   The pictures are decorative (empty alt): the name and the line say it in text.
    Styles: see RegularEvents.module.css.
    ========================================================================== */
 
@@ -25,6 +25,18 @@ const EVENTS = [
         line: ["पालखी निघाली, निघाली", "श्री शंकर गुरुरायांची"],
     },
 ]
+
+// The flower on each side of the saint's line: the Mantra band's divider (_shared/_components/Mantra/Mantra.js), the same
+// shapes — a four-petal gold flower with a maroon centre (drawn as SVG so it keeps its two colours), as large as the text.
+const Flower = () => (
+    <svg className={styles.flower} viewBox="0 0 24 24" aria-hidden="true">
+        <ellipse cx="12" cy="7" rx="3" ry="5" />
+        <ellipse cx="12" cy="17" rx="3" ry="5" />
+        <ellipse cx="7" cy="12" rx="5" ry="3" />
+        <ellipse cx="17" cy="12" rx="5" ry="3" />
+        <circle className={styles.flowerDot} cx="12" cy="12" r="2.4" />
+    </svg>
+)
 
 export default function RegularEvents() {
     return (
@@ -50,9 +62,11 @@ export default function RegularEvents() {
                                 <div className={styles.content}>
                                     <h3 className={styles.title} lang="mr">{event.title}</h3>
                                 </div>
-                                {/* the saint's line: white on a rounded maroon plate at the foot of the card */}
+                                {/* the saint's line: white on a rounded maroon plate at the foot of the card, a flower on each side */}
                                 <p className={styles.line} lang="mr">
-                                    {event.line[0]} <br className={styles.br} />{event.line[1]}
+                                    <Flower />
+                                    <span>{event.line[0]} <br className={styles.br} />{event.line[1]}</span>
+                                    <Flower />
                                 </p>
                             </article>
                         </div>

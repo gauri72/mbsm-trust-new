@@ -359,6 +359,10 @@ export default function Header() {
 
     return (
         <>
+            {/* skip link: the first stop for the keyboard, out of sight until it has focus (the global .skip-link, which
+                shares its look with the slideshow's pause buttons); it moves focus to <main> in layout.js */}
+            <a href="#main-content" className="skip-link" lang="mr">मुख्य मजकुराकडे जा</a>
+
             {/* contact strip: scrolls away with the page */}
             <div className={styles.topbar}>
                 <div className={styles.inner}>
