@@ -5,16 +5,16 @@ import field from "../../../_shared/_components/Field/Field.module.css"
 import { cx, toMarathiDigits, useReducedMotion } from "../../../_shared/_components/utils"
 import { LIFE_STORY_HEADING, LIFE_STORY_LABEL, LIFE_STORY_TITLE, PARAGRAPHS, PHOTOS } from "../../_data/lifeStory"
 import { BackCoverPage, ContentPage, CoverPage } from "./BookPages"
-import { layoutPages, measureLines } from "./paginate"
+import { fitLines, layoutPages } from "./paginate"
 import styles from "./LifeStory.module.css"
 
 /* =============================================================================
    Parichaya: the life story of Shri Vishweshwar Swami Maharaj as a book that turns its pages, on the maroon field.
    It has twenty pages on every screen, a photo and a page of text in turn; the text runs on from one text page to the next
-   and every page is full (paginate.js). On a desktop the book lies open, the photos on the left and the text on the right; on
-   a tablet and a phone it shows one page at a time, between a front cover ("गाथा वाचा" opens it) and a back cover.
+   and every page is full (paginate.js), between a front cover ("पुस्तक उघडा" opens it) and a back cover. On a desktop the
+   open book shows two pages, the photos on the left and the text on the right; on a tablet and a phone one at a time.
    Turning: the arrows at the sides (below the book on narrower screens), a drag or a swipe, and the Left and Right
-   keys while the book has the focus. The page's number is shown under the book and said aloud.
+   keys while the book has the focus. The page's number (or the cover's name) is shown under the book and said aloud.
    The server sends the plain text, which the browser replaces with the book once it has measured it; a new width of
    the book is measured again and opens where the reader was. Styles: LifeStory.module.css.
    ========================================================================== */
@@ -43,7 +43,7 @@ function useLayout(bookRef, probeRef, bodyRef) {
             const body = bodyRef.current
             Object.assign(probe.style, { width: `${width}px`, height: `${width}px` })
             const box = { fontSize: parseFloat(getComputedStyle(body).fontSize), around: width - body.clientHeight }
-            setLayout({ width, spread, ...layoutPages(PHOTOS, measureLines(body, PARAGRAPHS), box, width) })
+            setLayout({ width, spread, ...layoutPages(PHOTOS, fitLines(body, PARAGRAPHS, PHOTOS.length), box, width) })
         }
 
         const observer = new ResizeObserver(() => {
@@ -71,16 +71,23 @@ export default function LifeStory() {
 
     // the page the reader is on (0: the first photo; -1: the front cover): the same in every layout
     const [page, setPage] = useState(-1)
+    const [turning, setTurning] = useState(false)
     const pages = layout?.pages ?? []
-    const covers = layout ? !layout.spread : false
-    const first = covers ? 1 : 0                              // the index of the first page inside the covers
-    const last = covers ? pages.length + 1 : pages.length - 2
-    const onSpread = Math.min(Math.max(page, 0), pages.length - 2)   // (a spread has no covers and starts at its left page)
-    const index = covers ? page + first : Math.max(0, onSpread - (onSpread % 2))   // its place in the book
+    const last = pages.length + 1                             // the back cover's place in the book (the front cover's is 0)
+    const onRight = layout?.spread && page < pages.length && page % 2 === 1   // (a spread starts at its left page)
+    const index = page + 1 - (onRight ? 1 : 0)                // its place in the book
 
-    const inside = layout && index >= first && index < pages.length + first
-    const number = index - first + 1
-    const shown = layout?.spread ? `${toMarathiDigits(number)}–${toMarathiDigits(number + 1)}` : toMarathiDigits(number)
+    // a closed book opens as soon as its cover turns
+    const closed = layout && !turning && (index === 0 ? styles.front : index === last && styles.back)
+
+    // what the counter under the book says
+    const shown = layout?.spread ? `${toMarathiDigits(index)}–${toMarathiDigits(index + 1)}` : toMarathiDigits(index)
+    let counter = ""
+    if (layout) {
+        if (index === 0) counter = "मुखपृष्ठ"
+        else if (index === last) counter = "मलपृष्ठ"
+        else counter = `पान ${shown} / ${toMarathiDigits(pages.length)}`
+    }
 
     const turn = (direction) => {
         const book = flipRef.current?.pageFlip()
@@ -99,7 +106,7 @@ export default function LifeStory() {
     const leaves = useMemo(() => {
         if (!layout) return []
         const inner = layout.pages.map((page, i) => <ContentPage key={i} page={page} number={i + 1} />)
-        return layout.spread ? inner : [<CoverPage key="front" onOpen={open} />, ...inner, <BackCoverPage key="back" />]
+        return [<CoverPage key="front" onOpen={open} />, ...inner, <BackCoverPage key="back" />]
     }, [layout, open])
 
     const arrow = (direction, label, className) => (
@@ -131,7 +138,7 @@ export default function LifeStory() {
 
                 <div
                     ref={bookRef}
-                    className={cx(styles.book, inside && styles.open)}
+                    className={cx(styles.book, closed)}
                     role="region"
                     aria-roledescription="पुस्तक"
                     aria-label={LIFE_STORY_TITLE}
@@ -147,10 +154,11 @@ export default function LifeStory() {
                                 height={layout.height}
                                 size="fixed"
                                 startPage={index}
-                                showCover={covers}
+                                showCover
                                 maxShadowOpacity={0.5}
                                 flippingTime={reduced ? 1 : 800}
-                                onFlip={({ data }) => setPage(data - first)}
+                                onFlip={({ data }) => setPage(data - 1)}
+                                onChangeState={({ data }) => setTurning(data === "flipping")}
                             >
                                 {leaves}
                             </HTMLFlipBook>
@@ -159,11 +167,9 @@ export default function LifeStory() {
                 </div>
 
                 {arrow(1, "पुढील पान", styles.next)}
-            </div>
 
-            <p className={styles.progress} role="status" lang="mr">
-                {inside ? `पान ${shown} / ${toMarathiDigits(pages.length)}` : ""}
-            </p>
+                <p className={styles.progress} role="status" lang="mr">{counter}</p>
+            </div>
 
             {/* the hidden page the lines are measured in */}
             <div ref={probeRef} className={styles.probe} aria-hidden="true">
