@@ -54,7 +54,7 @@ export const CoverPage = forwardRef(function CoverPage({ onOpen }, ref) {
     return (
         <Page ref={ref} className={styles.cover}>
             <h3 className={styles.coverTitle} lang="mr">{LIFE_STORY_TITLE}</h3>
-            <img className={styles.medal} src="/assets/media/parichaya/book-07-shankar-maharaj.webp" alt="" width="1254" height="1254" />
+            <img className={styles.arch} src="/assets/media/parichaya/book-09-guidance.webp" alt="" width="1254" height="1254" />
             <button
                 type="button"
                 className={cx("pill-btn", styles.start)}
@@ -71,13 +71,12 @@ export const CoverPage = forwardRef(function CoverPage({ onOpen }, ref) {
     )
 })
 
-// The back cover: the trust's name, a photo and the trust's tagline, a line for each of its halves.
+// The back cover: the trust's name and tagline, a line for each half of the tagline.
 export const BackCoverPage = forwardRef(function BackCoverPage(props, ref) {
     const [need, help] = SITE_TAGLINE.split(", ")
     return (
         <Page ref={ref} className={styles.cover}>
             <p className={styles.coverTitle} lang="mr">{SITE_NAME_DISPLAY}</p>
-            <img className={styles.medal} src="/assets/media/parichaya/book-09-guidance.webp" alt="" width="1254" height="1254" />
             <p className={styles.tagline} lang="mr">
                 <span>{need}, </span>
                 <span>{help}</span>

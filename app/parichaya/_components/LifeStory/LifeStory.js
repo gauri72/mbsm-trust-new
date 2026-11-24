@@ -71,7 +71,7 @@ export default function LifeStory() {
 
     // the page the reader is on (0: the first photo; -1: the front cover): the same in every layout
     const [page, setPage] = useState(-1)
-    const [turning, setTurning] = useState(false)
+    const [turning, setTurning] = useState(null)              // is a page being turned (null until the first one is)
     const pages = layout?.pages ?? []
     const last = pages.length + 1                             // the back cover's place in the book (the front cover's is 0)
     const onRight = layout?.spread && page < pages.length && page % 2 === 1   // (a spread starts at its left page)
@@ -133,7 +133,7 @@ export default function LifeStory() {
                 <SectionHead label={LIFE_STORY_LABEL} title={LIFE_STORY_HEADING} />
             </div>
 
-            <div className={styles.stage}>
+            <div className={cx(styles.stage, closed && styles.closed, turning !== null && styles.moves)}>
                 {arrow(-1, "मागील पान", styles.prev)}
 
                 <div

@@ -14,7 +14,7 @@
   --frame-shadow: 2px 3px 5px rgba(0, 0, 0, 0.45);   /* the line and the photos stand raised */
   --page-pad: 14px;                                /* the paper's margins inside the line: at the sides and above, */
   --page-foot: 40px;                               /* and at the foot, with the page's number */
-  --book-text: 16px;                               /* a phone: twenty pages of a readable height */
+  --book-text: 15px;                               /* a phone: twenty pages of a readable height */
 }
 
 @media (min-width: 600px) {
@@ -58,7 +58,13 @@
   gap: var(--space-5) var(--space-4);
   max-width: 1480px;
   margin: 0 auto;
-  padding: 0 var(--space-4);
+  padding: 0 var(--space-3);
+}
+
+@media (min-width: 600px) {
+  .stage {
+    padding: 0 var(--space-4);
+  }
 }
 
 @media (min-width: 1400px) {
@@ -107,9 +113,9 @@
 }
 
 /* on a desktop the closed book is half as wide, its front cover on the right and its back cover on the left: it lies in
-   the middle, and moves over as it opens */
+   the middle, and moves over as it opens (it does not move when it first appears: .moves) */
 @media (min-width: 992px) {
-  .book, .book::before {
+  .moves .book, .moves .book::before {
     transition: transform 800ms ease, inset 800ms ease;
   }
 
@@ -206,6 +212,19 @@
   .prev, .next {
     grid-row: 1;
     justify-self: center;
+  }
+
+  .moves .arrow {
+    transition: border-color 250ms ease, box-shadow 250ms ease, transform 800ms ease;
+  }
+
+  /* beside the closed book, half as wide as the open one (1160px) */
+  .closed .prev {
+    transform: translateX(290px);
+  }
+
+  .closed .next {
+    transform: translateX(-290px);
   }
 }
 
@@ -356,6 +375,12 @@
   background: var(--c-gold) url("/assets/media/parichaya/book-bg.webp") center / 100% 100% no-repeat;
 }
 
+@media (min-width: 1200px) {
+  .cover {
+    background-image: url("/assets/media/parichaya/book-bg-wide.webp");   /* the pages are nearly square */
+  }
+}
+
 .cover .sheet {
   position: absolute;
   inset: 13% 19.5% 14%;                            /* the panel of the image */
@@ -367,12 +392,20 @@
   text-align: center;
 }
 
-.medal {
+@media (min-width: 1200px) {
+  .cover .sheet {
+    right: 14%;
+    left: 14%;
+  }
+}
+
+/* the photo, under a round arch; as tall as the panel allows */
+.arch {
   flex: none;
-  width: min(94%, 44cqh);
-  height: auto;
-  aspect-ratio: 1;
-  border-radius: 50%;
+  width: min(86cqw, 35.2cqh);
+  height: min(130cqw, 44cqh);
+  margin-block: clamp(0px, 25cqh - 60cqw, 40px);   /* more space round it in the tall, narrow panel of a small phone */
+  border-radius: 999px 999px 0 0;
   box-shadow: var(--frame-shadow);
   object-fit: cover;
 }
@@ -385,9 +418,21 @@
 .coverTitle {
   margin: 0;
   color: var(--c-black);
-  font-size: min(14cqw, 9cqh);                     /* of the panel: two large lines on every screen */
+  font-size: 11cqw;                                /* of the panel: the trust's name just fits on one line */
   line-height: 1.25;
   text-wrap: balance;
+}
+
+/* a desktop's wide panel: both titles on one line, the photo as tall as that allows */
+@media (min-width: 1200px) {
+  .coverTitle {
+    font-size: 9cqw;
+  }
+
+  .arch {
+    width: 45.6cqh;
+    height: 57cqh;
+  }
 }
 
 .tagline {
@@ -438,7 +483,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .arrow, .book, .book::before {
+  .arrow, .moves .arrow, .moves .book, .moves .book::before {
     transition-duration: 1ms;
   }
 }
