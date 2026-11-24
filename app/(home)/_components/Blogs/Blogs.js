@@ -1,70 +1,60 @@
 import { PAGES } from "../../../_shared/_components/siteContent"
 import { SectionHead, MoreButton } from "../../../_shared/_components/Field/Field"
 import shared from "../../../_shared/_components/Field/Field.module.css"
+import { THEMES } from "../../../lekh/_data/themes"
+import { themeCounts } from "../../../lekh/_data/articleUtils"
 import styles from "./Blogs.module.css"
 
 /* =============================================================================
-   Home: the blogs page (https://mbsmtrust.org/our-blogs, 68 articles) sorted by theme
-   into six themes. The site's own "Pravachan" / "Nirupan" labels are not used.
-   `count` = number of articles in the theme (ids 1-68 on the live blogs page): figures from that hand sorting, not
-   worked out from the articles.
-   The tiles are plain cards, not links: the pravachan page filters by the old site's two categories (Pravachan,
-   Nirupan), not by these six themes, and no article is assigned to a theme anywhere, so a tile could not lead to its
-   own articles. The one link is the button below them, to the pravachan page (all 68 articles). When the articles are
-   given a theme, the tiles can become links to their own filter, with the counts worked out from the articles.
+   Home: the articles (the Lekh page) sorted by theme into six themes. The names are the Lekh page's filter and the
+   number of articles in each theme is counted from the Lekh page's own list (lekh/_data), so this section can never
+   disagree with that page.
+   The tiles are plain cards, not links. The one link is the button below them, to the Lekh page.
    Styles: see Blogs.module.css.
    ========================================================================== */
 
 const CATEGORIES = [
     {
         icon: "fas fa-hand-holding-heart",
-        title: "कर्म आणि कलियुग",
+        title: "कर्म",
         image: "/assets/media/home/blog-karma.webp",
         desc: "कर्माचे महत्त्व, कलियुगातील उद्धाराचा मार्ग आणि कर्माचे फळ.",
-        count: 16,
     },
     {
         icon: "fas fa-spa",
-        title: "शांती आणि आत्मचिंतन",
+        title: "शांती",
         image: "/assets/media/home/blog-shanti.webp",
         desc: "सुख, समाधान, अंतर्मुखता आणि जीवनाकडे पाहण्याची दृष्टी.",
-        count: 17,
     },
     {
         icon: "fas fa-fire",
-        title: "अहंकार आणि षडरिपू",
+        title: "अहंकार",
         image: "/assets/media/home/blog-ahankar.webp",
         desc: "अहंकार, षडरिपू आणि स्वार्थी वृत्तीवर मात कशी करावी.",
-        count: 11,
     },
     {
         icon: "fas fa-om",
-        title: "शंकर महाराज आणि लीला",
+        title: "शंकरलीला",
         image: "/assets/media/home/blog-shankar-leela.webp",
         desc: "सद्गुरु शंकर महाराजांचे संदेश, लीला आणि भक्‍तांवरची माया.",
-        count: 11,
     },
     {
         icon: "fas fa-praying-hands",
-        title: "गुरू आणि गुरुकृपा",
+        title: "गुरुकृपा",
         image: "/assets/media/home/blog-guru.webp",
         desc: "गुरूची संकल्पना, गुरुवचनाचे महत्त्व आणि सद्गुरु कृपा.",
-        count: 6,
     },
     {
         icon: "fas fa-hands-helping",
-        title: "मठ आणि सेवा",
+        title: "सेवा",
         image: "/assets/media/home/blog-math-seva.webp",
         desc: "गादी सेवा, अन्नदान आणि मठातील भक्‍ती व सेवेचे अनुभव.",
-        count: 7,
     },
 ]
 
-/* Sanity check while developing: the counts must add up to the live site's 68 articles. */
-if (process.env.NODE_ENV !== "production") {
-    const total = CATEGORIES.reduce((sum, cat) => sum + cat.count, 0)
-    if (total !== 68) console.warn(`Blogs: the category counts add up to ${total}, expected 68`)
-}
+// each tile's theme is the Lekh page's theme of the same place in the list (same order, same names)
+const COUNTS = themeCounts()
+const TILES = CATEGORIES.map((cat, index) => ({ ...cat, count: COUNTS[THEMES[index].key] }))
 
 export default function Blogs() {
     return (
@@ -72,7 +62,7 @@ export default function Blogs() {
             <div className="container">
                 <SectionHead label="अमृतवाणी" title="शब्दांची शिदोरी, मनाची तिजोरी" />
                 <div className={`row ${shared.cards}`}>
-                    {CATEGORIES.map((cat, index) => (
+                    {TILES.map((cat, index) => (
                         <div
                             key={cat.title}
                             className={`col-lg-6 wow ${index % 2 === 0 ? "fadeInLeft" : "fadeInRight"}`}
@@ -101,7 +91,7 @@ export default function Blogs() {
                     ))}
                 </div>
 
-                <MoreButton href={PAGES.pravachan.href}>सर्व प्रवचन पाहा</MoreButton>
+                <MoreButton href={PAGES.lekh.href}>सर्व लेख पाहा</MoreButton>
             </div>
         </section>
     )

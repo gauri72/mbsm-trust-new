@@ -1,46 +1,62 @@
 /* =============================================================================
    Upkram — the list of projects: a filter and gold cards on the maroon field.
    The maroon field, heading, card base and button row are shared: see _shared/_components/Field/Field.module.css.
-   The cards are the Pravachan page's cards without the link: a 16:9 photo in a maroon frame, then the cause and the title.
-   A card without a photo shows its cause's icon in a gold ring, in the same frame.
-   Type here: titles medium, cause + counts small, the icon large. Colours: the site's four, solid.
+   Filter: stat tabs (the home page's stats strip). Cards: solid gold / white blocks, a small photo that swaps sides, a big number, the cause and the title.
+   A card without a photo shows its cause's icon on the maroon, in the same place.
+   Type here: titles + labels medium, cause small, numbers and the icon large. Colours: the site's four, solid.
    ========================================================================== */
 section.projects {
-  --projects-photo-radius: 12px;
-  --projects-frame: var(--space-1);       /* the maroon frame round the photo */
+  --projects-radius: 16px;                /* tabs, photos */
+  --projects-photo: 132px;                /* the photo's side */
   --projects-medal: 88px;                 /* the ring that holds the cause's icon */
 }
 
-/* ---- Filter: pills; the chosen one is solid gold ---- */
+/* ---- Filter: stat tabs, as the home page's stats strip — a big gold number over a white label; the chosen one is
+   underlined in gold, with its label gold ---- */
 section.projects .filters {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--space-3);
+  gap: var(--space-2);
   margin-bottom: var(--home-gap);
 }
 
 section.projects .filter {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: var(--space-2);
-  height: 48px;
-  padding: 0 var(--space-5);
-  border: var(--line-width) solid var(--c-gold);
-  border-radius: 999px;
+  min-width: 96px;
+  padding: var(--space-2) var(--space-4);
+  border: 0;
+  border-radius: var(--projects-radius);
   background-color: transparent;
-  color: var(--c-gold);
+  color: var(--c-white);
   font-family: var(--font);
-  font-size: var(--text-md);
-  font-weight: 700;
-  line-height: 1;
   cursor: pointer;
   transition: background-color 200ms ease, color 200ms ease;
+}
+
+section.projects .count {
+  color: var(--c-gold);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+section.projects .filterLabel {
+  margin-top: var(--space-1);
+  font-size: var(--text-md);
+  font-weight: 400;
+  line-height: 1.3;
 }
 
 section.projects .filter.active {
   background-color: var(--c-gold);
   color: var(--c-black);
+}
+
+section.projects .filter.active .count {
+  color: var(--c-maroon);
 }
 
 section.projects .filter:focus-visible,
@@ -49,11 +65,15 @@ section.projects .more:focus-visible {
   outline-offset: 2px;
 }
 
-section.projects .count {
-  font-size: var(--text-sm);
+@media (max-width: 575px) {
+  section.projects .filter {
+    min-width: 0;
+    padding-right: var(--space-2);
+    padding-left: var(--space-2);
+  }
 }
 
-/* ---- Grid: one column on a phone, two on a tablet, three on a desktop ---- */
+/* ---- Grid: one column on a phone, two from a tablet up ---- */
 section.projects .grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -73,28 +93,45 @@ section.projects .grid > li {
   }
 }
 
-@media (min-width: 1200px) {
-  section.projects .grid {
-    grid-template-columns: repeat(3, 1fr);
+/* ---- Card: a solid block, no outlines — a small photo beside a big number, the cause and the title.
+   Gold and white cards alternate and the photo swaps sides: on a phone every other card, from a tablet up in a
+   chequer (1st and 4th of every four are gold with the photo on the left) ---- */
+section.projects .card {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3);
+  border-radius: var(--home-card-radius);
+  background-color: var(--c-gold);
+  color: var(--c-black);
+}
+
+section.projects .grid > li:nth-child(even) .card {
+  flex-direction: row-reverse;
+  background-color: var(--c-white);
+}
+
+@media (min-width: 768px) {
+  section.projects .grid > li:nth-child(4n + 1) .card,
+  section.projects .grid > li:nth-child(4n + 4) .card {
+    flex-direction: row;
+    background-color: var(--c-gold);
+  }
+
+  section.projects .grid > li:nth-child(4n + 2) .card,
+  section.projects .grid > li:nth-child(4n + 3) .card {
+    flex-direction: row-reverse;
+    background-color: var(--c-white);
   }
 }
 
-/* ---- Card (gold card base: Field.module.css) ---- */
-section.projects .card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-  padding: var(--space-3);
-}
-
-/* the photo: 16:9 — a maroon frame, a gold gap, then the picture */
 section.projects .image {
-  box-sizing: border-box;
-  aspect-ratio: 16 / 9;
-  padding: var(--space-2);
-  border: var(--projects-frame) solid var(--c-maroon);
-  border-radius: var(--projects-photo-radius);
-  background-color: var(--c-gold);
+  flex: 0 0 var(--projects-photo);
+  width: var(--projects-photo);
+  height: var(--projects-photo);
+  border-radius: var(--projects-radius);
+  background-color: var(--c-maroon);
   overflow: hidden;
 }
 
@@ -102,11 +139,10 @@ section.projects .image img {
   display: block;
   width: 100%;
   height: 100%;
-  border-radius: var(--projects-frame);
   object-fit: cover;
 }
 
-/* no photo: the cause's icon, centred in a ring (the breadcrumb's gold ring, in maroon) */
+/* no photo: the cause's icon on the maroon */
 section.projects .placeholder {
   display: flex;
   align-items: center;
@@ -116,51 +152,40 @@ section.projects .placeholder {
 }
 
 section.projects .medal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--projects-medal);
-  height: var(--projects-medal);
-  border: var(--line-width) solid var(--c-maroon);
-  border-radius: 50%;
-  color: var(--c-maroon);
+  color: var(--c-gold);
   font-size: var(--text-lg);
 }
 
 section.projects .body {
   display: flex;
+  min-width: 0;
   flex: 1;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-1);
+}
+
+/* the project's number in its cause */
+section.projects .number {
+  color: var(--c-maroon);
+  font-family: var(--font);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  line-height: 1.1;
 }
 
 /* the cause */
 section.projects .meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   margin: 0;
-  color: var(--c-black);
+  color: var(--c-maroon);
   font-family: var(--font);
   font-size: var(--text-sm);
   font-weight: 700;
   line-height: 1.3;
 }
 
-section.projects .chip {
-  padding: var(--space-0) var(--space-2);
-  border-radius: 999px;
-  background-color: var(--c-maroon);
-  color: var(--c-white);
-  white-space: nowrap;
-}
-
-/* title: maroon, above a 2px maroon line (as the home tiles' headings) */
 section.projects .title {
   margin: 0;
-  padding-bottom: var(--space-1);
-  border-bottom: var(--line-width) solid var(--c-maroon);
-  color: var(--c-maroon);
+  color: var(--c-black);
   font-family: var(--font);
   font-size: var(--text-md);
   font-weight: 700;
@@ -175,11 +200,10 @@ section.projects .more {
   cursor: pointer;
 }
 
-/* ---- Hover: mouse / trackpad only (filter pills only: the cards are not links) ---- */
+/* ---- Hover: mouse / trackpad only (filter tabs only: the cards are not links) ---- */
 @media (hover: hover) {
   section.projects .filter:not(.active):hover {
-    background-color: var(--c-gold);
-    color: var(--c-black);
+    background-color: var(--c-black);
   }
 }
 

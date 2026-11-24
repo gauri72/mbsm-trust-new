@@ -8,14 +8,16 @@ import shared from "./Field.module.css"
    .section-title--maroon and .pill-btn.
    ========================================================================== */
 
-// The section's heading: a gold label, then the white title.
+// The section's heading: a gold label (optional), then the white title.
 export function SectionHead({ label, title }) {
     return (
         <div className={shared.head}>
             <div className="section-title section-title--maroon text-center sec-title-animation animation-style1">
-                <div className="section-title__tagline-box">
-                    <span className="section-title__tagline" lang="mr">{label}</span>
-                </div>
+                {label && (
+                    <div className="section-title__tagline-box">
+                        <span className="section-title__tagline" lang="mr">{label}</span>
+                    </div>
+                )}
                 <h2 className="section-title__title title-animation" lang="mr">{title}</h2>
             </div>
         </div>

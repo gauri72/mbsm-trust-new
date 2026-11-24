@@ -23,3 +23,6 @@ export function useReducedMotion() {
     }, [])
     return reduced
 }
+
+// English digits to Marathi (Devanagari) ones, for a number said in a Marathi text: toMarathiDigits(12) → "१२"
+export const toMarathiDigits = (value) => String(value).replace(/\d/g, (digit) => "०१२३४५६७८९"[digit])

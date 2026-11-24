@@ -1,0 +1,369 @@
+/* =============================================================================
+   Lekh — the list of articles: filter chips and gold cards on the maroon field.
+   The cards are the home page's blog tiles (Home: Blogs.module.css), value for value: the gold card (shared: see
+   _shared/_components/Field/Field.module.css), the square photo in a thick maroon frame with a gold gap, the round
+   maroon icon with its pill, the maroon title over a 2px line. Where the tile has its description the articles have
+   "वाचा →".
+   Type here: titles + chip labels medium, theme + "वाचा" small, the round icon large (smaller on phones).
+   Colours: the site's four, solid.
+   ========================================================================== */
+section.articles {
+  --articles-photo-radius: 12px;
+  --articles-frame: var(--space-1);       /* the maroon frame round the photo */
+  --articles-meta-width: 112px;           /* the icon + theme column */
+  --articles-phone-photo: 110px;          /* the photo on a phone (never more than a third of the card) */
+  --articles-icon-size: var(--text-lg);   /* the round icon; smaller on phones, below */
+  --articles-gap: var(--space-5);         /* between the subheading, the filter, the search and the cards: 26px on every screen */
+  --home-head-gap: var(--articles-gap);
+}
+
+@media (max-width: 767px) {
+  section.articles { --articles-icon-size: 26px; }
+}
+
+@media (max-width: 359px) {
+  section.articles { --articles-icon-size: 19px; }
+}
+
+/* ---- Heading: on a phone the title breaks in two lines, after "विचारांतून" (on a wide screen the break is off) ---- */
+section.articles .phoneBreak {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  section.articles .phoneBreak {
+    display: inline;
+  }
+}
+
+/* ---- Filter: white pills with maroon text, as the header's nav; the chosen one is gold with black text.
+   Centred, wrapping to a second line where the screen is narrow ---- */
+section.articles .filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-bottom: var(--articles-gap);     /* filter -> search */
+}
+
+/* phones: the buttons wrap in rows and each row stretches to the full width (no ragged right edge); a slightly
+   tighter gap between the buttons on the narrowest lets them wrap 4 + 3 */
+@media (max-width: 575px) {
+  section.articles .filter {
+    flex: 1 1 auto;
+  }
+}
+
+@media (max-width: 399px) {
+  section.articles .filters {
+    column-gap: 6px;
+  }
+}
+
+section.articles .filter {
+  min-height: 44px;
+  padding: 0 var(--space-4);
+  border: var(--line-width) solid var(--c-white);
+  border-radius: 999px;
+  background-color: var(--c-white);
+  color: var(--c-maroon);
+  font-family: var(--font);
+  font-size: var(--text-md);
+  font-weight: 700;
+  line-height: 1.3;
+  cursor: pointer;
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+
+section.articles .filter.active {
+  border-color: var(--c-gold);
+  background-color: var(--c-gold);
+  color: var(--c-black);
+}
+
+section.articles .filter:focus-visible {
+  outline: var(--line-width) solid var(--c-white);
+  outline-offset: 2px;
+}
+
+/* ---- Search: a white pill with a gold border above the cards, as wide as a card column on a wide screen ---- */
+section.articles .search {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--articles-gap);     /* search -> first cards */
+}
+
+section.articles .search input {
+  width: 100%;
+  max-width: 480px;
+  min-height: 52px;
+  padding: 0 var(--space-5);
+  border: var(--line-width) solid var(--c-gold);
+  border-radius: 999px;
+  background-color: var(--c-white);
+  color: var(--c-black);
+  font-family: var(--font);
+  font-size: var(--text-md);
+  font-weight: 700;
+}
+
+section.articles .search input:focus-visible {
+  outline: var(--line-width) solid var(--c-white);
+  outline-offset: 2px;
+}
+
+section.articles .empty {
+  margin: var(--home-gap) 0 0;
+  color: var(--c-white);
+  font-size: var(--text-md);
+  font-weight: 700;
+  text-align: center;
+}
+
+/* ---- Grid: one column up to 991px, two from there (as the home page's tiles) ---- */
+section.articles .grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--home-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+section.articles .grid > li {
+  min-width: 0;                           /* a long title never stretches its column */
+}
+
+@media (min-width: 992px) {
+  section.articles .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---- Tile: a horizontal card, the image on the left and the content on the right (gold card base: Field.module.css);
+   the whole tile is the title's link ---- */
+section.articles .tile {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: var(--space-3);
+  padding: var(--space-3);
+}
+
+section.articles .tile:focus-within {
+  outline: var(--line-width) solid var(--c-white);
+  outline-offset: 4px;
+}
+
+/* the photo: a SQUARE block (left) — a thick maroon border, a gold gap, then the photo */
+section.articles .image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 36%;
+  align-self: center;
+  aspect-ratio: 1 / 1;                    /* always a square, on every screen */
+  box-sizing: border-box;
+  padding: var(--space-2);                /* the blank gap between the border and the photo */
+  border: var(--articles-frame) solid var(--c-maroon);
+  border-radius: var(--articles-photo-radius);
+  background-color: var(--c-gold);
+  overflow: hidden;
+}
+
+section.articles .image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--articles-frame);
+  object-fit: cover;
+  transition: transform 400ms ease;
+}
+
+/* content: on the left the round icon with the theme below it; on the right the title, a line, then the foot */
+section.articles .body {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+section.articles .meta {
+  display: flex;
+  flex: 0 0 var(--articles-meta-width);
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+section.articles .text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+section.articles .icon {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--articles-icon-size) * 2);
+  height: calc(var(--articles-icon-size) * 2);
+  border-radius: 50%;
+  background-color: var(--c-maroon);
+  color: var(--c-gold);
+  font-size: var(--articles-icon-size);
+  line-height: 1;
+}
+
+section.articles .icon i {
+  color: var(--c-gold);
+}
+
+/* the theme, as the tile's count pill */
+section.articles .theme {
+  padding: var(--space-1) var(--space-2);
+  border-radius: 999px;
+  background-color: var(--c-maroon);
+  color: var(--c-white);
+  font-family: var(--font);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+}
+
+/* heading: maroon, above a 2px maroon line */
+section.articles .title {
+  margin: 0;
+  padding-bottom: var(--space-1);
+  border-bottom: var(--line-width) solid var(--c-maroon);
+  color: var(--c-maroon);
+  font-family: var(--font);
+  font-size: var(--text-md);
+  font-weight: 700;
+  line-height: 1.4;
+  text-transform: none;
+  overflow-wrap: break-word;              /* wrap between words; break inside one only if it alone is wider than the column */
+}
+
+section.articles .link {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* the link covers the whole tile, so a tap anywhere on it opens the article */
+section.articles .link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+section.articles .link:focus-visible {
+  outline: none;                          /* the tile shows the focus (above) */
+}
+
+/* below the line, where the home tile has its description: "वाचा →" (a hint, not a second link) */
+section.articles .read {
+  margin-top: var(--space-1);
+  color: var(--c-black);
+  font-family: var(--font);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+section.articles .read i {
+  margin-left: var(--space-1);
+  color: var(--c-maroon);
+  transition: transform 200ms ease;
+}
+
+/* mid widths (the tiles are narrow): a slimmer photo and icon column leave the title room */
+@media (min-width: 576px) and (max-width: 1399px) {
+  section.articles .image {
+    flex-basis: 30%;
+  }
+
+  section.articles .meta {
+    --articles-meta-width: 100px;
+  }
+}
+
+/* two narrow columns (992–1399px): give the title the width — a tighter gap between the photo, the icon column and the
+   title; the photo keeps its size, and the theme pill (about 95px for the longest) still fits its column */
+@media (min-width: 992px) and (max-width: 1399px) {
+  section.articles .tile,
+  section.articles .body {
+    gap: var(--space-2);
+  }
+
+  section.articles .meta {
+    --articles-meta-width: 96px;
+  }
+}
+
+/* a tablet (one wide column): the photo keeps a fixed size instead of growing to 30% of a very wide tile */
+@media (min-width: 576px) and (max-width: 991px) {
+  section.articles .image {
+    flex: 0 0 168px;
+  }
+}
+
+/* phones: the tile stays horizontal but compact — a small square photo on the left (about 110px, never more than a
+   third of the tile); on the right the round icon with the theme beside it, then the title, the line and the foot */
+@media (max-width: 575px) {
+  section.articles .image {
+    flex: 0 0 min(var(--articles-phone-photo), 34%);
+  }
+
+  section.articles .body {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-2);
+  }
+
+  section.articles .meta {
+    flex: none;                           /* undo the desktop's fixed column width */
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-3);
+  }
+}
+
+/* ---- Hover: mouse / trackpad only ---- */
+@media (hover: hover) {
+  /* an unchosen filter turns gold on hover (black text), as the header's nav */
+  section.articles .filter:not(.active):hover {
+    border-color: var(--c-gold);
+    background-color: var(--c-gold);
+    color: var(--c-black);
+  }
+
+  /* the card hover (no colour change): the photo zooms slowly inside its frame and the arrow steps forward 6px */
+  section.articles .tile:hover .image img {
+    transform: scale(1.08);
+  }
+
+  section.articles .tile:hover .read i {
+    transform: translateX(6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section.articles .filter,
+  section.articles .image img,
+  section.articles .read i {
+    transition: none;
+  }
+
+  section.articles .tile:hover .image img,
+  section.articles .tile:hover .read i {
+    transform: none;
+  }
+}

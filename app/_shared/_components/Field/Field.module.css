@@ -79,6 +79,33 @@
   color: var(--c-black);
 }
 
+/* ---- Medal: a round maroon icon in a gold ring, centred on the bottom edge of a card's picture (the blog tiles' icon).
+   The card's own CSS makes the picture's box `position: relative` and leaves room under it (half the medal) ---- */
+.medal {
+  --medal-size: calc(var(--text-lg) * 2);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--medal-size);
+  height: var(--medal-size);
+  border: var(--space-0) solid var(--c-gold);
+  border-radius: 50%;
+  background-color: var(--c-maroon);
+  box-sizing: border-box;
+  transform: translate(-50%, 50%);
+  font-size: var(--text-lg);
+  line-height: 1;
+}
+
+.medal i {
+  color: var(--c-gold);
+  font-size: calc(var(--text-lg) * 0.75);
+}
+
 /* ---- Button row under the cards: the button itself is the global .pill-btn ---- */
 .cta {
   margin-top: var(--home-gap);

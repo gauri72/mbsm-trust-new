@@ -5,7 +5,8 @@ import styles from "./Events.module.css"
 
 /* =============================================================================
    Home: the upcoming festivals, three cards, then one button to the Karyakram page.
-   Each card: a photo, a date badge (day large, month and year below) and the name.
+   Each card: a photo, a date badge (day large, month and year below), the festival's round icon on the photo's
+   bottom edge (shared: Field.module.css, .medal) and the name.
    The dates are typed by hand: update them (and the heading, "आगामी") as they pass.
    Styles: see Events.module.css.
    ========================================================================== */
@@ -14,6 +15,7 @@ const EVENTS = [
     {
         img: "/assets/media/home/event-1-2.webp",
         iso: "2026-12-23",
+        icon: "fas fa-om",
         day: "23",
         month: "Dec 2026",
         title: "श्री दत्त प्रभू जयंती",
@@ -22,6 +24,7 @@ const EVENTS = [
     {
         img: "/assets/media/home/event-1-3.webp",
         iso: "2027-02-06",
+        icon: "fas fa-praying-hands",
         day: "06",
         month: "Feb 2027",
         // "‍" keeps the second श्व as half-श + व (श्‍व), matching the hero name plaque
@@ -31,6 +34,7 @@ const EVENTS = [
     {
         img: "/assets/media/home/event-1-4.webp",
         iso: "2027-05-13",
+        icon: "fas fa-landmark",
         day: "13",
         month: "May 2027",
         title: "श्री शंकर महाराज समाधी सोहळा",
@@ -62,6 +66,8 @@ export default function Events() {
                                         <span className={styles.badgeDay}>{event.day}</span>
                                         <span className={styles.badgeMonth}>{event.month}</span>
                                     </time>
+                                    {/* the festival's icon, on the picture's bottom edge */}
+                                    <span className={shared.medal} aria-hidden="true"><i className={event.icon}></i></span>
                                 </div>
                                 <div className={styles.content}>
                                     <h3 className={styles.title} lang="mr">{event.title}</h3>

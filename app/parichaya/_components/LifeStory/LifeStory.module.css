@@ -1,0 +1,425 @@
+/* =============================================================================
+   LifeStory — the life-story book on the About page (LifeStory.js).
+
+   The maroon field and its floral texture are the shared Field (its class is applied beside .story); this file holds
+   the book: the stage with the arrows, the pages, the two covers (tablet and phone) and the page counter.
+   A page's size is set by LifeStory.js and the height of its lines (--line) by BookPages.js, as measured (paginate.js).
+   ========================================================================== */
+
+.story {
+  --arrow-size: 46px;
+  --board: var(--space-1);                         /* how far the book's board shows around its pages */
+  --page-pad: var(--space-3);
+  --book-text: 16px;                               /* a phone: twenty pages of a readable height */
+  padding: var(--space-7) 0;
+}
+
+@media (min-width: 600px) {
+  .story {
+    --book-text: var(--text-sm);
+  }
+}
+
+@media (min-width: 992px) {
+  .story {
+    --book-text: 17px;                             /* a small desktop: narrow pages */
+    --arrow-size: 58px;
+    --board: var(--space-2);
+    --page-pad: var(--space-5);
+    padding: var(--space-8) 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .story {
+    --book-text: var(--text-sm);
+  }
+}
+
+/* a heading that takes two lines (a phone) is split evenly */
+.story :global(.section-title__title) {
+  text-wrap: balance;
+}
+
+/* ---- Stage: [previous arrow] [book] [next arrow] in a row; under 1400px the book has the row to itself (its pages
+   need the width) and the two arrows sit side by side under it ---- */
+.stage {
+  position: relative;
+  z-index: 1;                                      /* above the field's texture */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-5) var(--space-4);
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0 calc(var(--space-3) + var(--board));
+}
+
+@media (min-width: 1400px) {
+  .stage {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    column-gap: var(--space-5);
+  }
+}
+
+.book {
+  position: relative;
+  z-index: 0;
+  grid-row: 1;
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 100%;
+  max-width: 560px;
+}
+
+@media (min-width: 992px) {
+  .book {
+    max-width: 1160px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .book {
+    grid-column: 2;
+  }
+}
+
+/* the bound board behind the open pages */
+.open::before {
+  content: "";
+  position: absolute;
+  inset: calc(-1 * var(--board));
+  z-index: -1;
+  border-radius: 12px;
+  background-color: var(--c-gold);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.book:focus-visible {
+  outline: var(--line-width) solid var(--c-white);
+  outline-offset: calc(var(--board) + var(--space-0));
+}
+
+/* react-pageflip's own layer: a vertical swipe still scrolls the page */
+.book :global(.stf__block) {
+  touch-action: pan-y;
+}
+
+/* the plain text, in the book's place until the book is measured */
+.plain {
+  aspect-ratio: 1 / 2;
+  padding: var(--page-pad);
+  overflow-y: auto;
+  border-radius: 6px;
+  background-color: var(--c-white);
+  color: var(--c-black);
+  font-size: var(--book-text);
+  line-height: 1.5;
+}
+
+@media (min-width: 560px) {
+  .plain { aspect-ratio: 1 / 1.16; }
+}
+
+@media (min-width: 992px) {
+  .plain { aspect-ratio: 2 / 1.16; }
+}
+
+.probe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ---- Arrows: a maroon medallion with a gold ring and a gold chevron ---- */
+.arrow {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: var(--arrow-size);
+  height: var(--arrow-size);
+  border: 2px solid var(--c-gold);
+  border-radius: 50%;
+  background-color: var(--c-maroon);
+  color: var(--c-gold);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: border-color 250ms ease, box-shadow 250ms ease;
+}
+
+.prev {
+  grid-row: 2;
+  grid-column: 1;
+  justify-self: end;
+}
+
+.prev i {
+  transform: rotate(180deg);                       /* the site's icon font has the right chevron only */
+}
+
+.next {
+  grid-row: 2;
+  grid-column: 2;
+  justify-self: start;
+}
+
+@media (min-width: 1400px) {
+  .prev, .next {
+    grid-row: 1;
+  }
+
+  .next {
+    grid-column: 3;
+  }
+}
+
+.arrow:hover:not(:disabled) {
+  border-color: var(--c-white);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
+}
+
+.arrow:focus-visible {
+  outline: var(--line-width) solid var(--c-white);
+  outline-offset: var(--space-0);
+}
+
+.arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* ---- Pages: white paper in a thin gold rule, the page's number at the foot ---- */
+.page {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: var(--c-white);
+  color: var(--c-black);
+}
+
+/* the two pages of a spread meet at the spine, with a soft shade running into it */
+.page:global(.--left) {
+  border-radius: 6px 0 0 6px;
+}
+
+.page:global(.--right) {
+  border-radius: 0 6px 6px 0;
+}
+
+.paper:global(.--left) {
+  box-shadow: inset -18px 0 18px -16px rgba(0, 0, 0, 0.35);
+}
+
+.paper:global(.--right) {
+  box-shadow: inset 18px 0 18px -16px rgba(0, 0, 0, 0.35);
+}
+
+/* what is on the page, in a column (react-pageflip sets its own display on .page, so it cannot be done there) */
+.sheet {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--page-pad);
+}
+
+.paper .sheet {
+  padding-bottom: var(--space-2);
+}
+
+.paper .sheet::after {
+  content: "";
+  position: absolute;
+  inset: var(--space-1);
+  border: 1px solid var(--c-gold);
+  pointer-events: none;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  font-size: var(--book-text);
+}
+
+/* a photo fills its page */
+.photo {
+  display: block;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  border: 2px solid var(--c-maroon);
+  object-fit: cover;
+}
+
+/* every line is set as it was measured; --line makes a full page's lines reach its foot */
+.line {
+  display: block;
+  height: var(--line);
+  line-height: var(--line);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.begins,
+.body p {
+  text-indent: 1.4em;
+}
+
+/* (measuring: plain paragraphs, a box for each word) */
+.body p {
+  margin: 0;
+  font-size: inherit;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.body p span {
+  display: inline-block;
+  text-indent: 0;
+}
+
+.number {
+  flex: none;
+  color: var(--c-maroon);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.number::before,
+.number::after {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 var(--space-2);
+  background-color: var(--c-gold);
+  vertical-align: middle;
+  transform: rotate(45deg);
+}
+
+/* ---- Covers: the gold leather in a double maroon frame, filled by the portrait, the title and the Om ---- */
+.cover {
+  background: var(--c-gold) url("/assets/media/parichaya/book-bg.webp") center / cover;
+}
+
+.cover .sheet {
+  align-items: center;
+  justify-content: space-evenly;
+  padding: var(--space-6) var(--space-5);
+  text-align: center;
+}
+
+.cover .sheet::before,
+.cover .sheet::after {
+  content: "";
+  position: absolute;
+  inset: var(--space-2);
+  border: 2px solid var(--c-maroon);
+  pointer-events: none;
+}
+
+.cover .sheet::after {
+  inset: calc(var(--space-2) + 6px);
+  border-width: 1px;
+}
+
+.emblem {
+  flex: none;
+  width: 58%;
+  height: auto;
+  aspect-ratio: 1;
+  border: 5px solid var(--c-maroon);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.coverTitle {
+  margin: 0;
+  color: var(--c-black);
+  font-size: var(--text-lg);
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+@media (max-width: 479px) {
+  .coverTitle {
+    font-size: var(--text-md);
+  }
+}
+
+/* a rule with the Om in the middle */
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 70%;
+  color: var(--c-maroon);
+  font-size: var(--text-md);
+}
+
+.ornament::before,
+.ornament::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background-color: currentColor;
+}
+
+.start {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border: 2px solid var(--c-maroon);
+  border-radius: 999px;
+  background-color: var(--c-maroon);
+  color: var(--c-gold);
+  font-size: var(--text-md);
+  cursor: pointer;
+  transition: background-color 260ms ease, color 260ms ease, border-color 260ms ease;
+}
+
+/* react-pageflip starts a flip-drag from any element in the press but a <button> itself, and that can swallow
+   the click: whatever is inside the button lets the press through to it */
+.start * {
+  pointer-events: none;
+}
+
+.start:hover,
+.start:focus-visible {
+  border-color: var(--c-gold);
+  background-color: var(--c-white);
+  color: var(--c-maroon);
+}
+
+.start:focus-visible {
+  outline: var(--line-width) solid var(--c-maroon);
+  outline-offset: var(--space-0);
+}
+
+/* ---- The page the book is on, under it ---- */
+.progress {
+  position: relative;
+  z-index: 1;                                      /* above the field's texture */
+  min-height: 1.6em;
+  margin: var(--space-5) 0 0;
+  color: var(--c-gold);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arrow, .start {
+    transition-duration: 1ms;
+  }
+}

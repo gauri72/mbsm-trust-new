@@ -3,12 +3,11 @@
 // nothing else (dates, places, figures) is added: the old site gave none.
 //
 // Each project:
-//   id        a short name for the project (also the photo's file name)
+//   id        a short name for the project
 //   category  "education" | "food" | "medical" | "events"  (see CATEGORIES)
 //   title     the project's name, in Marathi
-//   image     its photo, /assets/media/upkram/<id>.webp: only where the photo is the trust's own.
-//             Without it the card shows its category's icon instead. The old site's other pictures are stock or
-//             web pictures (or an illustration), so they are not used. Add `image` when the trust sends a real photo.
+//   image     (optional) its photo; by default /assets/media/upkram/<prefix>-<n>.jpg, see PHOTO_PREFIX below.
+//             A card without a photo shows its category's icon instead.
 
 // the filter's buttons, in order; `icon` is the Font Awesome icon a card without a photo shows
 export const CATEGORIES = [
@@ -18,9 +17,10 @@ export const CATEGORIES = [
     { key: "events", label: "उत्सव आणि परंपरा", icon: "fas fa-om" },
 ]
 
-const photo = (id) => `/assets/media/upkram/${id}.webp`
+// the photo files are named <prefix>-<n>.jpg, n = the project's place within its category (the order below)
+const PHOTO_PREFIX = { education: "education", food: "Annadanam", medical: "wellness", events: "events" }
 
-const PROJECTS_IN_ORDER = [
+const PROJECT_LIST = [
     // बालशिक्षण (3)
     { id: "school-kit-distribution", category: "education", title: "शालेय साहित्य वाटप" },
     { id: "parental-support", category: "education", title: "पालक मार्गदर्शन उपक्रम" },
@@ -28,11 +28,11 @@ const PROJECTS_IN_ORDER = [
 
     // अन्नदान (10)
     { id: "sankashti-khichdi", category: "food", title: "संकष्टी चतुर्थी खिचडी वाटप" },
-    { id: "shankar-gita", category: "food", title: "शंकर गीता पठण", image: photo("shankar-gita") },
-    { id: "gaushala", category: "food", title: "गोशाळा सहाय्य", image: photo("gaushala") },
+    { id: "shankar-gita", category: "food", title: "शंकर गीता पठण" },
+    { id: "gaushala", category: "food", title: "गोशाळा सहाय्य" },
     { id: "grocery", category: "food", title: "किराणा वाटप" },
-    { id: "mahaprasad", category: "food", title: "साप्ताहिक महाप्रसाद", image: photo("mahaprasad") },
-    { id: "food-donation", category: "food", title: "अन्नदान उपक्रम", image: photo("food-donation") },
+    { id: "mahaprasad", category: "food", title: "साप्ताहिक महाप्रसाद" },
+    { id: "food-donation", category: "food", title: "अन्नदान उपक्रम" },
     { id: "snehalaya", category: "food", title: "स्नेहालय सहाय्य" },
     { id: "police", category: "food", title: "पोलीस विभाग सहाय्य" },
     { id: "ganesh-festival", category: "food", title: "गणेशोत्सव सेवा" },
@@ -47,19 +47,23 @@ const PROJECTS_IN_ORDER = [
     { id: "medical-guidance", category: "medical", title: "वैद्यकीय मार्गदर्शन" },
 
     // उत्सव आणि परंपरा (11)
-    { id: "rajabhau-janmdin", category: "events", title: "श्री राजाभाऊ कोठारी जन्मदिन", image: photo("rajabhau-janmdin") },
+    { id: "rajabhau-janmdin", category: "events", title: "श्री राजाभाऊ कोठारी जन्मदिन" },
     { id: "kavad-yatra", category: "events", title: "महाशिवरात्री कावड यात्रा" },
-    { id: "hanuman-chalisa", category: "events", title: "हनुमान चालीसा पठण", image: photo("hanuman-chalisa") },
-    { id: "hanuman-jayanti", category: "events", title: "हनुमान जयंती", image: photo("hanuman-jayanti") },
-    { id: "samadhi-sohala", category: "events", title: "श्री शंकर महाराज समाधी सोहळा", image: photo("samadhi-sohala") },
-    { id: "guru-purnima", category: "events", title: "गुरुपौर्णिमा", image: photo("guru-purnima") },
+    { id: "hanuman-chalisa", category: "events", title: "हनुमान चालीसा पठण" },
+    { id: "hanuman-jayanti", category: "events", title: "हनुमान जयंती" },
+    { id: "samadhi-sohala", category: "events", title: "श्री शंकर महाराज समाधी सोहळा" },
+    { id: "guru-purnima", category: "events", title: "गुरुपौर्णिमा" },
     { id: "gauri-ganapati", category: "events", title: "गौरी-गणपती उत्सव" },
-    { id: "prakat-din", category: "events", title: "श्री शंकर महाराज प्रकट दिन", image: photo("prakat-din") },
-    { id: "datta-jayanti", category: "events", title: "श्री दत्त जयंती", image: photo("datta-jayanti") },
+    { id: "prakat-din", category: "events", title: "श्री शंकर महाराज प्रकट दिन" },
+    { id: "datta-jayanti", category: "events", title: "श्री दत्त जयंती" },
     { id: "dattak-gaav", category: "events", title: "दत्तक गाव योजना" },
-    { id: "bhajan-sandhya", category: "events", title: "भजन संध्या", image: photo("bhajan-sandhya") },
+    { id: "bhajan-sandhya", category: "events", title: "भजन संध्या" },
 ]
 
-// The page is photo-led: the projects with a photo come first, the others after them (the order of the list above
-// is kept inside each group; Array.sort is stable).
-export const PROJECTS = [...PROJECTS_IN_ORDER].sort((a, b) => Number(Boolean(b.image)) - Number(Boolean(a.image)))
+// Each project gets its photo from public/assets/media/upkram. A project with an explicit `image` keeps it.
+const placeInCategory = {}
+export const PROJECTS = PROJECT_LIST.map((project) => {
+    placeInCategory[project.category] = (placeInCategory[project.category] ?? 0) + 1
+    const image = `/assets/media/upkram/${PHOTO_PREFIX[project.category]}-${placeInCategory[project.category]}.jpg`
+    return { image, number: String(placeInCategory[project.category]).padStart(2, "0"), ...project }
+})

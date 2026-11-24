@@ -9,7 +9,8 @@ import styles from "./Projects.module.css"
    The four causes, their names and the number of projects in each come from the Upkram page's own list
    (upkram/_data/projects.js: the 30 projects of https://mbsmtrust.org/our-causes), so this section can never
    disagree with that page. Only the picture of each cause is chosen here.
-   Each card: a photo framed by a maroon border, the project count and the cause.
+   Each card: a photo framed by a maroon border, the cause's round icon on the frame's bottom edge, the project
+   count and the cause. A small icon sits above each number of the stats strip.
    One button below the cards links to the Upkram page.
    Styles: see Projects.module.css.
    ========================================================================== */
@@ -22,7 +23,8 @@ const IMAGES = {
     events: "/assets/media/home/projects-divine-events.webp",
 }
 
-const CAUSES = CATEGORIES.map(({ key, label }) => ({
+const CAUSES = CATEGORIES.map(({ key, label, icon }) => ({
+    icon,
     image: IMAGES[key],
     title: label,
     number: String(PROJECTS.filter((project) => project.category === key).length),
@@ -31,8 +33,8 @@ const CAUSES = CATEGORIES.map(({ key, label }) => ({
 /* Totals are derived from CAUSES, so they can never disagree with the cards. */
 const TOTAL_PROJECTS = CAUSES.reduce((sum, cause) => sum + Number(cause.number), 0)
 const STATS = [
-    { number: String(TOTAL_PROJECTS), label: "एकूण उपक्रम" },
-    { number: String(CAUSES.length).padStart(2, "0"), label: "सेवाक्षेत्रे" },
+    { number: String(TOTAL_PROJECTS), label: "एकूण उपक्रम", icon: "fas fa-hands-helping" },
+    { number: String(CAUSES.length).padStart(2, "0"), label: "सेवाक्षेत्रे", icon: "fas fa-hand-holding-heart" },
 ]
 
 export default function Projects() {
@@ -44,6 +46,7 @@ export default function Projects() {
                 <div className={`${styles.stats} wow fadeInUp`} data-wow-delay="100ms">
                     {STATS.map((stat) => (
                         <div key={stat.label} className={styles.stat}>
+                            <i className={`${stat.icon} ${styles.statIcon}`} aria-hidden="true"></i>
                             <span className={styles.statNumber}>{stat.number}</span>
                             <span className={styles.statLabel} lang="mr">{stat.label}</span>
                         </div>
@@ -59,8 +62,12 @@ export default function Projects() {
                         >
                             <div className={`${shared.card} ${styles.card}`}>
                                 {/* photo slot: decorative (the title below names the cause), so empty alt */}
-                                <div className={styles.slot}>
-                                    <img src={cause.image} alt="" width="800" height="450" loading="lazy" />
+                                <div className={styles.slotBox}>
+                                    <div className={styles.slot}>
+                                        <img src={cause.image} alt="" width="800" height="450" loading="lazy" />
+                                    </div>
+                                    {/* the cause's icon, on the frame's bottom edge */}
+                                    <span className={shared.medal} aria-hidden="true"><i className={cause.icon}></i></span>
                                 </div>
                                 <div className={styles.body}>
                                     <p className={styles.count} lang="mr">

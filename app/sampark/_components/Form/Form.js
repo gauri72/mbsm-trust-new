@@ -26,12 +26,12 @@ const INITIAL_FORM = { name: "", email: "", phone: "", message: "" }
 // Formspree's spam trap: a field real visitors never see. A bot fills it in, and its message is then dropped
 const HONEYPOT = "_gotcha"
 
-// the four fields, in order. A wide screen puts the first three side by side and the message under them;
+// the four fields, in order (`optional` = may be left empty; a placeholder only where it helps). A wide screen puts the first three side by side and the message under them;
 // `full` = always the whole row, `fullOnTablet` = the whole row when the form is two columns wide
 const FIELDS = [
-    { name: "name", label: "आपले नाव", placeholder: "नाव", icon: "fas fa-user", type: "text", autoComplete: "name" },
-    { name: "email", label: "ईमेल", placeholder: "ईमेल", icon: "fas fa-envelope", type: "email", autoComplete: "email" },
-    { name: "phone", label: "दूरध्वनी क्रमांक", placeholder: "आपला दूरध्वनी क्रमांक", icon: "fas fa-phone-alt", type: "tel", autoComplete: "tel", fullOnTablet: true },
+    { name: "name", label: "आपले नाव", icon: "fas fa-user", type: "text", autoComplete: "name" },
+    { name: "email", label: "ईमेल", icon: "fas fa-envelope", type: "email", autoComplete: "email" },
+    { name: "phone", label: "दूरध्वनी", optional: true, icon: "fas fa-phone-alt", type: "tel", autoComplete: "tel", fullOnTablet: true },
     { name: "message", label: "संदेश", placeholder: "आपला संदेश लिहा..", icon: "fas fa-comment-dots", multiline: true, full: true },
 ]
 
@@ -42,8 +42,8 @@ const validate = (form) => {
     else if (!EMAIL_RE.test(form.email.trim())) errors.email = "कृपया वैध ईमेल टाका."
     const phone = form.phone.trim()
     const phoneDigits = phone.replace(/\D/g, "").length
-    if (!phone) errors.phone = "कृपया दूरध्वनी क्रमांक टाका."
-    else if (!PHONE_CHARS_RE.test(phone) || phoneDigits < PHONE_DIGITS.min || phoneDigits > PHONE_DIGITS.max) errors.phone = "कृपया वैध दूरध्वनी क्रमांक टाका."
+    // the phone is optional: it is checked only when something is typed
+    if (phone && (!PHONE_CHARS_RE.test(phone) || phoneDigits < PHONE_DIGITS.min || phoneDigits > PHONE_DIGITS.max)) errors.phone = "कृपया वैध दूरध्वनी क्रमांक टाका."
     if (!form.message.trim()) errors.message = "कृपया आपला संदेश लिहा."
     return errors
 }
@@ -121,7 +121,7 @@ export default function Form() {
                                             onChange={handleChange}
                                             autoComplete={f.autoComplete}
                                             aria-invalid={error ? "true" : undefined}
-                                            aria-required="true"
+                                            aria-required={f.optional ? undefined : "true"}
                                             aria-describedby={error ? `form-${f.name}-error` : undefined}
                                             {...(f.multiline ? { rows: 5 } : { type: f.type })}
                                         />

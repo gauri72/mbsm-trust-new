@@ -48,7 +48,7 @@ export const PAGES = {
     parichaya:      { href: "/parichaya",      label: "परिचय",        icon: "fas fa-landmark" },
     karyakram:      { href: "/karyakram",      label: "कार्यक्रम",    icon: "fas fa-calendar-alt" },
     upkram:         { href: "/upkram",         label: "उपक्रम",       icon: "fas fa-hands-helping" },
-    pravachan:      { href: "/pravachan",      label: "प्रवचन",       icon: "fas fa-microphone-alt" },
+    lekh:           { href: "/lekh",           label: "लेख",          icon: "fas fa-book-open" },
     chitrasangraha: { href: "/chitrasangraha", label: "चित्रसंग्रह",  icon: "fas fa-images" },
     sampark:        { href: "/sampark",        label: "संपर्क",       icon: "fas fa-phone-alt" },
 }
@@ -56,7 +56,7 @@ export const PAGES = {
 // the call-to-action button: the header's pill and the closing section's gold button are the same
 export const CTA = { href: PAGES.parichaya.href, label: "आमचा परिचय" }
 
-// the menu's dropdown that holds Karyakram · Upkram · Pravachan
+// the menu's dropdown that holds Karyakram · Upkram · Lekh
 export const WORK_GROUP = { label: "आमचे कार्य", icon: "fas fa-praying-hands" }
 
 // browser-tab title of a page: "<page name> — <site name>"

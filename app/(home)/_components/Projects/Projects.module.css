@@ -33,6 +33,12 @@ section.projects .stat + .stat {
   border-left: var(--line-width) solid var(--c-gold);
 }
 
+section.projects .statIcon {
+  margin-bottom: var(--space-1);
+  color: var(--c-gold);
+  font-size: var(--text-md);
+}
+
 section.projects .statNumber {
   color: var(--c-gold);
   font-family: var(--font);
@@ -62,10 +68,15 @@ section.projects .card {
   flex-direction: column;
 }
 
+/* the picture's box: the round icon is placed on its bottom edge */
+section.projects .slotBox {
+  position: relative;
+  margin: var(--space-3) var(--space-3) 0;
+}
+
 /* picture: framed by a thick maroon border on all four sides, shown whole (never cropped);
    the padding is the same gold as the picture's background, so it reads as space inside the frame */
 section.projects .slot {
-  margin: var(--space-3) var(--space-3) 0;
   padding: var(--space-3);
   border: var(--projects-frame) solid var(--c-maroon);
   border-radius: var(--projects-slot-radius);
@@ -86,7 +97,7 @@ section.projects .body {
   flex: 1;
   flex-direction: column;
   align-items: center;
-  padding: var(--space-4) var(--space-3);
+  padding: calc(var(--text-lg) + var(--space-3)) var(--space-3) var(--space-4);   /* below the round icon: half of it (one text-lg) hangs over the frame's edge */
   text-align: center;
 }
 

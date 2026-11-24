@@ -144,8 +144,8 @@ section.annual .card[data-place="hidden"] {
   align-items: center;
   justify-content: center;
   height: 100%;
-  /* the top clears the medallion's lower half (it reaches into the plate); the text is centred in what is left */
-  padding: calc(var(--annual-medal) / 2 - var(--annual-name-gap) + var(--space-1)) var(--space-3) var(--annual-name-gap);
+  /* the same space above and below, so the text is centred in the plate (the medallion's lower half reaches only a few px into it) */
+  padding: var(--space-1) var(--space-3);
   border-radius: var(--annual-radius);
   background-color: var(--c-gold);
   color: var(--c-black);
@@ -239,7 +239,7 @@ section.annual .card[data-place="hidden"] {
   }
 
   .plate {
-    padding-right: var(--space-2);       /* the top and bottom keep clearing the medallion (see .plate) */
+    padding-right: var(--space-2);       /* the top and bottom stay equal (see .plate) */
     padding-left: var(--space-2);
     font-size: var(--text-sm);
   }

@@ -7,8 +7,8 @@ import { CATEGORIES, PROJECTS } from "../../_data/projects"
 import styles from "./ProjectList.module.css"
 
 /* =============================================================================
-   Upkram: the trust's projects, on the maroon field: a filter (all + the four causes, each with its count) and the
-   projects as gold cards (the look of the Pravachan page's cards): the photo in a maroon frame, the cause, the title.
+   Upkram: the trust's projects, on the maroon field: a filter of stat tabs (all + the four causes, each with its count) and the
+   projects as solid gold / white cards: a small photo beside the project's number, its cause and its title; the photo swaps sides from card to card.
    A project without a photo of the trust's own shows its cause's icon in the same frame, in place of a picture.
    It shows 12 cards and a button adds 12 more. 'use client' is needed for the filter and the button.
    Content: upkram/_data/projects.js. Styles: ProjectList.module.css.
@@ -38,7 +38,7 @@ export default function ProjectList() {
     return (
         <section className={cx(field.field, styles.projects)}>
             <div className="container">
-                <SectionHead label="सामाजिक प्रकल्प" title="माणुसकीची ज्योत, प्रकाशाचा स्रोत" />
+                <SectionHead label="आमचे उपक्रम" title="समाजासाठी आमची सेवा" />
 
                 <div className={styles.filters} role="group" aria-label="उपक्रमांचे प्रकार" lang="mr">
                     {FILTERS.map((item) => (
@@ -49,8 +49,8 @@ export default function ProjectList() {
                             aria-pressed={filter === item.key}
                             onClick={() => choose(item.key)}
                         >
-                            {item.label}
                             <span className={styles.count}>{item.count}</span>
+                            <span className={styles.filterLabel}>{item.label}</span>
                         </button>
                     ))}
                 </div>
@@ -63,7 +63,7 @@ export default function ProjectList() {
                         const category = CATEGORY[project.category]
                         return (
                             <li key={project.id}>
-                                <article className={cx(field.card, styles.card)}>
+                                <article className={styles.card}>
                                     {/* the photo and the icon are decoration: the title says it in text */}
                                     <div className={styles.image}>
                                         {project.image ? (
@@ -75,9 +75,8 @@ export default function ProjectList() {
                                         )}
                                     </div>
                                     <div className={styles.body}>
-                                        <p className={styles.meta} lang="mr">
-                                            <span className={styles.chip}>{category.label}</span>
-                                        </p>
+                                        <span className={styles.number} aria-hidden="true">{project.number}</span>
+                                        <p className={styles.meta} lang="mr">{category.label}</p>
                                         <h3 className={styles.title} lang="mr">{project.title}</h3>
                                     </div>
                                 </article>

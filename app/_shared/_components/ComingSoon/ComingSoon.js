@@ -2,7 +2,7 @@ import styles from "./ComingSoon.module.css"
 
 /* =============================================================================
    Coming soon: a centred note shown under the gallery on the inner pages whose
-   content is not ready yet (parichaya, chitrasangraha).
+   content is not ready yet (chitrasangraha).
    Styles: see ComingSoon.module.css.
    ========================================================================== */
 
