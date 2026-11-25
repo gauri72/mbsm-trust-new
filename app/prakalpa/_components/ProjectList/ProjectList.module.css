@@ -1,0 +1,163 @@
+/* =============================================================================
+   Prakalpa — the list of projects: a filter and gold cards on the maroon field, in the look of the home page's Projects section.
+   The maroon field, heading and button row are shared: see _shared/_components/Field/Field.module.css; so are the cards:
+   see _shared/_components/CauseCard. Type here: the filter's icons large, its names medium.
+   ========================================================================== */
+section.projects {
+  --home-gap: var(--space-5);             /* the one gap of the section: under the heading and the filter, between the cards */
+  --home-head-gap: var(--home-gap);       /* (both ways) and above the button */
+  --tab-gap: var(--space-4);              /* between two tabs, with the line in the middle */
+}
+
+/* ---- Filter: tabs like the home page's stats — a gold icon and a white name, with a thin gold line
+   between two tabs; the chosen one is a gold plate ---- */
+section.projects .filters {
+  display: flex;
+  justify-content: center;
+  gap: var(--tab-gap);
+  margin-bottom: var(--home-gap);
+}
+
+section.projects .filter {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-4) var(--space-2);
+  border: 0;
+  border-radius: 12px;
+  background-color: transparent;
+  color: var(--c-white);
+  font-family: var(--font);
+  cursor: pointer;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+section.projects .filter + .filter::before {
+  content: "";
+  position: absolute;
+  top: var(--space-2);
+  bottom: var(--space-2);
+  left: calc((var(--tab-gap) + var(--line-width)) / -2);
+  width: var(--line-width);
+  background-color: var(--c-gold);
+}
+
+section.projects .filterIcon {
+  color: var(--c-gold);
+  font-size: var(--text-lg);
+  line-height: 1;
+}
+
+section.projects .filterLabel {
+  position: relative;
+  top: 0.15em;                            /* the font sits high in its line: even space above and below */
+  margin-top: var(--space-2);
+  font-size: var(--text-md);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+section.projects .filter.active {
+  background-color: var(--c-gold);
+  color: var(--c-black);
+}
+
+section.projects .filter.active .filterIcon {
+  color: var(--c-maroon);
+}
+
+section.projects .filter:focus-visible,
+section.projects .more:focus-visible {
+  outline: var(--line-width) solid var(--c-white);
+  outline-offset: 2px;
+}
+
+/* a tablet: the five tabs still stand in one row */
+@media (min-width: 768px) and (max-width: 991px) {
+  section.projects {
+    --tab-gap: var(--space-3);
+  }
+
+  section.projects .filter {
+    padding-right: var(--space-2);
+    padding-left: var(--space-2);
+  }
+}
+
+/* a phone: "all" across the top, then the causes two by two, all the same height */
+@media (max-width: 767px) {
+  section.projects .filters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
+    gap: var(--space-2);
+  }
+
+  section.projects .filter {
+    padding: var(--space-2) var(--space-2) var(--space-1);
+    border: var(--line-width) solid var(--c-gold);
+  }
+
+  section.projects .filter:first-child {
+    grid-column: 1 / -1;
+  }
+
+  section.projects .filter + .filter::before {
+    content: none;
+  }
+}
+
+/* ---- Grid: as the home page's cards — one column on a phone, two on a tablet and a small laptop, four on a desktop; the
+   cards of a row that is not full stand in the middle ---- */
+section.projects .grid {
+  --columns: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--home-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+section.projects .grid > li {
+  width: calc((100% - (var(--columns) - 1) * var(--home-gap)) / var(--columns) - 0.01px);   /* (rounding never breaks a row) */
+}
+
+@media (min-width: 768px) {
+  section.projects .grid {
+    --columns: 2;
+  }
+}
+
+@media (min-width: 1200px) {
+  section.projects .grid {
+    --columns: 4;
+  }
+}
+
+/* the "show more" button is a <button> wearing the global .pill-btn */
+section.projects .more {
+  border: 0;
+  cursor: pointer;
+}
+
+/* ---- Hover: mouse / trackpad only (filter tabs only: the cards are not links) ---- */
+@media (hover: hover) {
+  section.projects .filter:hover {          /* as the chosen one: gold, as the header's menu */
+    background-color: var(--c-gold);
+    color: var(--c-black);
+  }
+
+  section.projects .filter:hover .filterIcon {
+    color: var(--c-maroon);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section.projects .filter {
+    transition: none;
+  }
+}

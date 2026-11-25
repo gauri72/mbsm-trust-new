@@ -12,6 +12,7 @@ const nextConfig = {
         // pages that used to live at another address: old links and bookmarks still arrive
         return [
             { source: "/karyakram", destination: "/utsav", permanent: true },
+            { source: "/upkram", destination: "/prakalpa", permanent: true },
             { source: "/pravachan", destination: "/lekh", permanent: true },
             { source: "/pravachan/:id", destination: "/lekh/:id", permanent: true },
         ]

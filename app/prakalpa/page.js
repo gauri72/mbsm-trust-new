@@ -1,0 +1,11 @@
+import { pageMetadata } from "../_shared/_components/siteContent"
+import ProjectList from "./_components/ProjectList/ProjectList"
+
+// The mantra, the breadcrumb artwork, the border, the gallery and the closing call-to-action are the shared
+// frame in app/template.js: a page only adds its own content.
+export const metadata = pageMetadata("prakalpa", "मंगल भक्त सेवा मंडळाचे सामाजिक प्रकल्प: बालशिक्षण, अन्नदान, आरोग्यसेवा आणि उत्सव.")
+
+// The 30 projects of the old site's causes page, in four causes (prakalpa/_data/projects.js).
+export default function PrakalpaPage() {
+    return <ProjectList />
+}

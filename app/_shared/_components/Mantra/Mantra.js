@@ -25,8 +25,7 @@ const TOP_MANTRAS = [
 ]
 
 const CLOSING_MANTRAS = [
-    "शिव हर शंकर नमामि शंकर शिव शंकर शंभो",
-    "हे गिरिजापती भवानी शंकर शिव शंकर शंभो",
+    "अवलिया अवलिया शंकर बाबा अवलिया",
 ]
 
 // ---- Seamless loop ------------------------------------------------------------
@@ -38,9 +37,9 @@ const CLOSING_MANTRAS = [
 const REPEAT_COUNT = 4
 const MIN_ITEMS_PER_HALF = 14
 
-// Scroll speed: a fixed pace per character, so a long verse scrolls no faster than a short one.
-// (A fixed loop time would speed the strip up as the verses get longer.)
-const SECONDS_PER_CHAR = 0.15
+// Scroll speed: a fixed time per verse, so the two bands (their verses are about as wide) move at the same pace.
+// (Characters would mislead: in Devanagari the vowel signs count but take no room.)
+const SECONDS_PER_VERSE = 5.6
 
 // Divider: a four-petal gold flower with a maroon centre (drawn as SVG, not a font
 // icon, so it keeps its two colours). Sized like the text (--text-verse in the CSS).
@@ -61,8 +60,7 @@ export default function Mantra({ closing = false }) {
     const mantras = closing ? CLOSING_MANTRAS : TOP_MANTRAS
     const repeat = Math.max(REPEAT_COUNT, Math.ceil(MIN_ITEMS_PER_HALF / mantras.length))
     const items = Array(repeat * 2).fill(mantras).flat()
-    const chars = repeat * mantras.join("").length
-    const duration = `${Math.round(chars * SECONDS_PER_CHAR)}s`
+    const duration = `${Math.round(repeat * mantras.length * SECONDS_PER_VERSE)}s`
 
     const toggle = () => setPaused((p) => !p)
     const onKeyDown = (e) => {
