@@ -27,6 +27,16 @@
   --home-gap: var(--space-4);                      /* between the card rows, and above the button */
   --home-head-gap: var(--section-title-gap);       /* between the heading and what follows */
   --home-card-radius: 20px;
+  --home-icon: var(--text-lg);                     /* a card's round icon (its circle is twice as wide): the same in every section */
+  --home-medal-ring: var(--space-0);               /* the gold ring round it on a picture's edge (.medal) */
+}
+
+@media (max-width: 767px) {
+  .field { --home-icon: 26px; }
+}
+
+@media (max-width: 359px) {
+  .field { --home-icon: 19px; }
 }
 
 .field::before {
@@ -79,10 +89,11 @@
   color: var(--c-black);
 }
 
-/* ---- Medal: a round maroon icon in a gold ring, centred on the bottom edge of a card's picture (the blog tiles' icon).
-   The card's own CSS makes the picture's box `position: relative` and leaves room under it (half the medal) ---- */
+/* ---- Medal: a round maroon icon in a gold ring, centred on the bottom edge of a card's picture (the blog tiles' icon:
+   the same maroon circle, the ring outside it). The card's own CSS makes the picture's box `position: relative` and leaves
+   room under it (half the medal) ---- */
 .medal {
-  --medal-size: calc(var(--text-lg) * 2);
+  --medal-size: calc(var(--home-icon) * 2 + var(--home-medal-ring) * 2);
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -92,18 +103,18 @@
   justify-content: center;
   width: var(--medal-size);
   height: var(--medal-size);
-  border: var(--space-0) solid var(--c-gold);
+  border: var(--home-medal-ring) solid var(--c-gold);
   border-radius: 50%;
   background-color: var(--c-maroon);
   box-sizing: border-box;
   transform: translate(-50%, 50%);
-  font-size: var(--text-lg);
+  font-size: var(--home-icon);
   line-height: 1;
 }
 
 .medal i {
   color: var(--c-gold);
-  font-size: calc(var(--text-lg) * 0.75);
+  font-size: inherit;
 }
 
 /* ---- Button row under the cards: the button itself is the global .pill-btn ---- */

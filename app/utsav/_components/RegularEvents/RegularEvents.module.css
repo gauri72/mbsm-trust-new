@@ -3,11 +3,11 @@
    (home/Events), the picture in a maroon frame with a gold space between the frame and the picture, the name below, large in black,
    then the saint's line in white on a rounded maroon plate at the foot of the card, with a maroon medallion (icon, a gold ring) on the picture's lower edge: the same medallion as the annual festivals'.
    The maroon field, heading and card base are shared: see _shared/_components/Field/Field.module.css.
-   Type here: the name large, the line medium. Two cards side by side from 992px (26px apart, each no wider than 600px, the pair centred), one under the other below (full container width on a tablet, 768-991px)
-   (each no wider than a card should be, centred); on a phone the inner spacing is one step smaller.
+   Type here: the name large, the line medium. Two cards side by side from 600px (the pair centred; on a desktop
+   each no wider than 600px), one under the other on a phone, where the inner spacing is one step smaller.
    ========================================================================== */
 section.regular {
-  --regular-card-width: 560px;           /* the widest a card gets when it stands alone (below 768px) */
+  --regular-card-width: 560px;           /* the widest a card gets when it stands alone (below 600px) */
   --home-gap: var(--space-5);            /* the one gap between the cards: beside each other and one under the other (the annual carousel uses the same) */
   --regular-medal: 48px;                 /* the medallion on the picture's lower edge: the same size as the annual festivals' */
   --regular-frame: 8px;                  /* the maroon frame round the picture: the home page's picture frame (Projects) */
@@ -18,7 +18,7 @@ section.regular {
   --regular-step: var(--space-4);        /* one steady rhythm: the card's inner spacing (18px; 14px on a phone) */
 }
 
-/* two cards side by side (992px and up; on a tablet one card at a time, full width): the gap between them is the same 26px as between stacked cards (--home-gap), not a wide empty strip */
+/* two cards side by side (a small laptop or a desktop): the gap between them is the same 26px as between stacked cards (--home-gap), not a wide empty strip */
 @media (min-width: 992px) {
   section.regular {
     --regular-card-width: 600px;         /* two cards side by side: each no wider than this */
@@ -33,10 +33,24 @@ section.regular {
   }
 }
 
-/* a tablet (768-991px): one card at a time, one under the other, each the full width of the container like the home page's Upcoming events cards */
-@media (min-width: 768px) and (max-width: 991px) {
+/* a tablet (600-991px): two cards side by side as on a desktop, the pair as wide as the screen but for the margins, in line
+   with the annual festivals' posters below */
+@media (min-width: 600px) and (max-width: 991px) {
   section.regular {
-    --regular-card-width: none;
+    --home-gap: var(--space-4);
+    --regular-gutter: 22px;              /* at each side of the screen: a scrollbar's width included */
+    --regular-step: var(--space-3);
+  }
+
+  section.regular :global(.row) {
+    --bs-gutter-x: var(--home-gap);
+    width: calc(100vw - 2 * var(--regular-gutter) + var(--bs-gutter-x));
+    margin-right: 0;
+    margin-left: calc(50% - 50vw + var(--regular-gutter) - var(--bs-gutter-x) / 2);
+  }
+
+  section.regular :global(.row) > * {
+    width: 50%;
   }
 }
 
@@ -111,16 +125,9 @@ section.regular .title {
   color: var(--c-black);
   font-family: var(--font);
   font-size: var(--text-lg);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.3;
   text-transform: none;
-}
-
-/* a phone: the site's large size steps down to 23px there; the name is a quarter bigger than that (about 29px) */
-@media (max-width: 767px) {
-  section.regular .title {
-    font-size: calc(var(--text-lg) * 1.25);
-  }
 }
 
 /* ---- The saint's line: white on a rounded maroon plate inset at the foot of the card ---- */
@@ -144,18 +151,20 @@ section.regular .line span {
   top: 0.2em;
 }
 
-/* the line breaks between its two halves (the second half starts a new line) on a phone only */
+/* the line breaks between its two halves (the second half starts a new line) on a tablet and a phone */
 section.regular .br {
   display: none;
 }
 
-/* ---- Phone: the same rhythm, one step down (14px), and the line in its two halves ---- */
+@media (max-width: 991px) {
+  section.regular .br {
+    display: inline;
+  }
+}
+
+/* ---- Phone: the same rhythm, one step down (14px) ---- */
 @media (max-width: 575px) {
   section.regular {
     --regular-step: var(--space-3);
-  }
-
-  section.regular .br {
-    display: inline;
   }
 }

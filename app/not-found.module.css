@@ -20,7 +20,7 @@
   color: var(--c-gold);
   font-family: var(--font);
   font-size: var(--text-lg);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 3;
 }
 
@@ -29,7 +29,7 @@
   color: var(--c-black);
   font-family: var(--font);
   font-size: var(--head-title);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.4;
 }
 

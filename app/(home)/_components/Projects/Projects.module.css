@@ -97,7 +97,7 @@ section.projects .body {
   flex: 1;
   flex-direction: column;
   align-items: center;
-  padding: calc(var(--text-lg) + var(--space-3)) var(--space-3) var(--space-4);   /* below the round icon: half of it (one text-lg) hangs over the frame's edge */
+  padding: calc(var(--home-icon) + var(--home-medal-ring) + var(--space-3)) var(--space-3) var(--space-4);   /* below the round icon: half of it hangs over the frame's edge */
   text-align: center;
 }
 

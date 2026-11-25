@@ -22,7 +22,7 @@
   --line-gold: var(--line-width) solid var(--c-gold);
 
   /* type size: the site's medium size on desktop (22px), smaller on a phone (18px) */
-  --text-verse: 22px;
+  --text-verse: var(--text-md);
 
   /* layout */
   --strip-pad: var(--space-2);           /* maroon above the top line and below the bottom line */
@@ -36,7 +36,7 @@
 /* a phone: a smaller verse (the flower follows, it is the same size as the text) */
 @media (max-width: 767px) {
   .root {
-    --text-verse: 18px;
+    --text-verse: var(--text-sm);
   }
 }
 
