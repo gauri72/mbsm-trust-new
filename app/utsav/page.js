@@ -5,10 +5,10 @@ import AnnualEvents from "./_components/AnnualEvents/AnnualEvents"
 
 // The mantra, the breadcrumb artwork, the border, the gallery and the closing call-to-action are the shared
 // frame in app/template.js: a page only adds its own content.
-export const metadata = pageMetadata("karyakram", "मंगल भक्त सेवा मंडळाचे नियमित आणि वार्षिक उत्सव.")
+export const metadata = pageMetadata("utsav", "मंगल भक्त सेवा मंडळाचे नियमित आणि वार्षिक उत्सव.")
 
 // The regular programmes (every week and month), then the festivals of the year.
-export default function KaryakramPage() {
+export default function UtsavPage() {
     return (
         <>
             <RegularEvents />

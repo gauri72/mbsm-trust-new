@@ -45,7 +45,7 @@ const NAV_ITEMS = [
     PAGES.parichaya,
     {
         ...WORK_GROUP,
-        children: [PAGES.karyakram, PAGES.upkram, PAGES.lekh],
+        children: [PAGES.utsav, PAGES.upkram, PAGES.lekh],
     },
     PAGES.chitrasangraha,
     PAGES.sampark,

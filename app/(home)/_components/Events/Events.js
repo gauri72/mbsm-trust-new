@@ -4,7 +4,7 @@ import shared from "../../../_shared/_components/Field/Field.module.css"
 import styles from "./Events.module.css"
 
 /* =============================================================================
-   Home: the upcoming festivals, three cards, then one button to the Karyakram page.
+   Home: the upcoming festivals, three cards, then one button to the Utsav page.
    Each card: a photo, a date badge (day large, month and year below), the festival's round icon on the photo's
    bottom edge (shared: Field.module.css, .medal) and the name.
    The dates are typed by hand: update them (and the heading, "आगामी") as they pass.
@@ -77,7 +77,7 @@ export default function Events() {
                     ))}
                 </div>
 
-                <MoreButton href={PAGES.karyakram.href}>सर्व उत्सव पाहा</MoreButton>
+                <MoreButton href={PAGES.utsav.href}>सर्व उत्सव पाहा</MoreButton>
             </div>
         </section>
     )

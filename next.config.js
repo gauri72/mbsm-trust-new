@@ -9,8 +9,9 @@ const ASSET_CACHE = "public, max-age=604800, stale-while-revalidate=86400"
 const nextConfig = {
     poweredByHeader: false,          // no "X-Powered-By: Next.js" on every response
     async redirects() {
-        // the articles page used to live at /pravachan: old links and bookmarks still arrive
+        // pages that used to live at another address: old links and bookmarks still arrive
         return [
+            { source: "/karyakram", destination: "/utsav", permanent: true },
             { source: "/pravachan", destination: "/lekh", permanent: true },
             { source: "/pravachan/:id", destination: "/lekh/:id", permanent: true },
         ]

@@ -1,8 +1,7 @@
 /* =============================================================================
-   Karyakram — the regular programmes: two gold cards in the look of the home page's Upcoming events cards
+   Utsav — the regular programmes: two gold cards in the look of the home page's Upcoming events cards
    (home/Events), the picture in a maroon frame with a gold space between the frame and the picture, the name below, large in black,
-   then the saint's line in white on a rounded maroon plate at the foot of the card, a small gold flower on each side of it (the
-   Mantra band's), with a maroon medallion (icon, a gold ring) on the picture's lower edge: the same medallion as the annual festivals'.
+   then the saint's line in white on a rounded maroon plate at the foot of the card, with a maroon medallion (icon, a gold ring) on the picture's lower edge: the same medallion as the annual festivals'.
    The maroon field, heading and card base are shared: see _shared/_components/Field/Field.module.css.
    Type here: the name large, the line medium. Two cards side by side from 992px (26px apart, each no wider than 600px, the pair centred), one under the other below (full container width on a tablet, 768-991px)
    (each no wider than a card should be, centred); on a phone the inner spacing is one step smaller.
@@ -16,7 +15,6 @@ section.regular {
   --regular-frame-radius: 12px;          /* the frame's outer corners */
   --regular-photo-radius: 0;             /* the picture's own corners: square, as the home page's pictures */
   --regular-inset: var(--space-3);       /* the space between the card's edge and the frame */
-  --regular-flower: 20px;                /* the flowers beside the saint's line (18px on a phone, below): smaller than the text */
   --regular-step: var(--space-4);        /* one steady rhythm: the card's inner spacing (18px; 14px on a phone) */
 }
 
@@ -107,6 +105,8 @@ section.regular .content {
 }
 
 section.regular .title {
+  position: relative;
+  top: 0.1em;                            /* the font sits high in its line: as far from the medallion as from the plate */
   margin: 0;
   color: var(--c-black);
   font-family: var(--font);
@@ -123,13 +123,9 @@ section.regular .title {
   }
 }
 
-/* ---- The saint's line: white on a rounded maroon plate inset at the foot of the card, a gold flower on each side ---- */
+/* ---- The saint's line: white on a rounded maroon plate inset at the foot of the card ---- */
 section.regular .line {
-  display: flex;
-  align-items: center;                    /* the flowers stand level with the middle of the line (or of its two lines on a phone) */
-  justify-content: center;
-  gap: var(--space-2);                    /* between a flower and the words */
-  margin: var(--regular-step);
+  margin: var(--regular-step) var(--regular-inset) var(--regular-inset);   /* in line with the picture's frame */
   padding: var(--regular-step);
   border-radius: 12px;
   background-color: var(--c-maroon);
@@ -142,48 +138,24 @@ section.regular .line {
   text-wrap: balance;
 }
 
-/* the flower: the Mantra band's divider — gold petals, a maroon centre — a quiet accent, smaller than the text */
-section.regular .flower {
-  flex: none;
-  width: var(--regular-flower);
-  height: var(--regular-flower);
-  fill: var(--c-gold);
-  color: var(--c-gold);                   /* stated, not inherited */
+/* the font sits high in its line: in the middle of the plate */
+section.regular .line span {
+  position: relative;
+  top: 0.2em;
 }
 
-section.regular .flowerDot {
-  fill: var(--c-maroon);
-}
-
-/* the line breaks between its two halves (the second half starts a new line) on a phone, and on a small laptop or a
-   tablet held wide (992-1199px), where the cards are narrow and the two flowers leave no room for one line; on a tablet
-   (768-991px) the card is wide enough for one line, as on a desktop (1200px and up) */
+/* the line breaks between its two halves (the second half starts a new line) on a phone only */
 section.regular .br {
   display: none;
 }
 
-@media (max-width: 767px), (min-width: 992px) and (max-width: 1199px) {
-  section.regular .br {
-    display: inline;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  section.regular .line {
-    white-space: nowrap;
-  }
-}
-
-/* ---- Phone: smaller flowers (the text steps down to 20px there) ---- */
-@media (max-width: 767px) {
-  section.regular {
-    --regular-flower: 18px;
-  }
-}
-
-/* ---- Phone: the same rhythm, one step down (14px) ---- */
+/* ---- Phone: the same rhythm, one step down (14px), and the line in its two halves ---- */
 @media (max-width: 575px) {
   section.regular {
     --regular-step: var(--space-3);
+  }
+
+  section.regular .br {
+    display: inline;
   }
 }

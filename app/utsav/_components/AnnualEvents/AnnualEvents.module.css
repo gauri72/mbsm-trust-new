@@ -1,15 +1,15 @@
 /* =============================================================================
-   Karyakram — the annual festivals: a carousel on the maroon field. Each card: the whole poster (9:16, nothing cut
+   Utsav — the annual festivals: a carousel on the maroon field. Each card: the whole poster (9:16, nothing cut
    off) in a maroon frame with a gold space between the frame and the poster (the same frame as the regular programmes' pictures;
    a thin gold line outside it lets the maroon frame show on this maroon stage), and its title in black on a compact solid gold
    plate just below it, the medallion on the frame's lower edge.
-   All cards are the same size, side by side with a gap between: the one in focus in the middle, the previous and the
-   next one on either side; every step moves them all along. An arrow at each side from 1200px wide, a pair below the cards on anything narrower. On a phone the side cards are cut
-   off by the screen's edge. The maroon field and heading are shared: see _shared/_components/Field/Field.module.css.
+   The cards stand side by side with a gap between: the one in focus in the middle, the previous and the
+   next one, a little smaller, on either side; every step moves them all along. An arrow at each side from 1200px wide, a pair below the cards on anything narrower. On a phone one card shows at a time. The maroon field and heading are shared: see _shared/_components/Field/Field.module.css.
    ========================================================================== */
 section.annual {
-  --annual-card-width: 300px;            /* every card (the poster is 9:16) */
-  --annual-gap: calc(var(--annual-edge) * 2 + var(--space-3));   /* between the cards: clear of both neighbours' gold surrounds (--annual-edge) */
+  --annual-card-width: 318px;            /* the card in focus (the poster is 9:16); its neighbours are --annual-side of it */
+  --annual-side: 0.88;
+  --annual-gap: var(--space-5);          /* between the cards' gold surrounds: the same as between the regular programmes' cards */
   --annual-frame: 8px;                   /* the maroon frame round the poster: the home page's picture frame (Projects) */
   --annual-photo-gap: var(--space-3);    /* the gold space between that frame and the poster: as on the home page */
   --annual-edge: var(--annual-photo-gap);   /* the gold surround outside the maroon border: always equal to the gold space inside it (14px) */
@@ -19,7 +19,7 @@ section.annual {
   --annual-ring: var(--line-width);      /* the medallion's gold ring */
   --annual-plaque: 88px;                 /* the nameplate's height: two lines of 22px; the same for every card (the widths that need three lines, and phones, below) */
   --annual-medal: 48px;                  /* the medallion: the same size as the regular programmes' */
-  --annual-name-gap: calc(var(--annual-edge) + var(--space-1));   /* the space between the poster's frame and the nameplate below it: the surround, and a little gold-free space */
+  --annual-name-gap: calc(var(--annual-edge) + var(--space-2));   /* the space between the poster's frame and the nameplate below it: the surround, and a little gold-free space */
   --annual-control: 48px;                /* the arrow buttons */
 }
 
@@ -36,7 +36,8 @@ section.annual {
 .stage {
   display: grid;
   overflow: hidden;
-  padding: var(--space-6) 0;               /* room for the card in focus, which is bigger than its box (6% taller: up to 22px past it), and its gold surround */
+  touch-action: pan-y pinch-zoom;          /* a sideways swipe changes the card; up and down still scrolls the page */
+  padding-top: var(--annual-edge);         /* the gold surround, outside the cards' boxes */
   justify-items: center;
 }
 
@@ -49,26 +50,31 @@ section.annual .card {
   transition: transform 600ms ease;
 }
 
-/* the highlight: the card in focus is a little bigger than its neighbours, which are a little smaller (size only, so
-   every colour stays as it is) */
+/* the highlight: the neighbours are a little smaller than the card in focus (size only, so every colour stays as it is).
+   Each stands half of both cards, their surrounds and the gap away from the middle */
 section.annual .card[data-place="center"] {
   z-index: 2;
-  transform: scale(1.06);
+}
+
+section.annual .card[data-place="left"],
+section.annual .card[data-place="right"] {
+  --annual-away: calc((1 + var(--annual-side)) * (50% + var(--annual-edge)) + var(--annual-gap));
+  z-index: 1;
+  transform: translateX(var(--annual-away)) scale(var(--annual-side));
 }
 
 section.annual .card[data-place="left"] {
-  z-index: 1;
-  transform: translateX(calc(-100% - var(--annual-gap))) scale(0.92);
-}
-
-section.annual .card[data-place="right"] {
-  z-index: 1;
-  transform: translateX(calc(100% + var(--annual-gap))) scale(0.92);
+  transform: translateX(calc(-1 * var(--annual-away))) scale(var(--annual-side));
 }
 
 /* a card that goes from the left side to the right (or back) jumps there unseen instead of sliding across the others */
 section.annual .card[data-jump="true"] {
   transition: none;
+}
+
+/* a click on a neighbour brings it to the middle */
+section.annual .card:not([data-place="center"]) {
+  cursor: pointer;
 }
 
 section.annual .card[data-place="hidden"] {
@@ -108,13 +114,13 @@ section.annual .card[data-place="hidden"] {
   border-radius: var(--annual-photo-radius);
 }
 
-/* ---- Title: a nameplate, a compact solid gold plate with the title in black (no border), just below the poster's mat (the two
-   gold shapes do not touch) and as wide as it. All plates are the same height and end on the same line, whatever the length
+/* ---- Title: a nameplate, a compact solid gold plate with the title in black (no border), just below the poster's gold surround (the
+   two do not touch) and as wide as it. All plates are the same height and end on the same line, whatever the length
    of the titles. ---- */
 .title {
   position: relative;
   height: var(--annual-plaque);
-  margin: var(--annual-name-gap) 0 0;
+  margin: var(--annual-name-gap) calc(var(--annual-edge) * -1) 0;   /* as wide as the gold surround above it */
   border-radius: var(--annual-radius);
   background-color: var(--c-gold);
 }
@@ -144,8 +150,8 @@ section.annual .card[data-place="hidden"] {
   align-items: center;
   justify-content: center;
   height: 100%;
-  /* the same space above and below, so the text is centred in the plate (the medallion's lower half reaches only a few px into it) */
-  padding: var(--space-1) var(--space-3);
+  /* the font sits high in its line, and the medallion reaches a few px into the plate: a little more space above */
+  padding: calc(var(--space-1) + 0.3em) var(--space-3) var(--space-1);
   border-radius: var(--annual-radius);
   background-color: var(--c-gold);
   color: var(--c-black);
@@ -157,10 +163,17 @@ section.annual .card[data-place="hidden"] {
   text-wrap: balance;
 }
 
+/* ---- A small desktop: narrower cards, clear of the arrows ---- */
+@media (min-width: 1200px) and (max-width: 1319px) {
+  section.annual {
+    --annual-card-width: 290px;
+  }
+}
+
 /* ---- Wide screens (the page container is 1320px wide from 1320px): bigger cards, the same gap, still clear of the arrows ---- */
 @media (min-width: 1320px) {
   section.annual {
-    --annual-card-width: 340px;
+    --annual-card-width: 352px;
   }
 }
 
@@ -182,7 +195,7 @@ section.annual .card[data-place="hidden"] {
   color: var(--c-maroon);
   font-size: var(--text-sm);
   cursor: pointer;
-  transition: background-color 200ms ease, color 200ms ease;
+  transition: transform 200ms ease, box-shadow 200ms ease;
 }
 
 .arrowPrev {
@@ -198,10 +211,20 @@ section.annual .card[data-place="hidden"] {
   transform: scaleX(-1);
 }
 
-.arrow:hover,
-.arrow:focus-visible {
-  background-color: var(--c-maroon);
-  color: var(--c-gold);
+/* the hover of the site's button: a lift on a black ledge (not on a touch screen, where it would stay after the tap) */
+@media (hover: hover) {
+  .arrow:hover {
+    box-shadow: 0 4px 0 var(--c-black);
+    transform: translateY(-4px);
+  }
+
+  /* the lifted arrow still has the pointer at the foot it left: it does not drop and lift again */
+  .arrow:hover::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 -6px;
+    border-radius: 50%;
+  }
 }
 
 .arrow:focus-visible {
@@ -218,7 +241,7 @@ section.annual .card[data-place="hidden"] {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: var(--space-4);
+    gap: var(--space-5) var(--space-4);    /* under the cards; between the arrows */
   }
 
   .stage {
@@ -226,27 +249,86 @@ section.annual .card[data-place="hidden"] {
   }
 
   .arrow {
-    position: static;
+    position: relative;
+    inset: auto;
     margin: 0;
   }
 }
 
-/* ---- Phone: a narrower card ---- */
-@media (max-width: 575px) {
+/* ---- Tablet and small laptop (576px to 1199px): the stage is as wide as the screen, and the cards as wide as lets all
+   three be seen whole: 2.76 card widths (the one in focus and two of 0.88), their surrounds (5.52 edges) and two gaps ---- */
+@media (min-width: 576px) and (max-width: 1199px) {
   section.annual {
-    --annual-card-width: 260px;
-    --annual-plaque: 84px;               /* a phone's titles take two lines of 18px at most */
+    --annual-gutter: 22px;               /* at each side of the screen: a scrollbar's width included */
+    --annual-gap: var(--space-4);
+    --annual-card-width: min(318px, (100vw - 2 * var(--annual-gutter) - 5.52 * var(--annual-edge) - 2 * var(--annual-gap)) / 2.76);
+  }
+
+  .stage {
+    flex-basis: 100vw;
+    margin: 0 calc(50% - 50vw);
+  }
+}
+
+/* ---- Tablet: thinner frames round the narrower posters, and smaller titles ---- */
+@media (min-width: 576px) and (max-width: 991px) {
+  section.annual {
+    --annual-frame: 6px;
+    --annual-photo-gap: var(--space-2);
+    --annual-plaque: 88px;
   }
 
   .plate {
-    padding-right: var(--space-2);       /* the top and bottom stay equal (see .plate) */
-    padding-left: var(--space-2);
+    padding-right: var(--space-1);
+    padding-left: var(--space-1);
     font-size: var(--text-sm);
   }
 }
 
+/* (titles of three lines) */
+@media (min-width: 576px) and (max-width: 699px) {
+  section.annual {
+    --annual-plaque: 104px;
+  }
+}
+
+/* ---- Phone: one card at a time (its neighbours stand beyond the screen's edges), and which one it is, between the arrows ---- */
+.counter {
+  display: none;
+}
+
+@media (max-width: 575px) {
+  section.annual {
+    --annual-card-width: min(296px, 100vw - 2 * var(--space-3) - 2 * var(--annual-edge));   /* with its surround, the container's width at most */
+    --annual-gap: 100vw;
+    --annual-plaque: 84px;               /* a phone's titles take two lines of 18px at most */
+  }
+
+  .plate {
+    padding-right: var(--space-2);
+    padding-left: var(--space-2);
+    font-size: var(--text-sm);
+  }
+
+  .counter {
+    display: block;
+    min-width: 3em;
+    margin: 0;
+    padding-top: 0.25em;                 /* the font sits high in its line */
+    color: var(--c-gold);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    text-align: center;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  section.annual .card {
+  section.annual .card,
+  .arrow {
     transition: none;
+  }
+
+  .arrow:hover {
+    transform: none;
   }
 }

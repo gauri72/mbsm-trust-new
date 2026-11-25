@@ -30,7 +30,7 @@ import styles from "./Footer.module.css"
 // ---- Trust details ----------------------------------------------------------
 // the same half-क fix (see SITE_NAME_DISPLAY in siteContent.js) for the column title in Annapurna SIL ("उपयुक्त" also has क्त)
 const LINKS_TITLE = "उपयुक्\u200Dत दुवे"
-const ABOUT_TEXT = `${SITE_NAME_DISPLAY} ही सामाजिक संस्था आहे. विविध उपक्रम व उत्सवांतून मानवसेवा, धार्मिक समता, ऐक्य व आध्यात्मिक मार्गदर्शनाचे कार्य आम्ही करतो.`
+const ABOUT_TEXT = `${SITE_NAME_DISPLAY} ही सामाजिक संस्था आहे. विविध उपक्रम व कार्यक्रमांतून मानवसेवा, धार्मिक समता, ऐक्य व आध्यात्मिक मार्गदर्शनाचे कार्य आम्ही करतो.`
 const CREDIT = { name: "गौरी कोळेकर", href: "mailto:kolekargauri8@gmail.com" }
 
 // आमची उद्दिष्टे: the trust's areas of work (text, not links)
@@ -38,7 +38,7 @@ const SEVA = [
     "मानवसेवा व मदतकार्य",
     "धार्मिक समता व एकता",
     "आध्यात्मिक मार्गदर्शन",
-    "उपक्रम व उत्सव",
+    "उपक्रम व कार्यक्रम",
 ]
 
 // उपयुक्त दुवे
