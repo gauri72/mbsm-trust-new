@@ -17,7 +17,7 @@
   --frame-shadow: 2px 3px 5px rgba(0, 0, 0, 0.45);   /* the thick line and the photos stand raised */
   --page-pad: 18px;                                /* the paper's margins inside the line: at the sides and above, */
   --page-foot: 44px;                               /* and at the foot, with the page's number */
-  --book-text: 15px;                               /* a phone: twenty pages of a readable height */
+  --book-text: 15px;                               /* a phone: pages of a readable height */
 }
 
 @media (min-width: 600px) {
@@ -182,19 +182,20 @@
 
 /* ---- Arrows: a gold medallion with a black chevron ---- */
 .arrow {
+  position: relative;
   display: flex;
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
   width: var(--arrow-size);
   height: var(--arrow-size);
-  border: 2px solid var(--c-gold);
+  border: 0;
   border-radius: 50%;
   background-color: var(--c-gold);
   color: var(--c-black);
   font-size: var(--text-sm);
   cursor: pointer;
-  transition: border-color 250ms ease, box-shadow 250ms ease;
+  transition: translate 200ms ease, box-shadow 200ms ease;
 }
 
 .prev {
@@ -220,7 +221,7 @@
   }
 
   .moves .arrow {
-    transition: border-color 250ms ease, box-shadow 250ms ease, transform 800ms ease;
+    transition: translate 200ms ease, box-shadow 200ms ease, transform 800ms ease;
   }
 
   /* beside the closed book, half as wide as the open one (1160px) */
@@ -234,9 +235,17 @@
 }
 
 @media (hover: hover) {                            /* (on a touch screen it would stay after the tap) */
-  .arrow:hover:not(:disabled) {
-    border-color: var(--c-white);
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
+  .arrow:hover {
+    box-shadow: 0 4px 0 var(--c-black);
+    translate: 0 -4px;                             /* (.closed moves it by its transform) */
+  }
+
+  /* a lifted button still has the pointer at the foot it left: it does not drop and lift again */
+  .arrow:hover::after, .start:hover::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 -4px;
+    border-radius: inherit;
   }
 }
 
@@ -471,6 +480,12 @@
   pointer-events: none;
 }
 
+@media (hover: hover) {
+  .cover .start:hover {
+    box-shadow: 0 4px 0 var(--c-white);            /* the site's black ledge would not show under a black button */
+  }
+}
+
 .start:focus-visible {
   outline: var(--line-width) solid var(--c-black);
   outline-offset: var(--space-0);
@@ -492,5 +507,9 @@
 @media (prefers-reduced-motion: reduce) {
   .arrow, .moves .arrow, .moves .book, .moves .book::before {
     transition-duration: 1ms;
+  }
+
+  .arrow:hover {
+    translate: none;
   }
 }

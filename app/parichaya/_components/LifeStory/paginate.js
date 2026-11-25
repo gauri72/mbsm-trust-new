@@ -6,8 +6,8 @@
                  the whole text, so that the spaces between words stay as even as they can, no paragraph leaves a single
                  line alone on a page, and every text page gets the same number of lines (and so the same space between
                  them). The column is made a little narrower when that gives better lines.
-   layoutPages   a photo, then a page of text, for every photo: with ten photos the book has twenty pages on every
-                 screen. The lines are shared evenly over the text pages and spaced to reach the foot of each, so no
+   layoutPages   a photo, then a page of text, for every photo: with ten photos there are twenty pages on every
+                 screen (LifeStory.js leaves the first photo out where one page shows at a time). The lines are shared evenly over the text pages and spaced to reach the foot of each, so no
                  page has blank space; the pages are as tall as that needs.
    ========================================================================== */
 
@@ -20,7 +20,7 @@ const SHORT_LAST_LINE = 0.15  // of the column: a paragraph should not end on a 
 const SHRINK = 0.3            // of a space: the most it may be narrowed to take a line to the edge
 const POWER = 2.5             // a line's cost grows with this power of its change of spaces
 const WAYS = 3                // the numbers of lines tried for a paragraph, the cheapest first
-const LONGER_PAGE = 100       // the cost of one more line on every page
+const LONGER_PAGE = 50        // the cost of one more line on every page
 const STRAY = 30              // the cost of a paragraph's first or last line alone on a page
 
 // What the lines are made from: each paragraph's words with their widths, and the width of a space.

@@ -46,7 +46,7 @@ export const SOCIALS = [
 export const PAGES = {
     home:           { href: "/",               label: "मुखपृष्ठ",     icon: "fas fa-home" },
     parichaya:      { href: "/parichaya",      label: "परिचय",        icon: "fas fa-landmark" },
-    karyakram:      { href: "/karyakram",      label: "कार्यक्रम",    icon: "fas fa-calendar-alt" },
+    karyakram:      { href: "/karyakram",      label: "उत्सव",        icon: "fas fa-calendar-alt" },
     upkram:         { href: "/upkram",         label: "उपक्रम",       icon: "fas fa-hands-helping" },
     lekh:           { href: "/lekh",           label: "लेख",          icon: "fas fa-book-open" },
     chitrasangraha: { href: "/chitrasangraha", label: "चित्रसंग्रह",  icon: "fas fa-images" },

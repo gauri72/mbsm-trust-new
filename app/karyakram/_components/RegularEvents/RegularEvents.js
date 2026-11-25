@@ -42,7 +42,7 @@ export default function RegularEvents() {
     return (
         <section className={`${field.field} ${styles.regular}`}>
             <div className="container">
-                <SectionHead label="नियमित कार्यक्रम" title="साप्ताहिक सेवा व मासिक सोहळा" />
+                <SectionHead label="नियमित उत्सव" title="साप्ताहिक सेवा व मासिक सोहळा" />
 
                 <div className={`row ${field.cards}`}>
                     {EVENTS.map((event, index) => (

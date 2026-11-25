@@ -54,7 +54,7 @@ export const CoverPage = forwardRef(function CoverPage({ onOpen }, ref) {
     return (
         <Page ref={ref} className={styles.cover}>
             <h3 className={styles.coverTitle} lang="mr">{LIFE_STORY_TITLE}</h3>
-            <img className={styles.arch} src="/assets/media/parichaya/book-09-guidance.webp" alt="" width="1254" height="1254" />
+            <img className={styles.arch} src="/assets/media/parichaya/book-cover.webp" alt="" width="1254" height="1254" />
             <button
                 type="button"
                 className={cx("pill-btn", styles.start)}

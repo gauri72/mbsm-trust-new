@@ -10,9 +10,10 @@ import styles from "./LifeStory.module.css"
 
 /* =============================================================================
    Parichaya: the life story of Shri Vishweshwar Swami Maharaj as a book that turns its pages, on the maroon field.
-   It has twenty pages on every screen, a photo and a page of text in turn; the text runs on from one text page to the next
-   and every page is full (paginate.js), between a front cover ("पुस्तक उघडा" opens it) and a back cover. On a desktop the
-   open book shows two pages, the photos on the left and the text on the right; on a tablet and a phone one at a time.
+   It has twenty pages, a photo and a page of text in turn; the text runs on from one text page to the next and every page
+   is full (paginate.js), between a front cover ("पुस्तक उघडा" opens it) and a back cover. On a desktop the open book shows
+   two pages, the photos on the left and the text on the right; on a tablet and a phone one at a time, without the first
+   photo (nineteen pages).
    Turning: the arrows at the sides (below the book on narrower screens), a drag or a swipe, and the Left and Right
    keys while the book has the focus. The page's number (or the cover's name) is shown under the book and said aloud.
    The server sends the plain text, which the browser replaces with the book once it has measured it; a new width of
@@ -24,7 +25,8 @@ const HTMLFlipBook = lazy(() => import("react-pageflip"))
 const SPREAD = "(min-width: 992px)"      // two pages side by side from here on (as in the CSS)
 const RESIZE_WAIT = 200                  // ms without a change of width before the book is laid out again
 
-// The book laid out for the width it has: { width, height (of a page), spread, pages }, null until measured.
+// The book laid out for the width it has: { width, height (of a page), spread, skipped (pages left out at
+// the start), pages }, null until measured.
 // `bookRef`: the box the book fills; `probeRef`: a hidden page, `bodyRef`: the text box in it.
 function useLayout(bookRef, probeRef, bodyRef) {
     const [layout, setLayout] = useState(null)
@@ -43,7 +45,10 @@ function useLayout(bookRef, probeRef, bodyRef) {
             const body = bodyRef.current
             Object.assign(probe.style, { width: `${width}px`, height: `${width}px` })
             const box = { fontSize: parseFloat(getComputedStyle(body).fontSize), around: width - body.clientHeight }
-            setLayout({ width, spread, ...layoutPages(PHOTOS, fitLines(body, PARAGRAPHS, PHOTOS.length), box, width) })
+            const { pages, height } = layoutPages(PHOTOS, fitLines(body, PARAGRAPHS, PHOTOS.length), box, width)
+            // one page at a time, the book opens at its text: the first photo would follow the cover's
+            const skipped = spread ? 0 : 1
+            setLayout({ width, height, spread, skipped, pages: pages.slice(skipped) })
         }
 
         const observer = new ResizeObserver(() => {
@@ -75,7 +80,8 @@ export default function LifeStory() {
     const pages = layout?.pages ?? []
     const last = pages.length + 1                             // the back cover's place in the book (the front cover's is 0)
     const onRight = layout?.spread && page < pages.length && page % 2 === 1   // (a spread starts at its left page)
-    const index = page + 1 - (onRight ? 1 : 0)                // its place in the book
+    const skipped = layout?.skipped ?? 0
+    const index = page < 0 ? 0 : Math.max(1, page + 1 - skipped - (onRight ? 1 : 0))   // its place in the book
 
     // a closed book opens as soon as its cover turns
     const closed = layout && !turning && (index === 0 ? styles.front : index === last && styles.back)
@@ -96,6 +102,12 @@ export default function LifeStory() {
     }
     // react-pageflip's own pointer handlers must finish first, so the turn waits a frame
     const open = useCallback(() => requestAnimationFrame(() => flipRef.current?.pageFlip()?.flipNext()), [])
+
+    const onFlip = ({ data }) => {
+        // a book whose box has another width by now rearranges itself before it is laid out again: not a turn of the page
+        const width = Math.floor(bookRef.current.clientWidth / (layout.spread ? 2 : 1))
+        if (width === layout.width) setPage(data === 0 ? -1 : data - 1 + skipped)
+    }
 
     const onKeyDown = (event) => {
         if (event.key === "ArrowLeft") turn(-1)
@@ -157,7 +169,7 @@ export default function LifeStory() {
                                 showCover
                                 maxShadowOpacity={0.5}
                                 flippingTime={reduced ? 1 : 800}
-                                onFlip={({ data }) => setPage(data - 1)}
+                                onFlip={onFlip}
                                 onChangeState={({ data }) => setTurning(data === "flipping")}
                             >
                                 {leaves}
