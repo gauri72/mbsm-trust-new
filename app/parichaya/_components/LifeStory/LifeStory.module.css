@@ -8,19 +8,24 @@
 
 .story {
   --arrow-size: 46px;
-  --frame: 5px;                                    /* the thick line round every page */
-  --frame-gap: 8px;                                /* from the page's edge to the line */
-  --frame-in: calc(var(--frame-gap) + var(--frame));   /* from the page's edge to the line's inner side */
-  --frame-shadow: 2px 3px 5px rgba(0, 0, 0, 0.45);   /* the line and the photos stand raised */
-  --page-pad: 14px;                                /* the paper's margins inside the line: at the sides and above, */
-  --page-foot: 40px;                               /* and at the foot, with the page's number */
+  --frame: 3px;                                    /* the thick line round every page */
+  --thin: 1px;                                     /* the thin line inside it */
+  --thin-gap: 4px;                                 /* the paper between the two */
+  --frame-gap: 4px;                                /* from the page's edge to the line */
+  --frame-in: calc(var(--frame-gap) + var(--frame));   /* from the page's edge to the thick line's inner side, */
+  --thin-in: calc(var(--frame-in) + var(--thin-gap) + var(--thin));   /* and to the thin line's */
+  --frame-shadow: 2px 3px 5px rgba(0, 0, 0, 0.45);   /* the thick line and the photos stand raised */
+  --page-pad: 18px;                                /* the paper's margins inside the line: at the sides and above, */
+  --page-foot: 44px;                               /* and at the foot, with the page's number */
   --book-text: 15px;                               /* a phone: twenty pages of a readable height */
 }
 
 @media (min-width: 600px) {
   .story {
-    --frame: 6px;
+    --frame: 4px;
     --frame-gap: var(--space-3);
+    --thin: 2px;
+    --thin-gap: 5px;
     --page-pad: 28px;
     --page-foot: 52px;
     --book-text: var(--text-sm);
@@ -175,7 +180,7 @@
   pointer-events: none;
 }
 
-/* ---- Arrows: a maroon medallion with a gold ring and a gold chevron ---- */
+/* ---- Arrows: a gold medallion with a black chevron ---- */
 .arrow {
   display: flex;
   flex: 0 0 auto;
@@ -185,8 +190,8 @@
   height: var(--arrow-size);
   border: 2px solid var(--c-gold);
   border-radius: 50%;
-  background-color: var(--c-maroon);
-  color: var(--c-gold);
+  background-color: var(--c-gold);
+  color: var(--c-black);
   font-size: var(--text-sm);
   cursor: pointer;
   transition: border-color 250ms ease, box-shadow 250ms ease;
@@ -240,12 +245,12 @@
   outline-offset: var(--space-0);
 }
 
+/* there is nothing to turn to before the front cover or after the back one */
 .arrow:disabled {
-  opacity: 0.3;
-  cursor: default;
+  visibility: hidden;
 }
 
-/* ---- Pages: white paper in a thick black line, a photo or text, the page's number at the foot ---- */
+/* ---- Pages: white paper in a thick and a thin black line, a photo or text, the page's number at the foot ---- */
 .page {
   width: 100%;
   height: 100%;
@@ -274,15 +279,17 @@
   height: 100%;
 }
 
-/* the line inside the page's edge: a raised frame, lit from the top left, its shadow falling on the paper inside and
-   outside it */
+/* the lines inside the page's edge: a thick one, raised as a frame lit from the top left (its shadow falls on the paper
+   outside it), and a thin one inside it */
 .paper .sheet::before {
   content: "";
   position: absolute;
   inset: var(--frame-gap);
   border: var(--frame) solid var(--c-black);
+  outline: var(--thin) solid var(--c-black);
+  outline-offset: calc(-1 * (var(--frame) + var(--thin-gap) + var(--thin)));
   border-radius: 4px;
-  box-shadow: var(--frame-shadow), inset var(--frame-shadow);
+  box-shadow: var(--frame-shadow);
   pointer-events: none;
 }
 
@@ -358,12 +365,12 @@
 .number {
   position: absolute;
   right: 0;
-  bottom: var(--frame-in);
+  bottom: var(--thin-in);
   left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: var(--page-foot);
+  height: calc(var(--frame-in) + var(--page-foot) - var(--thin-in));
   padding-top: 0.2em;                              /* the font sits high in its line */
   color: var(--c-black);
   font-size: 16px;

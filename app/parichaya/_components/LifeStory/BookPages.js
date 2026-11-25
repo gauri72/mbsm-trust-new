@@ -6,7 +6,7 @@ import styles from "./LifeStory.module.css"
 
 /* =============================================================================
    LifeStory: the book's pages. react-pageflip needs each page to be a component that passes on a ref,
-   hence forwardRef. A plain design: white paper with one thick black line inside the edge of every page,
+   hence forwardRef. A plain design: white paper with a thick and a thin black line inside the edge of every page,
    the photo and the text set to the same margins, and covers in a carved gold frame. Styles: LifeStory.module.css.
    ========================================================================== */
 
