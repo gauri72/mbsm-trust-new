@@ -42,11 +42,18 @@ const EVENTS = [
     },
 ]
 
+/* संत तुकाराम's abhang, its opening: one line; on a screen too narrow for it, it breaks only at the comma */
+const TITLE = (
+    <>
+        <span className={styles.phrase}>आनंदाचे डोही आनंद तरंग,</span> <span className={styles.phrase}>आनंदचि अंग आनंदाचे.</span>
+    </>
+)
+
 export default function Events() {
     return (
         <section className={`${shared.field} ${styles.events}`}>
             <div className="container">
-                <SectionHead label="आगामी उत्सव" title="भक्‍तीचा सोहळा, आनंदाचा मेळा" />
+                <SectionHead label="आगामी उत्सव" title={TITLE} />
 
                 <div className={`row ${shared.cards}`}>
                     {EVENTS.map((event, index) => (

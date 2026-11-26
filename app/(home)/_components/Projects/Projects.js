@@ -10,7 +10,8 @@ import styles from "./Projects.module.css"
    The four causes, their names and the number of projects in each come from the Prakalpa page's own list
    (prakalpa/_data/projects.js: the 30 projects of https://mbsmtrust.org/our-causes), so this section can never
    disagree with that page. Only the picture of each cause is chosen here.
-   Each card (CauseCard): a photo, the cause's round icon, the project count and the cause. A small icon sits above each number of the stats strip.
+   Each card (CauseCard): a photo, the cause's round icon, the project count and the cause.
+   Two gold badges sit in the empty space either side of the heading line: the total number of projects and the number of causes.
    One button below the cards links to the Prakalpa page.
    Styles: see Projects.module.css.
    ========================================================================== */
@@ -30,28 +31,35 @@ const CAUSES = CATEGORIES.map(({ key, label, icon }) => ({
     number: String(PROJECTS.filter((project) => project.category === key).length),
 }))
 
-/* Totals are derived from CAUSES, so they can never disagree with the cards. */
-const TOTAL_PROJECTS = CAUSES.reduce((sum, cause) => sum + Number(cause.number), 0)
-const STATS = [
-    { number: String(TOTAL_PROJECTS), label: "एकूण प्रकल्प", icon: "fas fa-hands-helping" },
-    { number: String(CAUSES.length).padStart(2, "0"), label: "सेवाक्षेत्रे", icon: "fas fa-hand-holding-heart" },
+/* the heading: two lines; on a screen too narrow for a line it breaks only at its comma */
+const TITLE = (
+    <>
+        <span className={styles.line}><span className={styles.phrase}>तहानलेल्याला पाणी,</span> <span className={styles.phrase}>भुकेल्याला अन्न;</span></span>
+        <span className={styles.line}><span className={styles.phrase}>जनगणांची सेवा,</span> <span className={styles.phrase}>हेच आमचे पुण्य.</span></span>
+    </>
+)
+
+/* the two badges either side of the heading line: total projects on the left, number of causes on the right */
+const BADGES = [
+    { number: PROJECTS.length, label: "प्रकल्प", icon: "fas fa-hands-helping" },
+    { number: CATEGORIES.length, label: "सेवाक्षेत्रे", icon: "fas fa-hand-holding-heart" },
 ]
+
+function Badge({ number, label, icon }) {
+    return (
+        <div className={styles.badge}>
+            <i className={icon} aria-hidden="true"></i>
+            <span className={styles.count}>{number}</span>
+            <span lang="mr">{label}</span>
+        </div>
+    )
+}
 
 export default function Projects() {
     return (
-        <section className={`${shared.field} ${styles.projects}`}>
+        <section className={shared.field}>
             <div className="container">
-                <SectionHead label="सामाजिक प्रकल्प" title="माणुसकीची ज्योत, प्रकाशाचा स्रोत" />
-
-                <div className={`${styles.stats} wow fadeInUp`} data-wow-delay="100ms">
-                    {STATS.map((stat) => (
-                        <div key={stat.label} className={styles.stat}>
-                            <i className={`${stat.icon} ${styles.statIcon}`} aria-hidden="true"></i>
-                            <span className={styles.statNumber}>{stat.number}</span>
-                            <span className={styles.statLabel} lang="mr">{stat.label}</span>
-                        </div>
-                    ))}
-                </div>
+                <SectionHead label="आमचे प्रकल्प" title={TITLE} before={<Badge {...BADGES[0]} />} after={<Badge {...BADGES[1]} />} />
 
                 <div className={`row ${shared.cards}`}>
                     {CAUSES.map((cause, index) => (

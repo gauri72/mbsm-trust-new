@@ -80,3 +80,8 @@ section.events .title {
   line-height: 1.6;
   text-transform: none;
 }
+
+/* the heading's two halves never break inside themselves */
+.phrase {
+  white-space: nowrap;
+}

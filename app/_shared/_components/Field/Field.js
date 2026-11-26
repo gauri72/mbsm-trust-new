@@ -9,7 +9,9 @@ import shared from "./Field.module.css"
    ========================================================================== */
 
 // The section's heading: a gold label (optional), then the white title.
-export function SectionHead({ label, title }) {
+// `before` / `after` (optional) sit left and right of the title, centred on it (the section styles them).
+export function SectionHead({ label, title, before, after }) {
+    const heading = <h2 className="section-title__title title-animation" lang="mr">{title}</h2>
     return (
         <div className={shared.head}>
             <div className="section-title section-title--maroon text-center sec-title-animation animation-style1">
@@ -18,7 +20,13 @@ export function SectionHead({ label, title }) {
                         <span className="section-title__tagline" lang="mr">{label}</span>
                     </div>
                 )}
-                <h2 className="section-title__title title-animation" lang="mr">{title}</h2>
+                {before || after ? (
+                    <div className={shared.titleRow}>
+                        {before}
+                        {heading}
+                        {after}
+                    </div>
+                ) : heading}
             </div>
         </div>
     )

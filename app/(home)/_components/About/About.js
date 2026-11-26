@@ -80,10 +80,10 @@ export default function About() {
                         <div className={`${styles.right} wow fadeInRight`} data-wow-delay="300ms">
                             <div className="section-title section-title--maroon text-left sec-title-animation animation-style2">
                                 <div className="section-title__tagline-box">
-                                    <span className="section-title__tagline" lang="mr">आमची ओळख</span>
+                                    <span className="section-title__tagline" lang="mr">आमचा परिचय</span>
                                 </div>
                                 <h2 className="section-title__title title-animation" lang="mr">
-                                    <span className={styles.titleLine}>सेवा हाच धर्म, हेच आमचे कर्म</span>
+                                    <span className={styles.titleLine}><span className={styles.nowrap}>ज्यांची लीला न्यारी,</span> <span className={styles.nowrap}>आम्ही त्या शिवशंकराचे पुजारी.</span></span>
                                 </h2>
                             </div>
 

@@ -157,3 +157,8 @@ section.blogs .desc {
     gap: var(--space-3);
   }
 }
+
+/* the heading's two halves never break inside themselves */
+.phrase {
+  white-space: nowrap;
+}

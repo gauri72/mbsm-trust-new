@@ -24,7 +24,7 @@ import styles from "./Cta.module.css"
 
 // ---- Content -------------------------------------------------------------------
 // the small line above the heading
-const LABEL = "आमच्यासोबत जोडले जा"
+const LABEL = "आमचा संकल्प"
 
 // the tagline in its two lines ("जिथे कमी," / "तिथे कुवतीनुसार आम्ही"): the heading breaks after the comma
 const [TAGLINE_FIRST, TAGLINE_SECOND] = SITE_TAGLINE.split(", ")

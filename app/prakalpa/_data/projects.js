@@ -16,7 +16,7 @@ export const CATEGORIES = [
     { key: "education", label: "बालशिक्षण", icon: "fas fa-book-open" },
     { key: "food", label: "अन्‍नदान", icon: "fas fa-utensils" },
     { key: "medical", label: "आरोग्यसेवा", icon: "fas fa-heartbeat" },
-    { key: "events", label: "उत्सव आणि परंपरा", icon: "fas fa-om" },
+    { key: "events", label: "उत्सव", icon: "fas fa-om" },
 ]
 
 // the photo files are named <prefix>-<n>.webp, n = the project's place within its category (the order below)
@@ -48,7 +48,7 @@ const PROJECT_LIST = [
     { id: "blood-donation", category: "medical", title: "रक्तदान शिबिर" },
     { id: "medical-guidance", category: "medical", title: "वैद्यकीय मार्गदर्शन" },
 
-    // उत्सव आणि परंपरा (11)
+    // उत्सव (11)
     { id: "rajabhau-janmdin", category: "events", title: "श्री राजाभाऊ कोठारी जन्मदिन" },
     { id: "kavad-yatra", category: "events", title: "महाशिवरात्री कावड यात्रा" },
     { id: "hanuman-chalisa", category: "events", title: "हनुमान चालीसा पठण" },

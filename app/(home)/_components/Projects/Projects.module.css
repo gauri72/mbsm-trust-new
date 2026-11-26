@@ -1,61 +1,52 @@
 /* =============================================================================
-   Home — Projects (Prakalpa): four gold cause cards under a stats strip.
+   Home — Projects (Prakalpa): the heading and four gold cause cards.
    The maroon field, heading and button are shared: see _shared/_components/Field/Field.module.css; so are the cards:
-   see _shared/_components/CauseCard. Type here: the stats number large and its label medium.
+   see _shared/_components/CauseCard.
    ========================================================================== */
 
-/* ---- This section's own measures (the maroon field itself is shared) ---- */
-section.projects {
-  --home-head-gap: var(--space-5);       /* room for the stats under the heading */
+/* the heading: one line per half; its phrases never break inside themselves */
+.line {
+  display: block;
 }
 
-/* ---- Stats under the heading: big gold number, white label, a thin gold line between ---- */
-section.projects .stats {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);   /* two equal columns, so the divider sits exactly in the page's centre */
-  align-items: stretch;
-  width: fit-content;
-  max-width: 100%;
-  margin: 0 auto var(--section-title-gap);
+.phrase {
+  white-space: nowrap;
 }
 
-section.projects .stat {
+/* ---- The two badges: gold, left and right of the heading line (SectionHead's before / after: no row of their own) ---- */
+.badge {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 0 var(--space-6);
-  text-align: center;
-}
-
-section.projects .stat + .stat {
-  border-left: var(--line-width) solid var(--c-gold);
-}
-
-section.projects .statIcon {
-  margin-bottom: var(--space-1);
-  color: var(--c-gold);
-  font-size: var(--text-md);
-}
-
-section.projects .statNumber {
-  color: var(--c-gold);
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-5);
+  border-radius: 20px;
+  background-color: var(--c-gold);
+  color: var(--c-black);
   font-family: var(--font);
+  font-size: var(--text-md);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.badge i {
   font-size: var(--text-lg);
-  font-weight: 400;
-  line-height: 1.1;
 }
 
-section.projects .statLabel {
-  margin-top: var(--space-1);
-  color: var(--c-white);
-  font-family: var(--font);
-  font-size: var(--text-md);
-  font-weight: 400;
-  line-height: 1.3;
+.count {
+  font-size: var(--text-lg);
 }
 
-@media (max-width: 480px) {
-  section.projects .stat {
-    padding: 0 var(--space-4);
+/* tablets and phones: the word goes under the icon and number, so the badge is narrow enough to sit beside the line (or two to a row on phones) */
+@media (max-width: 991px) {
+  .badge {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-1) var(--space-2);
+    padding: var(--space-2) var(--space-4);
+  }
+
+  .badge [lang] {
+    flex-basis: 100%;
+    text-align: center;
   }
 }

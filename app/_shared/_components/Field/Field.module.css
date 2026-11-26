@@ -75,6 +75,36 @@
   margin-bottom: 0;
 }
 
+/* the title with something at each side (SectionHead's before / after): the sides share the leftover width, centred on the title */
+.titleRow {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  column-gap: var(--space-5);
+}
+
+.titleRow > :first-child {
+  justify-self: end;
+}
+
+.titleRow > :last-child {
+  justify-self: start;
+}
+
+/* phones: no room at the sides, so before / after sit side by side in a row under the title */
+@media (max-width: 767px) {
+  .titleRow {
+    grid-template-columns: 1fr 1fr;
+    row-gap: var(--space-5);
+    column-gap: var(--space-3);
+  }
+
+  .titleRow > :global(.section-title__title) {
+    grid-row: 1;
+    grid-column: 1 / -1;
+  }
+}
+
 /* ---- Cards: the grid row, and a solid gold card with black text and rounded corners ---- */
 .field .cards {
   align-items: stretch;

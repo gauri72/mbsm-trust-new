@@ -56,11 +56,18 @@ const CATEGORIES = [
 const COUNTS = themeCounts()
 const TILES = CATEGORIES.map((cat, index) => ({ ...cat, count: COUNTS[THEMES[index].key] }))
 
+/* समर्थ रामदास's line: one line; on a screen too narrow for it, it breaks only at the comma */
+const TITLE = (
+    <>
+        <span className={styles.phrase}>जे जे आपणासी ठावे,</span> <span className={styles.phrase}>ते ते इतरांसी शिकवावे.</span>
+    </>
+)
+
 export default function Blogs() {
     return (
         <section className={`${shared.field} ${styles.blogs}`}>
             <div className="container">
-                <SectionHead label="अमृतवाणी" title="शब्दांची शिदोरी, मनाची तिजोरी" />
+                <SectionHead label="आमचे लेख" title={TITLE} />
                 <div className={`row ${shared.cards}`}>
                     {TILES.map((cat, index) => (
                         <div

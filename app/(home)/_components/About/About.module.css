@@ -95,9 +95,9 @@
 }
 
 /* the heading stays on one line */
+/* one line where it fits; on narrow phones it breaks only after the comma (each half is .nowrap) */
 .right :global(.section-title__title) .titleLine {
   display: block;
-  white-space: nowrap;
 }
 
 /* ---- Mission / vision tabs: flat pills, white outline, a gold fill sweeping up on hover and when open ---- */
